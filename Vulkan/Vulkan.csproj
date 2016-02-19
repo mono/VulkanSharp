@@ -6,7 +6,7 @@
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProjectGuid>{15253E36-DDDE-4C0A-9A6E-7632BACC8F7C}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Mono.Vulkan</RootNamespace>
+    <RootNamespace>Vulkan</RootNamespace>
     <AssemblyName>VulkanSharp</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>

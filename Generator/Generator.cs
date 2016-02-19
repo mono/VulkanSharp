@@ -113,7 +113,7 @@ namespace VulkanSharp.Generator
 		{
 			writer = File.CreateText (string.Format ("{0}{1}Enums.cs", outputPath, Path.DirectorySeparatorChar));
 
-			writer.WriteLine ("namespace Mono.Vulkan\n{");
+			writer.WriteLine ("namespace Vulkan\n{");
 
 			var enumTypes = from el in specTree.Elements ("types").Elements ("type")
 			               where (string)el.Attribute ("category") == "enum"

@@ -4,11 +4,11 @@ using System.Runtime.CompilerServices;
 // Information about this assembly is defined by the following attributes.
 // Change them to the values specific to your project.
 
-[assembly: AssemblyTitle ("Mono.Vulkan")]
+[assembly: AssemblyTitle ("Vulkan")]
 [assembly: AssemblyDescription ("")]
 [assembly: AssemblyConfiguration ("")]
 [assembly: AssemblyCompany ("")]
-[assembly: AssemblyProduct ("Mono.Vulkan")]
+[assembly: AssemblyProduct ("Vulkan")]
 [assembly: AssemblyCopyright ("Copyright (c) Xamarin Inc")]
 [assembly: AssemblyTrademark ("")]
 [assembly: AssemblyCulture ("")]

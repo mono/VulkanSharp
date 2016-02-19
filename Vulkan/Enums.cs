@@ -1,4 +1,4 @@
-namespace Mono.Vulkan
+namespace Vulkan
 {
 	enum AttachmentLoadOp : int
 	{
