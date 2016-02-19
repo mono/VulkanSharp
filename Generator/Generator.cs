@@ -37,9 +37,12 @@ namespace VulkanSharp.Generator
 		}
 
 		static Dictionary<string, string> specialParts = new Dictionary<string, string> {
-			{ "API", "API" },
-			{ "EXT", "EXT" },
-			{ "KHR", "KHR" },
+			{ "API", "Api" },
+			{ "EXT", "Ext" },
+			{ "KHR", "Khr" },
+			{ "1D", "1D" },
+			{ "2D", "2D" },
+			{ "3D", "3D" },
 		};
 
 		string TranslateCName (string name)
@@ -100,6 +103,16 @@ namespace VulkanSharp.Generator
 				string fName = TranslateCName (e.Attribute ("name").Value);
 				if (fName.StartsWith (csName))
 					fName = fName.Substring (csName.Length);
+				if (!char.IsLetter (fName [0])) {
+					switch (csName) {
+					case "ImageType":
+						fName = "Image" + fName;
+						break;
+					case "ImageViewType":
+						fName = "View" + fName;
+						break;
+					}
+				}
 
 				writer.WriteLine ("\t\t{0} = {1},", fName, value);
 			}

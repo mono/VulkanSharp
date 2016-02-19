@@ -438,9 +438,9 @@ namespace Vulkan
 
 	enum ImageType : int
 	{
-		1d = 0,
-		2d = 1,
-		3d = 2,
+		Image1D = 0,
+		Image2D = 1,
+		Image3D = 2,
 	}
 
 	enum ImageUsageFlagBits : int
@@ -457,12 +457,12 @@ namespace Vulkan
 
 	enum ImageViewType : int
 	{
-		1d = 0,
-		2d = 1,
-		3d = 2,
+		View1D = 0,
+		View2D = 1,
+		View3D = 2,
 		Cube = 3,
-		1dArray = 4,
-		2dArray = 5,
+		View1DArray = 4,
+		View2DArray = 5,
 		CubeArray = 6,
 	}
 
@@ -826,91 +826,91 @@ namespace Vulkan
 
 	enum ColorSpaceKHR : int
 	{
-		ColorspaceSrgbNonlinearKHR = 0,
+		ColorspaceSrgbNonlinearKhr = 0,
 	}
 
 	enum CompositeAlphaFlagBitsKHR : int
 	{
-		CompositeAlphaOpaqueBitKHR = 0x1,
-		CompositeAlphaPreMultipliedBitKHR = 0x2,
-		CompositeAlphaPostMultipliedBitKHR = 0x4,
-		CompositeAlphaInheritBitKHR = 0x8,
+		CompositeAlphaOpaqueBitKhr = 0x1,
+		CompositeAlphaPreMultipliedBitKhr = 0x2,
+		CompositeAlphaPostMultipliedBitKhr = 0x4,
+		CompositeAlphaInheritBitKhr = 0x8,
 	}
 
 	enum DisplayPlaneAlphaFlagBitsKHR : int
 	{
-		DisplayPlaneAlphaOpaqueBitKHR = 0x1,
-		DisplayPlaneAlphaGlobalBitKHR = 0x2,
-		DisplayPlaneAlphaPerPixelBitKHR = 0x4,
-		DisplayPlaneAlphaPerPixelPremultipliedBitKHR = 0x8,
+		DisplayPlaneAlphaOpaqueBitKhr = 0x1,
+		DisplayPlaneAlphaGlobalBitKhr = 0x2,
+		DisplayPlaneAlphaPerPixelBitKhr = 0x4,
+		DisplayPlaneAlphaPerPixelPremultipliedBitKhr = 0x8,
 	}
 
 	enum PresentModeKHR : int
 	{
-		PresentModeImmediateKHR = 0,
-		PresentModeMailboxKHR = 1,
-		PresentModeFifoKHR = 2,
-		PresentModeFifoRelaxedKHR = 3,
+		PresentModeImmediateKhr = 0,
+		PresentModeMailboxKhr = 1,
+		PresentModeFifoKhr = 2,
+		PresentModeFifoRelaxedKhr = 3,
 	}
 
 	enum SurfaceTransformFlagBitsKHR : int
 	{
-		SurfaceTransformIdentityBitKHR = 0x1,
-		SurfaceTransformRotate90BitKHR = 0x2,
-		SurfaceTransformRotate180BitKHR = 0x4,
-		SurfaceTransformRotate270BitKHR = 0x8,
-		SurfaceTransformHorizontalMirrorBitKHR = 0x10,
-		SurfaceTransformHorizontalMirrorRotate90BitKHR = 0x20,
-		SurfaceTransformHorizontalMirrorRotate180BitKHR = 0x40,
-		SurfaceTransformHorizontalMirrorRotate270BitKHR = 0x80,
-		SurfaceTransformInheritBitKHR = 0x100,
+		SurfaceTransformIdentityBitKhr = 0x1,
+		SurfaceTransformRotate90BitKhr = 0x2,
+		SurfaceTransformRotate180BitKhr = 0x4,
+		SurfaceTransformRotate270BitKhr = 0x8,
+		SurfaceTransformHorizontalMirrorBitKhr = 0x10,
+		SurfaceTransformHorizontalMirrorRotate90BitKhr = 0x20,
+		SurfaceTransformHorizontalMirrorRotate180BitKhr = 0x40,
+		SurfaceTransformHorizontalMirrorRotate270BitKhr = 0x80,
+		SurfaceTransformInheritBitKhr = 0x100,
 	}
 
 	enum DebugReportFlagBitsEXT : int
 	{
-		DebugReportInformationBitEXT = 0x1,
-		DebugReportWarningBitEXT = 0x2,
-		DebugReportPerformanceWarningBitEXT = 0x4,
-		DebugReportErrorBitEXT = 0x8,
-		DebugReportDebugBitEXT = 0x10,
+		DebugReportInformationBitExt = 0x1,
+		DebugReportWarningBitExt = 0x2,
+		DebugReportPerformanceWarningBitExt = 0x4,
+		DebugReportErrorBitExt = 0x8,
+		DebugReportDebugBitExt = 0x10,
 	}
 
 	enum DebugReportObjectTypeEXT : int
 	{
-		DebugReportObjectTypeUnknownEXT = 0,
-		DebugReportObjectTypeInstanceEXT = 1,
-		DebugReportObjectTypePhysicalDeviceEXT = 2,
-		DebugReportObjectTypeDeviceEXT = 3,
-		DebugReportObjectTypeQueueEXT = 4,
-		DebugReportObjectTypeSemaphoreEXT = 5,
-		DebugReportObjectTypeCommandBufferEXT = 6,
-		DebugReportObjectTypeFenceEXT = 7,
-		DebugReportObjectTypeDeviceMemoryEXT = 8,
-		DebugReportObjectTypeBufferEXT = 9,
-		DebugReportObjectTypeImageEXT = 10,
-		DebugReportObjectTypeEventEXT = 11,
-		DebugReportObjectTypeQueryPoolEXT = 12,
-		DebugReportObjectTypeBufferViewEXT = 13,
-		DebugReportObjectTypeImageViewEXT = 14,
-		DebugReportObjectTypeShaderModuleEXT = 15,
-		DebugReportObjectTypePipelineCacheEXT = 16,
-		DebugReportObjectTypePipelineLayoutEXT = 17,
-		DebugReportObjectTypeRenderPassEXT = 18,
-		DebugReportObjectTypePipelineEXT = 19,
-		DebugReportObjectTypeDescriptorSetLayoutEXT = 20,
-		DebugReportObjectTypeSamplerEXT = 21,
-		DebugReportObjectTypeDescriptorPoolEXT = 22,
-		DebugReportObjectTypeDescriptorSetEXT = 23,
-		DebugReportObjectTypeFramebufferEXT = 24,
-		DebugReportObjectTypeCommandPoolEXT = 25,
-		DebugReportObjectTypeSurfaceKHREXT = 26,
-		DebugReportObjectTypeSwapchainKHREXT = 27,
-		DebugReportObjectTypeDebugReportEXT = 28,
+		DebugReportObjectTypeUnknownExt = 0,
+		DebugReportObjectTypeInstanceExt = 1,
+		DebugReportObjectTypePhysicalDeviceExt = 2,
+		DebugReportObjectTypeDeviceExt = 3,
+		DebugReportObjectTypeQueueExt = 4,
+		DebugReportObjectTypeSemaphoreExt = 5,
+		DebugReportObjectTypeCommandBufferExt = 6,
+		DebugReportObjectTypeFenceExt = 7,
+		DebugReportObjectTypeDeviceMemoryExt = 8,
+		DebugReportObjectTypeBufferExt = 9,
+		DebugReportObjectTypeImageExt = 10,
+		DebugReportObjectTypeEventExt = 11,
+		DebugReportObjectTypeQueryPoolExt = 12,
+		DebugReportObjectTypeBufferViewExt = 13,
+		DebugReportObjectTypeImageViewExt = 14,
+		DebugReportObjectTypeShaderModuleExt = 15,
+		DebugReportObjectTypePipelineCacheExt = 16,
+		DebugReportObjectTypePipelineLayoutExt = 17,
+		DebugReportObjectTypeRenderPassExt = 18,
+		DebugReportObjectTypePipelineExt = 19,
+		DebugReportObjectTypeDescriptorSetLayoutExt = 20,
+		DebugReportObjectTypeSamplerExt = 21,
+		DebugReportObjectTypeDescriptorPoolExt = 22,
+		DebugReportObjectTypeDescriptorSetExt = 23,
+		DebugReportObjectTypeFramebufferExt = 24,
+		DebugReportObjectTypeCommandPoolExt = 25,
+		DebugReportObjectTypeSurfaceKhrExt = 26,
+		DebugReportObjectTypeSwapchainKhrExt = 27,
+		DebugReportObjectTypeDebugReportExt = 28,
 	}
 
 	enum DebugReportErrorEXT : int
 	{
-		DebugReportErrorNoneEXT = 0,
-		DebugReportErrorCallbackRefEXT = 1,
+		DebugReportErrorNoneExt = 0,
+		DebugReportErrorCallbackRefExt = 1,
 	}
 }
