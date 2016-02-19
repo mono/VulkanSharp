@@ -72,8 +72,13 @@ namespace VulkanSharp.Generator
 
 				if (specialParts.ContainsKey (part))
 					sw.Write (specialParts [part]);
-				else if (part.Length > 0)
-					sw.Write (char.ToUpper (part[0]) + part.Substring (1).ToLower ());
+                else if (part.Length > 0)
+                {
+                    if (part.ToCharArray().All(c => char.IsUpper(c) || char.IsDigit(c)))
+                        sw.Write(part[0] + part.Substring(1).ToLower());
+                    else
+                        sw.Write(char.ToUpper(part[0]) + part.Substring(1));
+                }
 			}
 
 			return sw.ToString ();
