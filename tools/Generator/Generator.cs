@@ -24,7 +24,7 @@ namespace VulkanSharp.Generator
 			LoadSpecification ();
 
 			GenerateEnums ();
-            GenerateStructs ();
+			GenerateStructs ();
 		}
 
 		void LoadSpecification ()
@@ -46,16 +46,16 @@ namespace VulkanSharp.Generator
 			{ "3D", "3D" },
 		};
 
-        // TODO: validate this mapping
-        static Dictionary<string, string> basicTypesMap = new Dictionary<string, string> {
-            { "int32_t", "Int32" },
-            { "uint32_t", "UInt32" },
-            { "uint8_t", "Byte" },
-            { "size_t", "uint" },
-            { "xcb_connection_t", "IntPtr" },
-            { "xcb_window_t", "IntPtr" },
-        };
-        
+		// TODO: validate this mapping
+		static Dictionary<string, string> basicTypesMap = new Dictionary<string, string> {
+			{ "int32_t", "Int32" },
+			{ "uint32_t", "UInt32" },
+			{ "uint8_t", "Byte" },
+			{ "size_t", "UIntPtr" },
+			{ "xcb_connection_t", "IntPtr" },
+			{ "xcb_window_t", "IntPtr" },
+		};
+		
 		string TranslateCName (string name)
 		{
 			StringWriter sw = new StringWriter ();
@@ -72,39 +72,39 @@ namespace VulkanSharp.Generator
 
 				if (specialParts.ContainsKey (part))
 					sw.Write (specialParts [part]);
-                else if (part.Length > 0)
-                {
-                    if (part.ToCharArray().All(c => char.IsUpper(c) || char.IsDigit(c)))
-                        sw.Write(part[0] + part.Substring(1).ToLower());
-                    else
-                        sw.Write(char.ToUpper(part[0]) + part.Substring(1));
-                }
+				else if (part.Length > 0)
+				{
+					if (part.ToCharArray ().All (c => char.IsUpper (c) || char.IsDigit (c)))
+						sw.Write (part[0] + part.Substring (1).ToLower ());
+					else
+						sw.Write (char.ToUpper (part[0]) + part.Substring (1));
+				}
 			}
 
 			return sw.ToString ();
 		}
 
-	    static string GetTypeCsName(string name, string typeName = "type")
-	    {
-            string csName;
+		static string GetTypeCsName (string name, string typeName = "type")
+		{
+			string csName;
 
-            if (name.StartsWith("Vk"))
-                csName = name.Substring(2);
-            else if (name.EndsWith("_t"))
-            {
-                if (!basicTypesMap.ContainsKey(name))
-                    throw new NotImplementedException(string.Format("Mapping for the basic type {0} isn't supported", name));
+			if (name.StartsWith ("Vk"))
+				csName = name.Substring (2);
+			else if (name.EndsWith ("_t"))
+			{
+				if (!basicTypesMap.ContainsKey (name))
+					throw new NotImplementedException (string.Format ("Mapping for the basic type {0} isn't supported", name));
 
-                csName = basicTypesMap[name];
-            }
-            else
-            {
-                Console.WriteLine("warning: {0} name '{1}' doesn't start with Vk prefix or end with _t suffix", typeName, name);
-                csName = name;
-            }
+				csName = basicTypesMap[name];
+			}
+			else
+			{
+				Console.WriteLine ("warning: {0} name '{1}' doesn't start with Vk prefix or end with _t suffix", typeName, name);
+				csName = name;
+			}
 
-	        return csName;
-	    }
+			return csName;
+		}
 
 		void WriteEnumField (XElement e, string csName)
 		{
@@ -153,7 +153,7 @@ namespace VulkanSharp.Generator
 		bool WriteEnum (XElement enumElement)
 		{
 			string name = enumElement.Attribute ("name").Value;
-		    string csName = GetTypeCsName(name, "enum");
+			string csName = GetTypeCsName (name, "enum");
 
 			var values = from el in specTree.Elements ("enums")
 					where (string)el.Attribute ("name") == name
@@ -177,105 +177,105 @@ namespace VulkanSharp.Generator
 			return true;
 		}
 
-	    void GenerateCodeForElements(IEnumerable<XElement> elements, Func<XElement, bool> generator)
-	    {
-            bool written = false;
-            foreach (var e in elements)
-            {
-                if (written)
-                    writer.WriteLine();
+		void GenerateCodeForElements(IEnumerable<XElement> elements, Func<XElement, bool> generator)
+		{
+			bool written = false;
+			foreach (var e in elements)
+			{
+				if (written)
+					writer.WriteLine ();
 
-                written = generator(e);
-            }
-	    }
+				written = generator (e);
+			}
+		}
 
-        void GenerateMembers(XElement parent, Func<XElement, bool> generator)
-        {
-            GenerateCodeForElements(parent.Elements("member"), generator);
-	    }
+		void GenerateMembers(XElement parent, Func<XElement, bool> generator)
+		{
+			GenerateCodeForElements(parent.Elements("member"), generator);
+		}
 
-	    void GenerateType(string type, Func<XElement, bool> generator)
-	    {
-            var elements = from el in specTree.Elements("types").Elements("type")
-                           where (string)el.Attribute("category") == type
-                           select el;
+		void GenerateType(string type, Func<XElement, bool> generator)
+		{
+			var elements = from el in specTree.Elements("types").Elements("type")
+						   where (string)el.Attribute ("category") == type
+						   select el;
 
-            GenerateCodeForElements(elements, generator);
-	    }
+			GenerateCodeForElements(elements, generator);
+		}
 
-	    void CreateFile(string typeName)
-	    {
-            writer = File.CreateText(string.Format("{0}{1}{2}.cs", outputPath, Path.DirectorySeparatorChar, typeName));
+		void CreateFile (string typeName)
+		{
+			writer = File.CreateText (string.Format ("{0}{1}{2}.cs", outputPath, Path.DirectorySeparatorChar, typeName));
 
-            writer.WriteLine("using System;\n");
-            writer.WriteLine("namespace Vulkan\n{");
-	    }
+			writer.WriteLine ("using System;\n");
+			writer.WriteLine ("namespace Vulkan\n{");
+		}
 
-	    void FinalizeFile()
-	    {
-	        writer.WriteLine ("}");
-	        writer.Close();
-	    }
+		void FinalizeFile ()
+		{
+			writer.WriteLine ("}");
+			writer.Close();
+		}
 
 		void GenerateEnums ()
 		{
-			CreateFile("Enum");
+			CreateFile ("Enum");
 
 			GenerateType("enum", WriteEnum);
 
-			FinalizeFile();
+			FinalizeFile ();
 		}
 
-        #region Structs generation
+		#region Structs generation
 
-	    bool WriteMember(XElement memberElement)
-	    {
-	        var parentName = memberElement.Parent.Attribute("name").Value;
+		bool WriteMember(XElement memberElement)
+		{
+			var parentName = memberElement.Parent.Attribute ("name").Value;
 
-	        var typeElement = memberElement.Element("type");
-	        if (typeElement == null)
-	        {
-                Console.WriteLine("warning: a member of the struct {0} doesn't have a 'type' node", parentName);
-	            return false;
-	        }
-            var csMemberType = GetTypeCsName(typeElement.Value, "member");
+			var typeElement = memberElement.Element ("type");
+			if (typeElement == null)
+			{
+				Console.WriteLine ("warning: a member of the struct {0} doesn't have a 'type' node", parentName);
+				return false;
+			}
+			var csMemberType = GetTypeCsName (typeElement.Value, "member");
 
-            var nameElement = memberElement.Element("name");
-            if (nameElement == null)
-            {
-                Console.WriteLine("warning: a member of the struct {0} doesn't have a 'name' node", parentName);
-                return false;
-            }
-	        var csMemberName = TranslateCName(nameElement.Value);
+			var nameElement = memberElement.Element ("name");
+			if (nameElement == null)
+			{
+				Console.WriteLine ("warning: a member of the struct {0} doesn't have a 'name' node", parentName);
+				return false;
+			}
+			var csMemberName = TranslateCName (nameElement.Value);
 
-            writer.WriteLine("\t\tpublic {0} {1} {{ get; set; }}", csMemberType, csMemberName);
+			writer.WriteLine ("\t\tpublic {0} {1} {{ get; set; }}", csMemberType, csMemberName);
 
-	        return true;
-	    }
+			return true;
+		}
 
-	    bool WriteStruct(XElement structElement)
-	    {
-            string name = structElement.Attribute("name").Value;
-	        string csName = GetTypeCsName(name, "struct");
+		bool WriteStruct(XElement structElement)
+		{
+			string name = structElement.Attribute ("name").Value;
+			string csName = GetTypeCsName (name, "struct");
 
-            CreateFile(csName);
+			CreateFile (csName);
 
-            writer.WriteLine("\tpublic class {0}\n\t{{", csName);
+			writer.WriteLine ("\tpublic class {0}\n\t{{", csName);
 
-	        GenerateMembers(structElement, WriteMember);
+			GenerateMembers (structElement, WriteMember);
 
-            writer.WriteLine("\t}");
+			writer.WriteLine ("\t}");
 
-            FinalizeFile();
-            
-	        return false;
-	    }
+			FinalizeFile ();
+			
+			return false;
+		}
 
-        void GenerateStructs()
-	    {
-            GenerateType("struct", WriteStruct);
-        }
+		void GenerateStructs()
+		{
+			GenerateType ("struct", WriteStruct);
+		}
 
-        #endregion
-    }
+		#endregion
+	}
 }
