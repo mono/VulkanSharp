@@ -43,8 +43,8 @@
   <PropertyGroup>
     <Runtime Condition="'$(OS)' != 'Windows_NT'">mono</Runtime>
   </PropertyGroup>
-  <Target Name="BuildGeneratedSource" Inputs="$(JNIEnvGenPath)\jnienv-gen.exe" Outputs="Java.Interop\JniEnvironment.g.cs;$(OutputPath)\jni.c">
+  <Target Name="BuildGeneratedSource" Inputs="$(OutputPath)\Generator.exe" Outputs="Vulkan\Enums.cs">
     <MakeDir Directories="$(OutputPath)" />
-    <Exec Command="$(Runtime) &quot;$(OutputPath)\Generator.exe&quot; $(OutputPath)\vk.xml Vulkan" />
+    <Exec Command="$(Runtime) &quot;$(OutputPath)\Generator.exe&quot; $(OutputPath)\vk.xml ." />
   </Target>
 </Project>
