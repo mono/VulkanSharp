@@ -101,6 +101,50 @@ namespace VulkanSharp.Generator
 	        return csName;
 	    }
 
+		void WriteEnumField (XElement e, string csName)
+		{
+			var valueAttr = e.Attribute ("value");
+			string value;
+			if (valueAttr == null) {
+				int pos = Convert.ToInt32 (e.Attribute ("bitpos").Value);
+				value = string.Format ("0x{0:X}", 1 << pos);
+			}
+			else
+				value = valueAttr.Value;
+
+			string fName = TranslateCName (e.Attribute ("name").Value);
+			string prefix = csName, suffix = null;
+			if (prefix.EndsWith ("FlagBits")) {
+				prefix = prefix.Substring (0, prefix.Length - 8);
+				suffix = "Bit";
+			}
+
+			if (fName.StartsWith (prefix))
+				fName = fName.Substring (prefix.Length);
+
+			if (!char.IsLetter (fName [0])) {
+				switch (csName) {
+				case "ImageType":
+					fName = "Image" + fName;
+					break;
+				case "ImageViewType":
+					fName = "View" + fName;
+					break;
+				case "QueryResultFlagBits":
+					fName = "Result" + fName;
+					break;
+				case "SampleCountFlagBits":
+					fName = "Count" + fName;
+					break;
+				}
+			}
+
+			if (suffix != null && fName.EndsWith (suffix))
+				fName = fName.Substring (0, fName.Length - suffix.Length);
+
+			writer.WriteLine ("\t\t{0} = {1},", fName, value);
+		}
+
 		bool WriteEnum (XElement enumElement)
 		{
 			string name = enumElement.Attribute ("name").Value;
@@ -115,33 +159,13 @@ namespace VulkanSharp.Generator
 				return false;
 			}
 
+			var enumsElement = values.First ();
+			if (enumsElement.Attribute ("type") != null && enumsElement.Attribute ("type").Value == "bitmask")
+				writer.WriteLine ("\t[Flags]");
 			writer.WriteLine ("\tenum {0} : int\n\t{{", csName);
 
-			foreach (var e in values.Elements ("enum")) {
-				var valueAttr = e.Attribute ("value");
-				string value;
-				if (valueAttr == null) {
-					int pos = Convert.ToInt32 (e.Attribute ("bitpos").Value);
-					value = string.Format ("0x{0:X}", 1 << pos);
-				} else
-					value = valueAttr.Value;
-
-				string fName = TranslateCName (e.Attribute ("name").Value);
-				if (fName.StartsWith (csName))
-					fName = fName.Substring (csName.Length);
-				if (!char.IsLetter (fName [0])) {
-					switch (csName) {
-					case "ImageType":
-						fName = "Image" + fName;
-						break;
-					case "ImageViewType":
-						fName = "View" + fName;
-						break;
-					}
-				}
-
-				writer.WriteLine ("\t\t{0} = {1},", fName, value);
-			}
+			foreach (var e in values.Elements ("enum"))
+				WriteEnumField (e, csName);
 
 			writer.WriteLine ("\t}");
 
@@ -178,6 +202,7 @@ namespace VulkanSharp.Generator
 	    {
             writer = File.CreateText(string.Format("{0}{1}{2}.cs", outputPath, Path.DirectorySeparatorChar, typeName));
 
+            writer.WriteLine("using System;\n");
             writer.WriteLine("namespace Vulkan\n{");
 	    }
 
