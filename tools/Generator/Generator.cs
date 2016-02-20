@@ -219,10 +219,8 @@ namespace VulkanSharp.Generator
 
 		void GenerateEnums ()
 		{
-			CreateFile ("Enum");
-
+			CreateFile ("Enums");
 			GenerateType ("enum", WriteEnum);
-
 			FinalizeFile ();
 		}
 
@@ -248,9 +246,9 @@ namespace VulkanSharp.Generator
 			}
 			var csMemberName = TranslateCName (nameElement.Value);
 
-			writer.WriteLine ("\t\tpublic {0} {1} {{ get; set; }}", csMemberType, csMemberName);
+			writer.WriteLine ("\t\tpublic {0} {1};", csMemberType, csMemberName);
 
-			return true;
+			return false;
 		}
 
 		bool WriteStruct (XElement structElement)
@@ -258,22 +256,20 @@ namespace VulkanSharp.Generator
 			string name = structElement.Attribute ("name").Value;
 			string csName = GetTypeCsName (name, "struct");
 
-			CreateFile (csName);
-
-			writer.WriteLine ("\tpublic class {0}\n\t{{", csName);
+			writer.WriteLine ("\tpublic struct {0}\n\t{{", csName);
 
 			GenerateMembers (structElement, WriteMember);
 
 			writer.WriteLine ("\t}");
 
-			FinalizeFile ();
-
-			return false;
+			return true;
 		}
 
 		void GenerateStructs ()
 		{
+			CreateFile ("Structs");
 			GenerateType ("struct", WriteStruct);
+			FinalizeFile ();
 		}
 
 		#endregion
