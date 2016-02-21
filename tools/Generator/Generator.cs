@@ -106,6 +106,11 @@ namespace VulkanSharp.Generator
 			return csName;
 		}
 
+		static Dictionary<string, string> extensions = new Dictionary<string, string> {
+			{ "EXT", "Ext" },
+			{ "KHR", "Khr" }
+		};
+
 		void WriteEnumField (XElement e, string csName)
 		{
 			var valueAttr = e.Attribute ("value");
@@ -119,12 +124,19 @@ namespace VulkanSharp.Generator
 
 			string fName = TranslateCName (e.Attribute ("name").Value);
 			string prefix = csName, suffix = null;
+
+			foreach (var ext in extensions)
+				if (prefix.EndsWith (ext.Key)) {
+					prefix = prefix.Substring (0, prefix.Length - ext.Key.Length);
+					suffix = ext.Value;
+				}
+
 			if (prefix.EndsWith ("Flags")) {
 				prefix = prefix.Substring (0, prefix.Length - 5);
-				suffix = "Bit";
+				suffix = "Bit" + suffix;
 			}
 
-			if (fName.StartsWith (prefix))
+			if (fName.StartsWith (prefix, StringComparison.OrdinalIgnoreCase))
 				fName = fName.Substring (prefix.Length);
 
 			if (!char.IsLetter (fName [0])) {
@@ -166,9 +178,17 @@ namespace VulkanSharp.Generator
 
 			var enumsElement = values.First ();
 			if (enumsElement.Attribute ("type") != null && enumsElement.Attribute ("type").Value == "bitmask") {
+				string suffix = null;
+				foreach (var ext in extensions)
+					if (csName.EndsWith (ext.Key)) {
+						suffix = ext.Key + suffix;
+						csName = csName.Substring (0, csName.Length - ext.Key.Length);
+					}
 				writer.WriteLine ("\t[Flags]");
 				if (csName.EndsWith ("FlagBits"))
 					csName = csName.Substring (0, csName.Length - 4) + "s";
+				if (suffix != null)
+					csName += suffix;
 			}
 			writer.WriteLine ("\tpublic enum {0} : int\n\t{{", csName);
 
