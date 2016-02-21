@@ -44,6 +44,7 @@ namespace VulkanSharp.Generator
 			{ "1D", "1D" },
 			{ "2D", "2D" },
 			{ "3D", "3D" },
+			{ "HINSTANCE", "HInstance" },
 		};
 
 		// TODO: validate this mapping
@@ -101,6 +102,18 @@ namespace VulkanSharp.Generator
 			{
 				Console.WriteLine ("warning: {0} name '{1}' doesn't start with Vk prefix or end with _t suffix", typeName, name);
 				csName = name;
+			}
+
+			// Check if the name end with a special suffix
+			int suffixLen = 0;
+			while (csName.Length > suffixLen && char.IsUpper (csName [csName.Length - 1 - suffixLen]))
+				suffixLen++;
+
+			if (suffixLen > 0) {
+				int suffixStart = csName.Length - suffixLen;
+				string suffix = csName.Substring (suffixStart);
+				if (specialParts.ContainsKey (suffix))
+					csName = csName.Substring (0, suffixStart) + specialParts [suffix];
 			}
 
 			return csName;
@@ -228,7 +241,7 @@ namespace VulkanSharp.Generator
 
 		#region Structs generation
 
-		bool WriteMember(XElement memberElement)
+		bool WriteMember (XElement memberElement)
 		{
 			var parentName = memberElement.Parent.Attribute ("name").Value;
 
@@ -253,7 +266,7 @@ namespace VulkanSharp.Generator
 			return true;
 		}
 
-		bool WriteStruct(XElement structElement)
+		bool WriteStruct (XElement structElement)
 		{
 			string name = structElement.Attribute ("name").Value;
 			string csName = GetTypeCsName (name, "struct");
@@ -271,8 +284,35 @@ namespace VulkanSharp.Generator
 			return false;
 		}
 
-		void GenerateStructs()
+		bool WriteHandle (XElement handleElement)
 		{
+			string parent = handleElement.Attribute ("parent") == null
+				? null : GetTypeCsName (handleElement.Attribute ("parent").Value);
+
+			var className = handleElement.Element ("name");
+			if (className == null)
+			{
+				Console.WriteLine ("warning: a handle type doesn't have the 'name' node");
+				return false;
+			}
+
+			var csClassName = GetTypeCsName (className.Value, "handle");
+
+			CreateFile (csClassName);
+
+			writer.WriteLine ("\tpublic class {0}{1}\n\t{{",
+				csClassName, parent == null ? string.Empty : string.Format (" : {0}", parent));
+
+			writer.WriteLine ("\t}");
+
+			FinalizeFile ();
+
+			return false;
+		}
+
+		void GenerateStructs ()
+		{
+			GenerateType ("handle", WriteHandle);
 			GenerateType ("struct", WriteStruct);
 		}
 
