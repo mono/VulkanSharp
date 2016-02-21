@@ -858,95 +858,95 @@ namespace Vulkan
 
 	public enum ColorSpaceKHR : int
 	{
-		ColorspaceSrgbNonlinearKhr = 0,
+		SrgbNonlinear = 0,
 	}
 
 	[Flags]
-	public enum CompositeAlphaFlagBitsKHR : int
+	public enum CompositeAlphaFlagsKHR : int
 	{
-		CompositeAlphaOpaqueBitKhr = 0x1,
-		CompositeAlphaPreMultipliedBitKhr = 0x2,
-		CompositeAlphaPostMultipliedBitKhr = 0x4,
-		CompositeAlphaInheritBitKhr = 0x8,
+		Opaque = 0x1,
+		PreMultiplied = 0x2,
+		PostMultiplied = 0x4,
+		Inherit = 0x8,
 	}
 
 	[Flags]
-	public enum DisplayPlaneAlphaFlagBitsKHR : int
+	public enum DisplayPlaneAlphaFlagsKHR : int
 	{
-		DisplayPlaneAlphaOpaqueBitKhr = 0x1,
-		DisplayPlaneAlphaGlobalBitKhr = 0x2,
-		DisplayPlaneAlphaPerPixelBitKhr = 0x4,
-		DisplayPlaneAlphaPerPixelPremultipliedBitKhr = 0x8,
+		Opaque = 0x1,
+		Global = 0x2,
+		PerPixel = 0x4,
+		PerPixelPremultiplied = 0x8,
 	}
 
 	public enum PresentModeKHR : int
 	{
-		PresentModeImmediateKhr = 0,
-		PresentModeMailboxKhr = 1,
-		PresentModeFifoKhr = 2,
-		PresentModeFifoRelaxedKhr = 3,
+		Immediate = 0,
+		Mailbox = 1,
+		Fifo = 2,
+		FifoRelaxed = 3,
 	}
 
 	[Flags]
-	public enum SurfaceTransformFlagBitsKHR : int
+	public enum SurfaceTransformFlagsKHR : int
 	{
-		SurfaceTransformIdentityBitKhr = 0x1,
-		SurfaceTransformRotate90BitKhr = 0x2,
-		SurfaceTransformRotate180BitKhr = 0x4,
-		SurfaceTransformRotate270BitKhr = 0x8,
-		SurfaceTransformHorizontalMirrorBitKhr = 0x10,
-		SurfaceTransformHorizontalMirrorRotate90BitKhr = 0x20,
-		SurfaceTransformHorizontalMirrorRotate180BitKhr = 0x40,
-		SurfaceTransformHorizontalMirrorRotate270BitKhr = 0x80,
-		SurfaceTransformInheritBitKhr = 0x100,
+		Identity = 0x1,
+		Rotate90 = 0x2,
+		Rotate180 = 0x4,
+		Rotate270 = 0x8,
+		HorizontalMirror = 0x10,
+		HorizontalMirrorRotate90 = 0x20,
+		HorizontalMirrorRotate180 = 0x40,
+		HorizontalMirrorRotate270 = 0x80,
+		Inherit = 0x100,
 	}
 
 	[Flags]
-	public enum DebugReportFlagBitsEXT : int
+	public enum DebugReportFlagsEXT : int
 	{
-		DebugReportInformationBitExt = 0x1,
-		DebugReportWarningBitExt = 0x2,
-		DebugReportPerformanceWarningBitExt = 0x4,
-		DebugReportErrorBitExt = 0x8,
-		DebugReportDebugBitExt = 0x10,
+		Information = 0x1,
+		Warning = 0x2,
+		PerformanceWarning = 0x4,
+		Error = 0x8,
+		Debug = 0x10,
 	}
 
 	public enum DebugReportObjectTypeEXT : int
 	{
-		DebugReportObjectTypeUnknownExt = 0,
-		DebugReportObjectTypeInstanceExt = 1,
-		DebugReportObjectTypePhysicalDeviceExt = 2,
-		DebugReportObjectTypeDeviceExt = 3,
-		DebugReportObjectTypeQueueExt = 4,
-		DebugReportObjectTypeSemaphoreExt = 5,
-		DebugReportObjectTypeCommandBufferExt = 6,
-		DebugReportObjectTypeFenceExt = 7,
-		DebugReportObjectTypeDeviceMemoryExt = 8,
-		DebugReportObjectTypeBufferExt = 9,
-		DebugReportObjectTypeImageExt = 10,
-		DebugReportObjectTypeEventExt = 11,
-		DebugReportObjectTypeQueryPoolExt = 12,
-		DebugReportObjectTypeBufferViewExt = 13,
-		DebugReportObjectTypeImageViewExt = 14,
-		DebugReportObjectTypeShaderModuleExt = 15,
-		DebugReportObjectTypePipelineCacheExt = 16,
-		DebugReportObjectTypePipelineLayoutExt = 17,
-		DebugReportObjectTypeRenderPassExt = 18,
-		DebugReportObjectTypePipelineExt = 19,
-		DebugReportObjectTypeDescriptorSetLayoutExt = 20,
-		DebugReportObjectTypeSamplerExt = 21,
-		DebugReportObjectTypeDescriptorPoolExt = 22,
-		DebugReportObjectTypeDescriptorSetExt = 23,
-		DebugReportObjectTypeFramebufferExt = 24,
-		DebugReportObjectTypeCommandPoolExt = 25,
-		DebugReportObjectTypeSurfaceKhrExt = 26,
-		DebugReportObjectTypeSwapchainKhrExt = 27,
-		DebugReportObjectTypeDebugReportExt = 28,
+		Unknown = 0,
+		Instance = 1,
+		PhysicalDevice = 2,
+		Device = 3,
+		Queue = 4,
+		Semaphore = 5,
+		CommandBuffer = 6,
+		Fence = 7,
+		DeviceMemory = 8,
+		Buffer = 9,
+		Image = 10,
+		Event = 11,
+		QueryPool = 12,
+		BufferView = 13,
+		ImageView = 14,
+		ShaderModule = 15,
+		PipelineCache = 16,
+		PipelineLayout = 17,
+		RenderPass = 18,
+		Pipeline = 19,
+		DescriptorSetLayout = 20,
+		Sampler = 21,
+		DescriptorPool = 22,
+		DescriptorSet = 23,
+		Framebuffer = 24,
+		CommandPool = 25,
+		SurfaceKhr = 26,
+		SwapchainKhr = 27,
+		DebugReport = 28,
 	}
 
 	public enum DebugReportErrorEXT : int
 	{
-		DebugReportErrorNoneExt = 0,
-		DebugReportErrorCallbackRefExt = 1,
+		None = 0,
+		CallbackRef = 1,
 	}
 }
