@@ -12,6 +12,9 @@ namespace VulkanSharp.Generator
 		string specXMLFile;
 		string outputPath;
 		StreamWriter writer;
+		bool isUnion;
+
+		Dictionary<string, string> typesTranslation = new Dictionary<string, string> ();
 
 		public Generator (string filename, string outputDir)
 		{
@@ -24,7 +27,10 @@ namespace VulkanSharp.Generator
 			LoadSpecification ();
 
 			GenerateEnums ();
+			GenerateBitmasks ();
+			GenerateHandles ();
 			GenerateStructs ();
+			GenerateUnions ();
 		}
 
 		void LoadSpecification ()
@@ -84,8 +90,11 @@ namespace VulkanSharp.Generator
 			return sw.ToString ();
 		}
 
-		static string GetTypeCsName (string name, string typeName = "type")
+		string GetTypeCsName (string name, string typeName = "type")
 		{
+			if (typesTranslation.ContainsKey (name))
+				return typesTranslation [name];
+
 			string csName;
 
 			if (name.StartsWith ("Vk"))
@@ -190,6 +199,8 @@ namespace VulkanSharp.Generator
 				if (suffix != null)
 					csName += suffix;
 			}
+
+			typesTranslation [name] = csName;
 			writer.WriteLine ("\tpublic enum {0} : int\n\t{{", csName);
 
 			foreach (var e in values.Elements ("enum"))
@@ -226,11 +237,15 @@ namespace VulkanSharp.Generator
 			GenerateCodeForElements (elements, generator);
 		}
 
-		void CreateFile (string typeName)
+		void CreateFile (string typeName, bool usingInterop = false)
 		{
 			writer = File.CreateText (string.Format ("{0}{1}{2}.cs", outputPath, Path.DirectorySeparatorChar, typeName));
 
-			writer.WriteLine ("using System;\n");
+			writer.WriteLine ("using System;");
+			if (usingInterop)
+				writer.WriteLine ("using System.Runtime.InteropServices;");
+			writer.WriteLine ();
+
 			writer.WriteLine ("namespace Vulkan\n{");
 		}
 
@@ -245,6 +260,23 @@ namespace VulkanSharp.Generator
 			CreateFile ("Enums");
 			GenerateType ("enum", WriteEnum);
 			FinalizeFile ();
+		}
+
+		bool AddBitmask (XElement typeElement)
+		{
+			if (typeElement.Attribute ("requires") != null)
+				return false;
+
+			string name = typeElement.Element ("name").Value;
+
+			typesTranslation [name] = "UInt32";
+
+			return false;
+		}
+
+		void GenerateBitmasks ()
+		{
+			GenerateType ("bitmask", AddBitmask);
 		}
 
 		#region Structs generation
@@ -267,18 +299,72 @@ namespace VulkanSharp.Generator
 				Console.WriteLine ("warning: a member of the struct {0} doesn't have a 'name' node", parentName);
 				return false;
 			}
-			var csMemberName = TranslateCName (nameElement.Value);
 
-			writer.WriteLine ("\t\tpublic {0} {1};", csMemberType, csMemberName);
+			bool isPointer = memberElement.Value.Contains (typeElement.Value + "*");
+			string name = nameElement.Value;
+			if (csMemberType == "void" && isPointer) {
+				csMemberType = "IntPtr";
+				if (name.StartsWith ("p"))
+					name = name.Substring (1);
+			}
+
+			var csMemberName = TranslateCName (name);
+
+			// TODO: fixed arrays of structs
+			if (csMemberName.EndsWith ("]")) {
+				string array = csMemberName.Substring (csMemberName.IndexOf ('['));
+				csMemberName = csMemberName.Substring (0, csMemberName.Length - array.Length);
+				csMemberType += "[]";
+			}
+
+			string mod = "";
+			if (csMemberName.EndsWith ("]"))
+				mod = "unsafe fixed ";
+
+			if (csMemberType.EndsWith ("Flags"))
+				csMemberType = "UInt32";
+
+			if (csMemberType.EndsWith ("FlagBits"))
+				csMemberType = csMemberType.Substring (0, csMemberType.Length - 4) + "s";
+
+			if (csMemberType.StartsWith ("PFN_"))
+				csMemberType = "IntPtr";
+
+			if (csMemberType == "DeviceSize")
+				csMemberType = "UInt64";
+
+			if (csMemberType == "SampleMask")
+				csMemberType = "UInt32";
+
+			string attr = "";
+			if (isUnion)
+				attr = "[FieldOffset (0)] ";
+
+			writer.WriteLine ("\t\t{0}public {1}{2} {3};", attr, mod, csMemberType, csMemberName);
 
 			return false;
 		}
 
-		bool WriteStruct (XElement structElement)
+		HashSet<string> disabledStructs = new HashSet<string> {
+			"XlibSurfaceCreateInfoKHR",
+			"XcbSurfaceCreateInfoKHR",
+			"WaylandSurfaceCreateInfoKHR",
+			"MirSurfaceCreateInfoKHR",
+			"AndroidSurfaceCreateInfoKHR",
+			"Win32SurfaceCreateInfoKHR",
+		};
+
+		bool WriteStructOrUnion (XElement structElement)
 		{
 			string name = structElement.Attribute ("name").Value;
 			string csName = GetTypeCsName (name, "struct");
 
+			if (disabledStructs.Contains (csName))
+				return false;
+
+			typesTranslation [name] = csName;
+			if (isUnion)
+				writer.WriteLine ("\t[StructLayout (LayoutKind.Explicit)]");
 			writer.WriteLine ("\tpublic struct {0}\n\t{{", csName);
 
 			GenerateMembers (structElement, WriteMember);
@@ -291,10 +377,36 @@ namespace VulkanSharp.Generator
 		void GenerateStructs ()
 		{
 			CreateFile ("Structs");
-			GenerateType ("struct", WriteStruct);
+			isUnion = false;
+			GenerateType ("struct", WriteStructOrUnion);
 			FinalizeFile ();
 		}
 
 		#endregion
+
+		void GenerateUnions ()
+		{
+			CreateFile ("Unions", true);
+			isUnion = true;
+			GenerateType ("union", WriteStructOrUnion);
+			FinalizeFile ();
+		}
+
+		bool WriteHandle(XElement handleElement)
+		{
+			string name = handleElement.Element ("name").Value;
+			string csName = GetTypeCsName (name, "struct");
+
+			writer.WriteLine ("\tpublic class {0}\n\t{{\n\t}}", csName);
+
+			return true;
+		}
+
+		void GenerateHandles ()
+		{
+			CreateFile ("Handles");
+			GenerateType ("handle", WriteHandle);
+			FinalizeFile ();
+		}
 	}
 }
