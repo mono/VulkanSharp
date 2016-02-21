@@ -167,7 +167,7 @@ namespace VulkanSharp.Generator
 			var enumsElement = values.First ();
 			if (enumsElement.Attribute ("type") != null && enumsElement.Attribute ("type").Value == "bitmask")
 				writer.WriteLine ("\t[Flags]");
-			writer.WriteLine ("\tenum {0} : int\n\t{{", csName);
+			writer.WriteLine ("\tpublic enum {0} : int\n\t{{", csName);
 
 			foreach (var e in values.Elements ("enum"))
 				WriteEnumField (e, csName);
