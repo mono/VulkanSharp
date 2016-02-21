@@ -119,8 +119,8 @@ namespace VulkanSharp.Generator
 
 			string fName = TranslateCName (e.Attribute ("name").Value);
 			string prefix = csName, suffix = null;
-			if (prefix.EndsWith ("FlagBits")) {
-				prefix = prefix.Substring (0, prefix.Length - 8);
+			if (prefix.EndsWith ("Flags")) {
+				prefix = prefix.Substring (0, prefix.Length - 5);
 				suffix = "Bit";
 			}
 
@@ -135,10 +135,10 @@ namespace VulkanSharp.Generator
 				case "ImageViewType":
 					fName = "View" + fName;
 					break;
-				case "QueryResultFlagBits":
+				case "QueryResultFlags":
 					fName = "Result" + fName;
 					break;
-				case "SampleCountFlagBits":
+				case "SampleCountFlags":
 					fName = "Count" + fName;
 					break;
 				}
@@ -165,8 +165,11 @@ namespace VulkanSharp.Generator
 			}
 
 			var enumsElement = values.First ();
-			if (enumsElement.Attribute ("type") != null && enumsElement.Attribute ("type").Value == "bitmask")
+			if (enumsElement.Attribute ("type") != null && enumsElement.Attribute ("type").Value == "bitmask") {
 				writer.WriteLine ("\t[Flags]");
+				if (csName.EndsWith ("FlagBits"))
+					csName = csName.Substring (0, csName.Length - 4) + "s";
+			}
 			writer.WriteLine ("\tpublic enum {0} : int\n\t{{", csName);
 
 			foreach (var e in values.Elements ("enum"))
