@@ -2,20 +2,20 @@ using System;
 
 namespace Vulkan
 {
-	enum AttachmentLoadOp : int
+	public enum AttachmentLoadOp : int
 	{
 		Load = 0,
 		Clear = 1,
 		DontCare = 2,
 	}
 
-	enum AttachmentStoreOp : int
+	public enum AttachmentStoreOp : int
 	{
 		Store = 0,
 		DontCare = 1,
 	}
 
-	enum BlendFactor : int
+	public enum BlendFactor : int
 	{
 		Zero = 0,
 		One = 1,
@@ -38,7 +38,7 @@ namespace Vulkan
 		OneMinusSrc1Alpha = 18,
 	}
 
-	enum BlendOp : int
+	public enum BlendOp : int
 	{
 		Add = 0,
 		Subtract = 1,
@@ -47,7 +47,7 @@ namespace Vulkan
 		Max = 4,
 	}
 
-	enum BorderColor : int
+	public enum BorderColor : int
 	{
 		FloatTransparentBlack = 0,
 		IntTransparentBlack = 1,
@@ -57,13 +57,13 @@ namespace Vulkan
 		IntOpaqueWhite = 5,
 	}
 
-	enum PipelineCacheHeaderVersion : int
+	public enum PipelineCacheHeaderVersion : int
 	{
 		One = 1,
 	}
 
 	[Flags]
-	enum BufferCreateFlagBits : int
+	public enum BufferCreateFlagBits : int
 	{
 		SparseBinding = 0x1,
 		SparseResidency = 0x2,
@@ -71,7 +71,7 @@ namespace Vulkan
 	}
 
 	[Flags]
-	enum BufferUsageFlagBits : int
+	public enum BufferUsageFlagBits : int
 	{
 		TransferSrc = 0x1,
 		TransferDst = 0x2,
@@ -85,7 +85,7 @@ namespace Vulkan
 	}
 
 	[Flags]
-	enum ColorComponentFlagBits : int
+	public enum ColorComponentFlagBits : int
 	{
 		R = 0x1,
 		G = 0x2,
@@ -93,7 +93,7 @@ namespace Vulkan
 		A = 0x8,
 	}
 
-	enum ComponentSwizzle : int
+	public enum ComponentSwizzle : int
 	{
 		Identity = 0,
 		Zero = 1,
@@ -105,39 +105,39 @@ namespace Vulkan
 	}
 
 	[Flags]
-	enum CommandPoolCreateFlagBits : int
+	public enum CommandPoolCreateFlagBits : int
 	{
 		Transient = 0x1,
 		ResetCommandBuffer = 0x2,
 	}
 
 	[Flags]
-	enum CommandPoolResetFlagBits : int
+	public enum CommandPoolResetFlagBits : int
 	{
 		ReleaseResources = 0x1,
 	}
 
 	[Flags]
-	enum CommandBufferResetFlagBits : int
+	public enum CommandBufferResetFlagBits : int
 	{
 		ReleaseResources = 0x1,
 	}
 
-	enum CommandBufferLevel : int
+	public enum CommandBufferLevel : int
 	{
 		Primary = 0,
 		Secondary = 1,
 	}
 
 	[Flags]
-	enum CommandBufferUsageFlagBits : int
+	public enum CommandBufferUsageFlagBits : int
 	{
 		OneTimeSubmit = 0x1,
 		RenderPassContinue = 0x2,
 		SimultaneousUse = 0x4,
 	}
 
-	enum CompareOp : int
+	public enum CompareOp : int
 	{
 		Never = 0,
 		Less = 1,
@@ -150,7 +150,7 @@ namespace Vulkan
 	}
 
 	[Flags]
-	enum CullModeFlagBits : int
+	public enum CullModeFlagBits : int
 	{
 		None = 0,
 		Front = 0x1,
@@ -158,7 +158,7 @@ namespace Vulkan
 		FrontAndBack = 0x3,
 	}
 
-	enum DescriptorType : int
+	public enum DescriptorType : int
 	{
 		Sampler = 0,
 		CombinedImageSampler = 1,
@@ -173,7 +173,7 @@ namespace Vulkan
 		InputAttachment = 10,
 	}
 
-	enum DynamicState : int
+	public enum DynamicState : int
 	{
 		Viewport = 0,
 		Scissor = 1,
@@ -187,19 +187,19 @@ namespace Vulkan
 	}
 
 	[Flags]
-	enum FenceCreateFlagBits : int
+	public enum FenceCreateFlagBits : int
 	{
 		Signaled = 0x1,
 	}
 
-	enum PolygonMode : int
+	public enum PolygonMode : int
 	{
 		Fill = 0,
 		Line = 1,
 		Point = 2,
 	}
 
-	enum Format : int
+	public enum Format : int
 	{
 		Undefined = 0,
 		R4g4UnormPack8 = 1,
@@ -389,7 +389,7 @@ namespace Vulkan
 	}
 
 	[Flags]
-	enum FormatFeatureFlagBits : int
+	public enum FormatFeatureFlagBits : int
 	{
 		SampledImage = 0x1,
 		StorageImage = 0x2,
@@ -406,14 +406,14 @@ namespace Vulkan
 		SampledImageFilterLinear = 0x1000,
 	}
 
-	enum FrontFace : int
+	public enum FrontFace : int
 	{
 		CounterClockwise = 0,
 		Clockwise = 1,
 	}
 
 	[Flags]
-	enum ImageAspectFlagBits : int
+	public enum ImageAspectFlagBits : int
 	{
 		Color = 0x1,
 		Depth = 0x2,
@@ -422,7 +422,7 @@ namespace Vulkan
 	}
 
 	[Flags]
-	enum ImageCreateFlagBits : int
+	public enum ImageCreateFlagBits : int
 	{
 		SparseBinding = 0x1,
 		SparseResidency = 0x2,
@@ -431,7 +431,7 @@ namespace Vulkan
 		CubeCompatible = 0x10,
 	}
 
-	enum ImageLayout : int
+	public enum ImageLayout : int
 	{
 		Undefined = 0,
 		General = 1,
@@ -444,13 +444,13 @@ namespace Vulkan
 		Preinitialized = 8,
 	}
 
-	enum ImageTiling : int
+	public enum ImageTiling : int
 	{
 		Optimal = 0,
 		Linear = 1,
 	}
 
-	enum ImageType : int
+	public enum ImageType : int
 	{
 		Image1D = 0,
 		Image2D = 1,
@@ -458,7 +458,7 @@ namespace Vulkan
 	}
 
 	[Flags]
-	enum ImageUsageFlagBits : int
+	public enum ImageUsageFlagBits : int
 	{
 		TransferSrc = 0x1,
 		TransferDst = 0x2,
@@ -470,7 +470,7 @@ namespace Vulkan
 		InputAttachment = 0x80,
 	}
 
-	enum ImageViewType : int
+	public enum ImageViewType : int
 	{
 		View1D = 0,
 		View2D = 1,
@@ -481,19 +481,19 @@ namespace Vulkan
 		CubeArray = 6,
 	}
 
-	enum SharingMode : int
+	public enum SharingMode : int
 	{
 		Exclusive = 0,
 		Concurrent = 1,
 	}
 
-	enum IndexType : int
+	public enum IndexType : int
 	{
 		Uint16 = 0,
 		Uint32 = 1,
 	}
 
-	enum LogicOp : int
+	public enum LogicOp : int
 	{
 		Clear = 0,
 		And = 1,
@@ -514,13 +514,13 @@ namespace Vulkan
 	}
 
 	[Flags]
-	enum MemoryHeapFlagBits : int
+	public enum MemoryHeapFlagBits : int
 	{
 		DeviceLocal = 0x1,
 	}
 
 	[Flags]
-	enum AccessFlagBits : int
+	public enum AccessFlagBits : int
 	{
 		IndirectCommandRead = 0x1,
 		IndexRead = 0x2,
@@ -542,7 +542,7 @@ namespace Vulkan
 	}
 
 	[Flags]
-	enum MemoryPropertyFlagBits : int
+	public enum MemoryPropertyFlagBits : int
 	{
 		DeviceLocal = 0x1,
 		HostVisible = 0x2,
@@ -551,7 +551,7 @@ namespace Vulkan
 		LazilyAllocated = 0x10,
 	}
 
-	enum PhysicalDeviceType : int
+	public enum PhysicalDeviceType : int
 	{
 		Other = 0,
 		IntegratedGpu = 1,
@@ -560,21 +560,21 @@ namespace Vulkan
 		Cpu = 4,
 	}
 
-	enum PipelineBindPoint : int
+	public enum PipelineBindPoint : int
 	{
 		Graphics = 0,
 		Compute = 1,
 	}
 
 	[Flags]
-	enum PipelineCreateFlagBits : int
+	public enum PipelineCreateFlagBits : int
 	{
 		DisableOptimization = 0x1,
 		AllowDerivatives = 0x2,
 		Derivative = 0x4,
 	}
 
-	enum PrimitiveTopology : int
+	public enum PrimitiveTopology : int
 	{
 		PointList = 0,
 		LineList = 1,
@@ -590,13 +590,13 @@ namespace Vulkan
 	}
 
 	[Flags]
-	enum QueryControlFlagBits : int
+	public enum QueryControlFlagBits : int
 	{
 		Precise = 0x1,
 	}
 
 	[Flags]
-	enum QueryPipelineStatisticFlagBits : int
+	public enum QueryPipelineStatisticFlagBits : int
 	{
 		InputAssemblyVertices = 0x1,
 		InputAssemblyPrimitives = 0x2,
@@ -612,7 +612,7 @@ namespace Vulkan
 	}
 
 	[Flags]
-	enum QueryResultFlagBits : int
+	public enum QueryResultFlagBits : int
 	{
 		Result64 = 0x1,
 		Wait = 0x2,
@@ -620,7 +620,7 @@ namespace Vulkan
 		Partial = 0x8,
 	}
 
-	enum QueryType : int
+	public enum QueryType : int
 	{
 		Occlusion = 0,
 		PipelineStatistics = 1,
@@ -628,7 +628,7 @@ namespace Vulkan
 	}
 
 	[Flags]
-	enum QueueFlagBits : int
+	public enum QueueFlagBits : int
 	{
 		Graphics = 0x1,
 		Compute = 0x2,
@@ -636,13 +636,13 @@ namespace Vulkan
 		SparseBinding = 0x8,
 	}
 
-	enum SubpassContents : int
+	public enum SubpassContents : int
 	{
 		Inline = 0,
 		SecondaryCommandBuffers = 1,
 	}
 
-	enum Result : int
+	public enum Result : int
 	{
 		Success = 0,
 		NotReady = 1,
@@ -664,7 +664,7 @@ namespace Vulkan
 	}
 
 	[Flags]
-	enum ShaderStageFlagBits : int
+	public enum ShaderStageFlagBits : int
 	{
 		Vertex = 0x1,
 		TessellationControl = 0x2,
@@ -677,20 +677,20 @@ namespace Vulkan
 	}
 
 	[Flags]
-	enum SparseMemoryBindFlagBits : int
+	public enum SparseMemoryBindFlagBits : int
 	{
 		Metadata = 0x1,
 	}
 
 	[Flags]
-	enum StencilFaceFlagBits : int
+	public enum StencilFaceFlagBits : int
 	{
 		Front = 0x1,
 		Back = 0x2,
 		StencilFrontAndBack = 0x3,
 	}
 
-	enum StencilOp : int
+	public enum StencilOp : int
 	{
 		Keep = 0,
 		Zero = 1,
@@ -702,7 +702,7 @@ namespace Vulkan
 		DecrementAndWrap = 7,
 	}
 
-	enum StructureType : int
+	public enum StructureType : int
 	{
 		ApplicationInfo = 0,
 		InstanceCreateInfo = 1,
@@ -755,7 +755,7 @@ namespace Vulkan
 		LoaderDeviceCreateInfo = 48,
 	}
 
-	enum SystemAllocationScope : int
+	public enum SystemAllocationScope : int
 	{
 		Command = 0,
 		Object = 1,
@@ -764,12 +764,12 @@ namespace Vulkan
 		Instance = 4,
 	}
 
-	enum InternalAllocationType : int
+	public enum InternalAllocationType : int
 	{
 		Executable = 0,
 	}
 
-	enum SamplerAddressMode : int
+	public enum SamplerAddressMode : int
 	{
 		Repeat = 0,
 		MirroredRepeat = 1,
@@ -778,26 +778,26 @@ namespace Vulkan
 		MirrorClampToEdge = 4,
 	}
 
-	enum Filter : int
+	public enum Filter : int
 	{
 		Nearest = 0,
 		Linear = 1,
 	}
 
-	enum SamplerMipmapMode : int
+	public enum SamplerMipmapMode : int
 	{
 		Nearest = 0,
 		Linear = 1,
 	}
 
-	enum VertexInputRate : int
+	public enum VertexInputRate : int
 	{
 		Vertex = 0,
 		Instance = 1,
 	}
 
 	[Flags]
-	enum PipelineStageFlagBits : int
+	public enum PipelineStageFlagBits : int
 	{
 		TopOfPipe = 0x1,
 		DrawIndirect = 0x2,
@@ -819,7 +819,7 @@ namespace Vulkan
 	}
 
 	[Flags]
-	enum SparseImageFormatFlagBits : int
+	public enum SparseImageFormatFlagBits : int
 	{
 		SingleMiptail = 0x1,
 		AlignedMipSize = 0x2,
@@ -827,7 +827,7 @@ namespace Vulkan
 	}
 
 	[Flags]
-	enum SampleCountFlagBits : int
+	public enum SampleCountFlagBits : int
 	{
 		Count1 = 0x1,
 		Count2 = 0x2,
@@ -839,30 +839,30 @@ namespace Vulkan
 	}
 
 	[Flags]
-	enum AttachmentDescriptionFlagBits : int
+	public enum AttachmentDescriptionFlagBits : int
 	{
 		MayAlias = 0x1,
 	}
 
 	[Flags]
-	enum DescriptorPoolCreateFlagBits : int
+	public enum DescriptorPoolCreateFlagBits : int
 	{
 		FreeDescriptorSet = 0x1,
 	}
 
 	[Flags]
-	enum DependencyFlagBits : int
+	public enum DependencyFlagBits : int
 	{
 		ByRegion = 0x1,
 	}
 
-	enum ColorSpaceKHR : int
+	public enum ColorSpaceKHR : int
 	{
 		ColorspaceSrgbNonlinearKhr = 0,
 	}
 
 	[Flags]
-	enum CompositeAlphaFlagBitsKHR : int
+	public enum CompositeAlphaFlagBitsKHR : int
 	{
 		CompositeAlphaOpaqueBitKhr = 0x1,
 		CompositeAlphaPreMultipliedBitKhr = 0x2,
@@ -871,7 +871,7 @@ namespace Vulkan
 	}
 
 	[Flags]
-	enum DisplayPlaneAlphaFlagBitsKHR : int
+	public enum DisplayPlaneAlphaFlagBitsKHR : int
 	{
 		DisplayPlaneAlphaOpaqueBitKhr = 0x1,
 		DisplayPlaneAlphaGlobalBitKhr = 0x2,
@@ -879,7 +879,7 @@ namespace Vulkan
 		DisplayPlaneAlphaPerPixelPremultipliedBitKhr = 0x8,
 	}
 
-	enum PresentModeKHR : int
+	public enum PresentModeKHR : int
 	{
 		PresentModeImmediateKhr = 0,
 		PresentModeMailboxKhr = 1,
@@ -888,7 +888,7 @@ namespace Vulkan
 	}
 
 	[Flags]
-	enum SurfaceTransformFlagBitsKHR : int
+	public enum SurfaceTransformFlagBitsKHR : int
 	{
 		SurfaceTransformIdentityBitKhr = 0x1,
 		SurfaceTransformRotate90BitKhr = 0x2,
@@ -902,7 +902,7 @@ namespace Vulkan
 	}
 
 	[Flags]
-	enum DebugReportFlagBitsEXT : int
+	public enum DebugReportFlagBitsEXT : int
 	{
 		DebugReportInformationBitExt = 0x1,
 		DebugReportWarningBitExt = 0x2,
@@ -911,7 +911,7 @@ namespace Vulkan
 		DebugReportDebugBitExt = 0x10,
 	}
 
-	enum DebugReportObjectTypeEXT : int
+	public enum DebugReportObjectTypeEXT : int
 	{
 		DebugReportObjectTypeUnknownExt = 0,
 		DebugReportObjectTypeInstanceExt = 1,
@@ -944,7 +944,7 @@ namespace Vulkan
 		DebugReportObjectTypeDebugReportExt = 28,
 	}
 
-	enum DebugReportErrorEXT : int
+	public enum DebugReportErrorEXT : int
 	{
 		DebugReportErrorNoneExt = 0,
 		DebugReportErrorCallbackRefExt = 1,
