@@ -50,6 +50,7 @@ namespace VulkanSharp.Generator
 			{ "1D", "1D" },
 			{ "2D", "2D" },
 			{ "3D", "3D" },
+			{ "HINSTANCE", "HInstance" },
 		};
 
 		// TODO: validate this mapping
@@ -94,7 +95,7 @@ namespace VulkanSharp.Generator
 		{
 			if (typesTranslation.ContainsKey (name))
 				return typesTranslation [name];
-
+			
 			string csName;
 
 			if (name.StartsWith ("Vk"))
@@ -112,6 +113,10 @@ namespace VulkanSharp.Generator
 				csName = name;
 			}
 
+			foreach (var ext in specialParts)
+				if (csName.EndsWith (ext.Key))
+					csName = csName.Substring (0, csName.Length - ext.Key.Length) + ext.Value;
+			
 			return csName;
 		}
 
@@ -187,17 +192,9 @@ namespace VulkanSharp.Generator
 
 			var enumsElement = values.First ();
 			if (enumsElement.Attribute ("type") != null && enumsElement.Attribute ("type").Value == "bitmask") {
-				string suffix = null;
-				foreach (var ext in extensions)
-					if (csName.EndsWith (ext.Key)) {
-						suffix = ext.Key + suffix;
-						csName = csName.Substring (0, csName.Length - ext.Key.Length);
-					}
+				
 				writer.WriteLine ("\t[Flags]");
-				if (csName.EndsWith ("FlagBits"))
-					csName = csName.Substring (0, csName.Length - 4) + "s";
-				if (suffix != null)
-					csName += suffix;
+				csName = csName.Replace ("FlagBits", "Flags");
 			}
 
 			typesTranslation [name] = csName;
@@ -396,8 +393,19 @@ namespace VulkanSharp.Generator
 		{
 			string name = handleElement.Element ("name").Value;
 			string csName = GetTypeCsName (name, "struct");
+			typesTranslation [name] = csName;
 
-			writer.WriteLine ("\tpublic class {0}\n\t{{\n\t}}", csName);
+			string parent = null;
+
+			if (handleElement.Attribute ("parent") != null)
+				parent = handleElement.Attribute ("parent").Value
+					.Split (',')
+					.Select (pName => GetTypeCsName (pName))
+					.Aggregate ((a, p) => string.Format ("{0}, {1}", a, p));
+			
+			writer.WriteLine ("\tpublic class {0}{1}\n\t{{\n\t}}",
+				csName,
+				parent == null ? string.Empty : string.Format (" : {0}", parent));
 
 			return true;
 		}
