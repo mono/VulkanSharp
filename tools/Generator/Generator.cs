@@ -113,7 +113,7 @@ namespace VulkanSharp.Generator
 				csName = name;
 			}
 
-			foreach (var ext in extensions)
+			foreach (var ext in specialParts)
 				if (csName.EndsWith (ext.Key))
 					csName = csName.Substring (0, csName.Length - ext.Key.Length) + ext.Value;
 			
@@ -394,16 +394,16 @@ namespace VulkanSharp.Generator
 			
 			string name = handleElement.Element ("name").Value;
 			string csName = GetTypeCsName (name, "struct");
+			typesTranslation [name] = csName;
 
 			string parent = null;
 
-			if (handleElement.Attribute ("parent") != null) {
+			if (handleElement.Attribute ("parent") != null)
 				parent = handleElement.Attribute ("parent").Value
 					.Split (',')
 					.Select (pName => GetTypeCsName (pName))
 					.Aggregate ((a, p) => string.Format ("{0}, {1}", a, p));
-			}
-
+			
 			writer.WriteLine ("\tpublic class {0}{1}\n\t{{\n\t}}",
 				csName,
 				parent == null ? string.Empty : string.Format (" : {0}", parent));
