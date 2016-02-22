@@ -35,5 +35,9 @@
   <ItemGroup>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="NOTES.txt" />
   </ItemGroup>
 </Project>
