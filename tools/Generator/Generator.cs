@@ -391,7 +391,6 @@ namespace VulkanSharp.Generator
 
 		bool WriteHandle(XElement handleElement)
 		{
-			
 			string name = handleElement.Element ("name").Value;
 			string csName = GetTypeCsName (name, "struct");
 			typesTranslation [name] = csName;
