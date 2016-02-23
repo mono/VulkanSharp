@@ -38,6 +38,9 @@
     <Compile Include="Helpers.cs" />
     <Compile Include="Handles.cs" />
     <Compile Include="Unions.cs" />
+    <Compile Include="Interop\MarshalStructs.cs" />
+    <Compile Include="Interop\MarshalUnions.cs" />
+    <Compile Include="Interop\Helpers.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <PropertyGroup>
@@ -53,4 +56,7 @@
     <MakeDir Directories="$(OutputPath)" />
     <Exec Command="$(Runtime) &quot;$(OutputPath)\Generator.exe&quot; $(OutputPath)\vk.xml ." />
   </Target>
+  <ItemGroup>
+    <Folder Include="Interop\" />
+  </ItemGroup>
 </Project>
