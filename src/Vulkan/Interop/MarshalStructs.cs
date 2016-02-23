@@ -1177,36 +1177,36 @@ namespace Vulkan.Interop
 		public IntPtr SignalSemaphores;
 	}
 
-	public struct DisplayPropertiesKHR
+	public struct DisplayPropertiesKhr
 	{
 		public IntPtr Display;
 		public IntPtr DisplayName;
 		public IntPtr PhysicalDimensions;
 		public IntPtr PhysicalResolution;
-		public SurfaceTransformFlagsKHR SupportedTransforms;
+		public SurfaceTransformFlagsKhr SupportedTransforms;
 		public Bool32 PlaneReorderPossible;
 		public Bool32 PersistentContent;
 	}
 
-	public struct DisplayPlanePropertiesKHR
+	public struct DisplayPlanePropertiesKhr
 	{
 		public IntPtr CurrentDisplay;
 		public UInt32 CurrentStackIndex;
 	}
 
-	public struct DisplayModeParametersKHR
+	public struct DisplayModeParametersKhr
 	{
 		public IntPtr VisibleRegion;
 		public UInt32 RefreshRate;
 	}
 
-	public struct DisplayModePropertiesKHR
+	public struct DisplayModePropertiesKhr
 	{
 		public IntPtr DisplayMode;
 		public IntPtr Parameters;
 	}
 
-	public struct DisplayModeCreateInfoKHR
+	public struct DisplayModeCreateInfoKhr
 	{
 		public StructureType SType;
 		public IntPtr Next;
@@ -1214,9 +1214,9 @@ namespace Vulkan.Interop
 		public IntPtr Parameters;
 	}
 
-	public struct DisplayPlaneCapabilitiesKHR
+	public struct DisplayPlaneCapabilitiesKhr
 	{
-		public DisplayPlaneAlphaFlagsKHR SupportedAlpha;
+		public DisplayPlaneAlphaFlagsKhr SupportedAlpha;
 		public IntPtr MinSrcPosition;
 		public IntPtr MaxSrcPosition;
 		public IntPtr MinSrcExtent;
@@ -1227,7 +1227,7 @@ namespace Vulkan.Interop
 		public IntPtr MaxDstExtent;
 	}
 
-	public struct DisplaySurfaceCreateInfoKHR
+	public struct DisplaySurfaceCreateInfoKhr
 	{
 		public StructureType SType;
 		public IntPtr Next;
@@ -1235,13 +1235,13 @@ namespace Vulkan.Interop
 		public IntPtr DisplayMode;
 		public UInt32 PlaneIndex;
 		public UInt32 PlaneStackIndex;
-		public SurfaceTransformFlagsKHR Transform;
+		public SurfaceTransformFlagsKhr Transform;
 		public float GlobalAlpha;
-		public DisplayPlaneAlphaFlagsKHR AlphaMode;
+		public DisplayPlaneAlphaFlagsKhr AlphaMode;
 		public IntPtr ImageExtent;
 	}
 
-	public struct DisplayPresentInfoKHR
+	public struct DisplayPresentInfoKhr
 	{
 		public StructureType SType;
 		public IntPtr Next;
@@ -1250,7 +1250,7 @@ namespace Vulkan.Interop
 		public Bool32 Persistent;
 	}
 
-	public struct SurfaceCapabilitiesKHR
+	public struct SurfaceCapabilitiesKhr
 	{
 		public UInt32 MinImageCount;
 		public UInt32 MaxImageCount;
@@ -1258,19 +1258,19 @@ namespace Vulkan.Interop
 		public IntPtr MinImageExtent;
 		public IntPtr MaxImageExtent;
 		public UInt32 MaxImageArrayLayers;
-		public SurfaceTransformFlagsKHR SupportedTransforms;
-		public SurfaceTransformFlagsKHR CurrentTransform;
-		public CompositeAlphaFlagsKHR SupportedCompositeAlpha;
+		public SurfaceTransformFlagsKhr SupportedTransforms;
+		public SurfaceTransformFlagsKhr CurrentTransform;
+		public CompositeAlphaFlagsKhr SupportedCompositeAlpha;
 		public UInt32 SupportedUsageFlags;
 	}
 
-	public struct SurfaceFormatKHR
+	public struct SurfaceFormatKhr
 	{
 		public Format Format;
-		public ColorSpaceKHR ColorSpace;
+		public ColorSpaceKhr ColorSpace;
 	}
 
-	public struct SwapchainCreateInfoKHR
+	public struct SwapchainCreateInfoKhr
 	{
 		public StructureType SType;
 		public IntPtr Next;
@@ -1278,21 +1278,21 @@ namespace Vulkan.Interop
 		public IntPtr Surface;
 		public UInt32 MinImageCount;
 		public Format ImageFormat;
-		public ColorSpaceKHR ImageColorSpace;
+		public ColorSpaceKhr ImageColorSpace;
 		public IntPtr ImageExtent;
 		public UInt32 ImageArrayLayers;
 		public UInt32 ImageUsage;
 		public SharingMode ImageSharingMode;
 		public UInt32 QueueFamilyIndexCount;
 		public UInt32 QueueFamilyIndices;
-		public SurfaceTransformFlagsKHR PreTransform;
-		public CompositeAlphaFlagsKHR CompositeAlpha;
-		public PresentModeKHR PresentMode;
+		public SurfaceTransformFlagsKhr PreTransform;
+		public CompositeAlphaFlagsKhr CompositeAlpha;
+		public PresentModeKhr PresentMode;
 		public Bool32 Clipped;
 		public IntPtr OldSwapchain;
 	}
 
-	public struct PresentInfoKHR
+	public struct PresentInfoKhr
 	{
 		public StructureType SType;
 		public IntPtr Next;
@@ -1304,11 +1304,11 @@ namespace Vulkan.Interop
 		public Result Results;
 	}
 
-	public struct DebugReportCallbackCreateInfoEXT
+	public struct DebugReportCallbackCreateInfoExt
 	{
 		public StructureType SType;
 		public IntPtr Next;
-		public DebugReportFlagsEXT Flags;
+		public DebugReportFlagsExt Flags;
 		public IntPtr PfnCallback;
 		public IntPtr UserData;
 	}

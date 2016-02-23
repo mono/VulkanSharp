@@ -856,13 +856,13 @@ namespace Vulkan
 		ByRegion = 0x1,
 	}
 
-	public enum ColorSpaceKHR : int
+	public enum ColorSpaceKhr : int
 	{
 		SrgbNonlinear = 0,
 	}
 
 	[Flags]
-	public enum CompositeAlphaFlagsKHR : int
+	public enum CompositeAlphaFlagsKhr : int
 	{
 		Opaque = 0x1,
 		PreMultiplied = 0x2,
@@ -871,7 +871,7 @@ namespace Vulkan
 	}
 
 	[Flags]
-	public enum DisplayPlaneAlphaFlagsKHR : int
+	public enum DisplayPlaneAlphaFlagsKhr : int
 	{
 		Opaque = 0x1,
 		Global = 0x2,
@@ -879,7 +879,7 @@ namespace Vulkan
 		PerPixelPremultiplied = 0x8,
 	}
 
-	public enum PresentModeKHR : int
+	public enum PresentModeKhr : int
 	{
 		Immediate = 0,
 		Mailbox = 1,
@@ -888,7 +888,7 @@ namespace Vulkan
 	}
 
 	[Flags]
-	public enum SurfaceTransformFlagsKHR : int
+	public enum SurfaceTransformFlagsKhr : int
 	{
 		Identity = 0x1,
 		Rotate90 = 0x2,
@@ -902,7 +902,7 @@ namespace Vulkan
 	}
 
 	[Flags]
-	public enum DebugReportFlagsEXT : int
+	public enum DebugReportFlagsExt : int
 	{
 		Information = 0x1,
 		Warning = 0x2,
@@ -911,7 +911,7 @@ namespace Vulkan
 		Debug = 0x10,
 	}
 
-	public enum DebugReportObjectTypeEXT : int
+	public enum DebugReportObjectTypeExt : int
 	{
 		Unknown = 0,
 		Instance = 1,
@@ -944,7 +944,7 @@ namespace Vulkan
 		DebugReport = 28,
 	}
 
-	public enum DebugReportErrorEXT : int
+	public enum DebugReportErrorExt : int
 	{
 		None = 0,
 		CallbackRef = 1,

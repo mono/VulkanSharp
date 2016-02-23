@@ -127,27 +127,27 @@ namespace Vulkan
 		internal IntPtr m;
 	}
 
-	public class DisplayKHR
+	public class DisplayKhr
 	{
 		internal IntPtr m;
 	}
 
-	public class DisplayModeKHR
+	public class DisplayModeKhr
 	{
 		internal IntPtr m;
 	}
 
-	public class SurfaceKHR
+	public class SurfaceKhr
 	{
 		internal IntPtr m;
 	}
 
-	public class SwapchainKHR
+	public class SwapchainKhr
 	{
 		internal IntPtr m;
 	}
 
-	public class DebugReportCallbackEXT
+	public class DebugReportCallbackExt
 	{
 		internal IntPtr m;
 	}

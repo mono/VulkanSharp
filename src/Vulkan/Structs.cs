@@ -347,11 +347,7 @@ namespace Vulkan
 		public ApplicationInfo ()
 		{
 			m = (Interop.ApplicationInfo*) Interop.Structure.Allocate (typeof (Interop.ApplicationInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.ApplicationInfo;
 		}
 
 		public string ApplicationName {
@@ -427,11 +423,7 @@ namespace Vulkan
 		public DeviceQueueCreateInfo ()
 		{
 			m = (Interop.DeviceQueueCreateInfo*) Interop.Structure.Allocate (typeof (Interop.DeviceQueueCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.DeviceQueueCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -462,11 +454,7 @@ namespace Vulkan
 		public DeviceCreateInfo ()
 		{
 			m = (Interop.DeviceCreateInfo*) Interop.Structure.Allocate (typeof (Interop.DeviceCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.DeviceCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -519,11 +507,7 @@ namespace Vulkan
 		public InstanceCreateInfo ()
 		{
 			m = (Interop.InstanceCreateInfo*) Interop.Structure.Allocate (typeof (Interop.InstanceCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.InstanceCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -628,11 +612,7 @@ namespace Vulkan
 		public MemoryAllocateInfo ()
 		{
 			m = (Interop.MemoryAllocateInfo*) Interop.Structure.Allocate (typeof (Interop.MemoryAllocateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.MemoryAllocateInfo;
 		}
 
 		public UInt64 AllocationSize {
@@ -780,11 +760,7 @@ namespace Vulkan
 		public MappedMemoryRange ()
 		{
 			m = (Interop.MappedMemoryRange*) Interop.Structure.Allocate (typeof (Interop.MappedMemoryRange));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.MappedMemoryRange;
 		}
 
 		DeviceMemory lMemory;
@@ -925,11 +901,7 @@ namespace Vulkan
 		public WriteDescriptorSet ()
 		{
 			m = (Interop.WriteDescriptorSet*) Interop.Structure.Allocate (typeof (Interop.WriteDescriptorSet));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.WriteDescriptorSet;
 		}
 
 		DescriptorSet lDstSet;
@@ -984,11 +956,7 @@ namespace Vulkan
 		public CopyDescriptorSet ()
 		{
 			m = (Interop.CopyDescriptorSet*) Interop.Structure.Allocate (typeof (Interop.CopyDescriptorSet));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.CopyDescriptorSet;
 		}
 
 		DescriptorSet lSrcSet;
@@ -1036,11 +1004,7 @@ namespace Vulkan
 		public BufferCreateInfo ()
 		{
 			m = (Interop.BufferCreateInfo*) Interop.Structure.Allocate (typeof (Interop.BufferCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.BufferCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -1081,11 +1045,7 @@ namespace Vulkan
 		public BufferViewCreateInfo ()
 		{
 			m = (Interop.BufferViewCreateInfo*) Interop.Structure.Allocate (typeof (Interop.BufferViewCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.BufferViewCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -1212,11 +1172,7 @@ namespace Vulkan
 		public MemoryBarrier ()
 		{
 			m = (Interop.MemoryBarrier*) Interop.Structure.Allocate (typeof (Interop.MemoryBarrier));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.MemoryBarrier;
 		}
 
 		public UInt32 SrcAccessMask {
@@ -1237,11 +1193,7 @@ namespace Vulkan
 		public BufferMemoryBarrier ()
 		{
 			m = (Interop.BufferMemoryBarrier*) Interop.Structure.Allocate (typeof (Interop.BufferMemoryBarrier));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.BufferMemoryBarrier;
 		}
 
 		public UInt32 SrcAccessMask {
@@ -1288,11 +1240,7 @@ namespace Vulkan
 		public ImageMemoryBarrier ()
 		{
 			m = (Interop.ImageMemoryBarrier*) Interop.Structure.Allocate (typeof (Interop.ImageMemoryBarrier));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.ImageMemoryBarrier;
 		}
 
 		public UInt32 SrcAccessMask {
@@ -1345,11 +1293,7 @@ namespace Vulkan
 		public ImageCreateInfo ()
 		{
 			m = (Interop.ImageCreateInfo*) Interop.Structure.Allocate (typeof (Interop.ImageCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.ImageCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -1461,11 +1405,7 @@ namespace Vulkan
 		public ImageViewCreateInfo ()
 		{
 			m = (Interop.ImageViewCreateInfo*) Interop.Structure.Allocate (typeof (Interop.ImageViewCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.ImageViewCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -1695,11 +1635,7 @@ namespace Vulkan
 		public BindSparseInfo ()
 		{
 			m = (Interop.BindSparseInfo*) Interop.Structure.Allocate (typeof (Interop.BindSparseInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.BindSparseInfo;
 		}
 
 		public UInt32 WaitSemaphoreCount {
@@ -1922,11 +1858,7 @@ namespace Vulkan
 		public ShaderModuleCreateInfo ()
 		{
 			m = (Interop.ShaderModuleCreateInfo*) Interop.Structure.Allocate (typeof (Interop.ShaderModuleCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.ShaderModuleCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -1988,11 +1920,7 @@ namespace Vulkan
 		public DescriptorSetLayoutCreateInfo ()
 		{
 			m = (Interop.DescriptorSetLayoutCreateInfo*) Interop.Structure.Allocate (typeof (Interop.DescriptorSetLayoutCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.DescriptorSetLayoutCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -2039,11 +1967,7 @@ namespace Vulkan
 		public DescriptorPoolCreateInfo ()
 		{
 			m = (Interop.DescriptorPoolCreateInfo*) Interop.Structure.Allocate (typeof (Interop.DescriptorPoolCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.DescriptorPoolCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -2075,11 +1999,7 @@ namespace Vulkan
 		public DescriptorSetAllocateInfo ()
 		{
 			m = (Interop.DescriptorSetAllocateInfo*) Interop.Structure.Allocate (typeof (Interop.DescriptorSetAllocateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.DescriptorSetAllocateInfo;
 		}
 
 		DescriptorPool lDescriptorPool;
@@ -2163,11 +2083,7 @@ namespace Vulkan
 		public PipelineShaderStageCreateInfo ()
 		{
 			m = (Interop.PipelineShaderStageCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineShaderStageCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.PipelineShaderStageCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -2205,11 +2121,7 @@ namespace Vulkan
 		public ComputePipelineCreateInfo ()
 		{
 			m = (Interop.ComputePipelineCreateInfo*) Interop.Structure.Allocate (typeof (Interop.ComputePipelineCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.ComputePipelineCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -2303,11 +2215,7 @@ namespace Vulkan
 		public PipelineVertexInputStateCreateInfo ()
 		{
 			m = (Interop.PipelineVertexInputStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineVertexInputStateCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.PipelineVertexInputStateCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -2345,11 +2253,7 @@ namespace Vulkan
 		public PipelineInputAssemblyStateCreateInfo ()
 		{
 			m = (Interop.PipelineInputAssemblyStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineInputAssemblyStateCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.PipelineInputAssemblyStateCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -2375,11 +2279,7 @@ namespace Vulkan
 		public PipelineTessellationStateCreateInfo ()
 		{
 			m = (Interop.PipelineTessellationStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineTessellationStateCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.PipelineTessellationStateCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -2400,11 +2300,7 @@ namespace Vulkan
 		public PipelineViewportStateCreateInfo ()
 		{
 			m = (Interop.PipelineViewportStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineViewportStateCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.PipelineViewportStateCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -2442,11 +2338,7 @@ namespace Vulkan
 		public PipelineRasterizationStateCreateInfo ()
 		{
 			m = (Interop.PipelineRasterizationStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineRasterizationStateCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.PipelineRasterizationStateCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -2512,11 +2404,7 @@ namespace Vulkan
 		public PipelineMultisampleStateCreateInfo ()
 		{
 			m = (Interop.PipelineMultisampleStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineMultisampleStateCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.PipelineMultisampleStateCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -2612,11 +2500,7 @@ namespace Vulkan
 		public PipelineColorBlendStateCreateInfo ()
 		{
 			m = (Interop.PipelineColorBlendStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineColorBlendStateCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.PipelineColorBlendStateCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -2658,11 +2542,7 @@ namespace Vulkan
 		public PipelineDynamicStateCreateInfo ()
 		{
 			m = (Interop.PipelineDynamicStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineDynamicStateCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.PipelineDynamicStateCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -2733,11 +2613,7 @@ namespace Vulkan
 		public PipelineDepthStencilStateCreateInfo ()
 		{
 			m = (Interop.PipelineDepthStencilStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineDepthStencilStateCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.PipelineDepthStencilStateCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -2800,11 +2676,7 @@ namespace Vulkan
 		public GraphicsPipelineCreateInfo ()
 		{
 			m = (Interop.GraphicsPipelineCreateInfo*) Interop.Structure.Allocate (typeof (Interop.GraphicsPipelineCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.GraphicsPipelineCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -2913,11 +2785,7 @@ namespace Vulkan
 		public PipelineCacheCreateInfo ()
 		{
 			m = (Interop.PipelineCacheCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineCacheCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.PipelineCacheCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -2968,11 +2836,7 @@ namespace Vulkan
 		public PipelineLayoutCreateInfo ()
 		{
 			m = (Interop.PipelineLayoutCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineLayoutCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.PipelineLayoutCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -3010,11 +2874,7 @@ namespace Vulkan
 		public SamplerCreateInfo ()
 		{
 			m = (Interop.SamplerCreateInfo*) Interop.Structure.Allocate (typeof (Interop.SamplerCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.SamplerCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -3105,11 +2965,7 @@ namespace Vulkan
 		public CommandPoolCreateInfo ()
 		{
 			m = (Interop.CommandPoolCreateInfo*) Interop.Structure.Allocate (typeof (Interop.CommandPoolCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.CommandPoolCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -3130,11 +2986,7 @@ namespace Vulkan
 		public CommandBufferAllocateInfo ()
 		{
 			m = (Interop.CommandBufferAllocateInfo*) Interop.Structure.Allocate (typeof (Interop.CommandBufferAllocateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.CommandBufferAllocateInfo;
 		}
 
 		CommandPool lCommandPool;
@@ -3161,11 +3013,7 @@ namespace Vulkan
 		public CommandBufferInheritanceInfo ()
 		{
 			m = (Interop.CommandBufferInheritanceInfo*) Interop.Structure.Allocate (typeof (Interop.CommandBufferInheritanceInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.CommandBufferInheritanceInfo;
 		}
 
 		RenderPass lRenderPass;
@@ -3208,11 +3056,7 @@ namespace Vulkan
 		public CommandBufferBeginInfo ()
 		{
 			m = (Interop.CommandBufferBeginInfo*) Interop.Structure.Allocate (typeof (Interop.CommandBufferBeginInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.CommandBufferBeginInfo;
 		}
 
 		public UInt32 Flags {
@@ -3234,11 +3078,7 @@ namespace Vulkan
 		public RenderPassBeginInfo ()
 		{
 			m = (Interop.RenderPassBeginInfo*) Interop.Structure.Allocate (typeof (Interop.RenderPassBeginInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.RenderPassBeginInfo;
 		}
 
 		RenderPass lRenderPass;
@@ -3508,11 +3348,7 @@ namespace Vulkan
 		public RenderPassCreateInfo ()
 		{
 			m = (Interop.RenderPassCreateInfo*) Interop.Structure.Allocate (typeof (Interop.RenderPassCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.RenderPassCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -3561,11 +3397,7 @@ namespace Vulkan
 		public EventCreateInfo ()
 		{
 			m = (Interop.EventCreateInfo*) Interop.Structure.Allocate (typeof (Interop.EventCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.EventCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -3581,11 +3413,7 @@ namespace Vulkan
 		public FenceCreateInfo ()
 		{
 			m = (Interop.FenceCreateInfo*) Interop.Structure.Allocate (typeof (Interop.FenceCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.FenceCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -4461,11 +4289,7 @@ namespace Vulkan
 		public SemaphoreCreateInfo ()
 		{
 			m = (Interop.SemaphoreCreateInfo*) Interop.Structure.Allocate (typeof (Interop.SemaphoreCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.SemaphoreCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -4481,11 +4305,7 @@ namespace Vulkan
 		public QueryPoolCreateInfo ()
 		{
 			m = (Interop.QueryPoolCreateInfo*) Interop.Structure.Allocate (typeof (Interop.QueryPoolCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.QueryPoolCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -4516,11 +4336,7 @@ namespace Vulkan
 		public FramebufferCreateInfo ()
 		{
 			m = (Interop.FramebufferCreateInfo*) Interop.Structure.Allocate (typeof (Interop.FramebufferCreateInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.FramebufferCreateInfo;
 		}
 
 		public UInt32 Flags {
@@ -4658,11 +4474,7 @@ namespace Vulkan
 		public SubmitInfo ()
 		{
 			m = (Interop.SubmitInfo*) Interop.Structure.Allocate (typeof (Interop.SubmitInfo));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m->SType = StructureType.SubmitInfo;
 		}
 
 		public UInt32 WaitSemaphoreCount {
@@ -4704,17 +4516,17 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class DisplayPropertiesKHR
+	unsafe public class DisplayPropertiesKhr
 	{
-		internal Interop.DisplayPropertiesKHR* m;
+		internal Interop.DisplayPropertiesKhr* m;
 
-		public DisplayPropertiesKHR ()
+		public DisplayPropertiesKhr ()
 		{
-			m = (Interop.DisplayPropertiesKHR*) Interop.Structure.Allocate (typeof (Interop.DisplayPropertiesKHR));
+			m = (Interop.DisplayPropertiesKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayPropertiesKhr));
 		}
 
-		DisplayKHR lDisplay;
-		public DisplayKHR Display {
+		DisplayKhr lDisplay;
+		public DisplayKhr Display {
 			get { return lDisplay; }
 			set { lDisplay = value; m->Display = (IntPtr) value.m; }
 		}
@@ -4736,7 +4548,7 @@ namespace Vulkan
 			set { lPhysicalResolution = value; m->PhysicalResolution = (IntPtr) value.m; }
 		}
 
-		public SurfaceTransformFlagsKHR SupportedTransforms {
+		public SurfaceTransformFlagsKhr SupportedTransforms {
 			get { return m->SupportedTransforms; }
 			set { m->SupportedTransforms = value; }
 		}
@@ -4752,17 +4564,17 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class DisplayPlanePropertiesKHR
+	unsafe public class DisplayPlanePropertiesKhr
 	{
-		internal Interop.DisplayPlanePropertiesKHR* m;
+		internal Interop.DisplayPlanePropertiesKhr* m;
 
-		public DisplayPlanePropertiesKHR ()
+		public DisplayPlanePropertiesKhr ()
 		{
-			m = (Interop.DisplayPlanePropertiesKHR*) Interop.Structure.Allocate (typeof (Interop.DisplayPlanePropertiesKHR));
+			m = (Interop.DisplayPlanePropertiesKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayPlanePropertiesKhr));
 		}
 
-		DisplayKHR lCurrentDisplay;
-		public DisplayKHR CurrentDisplay {
+		DisplayKhr lCurrentDisplay;
+		public DisplayKhr CurrentDisplay {
 			get { return lCurrentDisplay; }
 			set { lCurrentDisplay = value; m->CurrentDisplay = (IntPtr) value.m; }
 		}
@@ -4773,13 +4585,13 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class DisplayModeParametersKHR
+	unsafe public class DisplayModeParametersKhr
 	{
-		internal Interop.DisplayModeParametersKHR* m;
+		internal Interop.DisplayModeParametersKhr* m;
 
-		public DisplayModeParametersKHR ()
+		public DisplayModeParametersKhr ()
 		{
-			m = (Interop.DisplayModeParametersKHR*) Interop.Structure.Allocate (typeof (Interop.DisplayModeParametersKHR));
+			m = (Interop.DisplayModeParametersKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayModeParametersKhr));
 		}
 
 		Extent2D lVisibleRegion;
@@ -4794,40 +4606,35 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class DisplayModePropertiesKHR
+	unsafe public class DisplayModePropertiesKhr
 	{
-		internal Interop.DisplayModePropertiesKHR* m;
+		internal Interop.DisplayModePropertiesKhr* m;
 
-		public DisplayModePropertiesKHR ()
+		public DisplayModePropertiesKhr ()
 		{
-			m = (Interop.DisplayModePropertiesKHR*) Interop.Structure.Allocate (typeof (Interop.DisplayModePropertiesKHR));
+			m = (Interop.DisplayModePropertiesKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayModePropertiesKhr));
 		}
 
-		DisplayModeKHR lDisplayMode;
-		public DisplayModeKHR DisplayMode {
+		DisplayModeKhr lDisplayMode;
+		public DisplayModeKhr DisplayMode {
 			get { return lDisplayMode; }
 			set { lDisplayMode = value; m->DisplayMode = (IntPtr) value.m; }
 		}
 
-		DisplayModeParametersKHR lParameters;
-		public DisplayModeParametersKHR Parameters {
+		DisplayModeParametersKhr lParameters;
+		public DisplayModeParametersKhr Parameters {
 			get { return lParameters; }
 			set { lParameters = value; m->Parameters = (IntPtr) value.m; }
 		}
 	}
 
-	unsafe public class DisplayModeCreateInfoKHR
+	unsafe public class DisplayModeCreateInfoKhr
 	{
-		internal Interop.DisplayModeCreateInfoKHR* m;
+		internal Interop.DisplayModeCreateInfoKhr* m;
 
-		public DisplayModeCreateInfoKHR ()
+		public DisplayModeCreateInfoKhr ()
 		{
-			m = (Interop.DisplayModeCreateInfoKHR*) Interop.Structure.Allocate (typeof (Interop.DisplayModeCreateInfoKHR));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m = (Interop.DisplayModeCreateInfoKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayModeCreateInfoKhr));
 		}
 
 		public UInt32 Flags {
@@ -4835,23 +4642,23 @@ namespace Vulkan
 			set { m->Flags = value; }
 		}
 
-		DisplayModeParametersKHR lParameters;
-		public DisplayModeParametersKHR Parameters {
+		DisplayModeParametersKhr lParameters;
+		public DisplayModeParametersKhr Parameters {
 			get { return lParameters; }
 			set { lParameters = value; m->Parameters = (IntPtr) value.m; }
 		}
 	}
 
-	unsafe public class DisplayPlaneCapabilitiesKHR
+	unsafe public class DisplayPlaneCapabilitiesKhr
 	{
-		internal Interop.DisplayPlaneCapabilitiesKHR* m;
+		internal Interop.DisplayPlaneCapabilitiesKhr* m;
 
-		public DisplayPlaneCapabilitiesKHR ()
+		public DisplayPlaneCapabilitiesKhr ()
 		{
-			m = (Interop.DisplayPlaneCapabilitiesKHR*) Interop.Structure.Allocate (typeof (Interop.DisplayPlaneCapabilitiesKHR));
+			m = (Interop.DisplayPlaneCapabilitiesKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayPlaneCapabilitiesKhr));
 		}
 
-		public DisplayPlaneAlphaFlagsKHR SupportedAlpha {
+		public DisplayPlaneAlphaFlagsKhr SupportedAlpha {
 			get { return m->SupportedAlpha; }
 			set { m->SupportedAlpha = value; }
 		}
@@ -4905,18 +4712,13 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class DisplaySurfaceCreateInfoKHR
+	unsafe public class DisplaySurfaceCreateInfoKhr
 	{
-		internal Interop.DisplaySurfaceCreateInfoKHR* m;
+		internal Interop.DisplaySurfaceCreateInfoKhr* m;
 
-		public DisplaySurfaceCreateInfoKHR ()
+		public DisplaySurfaceCreateInfoKhr ()
 		{
-			m = (Interop.DisplaySurfaceCreateInfoKHR*) Interop.Structure.Allocate (typeof (Interop.DisplaySurfaceCreateInfoKHR));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m = (Interop.DisplaySurfaceCreateInfoKhr*) Interop.Structure.Allocate (typeof (Interop.DisplaySurfaceCreateInfoKhr));
 		}
 
 		public UInt32 Flags {
@@ -4924,8 +4726,8 @@ namespace Vulkan
 			set { m->Flags = value; }
 		}
 
-		DisplayModeKHR lDisplayMode;
-		public DisplayModeKHR DisplayMode {
+		DisplayModeKhr lDisplayMode;
+		public DisplayModeKhr DisplayMode {
 			get { return lDisplayMode; }
 			set { lDisplayMode = value; m->DisplayMode = (IntPtr) value.m; }
 		}
@@ -4940,7 +4742,7 @@ namespace Vulkan
 			set { m->PlaneStackIndex = value; }
 		}
 
-		public SurfaceTransformFlagsKHR Transform {
+		public SurfaceTransformFlagsKhr Transform {
 			get { return m->Transform; }
 			set { m->Transform = value; }
 		}
@@ -4950,7 +4752,7 @@ namespace Vulkan
 			set { m->GlobalAlpha = value; }
 		}
 
-		public DisplayPlaneAlphaFlagsKHR AlphaMode {
+		public DisplayPlaneAlphaFlagsKhr AlphaMode {
 			get { return m->AlphaMode; }
 			set { m->AlphaMode = value; }
 		}
@@ -4962,18 +4764,13 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class DisplayPresentInfoKHR
+	unsafe public class DisplayPresentInfoKhr
 	{
-		internal Interop.DisplayPresentInfoKHR* m;
+		internal Interop.DisplayPresentInfoKhr* m;
 
-		public DisplayPresentInfoKHR ()
+		public DisplayPresentInfoKhr ()
 		{
-			m = (Interop.DisplayPresentInfoKHR*) Interop.Structure.Allocate (typeof (Interop.DisplayPresentInfoKHR));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m = (Interop.DisplayPresentInfoKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayPresentInfoKhr));
 		}
 
 		Rect2D lSrcRect;
@@ -4994,13 +4791,13 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class SurfaceCapabilitiesKHR
+	unsafe public class SurfaceCapabilitiesKhr
 	{
-		internal Interop.SurfaceCapabilitiesKHR* m;
+		internal Interop.SurfaceCapabilitiesKhr* m;
 
-		public SurfaceCapabilitiesKHR ()
+		public SurfaceCapabilitiesKhr ()
 		{
-			m = (Interop.SurfaceCapabilitiesKHR*) Interop.Structure.Allocate (typeof (Interop.SurfaceCapabilitiesKHR));
+			m = (Interop.SurfaceCapabilitiesKhr*) Interop.Structure.Allocate (typeof (Interop.SurfaceCapabilitiesKhr));
 		}
 
 		public UInt32 MinImageCount {
@@ -5036,17 +4833,17 @@ namespace Vulkan
 			set { m->MaxImageArrayLayers = value; }
 		}
 
-		public SurfaceTransformFlagsKHR SupportedTransforms {
+		public SurfaceTransformFlagsKhr SupportedTransforms {
 			get { return m->SupportedTransforms; }
 			set { m->SupportedTransforms = value; }
 		}
 
-		public SurfaceTransformFlagsKHR CurrentTransform {
+		public SurfaceTransformFlagsKhr CurrentTransform {
 			get { return m->CurrentTransform; }
 			set { m->CurrentTransform = value; }
 		}
 
-		public CompositeAlphaFlagsKHR SupportedCompositeAlpha {
+		public CompositeAlphaFlagsKhr SupportedCompositeAlpha {
 			get { return m->SupportedCompositeAlpha; }
 			set { m->SupportedCompositeAlpha = value; }
 		}
@@ -5057,13 +4854,13 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class SurfaceFormatKHR
+	unsafe public class SurfaceFormatKhr
 	{
-		internal Interop.SurfaceFormatKHR* m;
+		internal Interop.SurfaceFormatKhr* m;
 
-		public SurfaceFormatKHR ()
+		public SurfaceFormatKhr ()
 		{
-			m = (Interop.SurfaceFormatKHR*) Interop.Structure.Allocate (typeof (Interop.SurfaceFormatKHR));
+			m = (Interop.SurfaceFormatKhr*) Interop.Structure.Allocate (typeof (Interop.SurfaceFormatKhr));
 		}
 
 		public Format Format {
@@ -5071,24 +4868,19 @@ namespace Vulkan
 			set { m->Format = value; }
 		}
 
-		public ColorSpaceKHR ColorSpace {
+		public ColorSpaceKhr ColorSpace {
 			get { return m->ColorSpace; }
 			set { m->ColorSpace = value; }
 		}
 	}
 
-	unsafe public class SwapchainCreateInfoKHR
+	unsafe public class SwapchainCreateInfoKhr
 	{
-		internal Interop.SwapchainCreateInfoKHR* m;
+		internal Interop.SwapchainCreateInfoKhr* m;
 
-		public SwapchainCreateInfoKHR ()
+		public SwapchainCreateInfoKhr ()
 		{
-			m = (Interop.SwapchainCreateInfoKHR*) Interop.Structure.Allocate (typeof (Interop.SwapchainCreateInfoKHR));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m = (Interop.SwapchainCreateInfoKhr*) Interop.Structure.Allocate (typeof (Interop.SwapchainCreateInfoKhr));
 		}
 
 		public UInt32 Flags {
@@ -5096,8 +4888,8 @@ namespace Vulkan
 			set { m->Flags = value; }
 		}
 
-		SurfaceKHR lSurface;
-		public SurfaceKHR Surface {
+		SurfaceKhr lSurface;
+		public SurfaceKhr Surface {
 			get { return lSurface; }
 			set { lSurface = value; m->Surface = (IntPtr) value.m; }
 		}
@@ -5112,7 +4904,7 @@ namespace Vulkan
 			set { m->ImageFormat = value; }
 		}
 
-		public ColorSpaceKHR ImageColorSpace {
+		public ColorSpaceKhr ImageColorSpace {
 			get { return m->ImageColorSpace; }
 			set { m->ImageColorSpace = value; }
 		}
@@ -5148,17 +4940,17 @@ namespace Vulkan
 			set { m->QueueFamilyIndices = value; }
 		}
 
-		public SurfaceTransformFlagsKHR PreTransform {
+		public SurfaceTransformFlagsKhr PreTransform {
 			get { return m->PreTransform; }
 			set { m->PreTransform = value; }
 		}
 
-		public CompositeAlphaFlagsKHR CompositeAlpha {
+		public CompositeAlphaFlagsKhr CompositeAlpha {
 			get { return m->CompositeAlpha; }
 			set { m->CompositeAlpha = value; }
 		}
 
-		public PresentModeKHR PresentMode {
+		public PresentModeKhr PresentMode {
 			get { return m->PresentMode; }
 			set { m->PresentMode = value; }
 		}
@@ -5168,25 +4960,20 @@ namespace Vulkan
 			set { m->Clipped = value; }
 		}
 
-		SwapchainKHR lOldSwapchain;
-		public SwapchainKHR OldSwapchain {
+		SwapchainKhr lOldSwapchain;
+		public SwapchainKhr OldSwapchain {
 			get { return lOldSwapchain; }
 			set { lOldSwapchain = value; m->OldSwapchain = (IntPtr) value.m; }
 		}
 	}
 
-	unsafe public class PresentInfoKHR
+	unsafe public class PresentInfoKhr
 	{
-		internal Interop.PresentInfoKHR* m;
+		internal Interop.PresentInfoKhr* m;
 
-		public PresentInfoKHR ()
+		public PresentInfoKhr ()
 		{
-			m = (Interop.PresentInfoKHR*) Interop.Structure.Allocate (typeof (Interop.PresentInfoKHR));
-		}
-
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
+			m = (Interop.PresentInfoKhr*) Interop.Structure.Allocate (typeof (Interop.PresentInfoKhr));
 		}
 
 		public UInt32 WaitSemaphoreCount {
@@ -5205,8 +4992,8 @@ namespace Vulkan
 			set { m->SwapchainCount = value; }
 		}
 
-		SwapchainKHR lSwapchains;
-		public SwapchainKHR Swapchains {
+		SwapchainKhr lSwapchains;
+		public SwapchainKhr Swapchains {
 			get { return lSwapchains; }
 			set { lSwapchains = value; m->Swapchains = (IntPtr) value.m; }
 		}
@@ -5222,21 +5009,16 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class DebugReportCallbackCreateInfoEXT
+	unsafe public class DebugReportCallbackCreateInfoExt
 	{
-		internal Interop.DebugReportCallbackCreateInfoEXT* m;
+		internal Interop.DebugReportCallbackCreateInfoExt* m;
 
-		public DebugReportCallbackCreateInfoEXT ()
+		public DebugReportCallbackCreateInfoExt ()
 		{
-			m = (Interop.DebugReportCallbackCreateInfoEXT*) Interop.Structure.Allocate (typeof (Interop.DebugReportCallbackCreateInfoEXT));
+			m = (Interop.DebugReportCallbackCreateInfoExt*) Interop.Structure.Allocate (typeof (Interop.DebugReportCallbackCreateInfoExt));
 		}
 
-		public StructureType SType {
-			get { return m->SType; }
-			set { m->SType = value; }
-		}
-
-		public DebugReportFlagsEXT Flags {
+		public DebugReportFlagsExt Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
 		}
