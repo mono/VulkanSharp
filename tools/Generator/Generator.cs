@@ -117,6 +117,10 @@ namespace VulkanSharp.Generator
 				csName = name;
 			}
 
+			foreach (var ext in extensions)
+				if (csName.EndsWith (ext.Key))
+					csName = csName.Substring (0, csName.Length - ext.Value.Length) + ext.Value;
+
 			return csName;
 		}
 
@@ -140,8 +144,8 @@ namespace VulkanSharp.Generator
 			string prefix = csName, suffix = null;
 
 			foreach (var ext in extensions)
-				if (prefix.EndsWith (ext.Key)) {
-					prefix = prefix.Substring (0, prefix.Length - ext.Key.Length);
+				if (prefix.EndsWith (ext.Value)) {
+					prefix = prefix.Substring (0, prefix.Length - ext.Value.Length);
 					suffix = ext.Value;
 				}
 
@@ -194,9 +198,9 @@ namespace VulkanSharp.Generator
 			if (enumsElement.Attribute ("type") != null && enumsElement.Attribute ("type").Value == "bitmask") {
 				string suffix = null;
 				foreach (var ext in extensions)
-					if (csName.EndsWith (ext.Key)) {
-						suffix = ext.Key + suffix;
-						csName = csName.Substring (0, csName.Length - ext.Key.Length);
+					if (csName.EndsWith (ext.Value)) {
+						suffix = ext.Value + suffix;
+						csName = csName.Substring (0, csName.Length - ext.Value.Length);
 					}
 				writer.WriteLine ("\t[Flags]");
 				if (csName.EndsWith ("FlagBits"))
@@ -307,11 +311,14 @@ namespace VulkanSharp.Generator
 
 			string name = nameElement.Value;
 
+			if (!isInterop && csMemberType == "StructureType" && name == "sType")
+				return false;
+
 			bool isPointer = memberElement.Value.Contains (typeElement.Value + "*");
 			if (isPointer) {
 				switch (csMemberType) {
 				case "void":
-					if (name == "pNext" && (!isInterop || isUnion))
+					if (!isInterop && name == "pNext")
 						return false;
 					csMemberType = "IntPtr";
 					break;
@@ -385,12 +392,21 @@ namespace VulkanSharp.Generator
 		}
 
 		HashSet<string> disabledStructs = new HashSet<string> {
-			"XlibSurfaceCreateInfoKHR",
-			"XcbSurfaceCreateInfoKHR",
-			"WaylandSurfaceCreateInfoKHR",
-			"MirSurfaceCreateInfoKHR",
-			"AndroidSurfaceCreateInfoKHR",
-			"Win32SurfaceCreateInfoKHR",
+			"XlibSurfaceCreateInfoKhr",
+			"XcbSurfaceCreateInfoKhr",
+			"WaylandSurfaceCreateInfoKhr",
+			"MirSurfaceCreateInfoKhr",
+			"AndroidSurfaceCreateInfoKhr",
+			"Win32SurfaceCreateInfoKhr",
+		};
+
+		HashSet<string> disabledStructureTypeEnumValues = new HashSet<string> {
+			"DisplayModeCreateInfoKhr",
+			"DisplaySurfaceCreateInfoKhr",
+			"DisplayPresentInfoKhr",
+			"SwapchainCreateInfoKhr",
+			"PresentInfoKhr",
+			"DebugReportCallbackCreateInfoExt"
 		};
 
 		bool WriteStructOrUnion (XElement structElement)
@@ -409,10 +425,23 @@ namespace VulkanSharp.Generator
 			writer.WriteLine ("\t{0}public {1} {2}\n\t{{", mod, isInterop ? "struct" : "class", csName);
 
 			if (!isInterop) {
+				bool hasSType = false;
+				var values = from el in structElement.Elements ("member")
+						where (string)el.Element ("name") == "sType"
+					select el;
+				foreach (var el in values) {
+					var elType = el.Element ("type");
+					if (elType != null && elType.Value == "VkStructureType")
+						hasSType = true;
+				}
+
 				writer.WriteLine ("\t\tinternal Interop.{0}* m;\n", csName);
 				writer.WriteLine ("\t\tpublic {0} ()", csName);
 				writer.WriteLine ("\t\t{");
 				writer.WriteLine ("\t\t\tm = (Interop.{0}*) Interop.Structure.Allocate (typeof (Interop.{0}));", csName);
+				if (hasSType && !disabledStructureTypeEnumValues.Contains (csName) /* todo: handle extexnsions - StructureType should contain extensions values */) {
+					writer.WriteLine ("\t\t\tm->SType = StructureType.{0};", csName);
+				}
 				writer.WriteLine ("\t\t}\n");
 			}
 

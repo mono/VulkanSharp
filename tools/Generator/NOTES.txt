@@ -7,3 +7,6 @@ Bool32
 
 platform specific API is in extensions
   now we only disable these when generating structures. we should handle it better by using the <extension> elements [TODO]
+
+extensions
+  besides platform specific API (see above), we should also handle extension elements, which add various parts of API like fields to enums (StructureType fields for example) [TODO]
