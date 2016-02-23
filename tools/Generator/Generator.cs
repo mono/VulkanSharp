@@ -13,8 +13,11 @@ namespace VulkanSharp.Generator
 		string outputPath;
 		StreamWriter writer;
 		bool isUnion;
+		bool isInterop;
 
 		Dictionary<string, string> typesTranslation = new Dictionary<string, string> ();
+		HashSet<string> structures = new HashSet<string> ();
+		HashSet<string> handles = new HashSet<string> ();
 
 		public Generator (string filename, string outputDir)
 		{
@@ -25,10 +28,12 @@ namespace VulkanSharp.Generator
 		public void Run ()
 		{
 			LoadSpecification ();
+			Directory.CreateDirectory ("Interop");
 
 			GenerateEnums ();
 			GenerateBitmasks ();
 			GenerateHandles ();
+			LearnStructsAndUnions ();
 			GenerateStructs ();
 			GenerateUnions ();
 		}
@@ -237,7 +242,7 @@ namespace VulkanSharp.Generator
 			GenerateCodeForElements (elements, generator);
 		}
 
-		void CreateFile (string typeName, bool usingInterop = false)
+		void CreateFile (string typeName, bool usingInterop = false, string nspace = "Vulkan")
 		{
 			writer = File.CreateText (string.Format ("{0}{1}{2}.cs", outputPath, Path.DirectorySeparatorChar, typeName));
 
@@ -246,7 +251,7 @@ namespace VulkanSharp.Generator
 				writer.WriteLine ("using System.Runtime.InteropServices;");
 			writer.WriteLine ();
 
-			writer.WriteLine ("namespace Vulkan\n{");
+			writer.WriteLine ("namespace {0}\n{{", nspace);
 		}
 
 		void FinalizeFile ()
@@ -300,21 +305,30 @@ namespace VulkanSharp.Generator
 				return false;
 			}
 
-			bool isPointer = memberElement.Value.Contains (typeElement.Value + "*");
 			string name = nameElement.Value;
-			if (csMemberType == "void" && isPointer) {
-				csMemberType = "IntPtr";
+
+			bool isPointer = memberElement.Value.Contains (typeElement.Value + "*");
+			if (isPointer) {
+				switch (csMemberType) {
+				case "void":
+					if (name == "pNext" && (!isInterop || isUnion))
+						return false;
+					csMemberType = "IntPtr";
+					break;
+				case "char":
+					csMemberType = "string";
+					break;
+				}
 				if (name.StartsWith ("p"))
 					name = name.Substring (1);
 			}
-
 			var csMemberName = TranslateCName (name);
 
 			// TODO: fixed arrays of structs
 			if (csMemberName.EndsWith ("]")) {
 				string array = csMemberName.Substring (csMemberName.IndexOf ('['));
 				csMemberName = csMemberName.Substring (0, csMemberName.Length - array.Length);
-				csMemberType += "[]";
+				// temporarily disable arrays csMemberType += "[]";
 			}
 
 			string mod = "";
@@ -336,13 +350,38 @@ namespace VulkanSharp.Generator
 			if (csMemberType == "SampleMask")
 				csMemberType = "UInt32";
 
+			if (csMemberType == "Bool32" && !isInterop)
+				csMemberType = "bool";
+
 			string attr = "";
 			if (isUnion)
 				attr = "[FieldOffset (0)] ";
 
-			writer.WriteLine ("\t\t{0}public {1}{2} {3};", attr, mod, csMemberType, csMemberName);
+			if (isInterop) {
+				if (structures.Contains (csMemberType) || handles.Contains (csMemberType) || csMemberType == "string")
+					csMemberType = "IntPtr";
+				writer.WriteLine ("\t\t{0}public {1}{2} {3};", attr, mod, csMemberType, csMemberName);
+			} else {
+				if (structures.Contains (csMemberType) || handles.Contains (csMemberType)) {
+					writer.WriteLine ("\t\t{0} l{1};", csMemberType, csMemberName);
+					writer.WriteLine ("\t\tpublic {0} {1} {{", csMemberType, csMemberName);
+					writer.WriteLine ("\t\t\tget {{ return l{0}; }}", csMemberName);
+					writer.WriteLine ("\t\t\tset {{ l{0} = value; m->{0} = (IntPtr) value.m; }}", csMemberName);
+					writer.WriteLine ("\t\t}");
+				} else if (csMemberType == "string") {
+					writer.WriteLine ("\t\tpublic {0} {1} {{", csMemberType, csMemberName);
+					writer.WriteLine ("\t\t\tget {{ return Marshal.PtrToStringAnsi (m->{0}); }}", csMemberName);
+					writer.WriteLine ("\t\t\tset {{ m->{0} = Marshal.StringToHGlobalAnsi (value); }}", csMemberName);
+					writer.WriteLine ("\t\t}");
+				} else {
+					writer.WriteLine ("\t\tpublic {0} {1} {{", csMemberType, csMemberName);
+					writer.WriteLine ("\t\t\tget {{ return m->{0}; }}", csMemberName);
+					writer.WriteLine ("\t\t\tset {{ m->{0} = value; }}", csMemberName);
+					writer.WriteLine ("\t\t}");
+				}
+			}
 
-			return false;
+			return !isInterop;
 		}
 
 		HashSet<string> disabledStructs = new HashSet<string> {
@@ -357,15 +396,25 @@ namespace VulkanSharp.Generator
 		bool WriteStructOrUnion (XElement structElement)
 		{
 			string name = structElement.Attribute ("name").Value;
-			string csName = GetTypeCsName (name, "struct");
-
-			if (disabledStructs.Contains (csName))
+			if (!typesTranslation.ContainsKey (name))
 				return false;
 
-			typesTranslation [name] = csName;
-			if (isUnion)
+			string csName = typesTranslation [name];
+
+			string mod = "";
+			if (isUnion && isInterop)
 				writer.WriteLine ("\t[StructLayout (LayoutKind.Explicit)]");
-			writer.WriteLine ("\tpublic struct {0}\n\t{{", csName);
+			if (!isInterop)
+				mod = "unsafe ";
+			writer.WriteLine ("\t{0}public {1} {2}\n\t{{", mod, isInterop ? "struct" : "class", csName);
+
+			if (!isInterop) {
+				writer.WriteLine ("\t\tinternal Interop.{0}* m;\n", csName);
+				writer.WriteLine ("\t\tpublic {0} ()", csName);
+				writer.WriteLine ("\t\t{");
+				writer.WriteLine ("\t\t\tm = (Interop.{0}*) Interop.Structure.Allocate (typeof (Interop.{0}));", csName);
+				writer.WriteLine ("\t\t}\n");
+			}
 
 			GenerateMembers (structElement, WriteMember);
 
@@ -374,11 +423,38 @@ namespace VulkanSharp.Generator
 			return true;
 		}
 
+		bool LearnStructure (XElement structElement)
+		{
+			string name = structElement.Attribute ("name").Value;
+			string csName = GetTypeCsName (name, "struct");
+
+			if (disabledStructs.Contains (csName))
+				return false;
+
+			typesTranslation [name] = csName;
+			structures.Add (csName);
+
+			return false;
+		}
+
+		void LearnStructsAndUnions ()
+		{
+			GenerateType ("struct", LearnStructure);
+			GenerateType ("union", LearnStructure);
+		}
+
 		void GenerateStructs ()
 		{
-			CreateFile ("Structs");
+			CreateFile ("Structs", true);
 			isUnion = false;
 			GenerateType ("struct", WriteStructOrUnion);
+			FinalizeFile ();
+
+			CreateFile (string.Format ("Interop{0}MarshalStructs", Path.DirectorySeparatorChar), false, "Vulkan.Interop");
+			isUnion = false;
+			isInterop = true;
+			GenerateType ("struct", WriteStructOrUnion);
+			isInterop = false;
 			FinalizeFile ();
 		}
 
@@ -386,9 +462,16 @@ namespace VulkanSharp.Generator
 
 		void GenerateUnions ()
 		{
-			CreateFile ("Unions", true);
+			CreateFile ("Unions");
 			isUnion = true;
 			GenerateType ("union", WriteStructOrUnion);
+			FinalizeFile ();
+
+			CreateFile (string.Format ("Interop{0}MarshalUnions", Path.DirectorySeparatorChar), true, "Vulkan.Interop");
+			isInterop = true;
+			GenerateType ("union", WriteStructOrUnion);
+			isInterop = false;
+			isUnion = false;
 			FinalizeFile ();
 		}
 
@@ -396,8 +479,12 @@ namespace VulkanSharp.Generator
 		{
 			string name = handleElement.Element ("name").Value;
 			string csName = GetTypeCsName (name, "struct");
+			handles.Add (csName);
 
-			writer.WriteLine ("\tpublic class {0}\n\t{{\n\t}}", csName);
+			writer.WriteLine ("\tpublic class {0}\n\t{{", csName);
+			// todo: implement marshalling
+			writer.WriteLine ("\t\tinternal IntPtr m;", csName);
+			writer.WriteLine ("\t}");
 
 			return true;
 		}
