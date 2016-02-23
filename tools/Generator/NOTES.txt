@@ -1,12 +1,12 @@
 ﻿VkFlags
   category:bitmasks without flags enum are UInt32 now, might be helper translating class (like alias) [TODO]
 
-Bool32
-  now we use this helper struct to convert between Vulkan's 32bit boolean type and .NET bool
-  we might replace it with bool and do the marshalling when calling vulkan functions. not sure yet what will be better. [for discussion]
-
 platform specific API is in extensions
   now we only disable these when generating structures. we should handle it better by using the <extension> elements [TODO]
 
 extensions
   besides platform specific API (see above), we should also handle extension elements, which add various parts of API like fields to enums (StructureType fields for example) [TODO]
+
+TODO:
+  marshalling fixed sized arrays in structures
+  marshalling arrays of strings in structures
