@@ -169,14 +169,14 @@ namespace Vulkan.Interop
 	{
 		public StructureType SType;
 		public IntPtr Next;
-		public UInt64 AllocationSize;
+		public DeviceSize AllocationSize;
 		public UInt32 MemoryTypeIndex;
 	}
 
 	public struct MemoryRequirements
 	{
-		public UInt64 Size;
-		public UInt64 Alignment;
+		public DeviceSize Size;
+		public DeviceSize Alignment;
 		public UInt32 MemoryTypeBits;
 	}
 
@@ -191,9 +191,9 @@ namespace Vulkan.Interop
 	{
 		public IntPtr FormatProperties;
 		public UInt32 ImageMipTailFirstLod;
-		public UInt64 ImageMipTailSize;
-		public UInt64 ImageMipTailOffset;
-		public UInt64 ImageMipTailStride;
+		public DeviceSize ImageMipTailSize;
+		public DeviceSize ImageMipTailOffset;
+		public DeviceSize ImageMipTailStride;
 	}
 
 	public struct MemoryType
@@ -204,7 +204,7 @@ namespace Vulkan.Interop
 
 	public struct MemoryHeap
 	{
-		public UInt64 Size;
+		public DeviceSize Size;
 		public UInt32 Flags;
 	}
 
@@ -213,8 +213,8 @@ namespace Vulkan.Interop
 		public StructureType SType;
 		public IntPtr Next;
 		public IntPtr Memory;
-		public UInt64 Offset;
-		public UInt64 Size;
+		public DeviceSize Offset;
+		public DeviceSize Size;
 	}
 
 	public struct FormatProperties
@@ -230,14 +230,14 @@ namespace Vulkan.Interop
 		public UInt32 MaxMipLevels;
 		public UInt32 MaxArrayLayers;
 		public UInt32 SampleCounts;
-		public UInt64 MaxResourceSize;
+		public DeviceSize MaxResourceSize;
 	}
 
 	public struct DescriptorBufferInfo
 	{
 		public IntPtr Buffer;
-		public UInt64 Offset;
-		public UInt64 Range;
+		public DeviceSize Offset;
+		public DeviceSize Range;
 	}
 
 	public struct DescriptorImageInfo
@@ -279,7 +279,7 @@ namespace Vulkan.Interop
 		public StructureType SType;
 		public IntPtr Next;
 		public UInt32 Flags;
-		public UInt64 Size;
+		public DeviceSize Size;
 		public UInt32 Usage;
 		public SharingMode SharingMode;
 		public UInt32 QueueFamilyIndexCount;
@@ -293,8 +293,8 @@ namespace Vulkan.Interop
 		public UInt32 Flags;
 		public IntPtr Buffer;
 		public Format Format;
-		public UInt64 Offset;
-		public UInt64 Range;
+		public DeviceSize Offset;
+		public DeviceSize Range;
 	}
 
 	public struct ImageSubresource
@@ -338,8 +338,8 @@ namespace Vulkan.Interop
 		public UInt32 SrcQueueFamilyIndex;
 		public UInt32 DstQueueFamilyIndex;
 		public IntPtr Buffer;
-		public UInt64 Offset;
-		public UInt64 Size;
+		public DeviceSize Offset;
+		public DeviceSize Size;
 	}
 
 	public struct ImageMemoryBarrier
@@ -377,11 +377,11 @@ namespace Vulkan.Interop
 
 	public struct SubresourceLayout
 	{
-		public UInt64 Offset;
-		public UInt64 Size;
-		public UInt64 RowPitch;
-		public UInt64 ArrayPitch;
-		public UInt64 DepthPitch;
+		public DeviceSize Offset;
+		public DeviceSize Size;
+		public DeviceSize RowPitch;
+		public DeviceSize ArrayPitch;
+		public DeviceSize DepthPitch;
 	}
 
 	public struct ImageViewCreateInfo
@@ -398,17 +398,17 @@ namespace Vulkan.Interop
 
 	public struct BufferCopy
 	{
-		public UInt64 SrcOffset;
-		public UInt64 DstOffset;
-		public UInt64 Size;
+		public DeviceSize SrcOffset;
+		public DeviceSize DstOffset;
+		public DeviceSize Size;
 	}
 
 	public struct SparseMemoryBind
 	{
-		public UInt64 ResourceOffset;
-		public UInt64 Size;
+		public DeviceSize ResourceOffset;
+		public DeviceSize Size;
 		public IntPtr Memory;
-		public UInt64 MemoryOffset;
+		public DeviceSize MemoryOffset;
 		public UInt32 Flags;
 	}
 
@@ -418,7 +418,7 @@ namespace Vulkan.Interop
 		public IntPtr Offset;
 		public IntPtr Extent;
 		public IntPtr Memory;
-		public UInt64 MemoryOffset;
+		public DeviceSize MemoryOffset;
 		public UInt32 Flags;
 	}
 
@@ -478,7 +478,7 @@ namespace Vulkan.Interop
 
 	public struct BufferImageCopy
 	{
-		public UInt64 BufferOffset;
+		public DeviceSize BufferOffset;
 		public UInt32 BufferRowLength;
 		public UInt32 BufferImageHeight;
 		public IntPtr ImageSubresource;
@@ -1013,8 +1013,8 @@ namespace Vulkan.Interop
 		public UInt32 MaxPushConstantsSize;
 		public UInt32 MaxMemoryAllocationCount;
 		public UInt32 MaxSamplerAllocationCount;
-		public UInt64 BufferImageGranularity;
-		public UInt64 SparseAddressSpaceSize;
+		public DeviceSize BufferImageGranularity;
+		public DeviceSize SparseAddressSpaceSize;
 		public UInt32 MaxBoundDescriptorSets;
 		public UInt32 MaxPerStageDescriptorSamplers;
 		public UInt32 MaxPerStageDescriptorUniformBuffers;
@@ -1069,9 +1069,9 @@ namespace Vulkan.Interop
 		public float ViewportBoundsRange;
 		public UInt32 ViewportSubPixelBits;
 		public UIntPtr MinMemoryMapAlignment;
-		public UInt64 MinTexelBufferOffsetAlignment;
-		public UInt64 MinUniformBufferOffsetAlignment;
-		public UInt64 MinStorageBufferOffsetAlignment;
+		public DeviceSize MinTexelBufferOffsetAlignment;
+		public DeviceSize MinUniformBufferOffsetAlignment;
+		public DeviceSize MinStorageBufferOffsetAlignment;
 		public Int32 MinTexelOffset;
 		public UInt32 MaxTexelOffset;
 		public Int32 MinTexelGatherOffset;
@@ -1105,9 +1105,9 @@ namespace Vulkan.Interop
 		public float LineWidthGranularity;
 		public Bool32 StrictLines;
 		public Bool32 StandardSampleLocations;
-		public UInt64 OptimalBufferCopyOffsetAlignment;
-		public UInt64 OptimalBufferCopyRowPitchAlignment;
-		public UInt64 NonCoherentAtomSize;
+		public DeviceSize OptimalBufferCopyOffsetAlignment;
+		public DeviceSize OptimalBufferCopyRowPitchAlignment;
+		public DeviceSize NonCoherentAtomSize;
 	}
 
 	public struct SemaphoreCreateInfo

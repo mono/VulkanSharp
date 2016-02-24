@@ -615,7 +615,7 @@ namespace Vulkan
 			m->SType = StructureType.MemoryAllocateInfo;
 		}
 
-		public UInt64 AllocationSize {
+		public DeviceSize AllocationSize {
 			get { return m->AllocationSize; }
 			set { m->AllocationSize = value; }
 		}
@@ -635,12 +635,12 @@ namespace Vulkan
 			m = (Interop.MemoryRequirements*) Interop.Structure.Allocate (typeof (Interop.MemoryRequirements));
 		}
 
-		public UInt64 Size {
+		public DeviceSize Size {
 			get { return m->Size; }
 			set { m->Size = value; }
 		}
 
-		public UInt64 Alignment {
+		public DeviceSize Alignment {
 			get { return m->Alignment; }
 			set { m->Alignment = value; }
 		}
@@ -697,17 +697,17 @@ namespace Vulkan
 			set { m->ImageMipTailFirstLod = value; }
 		}
 
-		public UInt64 ImageMipTailSize {
+		public DeviceSize ImageMipTailSize {
 			get { return m->ImageMipTailSize; }
 			set { m->ImageMipTailSize = value; }
 		}
 
-		public UInt64 ImageMipTailOffset {
+		public DeviceSize ImageMipTailOffset {
 			get { return m->ImageMipTailOffset; }
 			set { m->ImageMipTailOffset = value; }
 		}
 
-		public UInt64 ImageMipTailStride {
+		public DeviceSize ImageMipTailStride {
 			get { return m->ImageMipTailStride; }
 			set { m->ImageMipTailStride = value; }
 		}
@@ -742,7 +742,7 @@ namespace Vulkan
 			m = (Interop.MemoryHeap*) Interop.Structure.Allocate (typeof (Interop.MemoryHeap));
 		}
 
-		public UInt64 Size {
+		public DeviceSize Size {
 			get { return m->Size; }
 			set { m->Size = value; }
 		}
@@ -769,12 +769,12 @@ namespace Vulkan
 			set { lMemory = value; m->Memory = (IntPtr) value.m; }
 		}
 
-		public UInt64 Offset {
+		public DeviceSize Offset {
 			get { return m->Offset; }
 			set { m->Offset = value; }
 		}
 
-		public UInt64 Size {
+		public DeviceSize Size {
 			get { return m->Size; }
 			set { m->Size = value; }
 		}
@@ -835,7 +835,7 @@ namespace Vulkan
 			set { m->SampleCounts = value; }
 		}
 
-		public UInt64 MaxResourceSize {
+		public DeviceSize MaxResourceSize {
 			get { return m->MaxResourceSize; }
 			set { m->MaxResourceSize = value; }
 		}
@@ -856,12 +856,12 @@ namespace Vulkan
 			set { lBuffer = value; m->Buffer = (IntPtr) value.m; }
 		}
 
-		public UInt64 Offset {
+		public DeviceSize Offset {
 			get { return m->Offset; }
 			set { m->Offset = value; }
 		}
 
-		public UInt64 Range {
+		public DeviceSize Range {
 			get { return m->Range; }
 			set { m->Range = value; }
 		}
@@ -1012,7 +1012,7 @@ namespace Vulkan
 			set { m->Flags = value; }
 		}
 
-		public UInt64 Size {
+		public DeviceSize Size {
 			get { return m->Size; }
 			set { m->Size = value; }
 		}
@@ -1064,12 +1064,12 @@ namespace Vulkan
 			set { m->Format = value; }
 		}
 
-		public UInt64 Offset {
+		public DeviceSize Offset {
 			get { return m->Offset; }
 			set { m->Offset = value; }
 		}
 
-		public UInt64 Range {
+		public DeviceSize Range {
 			get { return m->Range; }
 			set { m->Range = value; }
 		}
@@ -1222,12 +1222,12 @@ namespace Vulkan
 			set { lBuffer = value; m->Buffer = (IntPtr) value.m; }
 		}
 
-		public UInt64 Offset {
+		public DeviceSize Offset {
 			get { return m->Offset; }
 			set { m->Offset = value; }
 		}
 
-		public UInt64 Size {
+		public DeviceSize Size {
 			get { return m->Size; }
 			set { m->Size = value; }
 		}
@@ -1372,27 +1372,27 @@ namespace Vulkan
 			m = (Interop.SubresourceLayout*) Interop.Structure.Allocate (typeof (Interop.SubresourceLayout));
 		}
 
-		public UInt64 Offset {
+		public DeviceSize Offset {
 			get { return m->Offset; }
 			set { m->Offset = value; }
 		}
 
-		public UInt64 Size {
+		public DeviceSize Size {
 			get { return m->Size; }
 			set { m->Size = value; }
 		}
 
-		public UInt64 RowPitch {
+		public DeviceSize RowPitch {
 			get { return m->RowPitch; }
 			set { m->RowPitch = value; }
 		}
 
-		public UInt64 ArrayPitch {
+		public DeviceSize ArrayPitch {
 			get { return m->ArrayPitch; }
 			set { m->ArrayPitch = value; }
 		}
 
-		public UInt64 DepthPitch {
+		public DeviceSize DepthPitch {
 			get { return m->DepthPitch; }
 			set { m->DepthPitch = value; }
 		}
@@ -1451,17 +1451,17 @@ namespace Vulkan
 			m = (Interop.BufferCopy*) Interop.Structure.Allocate (typeof (Interop.BufferCopy));
 		}
 
-		public UInt64 SrcOffset {
+		public DeviceSize SrcOffset {
 			get { return m->SrcOffset; }
 			set { m->SrcOffset = value; }
 		}
 
-		public UInt64 DstOffset {
+		public DeviceSize DstOffset {
 			get { return m->DstOffset; }
 			set { m->DstOffset = value; }
 		}
 
-		public UInt64 Size {
+		public DeviceSize Size {
 			get { return m->Size; }
 			set { m->Size = value; }
 		}
@@ -1476,12 +1476,12 @@ namespace Vulkan
 			m = (Interop.SparseMemoryBind*) Interop.Structure.Allocate (typeof (Interop.SparseMemoryBind));
 		}
 
-		public UInt64 ResourceOffset {
+		public DeviceSize ResourceOffset {
 			get { return m->ResourceOffset; }
 			set { m->ResourceOffset = value; }
 		}
 
-		public UInt64 Size {
+		public DeviceSize Size {
 			get { return m->Size; }
 			set { m->Size = value; }
 		}
@@ -1492,7 +1492,7 @@ namespace Vulkan
 			set { lMemory = value; m->Memory = (IntPtr) value.m; }
 		}
 
-		public UInt64 MemoryOffset {
+		public DeviceSize MemoryOffset {
 			get { return m->MemoryOffset; }
 			set { m->MemoryOffset = value; }
 		}
@@ -1536,7 +1536,7 @@ namespace Vulkan
 			set { lMemory = value; m->Memory = (IntPtr) value.m; }
 		}
 
-		public UInt64 MemoryOffset {
+		public DeviceSize MemoryOffset {
 			get { return m->MemoryOffset; }
 			set { m->MemoryOffset = value; }
 		}
@@ -1777,7 +1777,7 @@ namespace Vulkan
 			m = (Interop.BufferImageCopy*) Interop.Structure.Allocate (typeof (Interop.BufferImageCopy));
 		}
 
-		public UInt64 BufferOffset {
+		public DeviceSize BufferOffset {
 			get { return m->BufferOffset; }
 			set { m->BufferOffset = value; }
 		}
@@ -3806,12 +3806,12 @@ namespace Vulkan
 			set { m->MaxSamplerAllocationCount = value; }
 		}
 
-		public UInt64 BufferImageGranularity {
+		public DeviceSize BufferImageGranularity {
 			get { return m->BufferImageGranularity; }
 			set { m->BufferImageGranularity = value; }
 		}
 
-		public UInt64 SparseAddressSpaceSize {
+		public DeviceSize SparseAddressSpaceSize {
 			get { return m->SparseAddressSpaceSize; }
 			set { m->SparseAddressSpaceSize = value; }
 		}
@@ -4086,17 +4086,17 @@ namespace Vulkan
 			set { m->MinMemoryMapAlignment = value; }
 		}
 
-		public UInt64 MinTexelBufferOffsetAlignment {
+		public DeviceSize MinTexelBufferOffsetAlignment {
 			get { return m->MinTexelBufferOffsetAlignment; }
 			set { m->MinTexelBufferOffsetAlignment = value; }
 		}
 
-		public UInt64 MinUniformBufferOffsetAlignment {
+		public DeviceSize MinUniformBufferOffsetAlignment {
 			get { return m->MinUniformBufferOffsetAlignment; }
 			set { m->MinUniformBufferOffsetAlignment = value; }
 		}
 
-		public UInt64 MinStorageBufferOffsetAlignment {
+		public DeviceSize MinStorageBufferOffsetAlignment {
 			get { return m->MinStorageBufferOffsetAlignment; }
 			set { m->MinStorageBufferOffsetAlignment = value; }
 		}
@@ -4266,17 +4266,17 @@ namespace Vulkan
 			set { m->StandardSampleLocations = value; }
 		}
 
-		public UInt64 OptimalBufferCopyOffsetAlignment {
+		public DeviceSize OptimalBufferCopyOffsetAlignment {
 			get { return m->OptimalBufferCopyOffsetAlignment; }
 			set { m->OptimalBufferCopyOffsetAlignment = value; }
 		}
 
-		public UInt64 OptimalBufferCopyRowPitchAlignment {
+		public DeviceSize OptimalBufferCopyRowPitchAlignment {
 			get { return m->OptimalBufferCopyRowPitchAlignment; }
 			set { m->OptimalBufferCopyRowPitchAlignment = value; }
 		}
 
-		public UInt64 NonCoherentAtomSize {
+		public DeviceSize NonCoherentAtomSize {
 			get { return m->NonCoherentAtomSize; }
 			set { m->NonCoherentAtomSize = value; }
 		}
