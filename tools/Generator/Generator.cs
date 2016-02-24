@@ -36,6 +36,7 @@ namespace VulkanSharp.Generator
 			LearnStructsAndUnions ();
 			GenerateStructs ();
 			GenerateUnions ();
+			GenerateCommands ();
 		}
 
 		void LoadSpecification ()
@@ -61,6 +62,7 @@ namespace VulkanSharp.Generator
 		static Dictionary<string, string> basicTypesMap = new Dictionary<string, string> {
 			{ "int32_t", "Int32" },
 			{ "uint32_t", "UInt32" },
+			{ "uint64_t", "UInt64" },
 			{ "uint8_t", "Byte" },
 			{ "size_t", "UIntPtr" },
 			{ "xcb_connection_t", "IntPtr" },
@@ -246,9 +248,11 @@ namespace VulkanSharp.Generator
 			GenerateCodeForElements (elements, generator);
 		}
 
-		void CreateFile (string typeName, bool usingInterop = false, string nspace = "Vulkan")
+		void CreateFile (string typeName, bool usingInterop = false, string nspace = "Vulkan", string subDirectory = null)
 		{
-			writer = File.CreateText (string.Format ("{0}{1}{2}.cs", outputPath, Path.DirectorySeparatorChar, typeName));
+			string path = subDirectory != null ? string.Format ("{0}{1}{2}", outputPath, Path.DirectorySeparatorChar, subDirectory) : outputPath;
+			string filename = string.Format ("{0}{1}{2}.cs", path, Path.DirectorySeparatorChar, typeName);
+			writer = File.CreateText (filename);
 
 			writer.WriteLine ("using System;");
 			if (usingInterop)
@@ -350,9 +354,6 @@ namespace VulkanSharp.Generator
 
 			if (csMemberType.StartsWith ("PFN_"))
 				csMemberType = "IntPtr";
-
-			if (csMemberType == "DeviceSize")
-				csMemberType = "UInt64";
 
 			if (csMemberType == "SampleMask")
 				csMemberType = "UInt32";
@@ -479,7 +480,7 @@ namespace VulkanSharp.Generator
 			GenerateType ("struct", WriteStructOrUnion);
 			FinalizeFile ();
 
-			CreateFile (string.Format ("Interop{0}MarshalStructs", Path.DirectorySeparatorChar), false, "Vulkan.Interop");
+			CreateFile ("MarshalStructs", false, "Vulkan.Interop", "Interop");
 			isUnion = false;
 			isInterop = true;
 			GenerateType ("struct", WriteStructOrUnion);
@@ -496,7 +497,7 @@ namespace VulkanSharp.Generator
 			GenerateType ("union", WriteStructOrUnion);
 			FinalizeFile ();
 
-			CreateFile (string.Format ("Interop{0}MarshalUnions", Path.DirectorySeparatorChar), true, "Vulkan.Interop");
+			CreateFile ("MarshalUnions", true, "Vulkan.Interop", "Interop");
 			isInterop = true;
 			GenerateType ("union", WriteStructOrUnion);
 			isInterop = false;
@@ -522,6 +523,103 @@ namespace VulkanSharp.Generator
 		{
 			CreateFile ("Handles");
 			GenerateType ("handle", WriteHandle);
+			FinalizeFile ();
+		}
+
+		HashSet<string> keywords = new HashSet<string> {
+			"event",
+			"object",
+		};
+
+		void WriteCommandParameters (XElement commandElement)
+		{
+			bool previous = false;
+			foreach (var param in commandElement.Elements ("param")) {
+				string type = param.Element ("type").Value;
+				string name = param.Element ("name").Value;
+				string csType = GetTypeCsName (type);
+
+				bool isPointer = param.Value.Contains (type + "*");
+				bool isConst = false;
+				if (isPointer) {
+					if (handles.Contains (csType)) {
+						csType = "IntPtr";
+					} else {
+						switch (csType) {
+						case "void":
+						case "char":
+							csType = "IntPtr";
+							break;
+						default:
+							csType += "*";
+							break;
+						}
+						if (name.StartsWith ("p"))
+							name = name.Substring (1);
+					}
+					if (param.Value.Contains ("const "))
+						isConst = true;
+				}
+
+				if (previous)
+					writer.Write (", ");
+				else
+					previous = true;
+				writer.Write ("{0}{1} {2}", (isPointer && !isConst) ? "out " : "", csType, keywords.Contains (name) ? "@" + name : name);
+			}
+		}
+
+		HashSet<string> disabledCommands = new HashSet<string> {
+			"vkGetPhysicalDeviceXcbPresentationSupportKHR",
+			"vkCreateMirSurfaceKHR",
+			"vkGetPhysicalDeviceMirPresentationSupportKHR",
+			"vkCreateWaylandSurfaceKHR",
+			"vkGetPhysicalDeviceWaylandPresentationSupportKHR",
+			"vkCreateWin32SurfaceKHR",
+			"vkCreateXlibSurfaceKHR",
+			"vkGetPhysicalDeviceXlibPresentationSupportKHR",
+			"vkCreateXcbSurfaceKHR",
+			"vkCreateAndroidSurfaceKHR"
+		};
+
+		bool WriteCommand (XElement commandElement)
+		{
+			string function = commandElement.Element ("proto").Element ("name").Value;
+			string type = commandElement.Element ("proto").Element ("type").Value;
+			string csType = GetTypeCsName (type);
+
+			// todo: extensions support
+			if (disabledCommands.Contains (function))
+				return false;
+
+			// todo: function pointers
+			if (csType.StartsWith ("PFN_"))
+				csType = "IntPtr";
+
+			writer.WriteLine ("\t\t[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Cdecl)]");
+			writer.Write ("\t\tinternal static unsafe extern {0} {1} (", csType, function);
+			WriteCommandParameters (commandElement);
+			writer.WriteLine (");");
+
+			return true;
+		}
+
+		void GenerateCommands ()
+		{
+			CreateFile ("ImportedCommands", true, "Vulkan.Interop", "Interop");
+
+			writer.WriteLine ("\tinternal class Commands\n\t{");
+			writer.WriteLine ("\t\tconst string VulkanLibrary = \"vulkan\";\n");
+
+			bool written = false;
+			foreach (var command in specTree.Elements ("commands").Elements ("command")) {
+				if (written)
+					writer.WriteLine ();
+				written = WriteCommand (command);
+			}
+
+			writer.WriteLine ("\t}");
+
 			FinalizeFile ();
 		}
 	}

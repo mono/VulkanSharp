@@ -21,5 +21,20 @@ namespace Vulkan
 			return bValue.value == 0 ? false : true;
 		}
 	}
+
+	public struct DeviceSize
+	{
+		UInt64 value;
+
+		public static implicit operator DeviceSize (UInt64 iValue)
+		{
+			return new DeviceSize { value = iValue };
+		}
+
+		public static implicit operator UInt64 (DeviceSize size)
+		{
+			return size.value;
+		}
+	}
 }
 
