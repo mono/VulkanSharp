@@ -610,7 +610,7 @@ namespace VulkanSharp.Generator
 		{
 			CreateFile ("ImportedCommands", true, "Vulkan.Interop", "Interop");
 
-			writer.WriteLine ("\tinternal class Commands\n\t{");
+			writer.WriteLine ("\tinternal static class NativeMethods\n\t{");
 			writer.WriteLine ("\t\tconst string VulkanLibrary = \"vulkan\";\n");
 
 			bool written = false;
