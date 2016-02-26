@@ -362,22 +362,23 @@ namespace VulkanSharp.Generator
 				csMemberType = "bool";
 
 			string attr = "";
+			string sec = isInterop ? "internal" : "public";
 			if (isUnion)
 				attr = "[FieldOffset (0)] ";
 
 			if (isInterop) {
 				if (structures.Contains (csMemberType) || handles.Contains (csMemberType) || csMemberType == "string")
 					csMemberType = "IntPtr";
-				writer.WriteLine ("\t\t{0}public {1}{2} {3};", attr, mod, csMemberType, csMemberName);
+				writer.WriteLine ("\t\t{0}{1} {2}{3} {4};", attr, sec, mod, csMemberType, csMemberName);
 			} else {
 				if (structures.Contains (csMemberType) || handles.Contains (csMemberType)) {
 					writer.WriteLine ("\t\t{0} l{1};", csMemberType, csMemberName);
-					writer.WriteLine ("\t\tpublic {0} {1} {{", csMemberType, csMemberName);
+					writer.WriteLine ("\t\t{0} {1} {2} {{", sec, csMemberType, csMemberName);
 					writer.WriteLine ("\t\t\tget {{ return l{0}; }}", csMemberName);
 					writer.WriteLine ("\t\t\tset {{ l{0} = value; m->{0} = (IntPtr) value.m; }}", csMemberName);
 					writer.WriteLine ("\t\t}");
 				} else if (csMemberType == "string") {
-					writer.WriteLine ("\t\tpublic {0} {1} {{", csMemberType, csMemberName);
+					writer.WriteLine ("\t\t{0} {1} {2} {{", sec, csMemberType, csMemberName);
 					writer.WriteLine ("\t\t\tget {{ return Marshal.PtrToStringAnsi (m->{0}); }}", csMemberName);
 					writer.WriteLine ("\t\t\tset {{ m->{0} = Marshal.StringToHGlobalAnsi (value); }}", csMemberName);
 					writer.WriteLine ("\t\t}");
@@ -423,7 +424,7 @@ namespace VulkanSharp.Generator
 				writer.WriteLine ("\t[StructLayout (LayoutKind.Explicit)]");
 			if (!isInterop)
 				mod = "unsafe ";
-			writer.WriteLine ("\t{0}public {1} {2}\n\t{{", mod, isInterop ? "struct" : "class", csName);
+			writer.WriteLine ("\t{0}{1} {2} {3}\n\t{{", mod, isInterop ? "internal" : "public", isInterop ? "struct" : "class", csName);
 
 			if (!isInterop) {
 				bool hasSType = false;
