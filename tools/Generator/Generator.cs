@@ -542,6 +542,7 @@ namespace VulkanSharp.Generator
 
 				bool isPointer = param.Value.Contains (type + "*");
 				bool isConst = false;
+				bool isStruct = structures.Contains (csType);
 				if (isPointer) {
 					if (handles.Contains (csType)) {
 						csType = "IntPtr";
@@ -566,7 +567,7 @@ namespace VulkanSharp.Generator
 					writer.Write (", ");
 				else
 					previous = true;
-				writer.Write ("{0}{1} {2}", (isPointer && !isConst) ? "out " : "", csType, keywords.Contains (name) ? "@" + name : name);
+				writer.Write ("{0}{1} {2}", (isPointer && !isConst && !isStruct) ? "out " : "", csType, keywords.Contains (name) ? "@" + name : name);
 			}
 		}
 
