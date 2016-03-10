@@ -543,22 +543,20 @@ namespace VulkanSharp.Generator
 				bool isPointer = param.Value.Contains (type + "*");
 				bool isConst = false;
 				bool isStruct = structures.Contains (csType);
+				if (handles.Contains (csType))
+					csType = "IntPtr";
 				if (isPointer) {
-					if (handles.Contains (csType)) {
+					switch (csType) {
+					case "void":
+					case "char":
 						csType = "IntPtr";
-					} else {
-						switch (csType) {
-						case "void":
-						case "char":
-							csType = "IntPtr";
-							break;
-						default:
-							csType += "*";
-							break;
-						}
-						if (name.StartsWith ("p"))
-							name = name.Substring (1);
+						break;
+					default:
+						csType += "*";
+						break;
 					}
+					if (name.StartsWith ("p"))
+						name = name.Substring (1);
 					if (param.Value.Contains ("const "))
 						isConst = true;
 				}
@@ -567,7 +565,7 @@ namespace VulkanSharp.Generator
 					writer.Write (", ");
 				else
 					previous = true;
-				writer.Write ("{0}{1} {2}", (isPointer && !isConst && !isStruct) ? "out " : "", csType, keywords.Contains (name) ? "@" + name : name);
+				writer.Write ("{0} {1}", csType, keywords.Contains (name) ? "@" + name : name);
 			}
 		}
 
