@@ -17,7 +17,14 @@ namespace VulkanSharp.Generator
 
 		Dictionary<string, string> typesTranslation = new Dictionary<string, string> ();
 		HashSet<string> structures = new HashSet<string> ();
-		HashSet<string> handles = new HashSet<string> ();
+		Dictionary<string, HandleInfo> handles = new Dictionary<string,HandleInfo> ();
+
+		class HandleInfo
+		{
+			public string name;
+			public string type;
+			public List<XElement> commands = new List<XElement> ();
+		}
 
 		public Generator (string filename, string outputDir)
 		{
@@ -32,11 +39,12 @@ namespace VulkanSharp.Generator
 
 			GenerateEnums ();
 			GenerateBitmasks ();
-			GenerateHandles ();
+			LearnHandles ();
 			LearnStructsAndUnions ();
 			GenerateStructs ();
 			GenerateUnions ();
 			GenerateCommands ();
+			GenerateHandles ();
 		}
 
 		void LoadSpecification ()
@@ -367,11 +375,11 @@ namespace VulkanSharp.Generator
 				attr = "[FieldOffset (0)] ";
 
 			if (isInterop) {
-				if (structures.Contains (csMemberType) || handles.Contains (csMemberType) || csMemberType == "string")
+				if (structures.Contains (csMemberType) || handles.ContainsKey (csMemberType) || csMemberType == "string")
 					csMemberType = "IntPtr";
 				writer.WriteLine ("\t\t{0}{1} {2}{3} {4};", attr, sec, mod, csMemberType, csMemberName);
 			} else {
-				if (structures.Contains (csMemberType) || handles.Contains (csMemberType)) {
+				if (structures.Contains (csMemberType) || handles.ContainsKey (csMemberType)) {
 					writer.WriteLine ("\t\t{0} l{1};", csMemberType, csMemberName);
 					writer.WriteLine ("\t\t{0} {1} {2} {{", sec, csMemberType, csMemberName);
 					writer.WriteLine ("\t\t\tget {{ return l{0}; }}", csMemberName);
@@ -506,15 +514,243 @@ namespace VulkanSharp.Generator
 			FinalizeFile ();
 		}
 
-		bool WriteHandle(XElement handleElement)
+		bool LearnHandle (XElement handleElement)
 		{
 			string name = handleElement.Element ("name").Value;
 			string csName = GetTypeCsName (name, "struct");
-			handles.Add (csName);
+			string type = handleElement.Element ("type").Value;
 
-			writer.WriteLine ("\tpublic class {0}\n\t{{", csName);
-			// todo: implement marshalling
-			writer.WriteLine ("\t\tinternal IntPtr m;", csName);
+			handles.Add (csName, new HandleInfo { name = csName, type = type });
+
+			return false;
+		}
+
+		void LearnHandles ()
+		{
+			GenerateType ("handle", LearnHandle);
+		}
+
+		string GetParamName (string name, bool isPointer)
+		{
+			if (isPointer && name.StartsWith ("p"))
+				name = name.Substring (1);
+
+			return name;
+		}
+
+		struct FixedParamInfo
+		{
+			public bool containsMHandle;
+			public string csType;
+		}
+
+		Dictionary<string, FixedParamInfo> FindFixedParams (XElement commandElement, bool passToNative = false)
+		{
+			bool first = true;
+			var fixedParams = new Dictionary<string, FixedParamInfo> ();
+
+			foreach (var param in commandElement.Elements ("param")) {
+				if (first) {
+					first = false;
+					continue;
+				}
+				string type = param.Element ("type").Value;
+				string csType = GetTypeCsName (type);
+				bool isPointer = param.Value.Contains (type + "*");
+				if (isPointer && type == "void" && !param.Value.Contains ("**"))
+					continue;
+				if (!isPointer || structures.Contains (csType))
+					continue;
+				bool isHandle = handles.ContainsKey (csType);
+				bool isStruct = structures.Contains (csType);
+				if (isHandle || isStruct || !param.Value.Contains ("const "))
+					fixedParams.Add (GetParamName (param.Element ("name").Value, isPointer), new FixedParamInfo () { containsMHandle = isHandle || isStruct, csType = csType });
+			}
+
+			return fixedParams;
+		}
+
+		Dictionary<string, string> WriteHandleCommandParameters (XElement commandElement, bool passToNative = false, Dictionary<string, FixedParamInfo> fixedParams = null)
+		{
+			bool first = true;
+			bool previous = false;
+			var outParams = new Dictionary<string, string> ();
+
+			foreach (var param in commandElement.Elements ("param")) {
+				if (first) {
+					if (passToNative) {
+						writer.Write ("this.m");
+						previous = true;
+					}
+					first = false;
+					continue;
+				}
+
+				string type = param.Element ("type").Value;
+				string name = param.Element ("name").Value;
+				string csType = GetTypeCsName (type);
+
+				bool isPointer = param.Value.Contains (type + "*");
+				bool isDoublePointer = param.Value.Contains (type + "**");
+				bool isConst = false;
+				bool isStruct = structures.Contains (csType);
+				bool isHandle = handles.ContainsKey (csType);
+				if (isPointer) {
+					if (!isHandle) {
+						switch (csType) {
+						case "void":
+							csType = "IntPtr";
+							break;
+						case "char":
+							csType = "string";
+							isPointer = false;
+							break;
+						}
+					}
+					if (param.Value.Contains ("const "))
+						isConst = true;
+				}
+				name = GetParamName (name, isPointer);
+				if (!isDoublePointer && isPointer && csType == "IntPtr")
+					isPointer = false;
+
+				if (previous)
+					writer.Write (", ");
+				else
+					previous = true;
+
+				bool isOut = isPointer && !isConst;
+				if (isOut)
+					outParams [name] = csType;
+
+				if (passToNative) {
+					bool isFixed = fixedParams != null &&  fixedParams.ContainsKey (name);
+					string paramName = isFixed ? "ptr" + name : name;
+
+					writer.Write ("{0}{1}{2}", (isPointer && !isStruct && !isFixed) ? "&" : "", keywords.Contains (paramName) ? "@" + paramName : paramName, (!isFixed && (isStruct || isHandle)) ? ".m" : "");
+				} else
+					writer.Write ("{0}{1} {2}", isOut ? "out " : "", csType, keywords.Contains (name) ? "@" + name : name);
+			}
+
+			return outParams;
+		}
+
+		string GetManagedHandleType (string handleType)
+		{
+			return handleType == "VK_DEFINE_HANDLE" ? "IntPtr" : "UInt64";
+		}
+
+		string GetManagedType (string csType)
+		{
+			if (structures.Contains (csType))
+				return "IntPtr";
+
+			if (handles.ContainsKey (csType))
+				return GetManagedHandleType (handles [csType].type);
+
+			switch (csType) {
+			case "void":
+				return "IntPtr";
+			}
+
+			return csType;
+		}
+
+		bool WriteHandleCommand (XElement commandElement, string handleName)
+		{
+			string function = commandElement.Element ("proto").Element ("name").Value;
+			string type = commandElement.Element ("proto").Element ("type").Value;
+			string csType = GetTypeCsName (type);
+
+			// todo: extensions support
+			if (disabledCommands.Contains (function))
+				return false;
+
+			// todo: function pointers
+			if (csType.StartsWith ("PFN_"))
+				csType = "IntPtr";
+
+			string csFunction = function;
+			if (function.StartsWith ("vk"))
+				csFunction = csFunction.Substring (2);
+
+			if (csFunction.StartsWith (handleName))
+				csFunction = csFunction.Substring (handleName.Length);
+			else if (csFunction.StartsWith ("Get" + handleName))
+				csFunction = "Get" + csFunction.Substring (handleName.Length + 3);
+			else if (csFunction.EndsWith (handleName))
+				csFunction = csFunction.Substring (0, csFunction.Length - handleName.Length);
+
+			var fixedParams = FindFixedParams (commandElement);
+
+			writer.Write ("\t\tpublic {0} {1} (", csType, csFunction);
+			var outParams = WriteHandleCommandParameters (commandElement);
+			writer.WriteLine (")");
+			writer.WriteLine ("\t\t{");
+			writer.WriteLine ("\t\t\tunsafe {");
+
+			if (fixedParams.Count > 0) {
+				foreach (var param in fixedParams) {
+					if (param.Value.containsMHandle)
+						writer.WriteLine ("\t\t\t\t{0} = new {1} ();", param.Key, param.Value.csType);
+				}
+				writer.WriteLine ();
+				foreach (var param in fixedParams) {
+					writer.WriteLine ("\t\t\t\tfixed ({0}* ptr{1} = &{1}{2}) {{", GetManagedType (param.Value.csType), param.Key, param.Value.containsMHandle ? ".m" : "");
+				}
+				writer.WriteLine ();
+			}
+			if (outParams.Count > 0) {
+				foreach (var param in outParams)
+					if (!fixedParams.ContainsKey (param.Key))
+						writer.WriteLine ("\t\t\t\t{0} = new {1} ();", param.Key, param.Value);
+			}
+
+			writer.Write ("\t\t\t\t{0}Interop.NativeMethods.{1} (", csType != "void" ? "return " : "", function);
+			WriteHandleCommandParameters (commandElement, true, fixedParams);
+			writer.WriteLine (");");
+
+			if (fixedParams.Count > 0) {
+				foreach (var param in fixedParams) {
+					writer.WriteLine ("\t\t\t\t}");
+				}
+				writer.WriteLine ();
+			}
+
+			writer.WriteLine ("\t\t\t}");
+			writer.WriteLine ("\t\t}");
+
+			return true;
+		}
+
+		bool WriteHandle (XElement handleElement)
+		{
+			string csName = GetTypeCsName (handleElement.Element ("name").Value, "handle");
+			HandleInfo info = handles [csName];
+
+			writer.WriteLine ("\tpublic partial class {0}\n\t{{", csName);
+			//// todo: implement marshalling
+			switch (info.type) {
+			case "VK_DEFINE_NON_DISPATCHABLE_HANDLE":
+				writer.WriteLine ("\t\tinternal UInt64 m;", csName);
+				break;
+			case "VK_DEFINE_HANDLE":
+				writer.WriteLine ("\t\tinternal IntPtr m;", csName);
+				break;
+			default:
+				throw new Exception ("unknown handle type: " + info.type);
+			}
+
+			if (info.commands.Count > 0) {
+				writer.WriteLine ();
+				bool written = false;
+				foreach (var element in info.commands) {
+					if (written)
+						writer.WriteLine ();
+					written = WriteHandleCommand (element, csName);
+				}
+			}
+
 			writer.WriteLine ("\t}");
 
 			return true;
@@ -534,6 +770,7 @@ namespace VulkanSharp.Generator
 
 		void WriteCommandParameters (XElement commandElement)
 		{
+			bool first = true;
 			bool previous = false;
 			foreach (var param in commandElement.Elements ("param")) {
 				string type = param.Element ("type").Value;
@@ -541,31 +778,40 @@ namespace VulkanSharp.Generator
 				string csType = GetTypeCsName (type);
 
 				bool isPointer = param.Value.Contains (type + "*");
-				bool isConst = false;
-				bool isStruct = structures.Contains (csType);
-				if (handles.Contains (csType))
-					csType = "IntPtr";
+				if (handles.ContainsKey (csType)) {
+					var handle = handles [csType];
+					if (first && !isPointer)
+						handle.commands.Add (commandElement);
+					csType = handle.type == "VK_DEFINE_HANDLE" ? "IntPtr" : "UInt64";
+				}
 				if (isPointer) {
 					switch (csType) {
 					case "void":
-					case "char":
 						csType = "IntPtr";
+						break;
+					case "char":
+						csType = "string";
+						isPointer = false;
 						break;
 					default:
 						csType += "*";
 						break;
 					}
-					if (name.StartsWith ("p"))
-						name = name.Substring (1);
-					if (param.Value.Contains ("const "))
-						isConst = true;
-				}
+				} else if (first && handles.ContainsKey (csType))
+					handles [csType].commands.Add (commandElement);
+
+				name = GetParamName (name, isPointer);
 
 				if (previous)
 					writer.Write (", ");
 				else
 					previous = true;
+
+				if (param.Value.Contains (type + "**"))
+					csType += "*";
+
 				writer.Write ("{0} {1}", csType, keywords.Contains (name) ? "@" + name : name);
+				first = false;
 			}
 		}
 
@@ -582,7 +828,7 @@ namespace VulkanSharp.Generator
 			"vkCreateAndroidSurfaceKHR"
 		};
 
-		bool WriteCommand (XElement commandElement)
+		bool WriteUnmanagedCommand (XElement commandElement)
 		{
 			string function = commandElement.Element ("proto").Element ("name").Value;
 			string type = commandElement.Element ("proto").Element ("type").Value;
@@ -615,7 +861,7 @@ namespace VulkanSharp.Generator
 			foreach (var command in specTree.Elements ("commands").Elements ("command")) {
 				if (written)
 					writer.WriteLine ();
-				written = WriteCommand (command);
+				written = WriteUnmanagedCommand (command);
 			}
 
 			writer.WriteLine ("\t}");
