@@ -187,7 +187,7 @@ namespace VulkanSharp.Generator
 			if (suffix != null && fName.EndsWith (suffix))
 				fName = fName.Substring (0, fName.Length - suffix.Length);
 
-			writer.WriteLine ("\t\t{0} = {1},", fName, value);
+			IndentWriteLine ("{0} = {1},", fName, value);
 		}
 
 		bool WriteEnum (XElement enumElement)
@@ -212,7 +212,7 @@ namespace VulkanSharp.Generator
 						suffix = ext.Value + suffix;
 						csName = csName.Substring (0, csName.Length - ext.Value.Length);
 					}
-				writer.WriteLine ("\t[Flags]");
+				IndentWriteLine ("[Flags]");
 				if (csName.EndsWith ("FlagBits"))
 					csName = csName.Substring (0, csName.Length - 4) + "s";
 				if (suffix != null)
@@ -220,12 +220,15 @@ namespace VulkanSharp.Generator
 			}
 
 			typesTranslation [name] = csName;
-			writer.WriteLine ("\tpublic enum {0} : int\n\t{{", csName);
+			IndentWriteLine ("public enum {0} : int", csName);
+			IndentWriteLine ("{");
+			IndentLevel++;
 
 			foreach (var e in values.Elements ("enum"))
 				WriteEnumField (e, csName);
 
-			writer.WriteLine ("\t}");
+			IndentLevel--;
+			IndentWriteLine ("}");
 
 			return true;
 		}
@@ -236,7 +239,7 @@ namespace VulkanSharp.Generator
 			foreach (var e in elements)
 			{
 				if (written)
-					writer.WriteLine ();
+					WriteLine ();
 
 				written = generator (e);
 			}
@@ -261,19 +264,77 @@ namespace VulkanSharp.Generator
 			string path = subDirectory != null ? string.Format ("{0}{1}{2}", outputPath, Path.DirectorySeparatorChar, subDirectory) : outputPath;
 			string filename = string.Format ("{0}{1}{2}.cs", path, Path.DirectorySeparatorChar, typeName);
 			writer = File.CreateText (filename);
+			IndentLevel = 0;
 
-			writer.WriteLine ("using System;");
+			WriteLine ("using System;");
 			if (usingInterop)
-				writer.WriteLine ("using System.Runtime.InteropServices;");
-			writer.WriteLine ();
+				WriteLine ("using System.Runtime.InteropServices;");
+			WriteLine ();
 
-			writer.WriteLine ("namespace {0}\n{{", nspace);
+			WriteLine ("namespace {0}\n{{", nspace);
+			IndentLevel++;
 		}
 
 		void FinalizeFile ()
 		{
-			writer.WriteLine ("}");
+			WriteLine ("}");
 			writer.Close ();
+		}
+
+		int IndentLevel = 0;
+		void WriteIndentation ()
+		{
+			for (int i = 0; i < IndentLevel; i++)
+				writer.Write ('\t');
+		}
+
+		void WriteLine ()
+		{
+			writer.WriteLine ();
+		}
+
+		void WriteLine (string str)
+		{
+			writer.WriteLine (str);
+		}
+
+		void Write (string str)
+		{
+			writer.Write (str);
+		}
+
+		void WriteLine (string str, params object[] arg)
+		{
+			writer.WriteLine (str, arg);
+		}
+
+		void Write (string str, params object[] arg)
+		{
+			writer.Write (str, arg);
+		}
+
+		void IndentWriteLine (string str)
+		{
+			WriteIndentation ();
+			WriteLine (str);
+		}
+
+		void IndentWriteLine (string str, params object[] arg)
+		{
+			WriteIndentation ();
+			WriteLine (str, arg);
+		}
+
+		void IndentWrite (string str)
+		{
+			WriteIndentation ();
+			Write (str);
+		}
+
+		void IndentWrite (string str, params object[] arg)
+		{
+			WriteIndentation ();
+			Write (str, arg);
 		}
 
 		void GenerateEnums ()
@@ -377,24 +438,30 @@ namespace VulkanSharp.Generator
 			if (isInterop) {
 				if (structures.Contains (csMemberType) || handles.ContainsKey (csMemberType) || csMemberType == "string")
 					csMemberType = "IntPtr";
-				writer.WriteLine ("\t\t{0}{1} {2}{3} {4};", attr, sec, mod, csMemberType, csMemberName);
+				IndentWriteLine ("{0}{1} {2}{3} {4};", attr, sec, mod, csMemberType, csMemberName);
 			} else {
 				if (structures.Contains (csMemberType) || handles.ContainsKey (csMemberType)) {
-					writer.WriteLine ("\t\t{0} l{1};", csMemberType, csMemberName);
-					writer.WriteLine ("\t\t{0} {1} {2} {{", sec, csMemberType, csMemberName);
-					writer.WriteLine ("\t\t\tget {{ return l{0}; }}", csMemberName);
-					writer.WriteLine ("\t\t\tset {{ l{0} = value; m->{0} = (IntPtr) value.m; }}", csMemberName);
-					writer.WriteLine ("\t\t}");
+					IndentWriteLine ("{0} l{1};", csMemberType, csMemberName);
+					IndentWriteLine ("{0} {1} {2} {{", sec, csMemberType, csMemberName);
+					IndentLevel++;
+					IndentWriteLine ("get {{ return l{0}; }}", csMemberName);
+					IndentWriteLine ("set {{ l{0} = value; m->{0} = (IntPtr) value.m; }}", csMemberName);
+					IndentLevel--;
+					IndentWriteLine ("}");
 				} else if (csMemberType == "string") {
-					writer.WriteLine ("\t\t{0} {1} {2} {{", sec, csMemberType, csMemberName);
-					writer.WriteLine ("\t\t\tget {{ return Marshal.PtrToStringAnsi (m->{0}); }}", csMemberName);
-					writer.WriteLine ("\t\t\tset {{ m->{0} = Marshal.StringToHGlobalAnsi (value); }}", csMemberName);
-					writer.WriteLine ("\t\t}");
+					IndentWriteLine ("{0} {1} {2} {{", sec, csMemberType, csMemberName);
+					IndentLevel++;
+					IndentWriteLine ("get {{ return Marshal.PtrToStringAnsi (m->{0}); }}", csMemberName);
+					IndentWriteLine ("set {{ m->{0} = Marshal.StringToHGlobalAnsi (value); }}", csMemberName);
+					IndentLevel--;
+					IndentWriteLine ("}");
 				} else {
-					writer.WriteLine ("\t\tpublic {0} {1} {{", csMemberType, csMemberName);
-					writer.WriteLine ("\t\t\tget {{ return m->{0}; }}", csMemberName);
-					writer.WriteLine ("\t\t\tset {{ m->{0} = value; }}", csMemberName);
-					writer.WriteLine ("\t\t}");
+					IndentWriteLine ("public {0} {1} {{", csMemberType, csMemberName);
+					IndentLevel++;
+					IndentWriteLine ("get {{ return m->{0}; }}", csMemberName);
+					IndentWriteLine ("set {{ m->{0} = value; }}", csMemberName);
+					IndentLevel--;
+					IndentWriteLine ("}");
 				}
 			}
 
@@ -429,10 +496,12 @@ namespace VulkanSharp.Generator
 
 			string mod = "";
 			if (isUnion && isInterop)
-				writer.WriteLine ("\t[StructLayout (LayoutKind.Explicit)]");
+				IndentWriteLine ("[StructLayout (LayoutKind.Explicit)]");
 			if (!isInterop)
 				mod = "unsafe ";
-			writer.WriteLine ("\t{0}{1} {2} {3}\n\t{{", mod, isInterop ? "internal" : "public", isInterop ? "struct" : "class", csName);
+			IndentWriteLine ("{0}{1} {2} {3}", mod, isInterop ? "internal" : "public", isInterop ? "struct" : "class", csName);
+			IndentWriteLine ("{");
+			IndentLevel++;
 
 			if (!isInterop) {
 				bool hasSType = false;
@@ -445,19 +514,22 @@ namespace VulkanSharp.Generator
 						hasSType = true;
 				}
 
-				writer.WriteLine ("\t\tinternal Interop.{0}* m;\n", csName);
-				writer.WriteLine ("\t\tpublic {0} ()", csName);
-				writer.WriteLine ("\t\t{");
-				writer.WriteLine ("\t\t\tm = (Interop.{0}*) Interop.Structure.Allocate (typeof (Interop.{0}));", csName);
+				IndentWriteLine ("internal Interop.{0}* m;\n", csName);
+				IndentWriteLine ("public {0} ()", csName);
+				IndentWriteLine ("{");
+				IndentLevel++;
+				IndentWriteLine ("m = (Interop.{0}*) Interop.Structure.Allocate (typeof (Interop.{0}));", csName);
 				if (hasSType && !disabledStructureTypeEnumValues.Contains (csName) /* todo: handle extexnsions - StructureType should contain extensions values */) {
-					writer.WriteLine ("\t\t\tm->SType = StructureType.{0};", csName);
+					IndentWriteLine ("m->SType = StructureType.{0};", csName);
 				}
-				writer.WriteLine ("\t\t}\n");
+				IndentLevel--;
+				IndentWriteLine ("}\n");
 			}
 
 			GenerateMembers (structElement, WriteMember);
 
-			writer.WriteLine ("\t}");
+			IndentLevel--;
+			IndentWriteLine ("}");
 
 			return true;
 		}
@@ -579,7 +651,7 @@ namespace VulkanSharp.Generator
 			foreach (var param in commandElement.Elements ("param")) {
 				if (first) {
 					if (passToNative) {
-						writer.Write ("this.m");
+						Write ("this.m");
 						previous = true;
 					}
 					first = false;
@@ -615,7 +687,7 @@ namespace VulkanSharp.Generator
 					isPointer = false;
 
 				if (previous)
-					writer.Write (", ");
+					Write (", ");
 				else
 					previous = true;
 
@@ -627,9 +699,9 @@ namespace VulkanSharp.Generator
 					bool isFixed = fixedParams != null &&  fixedParams.ContainsKey (name);
 					string paramName = isFixed ? "ptr" + name : name;
 
-					writer.Write ("{0}{1}{2}", (isPointer && !isStruct && !isFixed) ? "&" : "", keywords.Contains (paramName) ? "@" + paramName : paramName, (!isFixed && (isStruct || isHandle)) ? ".m" : "");
+					Write ("{0}{1}{2}", (isPointer && !isStruct && !isFixed) ? "&" : "", keywords.Contains (paramName) ? "@" + paramName : paramName, (!isFixed && (isStruct || isHandle)) ? ".m" : "");
 				} else
-					writer.Write ("{0}{1} {2}", isOut ? "out " : "", csType, keywords.Contains (name) ? "@" + name : name);
+					Write ("{0}{1} {2}", isOut ? "out " : "", csType, keywords.Contains (name) ? "@" + name : name);
 			}
 
 			return outParams;
@@ -683,42 +755,51 @@ namespace VulkanSharp.Generator
 
 			var fixedParams = FindFixedParams (commandElement);
 
-			writer.Write ("\t\tpublic {0} {1} (", csType, csFunction);
+			IndentWrite ("public {0} {1} (", csType, csFunction);
 			var outParams = WriteHandleCommandParameters (commandElement);
-			writer.WriteLine (")");
-			writer.WriteLine ("\t\t{");
-			writer.WriteLine ("\t\t\tunsafe {");
+			WriteLine (")");
+			IndentWriteLine ("{");
+			IndentLevel++;
+			IndentWriteLine ("unsafe {");
+			IndentLevel++;
 
 			if (fixedParams.Count > 0) {
+				int count = 0;
 				foreach (var param in fixedParams) {
-					if (param.Value.containsMHandle)
-						writer.WriteLine ("\t\t\t\t{0} = new {1} ();", param.Key, param.Value.csType);
+					if (param.Value.containsMHandle) {
+						IndentWriteLine ("{0} = new {1} ();", param.Key, param.Value.csType);
+						count++;
+					}
 				}
-				writer.WriteLine ();
+				if (count > 0)
+					WriteLine ();
+
 				foreach (var param in fixedParams) {
-					writer.WriteLine ("\t\t\t\tfixed ({0}* ptr{1} = &{1}{2}) {{", GetManagedType (param.Value.csType), param.Key, param.Value.containsMHandle ? ".m" : "");
+					IndentWriteLine ("fixed ({0}* ptr{1} = &{1}{2}) {{", GetManagedType (param.Value.csType), param.Key, param.Value.containsMHandle ? ".m" : "");
+					IndentLevel++;
 				}
-				writer.WriteLine ();
 			}
 			if (outParams.Count > 0) {
 				foreach (var param in outParams)
 					if (!fixedParams.ContainsKey (param.Key))
-						writer.WriteLine ("\t\t\t\t{0} = new {1} ();", param.Key, param.Value);
+						IndentWriteLine ("{0} = new {1} ();", param.Key, param.Value);
 			}
 
-			writer.Write ("\t\t\t\t{0}Interop.NativeMethods.{1} (", csType != "void" ? "return " : "", function);
+			IndentWrite ("{0}Interop.NativeMethods.{1} (", csType != "void" ? "return " : "", function);
 			WriteHandleCommandParameters (commandElement, true, fixedParams);
-			writer.WriteLine (");");
+			WriteLine (");");
 
 			if (fixedParams.Count > 0) {
 				foreach (var param in fixedParams) {
-					writer.WriteLine ("\t\t\t\t}");
+					IndentLevel--;
+					IndentWriteLine ("}");
 				}
-				writer.WriteLine ();
 			}
 
-			writer.WriteLine ("\t\t\t}");
-			writer.WriteLine ("\t\t}");
+			IndentLevel--;
+			IndentWriteLine ("}");
+			IndentLevel--;
+			IndentWriteLine ("}");
 
 			return true;
 		}
@@ -728,30 +809,34 @@ namespace VulkanSharp.Generator
 			string csName = GetTypeCsName (handleElement.Element ("name").Value, "handle");
 			HandleInfo info = handles [csName];
 
-			writer.WriteLine ("\tpublic partial class {0}\n\t{{", csName);
+			IndentWriteLine ("public partial class {0}", csName);
+			IndentWriteLine ("{");
+			IndentLevel++;
+
 			//// todo: implement marshalling
 			switch (info.type) {
 			case "VK_DEFINE_NON_DISPATCHABLE_HANDLE":
-				writer.WriteLine ("\t\tinternal UInt64 m;", csName);
+				IndentWriteLine ("internal UInt64 m;", csName);
 				break;
 			case "VK_DEFINE_HANDLE":
-				writer.WriteLine ("\t\tinternal IntPtr m;", csName);
+				IndentWriteLine ("internal IntPtr m;", csName);
 				break;
 			default:
 				throw new Exception ("unknown handle type: " + info.type);
 			}
 
 			if (info.commands.Count > 0) {
-				writer.WriteLine ();
+				WriteLine ();
 				bool written = false;
 				foreach (var element in info.commands) {
 					if (written)
-						writer.WriteLine ();
+						WriteLine ();
 					written = WriteHandleCommand (element, csName);
 				}
 			}
 
-			writer.WriteLine ("\t}");
+			IndentLevel--;
+			IndentWriteLine ("}");
 
 			return true;
 		}
@@ -803,14 +888,14 @@ namespace VulkanSharp.Generator
 				name = GetParamName (name, isPointer);
 
 				if (previous)
-					writer.Write (", ");
+					Write (", ");
 				else
 					previous = true;
 
 				if (param.Value.Contains (type + "**"))
 					csType += "*";
 
-				writer.Write ("{0} {1}", csType, keywords.Contains (name) ? "@" + name : name);
+				Write ("{0} {1}", csType, keywords.Contains (name) ? "@" + name : name);
 				first = false;
 			}
 		}
@@ -842,10 +927,10 @@ namespace VulkanSharp.Generator
 			if (csType.StartsWith ("PFN_"))
 				csType = "IntPtr";
 
-			writer.WriteLine ("\t\t[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Cdecl)]");
-			writer.Write ("\t\tinternal static unsafe extern {0} {1} (", csType, function);
+			IndentWriteLine ("[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Cdecl)]");
+			IndentWrite ("internal static unsafe extern {0} {1} (", csType, function);
 			WriteCommandParameters (commandElement);
-			writer.WriteLine (");");
+			WriteLine (");");
 
 			return true;
 		}
@@ -854,17 +939,20 @@ namespace VulkanSharp.Generator
 		{
 			CreateFile ("ImportedCommands", true, "Vulkan.Interop", "Interop");
 
-			writer.WriteLine ("\tinternal static class NativeMethods\n\t{");
-			writer.WriteLine ("\t\tconst string VulkanLibrary = \"vulkan\";\n");
+			IndentWriteLine ("internal static class NativeMethods");
+			IndentWriteLine ("{");
+			IndentLevel++;
+			IndentWriteLine ("const string VulkanLibrary = \"vulkan\";\n");
 
 			bool written = false;
 			foreach (var command in specTree.Elements ("commands").Elements ("command")) {
 				if (written)
-					writer.WriteLine ();
+					WriteLine ();
 				written = WriteUnmanagedCommand (command);
 			}
 
-			writer.WriteLine ("\t}");
+			IndentLevel--;
+			IndentWriteLine ("}");
 
 			FinalizeFile ();
 		}
