@@ -45,6 +45,7 @@ namespace VulkanSharp.Generator
 			GenerateUnions ();
 			GenerateCommands ();
 			GenerateHandles ();
+			GenerateRemainingCommands ();
 		}
 
 		void LoadSpecification ()
@@ -616,13 +617,13 @@ namespace VulkanSharp.Generator
 			public string csType;
 		}
 
-		Dictionary<string, FixedParamInfo> FindFixedParams (XElement commandElement, bool passToNative = false)
+		Dictionary<string, FixedParamInfo> FindFixedParams (XElement commandElement, bool isForHandle, bool passToNative = false)
 		{
 			bool first = true;
 			var fixedParams = new Dictionary<string, FixedParamInfo> ();
 
 			foreach (var param in commandElement.Elements ("param")) {
-				if (first) {
+				if (first && isForHandle) {
 					first = false;
 					continue;
 				}
@@ -642,14 +643,14 @@ namespace VulkanSharp.Generator
 			return fixedParams;
 		}
 
-		Dictionary<string, string> WriteHandleCommandParameters (XElement commandElement, bool passToNative = false, Dictionary<string, FixedParamInfo> fixedParams = null)
+		Dictionary<string, string> WriteCommandParameters (XElement commandElement, bool isForHandle = false, bool passToNative = false, Dictionary<string, FixedParamInfo> fixedParams = null)
 		{
 			bool first = true;
 			bool previous = false;
 			var outParams = new Dictionary<string, string> ();
 
 			foreach (var param in commandElement.Elements ("param")) {
-				if (first) {
+				if (first && isForHandle) {
 					if (passToNative) {
 						Write ("this.m");
 						previous = true;
@@ -728,7 +729,7 @@ namespace VulkanSharp.Generator
 			return csType;
 		}
 
-		bool WriteHandleCommand (XElement commandElement, string handleName)
+		bool WriteCommand (XElement commandElement, bool prependNewLine, bool isForHandle = false, string handleName = null)
 		{
 			string function = commandElement.Element ("proto").Element ("name").Value;
 			string type = commandElement.Element ("proto").Element ("type").Value;
@@ -738,6 +739,9 @@ namespace VulkanSharp.Generator
 			if (disabledCommands.Contains (function))
 				return false;
 
+			if (prependNewLine)
+				WriteLine ();
+
 			// todo: function pointers
 			if (csType.StartsWith ("PFN_"))
 				csType = "IntPtr";
@@ -746,17 +750,19 @@ namespace VulkanSharp.Generator
 			if (function.StartsWith ("vk"))
 				csFunction = csFunction.Substring (2);
 
-			if (csFunction.StartsWith (handleName))
-				csFunction = csFunction.Substring (handleName.Length);
-			else if (csFunction.StartsWith ("Get" + handleName))
-				csFunction = "Get" + csFunction.Substring (handleName.Length + 3);
-			else if (csFunction.EndsWith (handleName))
-				csFunction = csFunction.Substring (0, csFunction.Length - handleName.Length);
+			if (isForHandle) {
+				if (csFunction.StartsWith (handleName))
+					csFunction = csFunction.Substring (handleName.Length);
+				else if (csFunction.StartsWith ("Get" + handleName))
+					csFunction = "Get" + csFunction.Substring (handleName.Length + 3);
+				else if (csFunction.EndsWith (handleName))
+					csFunction = csFunction.Substring (0, csFunction.Length - handleName.Length);
+			}
 
-			var fixedParams = FindFixedParams (commandElement);
+			var fixedParams = FindFixedParams (commandElement, isForHandle);
 
-			IndentWrite ("public {0} {1} (", csType, csFunction);
-			var outParams = WriteHandleCommandParameters (commandElement);
+			IndentWrite ("public {0}{1} {2} (", isForHandle ? "" : "static ", csType, csFunction);
+			var outParams = WriteCommandParameters (commandElement, isForHandle);
 			WriteLine (")");
 			IndentWriteLine ("{");
 			IndentLevel++;
@@ -786,7 +792,7 @@ namespace VulkanSharp.Generator
 			}
 
 			IndentWrite ("{0}Interop.NativeMethods.{1} (", csType != "void" ? "return " : "", function);
-			WriteHandleCommandParameters (commandElement, true, fixedParams);
+			WriteCommandParameters (commandElement, isForHandle, true, fixedParams);
 			WriteLine (");");
 
 			if (fixedParams.Count > 0) {
@@ -828,11 +834,8 @@ namespace VulkanSharp.Generator
 			if (info.commands.Count > 0) {
 				WriteLine ();
 				bool written = false;
-				foreach (var element in info.commands) {
-					if (written)
-						WriteLine ();
-					written = WriteHandleCommand (element, csName);
-				}
+				foreach (var element in info.commands)
+					written = WriteCommand (element, written, true, csName);
 			}
 
 			IndentLevel--;
@@ -853,7 +856,7 @@ namespace VulkanSharp.Generator
 			"object",
 		};
 
-		void WriteCommandParameters (XElement commandElement)
+		void WriteUnmanagedCommandParameters (XElement commandElement)
 		{
 			bool first = true;
 			bool previous = false;
@@ -929,7 +932,7 @@ namespace VulkanSharp.Generator
 
 			IndentWriteLine ("[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Cdecl)]");
 			IndentWrite ("internal static unsafe extern {0} {1} (", csType, function);
-			WriteCommandParameters (commandElement);
+			WriteUnmanagedCommandParameters (commandElement);
 			WriteLine (");");
 
 			return true;
@@ -949,6 +952,33 @@ namespace VulkanSharp.Generator
 				if (written)
 					WriteLine ();
 				written = WriteUnmanagedCommand (command);
+			}
+
+			IndentLevel--;
+			IndentWriteLine ("}");
+
+			FinalizeFile ();
+		}
+
+		void GenerateRemainingCommands ()
+		{
+			CreateFile ("Commands");
+
+			IndentWriteLine ("internal static partial class Commands");
+			IndentWriteLine ("{");
+			IndentLevel++;
+
+			var handlesCommands = new HashSet<string> ();
+			foreach (var handle in handles)
+				foreach (var command in handle.Value.commands)
+					handlesCommands.Add (command.Element ("proto").Element ("name").Value);
+
+			bool written = false;
+			foreach (var command in specTree.Elements ("commands").Elements ("command")) {
+				if (handlesCommands.Contains (command.Element ("proto").Element ("name").Value))
+					continue;
+
+				written = WriteCommand (command, written);
 			}
 
 			IndentLevel--;
