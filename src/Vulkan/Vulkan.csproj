@@ -42,6 +42,7 @@
     <Compile Include="Interop\MarshalUnions.cs" />
     <Compile Include="Interop\Helpers.cs" />
     <Compile Include="Interop\ImportedCommands.cs" />
+    <Compile Include="Commands.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <PropertyGroup>
