@@ -4,17 +4,6 @@ namespace Vulkan
 {
 	internal static partial class Commands
 	{
-		public static Result CreateInstance (InstanceCreateInfo CreateInfo, AllocationCallbacks Allocator, out Instance Instance)
-		{
-			unsafe {
-				Instance = new Instance ();
-
-				fixed (IntPtr* ptrInstance = &Instance.m) {
-					return Interop.NativeMethods.vkCreateInstance (CreateInfo.m, Allocator.m, ptrInstance);
-				}
-			}
-		}
-
 		public static Result EnumerateInstanceLayerProperties (out UInt32 PropertyCount, out LayerProperties Properties)
 		{
 			unsafe {

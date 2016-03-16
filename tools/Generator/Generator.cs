@@ -729,6 +729,10 @@ namespace VulkanSharp.Generator
 			return csType;
 		}
 
+		HashSet<string> disabledCommands = new HashSet<string> {
+			"vkCreateInstance"
+		};
+
 		bool WriteCommand (XElement commandElement, bool prependNewLine, bool isForHandle = false, string handleName = null)
 		{
 			string function = commandElement.Element ("proto").Element ("name").Value;
@@ -736,7 +740,7 @@ namespace VulkanSharp.Generator
 			string csType = GetTypeCsName (type);
 
 			// todo: extensions support
-			if (disabledCommands.Contains (function))
+			if (disabledUnmanagedCommands.Contains (function) || disabledCommands.Contains (function))
 				return false;
 
 			if (prependNewLine)
@@ -903,7 +907,7 @@ namespace VulkanSharp.Generator
 			}
 		}
 
-		HashSet<string> disabledCommands = new HashSet<string> {
+		HashSet<string> disabledUnmanagedCommands = new HashSet<string> {
 			"vkGetPhysicalDeviceXcbPresentationSupportKHR",
 			"vkCreateMirSurfaceKHR",
 			"vkGetPhysicalDeviceMirPresentationSupportKHR",
@@ -923,7 +927,7 @@ namespace VulkanSharp.Generator
 			string csType = GetTypeCsName (type);
 
 			// todo: extensions support
-			if (disabledCommands.Contains (function))
+			if (disabledUnmanagedCommands.Contains (function))
 				return false;
 
 			// todo: function pointers

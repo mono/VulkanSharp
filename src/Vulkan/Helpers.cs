@@ -36,5 +36,19 @@ namespace Vulkan
 			return size.value;
 		}
 	}
+
+	public class ResultException : Exception
+	{
+		internal Result result;
+
+		public Result Result {
+			get { return result; }
+		}
+
+		internal ResultException (Result res)
+		{
+			result = res;
+		}
+	}
 }
 
