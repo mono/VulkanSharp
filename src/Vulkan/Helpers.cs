@@ -60,57 +60,61 @@ namespace Vulkan
         }
     }
 
-    public static class MarshalHeler
+    public static unsafe class MarshalHeler
     {
         public static string[] PtrUTF8ArrayToStringArray(IntPtr ptr, uint count)
         {
-            int c = (int)count;
-            string[] names = new string[count];
-            // scan ptr till we found all elements of LayerNames
-            for (int i = 0; i < c; i++)
+            string[] strings = new string[count];
+            for(int i = 0; i < count; i++)
             {
-                // Scan null termiantor for lenght
-                int lenght = 0;
-                while (Marshal.ReadByte(ptr, lenght) != 0)
-                {
-                    lenght++;
-                }
-
-                byte[] data = new byte[lenght];
-                Marshal.Copy(ptr, data, 0, lenght);
-                string name = System.Text.Encoding.UTF8.GetString(data, 0, lenght);
-                names[i] = name;
-                ptr += lenght + 1; // skipp the null terminator
+                IntPtr strPtr = Marshal.ReadIntPtr(ptr, IntPtr.Size * i);
+                strings[i] = PtrUTF8ToString(strPtr);
             }
-            return names;
+            return strings;
         }
 
         public static void StringArrayToPtrUTF8Array(string[] strings, ref IntPtr ptr, ref uint count)
         {
-            string names = string.Join("\0", strings) + "\0";
-            byte[] data = System.Text.Encoding.UTF8.GetBytes(names);
-            IntPtr newPtr = Marshal.AllocHGlobal(data.Length);
+            int l = strings.Length;
+            IntPtr array = Marshal.AllocHGlobal(IntPtr.Size * l);
+            for(int i = 0; i < l; i++)
+            {
+                Marshal.WriteIntPtr(array, i * IntPtr.Size, StringToPtrUTF8(strings[i]));
+            }
+            // TODO : free memory of ould ptr befor assining
+            // TODO : free memory of IntPtr inside array
+            count = (uint)l;
+            ptr = array;
+        }
+
+        public static string PtrUTF8ToString(IntPtr ptr)
+        {
+            int lenght = 0;
+            while (Marshal.ReadByte(ptr, lenght) != 0)
+            {
+                lenght++;
+            }
+
+            byte[] data = new byte[lenght];
+            Marshal.Copy(ptr, data, 0, lenght);
+            return System.Text.Encoding.UTF8.GetString(data, 0, lenght);            
+        }
+
+        public static IntPtr StringToPtrUTF8(string str)
+        {
+            str += "\0";
+            byte[] data = System.Text.Encoding.UTF8.GetBytes(str);
+            IntPtr ptr = Marshal.AllocHGlobal(data.Length);
             try
             {
-                Marshal.Copy(data, 0, newPtr, data.Length);
+                Marshal.Copy(data, 0, ptr, data.Length);
             }
             catch (Exception ex)
             {
-                Marshal.FreeHGlobal(newPtr);
+                Marshal.FreeHGlobal(ptr);
                 throw new Exception("Failed to copy string data to target location", ex);
             }
-            finally
-            {
-                // free old pointer 
-                if (ptr != IntPtr.Zero)
-                {
-                    Marshal.FreeHGlobal(ptr);
-                }
-
-                // set new correct values
-                count = System.Convert.ToUInt32(strings.Length);
-                ptr = newPtr;
-            }
+            return ptr;
         }
     }
 }
