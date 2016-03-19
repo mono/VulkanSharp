@@ -531,25 +531,17 @@ namespace Vulkan
 			set { lApplicationInfo = value; m->ApplicationInfo = (IntPtr) value.m; }
 		}
 
-		public UInt32 EnabledLayerCount {
-			get { return m->EnabledLayerCount; }
-			set { m->EnabledLayerCount = value; }
-		}
+        public string[] EnabledLayerNames
+        {
+            get { return MarshalHeler.PtrUTF8ArrayToStringArray(m->PEnabledLayerNames, m->EnabledLayerCount); }
+            set { MarshalHeler.StringArrayToPtrUTF8Array(value, ref m->PEnabledLayerNames, ref m->EnabledLayerCount); }
+        }
 
-		public string PEnabledLayerNames {
-			get { return Marshal.PtrToStringAnsi (m->PEnabledLayerNames); }
-			set { m->PEnabledLayerNames = Marshal.StringToHGlobalAnsi (value); }
-		}
-
-		public UInt32 EnabledExtensionCount {
-			get { return m->EnabledExtensionCount; }
-			set { m->EnabledExtensionCount = value; }
-		}
-
-		public string PEnabledExtensionNames {
-			get { return Marshal.PtrToStringAnsi (m->PEnabledExtensionNames); }
-			set { m->PEnabledExtensionNames = Marshal.StringToHGlobalAnsi (value); }
-		}
+        public string[] EnabledExtensionNames
+        {
+            get { return MarshalHeler.PtrUTF8ArrayToStringArray(m->PEnabledExtensionNames, m->EnabledExtensionCount); }
+            set { MarshalHeler.StringArrayToPtrUTF8Array(value, ref m->PEnabledExtensionNames, ref m->EnabledExtensionCount); }
+        }
 	}
 
 	unsafe public class QueueFamilyProperties
