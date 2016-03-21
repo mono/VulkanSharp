@@ -18,12 +18,19 @@ namespace VulkanSharp.Generator
 		Dictionary<string, string> typesTranslation = new Dictionary<string, string> ();
 		HashSet<string> structures = new HashSet<string> ();
 		Dictionary<string, HandleInfo> handles = new Dictionary<string,HandleInfo> ();
+		Dictionary<string, List<EnumExtensionInfo>> enumExtensions = new Dictionary<string, List<EnumExtensionInfo>> ();
 
 		class HandleInfo
 		{
 			public string name;
 			public string type;
 			public List<XElement> commands = new List<XElement> ();
+		}
+
+		class EnumExtensionInfo
+		{
+			public string name;
+			public int value;
 		}
 
 		public Generator (string filename, string outputDir)
@@ -37,6 +44,7 @@ namespace VulkanSharp.Generator
 			LoadSpecification ();
 			Directory.CreateDirectory ("Interop");
 
+			LearnExtensions ();
 			GenerateEnums ();
 			GenerateBitmasks ();
 			LearnHandles ();
@@ -140,19 +148,10 @@ namespace VulkanSharp.Generator
 			{ "KHR", "Khr" }
 		};
 
-		void WriteEnumField (XElement e, string csName)
+		void WriteEnumField (string name, string value, string csEnumName)
 		{
-			var valueAttr = e.Attribute ("value");
-			string value;
-			if (valueAttr == null) {
-				int pos = Convert.ToInt32 (e.Attribute ("bitpos").Value);
-				value = string.Format ("0x{0:X}", 1 << pos);
-			}
-			else
-				value = valueAttr.Value;
-
-			string fName = TranslateCName (e.Attribute ("name").Value);
-			string prefix = csName, suffix = null;
+			string fName = TranslateCName (name);
+			string prefix = csEnumName, suffix = null;
 
 			foreach (var ext in extensions)
 				if (prefix.EndsWith (ext.Value)) {
@@ -169,7 +168,7 @@ namespace VulkanSharp.Generator
 				fName = fName.Substring (prefix.Length);
 
 			if (!char.IsLetter (fName [0])) {
-				switch (csName) {
+				switch (csEnumName) {
 				case "ImageType":
 					fName = "Image" + fName;
 					break;
@@ -189,6 +188,28 @@ namespace VulkanSharp.Generator
 				fName = fName.Substring (0, fName.Length - suffix.Length);
 
 			IndentWriteLine ("{0} = {1},", fName, value);
+		}
+
+		void WriteEnumField (XElement e, string csEnumName)
+		{
+			var valueAttr = e.Attribute ("value");
+			string value;
+			if (valueAttr == null) {
+				int pos = Convert.ToInt32 (e.Attribute ("bitpos").Value);
+				value = string.Format ("0x{0:X}", 1 << pos);
+			}
+			else
+				value = valueAttr.Value;
+
+			WriteEnumField (e.Attribute ("name").Value, value, csEnumName);
+		}
+
+		void WriteEnumExtensions (string csEnumName)
+		{
+			if (!enumExtensions.ContainsKey (csEnumName))
+				return;
+			foreach (var info in enumExtensions [csEnumName])
+				WriteEnumField (info.name, info.value.ToString (), csEnumName);
 		}
 
 		bool WriteEnum (XElement enumElement)
@@ -227,6 +248,7 @@ namespace VulkanSharp.Generator
 
 			foreach (var e in values.Elements ("enum"))
 				WriteEnumField (e, csName);
+			WriteEnumExtensions (csName);
 
 			IndentLevel--;
 			IndentWriteLine ("}");
@@ -478,15 +500,6 @@ namespace VulkanSharp.Generator
 			"Win32SurfaceCreateInfoKhr",
 		};
 
-		HashSet<string> disabledStructureTypeEnumValues = new HashSet<string> {
-			"DisplayModeCreateInfoKhr",
-			"DisplaySurfaceCreateInfoKhr",
-			"DisplayPresentInfoKhr",
-			"SwapchainCreateInfoKhr",
-			"PresentInfoKhr",
-			"DebugReportCallbackCreateInfoExt"
-		};
-
 		bool WriteStructOrUnion (XElement structElement)
 		{
 			string name = structElement.Attribute ("name").Value;
@@ -520,8 +533,8 @@ namespace VulkanSharp.Generator
 				IndentWriteLine ("{");
 				IndentLevel++;
 				IndentWriteLine ("m = (Interop.{0}*) Interop.Structure.Allocate (typeof (Interop.{0}));", csName);
-				if (hasSType && !disabledStructureTypeEnumValues.Contains (csName) /* todo: handle extexnsions - StructureType should contain extensions values */) {
-					IndentWriteLine ("m->SType = StructureType.{0};", csName);
+				if (hasSType) {
+					IndentWriteLine ("m->SType = StructureType.{0};", csName == "DebugReportCallbackCreateInfoExt" ? "DebugReportCreateInfoExt" : csName);
 				}
 				IndentLevel--;
 				IndentWriteLine ("}\n");
@@ -989,6 +1002,33 @@ namespace VulkanSharp.Generator
 			IndentWriteLine ("}");
 
 			FinalizeFile ();
+		}
+
+		void LearnExtension (XElement extensionElement)
+		{
+			var extensions = from e in extensionElement.Element ("require").Elements ("enum") where e.Attribute ("extends") != null select e;
+			int number = Int32.Parse (extensionElement.Attribute ("number").Value);
+			foreach (var element in extensions) {
+				string enumName = GetTypeCsName (element.Attribute ("extends").Value, "enum");
+				if (!enumExtensions.ContainsKey (enumName))
+					enumExtensions [enumName] = new List<EnumExtensionInfo> ();
+
+				int direction = 1;
+				var dirAttr = element.Attribute ("dir");
+				if (dirAttr != null && dirAttr.Value == "-")
+					direction = -1;
+				int offset = Int32.Parse (element.Attribute ("offset").Value);
+				var info = new EnumExtensionInfo { name = element.Attribute ("name").Value, value = direction*(1000000000 + (number - 1)*1000 + offset) };
+				enumExtensions [enumName].Add (info);
+			}
+		}
+
+		void LearnExtensions ()
+		{
+			var elements = from e in specTree.Elements ("extensions").Elements ("extension") where e.Attribute ("supported").Value != "disabled" select e;
+
+			foreach (var element in elements)
+				LearnExtension (element);
 		}
 	}
 }
