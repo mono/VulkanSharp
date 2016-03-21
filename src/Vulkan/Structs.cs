@@ -4635,6 +4635,7 @@ namespace Vulkan
 		public DisplayModeCreateInfoKhr ()
 		{
 			m = (Interop.DisplayModeCreateInfoKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayModeCreateInfoKhr));
+			m->SType = StructureType.DisplayModeCreateInfoKhr;
 		}
 
 		public UInt32 Flags {
@@ -4719,6 +4720,7 @@ namespace Vulkan
 		public DisplaySurfaceCreateInfoKhr ()
 		{
 			m = (Interop.DisplaySurfaceCreateInfoKhr*) Interop.Structure.Allocate (typeof (Interop.DisplaySurfaceCreateInfoKhr));
+			m->SType = StructureType.DisplaySurfaceCreateInfoKhr;
 		}
 
 		public UInt32 Flags {
@@ -4771,6 +4773,7 @@ namespace Vulkan
 		public DisplayPresentInfoKhr ()
 		{
 			m = (Interop.DisplayPresentInfoKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayPresentInfoKhr));
+			m->SType = StructureType.DisplayPresentInfoKhr;
 		}
 
 		Rect2D lSrcRect;
@@ -4881,6 +4884,7 @@ namespace Vulkan
 		public SwapchainCreateInfoKhr ()
 		{
 			m = (Interop.SwapchainCreateInfoKhr*) Interop.Structure.Allocate (typeof (Interop.SwapchainCreateInfoKhr));
+			m->SType = StructureType.SwapchainCreateInfoKhr;
 		}
 
 		public UInt32 Flags {
@@ -4974,6 +4978,7 @@ namespace Vulkan
 		public PresentInfoKhr ()
 		{
 			m = (Interop.PresentInfoKhr*) Interop.Structure.Allocate (typeof (Interop.PresentInfoKhr));
+			m->SType = StructureType.PresentInfoKhr;
 		}
 
 		public UInt32 WaitSemaphoreCount {
@@ -5016,6 +5021,7 @@ namespace Vulkan
 		public DebugReportCallbackCreateInfoExt ()
 		{
 			m = (Interop.DebugReportCallbackCreateInfoExt*) Interop.Structure.Allocate (typeof (Interop.DebugReportCallbackCreateInfoExt));
+			m->SType = StructureType.DebugReportCreateInfoExt;
 		}
 
 		public DebugReportFlagsExt Flags {

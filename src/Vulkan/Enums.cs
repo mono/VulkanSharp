@@ -442,6 +442,7 @@ namespace Vulkan
 		TransferSrcOptimal = 6,
 		TransferDstOptimal = 7,
 		Preinitialized = 8,
+		PresentSrcKhr = 1000001002,
 	}
 
 	public enum ImageTiling : int
@@ -661,6 +662,12 @@ namespace Vulkan
 		ErrorIncompatibleDriver = -9,
 		ErrorTooManyObjects = -10,
 		ErrorFormatNotSupported = -11,
+		ErrorSurfaceLostKhr = -1000000000,
+		ErrorNativeWindowInUseKhr = -1000000001,
+		SuboptimalKhr = 1000001003,
+		ErrorOutOfDateKhr = -1000001004,
+		ErrorIncompatibleDisplayKhr = -1000003001,
+		ErrorValidationFailedExt = -1000011001,
 	}
 
 	[Flags]
@@ -753,6 +760,18 @@ namespace Vulkan
 		MemoryBarrier = 46,
 		LoaderInstanceCreateInfo = 47,
 		LoaderDeviceCreateInfo = 48,
+		SwapchainCreateInfoKhr = 1000001000,
+		PresentInfoKhr = 1000001001,
+		DisplayModeCreateInfoKhr = 1000002000,
+		DisplaySurfaceCreateInfoKhr = 1000002001,
+		DisplayPresentInfoKhr = 1000003000,
+		XlibSurfaceCreateInfoKhr = 1000004000,
+		XcbSurfaceCreateInfoKhr = 1000005000,
+		WaylandSurfaceCreateInfoKhr = 1000006000,
+		MirSurfaceCreateInfoKhr = 1000007000,
+		AndroidSurfaceCreateInfoKhr = 1000008000,
+		Win32SurfaceCreateInfoKhr = 1000009000,
+		DebugReportCreateInfoExt = 1000011000,
 	}
 
 	public enum SystemAllocationScope : int
