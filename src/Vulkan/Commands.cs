@@ -12,17 +12,40 @@ using System;
 
 namespace Vulkan
 {
-	internal static partial class Commands
+	/*internal*/public static partial class Commands
 	{
-		public static Result EnumerateInstanceLayerProperties (out UInt32 PropertyCount, out LayerProperties Properties)
+		public static Result EnumerateInstanceLayerProperties (out LayerProperties[] Properties)
 		{
-			unsafe {
-				fixed (UInt32* ptrPropertyCount = &PropertyCount) {
-					Properties = new LayerProperties ();
-					return Interop.NativeMethods.vkEnumerateInstanceLayerProperties (ptrPropertyCount, Properties.m);
-				}
-			}
-		}
+            Result result;
+            uint propertyCount = 0;
+
+            unsafe
+            {
+                UInt32* ptrPropertyCount = &propertyCount;
+                LayerProperties tmp = new LayerProperties();
+                // First call get the count of layers
+                result = Interop.NativeMethods.vkEnumerateInstanceLayerProperties(ptrPropertyCount, tmp.m);
+
+                if (result != Result.Success)
+                {
+                    Properties = null;
+                    return result;
+                }
+
+                if(propertyCount <= 0)
+                {
+                    Properties = new LayerProperties[0];
+                    return result;
+                }
+
+                Properties = MarshalHelper.CreateArray<LayerProperties>(propertyCount, LayerProperties.SizeOf, (ptr) => { return new LayerProperties(ptr); });
+                
+                // TODO : this is not tested as i get 0 as layer count
+                result = Interop.NativeMethods.vkEnumerateInstanceLayerProperties(ptrPropertyCount, Properties[0].m);
+
+                return result;
+            }
+        }
 
 		public static Result EnumerateInstanceExtensionProperties (string pLayerName, out UInt32 PropertyCount, out ExtensionProperties Properties)
 		{

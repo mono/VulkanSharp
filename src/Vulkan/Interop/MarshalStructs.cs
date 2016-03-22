@@ -9,10 +9,11 @@
 */
 
 using System;
+using System.Runtime.InteropServices;
 
 namespace Vulkan.Interop
 {
-	internal struct Offset2D
+    internal struct Offset2D
 	{
 		internal Int32 X;
 		internal Int32 Y;
@@ -94,12 +95,21 @@ namespace Vulkan.Interop
 		internal UInt32 SpecVersion;
 	}
 
-	internal struct LayerProperties
+    internal unsafe struct LayerProperties
 	{
-		internal char LayerName;
-		internal UInt32 SpecVersion;
+        // TODO : Generate this
+        public const int SizeOf = 8 + VK_MAX_EXTENSION_NAME_SIZE + VK_MAX_DESCRIPTION_SIZE;
+
+        // TODO : get this in the generator enums -> API Constants
+        public const int VK_MAX_EXTENSION_NAME_SIZE = 256;
+        public const int VK_MAX_DESCRIPTION_SIZE = 256;
+        
+        // TODO : UPdate generator to emit this
+        internal fixed byte LayerName[VK_MAX_EXTENSION_NAME_SIZE];
+        internal UInt32 SpecVersion;
 		internal UInt32 ImplementationVersion;
-		internal char Description;
+        internal fixed byte Description[VK_MAX_DESCRIPTION_SIZE];
+
 	}
 
 	internal struct ApplicationInfo

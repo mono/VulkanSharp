@@ -13,325 +13,332 @@ using System.Runtime.InteropServices;
 
 namespace Vulkan
 {
-	unsafe public class Offset2D
-	{
-		internal Interop.Offset2D* m;
+    unsafe public class Offset2D
+    {
+        internal Interop.Offset2D* m;
 
-		public Offset2D ()
-		{
-			m = (Interop.Offset2D*) Interop.Structure.Allocate (typeof (Interop.Offset2D));
-		}
+        public Offset2D()
+        {
+            m = (Interop.Offset2D*)Interop.Structure.Allocate(typeof(Interop.Offset2D));
+        }
 
-		public Int32 X {
-			get { return m->X; }
-			set { m->X = value; }
-		}
+        public Int32 X {
+            get { return m->X; }
+            set { m->X = value; }
+        }
 
-		public Int32 Y {
-			get { return m->Y; }
-			set { m->Y = value; }
-		}
-	}
+        public Int32 Y {
+            get { return m->Y; }
+            set { m->Y = value; }
+        }
+    }
 
-	unsafe public class Offset3D
-	{
-		internal Interop.Offset3D* m;
+    unsafe public class Offset3D
+    {
+        internal Interop.Offset3D* m;
 
-		public Offset3D ()
-		{
-			m = (Interop.Offset3D*) Interop.Structure.Allocate (typeof (Interop.Offset3D));
-		}
+        public Offset3D()
+        {
+            m = (Interop.Offset3D*)Interop.Structure.Allocate(typeof(Interop.Offset3D));
+        }
 
-		public Int32 X {
-			get { return m->X; }
-			set { m->X = value; }
-		}
+        public Int32 X {
+            get { return m->X; }
+            set { m->X = value; }
+        }
 
-		public Int32 Y {
-			get { return m->Y; }
-			set { m->Y = value; }
-		}
+        public Int32 Y {
+            get { return m->Y; }
+            set { m->Y = value; }
+        }
 
-		public Int32 Z {
-			get { return m->Z; }
-			set { m->Z = value; }
-		}
-	}
+        public Int32 Z {
+            get { return m->Z; }
+            set { m->Z = value; }
+        }
+    }
 
-	unsafe public class Extent2D
-	{
-		internal Interop.Extent2D* m;
+    unsafe public class Extent2D
+    {
+        internal Interop.Extent2D* m;
 
-		public Extent2D ()
-		{
-			m = (Interop.Extent2D*) Interop.Structure.Allocate (typeof (Interop.Extent2D));
-		}
+        public Extent2D()
+        {
+            m = (Interop.Extent2D*)Interop.Structure.Allocate(typeof(Interop.Extent2D));
+        }
 
-		public UInt32 Width {
-			get { return m->Width; }
-			set { m->Width = value; }
-		}
+        public UInt32 Width {
+            get { return m->Width; }
+            set { m->Width = value; }
+        }
 
-		public UInt32 Height {
-			get { return m->Height; }
-			set { m->Height = value; }
-		}
-	}
+        public UInt32 Height {
+            get { return m->Height; }
+            set { m->Height = value; }
+        }
+    }
 
-	unsafe public class Extent3D
-	{
-		internal Interop.Extent3D* m;
+    unsafe public class Extent3D
+    {
+        internal Interop.Extent3D* m;
 
-		public Extent3D ()
-		{
-			m = (Interop.Extent3D*) Interop.Structure.Allocate (typeof (Interop.Extent3D));
-		}
+        public Extent3D()
+        {
+            m = (Interop.Extent3D*)Interop.Structure.Allocate(typeof(Interop.Extent3D));
+        }
 
-		public UInt32 Width {
-			get { return m->Width; }
-			set { m->Width = value; }
-		}
+        public UInt32 Width {
+            get { return m->Width; }
+            set { m->Width = value; }
+        }
 
-		public UInt32 Height {
-			get { return m->Height; }
-			set { m->Height = value; }
-		}
+        public UInt32 Height {
+            get { return m->Height; }
+            set { m->Height = value; }
+        }
 
-		public UInt32 Depth {
-			get { return m->Depth; }
-			set { m->Depth = value; }
-		}
-	}
+        public UInt32 Depth {
+            get { return m->Depth; }
+            set { m->Depth = value; }
+        }
+    }
 
-	unsafe public class Viewport
-	{
-		internal Interop.Viewport* m;
+    unsafe public class Viewport
+    {
+        internal Interop.Viewport* m;
 
-		public Viewport ()
-		{
-			m = (Interop.Viewport*) Interop.Structure.Allocate (typeof (Interop.Viewport));
-		}
+        public Viewport()
+        {
+            m = (Interop.Viewport*)Interop.Structure.Allocate(typeof(Interop.Viewport));
+        }
 
-		public float X {
-			get { return m->X; }
-			set { m->X = value; }
-		}
+        public float X {
+            get { return m->X; }
+            set { m->X = value; }
+        }
 
-		public float Y {
-			get { return m->Y; }
-			set { m->Y = value; }
-		}
+        public float Y {
+            get { return m->Y; }
+            set { m->Y = value; }
+        }
 
-		public float Width {
-			get { return m->Width; }
-			set { m->Width = value; }
-		}
+        public float Width {
+            get { return m->Width; }
+            set { m->Width = value; }
+        }
 
-		public float Height {
-			get { return m->Height; }
-			set { m->Height = value; }
-		}
+        public float Height {
+            get { return m->Height; }
+            set { m->Height = value; }
+        }
 
-		public float MinDepth {
-			get { return m->MinDepth; }
-			set { m->MinDepth = value; }
-		}
+        public float MinDepth {
+            get { return m->MinDepth; }
+            set { m->MinDepth = value; }
+        }
 
-		public float MaxDepth {
-			get { return m->MaxDepth; }
-			set { m->MaxDepth = value; }
-		}
-	}
+        public float MaxDepth {
+            get { return m->MaxDepth; }
+            set { m->MaxDepth = value; }
+        }
+    }
 
-	unsafe public class Rect2D
-	{
-		internal Interop.Rect2D* m;
+    unsafe public class Rect2D
+    {
+        internal Interop.Rect2D* m;
 
-		public Rect2D ()
-		{
-			m = (Interop.Rect2D*) Interop.Structure.Allocate (typeof (Interop.Rect2D));
-		}
+        public Rect2D()
+        {
+            m = (Interop.Rect2D*)Interop.Structure.Allocate(typeof(Interop.Rect2D));
+        }
 
-		Offset2D lOffset;
-		public Offset2D Offset {
-			get { return lOffset; }
-			set { lOffset = value; m->Offset = (IntPtr) value.m; }
-		}
+        Offset2D lOffset;
+        public Offset2D Offset {
+            get { return lOffset; }
+            set { lOffset = value; m->Offset = (IntPtr)value.m; }
+        }
 
-		Extent2D lExtent;
-		public Extent2D Extent {
-			get { return lExtent; }
-			set { lExtent = value; m->Extent = (IntPtr) value.m; }
-		}
-	}
+        Extent2D lExtent;
+        public Extent2D Extent {
+            get { return lExtent; }
+            set { lExtent = value; m->Extent = (IntPtr)value.m; }
+        }
+    }
 
-	unsafe public class Rect3D
-	{
-		internal Interop.Rect3D* m;
+    unsafe public class Rect3D
+    {
+        internal Interop.Rect3D* m;
 
-		public Rect3D ()
-		{
-			m = (Interop.Rect3D*) Interop.Structure.Allocate (typeof (Interop.Rect3D));
-		}
+        public Rect3D()
+        {
+            m = (Interop.Rect3D*)Interop.Structure.Allocate(typeof(Interop.Rect3D));
+        }
 
-		Offset3D lOffset;
-		public Offset3D Offset {
-			get { return lOffset; }
-			set { lOffset = value; m->Offset = (IntPtr) value.m; }
-		}
+        Offset3D lOffset;
+        public Offset3D Offset {
+            get { return lOffset; }
+            set { lOffset = value; m->Offset = (IntPtr)value.m; }
+        }
 
-		Extent3D lExtent;
-		public Extent3D Extent {
-			get { return lExtent; }
-			set { lExtent = value; m->Extent = (IntPtr) value.m; }
-		}
-	}
+        Extent3D lExtent;
+        public Extent3D Extent {
+            get { return lExtent; }
+            set { lExtent = value; m->Extent = (IntPtr)value.m; }
+        }
+    }
 
-	unsafe public class ClearRect
-	{
-		internal Interop.ClearRect* m;
+    unsafe public class ClearRect
+    {
+        internal Interop.ClearRect* m;
 
-		public ClearRect ()
-		{
-			m = (Interop.ClearRect*) Interop.Structure.Allocate (typeof (Interop.ClearRect));
-		}
+        public ClearRect()
+        {
+            m = (Interop.ClearRect*)Interop.Structure.Allocate(typeof(Interop.ClearRect));
+        }
 
-		Rect2D lRect;
-		public Rect2D Rect {
-			get { return lRect; }
-			set { lRect = value; m->Rect = (IntPtr) value.m; }
-		}
+        Rect2D lRect;
+        public Rect2D Rect {
+            get { return lRect; }
+            set { lRect = value; m->Rect = (IntPtr)value.m; }
+        }
 
-		public UInt32 BaseArrayLayer {
-			get { return m->BaseArrayLayer; }
-			set { m->BaseArrayLayer = value; }
-		}
+        public UInt32 BaseArrayLayer {
+            get { return m->BaseArrayLayer; }
+            set { m->BaseArrayLayer = value; }
+        }
 
-		public UInt32 LayerCount {
-			get { return m->LayerCount; }
-			set { m->LayerCount = value; }
-		}
-	}
+        public UInt32 LayerCount {
+            get { return m->LayerCount; }
+            set { m->LayerCount = value; }
+        }
+    }
 
-	unsafe public class ComponentMapping
-	{
-		internal Interop.ComponentMapping* m;
+    unsafe public class ComponentMapping
+    {
+        internal Interop.ComponentMapping* m;
 
-		public ComponentMapping ()
-		{
-			m = (Interop.ComponentMapping*) Interop.Structure.Allocate (typeof (Interop.ComponentMapping));
-		}
+        public ComponentMapping()
+        {
+            m = (Interop.ComponentMapping*)Interop.Structure.Allocate(typeof(Interop.ComponentMapping));
+        }
 
-		public ComponentSwizzle R {
-			get { return m->R; }
-			set { m->R = value; }
-		}
+        public ComponentSwizzle R {
+            get { return m->R; }
+            set { m->R = value; }
+        }
 
-		public ComponentSwizzle G {
-			get { return m->G; }
-			set { m->G = value; }
-		}
+        public ComponentSwizzle G {
+            get { return m->G; }
+            set { m->G = value; }
+        }
 
-		public ComponentSwizzle B {
-			get { return m->B; }
-			set { m->B = value; }
-		}
+        public ComponentSwizzle B {
+            get { return m->B; }
+            set { m->B = value; }
+        }
 
-		public ComponentSwizzle A {
-			get { return m->A; }
-			set { m->A = value; }
-		}
-	}
+        public ComponentSwizzle A {
+            get { return m->A; }
+            set { m->A = value; }
+        }
+    }
 
-	unsafe public class PhysicalDeviceProperties
-	{
-		internal Interop.PhysicalDeviceProperties* m;
+    unsafe public class PhysicalDeviceProperties
+    {
+        internal Interop.PhysicalDeviceProperties* m;
 
-		public PhysicalDeviceProperties ()
-		{
-			m = (Interop.PhysicalDeviceProperties*) Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceProperties));
-		}
+        public PhysicalDeviceProperties()
+        {
+            m = (Interop.PhysicalDeviceProperties*)Interop.Structure.Allocate(typeof(Interop.PhysicalDeviceProperties));
+        }
 
-		public UInt32 ApiVersion {
-			get { return m->ApiVersion; }
-			set { m->ApiVersion = value; }
-		}
+        public UInt32 ApiVersion {
+            get { return m->ApiVersion; }
+            set { m->ApiVersion = value; }
+        }
 
-		public UInt32 DriverVersion {
-			get { return m->DriverVersion; }
-			set { m->DriverVersion = value; }
-		}
+        public UInt32 DriverVersion {
+            get { return m->DriverVersion; }
+            set { m->DriverVersion = value; }
+        }
 
-		public UInt32 VendorID {
-			get { return m->VendorID; }
-			set { m->VendorID = value; }
-		}
+        public UInt32 VendorID {
+            get { return m->VendorID; }
+            set { m->VendorID = value; }
+        }
 
-		public UInt32 DeviceID {
-			get { return m->DeviceID; }
-			set { m->DeviceID = value; }
-		}
+        public UInt32 DeviceID {
+            get { return m->DeviceID; }
+            set { m->DeviceID = value; }
+        }
 
-		public PhysicalDeviceType DeviceType {
-			get { return m->DeviceType; }
-			set { m->DeviceType = value; }
-		}
+        public PhysicalDeviceType DeviceType {
+            get { return m->DeviceType; }
+            set { m->DeviceType = value; }
+        }
 
-		public char DeviceName {
-			get { return m->DeviceName; }
-			set { m->DeviceName = value; }
-		}
+        public char DeviceName {
+            get { return m->DeviceName; }
+            set { m->DeviceName = value; }
+        }
 
-		public Byte PipelineCacheUUID {
-			get { return m->PipelineCacheUUID; }
-			set { m->PipelineCacheUUID = value; }
-		}
+        public Byte PipelineCacheUUID {
+            get { return m->PipelineCacheUUID; }
+            set { m->PipelineCacheUUID = value; }
+        }
 
-		PhysicalDeviceLimits lLimits;
-		public PhysicalDeviceLimits Limits {
-			get { return lLimits; }
-			set { lLimits = value; m->Limits = (IntPtr) value.m; }
-		}
+        PhysicalDeviceLimits lLimits;
+        public PhysicalDeviceLimits Limits {
+            get { return lLimits; }
+            set { lLimits = value; m->Limits = (IntPtr)value.m; }
+        }
 
-		PhysicalDeviceSparseProperties lSparseProperties;
-		public PhysicalDeviceSparseProperties SparseProperties {
-			get { return lSparseProperties; }
-			set { lSparseProperties = value; m->SparseProperties = (IntPtr) value.m; }
-		}
-	}
+        PhysicalDeviceSparseProperties lSparseProperties;
+        public PhysicalDeviceSparseProperties SparseProperties {
+            get { return lSparseProperties; }
+            set { lSparseProperties = value; m->SparseProperties = (IntPtr)value.m; }
+        }
+    }
 
-	unsafe public class ExtensionProperties
-	{
-		internal Interop.ExtensionProperties* m;
+    unsafe public class ExtensionProperties
+    {
+        internal Interop.ExtensionProperties* m;
 
-		public ExtensionProperties ()
-		{
-			m = (Interop.ExtensionProperties*) Interop.Structure.Allocate (typeof (Interop.ExtensionProperties));
-		}
+        public ExtensionProperties()
+        {
+            m = (Interop.ExtensionProperties*)Interop.Structure.Allocate(typeof(Interop.ExtensionProperties));
+        }
 
-		public char ExtensionName {
-			get { return m->ExtensionName; }
-			set { m->ExtensionName = value; }
-		}
+        public char ExtensionName {
+            get { return m->ExtensionName; }
+            set { m->ExtensionName = value; }
+        }
 
-		public UInt32 SpecVersion {
-			get { return m->SpecVersion; }
-			set { m->SpecVersion = value; }
-		}
-	}
+        public UInt32 SpecVersion {
+            get { return m->SpecVersion; }
+            set { m->SpecVersion = value; }
+        }
+    }
 
-	unsafe public class LayerProperties
-	{
-		internal Interop.LayerProperties* m;
+    unsafe public class LayerProperties
+    {
+        public const int SizeOf = 8 + Interop.LayerProperties.VK_MAX_EXTENSION_NAME_SIZE + Interop.LayerProperties.VK_MAX_EXTENSION_NAME_SIZE;
+
+        internal Interop.LayerProperties* m;
 
 		public LayerProperties ()
 		{
 			m = (Interop.LayerProperties*) Interop.Structure.Allocate (typeof (Interop.LayerProperties));
 		}
 
-		public char LayerName {
-			get { return m->LayerName; }
-			set { m->LayerName = value; }
+        internal LayerProperties(IntPtr ptr)
+        {
+            m = (Interop.LayerProperties*)ptr;
+        }
+
+        public string LayerName {
+			get { return MarshalHelper.FixedTextToString(m->LayerName, Interop.LayerProperties.VK_MAX_EXTENSION_NAME_SIZE); }
+			set { MarshalHelper.StringToFixedText(value, m->LayerName, Interop.LayerProperties.VK_MAX_EXTENSION_NAME_SIZE); }
 		}
 
 		public UInt32 SpecVersion {
@@ -344,10 +351,10 @@ namespace Vulkan
 			set { m->ImplementationVersion = value; }
 		}
 
-		public char Description {
-			get { return m->Description; }
-			set { m->Description = value; }
-		}
+		public string Description {
+            get { return MarshalHelper.FixedTextToString(m->Description, Interop.LayerProperties.VK_MAX_DESCRIPTION_SIZE); }
+            set { MarshalHelper.StringToFixedText(value, m->Description, Interop.LayerProperties.VK_MAX_DESCRIPTION_SIZE); }
+        }
 	}
 
 	unsafe public class ApplicationInfo
@@ -533,14 +540,14 @@ namespace Vulkan
 
         public string[] EnabledLayerNames
         {
-            get { return MarshalHeler.PtrUTF8ArrayToStringArray(m->PEnabledLayerNames, m->EnabledLayerCount); }
-            set { MarshalHeler.StringArrayToPtrUTF8Array(value, ref m->PEnabledLayerNames, ref m->EnabledLayerCount); }
+            get { return MarshalHelper.PtrUTF8ArrayToStringArray(m->PEnabledLayerNames, m->EnabledLayerCount); }
+            set { MarshalHelper.StringArrayToPtrUTF8Array(value, ref m->PEnabledLayerNames, ref m->EnabledLayerCount); }
         }
 
         public string[] EnabledExtensionNames
         {
-            get { return MarshalHeler.PtrUTF8ArrayToStringArray(m->PEnabledExtensionNames, m->EnabledExtensionCount); }
-            set { MarshalHeler.StringArrayToPtrUTF8Array(value, ref m->PEnabledExtensionNames, ref m->EnabledExtensionCount); }
+            get { return MarshalHelper.PtrUTF8ArrayToStringArray(m->PEnabledExtensionNames, m->EnabledExtensionCount); }
+            set { MarshalHelper.StringArrayToPtrUTF8Array(value, ref m->PEnabledExtensionNames, ref m->EnabledExtensionCount); }
         }
 	}
 
