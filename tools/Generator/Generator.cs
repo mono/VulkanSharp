@@ -731,20 +731,27 @@ namespace VulkanSharp.Generator
 				if (passToNative) {
 					bool isFixed = fixedParams != null &&  fixedParams.ContainsKey (name);
 					string paramName = isFixed ? "ptr" + name : name;
+					bool useHandlePtr = !isFixed && (isStruct || isHandle);
 
 					if (isOptionalParam && isPointer && !isOut)
 					{
-						Write ("{0} != null ? {0}{1} : null", keywords.Contains (paramName) ? "@" + paramName : paramName, (!isFixed && (isStruct || isHandle)) ? ".m" : "");
+						Write ("{0} != null ? {0}{1} : null", GetSafeParameterName(paramName), useHandlePtr ? ".m" : "");
 					}
 					else
 					{
-						Write ("{0}{1}{2}", (isPointer && !isStruct && !isFixed) ? "&" : "", keywords.Contains (paramName) ? "@" + paramName : paramName, (!isFixed && (isStruct || isHandle)) ? ".m" : "");
+						Write ("{0}{1}{2}", (isPointer && !isStruct && !isFixed) ? "&" : "", GetSafeParameterName(paramName), useHandlePtr ? ".m" : "");
 					}
 				} else
 					Write ("{0}{1} {2}", isOut ? "out " : "", csType, keywords.Contains (name) ? "@" + name : name);
 			}
 
 			return outParams;
+		}
+		
+		string GetSafeParameterName(string paramName)
+		{
+			// if paramName is a reserved name
+			return keywords.Contains (paramName) ? "@" + paramName : paramName;
 		}
 
 		string GetManagedHandleType (string handleType)
