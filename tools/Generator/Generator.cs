@@ -691,6 +691,10 @@ namespace VulkanSharp.Generator
 				string name = param.Element ("name").Value;
 				string csType = GetTypeCsName (type);
 
+				var optional = param.Attribute ("optional");
+
+				bool isOptionalParam = (optional != null && optional.Value == "true");
+
 				bool isPointer = param.Value.Contains (type + "*");
 				bool isDoublePointer = param.Value.Contains (type + "**");
 				bool isConst = false;
@@ -728,7 +732,14 @@ namespace VulkanSharp.Generator
 					bool isFixed = fixedParams != null &&  fixedParams.ContainsKey (name);
 					string paramName = isFixed ? "ptr" + name : name;
 
-					Write ("{0}{1}{2}", (isPointer && !isStruct && !isFixed) ? "&" : "", keywords.Contains (paramName) ? "@" + paramName : paramName, (!isFixed && (isStruct || isHandle)) ? ".m" : "");
+					if (isOptionalParam && isPointer && !isOut)
+					{
+						Write ("{0} != null ? {0}{1} : null", keywords.Contains (paramName) ? "@" + paramName : paramName, (!isFixed && (isStruct || isHandle)) ? ".m" : "");
+					}
+					else
+					{
+						Write ("{0}{1}{2}", (isPointer && !isStruct && !isFixed) ? "&" : "", keywords.Contains (paramName) ? "@" + paramName : paramName, (!isFixed && (isStruct || isHandle)) ? ".m" : "");
+					}
 				} else
 					Write ("{0}{1} {2}", isOut ? "out " : "", csType, keywords.Contains (name) ? "@" + name : name);
 			}
