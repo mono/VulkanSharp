@@ -962,7 +962,7 @@ namespace VulkanSharp.Generator
 			if (csType.StartsWith ("PFN_"))
 				csType = "IntPtr";
 
-			IndentWriteLine ("[DllImport (VulkanLibrary, CallingConvention = VkCallingConvention)]");
+			IndentWriteLine ("[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Cdecl)]");
 			IndentWrite ("internal static unsafe extern {0} {1} (", csType, function);
 			WriteUnmanagedCommandParameters (commandElement);
 			WriteLine (");");
@@ -978,18 +978,6 @@ namespace VulkanSharp.Generator
 			IndentWriteLine ("{");
 			IndentLevel++;
 			IndentWriteLine ("const string VulkanLibrary = \"vulkan\";\n");
-
-			IndentLevel--;
-			IndentWriteLine ("#if USE_STDCALL");
-			IndentLevel++;
-			IndentWriteLine ("const CallingConvention VkCallingConvention = CallingConvention.StdCall;");
-			IndentLevel--;
-			IndentWriteLine ("#else");
-			IndentLevel++;
-			IndentWriteLine ("const CallingConvention VkCallingConvention = CallingConvention.Cdecl;");
-			IndentLevel--;
-			IndentWriteLine ("#endif\n");
-			IndentLevel++;
 
 			bool written = false;
 			foreach (var command in specTree.Elements ("commands").Elements ("command")) {
