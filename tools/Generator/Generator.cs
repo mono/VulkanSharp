@@ -962,7 +962,7 @@ namespace VulkanSharp.Generator
 			if (csType.StartsWith ("PFN_"))
 				csType = "IntPtr";
 
-			IndentWriteLine ("[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Cdecl)]");
+			IndentWriteLine ("[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]");
 			IndentWrite ("internal static unsafe extern {0} {1} (", csType, function);
 			WriteUnmanagedCommandParameters (commandElement);
 			WriteLine (");");
