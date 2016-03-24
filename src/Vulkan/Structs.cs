@@ -5031,7 +5031,7 @@ namespace Vulkan
 		public DebugReportCallbackCreateInfoExt ()
 		{
 			m = (Interop.DebugReportCallbackCreateInfoExt*) Interop.Structure.Allocate (typeof (Interop.DebugReportCallbackCreateInfoExt));
-			m->SType = StructureType.DebugReportCreateInfoExt;
+			m->SType = StructureType.DebugReportCallbackCreateInfoExt;
 		}
 
 		public DebugReportFlagsExt Flags {

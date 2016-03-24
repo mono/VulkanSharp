@@ -165,7 +165,7 @@ namespace Vulkan
 		None = 0,
 		Front = 0x1,
 		Back = 0x2,
-		FrontAndBack = 0x3,
+		FrontAndBack = 0x00000003,
 	}
 
 	public enum DescriptorType : int
@@ -414,6 +414,7 @@ namespace Vulkan
 		BlitSrc = 0x400,
 		BlitDst = 0x800,
 		SampledImageFilterLinear = 0x1000,
+		SampledImageFilterCubicImg = 0x2000,
 	}
 
 	public enum FrontFace : int
@@ -678,6 +679,7 @@ namespace Vulkan
 		ErrorOutOfDateKhr = -1000001004,
 		ErrorIncompatibleDisplayKhr = -1000003001,
 		ErrorValidationFailedExt = -1000011001,
+		ErrorInvalidShaderNv = -1000012000,
 	}
 
 	[Flags]
@@ -689,7 +691,7 @@ namespace Vulkan
 		Geometry = 0x8,
 		Fragment = 0x10,
 		Compute = 0x20,
-		AllGraphics = 0x1F,
+		AllGraphics = 0x0000001F,
 		All = 0x7FFFFFFF,
 	}
 
@@ -704,7 +706,7 @@ namespace Vulkan
 	{
 		Front = 0x1,
 		Back = 0x2,
-		StencilFrontAndBack = 0x3,
+		StencilFrontAndBack = 0x00000003,
 	}
 
 	public enum StencilOp : int
@@ -781,7 +783,7 @@ namespace Vulkan
 		MirSurfaceCreateInfoKhr = 1000007000,
 		AndroidSurfaceCreateInfoKhr = 1000008000,
 		Win32SurfaceCreateInfoKhr = 1000009000,
-		DebugReportCreateInfoExt = 1000011000,
+		DebugReportCallbackCreateInfoExt = 1000011000,
 	}
 
 	public enum SystemAllocationScope : int
@@ -811,6 +813,7 @@ namespace Vulkan
 	{
 		Nearest = 0,
 		Linear = 1,
+		CubicImg = 1000015000,
 	}
 
 	public enum SamplerMipmapMode : int
