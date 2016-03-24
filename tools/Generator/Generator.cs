@@ -30,7 +30,7 @@ namespace VulkanSharp.Generator
 		class EnumExtensionInfo
 		{
 			public string name;
-			public int value;
+			public string value;
 		}
 
 		public Generator (string filename, string outputDir)
@@ -145,6 +145,7 @@ namespace VulkanSharp.Generator
 
 		static Dictionary<string, string> extensions = new Dictionary<string, string> {
 			{ "EXT", "Ext" },
+			{ "IMG", "Img" },
 			{ "KHR", "Khr" }
 		};
 
@@ -152,12 +153,18 @@ namespace VulkanSharp.Generator
 		{
 			string fName = TranslateCName (name);
 			string prefix = csEnumName, suffix = null;
+			bool isExtensionField = false;
+			string extension = null;
 
-			foreach (var ext in extensions)
+			foreach (var ext in extensions) {
 				if (prefix.EndsWith (ext.Value)) {
 					prefix = prefix.Substring (0, prefix.Length - ext.Value.Length);
 					suffix = ext.Value;
+				} else if (fName.EndsWith (ext.Value)) {
+					isExtensionField = true;
+					extension = ext.Value;
 				}
+			}
 
 			if (prefix.EndsWith ("Flags")) {
 				prefix = prefix.Substring (0, prefix.Length - 5);
@@ -183,21 +190,26 @@ namespace VulkanSharp.Generator
 					break;
 				}
 			}
-
-			if (suffix != null && fName.EndsWith (suffix))
-				fName = fName.Substring (0, fName.Length - suffix.Length);
-
+			if (suffix != null) {
+				if (fName.EndsWith (suffix))
+					fName = fName.Substring (0, fName.Length - suffix.Length);
+				else if (isExtensionField && fName.EndsWith (suffix + extension))
+					fName = fName.Substring (0, fName.Length - suffix.Length - extension.Length) + extension;
+			}
 			IndentWriteLine ("{0} = {1},", fName, value);
+		}
+
+		string FormatFlagValue (int pos)
+		{
+			return string.Format ("0x{0:X}", 1 << pos);
 		}
 
 		void WriteEnumField (XElement e, string csEnumName)
 		{
 			var valueAttr = e.Attribute ("value");
 			string value;
-			if (valueAttr == null) {
-				int pos = Convert.ToInt32 (e.Attribute ("bitpos").Value);
-				value = string.Format ("0x{0:X}", 1 << pos);
-			}
+			if (valueAttr == null)
+				value = FormatFlagValue (Convert.ToInt32 (e.Attribute ("bitpos").Value));
 			else
 				value = valueAttr.Value;
 
@@ -1031,7 +1043,7 @@ namespace VulkanSharp.Generator
 			FinalizeFile ();
 		}
 
-		int EnumExtensionValue (XElement element, int number)
+		string EnumExtensionValue (XElement element, int number, ref string csEnumName)
 		{
 			var offsetAttribute = element.Attribute ("offset");
 			if (offsetAttribute != null) {
@@ -1041,15 +1053,19 @@ namespace VulkanSharp.Generator
 					direction = -1;
 				int offset = Int32.Parse (offsetAttribute.Value);
 
-				return direction*(1000000000 + (number - 1)*1000 + offset);
+				return (direction*(1000000000 + (number - 1)*1000 + offset)).ToString ();
 			}
 			var valueAttribute = element.Attribute ("value");
 			if (valueAttribute != null)
-				return Int32.Parse (valueAttribute.Value);
+				return valueAttribute.Value;
 
 			var bitposAttribute = element.Attribute ("bitpos");
-			if (bitposAttribute != null)
-				return Int32.Parse (bitposAttribute.Value);
+			if (bitposAttribute != null) {
+				if (csEnumName.EndsWith ("FlagBits"))
+					csEnumName = csEnumName.Substring (0, csEnumName.Length - 4) + "s";
+
+				return FormatFlagValue (Int32.Parse (bitposAttribute.Value));
+			}
 
 			throw new Exception (string.Format ("unexpected extension enum value in: {0}", element));
 		}
@@ -1060,10 +1076,10 @@ namespace VulkanSharp.Generator
 			int number = Int32.Parse (extensionElement.Attribute ("number").Value);
 			foreach (var element in extensions) {
 				string enumName = GetTypeCsName (element.Attribute ("extends").Value, "enum");
+				var info = new EnumExtensionInfo { name = element.Attribute ("name").Value, value = EnumExtensionValue (element, number, ref enumName) };
 				if (!enumExtensions.ContainsKey (enumName))
 					enumExtensions [enumName] = new List<EnumExtensionInfo> ();
 
-				var info = new EnumExtensionInfo { name = element.Attribute ("name").Value, value = EnumExtensionValue (element, number) };
 				enumExtensions [enumName].Add (info);
 			}
 		}
