@@ -549,7 +549,7 @@ namespace VulkanSharp.Generator
 				IndentLevel++;
 				IndentWriteLine ("m = (Interop.{0}*) Interop.Structure.Allocate (typeof (Interop.{0}));", csName);
 				if (hasSType) {
-					IndentWriteLine ("m->SType = StructureType.{0};", csName == "DebugReportCallbackCreateInfoExt" ? "DebugReportCreateInfoExt" : csName);
+					IndentWriteLine ("m->SType = StructureType.{0};", csName);
 				}
 				IndentLevel--;
 				IndentWriteLine ("}\n");
@@ -1031,6 +1031,29 @@ namespace VulkanSharp.Generator
 			FinalizeFile ();
 		}
 
+		int EnumExtensionValue (XElement element, int number)
+		{
+			var offsetAttribute = element.Attribute ("offset");
+			if (offsetAttribute != null) {
+				int direction = 1;
+				var dirAttr = element.Attribute ("dir");
+				if (dirAttr != null && dirAttr.Value == "-")
+					direction = -1;
+				int offset = Int32.Parse (offsetAttribute.Value);
+
+				return direction*(1000000000 + (number - 1)*1000 + offset);
+			}
+			var valueAttribute = element.Attribute ("value");
+			if (valueAttribute != null)
+				return Int32.Parse (valueAttribute.Value);
+
+			var bitposAttribute = element.Attribute ("bitpos");
+			if (bitposAttribute != null)
+				return Int32.Parse (bitposAttribute.Value);
+
+			throw new Exception (string.Format ("unexpected extension enum value in: {0}", element));
+		}
+
 		void LearnExtension (XElement extensionElement)
 		{
 			var extensions = from e in extensionElement.Element ("require").Elements ("enum") where e.Attribute ("extends") != null select e;
@@ -1040,12 +1063,7 @@ namespace VulkanSharp.Generator
 				if (!enumExtensions.ContainsKey (enumName))
 					enumExtensions [enumName] = new List<EnumExtensionInfo> ();
 
-				int direction = 1;
-				var dirAttr = element.Attribute ("dir");
-				if (dirAttr != null && dirAttr.Value == "-")
-					direction = -1;
-				int offset = Int32.Parse (element.Attribute ("offset").Value);
-				var info = new EnumExtensionInfo { name = element.Attribute ("name").Value, value = direction*(1000000000 + (number - 1)*1000 + offset) };
+				var info = new EnumExtensionInfo { name = element.Attribute ("name").Value, value = EnumExtensionValue (element, number) };
 				enumExtensions [enumName].Add (info);
 			}
 		}
