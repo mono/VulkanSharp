@@ -53,7 +53,7 @@
     </BuildDependsOn>
   </PropertyGroup>
   <PropertyGroup>
-    <Runtime Condition="'$(OS)' != 'Windows_NT'">mono</Runtime>
+    <Runtime Condition="'$(OS)' != 'Windows_NT'">mono --debug</Runtime>
   </PropertyGroup>
   <Target Name="BuildGeneratedSource" Inputs="$(OutputPath)\Generator.exe" Outputs="Vulkan\Enums.cs">
     <MakeDir Directories="$(OutputPath)" />
