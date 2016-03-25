@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -7,7 +7,7 @@
     <ProjectGuid>{15253E36-DDDE-4C0A-9A6E-7632BACC8F7C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Vulkan</RootNamespace>
-    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyName>VulkanSharp</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
   </PropertyGroup>
@@ -30,6 +30,25 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -55,11 +74,11 @@
   <PropertyGroup>
     <Runtime Condition="'$(OS)' != 'Windows_NT'">mono --debug</Runtime>
   </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>copy $(TargetDir)$(TargetName).* $(SolutionDir)..\VulkanSharp.Example\lib</PostBuildEvent>
+  </PropertyGroup>
   <Target Name="BuildGeneratedSource" Inputs="$(OutputPath)\Generator.exe" Outputs="Vulkan\Enums.cs">
     <MakeDir Directories="$(OutputPath)" />
-    <Exec Command="$(Runtime) &quot;$(OutputPath)\Generator.exe&quot; $(OutputPath)\vk.xml ." />
   </Target>
-  <ItemGroup>
-    <Folder Include="Interop\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>
