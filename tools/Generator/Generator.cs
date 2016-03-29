@@ -817,11 +817,17 @@ namespace VulkanSharp.Generator
 
 			var fixedParams = FindFixedParams (commandElement, isForHandle);
 
+			var hasResult = csType == "Result";
+			if (hasResult)
+				csType = "void";
+
 			IndentWrite ("public {0}{1} {2} (", isForHandle ? "" : "static ", csType, csFunction);
 			var outParams = WriteCommandParameters (commandElement, isForHandle);
 			WriteLine (")");
 			IndentWriteLine ("{");
 			IndentLevel++;
+			if (hasResult)
+				IndentWriteLine ("Result result;");
 			IndentWriteLine ("unsafe {");
 			IndentLevel++;
 
@@ -847,7 +853,7 @@ namespace VulkanSharp.Generator
 						IndentWriteLine ("{0} = new {1} ();", param.Key, param.Value);
 			}
 
-			IndentWrite ("{0}Interop.NativeMethods.{1} (", csType != "void" ? "return " : "", function);
+			IndentWrite ("{0}{1}Interop.NativeMethods.{2} (", hasResult ? "result = " : "", csType != "void" ? "return " : "", function);
 			WriteCommandParameters (commandElement, isForHandle, true, fixedParams);
 			WriteLine (");");
 
@@ -860,6 +866,12 @@ namespace VulkanSharp.Generator
 
 			IndentLevel--;
 			IndentWriteLine ("}");
+			if (hasResult) {
+				IndentWriteLine ("if (result != Result.Success)");
+				IndentLevel++;
+				IndentWriteLine ("throw new ResultException (result);");
+				IndentLevel--;
+			}
 			IndentLevel--;
 			IndentWriteLine ("}");
 
