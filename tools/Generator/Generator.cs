@@ -710,10 +710,9 @@ namespace VulkanSharp.Generator
 				if (info.isHandle || !param.Value.Contains ("const ")) {
 					info.isFixed = true;
 					fixedCount++;
-					Console.WriteLine ("fixed");
 				}
 			}
-			Console.WriteLine ("fixedCount {0}", fixedCount);
+
 			return paramsDict;
 		}
 
