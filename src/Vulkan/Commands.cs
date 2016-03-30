@@ -14,26 +14,26 @@ namespace Vulkan
 {
 	internal static partial class Commands
 	{
-		public static void EnumerateInstanceLayerProperties (out UInt32 PropertyCount, out LayerProperties Properties)
+		public static void EnumerateInstanceLayerProperties (out UInt32 pPropertyCount, out LayerProperties pProperties)
 		{
 			Result result;
 			unsafe {
-				fixed (UInt32* ptrPropertyCount = &PropertyCount) {
-					Properties = new LayerProperties ();
-					result = Interop.NativeMethods.vkEnumerateInstanceLayerProperties (ptrPropertyCount, Properties.m);
+				fixed (UInt32* ptrpPropertyCount = &pPropertyCount) {
+					pProperties = new LayerProperties ();
+					result = Interop.NativeMethods.vkEnumerateInstanceLayerProperties (ptrpPropertyCount, pProperties.m);
 				}
 			}
 			if (result != Result.Success)
 				throw new ResultException (result);
 		}
 
-		public static void EnumerateInstanceExtensionProperties (string pLayerName, out UInt32 PropertyCount, out ExtensionProperties Properties)
+		public static void EnumerateInstanceExtensionProperties (string pLayerName, out UInt32 pPropertyCount, out ExtensionProperties pProperties)
 		{
 			Result result;
 			unsafe {
-				fixed (UInt32* ptrPropertyCount = &PropertyCount) {
-					Properties = new ExtensionProperties ();
-					result = Interop.NativeMethods.vkEnumerateInstanceExtensionProperties (pLayerName, ptrPropertyCount, Properties.m);
+				fixed (UInt32* ptrpPropertyCount = &pPropertyCount) {
+					pProperties = new ExtensionProperties ();
+					result = Interop.NativeMethods.vkEnumerateInstanceExtensionProperties (pLayerName, ptrpPropertyCount, pProperties.m);
 				}
 			}
 			if (result != Result.Success)
