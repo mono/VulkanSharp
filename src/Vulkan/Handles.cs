@@ -23,17 +23,20 @@ namespace Vulkan
 			}
 		}
 
-		public Result EnumeratePhysicalDevices (out UInt32 PhysicalDeviceCount, out PhysicalDevice PhysicalDevices)
+		public void EnumeratePhysicalDevices (out UInt32 PhysicalDeviceCount, out PhysicalDevice PhysicalDevices)
 		{
+			Result result;
 			unsafe {
 				PhysicalDevices = new PhysicalDevice ();
 
 				fixed (UInt32* ptrPhysicalDeviceCount = &PhysicalDeviceCount) {
 					fixed (IntPtr* ptrPhysicalDevices = &PhysicalDevices.m) {
-						return Interop.NativeMethods.vkEnumeratePhysicalDevices (this.m, ptrPhysicalDeviceCount, ptrPhysicalDevices);
+						result = Interop.NativeMethods.vkEnumeratePhysicalDevices (this.m, ptrPhysicalDeviceCount, ptrPhysicalDevices);
 					}
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public IntPtr GetProcAddr (string pName)
@@ -43,15 +46,18 @@ namespace Vulkan
 			}
 		}
 
-		public Result CreateDisplayPlaneSurfaceKHR (DisplaySurfaceCreateInfoKhr CreateInfo, AllocationCallbacks Allocator, out SurfaceKhr Surface)
+		public void CreateDisplayPlaneSurfaceKHR (DisplaySurfaceCreateInfoKhr CreateInfo, AllocationCallbacks Allocator, out SurfaceKhr Surface)
 		{
+			Result result;
 			unsafe {
 				Surface = new SurfaceKhr ();
 
 				fixed (UInt64* ptrSurface = &Surface.m) {
-					return Interop.NativeMethods.vkCreateDisplayPlaneSurfaceKHR (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrSurface);
+					result = Interop.NativeMethods.vkCreateDisplayPlaneSurfaceKHR (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrSurface);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void DestroySurfaceKHR (SurfaceKhr surface, AllocationCallbacks Allocator)
@@ -61,15 +67,18 @@ namespace Vulkan
 			}
 		}
 
-		public Result CreateDebugReportCallbackEXT (DebugReportCallbackCreateInfoExt CreateInfo, AllocationCallbacks Allocator, out DebugReportCallbackExt Callback)
+		public void CreateDebugReportCallbackEXT (DebugReportCallbackCreateInfoExt CreateInfo, AllocationCallbacks Allocator, out DebugReportCallbackExt Callback)
 		{
+			Result result;
 			unsafe {
 				Callback = new DebugReportCallbackExt ();
 
 				fixed (UInt64* ptrCallback = &Callback.m) {
-					return Interop.NativeMethods.vkCreateDebugReportCallbackEXT (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrCallback);
+					result = Interop.NativeMethods.vkCreateDebugReportCallbackEXT (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrCallback);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void DestroyDebugReportCallbackEXT (DebugReportCallbackExt callback, AllocationCallbacks Allocator)
@@ -133,43 +142,55 @@ namespace Vulkan
 			}
 		}
 
-		public Result GetImageFormatProperties (Format format, ImageType type, ImageTiling tiling, ImageUsageFlags usage, ImageCreateFlags flags, out ImageFormatProperties ImageFormatProperties)
+		public void GetImageFormatProperties (Format format, ImageType type, ImageTiling tiling, ImageUsageFlags usage, ImageCreateFlags flags, out ImageFormatProperties ImageFormatProperties)
 		{
+			Result result;
 			unsafe {
 				ImageFormatProperties = new ImageFormatProperties ();
-				return Interop.NativeMethods.vkGetPhysicalDeviceImageFormatProperties (this.m, format, type, tiling, usage, flags, ImageFormatProperties.m);
+				result = Interop.NativeMethods.vkGetPhysicalDeviceImageFormatProperties (this.m, format, type, tiling, usage, flags, ImageFormatProperties.m);
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result CreateDevice (DeviceCreateInfo CreateInfo, AllocationCallbacks Allocator, out Device Device)
+		public void CreateDevice (DeviceCreateInfo CreateInfo, AllocationCallbacks Allocator, out Device Device)
 		{
+			Result result;
 			unsafe {
 				Device = new Device ();
 
 				fixed (IntPtr* ptrDevice = &Device.m) {
-					return Interop.NativeMethods.vkCreateDevice (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrDevice);
+					result = Interop.NativeMethods.vkCreateDevice (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrDevice);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result EnumerateDeviceLayerProperties (out UInt32 PropertyCount, out LayerProperties Properties)
+		public void EnumerateDeviceLayerProperties (out UInt32 PropertyCount, out LayerProperties Properties)
 		{
+			Result result;
 			unsafe {
 				fixed (UInt32* ptrPropertyCount = &PropertyCount) {
 					Properties = new LayerProperties ();
-					return Interop.NativeMethods.vkEnumerateDeviceLayerProperties (this.m, ptrPropertyCount, Properties.m);
+					result = Interop.NativeMethods.vkEnumerateDeviceLayerProperties (this.m, ptrPropertyCount, Properties.m);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result EnumerateDeviceExtensionProperties (string pLayerName, out UInt32 PropertyCount, out ExtensionProperties Properties)
+		public void EnumerateDeviceExtensionProperties (string pLayerName, out UInt32 PropertyCount, out ExtensionProperties Properties)
 		{
+			Result result;
 			unsafe {
 				fixed (UInt32* ptrPropertyCount = &PropertyCount) {
 					Properties = new ExtensionProperties ();
-					return Interop.NativeMethods.vkEnumerateDeviceExtensionProperties (this.m, pLayerName, ptrPropertyCount, Properties.m);
+					result = Interop.NativeMethods.vkEnumerateDeviceExtensionProperties (this.m, pLayerName, ptrPropertyCount, Properties.m);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void GetSparseImageFormatProperties (Format format, ImageType type, SampleCountFlags samples, ImageUsageFlags usage, ImageTiling tiling, out UInt32 PropertyCount, out SparseImageFormatProperties Properties)
@@ -182,104 +203,134 @@ namespace Vulkan
 			}
 		}
 
-		public Result GetDisplayPropertiesKHR (out UInt32 PropertyCount, out DisplayPropertiesKhr Properties)
+		public void GetDisplayPropertiesKHR (out UInt32 PropertyCount, out DisplayPropertiesKhr Properties)
 		{
+			Result result;
 			unsafe {
 				fixed (UInt32* ptrPropertyCount = &PropertyCount) {
 					Properties = new DisplayPropertiesKhr ();
-					return Interop.NativeMethods.vkGetPhysicalDeviceDisplayPropertiesKHR (this.m, ptrPropertyCount, Properties.m);
+					result = Interop.NativeMethods.vkGetPhysicalDeviceDisplayPropertiesKHR (this.m, ptrPropertyCount, Properties.m);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result GetDisplayPlanePropertiesKHR (out UInt32 PropertyCount, out DisplayPlanePropertiesKhr Properties)
+		public void GetDisplayPlanePropertiesKHR (out UInt32 PropertyCount, out DisplayPlanePropertiesKhr Properties)
 		{
+			Result result;
 			unsafe {
 				fixed (UInt32* ptrPropertyCount = &PropertyCount) {
 					Properties = new DisplayPlanePropertiesKhr ();
-					return Interop.NativeMethods.vkGetPhysicalDeviceDisplayPlanePropertiesKHR (this.m, ptrPropertyCount, Properties.m);
+					result = Interop.NativeMethods.vkGetPhysicalDeviceDisplayPlanePropertiesKHR (this.m, ptrPropertyCount, Properties.m);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result GetDisplayPlaneSupportedDisplaysKHR (UInt32 planeIndex, out UInt32 DisplayCount, out DisplayKhr Displays)
+		public void GetDisplayPlaneSupportedDisplaysKHR (UInt32 planeIndex, out UInt32 DisplayCount, out DisplayKhr Displays)
 		{
+			Result result;
 			unsafe {
 				Displays = new DisplayKhr ();
 
 				fixed (UInt32* ptrDisplayCount = &DisplayCount) {
 					fixed (UInt64* ptrDisplays = &Displays.m) {
-						return Interop.NativeMethods.vkGetDisplayPlaneSupportedDisplaysKHR (this.m, planeIndex, ptrDisplayCount, ptrDisplays);
+						result = Interop.NativeMethods.vkGetDisplayPlaneSupportedDisplaysKHR (this.m, planeIndex, ptrDisplayCount, ptrDisplays);
 					}
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result GetDisplayModePropertiesKHR (DisplayKhr display, out UInt32 PropertyCount, out DisplayModePropertiesKhr Properties)
+		public void GetDisplayModePropertiesKHR (DisplayKhr display, out UInt32 PropertyCount, out DisplayModePropertiesKhr Properties)
 		{
+			Result result;
 			unsafe {
 				fixed (UInt32* ptrPropertyCount = &PropertyCount) {
 					Properties = new DisplayModePropertiesKhr ();
-					return Interop.NativeMethods.vkGetDisplayModePropertiesKHR (this.m, display.m, ptrPropertyCount, Properties.m);
+					result = Interop.NativeMethods.vkGetDisplayModePropertiesKHR (this.m, display.m, ptrPropertyCount, Properties.m);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result CreateDisplayModeKHR (DisplayKhr display, DisplayModeCreateInfoKhr CreateInfo, AllocationCallbacks Allocator, out DisplayModeKhr Mode)
+		public void CreateDisplayModeKHR (DisplayKhr display, DisplayModeCreateInfoKhr CreateInfo, AllocationCallbacks Allocator, out DisplayModeKhr Mode)
 		{
+			Result result;
 			unsafe {
 				Mode = new DisplayModeKhr ();
 
 				fixed (UInt64* ptrMode = &Mode.m) {
-					return Interop.NativeMethods.vkCreateDisplayModeKHR (this.m, display.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrMode);
+					result = Interop.NativeMethods.vkCreateDisplayModeKHR (this.m, display.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrMode);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result GetDisplayPlaneCapabilitiesKHR (DisplayModeKhr mode, UInt32 planeIndex, out DisplayPlaneCapabilitiesKhr Capabilities)
+		public void GetDisplayPlaneCapabilitiesKHR (DisplayModeKhr mode, UInt32 planeIndex, out DisplayPlaneCapabilitiesKhr Capabilities)
 		{
+			Result result;
 			unsafe {
 				Capabilities = new DisplayPlaneCapabilitiesKhr ();
-				return Interop.NativeMethods.vkGetDisplayPlaneCapabilitiesKHR (this.m, mode.m, planeIndex, Capabilities.m);
+				result = Interop.NativeMethods.vkGetDisplayPlaneCapabilitiesKHR (this.m, mode.m, planeIndex, Capabilities.m);
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result GetSurfaceSupportKHR (UInt32 queueFamilyIndex, SurfaceKhr surface, out Bool32 Supported)
+		public void GetSurfaceSupportKHR (UInt32 queueFamilyIndex, SurfaceKhr surface, out Bool32 Supported)
 		{
+			Result result;
 			unsafe {
 				fixed (Bool32* ptrSupported = &Supported) {
-					return Interop.NativeMethods.vkGetPhysicalDeviceSurfaceSupportKHR (this.m, queueFamilyIndex, surface.m, ptrSupported);
+					result = Interop.NativeMethods.vkGetPhysicalDeviceSurfaceSupportKHR (this.m, queueFamilyIndex, surface.m, ptrSupported);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result GetSurfaceCapabilitiesKHR (SurfaceKhr surface, out SurfaceCapabilitiesKhr SurfaceCapabilities)
+		public void GetSurfaceCapabilitiesKHR (SurfaceKhr surface, out SurfaceCapabilitiesKhr SurfaceCapabilities)
 		{
+			Result result;
 			unsafe {
 				SurfaceCapabilities = new SurfaceCapabilitiesKhr ();
-				return Interop.NativeMethods.vkGetPhysicalDeviceSurfaceCapabilitiesKHR (this.m, surface.m, SurfaceCapabilities.m);
+				result = Interop.NativeMethods.vkGetPhysicalDeviceSurfaceCapabilitiesKHR (this.m, surface.m, SurfaceCapabilities.m);
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result GetSurfaceFormatsKHR (SurfaceKhr surface, out UInt32 SurfaceFormatCount, out SurfaceFormatKhr SurfaceFormats)
+		public void GetSurfaceFormatsKHR (SurfaceKhr surface, out UInt32 SurfaceFormatCount, out SurfaceFormatKhr SurfaceFormats)
 		{
+			Result result;
 			unsafe {
 				fixed (UInt32* ptrSurfaceFormatCount = &SurfaceFormatCount) {
 					SurfaceFormats = new SurfaceFormatKhr ();
-					return Interop.NativeMethods.vkGetPhysicalDeviceSurfaceFormatsKHR (this.m, surface.m, ptrSurfaceFormatCount, SurfaceFormats.m);
+					result = Interop.NativeMethods.vkGetPhysicalDeviceSurfaceFormatsKHR (this.m, surface.m, ptrSurfaceFormatCount, SurfaceFormats.m);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result GetSurfacePresentModesKHR (SurfaceKhr surface, out UInt32 PresentModeCount, out PresentModeKhr PresentModes)
+		public void GetSurfacePresentModesKHR (SurfaceKhr surface, out UInt32 PresentModeCount, out PresentModeKhr PresentModes)
 		{
+			Result result;
 			unsafe {
 				fixed (UInt32* ptrPresentModeCount = &PresentModeCount) {
 					fixed (PresentModeKhr* ptrPresentModes = &PresentModes) {
-						return Interop.NativeMethods.vkGetPhysicalDeviceSurfacePresentModesKHR (this.m, surface.m, ptrPresentModeCount, ptrPresentModes);
+						result = Interop.NativeMethods.vkGetPhysicalDeviceSurfacePresentModesKHR (this.m, surface.m, ptrPresentModeCount, ptrPresentModes);
 					}
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public Bool32 GetWin32PresentationSupportKHR (UInt32 queueFamilyIndex)
@@ -319,22 +370,28 @@ namespace Vulkan
 			}
 		}
 
-		public Result WaitIdle ()
+		public void WaitIdle ()
 		{
+			Result result;
 			unsafe {
-				return Interop.NativeMethods.vkDeviceWaitIdle (this.m);
+				result = Interop.NativeMethods.vkDeviceWaitIdle (this.m);
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result AllocateMemory (MemoryAllocateInfo AllocateInfo, AllocationCallbacks Allocator, out DeviceMemory Memory)
+		public void AllocateMemory (MemoryAllocateInfo AllocateInfo, AllocationCallbacks Allocator, out DeviceMemory Memory)
 		{
+			Result result;
 			unsafe {
 				Memory = new DeviceMemory ();
 
 				fixed (UInt64* ptrMemory = &Memory.m) {
-					return Interop.NativeMethods.vkAllocateMemory (this.m, AllocateInfo.m, Allocator != null ? Allocator.m : null, ptrMemory);
+					result = Interop.NativeMethods.vkAllocateMemory (this.m, AllocateInfo.m, Allocator != null ? Allocator.m : null, ptrMemory);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void FreeMemory (DeviceMemory memory, AllocationCallbacks Allocator)
@@ -344,13 +401,16 @@ namespace Vulkan
 			}
 		}
 
-		public Result MapMemory (DeviceMemory memory, DeviceSize offset, DeviceSize size, UInt32 flags, out IntPtr pData)
+		public void MapMemory (DeviceMemory memory, DeviceSize offset, DeviceSize size, UInt32 flags, out IntPtr pData)
 		{
+			Result result;
 			unsafe {
 				fixed (IntPtr* ptrpData = &pData) {
-					return Interop.NativeMethods.vkMapMemory (this.m, memory.m, offset, size, flags, ptrpData);
+					result = Interop.NativeMethods.vkMapMemory (this.m, memory.m, offset, size, flags, ptrpData);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void UnmapMemory (DeviceMemory memory)
@@ -360,18 +420,24 @@ namespace Vulkan
 			}
 		}
 
-		public Result FlushMappedMemoryRanges (UInt32 memoryRangeCount, MappedMemoryRange MemoryRanges)
+		public void FlushMappedMemoryRanges (UInt32 memoryRangeCount, MappedMemoryRange MemoryRanges)
 		{
+			Result result;
 			unsafe {
-				return Interop.NativeMethods.vkFlushMappedMemoryRanges (this.m, memoryRangeCount, MemoryRanges.m);
+				result = Interop.NativeMethods.vkFlushMappedMemoryRanges (this.m, memoryRangeCount, MemoryRanges.m);
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result InvalidateMappedMemoryRanges (UInt32 memoryRangeCount, MappedMemoryRange MemoryRanges)
+		public void InvalidateMappedMemoryRanges (UInt32 memoryRangeCount, MappedMemoryRange MemoryRanges)
 		{
+			Result result;
 			unsafe {
-				return Interop.NativeMethods.vkInvalidateMappedMemoryRanges (this.m, memoryRangeCount, MemoryRanges.m);
+				result = Interop.NativeMethods.vkInvalidateMappedMemoryRanges (this.m, memoryRangeCount, MemoryRanges.m);
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void GetMemoryCommitment (DeviceMemory memory, out DeviceSize CommittedMemoryInBytes)
@@ -391,11 +457,14 @@ namespace Vulkan
 			}
 		}
 
-		public Result BindBufferMemory (Buffer buffer, DeviceMemory memory, DeviceSize memoryOffset)
+		public void BindBufferMemory (Buffer buffer, DeviceMemory memory, DeviceSize memoryOffset)
 		{
+			Result result;
 			unsafe {
-				return Interop.NativeMethods.vkBindBufferMemory (this.m, buffer.m, memory.m, memoryOffset);
+				result = Interop.NativeMethods.vkBindBufferMemory (this.m, buffer.m, memory.m, memoryOffset);
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void GetImageMemoryRequirements (Image image, out MemoryRequirements MemoryRequirements)
@@ -406,11 +475,14 @@ namespace Vulkan
 			}
 		}
 
-		public Result BindImageMemory (Image image, DeviceMemory memory, DeviceSize memoryOffset)
+		public void BindImageMemory (Image image, DeviceMemory memory, DeviceSize memoryOffset)
 		{
+			Result result;
 			unsafe {
-				return Interop.NativeMethods.vkBindImageMemory (this.m, image.m, memory.m, memoryOffset);
+				result = Interop.NativeMethods.vkBindImageMemory (this.m, image.m, memory.m, memoryOffset);
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void GetImageSparseMemoryRequirements (Image image, out UInt32 SparseMemoryRequirementCount, out SparseImageMemoryRequirements SparseMemoryRequirements)
@@ -423,15 +495,18 @@ namespace Vulkan
 			}
 		}
 
-		public Result CreateFence (FenceCreateInfo CreateInfo, AllocationCallbacks Allocator, out Fence Fence)
+		public void CreateFence (FenceCreateInfo CreateInfo, AllocationCallbacks Allocator, out Fence Fence)
 		{
+			Result result;
 			unsafe {
 				Fence = new Fence ();
 
 				fixed (UInt64* ptrFence = &Fence.m) {
-					return Interop.NativeMethods.vkCreateFence (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrFence);
+					result = Interop.NativeMethods.vkCreateFence (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrFence);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void DestroyFence (Fence fence, AllocationCallbacks Allocator)
@@ -441,44 +516,56 @@ namespace Vulkan
 			}
 		}
 
-		public Result ResetFences (UInt32 fenceCount, Fence Fences)
+		public void ResetFences (UInt32 fenceCount, Fence Fences)
 		{
+			Result result;
 			unsafe {
 				Fences = new Fence ();
 
 				fixed (UInt64* ptrFences = &Fences.m) {
-					return Interop.NativeMethods.vkResetFences (this.m, fenceCount, ptrFences);
+					result = Interop.NativeMethods.vkResetFences (this.m, fenceCount, ptrFences);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result GetFenceStatus (Fence fence)
+		public void GetFenceStatus (Fence fence)
 		{
+			Result result;
 			unsafe {
-				return Interop.NativeMethods.vkGetFenceStatus (this.m, fence.m);
+				result = Interop.NativeMethods.vkGetFenceStatus (this.m, fence.m);
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result WaitForFences (UInt32 fenceCount, Fence Fences, Bool32 waitAll, UInt64 timeout)
+		public void WaitForFences (UInt32 fenceCount, Fence Fences, Bool32 waitAll, UInt64 timeout)
 		{
+			Result result;
 			unsafe {
 				Fences = new Fence ();
 
 				fixed (UInt64* ptrFences = &Fences.m) {
-					return Interop.NativeMethods.vkWaitForFences (this.m, fenceCount, ptrFences, waitAll, timeout);
+					result = Interop.NativeMethods.vkWaitForFences (this.m, fenceCount, ptrFences, waitAll, timeout);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result CreateSemaphore (SemaphoreCreateInfo CreateInfo, AllocationCallbacks Allocator, out Semaphore Semaphore)
+		public void CreateSemaphore (SemaphoreCreateInfo CreateInfo, AllocationCallbacks Allocator, out Semaphore Semaphore)
 		{
+			Result result;
 			unsafe {
 				Semaphore = new Semaphore ();
 
 				fixed (UInt64* ptrSemaphore = &Semaphore.m) {
-					return Interop.NativeMethods.vkCreateSemaphore (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrSemaphore);
+					result = Interop.NativeMethods.vkCreateSemaphore (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrSemaphore);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void DestroySemaphore (Semaphore semaphore, AllocationCallbacks Allocator)
@@ -488,15 +575,18 @@ namespace Vulkan
 			}
 		}
 
-		public Result CreateEvent (EventCreateInfo CreateInfo, AllocationCallbacks Allocator, out Event Event)
+		public void CreateEvent (EventCreateInfo CreateInfo, AllocationCallbacks Allocator, out Event Event)
 		{
+			Result result;
 			unsafe {
 				Event = new Event ();
 
 				fixed (UInt64* ptrEvent = &Event.m) {
-					return Interop.NativeMethods.vkCreateEvent (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrEvent);
+					result = Interop.NativeMethods.vkCreateEvent (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrEvent);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void DestroyEvent (Event @event, AllocationCallbacks Allocator)
@@ -506,36 +596,48 @@ namespace Vulkan
 			}
 		}
 
-		public Result GetEventStatus (Event @event)
+		public void GetEventStatus (Event @event)
 		{
+			Result result;
 			unsafe {
-				return Interop.NativeMethods.vkGetEventStatus (this.m, @event.m);
+				result = Interop.NativeMethods.vkGetEventStatus (this.m, @event.m);
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result SetEvent (Event @event)
+		public void SetEvent (Event @event)
 		{
+			Result result;
 			unsafe {
-				return Interop.NativeMethods.vkSetEvent (this.m, @event.m);
+				result = Interop.NativeMethods.vkSetEvent (this.m, @event.m);
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result ResetEvent (Event @event)
+		public void ResetEvent (Event @event)
 		{
+			Result result;
 			unsafe {
-				return Interop.NativeMethods.vkResetEvent (this.m, @event.m);
+				result = Interop.NativeMethods.vkResetEvent (this.m, @event.m);
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result CreateQueryPool (QueryPoolCreateInfo CreateInfo, AllocationCallbacks Allocator, out QueryPool QueryPool)
+		public void CreateQueryPool (QueryPoolCreateInfo CreateInfo, AllocationCallbacks Allocator, out QueryPool QueryPool)
 		{
+			Result result;
 			unsafe {
 				QueryPool = new QueryPool ();
 
 				fixed (UInt64* ptrQueryPool = &QueryPool.m) {
-					return Interop.NativeMethods.vkCreateQueryPool (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrQueryPool);
+					result = Interop.NativeMethods.vkCreateQueryPool (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrQueryPool);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void DestroyQueryPool (QueryPool queryPool, AllocationCallbacks Allocator)
@@ -545,22 +647,28 @@ namespace Vulkan
 			}
 		}
 
-		public Result GetQueryPoolResults (QueryPool queryPool, UInt32 firstQuery, UInt32 queryCount, UIntPtr dataSize, IntPtr Data, DeviceSize stride, QueryResultFlags flags)
+		public void GetQueryPoolResults (QueryPool queryPool, UInt32 firstQuery, UInt32 queryCount, UIntPtr dataSize, IntPtr Data, DeviceSize stride, QueryResultFlags flags)
 		{
+			Result result;
 			unsafe {
-				return Interop.NativeMethods.vkGetQueryPoolResults (this.m, queryPool.m, firstQuery, queryCount, dataSize, Data, stride, flags);
+				result = Interop.NativeMethods.vkGetQueryPoolResults (this.m, queryPool.m, firstQuery, queryCount, dataSize, Data, stride, flags);
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result CreateBuffer (BufferCreateInfo CreateInfo, AllocationCallbacks Allocator, out Buffer Buffer)
+		public void CreateBuffer (BufferCreateInfo CreateInfo, AllocationCallbacks Allocator, out Buffer Buffer)
 		{
+			Result result;
 			unsafe {
 				Buffer = new Buffer ();
 
 				fixed (UInt64* ptrBuffer = &Buffer.m) {
-					return Interop.NativeMethods.vkCreateBuffer (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrBuffer);
+					result = Interop.NativeMethods.vkCreateBuffer (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrBuffer);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void DestroyBuffer (Buffer buffer, AllocationCallbacks Allocator)
@@ -570,15 +678,18 @@ namespace Vulkan
 			}
 		}
 
-		public Result CreateBufferView (BufferViewCreateInfo CreateInfo, AllocationCallbacks Allocator, out BufferView View)
+		public void CreateBufferView (BufferViewCreateInfo CreateInfo, AllocationCallbacks Allocator, out BufferView View)
 		{
+			Result result;
 			unsafe {
 				View = new BufferView ();
 
 				fixed (UInt64* ptrView = &View.m) {
-					return Interop.NativeMethods.vkCreateBufferView (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrView);
+					result = Interop.NativeMethods.vkCreateBufferView (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrView);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void DestroyBufferView (BufferView bufferView, AllocationCallbacks Allocator)
@@ -588,15 +699,18 @@ namespace Vulkan
 			}
 		}
 
-		public Result CreateImage (ImageCreateInfo CreateInfo, AllocationCallbacks Allocator, out Image Image)
+		public void CreateImage (ImageCreateInfo CreateInfo, AllocationCallbacks Allocator, out Image Image)
 		{
+			Result result;
 			unsafe {
 				Image = new Image ();
 
 				fixed (UInt64* ptrImage = &Image.m) {
-					return Interop.NativeMethods.vkCreateImage (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrImage);
+					result = Interop.NativeMethods.vkCreateImage (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrImage);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void DestroyImage (Image image, AllocationCallbacks Allocator)
@@ -614,15 +728,18 @@ namespace Vulkan
 			}
 		}
 
-		public Result CreateImageView (ImageViewCreateInfo CreateInfo, AllocationCallbacks Allocator, out ImageView View)
+		public void CreateImageView (ImageViewCreateInfo CreateInfo, AllocationCallbacks Allocator, out ImageView View)
 		{
+			Result result;
 			unsafe {
 				View = new ImageView ();
 
 				fixed (UInt64* ptrView = &View.m) {
-					return Interop.NativeMethods.vkCreateImageView (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrView);
+					result = Interop.NativeMethods.vkCreateImageView (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrView);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void DestroyImageView (ImageView imageView, AllocationCallbacks Allocator)
@@ -632,15 +749,18 @@ namespace Vulkan
 			}
 		}
 
-		public Result CreateShaderModule (ShaderModuleCreateInfo CreateInfo, AllocationCallbacks Allocator, out ShaderModule ShaderModule)
+		public void CreateShaderModule (ShaderModuleCreateInfo CreateInfo, AllocationCallbacks Allocator, out ShaderModule ShaderModule)
 		{
+			Result result;
 			unsafe {
 				ShaderModule = new ShaderModule ();
 
 				fixed (UInt64* ptrShaderModule = &ShaderModule.m) {
-					return Interop.NativeMethods.vkCreateShaderModule (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrShaderModule);
+					result = Interop.NativeMethods.vkCreateShaderModule (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrShaderModule);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void DestroyShaderModule (ShaderModule shaderModule, AllocationCallbacks Allocator)
@@ -650,15 +770,18 @@ namespace Vulkan
 			}
 		}
 
-		public Result CreatePipelineCache (PipelineCacheCreateInfo CreateInfo, AllocationCallbacks Allocator, out PipelineCache PipelineCache)
+		public void CreatePipelineCache (PipelineCacheCreateInfo CreateInfo, AllocationCallbacks Allocator, out PipelineCache PipelineCache)
 		{
+			Result result;
 			unsafe {
 				PipelineCache = new PipelineCache ();
 
 				fixed (UInt64* ptrPipelineCache = &PipelineCache.m) {
-					return Interop.NativeMethods.vkCreatePipelineCache (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrPipelineCache);
+					result = Interop.NativeMethods.vkCreatePipelineCache (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrPipelineCache);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void DestroyPipelineCache (PipelineCache pipelineCache, AllocationCallbacks Allocator)
@@ -668,46 +791,58 @@ namespace Vulkan
 			}
 		}
 
-		public Result GetPipelineCacheData (PipelineCache pipelineCache, out UIntPtr DataSize, IntPtr Data)
+		public void GetPipelineCacheData (PipelineCache pipelineCache, out UIntPtr DataSize, IntPtr Data)
 		{
+			Result result;
 			unsafe {
 				fixed (UIntPtr* ptrDataSize = &DataSize) {
-					return Interop.NativeMethods.vkGetPipelineCacheData (this.m, pipelineCache.m, ptrDataSize, Data);
+					result = Interop.NativeMethods.vkGetPipelineCacheData (this.m, pipelineCache.m, ptrDataSize, Data);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result MergePipelineCaches (PipelineCache dstCache, UInt32 srcCacheCount, PipelineCache SrcCaches)
+		public void MergePipelineCaches (PipelineCache dstCache, UInt32 srcCacheCount, PipelineCache SrcCaches)
 		{
+			Result result;
 			unsafe {
 				SrcCaches = new PipelineCache ();
 
 				fixed (UInt64* ptrSrcCaches = &SrcCaches.m) {
-					return Interop.NativeMethods.vkMergePipelineCaches (this.m, dstCache.m, srcCacheCount, ptrSrcCaches);
+					result = Interop.NativeMethods.vkMergePipelineCaches (this.m, dstCache.m, srcCacheCount, ptrSrcCaches);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result CreateGraphicsPipelines (PipelineCache pipelineCache, UInt32 createInfoCount, GraphicsPipelineCreateInfo CreateInfos, AllocationCallbacks Allocator, out Pipeline Pipelines)
+		public void CreateGraphicsPipelines (PipelineCache pipelineCache, UInt32 createInfoCount, GraphicsPipelineCreateInfo CreateInfos, AllocationCallbacks Allocator, out Pipeline Pipelines)
 		{
+			Result result;
 			unsafe {
 				Pipelines = new Pipeline ();
 
 				fixed (UInt64* ptrPipelines = &Pipelines.m) {
-					return Interop.NativeMethods.vkCreateGraphicsPipelines (this.m, pipelineCache.m, createInfoCount, CreateInfos.m, Allocator != null ? Allocator.m : null, ptrPipelines);
+					result = Interop.NativeMethods.vkCreateGraphicsPipelines (this.m, pipelineCache.m, createInfoCount, CreateInfos.m, Allocator != null ? Allocator.m : null, ptrPipelines);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result CreateComputePipelines (PipelineCache pipelineCache, UInt32 createInfoCount, ComputePipelineCreateInfo CreateInfos, AllocationCallbacks Allocator, out Pipeline Pipelines)
+		public void CreateComputePipelines (PipelineCache pipelineCache, UInt32 createInfoCount, ComputePipelineCreateInfo CreateInfos, AllocationCallbacks Allocator, out Pipeline Pipelines)
 		{
+			Result result;
 			unsafe {
 				Pipelines = new Pipeline ();
 
 				fixed (UInt64* ptrPipelines = &Pipelines.m) {
-					return Interop.NativeMethods.vkCreateComputePipelines (this.m, pipelineCache.m, createInfoCount, CreateInfos.m, Allocator != null ? Allocator.m : null, ptrPipelines);
+					result = Interop.NativeMethods.vkCreateComputePipelines (this.m, pipelineCache.m, createInfoCount, CreateInfos.m, Allocator != null ? Allocator.m : null, ptrPipelines);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void DestroyPipeline (Pipeline pipeline, AllocationCallbacks Allocator)
@@ -717,15 +852,18 @@ namespace Vulkan
 			}
 		}
 
-		public Result CreatePipelineLayout (PipelineLayoutCreateInfo CreateInfo, AllocationCallbacks Allocator, out PipelineLayout PipelineLayout)
+		public void CreatePipelineLayout (PipelineLayoutCreateInfo CreateInfo, AllocationCallbacks Allocator, out PipelineLayout PipelineLayout)
 		{
+			Result result;
 			unsafe {
 				PipelineLayout = new PipelineLayout ();
 
 				fixed (UInt64* ptrPipelineLayout = &PipelineLayout.m) {
-					return Interop.NativeMethods.vkCreatePipelineLayout (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrPipelineLayout);
+					result = Interop.NativeMethods.vkCreatePipelineLayout (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrPipelineLayout);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void DestroyPipelineLayout (PipelineLayout pipelineLayout, AllocationCallbacks Allocator)
@@ -735,15 +873,18 @@ namespace Vulkan
 			}
 		}
 
-		public Result CreateSampler (SamplerCreateInfo CreateInfo, AllocationCallbacks Allocator, out Sampler Sampler)
+		public void CreateSampler (SamplerCreateInfo CreateInfo, AllocationCallbacks Allocator, out Sampler Sampler)
 		{
+			Result result;
 			unsafe {
 				Sampler = new Sampler ();
 
 				fixed (UInt64* ptrSampler = &Sampler.m) {
-					return Interop.NativeMethods.vkCreateSampler (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrSampler);
+					result = Interop.NativeMethods.vkCreateSampler (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrSampler);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void DestroySampler (Sampler sampler, AllocationCallbacks Allocator)
@@ -753,15 +894,18 @@ namespace Vulkan
 			}
 		}
 
-		public Result CreateDescriptorSetLayout (DescriptorSetLayoutCreateInfo CreateInfo, AllocationCallbacks Allocator, out DescriptorSetLayout SetLayout)
+		public void CreateDescriptorSetLayout (DescriptorSetLayoutCreateInfo CreateInfo, AllocationCallbacks Allocator, out DescriptorSetLayout SetLayout)
 		{
+			Result result;
 			unsafe {
 				SetLayout = new DescriptorSetLayout ();
 
 				fixed (UInt64* ptrSetLayout = &SetLayout.m) {
-					return Interop.NativeMethods.vkCreateDescriptorSetLayout (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrSetLayout);
+					result = Interop.NativeMethods.vkCreateDescriptorSetLayout (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrSetLayout);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void DestroyDescriptorSetLayout (DescriptorSetLayout descriptorSetLayout, AllocationCallbacks Allocator)
@@ -771,15 +915,18 @@ namespace Vulkan
 			}
 		}
 
-		public Result CreateDescriptorPool (DescriptorPoolCreateInfo CreateInfo, AllocationCallbacks Allocator, out DescriptorPool DescriptorPool)
+		public void CreateDescriptorPool (DescriptorPoolCreateInfo CreateInfo, AllocationCallbacks Allocator, out DescriptorPool DescriptorPool)
 		{
+			Result result;
 			unsafe {
 				DescriptorPool = new DescriptorPool ();
 
 				fixed (UInt64* ptrDescriptorPool = &DescriptorPool.m) {
-					return Interop.NativeMethods.vkCreateDescriptorPool (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrDescriptorPool);
+					result = Interop.NativeMethods.vkCreateDescriptorPool (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrDescriptorPool);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void DestroyDescriptorPool (DescriptorPool descriptorPool, AllocationCallbacks Allocator)
@@ -789,33 +936,42 @@ namespace Vulkan
 			}
 		}
 
-		public Result ResetDescriptorPool (DescriptorPool descriptorPool, UInt32 flags)
+		public void ResetDescriptorPool (DescriptorPool descriptorPool, UInt32 flags)
 		{
+			Result result;
 			unsafe {
-				return Interop.NativeMethods.vkResetDescriptorPool (this.m, descriptorPool.m, flags);
+				result = Interop.NativeMethods.vkResetDescriptorPool (this.m, descriptorPool.m, flags);
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result AllocateDescriptorSets (DescriptorSetAllocateInfo AllocateInfo, out DescriptorSet DescriptorSets)
+		public void AllocateDescriptorSets (DescriptorSetAllocateInfo AllocateInfo, out DescriptorSet DescriptorSets)
 		{
+			Result result;
 			unsafe {
 				DescriptorSets = new DescriptorSet ();
 
 				fixed (UInt64* ptrDescriptorSets = &DescriptorSets.m) {
-					return Interop.NativeMethods.vkAllocateDescriptorSets (this.m, AllocateInfo.m, ptrDescriptorSets);
+					result = Interop.NativeMethods.vkAllocateDescriptorSets (this.m, AllocateInfo.m, ptrDescriptorSets);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result FreeDescriptorSets (DescriptorPool descriptorPool, UInt32 descriptorSetCount, DescriptorSet DescriptorSets)
+		public void FreeDescriptorSets (DescriptorPool descriptorPool, UInt32 descriptorSetCount, DescriptorSet DescriptorSets)
 		{
+			Result result;
 			unsafe {
 				DescriptorSets = new DescriptorSet ();
 
 				fixed (UInt64* ptrDescriptorSets = &DescriptorSets.m) {
-					return Interop.NativeMethods.vkFreeDescriptorSets (this.m, descriptorPool.m, descriptorSetCount, ptrDescriptorSets);
+					result = Interop.NativeMethods.vkFreeDescriptorSets (this.m, descriptorPool.m, descriptorSetCount, ptrDescriptorSets);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void UpdateDescriptorSets (UInt32 descriptorWriteCount, WriteDescriptorSet DescriptorWrites, UInt32 descriptorCopyCount, CopyDescriptorSet DescriptorCopies)
@@ -825,15 +981,18 @@ namespace Vulkan
 			}
 		}
 
-		public Result CreateFramebuffer (FramebufferCreateInfo CreateInfo, AllocationCallbacks Allocator, out Framebuffer Framebuffer)
+		public void CreateFramebuffer (FramebufferCreateInfo CreateInfo, AllocationCallbacks Allocator, out Framebuffer Framebuffer)
 		{
+			Result result;
 			unsafe {
 				Framebuffer = new Framebuffer ();
 
 				fixed (UInt64* ptrFramebuffer = &Framebuffer.m) {
-					return Interop.NativeMethods.vkCreateFramebuffer (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrFramebuffer);
+					result = Interop.NativeMethods.vkCreateFramebuffer (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrFramebuffer);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void DestroyFramebuffer (Framebuffer framebuffer, AllocationCallbacks Allocator)
@@ -843,15 +1002,18 @@ namespace Vulkan
 			}
 		}
 
-		public Result CreateRenderPass (RenderPassCreateInfo CreateInfo, AllocationCallbacks Allocator, out RenderPass RenderPass)
+		public void CreateRenderPass (RenderPassCreateInfo CreateInfo, AllocationCallbacks Allocator, out RenderPass RenderPass)
 		{
+			Result result;
 			unsafe {
 				RenderPass = new RenderPass ();
 
 				fixed (UInt64* ptrRenderPass = &RenderPass.m) {
-					return Interop.NativeMethods.vkCreateRenderPass (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrRenderPass);
+					result = Interop.NativeMethods.vkCreateRenderPass (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrRenderPass);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void DestroyRenderPass (RenderPass renderPass, AllocationCallbacks Allocator)
@@ -869,15 +1031,18 @@ namespace Vulkan
 			}
 		}
 
-		public Result CreateCommandPool (CommandPoolCreateInfo CreateInfo, AllocationCallbacks Allocator, out CommandPool CommandPool)
+		public void CreateCommandPool (CommandPoolCreateInfo CreateInfo, AllocationCallbacks Allocator, out CommandPool CommandPool)
 		{
+			Result result;
 			unsafe {
 				CommandPool = new CommandPool ();
 
 				fixed (UInt64* ptrCommandPool = &CommandPool.m) {
-					return Interop.NativeMethods.vkCreateCommandPool (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrCommandPool);
+					result = Interop.NativeMethods.vkCreateCommandPool (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrCommandPool);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void DestroyCommandPool (CommandPool commandPool, AllocationCallbacks Allocator)
@@ -887,22 +1052,28 @@ namespace Vulkan
 			}
 		}
 
-		public Result ResetCommandPool (CommandPool commandPool, CommandPoolResetFlags flags)
+		public void ResetCommandPool (CommandPool commandPool, CommandPoolResetFlags flags)
 		{
+			Result result;
 			unsafe {
-				return Interop.NativeMethods.vkResetCommandPool (this.m, commandPool.m, flags);
+				result = Interop.NativeMethods.vkResetCommandPool (this.m, commandPool.m, flags);
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result AllocateCommandBuffers (CommandBufferAllocateInfo AllocateInfo, out CommandBuffer CommandBuffers)
+		public void AllocateCommandBuffers (CommandBufferAllocateInfo AllocateInfo, out CommandBuffer CommandBuffers)
 		{
+			Result result;
 			unsafe {
 				CommandBuffers = new CommandBuffer ();
 
 				fixed (IntPtr* ptrCommandBuffers = &CommandBuffers.m) {
-					return Interop.NativeMethods.vkAllocateCommandBuffers (this.m, AllocateInfo.m, ptrCommandBuffers);
+					result = Interop.NativeMethods.vkAllocateCommandBuffers (this.m, AllocateInfo.m, ptrCommandBuffers);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void FreeCommandBuffers (CommandPool commandPool, UInt32 commandBufferCount, CommandBuffer CommandBuffers)
@@ -916,26 +1087,32 @@ namespace Vulkan
 			}
 		}
 
-		public Result CreateSharedSwapchainsKHR (UInt32 swapchainCount, SwapchainCreateInfoKhr CreateInfos, AllocationCallbacks Allocator, out SwapchainKhr Swapchains)
+		public void CreateSharedSwapchainsKHR (UInt32 swapchainCount, SwapchainCreateInfoKhr CreateInfos, AllocationCallbacks Allocator, out SwapchainKhr Swapchains)
 		{
+			Result result;
 			unsafe {
 				Swapchains = new SwapchainKhr ();
 
 				fixed (UInt64* ptrSwapchains = &Swapchains.m) {
-					return Interop.NativeMethods.vkCreateSharedSwapchainsKHR (this.m, swapchainCount, CreateInfos.m, Allocator != null ? Allocator.m : null, ptrSwapchains);
+					result = Interop.NativeMethods.vkCreateSharedSwapchainsKHR (this.m, swapchainCount, CreateInfos.m, Allocator != null ? Allocator.m : null, ptrSwapchains);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result CreateSwapchainKHR (SwapchainCreateInfoKhr CreateInfo, AllocationCallbacks Allocator, out SwapchainKhr Swapchain)
+		public void CreateSwapchainKHR (SwapchainCreateInfoKhr CreateInfo, AllocationCallbacks Allocator, out SwapchainKhr Swapchain)
 		{
+			Result result;
 			unsafe {
 				Swapchain = new SwapchainKhr ();
 
 				fixed (UInt64* ptrSwapchain = &Swapchain.m) {
-					return Interop.NativeMethods.vkCreateSwapchainKHR (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrSwapchain);
+					result = Interop.NativeMethods.vkCreateSwapchainKHR (this.m, CreateInfo.m, Allocator != null ? Allocator.m : null, ptrSwapchain);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void DestroySwapchainKHR (SwapchainKhr swapchain, AllocationCallbacks Allocator)
@@ -945,26 +1122,32 @@ namespace Vulkan
 			}
 		}
 
-		public Result GetSwapchainImagesKHR (SwapchainKhr swapchain, out UInt32 SwapchainImageCount, out Image SwapchainImages)
+		public void GetSwapchainImagesKHR (SwapchainKhr swapchain, out UInt32 SwapchainImageCount, out Image SwapchainImages)
 		{
+			Result result;
 			unsafe {
 				SwapchainImages = new Image ();
 
 				fixed (UInt32* ptrSwapchainImageCount = &SwapchainImageCount) {
 					fixed (UInt64* ptrSwapchainImages = &SwapchainImages.m) {
-						return Interop.NativeMethods.vkGetSwapchainImagesKHR (this.m, swapchain.m, ptrSwapchainImageCount, ptrSwapchainImages);
+						result = Interop.NativeMethods.vkGetSwapchainImagesKHR (this.m, swapchain.m, ptrSwapchainImageCount, ptrSwapchainImages);
 					}
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result AcquireNextImageKHR (SwapchainKhr swapchain, UInt64 timeout, Semaphore semaphore, Fence fence, out UInt32 ImageIndex)
+		public void AcquireNextImageKHR (SwapchainKhr swapchain, UInt64 timeout, Semaphore semaphore, Fence fence, out UInt32 ImageIndex)
 		{
+			Result result;
 			unsafe {
 				fixed (UInt32* ptrImageIndex = &ImageIndex) {
-					return Interop.NativeMethods.vkAcquireNextImageKHR (this.m, swapchain.m, timeout, semaphore.m, fence.m, ptrImageIndex);
+					result = Interop.NativeMethods.vkAcquireNextImageKHR (this.m, swapchain.m, timeout, semaphore.m, fence.m, ptrImageIndex);
 				}
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 	}
 
@@ -972,32 +1155,44 @@ namespace Vulkan
 	{
 		internal IntPtr m;
 
-		public Result Submit (UInt32 submitCount, SubmitInfo Submits, Fence fence)
+		public void Submit (UInt32 submitCount, SubmitInfo Submits, Fence fence)
 		{
+			Result result;
 			unsafe {
-				return Interop.NativeMethods.vkQueueSubmit (this.m, submitCount, Submits.m, fence.m);
+				result = Interop.NativeMethods.vkQueueSubmit (this.m, submitCount, Submits.m, fence.m);
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result WaitIdle ()
+		public void WaitIdle ()
 		{
+			Result result;
 			unsafe {
-				return Interop.NativeMethods.vkQueueWaitIdle (this.m);
+				result = Interop.NativeMethods.vkQueueWaitIdle (this.m);
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result BindSparse (UInt32 bindInfoCount, BindSparseInfo BindInfo, Fence fence)
+		public void BindSparse (UInt32 bindInfoCount, BindSparseInfo BindInfo, Fence fence)
 		{
+			Result result;
 			unsafe {
-				return Interop.NativeMethods.vkQueueBindSparse (this.m, bindInfoCount, BindInfo.m, fence.m);
+				result = Interop.NativeMethods.vkQueueBindSparse (this.m, bindInfoCount, BindInfo.m, fence.m);
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result PresentKHR (PresentInfoKhr PresentInfo)
+		public void PresentKHR (PresentInfoKhr PresentInfo)
 		{
+			Result result;
 			unsafe {
-				return Interop.NativeMethods.vkQueuePresentKHR (this.m, PresentInfo.m);
+				result = Interop.NativeMethods.vkQueuePresentKHR (this.m, PresentInfo.m);
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 	}
 
@@ -1005,25 +1200,34 @@ namespace Vulkan
 	{
 		internal IntPtr m;
 
-		public Result Begin (CommandBufferBeginInfo BeginInfo)
+		public void Begin (CommandBufferBeginInfo BeginInfo)
 		{
+			Result result;
 			unsafe {
-				return Interop.NativeMethods.vkBeginCommandBuffer (this.m, BeginInfo.m);
+				result = Interop.NativeMethods.vkBeginCommandBuffer (this.m, BeginInfo.m);
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result End ()
+		public void End ()
 		{
+			Result result;
 			unsafe {
-				return Interop.NativeMethods.vkEndCommandBuffer (this.m);
+				result = Interop.NativeMethods.vkEndCommandBuffer (this.m);
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
-		public Result Reset (CommandBufferResetFlags flags)
+		public void Reset (CommandBufferResetFlags flags)
 		{
+			Result result;
 			unsafe {
-				return Interop.NativeMethods.vkResetCommandBuffer (this.m, flags);
+				result = Interop.NativeMethods.vkResetCommandBuffer (this.m, flags);
 			}
+			if (result != Result.Success)
+				throw new ResultException (result);
 		}
 
 		public void CmdBindPipeline (PipelineBindPoint pipelineBindPoint, Pipeline pipeline)
