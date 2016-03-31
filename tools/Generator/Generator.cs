@@ -660,6 +660,7 @@ namespace VulkanSharp.Generator
 			public bool isHandle;
 			public bool isFixed;
 			public bool isPointer;
+			public bool isConst;
 		}
 
 		string GetParamCsType (string type, ref bool isPointer, out bool isHandle)
@@ -685,12 +686,13 @@ namespace VulkanSharp.Generator
 			return csType;
 		}
 
-		Dictionary<string, ParamInfo> LearnParams (XElement commandElement, bool isForHandle, out int fixedCount, bool passToNative = false)
+		Dictionary<string, ParamInfo> LearnParams (XElement commandElement, bool isForHandle, out int fixedCount, out int outCount, bool passToNative = false)
 		{
 			bool first = true;
 			var paramsDict = new Dictionary<string, ParamInfo> ();
 
 			fixedCount = 0;
+			outCount = 0;
 			foreach (var param in commandElement.Elements ("param")) {
 				if (first && isForHandle) {
 					first = false;
@@ -702,6 +704,11 @@ namespace VulkanSharp.Generator
 				info.csType = GetParamCsType (type, ref isPointer, out info.isHandle);
 				paramsDict.Add (GetParamName (param), info);
 				info.isPointer = isPointer;
+				info.isConst = info.isPointer && param.Value.Contains ("const ");
+				if (info.isPointer && !info.isConst) {
+					info.isOut = true;
+					outCount++;
+				}
 				info.isStruct = structures.Contains (info.csType);
 				if (isPointer && type == "void" && !param.Value.Contains ("**"))
 					continue;
@@ -716,11 +723,10 @@ namespace VulkanSharp.Generator
 			return paramsDict;
 		}
 
-		Dictionary<string, string> WriteCommandParameters (XElement commandElement, bool isForHandle = false, bool passToNative = false, Dictionary<string, ParamInfo> paramsDict = null)
+		void WriteCommandParameters (XElement commandElement, bool isForHandle = false, bool passToNative = false, Dictionary<string, ParamInfo> paramsDict = null)
 		{
 			bool first = true;
 			bool previous = false;
-			var outParams = new Dictionary<string, string> ();
 
 			foreach (var param in commandElement.Elements ("param")) {
 				if (first && isForHandle) {
@@ -739,34 +745,27 @@ namespace VulkanSharp.Generator
 				var optional = param.Attribute ("optional");
 				bool isOptionalParam = (optional != null && optional.Value == "true");
 				bool isDoublePointer = param.Value.Contains (type + "**");
-				bool isConst = false;
-				if (info.isPointer && param.Value.Contains ("const "))
-						isConst = true;
-				if (!isDoublePointer && info.isPointer && info.csType == "IntPtr")
+				if (!isDoublePointer && info.isPointer && info.csType == "IntPtr") {
 					info.isPointer = false;
+					info.isOut = false;
+				}
 
 				if (previous)
 					Write (", ");
 				else
 					previous = true;
 
-				bool isOut = info.isPointer && !isConst;
-				if (isOut)
-					outParams [name] = info.csType;
-
 				if (passToNative) {
 					string paramName = info.isFixed ? "ptr" + name : name;
 					bool useHandlePtr = !info.isFixed && (info.isStruct || info.isHandle);
 
-					if (isOptionalParam && info.isPointer && !isOut)
+					if (isOptionalParam && info.isPointer && !info.isOut)
 						Write ("{0} != null ? {0}{1} : null", GetSafeParameterName(paramName), useHandlePtr ? ".m" : "");
 					else
 						Write ("{0}{1}{2}", (info.isPointer && !info.isStruct && !info.isFixed) ? "&" : "", GetSafeParameterName(paramName), useHandlePtr ? ".m" : "");
 				} else
-					Write ("{0}{1} {2}", isOut ? "out " : "", info.csType, keywords.Contains (name) ? "@" + name : name);
+					Write ("{0}{1} {2}", info.isOut ? "out " : "", info.csType, keywords.Contains (name) ? "@" + name : name);
 			}
-
-			return outParams;
 		}
 
 		string GetSafeParameterName(string paramName)
@@ -830,15 +829,15 @@ namespace VulkanSharp.Generator
 					csFunction = csFunction.Substring (0, csFunction.Length - handleName.Length);
 			}
 
-			int fixedCount;
-			var paramsDict = LearnParams (commandElement, isForHandle, out fixedCount);
+			int fixedCount, outCount;
+			var paramsDict = LearnParams (commandElement, isForHandle, out fixedCount, out outCount);
 
 			var hasResult = csType == "Result";
 			if (hasResult)
 				csType = "void";
 
 			IndentWrite ("public {0}{1} {2} (", isForHandle ? "" : "static ", csType, csFunction);
-			var outParams = WriteCommandParameters (commandElement, isForHandle, false, paramsDict);
+			WriteCommandParameters (commandElement, isForHandle, false, paramsDict);
 			WriteLine (")");
 			IndentWriteLine ("{");
 			IndentLevel++;
@@ -865,11 +864,12 @@ namespace VulkanSharp.Generator
 					}
 				}
 			}
-			if (outParams.Count > 0) {
-				foreach (var param in outParams)
-					if (!paramsDict.ContainsKey (param.Key) || !paramsDict [param.Key].isFixed)
-						IndentWriteLine ("{0} = new {1} ();", param.Key, param.Value);
-			}
+			if (outCount > 0)
+				foreach (var param in paramsDict) {
+					var info = param.Value;
+					if (info.isOut && !info.isFixed)
+						IndentWriteLine ("{0} = new {1} ();", param.Key, info.csType);
+				}
 
 			IndentWrite ("{0}{1}Interop.NativeMethods.{2} (", hasResult ? "result = " : "", csType != "void" ? "return " : "", function);
 			WriteCommandParameters (commandElement, isForHandle, true, paramsDict);
