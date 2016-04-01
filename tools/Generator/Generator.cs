@@ -654,6 +654,7 @@ namespace VulkanSharp.Generator
 
 		class ParamInfo
 		{
+			public string csName;
 			public string csType;
 			public bool isOut;
 			public bool isStruct;
@@ -698,11 +699,12 @@ namespace VulkanSharp.Generator
 					first = false;
 					continue;
 				}
-				var info = new ParamInfo ();
+				var csName = GetParamName (param);
+				var info = new ParamInfo () { csName = csName };
 				string type = param.Element ("type").Value;
 				bool isPointer = param.Value.Contains (type + "*");
 				info.csType = GetParamCsType (type, ref isPointer, out info.isHandle);
-				paramsDict.Add (GetParamName (param), info);
+				paramsDict.Add (csName, info);
 				info.isPointer = isPointer;
 				info.isConst = info.isPointer && param.Value.Contains ("const ");
 				if (info.isPointer && !info.isConst) {
@@ -723,7 +725,7 @@ namespace VulkanSharp.Generator
 			return paramsDict;
 		}
 
-		void WriteCommandParameters (XElement commandElement, bool isForHandle = false, bool passToNative = false, Dictionary<string, ParamInfo> paramsDict = null)
+		void WriteCommandParameters (XElement commandElement, bool ignoreFirstOutParameter, bool isForHandle = false, bool passToNative = false, Dictionary<string, ParamInfo> paramsDict = null)
 		{
 			bool first = true;
 			bool previous = false;
@@ -741,6 +743,11 @@ namespace VulkanSharp.Generator
 				string type = param.Element ("type").Value;
 				string name = GetParamName (param);
 				var info = paramsDict [name];
+
+				if (ignoreFirstOutParameter && info.isOut && !passToNative) {
+					ignoreFirstOutParameter = false;
+					continue;
+				}
 
 				var optional = param.Attribute ("optional");
 				bool isOptionalParam = (optional != null && optional.Value == "true");
@@ -836,13 +843,34 @@ namespace VulkanSharp.Generator
 			if (hasResult)
 				csType = "void";
 
+			ParamInfo firstOutParam = null;
+			if (outCount == 1 && csType == "void") {
+				foreach (var param in paramsDict) {
+					if (param.Value.isOut) {
+						firstOutParam = param.Value;
+						switch (firstOutParam.csType) {
+						case "Bool32":
+						case "IntPtr":
+						case "UInt32":
+						case "DeviceSize":
+							firstOutParam.isFixed = false;
+							break;
+						}
+						break;
+					}
+				}
+				csType = firstOutParam.csType;
+			}
+
 			IndentWrite ("public {0}{1} {2} (", isForHandle ? "" : "static ", csType, csFunction);
-			WriteCommandParameters (commandElement, isForHandle, false, paramsDict);
+			WriteCommandParameters (commandElement, firstOutParam != null, isForHandle, false, paramsDict);
 			WriteLine (")");
 			IndentWriteLine ("{");
 			IndentLevel++;
 			if (hasResult)
 				IndentWriteLine ("Result result;");
+			if (firstOutParam != null)
+				IndentWriteLine ("{0} {1};", csType, firstOutParam.csName);
 			IndentWriteLine ("unsafe {");
 			IndentLevel++;
 
@@ -859,7 +887,7 @@ namespace VulkanSharp.Generator
 
 				foreach (var param in paramsDict) {
 					if (param.Value.isFixed) {
-						IndentWriteLine ("fixed ({0}* ptr{1} = &{1}{2}) {{", GetManagedType (param.Value.csType), param.Key, param.Value.isHandle ? ".m" : "");
+						IndentWriteLine ("fixed ({0}* ptr{1} = &{2}{3}) {{", GetManagedType (param.Value.csType), param.Key, param.Key, param.Value.isHandle ? ".m" : "");
 						IndentLevel++;
 					}
 				}
@@ -871,8 +899,8 @@ namespace VulkanSharp.Generator
 						IndentWriteLine ("{0} = new {1} ();", param.Key, info.csType);
 				}
 
-			IndentWrite ("{0}{1}Interop.NativeMethods.{2} (", hasResult ? "result = " : "", csType != "void" ? "return " : "", function);
-			WriteCommandParameters (commandElement, isForHandle, true, paramsDict);
+			IndentWrite ("{0}{1}Interop.NativeMethods.{2} (", hasResult ? "result = " : "", (firstOutParam == null && csType != "void") ? "return " : "", function);
+			WriteCommandParameters (commandElement, firstOutParam != null, isForHandle, true, paramsDict);
 			WriteLine (");");
 
 			if (fixedCount > 0) {
@@ -891,6 +919,10 @@ namespace VulkanSharp.Generator
 				IndentLevel++;
 				IndentWriteLine ("throw new ResultException (result);");
 				IndentLevel--;
+			}
+			if (firstOutParam != null) {
+				WriteLine ();
+				IndentWriteLine ("return {0};", firstOutParam.csName);
 			}
 			IndentLevel--;
 			IndentWriteLine ("}");
