@@ -9,35 +9,63 @@
 */
 
 using System;
+using System.Runtime.InteropServices;
+using System.Collections.Generic;
 
 namespace Vulkan
 {
 	internal static partial class Commands
 	{
-		public static void EnumerateInstanceLayerProperties (out UInt32 pPropertyCount, out LayerProperties pProperties)
+		public static List<LayerProperties> EnumerateInstanceLayerProperties ()
 		{
 			Result result;
 			unsafe {
-				fixed (UInt32* ptrpPropertyCount = &pPropertyCount) {
-					pProperties = new LayerProperties ();
-					result = Interop.NativeMethods.vkEnumerateInstanceLayerProperties (ptrpPropertyCount, pProperties.m);
+				UInt32 pPropertyCount;
+				result = Interop.NativeMethods.vkEnumerateInstanceLayerProperties (&pPropertyCount, null);
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				int size = Marshal.SizeOf (typeof (Interop.LayerProperties));
+				var ptrpProperties = Marshal.AllocHGlobal ((int)(size * pPropertyCount));
+				result = Interop.NativeMethods.vkEnumerateInstanceLayerProperties (&pPropertyCount, (Interop.LayerProperties*)ptrpProperties);
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				var list = new List<LayerProperties> ();
+				for (int i = 0; i < pPropertyCount; i++) {
+					var item = new LayerProperties ();
+					item.m = &((Interop.LayerProperties*)ptrpProperties)[i];
+					list.Add (item);
 				}
+
+				return list;
 			}
-			if (result != Result.Success)
-				throw new ResultException (result);
 		}
 
-		public static void EnumerateInstanceExtensionProperties (string pLayerName, out UInt32 pPropertyCount, out ExtensionProperties pProperties)
+		public static List<ExtensionProperties> EnumerateInstanceExtensionProperties (string pLayerName)
 		{
 			Result result;
 			unsafe {
-				fixed (UInt32* ptrpPropertyCount = &pPropertyCount) {
-					pProperties = new ExtensionProperties ();
-					result = Interop.NativeMethods.vkEnumerateInstanceExtensionProperties (pLayerName, ptrpPropertyCount, pProperties.m);
+				UInt32 pPropertyCount;
+				result = Interop.NativeMethods.vkEnumerateInstanceExtensionProperties (pLayerName, &pPropertyCount, null);
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				int size = Marshal.SizeOf (typeof (Interop.ExtensionProperties));
+				var ptrpProperties = Marshal.AllocHGlobal ((int)(size * pPropertyCount));
+				result = Interop.NativeMethods.vkEnumerateInstanceExtensionProperties (pLayerName, &pPropertyCount, (Interop.ExtensionProperties*)ptrpProperties);
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				var list = new List<ExtensionProperties> ();
+				for (int i = 0; i < pPropertyCount; i++) {
+					var item = new ExtensionProperties ();
+					item.m = &((Interop.ExtensionProperties*)ptrpProperties)[i];
+					list.Add (item);
 				}
+
+				return list;
 			}
-			if (result != Result.Success)
-				throw new ResultException (result);
 		}
 	}
 }
