@@ -304,7 +304,7 @@ namespace VulkanSharp.Generator
 			WriteLine ("   See LICENSE file for licensing details.");
 		}
 
-		void CreateFile (string typeName, bool usingInterop = false, string nspace = "Vulkan", string subDirectory = null)
+		void CreateFile (string typeName, bool usingInterop = false, bool usingCollections = false, string nspace = "Vulkan", string subDirectory = null)
 		{
 			string path = subDirectory != null ? string.Format ("{0}{1}{2}", outputPath, Path.DirectorySeparatorChar, subDirectory) : outputPath;
 			string filename = string.Format ("{0}{1}{2}.cs", path, Path.DirectorySeparatorChar, typeName);
@@ -319,6 +319,8 @@ namespace VulkanSharp.Generator
 			WriteLine ("using System;");
 			if (usingInterop)
 				WriteLine ("using System.Runtime.InteropServices;");
+			if (usingCollections)
+				WriteLine ("using System.Collections.Generic;");
 			WriteLine ();
 
 			WriteLine ("namespace {0}\n{{", nspace);
@@ -602,7 +604,7 @@ namespace VulkanSharp.Generator
 			GenerateType ("struct", WriteStructOrUnion);
 			FinalizeFile ();
 
-			CreateFile ("MarshalStructs", false, "Vulkan.Interop", "Interop");
+			CreateFile ("MarshalStructs", false, false, "Vulkan.Interop", "Interop");
 			isUnion = false;
 			isInterop = true;
 			GenerateType ("struct", WriteStructOrUnion);
@@ -619,7 +621,7 @@ namespace VulkanSharp.Generator
 			GenerateType ("union", WriteStructOrUnion);
 			FinalizeFile ();
 
-			CreateFile ("MarshalUnions", true, "Vulkan.Interop", "Interop");
+			CreateFile ("MarshalUnions", true, false, "Vulkan.Interop", "Interop");
 			isInterop = true;
 			GenerateType ("union", WriteStructOrUnion);
 			isInterop = false;
@@ -725,7 +727,7 @@ namespace VulkanSharp.Generator
 			return paramsDict;
 		}
 
-		void WriteCommandParameters (XElement commandElement, bool ignoreFirstOutParameter, bool isForHandle = false, bool passToNative = false, Dictionary<string, ParamInfo> paramsDict = null)
+		void WriteCommandParameters (XElement commandElement, List<ParamInfo> ignoredParameters = null, ParamInfo nullParameter = null, ParamInfo ptrParam = null, bool isForHandle = false, bool passToNative = false, Dictionary<string, ParamInfo> paramsDict = null)
 		{
 			bool first = true;
 			bool previous = false;
@@ -744,10 +746,8 @@ namespace VulkanSharp.Generator
 				string name = GetParamName (param);
 				var info = paramsDict [name];
 
-				if (ignoreFirstOutParameter && info.isOut && !passToNative) {
-					ignoreFirstOutParameter = false;
+				if (ignoredParameters != null && ignoredParameters.Contains (info))
 					continue;
-				}
 
 				var optional = param.Attribute ("optional");
 				bool isOptionalParam = (optional != null && optional.Value == "true");
@@ -766,7 +766,11 @@ namespace VulkanSharp.Generator
 					string paramName = info.isFixed ? "ptr" + name : name;
 					bool useHandlePtr = !info.isFixed && (info.isStruct || info.isHandle);
 
-					if (isOptionalParam && info.isPointer && !info.isOut)
+					if (info == nullParameter)
+						Write ("null");
+					else if (info == ptrParam)
+						Write ("({0}{1}*)ptr{2}", info.isStruct ? "Interop." : "", info.isHandle ? GetHandleType (handles [info.csType]) : info.csType, info.csName);
+					else if (isOptionalParam && info.isPointer && !info.isOut)
 						Write ("{0} != null ? {0}{1} : null", GetSafeParameterName(paramName), useHandlePtr ? ".m" : "");
 					else
 						Write ("{0}{1}{2}", (info.isPointer && !info.isStruct && !info.isFixed) ? "&" : "", GetSafeParameterName(paramName), useHandlePtr ? ".m" : "");
@@ -806,6 +810,41 @@ namespace VulkanSharp.Generator
 			"vkCreateInstance"
 		};
 
+		bool CommandShouldCreateList (XElement commandElement, Dictionary<string, ParamInfo> paramsDict, ref ParamInfo intParam, ref ParamInfo dataParam)
+		{
+			ParamInfo outUInt = null;
+			foreach (var param in commandElement.Elements ("param")) {
+				string name = GetParamName (param);
+				if (!paramsDict.ContainsKey (name))
+					continue;
+
+				var info = paramsDict [name];
+				if (info.csType == "UInt32")
+					outUInt = info;
+				else {
+					if (outUInt != null && info.isOut && (info.isStruct || info.isHandle || info.isPointer)) {
+						intParam = outUInt;
+						dataParam = info;
+
+						return true;
+					}
+					outUInt = null;
+				}
+			}
+
+			return false;
+		}
+
+		void CommandHandleResult (bool hasResult)
+		{
+			if (hasResult) {
+				IndentWriteLine ("if (result != Result.Success)");
+				IndentLevel++;
+				IndentWriteLine ("throw new ResultException (result);");
+				IndentLevel--;
+			}
+		}
+
 		bool WriteCommand (XElement commandElement, bool prependNewLine, bool isForHandle = false, string handleName = null)
 		{
 			string function = commandElement.Element ("proto").Element ("name").Value;
@@ -844,26 +883,44 @@ namespace VulkanSharp.Generator
 				csType = "void";
 
 			ParamInfo firstOutParam = null;
-			if (outCount == 1 && csType == "void") {
-				foreach (var param in paramsDict) {
-					if (param.Value.isOut) {
-						firstOutParam = param.Value;
-						switch (firstOutParam.csType) {
-						case "Bool32":
-						case "IntPtr":
-						case "UInt32":
-						case "DeviceSize":
-							firstOutParam.isFixed = false;
+			ParamInfo intParam = null;
+			ParamInfo dataParam = null;
+			var ignoredParameters = new List<ParamInfo> ();
+			bool createList = false;
+			if (csType == "void") {
+				if (outCount == 1) {
+					foreach (var param in paramsDict) {
+						if (param.Value.isOut) {
+							firstOutParam = param.Value;
+							switch (firstOutParam.csType) {
+							case "Bool32":
+							case "IntPtr":
+							case "UInt32":
+							case "DeviceSize":
+								firstOutParam.isFixed = false;
+								break;
+							}
+							ignoredParameters.Add (param.Value);
 							break;
 						}
-						break;
+					}
+					csType = firstOutParam.csType;
+				} else if (outCount > 1) {
+					createList = CommandShouldCreateList (commandElement, paramsDict, ref intParam, ref dataParam);
+					if (createList) {
+						ignoredParameters.Add (intParam);
+						ignoredParameters.Add (dataParam);
+						intParam.isFixed = false;
+						dataParam.isFixed = false;
+						intParam.isOut = false;
+						dataParam.isOut = false;
+						csType = string.Format ("List<{0}>", dataParam.csType);
 					}
 				}
-				csType = firstOutParam.csType;
 			}
 
 			IndentWrite ("public {0}{1} {2} (", isForHandle ? "" : "static ", csType, csFunction);
-			WriteCommandParameters (commandElement, firstOutParam != null, isForHandle, false, paramsDict);
+			WriteCommandParameters (commandElement, ignoredParameters, null, null, isForHandle, false, paramsDict);
 			WriteLine (")");
 			IndentWriteLine ("{");
 			IndentLevel++;
@@ -873,6 +930,17 @@ namespace VulkanSharp.Generator
 				IndentWriteLine ("{0} {1};", csType, firstOutParam.csName);
 			IndentWriteLine ("unsafe {");
 			IndentLevel++;
+
+			if (createList) {
+				IndentWriteLine ("UInt32 {0};", intParam.csName);
+				IndentWrite ("{0}{1}Interop.NativeMethods.{2} (", hasResult ? "result = " : "", (ignoredParameters.Count == 0 && csType != "void") ? "return " : "", function);
+				WriteCommandParameters (commandElement, null, dataParam, null, isForHandle, true, paramsDict);
+				WriteLine (");");
+				CommandHandleResult (hasResult);
+				WriteLine ();
+				IndentWriteLine ("int size = Marshal.SizeOf (typeof ({0}{1}));", dataParam.isStruct ? "Interop." : "", dataParam.isHandle ? GetHandleType (handles [dataParam.csType]) : dataParam.csType);
+				IndentWriteLine ("var ptr{0} = Marshal.AllocHGlobal ((int)(size * {1}));", dataParam.csName, intParam.csName);
+			}
 
 			if (fixedCount > 0) {
 				int count = 0;
@@ -895,12 +963,12 @@ namespace VulkanSharp.Generator
 			if (outCount > 0)
 				foreach (var param in paramsDict) {
 					var info = param.Value;
-					if (info.isOut && !info.isFixed)
+					if (info.isOut && !info.isFixed) // && (ignoredParameters == null || !ignoredParameters.Contains (info)))
 						IndentWriteLine ("{0} = new {1} ();", param.Key, info.csType);
 				}
 
-			IndentWrite ("{0}{1}Interop.NativeMethods.{2} (", hasResult ? "result = " : "", (firstOutParam == null && csType != "void") ? "return " : "", function);
-			WriteCommandParameters (commandElement, firstOutParam != null, isForHandle, true, paramsDict);
+			IndentWrite ("{0}{1}Interop.NativeMethods.{2} (", hasResult ? "result = " : "", (ignoredParameters.Count == 0 && csType != "void") ? "return " : "", function);
+			WriteCommandParameters (commandElement, null, null, dataParam, isForHandle, true, paramsDict);
 			WriteLine (");");
 
 			if (fixedCount > 0) {
@@ -912,22 +980,42 @@ namespace VulkanSharp.Generator
 				}
 			}
 
-			IndentLevel--;
-			IndentWriteLine ("}");
-			if (hasResult) {
-				IndentWriteLine ("if (result != Result.Success)");
-				IndentLevel++;
-				IndentWriteLine ("throw new ResultException (result);");
-				IndentLevel--;
-			}
+			CommandHandleResult (hasResult);
 			if (firstOutParam != null) {
 				WriteLine ();
 				IndentWriteLine ("return {0};", firstOutParam.csName);
+			} else if (createList) {
+				WriteLine ();
+				IndentWriteLine ("var list = new List<{0}> ();", dataParam.csType);
+				IndentWriteLine ("for (int i = 0; i < {0}; i++) {{", intParam.csName);
+				IndentLevel++;
+				IndentWriteLine ("var item = new {0} ();", dataParam.csType);
+				IndentWriteLine ("item{0} = {1}(({2}{3}*)ptr{4})[i];", (dataParam.isStruct || dataParam.isHandle) ? ".m" : "", dataParam.isStruct ? "&" : "", dataParam.isStruct ? "Interop." : "", dataParam.isHandle ? GetHandleType (handles [dataParam.csType]) : dataParam.csType, dataParam.csName);
+				IndentWriteLine ("list.Add (item);");
+				IndentLevel--;
+				IndentWriteLine ("}");
+				WriteLine ();
+				IndentWriteLine ("return list;");
 			}
+
+			IndentLevel--;
+			IndentWriteLine ("}");
 			IndentLevel--;
 			IndentWriteLine ("}");
 
 			return true;
+		}
+
+		string GetHandleType (HandleInfo info)
+		{
+			switch (info.type) {
+			case "VK_DEFINE_NON_DISPATCHABLE_HANDLE":
+				return "UInt64";
+			case "VK_DEFINE_HANDLE":
+				return "IntPtr";
+			default:
+				throw new Exception ("unknown handle type: " + info.type);
+			}
 		}
 
 		bool WriteHandle (XElement handleElement)
@@ -940,16 +1028,7 @@ namespace VulkanSharp.Generator
 			IndentLevel++;
 
 			//// todo: implement marshalling
-			switch (info.type) {
-			case "VK_DEFINE_NON_DISPATCHABLE_HANDLE":
-				IndentWriteLine ("internal UInt64 m;", csName);
-				break;
-			case "VK_DEFINE_HANDLE":
-				IndentWriteLine ("internal IntPtr m;", csName);
-				break;
-			default:
-				throw new Exception ("unknown handle type: " + info.type);
-			}
+			IndentWriteLine ("internal {0} m;", GetHandleType (info));
 
 			if (info.commands.Count > 0) {
 				WriteLine ();
@@ -966,7 +1045,7 @@ namespace VulkanSharp.Generator
 
 		void GenerateHandles ()
 		{
-			CreateFile ("Handles");
+			CreateFile ("Handles", true, true);
 			GenerateType ("handle", WriteHandle);
 			FinalizeFile ();
 		}
@@ -1060,7 +1139,7 @@ namespace VulkanSharp.Generator
 
 		void GenerateCommands ()
 		{
-			CreateFile ("ImportedCommands", true, "Vulkan.Interop", "Interop");
+			CreateFile ("ImportedCommands", true, false, "Vulkan.Interop", "Interop");
 
 			IndentWriteLine ("internal static class NativeMethods");
 			IndentWriteLine ("{");
@@ -1082,7 +1161,7 @@ namespace VulkanSharp.Generator
 
 		void GenerateRemainingCommands ()
 		{
-			CreateFile ("Commands");
+			CreateFile ("Commands", true, true);
 
 			IndentWriteLine ("internal static partial class Commands");
 			IndentWriteLine ("{");
