@@ -15,10 +15,13 @@ namespace VulkanSharp.Generator
 		bool isUnion;
 		bool isInterop;
 
-		Dictionary<string, string> typesTranslation = new Dictionary<string, string> ();
+		Dictionary<string, string> typesTranslation = new Dictionary<string, string> () { { "ANativeWindow", "IntPtr" }  };
 		HashSet<string> structures = new HashSet<string> ();
 		Dictionary<string, HandleInfo> handles = new Dictionary<string,HandleInfo> ();
 		Dictionary<string, List<EnumExtensionInfo>> enumExtensions = new Dictionary<string, List<EnumExtensionInfo>> ();
+
+		HashSet<string> requiredTypes = null;
+		HashSet<string> requiredCommands = null;
 
 		class HandleInfo
 		{
@@ -54,6 +57,7 @@ namespace VulkanSharp.Generator
 			GenerateCommands ();
 			GenerateHandles ();
 			GenerateRemainingCommands ();
+			GenerateExtensions ();
 		}
 
 		void LoadSpecification ()
@@ -308,6 +312,7 @@ namespace VulkanSharp.Generator
 		{
 			string path = subDirectory != null ? string.Format ("{0}{1}{2}", outputPath, Path.DirectorySeparatorChar, subDirectory) : outputPath;
 			string filename = string.Format ("{0}{1}{2}.cs", path, Path.DirectorySeparatorChar, typeName);
+			Directory.CreateDirectory (Path.GetDirectoryName (filename));
 			writer = File.CreateText (filename);
 			IndentLevel = 0;
 
@@ -532,7 +537,7 @@ namespace VulkanSharp.Generator
 		bool WriteStructOrUnion (XElement structElement)
 		{
 			string name = structElement.Attribute ("name").Value;
-			if (!typesTranslation.ContainsKey (name))
+			if (!typesTranslation.ContainsKey (name) || (requiredTypes != null && !requiredTypes.Contains (name)))
 				return false;
 
 			string csName = typesTranslation [name];
@@ -582,7 +587,10 @@ namespace VulkanSharp.Generator
 			string name = structElement.Attribute ("name").Value;
 			string csName = GetTypeCsName (name, "struct");
 
-			if (disabledStructs.Contains (csName))
+			if (requiredTypes != null) {
+				if (!requiredTypes.Contains (name))
+					return false;
+			} else if (disabledStructs.Contains (csName))
 				return false;
 
 			typesTranslation [name] = csName;
@@ -1233,6 +1241,40 @@ namespace VulkanSharp.Generator
 
 			foreach (var element in elements)
 				LearnExtension (element);
+		}
+
+		void PrepareExtensionSets (string extensionName)
+		{
+			var elements = from e in specTree.Elements ("extensions").Elements ("extension") where e.Attribute ("name").Value == extensionName select e.Element ("require");
+
+			requiredTypes = new HashSet<string> ();
+			requiredCommands = new HashSet<string> ();
+
+			foreach (var element in elements.Elements ()) {
+				switch (element.Name.ToString ()) {
+				case "type":
+					requiredTypes.Add (element.Attribute ("name").Value);
+					break;
+				case "command":
+					requiredCommands.Add (element.Attribute ("name").Value);
+					break;
+				}
+			}
+		}
+
+		void GeneratePlatformExtension (string name, string extensionName)
+		{
+			outputPath += string.Format ("{0}..{0}Platforms{0}{1}", Path.DirectorySeparatorChar, name);
+
+			PrepareExtensionSets (extensionName);
+
+			LearnStructsAndUnions ();
+			GenerateStructs ();
+		}
+
+		void GenerateExtensions ()
+		{
+			GeneratePlatformExtension ("Android", "VK_KHR_android_surface");
 		}
 	}
 }
