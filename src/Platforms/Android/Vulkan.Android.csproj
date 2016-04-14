@@ -47,6 +47,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Structs.cs" />
     <Compile Include="Interop\MarshalStructs.cs" />
+    <Compile Include="Interop\ImportedCommands.cs" />
+    <Compile Include="Handles.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

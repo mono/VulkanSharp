@@ -15,11 +15,11 @@ namespace Vulkan
 {
 	unsafe public class AndroidSurfaceCreateInfoKhr
 	{
-		internal Interop.AndroidSurfaceCreateInfoKhr* m;
+		internal Android.Interop.AndroidSurfaceCreateInfoKhr* m;
 
 		public AndroidSurfaceCreateInfoKhr ()
 		{
-			m = (Interop.AndroidSurfaceCreateInfoKhr*) Interop.Structure.Allocate (typeof (Interop.AndroidSurfaceCreateInfoKhr));
+			m = (Android.Interop.AndroidSurfaceCreateInfoKhr*) Interop.Structure.Allocate (typeof (Android.Interop.AndroidSurfaceCreateInfoKhr));
 			m->SType = StructureType.AndroidSurfaceCreateInfoKhr;
 		}
 

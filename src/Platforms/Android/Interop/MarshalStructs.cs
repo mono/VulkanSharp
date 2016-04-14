@@ -10,7 +10,7 @@
 
 using System;
 
-namespace Vulkan.Interop
+namespace Vulkan.Android.Interop
 {
 	internal struct AndroidSurfaceCreateInfoKhr
 	{
