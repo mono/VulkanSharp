@@ -9,6 +9,7 @@ all: $(BIN_PATH)/vk.xml $(BIN_PATH)/Vulkan.dll
 
 $(BIN_PATH)/vk.xml:
 	mkdir -p $(BIN_PATH)
+	mkdir -p $(BIN_PATH_RELEASE)
 	curl -o "$@" $(VK_XML_URL)
 	cp "$@" $(BIN_PATH_RELEASE)
 
@@ -17,6 +18,7 @@ $(BIN_PATH)/Vulkan.dll: $(wildcard src/Vulkan/*.cs src/Vulkan/*/*.cs tools/Gener
 
 clean:
 	rm -Rf $(BIN_PATH)
+	rm -Rf $(BIN_PATH_RELEASE)
 
 fxcop: lib/gendarme-2.10/gendarme.exe
 	mono --debug $< --html $(BIN_PATH)/gendarme.html \
