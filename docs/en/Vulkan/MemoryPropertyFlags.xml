@@ -1,0 +1,92 @@
+<Type Name="MemoryPropertyFlags" FullName="Vulkan.MemoryPropertyFlags">
+  <TypeSignature Language="C#" Value="public enum MemoryPropertyFlags" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed MemoryPropertyFlags extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Flags</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="DeviceLocal">
+      <MemberSignature Language="C#" Value="DeviceLocal" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.MemoryPropertyFlags DeviceLocal = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.MemoryPropertyFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="HostCached">
+      <MemberSignature Language="C#" Value="HostCached" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.MemoryPropertyFlags HostCached = int32(8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.MemoryPropertyFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="HostCoherent">
+      <MemberSignature Language="C#" Value="HostCoherent" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.MemoryPropertyFlags HostCoherent = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.MemoryPropertyFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="HostVisible">
+      <MemberSignature Language="C#" Value="HostVisible" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.MemoryPropertyFlags HostVisible = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.MemoryPropertyFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="LazilyAllocated">
+      <MemberSignature Language="C#" Value="LazilyAllocated" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.MemoryPropertyFlags LazilyAllocated = int32(16)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.MemoryPropertyFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

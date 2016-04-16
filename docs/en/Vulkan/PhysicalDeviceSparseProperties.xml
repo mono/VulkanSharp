@@ -1,0 +1,111 @@
+<Type Name="PhysicalDeviceSparseProperties" FullName="Vulkan.PhysicalDeviceSparseProperties">
+  <TypeSignature Language="C#" Value="public class PhysicalDeviceSparseProperties" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PhysicalDeviceSparseProperties extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public PhysicalDeviceSparseProperties ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResidencyAlignedMipSize">
+      <MemberSignature Language="C#" Value="public bool ResidencyAlignedMipSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ResidencyAlignedMipSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResidencyNonResidentStrict">
+      <MemberSignature Language="C#" Value="public bool ResidencyNonResidentStrict { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ResidencyNonResidentStrict" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResidencyStandard2DBlockShape">
+      <MemberSignature Language="C#" Value="public bool ResidencyStandard2DBlockShape { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ResidencyStandard2DBlockShape" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResidencyStandard2DMultisampleBlockShape">
+      <MemberSignature Language="C#" Value="public bool ResidencyStandard2DMultisampleBlockShape { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ResidencyStandard2DMultisampleBlockShape" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResidencyStandard3DBlockShape">
+      <MemberSignature Language="C#" Value="public bool ResidencyStandard3DBlockShape { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ResidencyStandard3DBlockShape" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

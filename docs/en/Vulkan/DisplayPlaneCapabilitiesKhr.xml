@@ -1,0 +1,175 @@
+<Type Name="DisplayPlaneCapabilitiesKhr" FullName="Vulkan.DisplayPlaneCapabilitiesKhr">
+  <TypeSignature Language="C#" Value="public class DisplayPlaneCapabilitiesKhr" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit DisplayPlaneCapabilitiesKhr extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public DisplayPlaneCapabilitiesKhr ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxDstExtent">
+      <MemberSignature Language="C#" Value="public Vulkan.Extent2D MaxDstExtent { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Extent2D MaxDstExtent" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Extent2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxDstPosition">
+      <MemberSignature Language="C#" Value="public Vulkan.Offset2D MaxDstPosition { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Offset2D MaxDstPosition" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Offset2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxSrcExtent">
+      <MemberSignature Language="C#" Value="public Vulkan.Extent2D MaxSrcExtent { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Extent2D MaxSrcExtent" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Extent2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxSrcPosition">
+      <MemberSignature Language="C#" Value="public Vulkan.Offset2D MaxSrcPosition { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Offset2D MaxSrcPosition" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Offset2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MinDstExtent">
+      <MemberSignature Language="C#" Value="public Vulkan.Extent2D MinDstExtent { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Extent2D MinDstExtent" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Extent2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MinDstPosition">
+      <MemberSignature Language="C#" Value="public Vulkan.Offset2D MinDstPosition { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Offset2D MinDstPosition" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Offset2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MinSrcExtent">
+      <MemberSignature Language="C#" Value="public Vulkan.Extent2D MinSrcExtent { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Extent2D MinSrcExtent" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Extent2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MinSrcPosition">
+      <MemberSignature Language="C#" Value="public Vulkan.Offset2D MinSrcPosition { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Offset2D MinSrcPosition" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Offset2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SupportedAlpha">
+      <MemberSignature Language="C#" Value="public Vulkan.DisplayPlaneAlphaFlagsKhr SupportedAlpha { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.DisplayPlaneAlphaFlagsKhr SupportedAlpha" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DisplayPlaneAlphaFlagsKhr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,353 @@
+<Type Name="Result" FullName="Vulkan.Result">
+  <TypeSignature Language="C#" Value="public enum Result" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed Result extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="ErrorDeviceLost">
+      <MemberSignature Language="C#" Value="ErrorDeviceLost" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Result ErrorDeviceLost = int32(-4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorExtensionNotPresent">
+      <MemberSignature Language="C#" Value="ErrorExtensionNotPresent" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Result ErrorExtensionNotPresent = int32(-7)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorFeatureNotPresent">
+      <MemberSignature Language="C#" Value="ErrorFeatureNotPresent" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Result ErrorFeatureNotPresent = int32(-8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorFormatNotSupported">
+      <MemberSignature Language="C#" Value="ErrorFormatNotSupported" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Result ErrorFormatNotSupported = int32(-11)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorIncompatibleDisplayKhr">
+      <MemberSignature Language="C#" Value="ErrorIncompatibleDisplayKhr" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Result ErrorIncompatibleDisplayKhr = int32(-1000003001)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorIncompatibleDriver">
+      <MemberSignature Language="C#" Value="ErrorIncompatibleDriver" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Result ErrorIncompatibleDriver = int32(-9)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorInitializationFailed">
+      <MemberSignature Language="C#" Value="ErrorInitializationFailed" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Result ErrorInitializationFailed = int32(-3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorInvalidShaderNv">
+      <MemberSignature Language="C#" Value="ErrorInvalidShaderNv" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Result ErrorInvalidShaderNv = int32(-1000012000)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorLayerNotPresent">
+      <MemberSignature Language="C#" Value="ErrorLayerNotPresent" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Result ErrorLayerNotPresent = int32(-6)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorMemoryMapFailed">
+      <MemberSignature Language="C#" Value="ErrorMemoryMapFailed" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Result ErrorMemoryMapFailed = int32(-5)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorNativeWindowInUseKhr">
+      <MemberSignature Language="C#" Value="ErrorNativeWindowInUseKhr" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Result ErrorNativeWindowInUseKhr = int32(-1000000001)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorOutOfDateKhr">
+      <MemberSignature Language="C#" Value="ErrorOutOfDateKhr" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Result ErrorOutOfDateKhr = int32(-1000001004)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorOutOfDeviceMemory">
+      <MemberSignature Language="C#" Value="ErrorOutOfDeviceMemory" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Result ErrorOutOfDeviceMemory = int32(-2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorOutOfHostMemory">
+      <MemberSignature Language="C#" Value="ErrorOutOfHostMemory" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Result ErrorOutOfHostMemory = int32(-1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorSurfaceLostKhr">
+      <MemberSignature Language="C#" Value="ErrorSurfaceLostKhr" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Result ErrorSurfaceLostKhr = int32(-1000000000)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorTooManyObjects">
+      <MemberSignature Language="C#" Value="ErrorTooManyObjects" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Result ErrorTooManyObjects = int32(-10)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorValidationFailedExt">
+      <MemberSignature Language="C#" Value="ErrorValidationFailedExt" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Result ErrorValidationFailedExt = int32(-1000011001)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="EventReset">
+      <MemberSignature Language="C#" Value="EventReset" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Result EventReset = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="EventSet">
+      <MemberSignature Language="C#" Value="EventSet" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Result EventSet = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Incomplete">
+      <MemberSignature Language="C#" Value="Incomplete" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Result Incomplete = int32(5)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="NotReady">
+      <MemberSignature Language="C#" Value="NotReady" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Result NotReady = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="SuboptimalKhr">
+      <MemberSignature Language="C#" Value="SuboptimalKhr" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Result SuboptimalKhr = int32(1000001003)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Success">
+      <MemberSignature Language="C#" Value="Success" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Result Success = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Timeout">
+      <MemberSignature Language="C#" Value="Timeout" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Result Timeout = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

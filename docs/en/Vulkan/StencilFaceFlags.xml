@@ -1,0 +1,64 @@
+<Type Name="StencilFaceFlags" FullName="Vulkan.StencilFaceFlags">
+  <TypeSignature Language="C#" Value="public enum StencilFaceFlags" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed StencilFaceFlags extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Flags</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Back">
+      <MemberSignature Language="C#" Value="Back" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StencilFaceFlags Back = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StencilFaceFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Front">
+      <MemberSignature Language="C#" Value="Front" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StencilFaceFlags Front = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StencilFaceFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="StencilFrontAndBack">
+      <MemberSignature Language="C#" Value="StencilFrontAndBack" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StencilFaceFlags StencilFrontAndBack = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StencilFaceFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

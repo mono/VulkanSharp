@@ -1,0 +1,157 @@
+<Type Name="ImageLayout" FullName="Vulkan.ImageLayout">
+  <TypeSignature Language="C#" Value="public enum ImageLayout" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed ImageLayout extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="ColorAttachmentOptimal">
+      <MemberSignature Language="C#" Value="ColorAttachmentOptimal" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageLayout ColorAttachmentOptimal = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageLayout</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="DepthStencilAttachmentOptimal">
+      <MemberSignature Language="C#" Value="DepthStencilAttachmentOptimal" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageLayout DepthStencilAttachmentOptimal = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageLayout</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="DepthStencilReadOnlyOptimal">
+      <MemberSignature Language="C#" Value="DepthStencilReadOnlyOptimal" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageLayout DepthStencilReadOnlyOptimal = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageLayout</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="General">
+      <MemberSignature Language="C#" Value="General" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageLayout General = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageLayout</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Preinitialized">
+      <MemberSignature Language="C#" Value="Preinitialized" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageLayout Preinitialized = int32(8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageLayout</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="PresentSrcKhr">
+      <MemberSignature Language="C#" Value="PresentSrcKhr" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageLayout PresentSrcKhr = int32(1000001002)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageLayout</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ShaderReadOnlyOptimal">
+      <MemberSignature Language="C#" Value="ShaderReadOnlyOptimal" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageLayout ShaderReadOnlyOptimal = int32(5)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageLayout</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="TransferDstOptimal">
+      <MemberSignature Language="C#" Value="TransferDstOptimal" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageLayout TransferDstOptimal = int32(7)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageLayout</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="TransferSrcOptimal">
+      <MemberSignature Language="C#" Value="TransferSrcOptimal" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageLayout TransferSrcOptimal = int32(6)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageLayout</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Undefined">
+      <MemberSignature Language="C#" Value="Undefined" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageLayout Undefined = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageLayout</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

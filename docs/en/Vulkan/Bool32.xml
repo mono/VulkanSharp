@@ -1,0 +1,74 @@
+<Type Name="Bool32" FullName="Vulkan.Bool32">
+  <TypeSignature Language="C#" Value="public struct Bool32" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit Bool32 extends System.ValueType" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Bool32 (bool bValue);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(bool bValue) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="bValue" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="bValue">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Implicit">
+      <MemberSignature Language="C#" Value="public static Vulkan.Bool32 op_Implicit (bool bValue);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Vulkan.Bool32 op_Implicit(bool bValue) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="bValue" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="bValue">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Implicit">
+      <MemberSignature Language="C#" Value="public static bool op_Implicit (Vulkan.Bool32 bValue);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Implicit(valuetype Vulkan.Bool32 bValue) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="bValue" Type="Vulkan.Bool32" />
+      </Parameters>
+      <Docs>
+        <param name="bValue">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,45 @@
+<Type Name="FrontFace" FullName="Vulkan.FrontFace">
+  <TypeSignature Language="C#" Value="public enum FrontFace" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed FrontFace extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Clockwise">
+      <MemberSignature Language="C#" Value="Clockwise" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.FrontFace Clockwise = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.FrontFace</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="CounterClockwise">
+      <MemberSignature Language="C#" Value="CounterClockwise" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.FrontFace CounterClockwise = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.FrontFace</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

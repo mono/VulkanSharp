@@ -1,0 +1,1727 @@
+<Type Name="PhysicalDeviceLimits" FullName="Vulkan.PhysicalDeviceLimits">
+  <TypeSignature Language="C#" Value="public class PhysicalDeviceLimits" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PhysicalDeviceLimits extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public PhysicalDeviceLimits ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BufferImageGranularity">
+      <MemberSignature Language="C#" Value="public Vulkan.DeviceSize BufferImageGranularity { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.DeviceSize BufferImageGranularity" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DeviceSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DiscreteQueuePriorities">
+      <MemberSignature Language="C#" Value="public uint DiscreteQueuePriorities { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 DiscreteQueuePriorities" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FramebufferColorSampleCounts">
+      <MemberSignature Language="C#" Value="public uint FramebufferColorSampleCounts { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 FramebufferColorSampleCounts" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FramebufferDepthSampleCounts">
+      <MemberSignature Language="C#" Value="public uint FramebufferDepthSampleCounts { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 FramebufferDepthSampleCounts" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FramebufferNoAttachmentsSampleCounts">
+      <MemberSignature Language="C#" Value="public uint FramebufferNoAttachmentsSampleCounts { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 FramebufferNoAttachmentsSampleCounts" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FramebufferStencilSampleCounts">
+      <MemberSignature Language="C#" Value="public uint FramebufferStencilSampleCounts { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 FramebufferStencilSampleCounts" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LineWidthGranularity">
+      <MemberSignature Language="C#" Value="public float LineWidthGranularity { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 LineWidthGranularity" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LineWidthRange">
+      <MemberSignature Language="C#" Value="public float LineWidthRange { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 LineWidthRange" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxBoundDescriptorSets">
+      <MemberSignature Language="C#" Value="public uint MaxBoundDescriptorSets { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxBoundDescriptorSets" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxClipDistances">
+      <MemberSignature Language="C#" Value="public uint MaxClipDistances { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxClipDistances" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxColorAttachments">
+      <MemberSignature Language="C#" Value="public uint MaxColorAttachments { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxColorAttachments" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxCombinedClipAndCullDistances">
+      <MemberSignature Language="C#" Value="public uint MaxCombinedClipAndCullDistances { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxCombinedClipAndCullDistances" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxComputeSharedMemorySize">
+      <MemberSignature Language="C#" Value="public uint MaxComputeSharedMemorySize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxComputeSharedMemorySize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxComputeWorkGroupCount">
+      <MemberSignature Language="C#" Value="public uint MaxComputeWorkGroupCount { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxComputeWorkGroupCount" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxComputeWorkGroupInvocations">
+      <MemberSignature Language="C#" Value="public uint MaxComputeWorkGroupInvocations { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxComputeWorkGroupInvocations" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxComputeWorkGroupSize">
+      <MemberSignature Language="C#" Value="public uint MaxComputeWorkGroupSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxComputeWorkGroupSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxCullDistances">
+      <MemberSignature Language="C#" Value="public uint MaxCullDistances { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxCullDistances" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxDescriptorSetInputAttachments">
+      <MemberSignature Language="C#" Value="public uint MaxDescriptorSetInputAttachments { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxDescriptorSetInputAttachments" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxDescriptorSetSampledImages">
+      <MemberSignature Language="C#" Value="public uint MaxDescriptorSetSampledImages { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxDescriptorSetSampledImages" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxDescriptorSetSamplers">
+      <MemberSignature Language="C#" Value="public uint MaxDescriptorSetSamplers { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxDescriptorSetSamplers" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxDescriptorSetStorageBuffers">
+      <MemberSignature Language="C#" Value="public uint MaxDescriptorSetStorageBuffers { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxDescriptorSetStorageBuffers" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxDescriptorSetStorageBuffersDynamic">
+      <MemberSignature Language="C#" Value="public uint MaxDescriptorSetStorageBuffersDynamic { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxDescriptorSetStorageBuffersDynamic" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxDescriptorSetStorageImages">
+      <MemberSignature Language="C#" Value="public uint MaxDescriptorSetStorageImages { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxDescriptorSetStorageImages" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxDescriptorSetUniformBuffers">
+      <MemberSignature Language="C#" Value="public uint MaxDescriptorSetUniformBuffers { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxDescriptorSetUniformBuffers" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxDescriptorSetUniformBuffersDynamic">
+      <MemberSignature Language="C#" Value="public uint MaxDescriptorSetUniformBuffersDynamic { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxDescriptorSetUniformBuffersDynamic" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxDrawIndexedIndexValue">
+      <MemberSignature Language="C#" Value="public uint MaxDrawIndexedIndexValue { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxDrawIndexedIndexValue" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxDrawIndirectCount">
+      <MemberSignature Language="C#" Value="public uint MaxDrawIndirectCount { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxDrawIndirectCount" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxFragmentCombinedOutputResources">
+      <MemberSignature Language="C#" Value="public uint MaxFragmentCombinedOutputResources { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxFragmentCombinedOutputResources" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxFragmentDualSrcAttachments">
+      <MemberSignature Language="C#" Value="public uint MaxFragmentDualSrcAttachments { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxFragmentDualSrcAttachments" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxFragmentInputComponents">
+      <MemberSignature Language="C#" Value="public uint MaxFragmentInputComponents { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxFragmentInputComponents" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxFragmentOutputAttachments">
+      <MemberSignature Language="C#" Value="public uint MaxFragmentOutputAttachments { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxFragmentOutputAttachments" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxFramebufferHeight">
+      <MemberSignature Language="C#" Value="public uint MaxFramebufferHeight { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxFramebufferHeight" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxFramebufferLayers">
+      <MemberSignature Language="C#" Value="public uint MaxFramebufferLayers { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxFramebufferLayers" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxFramebufferWidth">
+      <MemberSignature Language="C#" Value="public uint MaxFramebufferWidth { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxFramebufferWidth" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxGeometryInputComponents">
+      <MemberSignature Language="C#" Value="public uint MaxGeometryInputComponents { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxGeometryInputComponents" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxGeometryOutputComponents">
+      <MemberSignature Language="C#" Value="public uint MaxGeometryOutputComponents { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxGeometryOutputComponents" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxGeometryOutputVertices">
+      <MemberSignature Language="C#" Value="public uint MaxGeometryOutputVertices { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxGeometryOutputVertices" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxGeometryShaderInvocations">
+      <MemberSignature Language="C#" Value="public uint MaxGeometryShaderInvocations { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxGeometryShaderInvocations" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxGeometryTotalOutputComponents">
+      <MemberSignature Language="C#" Value="public uint MaxGeometryTotalOutputComponents { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxGeometryTotalOutputComponents" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxImageArrayLayers">
+      <MemberSignature Language="C#" Value="public uint MaxImageArrayLayers { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxImageArrayLayers" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxImageDimension1D">
+      <MemberSignature Language="C#" Value="public uint MaxImageDimension1D { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxImageDimension1D" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxImageDimension2D">
+      <MemberSignature Language="C#" Value="public uint MaxImageDimension2D { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxImageDimension2D" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxImageDimension3D">
+      <MemberSignature Language="C#" Value="public uint MaxImageDimension3D { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxImageDimension3D" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxImageDimensionCube">
+      <MemberSignature Language="C#" Value="public uint MaxImageDimensionCube { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxImageDimensionCube" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxInterpolationOffset">
+      <MemberSignature Language="C#" Value="public float MaxInterpolationOffset { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 MaxInterpolationOffset" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxMemoryAllocationCount">
+      <MemberSignature Language="C#" Value="public uint MaxMemoryAllocationCount { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxMemoryAllocationCount" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxPerStageDescriptorInputAttachments">
+      <MemberSignature Language="C#" Value="public uint MaxPerStageDescriptorInputAttachments { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxPerStageDescriptorInputAttachments" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxPerStageDescriptorSampledImages">
+      <MemberSignature Language="C#" Value="public uint MaxPerStageDescriptorSampledImages { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxPerStageDescriptorSampledImages" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxPerStageDescriptorSamplers">
+      <MemberSignature Language="C#" Value="public uint MaxPerStageDescriptorSamplers { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxPerStageDescriptorSamplers" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxPerStageDescriptorStorageBuffers">
+      <MemberSignature Language="C#" Value="public uint MaxPerStageDescriptorStorageBuffers { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxPerStageDescriptorStorageBuffers" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxPerStageDescriptorStorageImages">
+      <MemberSignature Language="C#" Value="public uint MaxPerStageDescriptorStorageImages { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxPerStageDescriptorStorageImages" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxPerStageDescriptorUniformBuffers">
+      <MemberSignature Language="C#" Value="public uint MaxPerStageDescriptorUniformBuffers { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxPerStageDescriptorUniformBuffers" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxPerStageResources">
+      <MemberSignature Language="C#" Value="public uint MaxPerStageResources { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxPerStageResources" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxPushConstantsSize">
+      <MemberSignature Language="C#" Value="public uint MaxPushConstantsSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxPushConstantsSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxSampleMaskWords">
+      <MemberSignature Language="C#" Value="public uint MaxSampleMaskWords { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxSampleMaskWords" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxSamplerAllocationCount">
+      <MemberSignature Language="C#" Value="public uint MaxSamplerAllocationCount { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxSamplerAllocationCount" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxSamplerAnisotropy">
+      <MemberSignature Language="C#" Value="public float MaxSamplerAnisotropy { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 MaxSamplerAnisotropy" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxSamplerLodBias">
+      <MemberSignature Language="C#" Value="public float MaxSamplerLodBias { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 MaxSamplerLodBias" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxStorageBufferRange">
+      <MemberSignature Language="C#" Value="public uint MaxStorageBufferRange { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxStorageBufferRange" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxTessellationControlPerPatchOutputComponents">
+      <MemberSignature Language="C#" Value="public uint MaxTessellationControlPerPatchOutputComponents { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxTessellationControlPerPatchOutputComponents" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxTessellationControlPerVertexInputComponents">
+      <MemberSignature Language="C#" Value="public uint MaxTessellationControlPerVertexInputComponents { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxTessellationControlPerVertexInputComponents" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxTessellationControlPerVertexOutputComponents">
+      <MemberSignature Language="C#" Value="public uint MaxTessellationControlPerVertexOutputComponents { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxTessellationControlPerVertexOutputComponents" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxTessellationControlTotalOutputComponents">
+      <MemberSignature Language="C#" Value="public uint MaxTessellationControlTotalOutputComponents { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxTessellationControlTotalOutputComponents" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxTessellationEvaluationInputComponents">
+      <MemberSignature Language="C#" Value="public uint MaxTessellationEvaluationInputComponents { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxTessellationEvaluationInputComponents" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxTessellationEvaluationOutputComponents">
+      <MemberSignature Language="C#" Value="public uint MaxTessellationEvaluationOutputComponents { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxTessellationEvaluationOutputComponents" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxTessellationGenerationLevel">
+      <MemberSignature Language="C#" Value="public uint MaxTessellationGenerationLevel { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxTessellationGenerationLevel" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxTessellationPatchSize">
+      <MemberSignature Language="C#" Value="public uint MaxTessellationPatchSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxTessellationPatchSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxTexelBufferElements">
+      <MemberSignature Language="C#" Value="public uint MaxTexelBufferElements { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxTexelBufferElements" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxTexelGatherOffset">
+      <MemberSignature Language="C#" Value="public uint MaxTexelGatherOffset { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxTexelGatherOffset" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxTexelOffset">
+      <MemberSignature Language="C#" Value="public uint MaxTexelOffset { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxTexelOffset" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxUniformBufferRange">
+      <MemberSignature Language="C#" Value="public uint MaxUniformBufferRange { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxUniformBufferRange" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxVertexInputAttributeOffset">
+      <MemberSignature Language="C#" Value="public uint MaxVertexInputAttributeOffset { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxVertexInputAttributeOffset" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxVertexInputAttributes">
+      <MemberSignature Language="C#" Value="public uint MaxVertexInputAttributes { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxVertexInputAttributes" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxVertexInputBindings">
+      <MemberSignature Language="C#" Value="public uint MaxVertexInputBindings { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxVertexInputBindings" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxVertexInputBindingStride">
+      <MemberSignature Language="C#" Value="public uint MaxVertexInputBindingStride { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxVertexInputBindingStride" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxVertexOutputComponents">
+      <MemberSignature Language="C#" Value="public uint MaxVertexOutputComponents { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxVertexOutputComponents" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxViewportDimensions">
+      <MemberSignature Language="C#" Value="public uint MaxViewportDimensions { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxViewportDimensions" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxViewports">
+      <MemberSignature Language="C#" Value="public uint MaxViewports { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaxViewports" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MinInterpolationOffset">
+      <MemberSignature Language="C#" Value="public float MinInterpolationOffset { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 MinInterpolationOffset" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MinMemoryMapAlignment">
+      <MemberSignature Language="C#" Value="public UIntPtr MinMemoryMapAlignment { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native unsigned int MinMemoryMapAlignment" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UIntPtr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MinStorageBufferOffsetAlignment">
+      <MemberSignature Language="C#" Value="public Vulkan.DeviceSize MinStorageBufferOffsetAlignment { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.DeviceSize MinStorageBufferOffsetAlignment" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DeviceSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MinTexelBufferOffsetAlignment">
+      <MemberSignature Language="C#" Value="public Vulkan.DeviceSize MinTexelBufferOffsetAlignment { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.DeviceSize MinTexelBufferOffsetAlignment" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DeviceSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MinTexelGatherOffset">
+      <MemberSignature Language="C#" Value="public int MinTexelGatherOffset { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 MinTexelGatherOffset" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MinTexelOffset">
+      <MemberSignature Language="C#" Value="public int MinTexelOffset { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 MinTexelOffset" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MinUniformBufferOffsetAlignment">
+      <MemberSignature Language="C#" Value="public Vulkan.DeviceSize MinUniformBufferOffsetAlignment { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.DeviceSize MinUniformBufferOffsetAlignment" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DeviceSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MipmapPrecisionBits">
+      <MemberSignature Language="C#" Value="public uint MipmapPrecisionBits { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MipmapPrecisionBits" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NonCoherentAtomSize">
+      <MemberSignature Language="C#" Value="public Vulkan.DeviceSize NonCoherentAtomSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.DeviceSize NonCoherentAtomSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DeviceSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OptimalBufferCopyOffsetAlignment">
+      <MemberSignature Language="C#" Value="public Vulkan.DeviceSize OptimalBufferCopyOffsetAlignment { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.DeviceSize OptimalBufferCopyOffsetAlignment" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DeviceSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OptimalBufferCopyRowPitchAlignment">
+      <MemberSignature Language="C#" Value="public Vulkan.DeviceSize OptimalBufferCopyRowPitchAlignment { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.DeviceSize OptimalBufferCopyRowPitchAlignment" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DeviceSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PointSizeGranularity">
+      <MemberSignature Language="C#" Value="public float PointSizeGranularity { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 PointSizeGranularity" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PointSizeRange">
+      <MemberSignature Language="C#" Value="public float PointSizeRange { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 PointSizeRange" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SampledImageColorSampleCounts">
+      <MemberSignature Language="C#" Value="public uint SampledImageColorSampleCounts { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 SampledImageColorSampleCounts" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SampledImageDepthSampleCounts">
+      <MemberSignature Language="C#" Value="public uint SampledImageDepthSampleCounts { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 SampledImageDepthSampleCounts" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SampledImageIntegerSampleCounts">
+      <MemberSignature Language="C#" Value="public uint SampledImageIntegerSampleCounts { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 SampledImageIntegerSampleCounts" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SampledImageStencilSampleCounts">
+      <MemberSignature Language="C#" Value="public uint SampledImageStencilSampleCounts { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 SampledImageStencilSampleCounts" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SparseAddressSpaceSize">
+      <MemberSignature Language="C#" Value="public Vulkan.DeviceSize SparseAddressSpaceSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.DeviceSize SparseAddressSpaceSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DeviceSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StandardSampleLocations">
+      <MemberSignature Language="C#" Value="public bool StandardSampleLocations { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool StandardSampleLocations" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StorageImageSampleCounts">
+      <MemberSignature Language="C#" Value="public uint StorageImageSampleCounts { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 StorageImageSampleCounts" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StrictLines">
+      <MemberSignature Language="C#" Value="public bool StrictLines { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool StrictLines" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SubPixelInterpolationOffsetBits">
+      <MemberSignature Language="C#" Value="public uint SubPixelInterpolationOffsetBits { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 SubPixelInterpolationOffsetBits" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SubPixelPrecisionBits">
+      <MemberSignature Language="C#" Value="public uint SubPixelPrecisionBits { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 SubPixelPrecisionBits" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SubTexelPrecisionBits">
+      <MemberSignature Language="C#" Value="public uint SubTexelPrecisionBits { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 SubTexelPrecisionBits" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TimestampComputeAndGraphics">
+      <MemberSignature Language="C#" Value="public bool TimestampComputeAndGraphics { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool TimestampComputeAndGraphics" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TimestampPeriod">
+      <MemberSignature Language="C#" Value="public float TimestampPeriod { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 TimestampPeriod" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ViewportBoundsRange">
+      <MemberSignature Language="C#" Value="public float ViewportBoundsRange { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 ViewportBoundsRange" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ViewportSubPixelBits">
+      <MemberSignature Language="C#" Value="public uint ViewportSubPixelBits { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 ViewportSubPixelBits" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

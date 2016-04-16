@@ -1,0 +1,176 @@
+<Type Name="QueryPipelineStatisticFlags" FullName="Vulkan.QueryPipelineStatisticFlags">
+  <TypeSignature Language="C#" Value="public enum QueryPipelineStatisticFlags" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed QueryPipelineStatisticFlags extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Flags</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="ClippingInvocations">
+      <MemberSignature Language="C#" Value="ClippingInvocations" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.QueryPipelineStatisticFlags ClippingInvocations = int32(32)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.QueryPipelineStatisticFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ClippingPrimitives">
+      <MemberSignature Language="C#" Value="ClippingPrimitives" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.QueryPipelineStatisticFlags ClippingPrimitives = int32(64)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.QueryPipelineStatisticFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ComputeShaderInvocations">
+      <MemberSignature Language="C#" Value="ComputeShaderInvocations" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.QueryPipelineStatisticFlags ComputeShaderInvocations = int32(1024)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.QueryPipelineStatisticFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="FragmentShaderInvocations">
+      <MemberSignature Language="C#" Value="FragmentShaderInvocations" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.QueryPipelineStatisticFlags FragmentShaderInvocations = int32(128)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.QueryPipelineStatisticFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="GeometryShaderInvocations">
+      <MemberSignature Language="C#" Value="GeometryShaderInvocations" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.QueryPipelineStatisticFlags GeometryShaderInvocations = int32(8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.QueryPipelineStatisticFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="GeometryShaderPrimitives">
+      <MemberSignature Language="C#" Value="GeometryShaderPrimitives" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.QueryPipelineStatisticFlags GeometryShaderPrimitives = int32(16)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.QueryPipelineStatisticFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="InputAssemblyPrimitives">
+      <MemberSignature Language="C#" Value="InputAssemblyPrimitives" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.QueryPipelineStatisticFlags InputAssemblyPrimitives = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.QueryPipelineStatisticFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="InputAssemblyVertices">
+      <MemberSignature Language="C#" Value="InputAssemblyVertices" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.QueryPipelineStatisticFlags InputAssemblyVertices = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.QueryPipelineStatisticFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="TessellationControlShaderPatches">
+      <MemberSignature Language="C#" Value="TessellationControlShaderPatches" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.QueryPipelineStatisticFlags TessellationControlShaderPatches = int32(256)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.QueryPipelineStatisticFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="TessellationEvaluationShaderInvocations">
+      <MemberSignature Language="C#" Value="TessellationEvaluationShaderInvocations" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.QueryPipelineStatisticFlags TessellationEvaluationShaderInvocations = int32(512)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.QueryPipelineStatisticFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="VertexShaderInvocations">
+      <MemberSignature Language="C#" Value="VertexShaderInvocations" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.QueryPipelineStatisticFlags VertexShaderInvocations = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.QueryPipelineStatisticFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

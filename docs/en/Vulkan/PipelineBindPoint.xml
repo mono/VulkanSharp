@@ -1,0 +1,45 @@
+<Type Name="PipelineBindPoint" FullName="Vulkan.PipelineBindPoint">
+  <TypeSignature Language="C#" Value="public enum PipelineBindPoint" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed PipelineBindPoint extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Compute">
+      <MemberSignature Language="C#" Value="Compute" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PipelineBindPoint Compute = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PipelineBindPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Graphics">
+      <MemberSignature Language="C#" Value="Graphics" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PipelineBindPoint Graphics = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PipelineBindPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

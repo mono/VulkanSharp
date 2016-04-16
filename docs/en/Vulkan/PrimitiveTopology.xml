@@ -1,0 +1,171 @@
+<Type Name="PrimitiveTopology" FullName="Vulkan.PrimitiveTopology">
+  <TypeSignature Language="C#" Value="public enum PrimitiveTopology" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed PrimitiveTopology extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="LineList">
+      <MemberSignature Language="C#" Value="LineList" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PrimitiveTopology LineList = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PrimitiveTopology</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="LineListWithAdjacency">
+      <MemberSignature Language="C#" Value="LineListWithAdjacency" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PrimitiveTopology LineListWithAdjacency = int32(6)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PrimitiveTopology</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="LineStrip">
+      <MemberSignature Language="C#" Value="LineStrip" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PrimitiveTopology LineStrip = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PrimitiveTopology</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="LineStripWithAdjacency">
+      <MemberSignature Language="C#" Value="LineStripWithAdjacency" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PrimitiveTopology LineStripWithAdjacency = int32(7)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PrimitiveTopology</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="PatchList">
+      <MemberSignature Language="C#" Value="PatchList" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PrimitiveTopology PatchList = int32(10)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PrimitiveTopology</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="PointList">
+      <MemberSignature Language="C#" Value="PointList" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PrimitiveTopology PointList = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PrimitiveTopology</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="TriangleFan">
+      <MemberSignature Language="C#" Value="TriangleFan" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PrimitiveTopology TriangleFan = int32(5)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PrimitiveTopology</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="TriangleList">
+      <MemberSignature Language="C#" Value="TriangleList" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PrimitiveTopology TriangleList = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PrimitiveTopology</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="TriangleListWithAdjacency">
+      <MemberSignature Language="C#" Value="TriangleListWithAdjacency" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PrimitiveTopology TriangleListWithAdjacency = int32(8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PrimitiveTopology</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="TriangleStrip">
+      <MemberSignature Language="C#" Value="TriangleStrip" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PrimitiveTopology TriangleStrip = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PrimitiveTopology</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="TriangleStripWithAdjacency">
+      <MemberSignature Language="C#" Value="TriangleStripWithAdjacency" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PrimitiveTopology TriangleStripWithAdjacency = int32(9)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PrimitiveTopology</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

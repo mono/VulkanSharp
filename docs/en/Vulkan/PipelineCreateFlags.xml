@@ -1,0 +1,64 @@
+<Type Name="PipelineCreateFlags" FullName="Vulkan.PipelineCreateFlags">
+  <TypeSignature Language="C#" Value="public enum PipelineCreateFlags" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed PipelineCreateFlags extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Flags</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="AllowDerivatives">
+      <MemberSignature Language="C#" Value="AllowDerivatives" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PipelineCreateFlags AllowDerivatives = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PipelineCreateFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Derivative">
+      <MemberSignature Language="C#" Value="Derivative" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PipelineCreateFlags Derivative = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PipelineCreateFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="DisableOptimization">
+      <MemberSignature Language="C#" Value="DisableOptimization" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PipelineCreateFlags DisableOptimization = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PipelineCreateFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

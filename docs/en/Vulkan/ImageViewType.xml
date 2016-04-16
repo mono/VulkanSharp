@@ -1,0 +1,115 @@
+<Type Name="ImageViewType" FullName="Vulkan.ImageViewType">
+  <TypeSignature Language="C#" Value="public enum ImageViewType" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed ImageViewType extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Cube">
+      <MemberSignature Language="C#" Value="Cube" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageViewType Cube = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageViewType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="CubeArray">
+      <MemberSignature Language="C#" Value="CubeArray" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageViewType CubeArray = int32(6)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageViewType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="View1D">
+      <MemberSignature Language="C#" Value="View1D" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageViewType View1D = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageViewType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="View1DArray">
+      <MemberSignature Language="C#" Value="View1DArray" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageViewType View1DArray = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageViewType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="View2D">
+      <MemberSignature Language="C#" Value="View2D" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageViewType View2D = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageViewType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="View2DArray">
+      <MemberSignature Language="C#" Value="View2DArray" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageViewType View2DArray = int32(5)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageViewType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="View3D">
+      <MemberSignature Language="C#" Value="View3D" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageViewType View3D = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageViewType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

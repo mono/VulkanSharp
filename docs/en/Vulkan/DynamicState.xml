@@ -1,0 +1,143 @@
+<Type Name="DynamicState" FullName="Vulkan.DynamicState">
+  <TypeSignature Language="C#" Value="public enum DynamicState" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed DynamicState extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="BlendConstants">
+      <MemberSignature Language="C#" Value="BlendConstants" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DynamicState BlendConstants = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DynamicState</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="DepthBias">
+      <MemberSignature Language="C#" Value="DepthBias" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DynamicState DepthBias = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DynamicState</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="DepthBounds">
+      <MemberSignature Language="C#" Value="DepthBounds" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DynamicState DepthBounds = int32(5)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DynamicState</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="LineWidth">
+      <MemberSignature Language="C#" Value="LineWidth" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DynamicState LineWidth = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DynamicState</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Scissor">
+      <MemberSignature Language="C#" Value="Scissor" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DynamicState Scissor = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DynamicState</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="StencilCompareMask">
+      <MemberSignature Language="C#" Value="StencilCompareMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DynamicState StencilCompareMask = int32(6)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DynamicState</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="StencilReference">
+      <MemberSignature Language="C#" Value="StencilReference" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DynamicState StencilReference = int32(8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DynamicState</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="StencilWriteMask">
+      <MemberSignature Language="C#" Value="StencilWriteMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DynamicState StencilWriteMask = int32(7)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DynamicState</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Viewport">
+      <MemberSignature Language="C#" Value="Viewport" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DynamicState Viewport = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DynamicState</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

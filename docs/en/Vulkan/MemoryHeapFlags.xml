@@ -1,0 +1,36 @@
+<Type Name="MemoryHeapFlags" FullName="Vulkan.MemoryHeapFlags">
+  <TypeSignature Language="C#" Value="public enum MemoryHeapFlags" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed MemoryHeapFlags extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Flags</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="DeviceLocal">
+      <MemberSignature Language="C#" Value="DeviceLocal" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.MemoryHeapFlags DeviceLocal = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.MemoryHeapFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

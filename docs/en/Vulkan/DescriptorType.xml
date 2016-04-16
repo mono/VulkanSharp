@@ -1,0 +1,171 @@
+<Type Name="DescriptorType" FullName="Vulkan.DescriptorType">
+  <TypeSignature Language="C#" Value="public enum DescriptorType" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed DescriptorType extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="CombinedImageSampler">
+      <MemberSignature Language="C#" Value="CombinedImageSampler" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DescriptorType CombinedImageSampler = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DescriptorType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="InputAttachment">
+      <MemberSignature Language="C#" Value="InputAttachment" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DescriptorType InputAttachment = int32(10)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DescriptorType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="SampledImage">
+      <MemberSignature Language="C#" Value="SampledImage" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DescriptorType SampledImage = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DescriptorType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Sampler">
+      <MemberSignature Language="C#" Value="Sampler" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DescriptorType Sampler = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DescriptorType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="StorageBuffer">
+      <MemberSignature Language="C#" Value="StorageBuffer" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DescriptorType StorageBuffer = int32(7)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DescriptorType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="StorageBufferDynamic">
+      <MemberSignature Language="C#" Value="StorageBufferDynamic" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DescriptorType StorageBufferDynamic = int32(9)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DescriptorType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="StorageImage">
+      <MemberSignature Language="C#" Value="StorageImage" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DescriptorType StorageImage = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DescriptorType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="StorageTexelBuffer">
+      <MemberSignature Language="C#" Value="StorageTexelBuffer" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DescriptorType StorageTexelBuffer = int32(5)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DescriptorType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="UniformBuffer">
+      <MemberSignature Language="C#" Value="UniformBuffer" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DescriptorType UniformBuffer = int32(6)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DescriptorType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="UniformBufferDynamic">
+      <MemberSignature Language="C#" Value="UniformBufferDynamic" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DescriptorType UniformBufferDynamic = int32(8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DescriptorType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="UniformTexelBuffer">
+      <MemberSignature Language="C#" Value="UniformTexelBuffer" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DescriptorType UniformTexelBuffer = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DescriptorType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

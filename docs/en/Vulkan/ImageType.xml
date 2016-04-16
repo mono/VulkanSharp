@@ -1,0 +1,59 @@
+<Type Name="ImageType" FullName="Vulkan.ImageType">
+  <TypeSignature Language="C#" Value="public enum ImageType" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed ImageType extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Image1D">
+      <MemberSignature Language="C#" Value="Image1D" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageType Image1D = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Image2D">
+      <MemberSignature Language="C#" Value="Image2D" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageType Image2D = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Image3D">
+      <MemberSignature Language="C#" Value="Image3D" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageType Image3D = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

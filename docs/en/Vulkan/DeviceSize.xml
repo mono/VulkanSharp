@@ -1,0 +1,58 @@
+<Type Name="DeviceSize" FullName="Vulkan.DeviceSize">
+  <TypeSignature Language="C#" Value="public struct DeviceSize" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit DeviceSize extends System.ValueType" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="op_Implicit">
+      <MemberSignature Language="C#" Value="public static Vulkan.DeviceSize op_Implicit (ulong iValue);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Vulkan.DeviceSize op_Implicit(unsigned int64 iValue) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DeviceSize</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iValue" Type="System.UInt64" />
+      </Parameters>
+      <Docs>
+        <param name="iValue">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Implicit">
+      <MemberSignature Language="C#" Value="public static ulong op_Implicit (Vulkan.DeviceSize size);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname unsigned int64 op_Implicit(valuetype Vulkan.DeviceSize size) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt64</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="size" Type="Vulkan.DeviceSize" />
+      </Parameters>
+      <Docs>
+        <param name="size">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

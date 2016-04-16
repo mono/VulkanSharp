@@ -1,0 +1,148 @@
+<Type Name="BufferUsageFlags" FullName="Vulkan.BufferUsageFlags">
+  <TypeSignature Language="C#" Value="public enum BufferUsageFlags" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed BufferUsageFlags extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Flags</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="IndexBuffer">
+      <MemberSignature Language="C#" Value="IndexBuffer" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.BufferUsageFlags IndexBuffer = int32(64)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.BufferUsageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="IndirectBuffer">
+      <MemberSignature Language="C#" Value="IndirectBuffer" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.BufferUsageFlags IndirectBuffer = int32(256)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.BufferUsageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="StorageBuffer">
+      <MemberSignature Language="C#" Value="StorageBuffer" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.BufferUsageFlags StorageBuffer = int32(32)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.BufferUsageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="StorageTexelBuffer">
+      <MemberSignature Language="C#" Value="StorageTexelBuffer" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.BufferUsageFlags StorageTexelBuffer = int32(8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.BufferUsageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="TransferDst">
+      <MemberSignature Language="C#" Value="TransferDst" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.BufferUsageFlags TransferDst = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.BufferUsageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="TransferSrc">
+      <MemberSignature Language="C#" Value="TransferSrc" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.BufferUsageFlags TransferSrc = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.BufferUsageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="UniformBuffer">
+      <MemberSignature Language="C#" Value="UniformBuffer" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.BufferUsageFlags UniformBuffer = int32(16)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.BufferUsageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="UniformTexelBuffer">
+      <MemberSignature Language="C#" Value="UniformTexelBuffer" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.BufferUsageFlags UniformTexelBuffer = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.BufferUsageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="VertexBuffer">
+      <MemberSignature Language="C#" Value="VertexBuffer" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.BufferUsageFlags VertexBuffer = int32(128)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.BufferUsageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,260 @@
+<Type Name="AccessFlags" FullName="Vulkan.AccessFlags">
+  <TypeSignature Language="C#" Value="public enum AccessFlags" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed AccessFlags extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Flags</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="ColorAttachmentRead">
+      <MemberSignature Language="C#" Value="ColorAttachmentRead" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.AccessFlags ColorAttachmentRead = int32(128)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AccessFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ColorAttachmentWrite">
+      <MemberSignature Language="C#" Value="ColorAttachmentWrite" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.AccessFlags ColorAttachmentWrite = int32(256)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AccessFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="DepthStencilAttachmentRead">
+      <MemberSignature Language="C#" Value="DepthStencilAttachmentRead" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.AccessFlags DepthStencilAttachmentRead = int32(512)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AccessFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="DepthStencilAttachmentWrite">
+      <MemberSignature Language="C#" Value="DepthStencilAttachmentWrite" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.AccessFlags DepthStencilAttachmentWrite = int32(1024)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AccessFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="HostRead">
+      <MemberSignature Language="C#" Value="HostRead" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.AccessFlags HostRead = int32(8192)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AccessFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="HostWrite">
+      <MemberSignature Language="C#" Value="HostWrite" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.AccessFlags HostWrite = int32(16384)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AccessFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="IndexRead">
+      <MemberSignature Language="C#" Value="IndexRead" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.AccessFlags IndexRead = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AccessFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="IndirectCommandRead">
+      <MemberSignature Language="C#" Value="IndirectCommandRead" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.AccessFlags IndirectCommandRead = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AccessFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="InputAttachmentRead">
+      <MemberSignature Language="C#" Value="InputAttachmentRead" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.AccessFlags InputAttachmentRead = int32(16)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AccessFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="MemoryRead">
+      <MemberSignature Language="C#" Value="MemoryRead" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.AccessFlags MemoryRead = int32(32768)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AccessFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="MemoryWrite">
+      <MemberSignature Language="C#" Value="MemoryWrite" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.AccessFlags MemoryWrite = int32(65536)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AccessFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ShaderRead">
+      <MemberSignature Language="C#" Value="ShaderRead" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.AccessFlags ShaderRead = int32(32)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AccessFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ShaderWrite">
+      <MemberSignature Language="C#" Value="ShaderWrite" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.AccessFlags ShaderWrite = int32(64)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AccessFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="TransferRead">
+      <MemberSignature Language="C#" Value="TransferRead" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.AccessFlags TransferRead = int32(2048)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AccessFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="TransferWrite">
+      <MemberSignature Language="C#" Value="TransferWrite" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.AccessFlags TransferWrite = int32(4096)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AccessFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="UniformRead">
+      <MemberSignature Language="C#" Value="UniformRead" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.AccessFlags UniformRead = int32(8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AccessFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="VertexAttributeRead">
+      <MemberSignature Language="C#" Value="VertexAttributeRead" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.AccessFlags VertexAttributeRead = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AccessFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

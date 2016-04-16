@@ -1,0 +1,191 @@
+<Type Name="BindSparseInfo" FullName="Vulkan.BindSparseInfo">
+  <TypeSignature Language="C#" Value="public class BindSparseInfo" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit BindSparseInfo extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public BindSparseInfo ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BufferBindCount">
+      <MemberSignature Language="C#" Value="public uint BufferBindCount { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 BufferBindCount" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BufferBinds">
+      <MemberSignature Language="C#" Value="public Vulkan.SparseBufferMemoryBindInfo BufferBinds { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.SparseBufferMemoryBindInfo BufferBinds" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.SparseBufferMemoryBindInfo</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ImageBindCount">
+      <MemberSignature Language="C#" Value="public uint ImageBindCount { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 ImageBindCount" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ImageBinds">
+      <MemberSignature Language="C#" Value="public Vulkan.SparseImageMemoryBindInfo ImageBinds { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.SparseImageMemoryBindInfo ImageBinds" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.SparseImageMemoryBindInfo</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ImageOpaqueBindCount">
+      <MemberSignature Language="C#" Value="public uint ImageOpaqueBindCount { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 ImageOpaqueBindCount" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ImageOpaqueBinds">
+      <MemberSignature Language="C#" Value="public Vulkan.SparseImageOpaqueMemoryBindInfo ImageOpaqueBinds { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.SparseImageOpaqueMemoryBindInfo ImageOpaqueBinds" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.SparseImageOpaqueMemoryBindInfo</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SignalSemaphoreCount">
+      <MemberSignature Language="C#" Value="public uint SignalSemaphoreCount { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 SignalSemaphoreCount" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SignalSemaphores">
+      <MemberSignature Language="C#" Value="public Vulkan.Semaphore SignalSemaphores { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Semaphore SignalSemaphores" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Semaphore</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WaitSemaphoreCount">
+      <MemberSignature Language="C#" Value="public uint WaitSemaphoreCount { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 WaitSemaphoreCount" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WaitSemaphores">
+      <MemberSignature Language="C#" Value="public Vulkan.Semaphore WaitSemaphores { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Semaphore WaitSemaphores" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Semaphore</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

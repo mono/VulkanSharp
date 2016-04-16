@@ -1,0 +1,423 @@
+<Type Name="DebugReportObjectTypeExt" FullName="Vulkan.DebugReportObjectTypeExt">
+  <TypeSignature Language="C#" Value="public enum DebugReportObjectTypeExt" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed DebugReportObjectTypeExt extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Buffer">
+      <MemberSignature Language="C#" Value="Buffer" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt Buffer = int32(9)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="BufferView">
+      <MemberSignature Language="C#" Value="BufferView" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt BufferView = int32(13)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="CommandBuffer">
+      <MemberSignature Language="C#" Value="CommandBuffer" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt CommandBuffer = int32(6)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="CommandPool">
+      <MemberSignature Language="C#" Value="CommandPool" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt CommandPool = int32(25)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="DebugReport">
+      <MemberSignature Language="C#" Value="DebugReport" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt DebugReport = int32(28)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="DescriptorPool">
+      <MemberSignature Language="C#" Value="DescriptorPool" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt DescriptorPool = int32(22)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="DescriptorSet">
+      <MemberSignature Language="C#" Value="DescriptorSet" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt DescriptorSet = int32(23)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="DescriptorSetLayout">
+      <MemberSignature Language="C#" Value="DescriptorSetLayout" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt DescriptorSetLayout = int32(20)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Device">
+      <MemberSignature Language="C#" Value="Device" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt Device = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="DeviceMemory">
+      <MemberSignature Language="C#" Value="DeviceMemory" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt DeviceMemory = int32(8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Event">
+      <MemberSignature Language="C#" Value="Event" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt Event = int32(11)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Fence">
+      <MemberSignature Language="C#" Value="Fence" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt Fence = int32(7)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Framebuffer">
+      <MemberSignature Language="C#" Value="Framebuffer" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt Framebuffer = int32(24)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Image">
+      <MemberSignature Language="C#" Value="Image" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt Image = int32(10)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ImageView">
+      <MemberSignature Language="C#" Value="ImageView" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt ImageView = int32(14)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Instance">
+      <MemberSignature Language="C#" Value="Instance" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt Instance = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="PhysicalDevice">
+      <MemberSignature Language="C#" Value="PhysicalDevice" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt PhysicalDevice = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Pipeline">
+      <MemberSignature Language="C#" Value="Pipeline" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt Pipeline = int32(19)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="PipelineCache">
+      <MemberSignature Language="C#" Value="PipelineCache" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt PipelineCache = int32(16)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="PipelineLayout">
+      <MemberSignature Language="C#" Value="PipelineLayout" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt PipelineLayout = int32(17)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="QueryPool">
+      <MemberSignature Language="C#" Value="QueryPool" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt QueryPool = int32(12)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Queue">
+      <MemberSignature Language="C#" Value="Queue" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt Queue = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="RenderPass">
+      <MemberSignature Language="C#" Value="RenderPass" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt RenderPass = int32(18)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Sampler">
+      <MemberSignature Language="C#" Value="Sampler" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt Sampler = int32(21)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Semaphore">
+      <MemberSignature Language="C#" Value="Semaphore" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt Semaphore = int32(5)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ShaderModule">
+      <MemberSignature Language="C#" Value="ShaderModule" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt ShaderModule = int32(15)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="SurfaceKhr">
+      <MemberSignature Language="C#" Value="SurfaceKhr" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt SurfaceKhr = int32(26)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="SwapchainKhr">
+      <MemberSignature Language="C#" Value="SwapchainKhr" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt SwapchainKhr = int32(27)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Unknown">
+      <MemberSignature Language="C#" Value="Unknown" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.DebugReportObjectTypeExt Unknown = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportObjectTypeExt</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,73 @@
+<Type Name="PresentModeKhr" FullName="Vulkan.PresentModeKhr">
+  <TypeSignature Language="C#" Value="public enum PresentModeKhr" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed PresentModeKhr extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Fifo">
+      <MemberSignature Language="C#" Value="Fifo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PresentModeKhr Fifo = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PresentModeKhr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="FifoRelaxed">
+      <MemberSignature Language="C#" Value="FifoRelaxed" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PresentModeKhr FifoRelaxed = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PresentModeKhr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Immediate">
+      <MemberSignature Language="C#" Value="Immediate" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PresentModeKhr Immediate = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PresentModeKhr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Mailbox">
+      <MemberSignature Language="C#" Value="Mailbox" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PresentModeKhr Mailbox = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PresentModeKhr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

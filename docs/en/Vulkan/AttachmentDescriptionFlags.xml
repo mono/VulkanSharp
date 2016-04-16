@@ -1,0 +1,36 @@
+<Type Name="AttachmentDescriptionFlags" FullName="Vulkan.AttachmentDescriptionFlags">
+  <TypeSignature Language="C#" Value="public enum AttachmentDescriptionFlags" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed AttachmentDescriptionFlags extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Flags</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="MayAlias">
+      <MemberSignature Language="C#" Value="MayAlias" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.AttachmentDescriptionFlags MayAlias = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AttachmentDescriptionFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

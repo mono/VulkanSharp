@@ -1,0 +1,64 @@
+<Type Name="BufferCreateFlags" FullName="Vulkan.BufferCreateFlags">
+  <TypeSignature Language="C#" Value="public enum BufferCreateFlags" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed BufferCreateFlags extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Flags</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="SparseAliased">
+      <MemberSignature Language="C#" Value="SparseAliased" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.BufferCreateFlags SparseAliased = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.BufferCreateFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="SparseBinding">
+      <MemberSignature Language="C#" Value="SparseBinding" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.BufferCreateFlags SparseBinding = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.BufferCreateFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="SparseResidency">
+      <MemberSignature Language="C#" Value="SparseResidency" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.BufferCreateFlags SparseResidency = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.BufferCreateFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

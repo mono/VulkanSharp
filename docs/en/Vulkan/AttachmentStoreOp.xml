@@ -1,0 +1,45 @@
+<Type Name="AttachmentStoreOp" FullName="Vulkan.AttachmentStoreOp">
+  <TypeSignature Language="C#" Value="public enum AttachmentStoreOp" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed AttachmentStoreOp extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="DontCare">
+      <MemberSignature Language="C#" Value="DontCare" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.AttachmentStoreOp DontCare = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AttachmentStoreOp</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Store">
+      <MemberSignature Language="C#" Value="Store" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.AttachmentStoreOp Store = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AttachmentStoreOp</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,134 @@
+<Type Name="ImageUsageFlags" FullName="Vulkan.ImageUsageFlags">
+  <TypeSignature Language="C#" Value="public enum ImageUsageFlags" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed ImageUsageFlags extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Flags</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="ColorAttachment">
+      <MemberSignature Language="C#" Value="ColorAttachment" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageUsageFlags ColorAttachment = int32(16)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageUsageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="DepthStencilAttachment">
+      <MemberSignature Language="C#" Value="DepthStencilAttachment" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageUsageFlags DepthStencilAttachment = int32(32)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageUsageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="InputAttachment">
+      <MemberSignature Language="C#" Value="InputAttachment" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageUsageFlags InputAttachment = int32(128)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageUsageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Sampled">
+      <MemberSignature Language="C#" Value="Sampled" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageUsageFlags Sampled = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageUsageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Storage">
+      <MemberSignature Language="C#" Value="Storage" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageUsageFlags Storage = int32(8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageUsageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="TransferDst">
+      <MemberSignature Language="C#" Value="TransferDst" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageUsageFlags TransferDst = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageUsageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="TransferSrc">
+      <MemberSignature Language="C#" Value="TransferSrc" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageUsageFlags TransferSrc = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageUsageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="TransientAttachment">
+      <MemberSignature Language="C#" Value="TransientAttachment" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.ImageUsageFlags TransientAttachment = int32(64)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageUsageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

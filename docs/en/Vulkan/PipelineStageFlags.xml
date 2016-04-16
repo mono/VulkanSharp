@@ -1,0 +1,260 @@
+<Type Name="PipelineStageFlags" FullName="Vulkan.PipelineStageFlags">
+  <TypeSignature Language="C#" Value="public enum PipelineStageFlags" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed PipelineStageFlags extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Flags</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="AllCommands">
+      <MemberSignature Language="C#" Value="AllCommands" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PipelineStageFlags AllCommands = int32(65536)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PipelineStageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="AllGraphics">
+      <MemberSignature Language="C#" Value="AllGraphics" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PipelineStageFlags AllGraphics = int32(32768)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PipelineStageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="BottomOfPipe">
+      <MemberSignature Language="C#" Value="BottomOfPipe" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PipelineStageFlags BottomOfPipe = int32(8192)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PipelineStageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ColorAttachmentOutput">
+      <MemberSignature Language="C#" Value="ColorAttachmentOutput" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PipelineStageFlags ColorAttachmentOutput = int32(1024)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PipelineStageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ComputeShader">
+      <MemberSignature Language="C#" Value="ComputeShader" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PipelineStageFlags ComputeShader = int32(2048)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PipelineStageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawIndirect">
+      <MemberSignature Language="C#" Value="DrawIndirect" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PipelineStageFlags DrawIndirect = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PipelineStageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="EarlyFragmentTests">
+      <MemberSignature Language="C#" Value="EarlyFragmentTests" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PipelineStageFlags EarlyFragmentTests = int32(256)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PipelineStageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="FragmentShader">
+      <MemberSignature Language="C#" Value="FragmentShader" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PipelineStageFlags FragmentShader = int32(128)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PipelineStageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="GeometryShader">
+      <MemberSignature Language="C#" Value="GeometryShader" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PipelineStageFlags GeometryShader = int32(64)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PipelineStageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Host">
+      <MemberSignature Language="C#" Value="Host" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PipelineStageFlags Host = int32(16384)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PipelineStageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="LateFragmentTests">
+      <MemberSignature Language="C#" Value="LateFragmentTests" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PipelineStageFlags LateFragmentTests = int32(512)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PipelineStageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="TessellationControlShader">
+      <MemberSignature Language="C#" Value="TessellationControlShader" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PipelineStageFlags TessellationControlShader = int32(16)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PipelineStageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="TessellationEvaluationShader">
+      <MemberSignature Language="C#" Value="TessellationEvaluationShader" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PipelineStageFlags TessellationEvaluationShader = int32(32)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PipelineStageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="TopOfPipe">
+      <MemberSignature Language="C#" Value="TopOfPipe" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PipelineStageFlags TopOfPipe = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PipelineStageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Transfer">
+      <MemberSignature Language="C#" Value="Transfer" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PipelineStageFlags Transfer = int32(4096)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PipelineStageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="VertexInput">
+      <MemberSignature Language="C#" Value="VertexInput" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PipelineStageFlags VertexInput = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PipelineStageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="VertexShader">
+      <MemberSignature Language="C#" Value="VertexShader" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.PipelineStageFlags VertexShader = int32(8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PipelineStageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,218 @@
+<Type Name="FormatFeatureFlags" FullName="Vulkan.FormatFeatureFlags">
+  <TypeSignature Language="C#" Value="public enum FormatFeatureFlags" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed FormatFeatureFlags extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Flags</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="BlitDst">
+      <MemberSignature Language="C#" Value="BlitDst" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.FormatFeatureFlags BlitDst = int32(2048)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.FormatFeatureFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="BlitSrc">
+      <MemberSignature Language="C#" Value="BlitSrc" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.FormatFeatureFlags BlitSrc = int32(1024)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.FormatFeatureFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ColorAttachment">
+      <MemberSignature Language="C#" Value="ColorAttachment" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.FormatFeatureFlags ColorAttachment = int32(128)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.FormatFeatureFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ColorAttachmentBlend">
+      <MemberSignature Language="C#" Value="ColorAttachmentBlend" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.FormatFeatureFlags ColorAttachmentBlend = int32(256)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.FormatFeatureFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="DepthStencilAttachment">
+      <MemberSignature Language="C#" Value="DepthStencilAttachment" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.FormatFeatureFlags DepthStencilAttachment = int32(512)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.FormatFeatureFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="SampledImage">
+      <MemberSignature Language="C#" Value="SampledImage" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.FormatFeatureFlags SampledImage = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.FormatFeatureFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="SampledImageFilterCubicImg">
+      <MemberSignature Language="C#" Value="SampledImageFilterCubicImg" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.FormatFeatureFlags SampledImageFilterCubicImg = int32(8192)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.FormatFeatureFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="SampledImageFilterLinear">
+      <MemberSignature Language="C#" Value="SampledImageFilterLinear" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.FormatFeatureFlags SampledImageFilterLinear = int32(4096)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.FormatFeatureFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="StorageImage">
+      <MemberSignature Language="C#" Value="StorageImage" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.FormatFeatureFlags StorageImage = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.FormatFeatureFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="StorageImageAtomic">
+      <MemberSignature Language="C#" Value="StorageImageAtomic" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.FormatFeatureFlags StorageImageAtomic = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.FormatFeatureFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="StorageTexelBuffer">
+      <MemberSignature Language="C#" Value="StorageTexelBuffer" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.FormatFeatureFlags StorageTexelBuffer = int32(16)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.FormatFeatureFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="StorageTexelBufferAtomic">
+      <MemberSignature Language="C#" Value="StorageTexelBufferAtomic" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.FormatFeatureFlags StorageTexelBufferAtomic = int32(32)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.FormatFeatureFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="UniformTexelBuffer">
+      <MemberSignature Language="C#" Value="UniformTexelBuffer" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.FormatFeatureFlags UniformTexelBuffer = int32(8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.FormatFeatureFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="VertexBuffer">
+      <MemberSignature Language="C#" Value="VertexBuffer" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.FormatFeatureFlags VertexBuffer = int32(64)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.FormatFeatureFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

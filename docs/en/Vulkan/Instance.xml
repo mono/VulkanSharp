@@ -1,0 +1,222 @@
+<Type Name="Instance" FullName="Vulkan.Instance">
+  <TypeSignature Language="C#" Value="public class Instance" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Instance extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Instance ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Instance (Vulkan.InstanceCreateInfo CreateInfo, Vulkan.AllocationCallbacks Allocator = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Vulkan.InstanceCreateInfo CreateInfo, class Vulkan.AllocationCallbacks Allocator) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="CreateInfo" Type="Vulkan.InstanceCreateInfo" />
+        <Parameter Name="Allocator" Type="Vulkan.AllocationCallbacks" />
+      </Parameters>
+      <Docs>
+        <param name="CreateInfo">To be added.</param>
+        <param name="Allocator">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateDebugReportCallbackEXT">
+      <MemberSignature Language="C#" Value="public Vulkan.DebugReportCallbackExt CreateDebugReportCallbackEXT (Vulkan.DebugReportCallbackCreateInfoExt pCreateInfo, Vulkan.AllocationCallbacks pAllocator);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.DebugReportCallbackExt CreateDebugReportCallbackEXT(class Vulkan.DebugReportCallbackCreateInfoExt pCreateInfo, class Vulkan.AllocationCallbacks pAllocator) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugReportCallbackExt</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pCreateInfo" Type="Vulkan.DebugReportCallbackCreateInfoExt" />
+        <Parameter Name="pAllocator" Type="Vulkan.AllocationCallbacks" />
+      </Parameters>
+      <Docs>
+        <param name="pCreateInfo">To be added.</param>
+        <param name="pAllocator">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateDisplayPlaneSurfaceKHR">
+      <MemberSignature Language="C#" Value="public Vulkan.SurfaceKhr CreateDisplayPlaneSurfaceKHR (Vulkan.DisplaySurfaceCreateInfoKhr pCreateInfo, Vulkan.AllocationCallbacks pAllocator);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.SurfaceKhr CreateDisplayPlaneSurfaceKHR(class Vulkan.DisplaySurfaceCreateInfoKhr pCreateInfo, class Vulkan.AllocationCallbacks pAllocator) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.SurfaceKhr</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pCreateInfo" Type="Vulkan.DisplaySurfaceCreateInfoKhr" />
+        <Parameter Name="pAllocator" Type="Vulkan.AllocationCallbacks" />
+      </Parameters>
+      <Docs>
+        <param name="pCreateInfo">To be added.</param>
+        <param name="pAllocator">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DebugReportMessageEXT">
+      <MemberSignature Language="C#" Value="public void DebugReportMessageEXT (Vulkan.DebugReportFlagsExt flags, Vulkan.DebugReportObjectTypeExt objectType, ulong object, UIntPtr location, int messageCode, string pLayerPrefix, string pMessage);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DebugReportMessageEXT(valuetype Vulkan.DebugReportFlagsExt flags, valuetype Vulkan.DebugReportObjectTypeExt objectType, unsigned int64 object, native unsigned int location, int32 messageCode, string pLayerPrefix, string pMessage) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="flags" Type="Vulkan.DebugReportFlagsExt" />
+        <Parameter Name="objectType" Type="Vulkan.DebugReportObjectTypeExt" />
+        <Parameter Name="object" Type="System.UInt64" />
+        <Parameter Name="location" Type="System.UIntPtr" />
+        <Parameter Name="messageCode" Type="System.Int32" />
+        <Parameter Name="pLayerPrefix" Type="System.String" />
+        <Parameter Name="pMessage" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="flags">To be added.</param>
+        <param name="objectType">To be added.</param>
+        <param name="object">To be added.</param>
+        <param name="location">To be added.</param>
+        <param name="messageCode">To be added.</param>
+        <param name="pLayerPrefix">To be added.</param>
+        <param name="pMessage">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Destroy">
+      <MemberSignature Language="C#" Value="public void Destroy (Vulkan.AllocationCallbacks pAllocator);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Destroy(class Vulkan.AllocationCallbacks pAllocator) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pAllocator" Type="Vulkan.AllocationCallbacks" />
+      </Parameters>
+      <Docs>
+        <param name="pAllocator">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DestroyDebugReportCallbackEXT">
+      <MemberSignature Language="C#" Value="public void DestroyDebugReportCallbackEXT (Vulkan.DebugReportCallbackExt callback, Vulkan.AllocationCallbacks pAllocator);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DestroyDebugReportCallbackEXT(class Vulkan.DebugReportCallbackExt callback, class Vulkan.AllocationCallbacks pAllocator) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="callback" Type="Vulkan.DebugReportCallbackExt" />
+        <Parameter Name="pAllocator" Type="Vulkan.AllocationCallbacks" />
+      </Parameters>
+      <Docs>
+        <param name="callback">To be added.</param>
+        <param name="pAllocator">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DestroySurfaceKHR">
+      <MemberSignature Language="C#" Value="public void DestroySurfaceKHR (Vulkan.SurfaceKhr surface, Vulkan.AllocationCallbacks pAllocator);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DestroySurfaceKHR(class Vulkan.SurfaceKhr surface, class Vulkan.AllocationCallbacks pAllocator) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="surface" Type="Vulkan.SurfaceKhr" />
+        <Parameter Name="pAllocator" Type="Vulkan.AllocationCallbacks" />
+      </Parameters>
+      <Docs>
+        <param name="surface">To be added.</param>
+        <param name="pAllocator">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EnumeratePhysicalDevices">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;Vulkan.PhysicalDevice&gt; EnumeratePhysicalDevices ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;class Vulkan.PhysicalDevice&gt; EnumeratePhysicalDevices() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;Vulkan.PhysicalDevice&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetProcAddr">
+      <MemberSignature Language="C#" Value="public IntPtr GetProcAddr (string pName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance native int GetProcAddr(string pName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="pName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

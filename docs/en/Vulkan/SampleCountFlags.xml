@@ -1,0 +1,120 @@
+<Type Name="SampleCountFlags" FullName="Vulkan.SampleCountFlags">
+  <TypeSignature Language="C#" Value="public enum SampleCountFlags" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed SampleCountFlags extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Flags</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Count1">
+      <MemberSignature Language="C#" Value="Count1" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.SampleCountFlags Count1 = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.SampleCountFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Count16">
+      <MemberSignature Language="C#" Value="Count16" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.SampleCountFlags Count16 = int32(16)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.SampleCountFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Count2">
+      <MemberSignature Language="C#" Value="Count2" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.SampleCountFlags Count2 = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.SampleCountFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Count32">
+      <MemberSignature Language="C#" Value="Count32" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.SampleCountFlags Count32 = int32(32)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.SampleCountFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Count4">
+      <MemberSignature Language="C#" Value="Count4" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.SampleCountFlags Count4 = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.SampleCountFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Count64">
+      <MemberSignature Language="C#" Value="Count64" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.SampleCountFlags Count64 = int32(64)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.SampleCountFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Count8">
+      <MemberSignature Language="C#" Value="Count8" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.SampleCountFlags Count8 = int32(8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.SampleCountFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

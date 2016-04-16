@@ -1,0 +1,101 @@
+<Type Name="BorderColor" FullName="Vulkan.BorderColor">
+  <TypeSignature Language="C#" Value="public enum BorderColor" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed BorderColor extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="FloatOpaqueBlack">
+      <MemberSignature Language="C#" Value="FloatOpaqueBlack" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.BorderColor FloatOpaqueBlack = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.BorderColor</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="FloatOpaqueWhite">
+      <MemberSignature Language="C#" Value="FloatOpaqueWhite" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.BorderColor FloatOpaqueWhite = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.BorderColor</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="FloatTransparentBlack">
+      <MemberSignature Language="C#" Value="FloatTransparentBlack" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.BorderColor FloatTransparentBlack = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.BorderColor</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="IntOpaqueBlack">
+      <MemberSignature Language="C#" Value="IntOpaqueBlack" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.BorderColor IntOpaqueBlack = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.BorderColor</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="IntOpaqueWhite">
+      <MemberSignature Language="C#" Value="IntOpaqueWhite" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.BorderColor IntOpaqueWhite = int32(5)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.BorderColor</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="IntTransparentBlack">
+      <MemberSignature Language="C#" Value="IntTransparentBlack" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.BorderColor IntTransparentBlack = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.BorderColor</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,871 @@
+<Type Name="StructureType" FullName="Vulkan.StructureType">
+  <TypeSignature Language="C#" Value="public enum StructureType" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed StructureType extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="AndroidSurfaceCreateInfoKhr">
+      <MemberSignature Language="C#" Value="AndroidSurfaceCreateInfoKhr" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType AndroidSurfaceCreateInfoKhr = int32(1000008000)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ApplicationInfo">
+      <MemberSignature Language="C#" Value="ApplicationInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType ApplicationInfo = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="BindSparseInfo">
+      <MemberSignature Language="C#" Value="BindSparseInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType BindSparseInfo = int32(7)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="BufferCreateInfo">
+      <MemberSignature Language="C#" Value="BufferCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType BufferCreateInfo = int32(12)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="BufferMemoryBarrier">
+      <MemberSignature Language="C#" Value="BufferMemoryBarrier" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType BufferMemoryBarrier = int32(44)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="BufferViewCreateInfo">
+      <MemberSignature Language="C#" Value="BufferViewCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType BufferViewCreateInfo = int32(13)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="CommandBufferAllocateInfo">
+      <MemberSignature Language="C#" Value="CommandBufferAllocateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType CommandBufferAllocateInfo = int32(40)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="CommandBufferBeginInfo">
+      <MemberSignature Language="C#" Value="CommandBufferBeginInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType CommandBufferBeginInfo = int32(42)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="CommandBufferInheritanceInfo">
+      <MemberSignature Language="C#" Value="CommandBufferInheritanceInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType CommandBufferInheritanceInfo = int32(41)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="CommandPoolCreateInfo">
+      <MemberSignature Language="C#" Value="CommandPoolCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType CommandPoolCreateInfo = int32(39)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ComputePipelineCreateInfo">
+      <MemberSignature Language="C#" Value="ComputePipelineCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType ComputePipelineCreateInfo = int32(29)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="CopyDescriptorSet">
+      <MemberSignature Language="C#" Value="CopyDescriptorSet" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType CopyDescriptorSet = int32(36)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="DebugReportCallbackCreateInfoExt">
+      <MemberSignature Language="C#" Value="DebugReportCallbackCreateInfoExt" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType DebugReportCallbackCreateInfoExt = int32(1000011000)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="DescriptorPoolCreateInfo">
+      <MemberSignature Language="C#" Value="DescriptorPoolCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType DescriptorPoolCreateInfo = int32(33)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="DescriptorSetAllocateInfo">
+      <MemberSignature Language="C#" Value="DescriptorSetAllocateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType DescriptorSetAllocateInfo = int32(34)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="DescriptorSetLayoutCreateInfo">
+      <MemberSignature Language="C#" Value="DescriptorSetLayoutCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType DescriptorSetLayoutCreateInfo = int32(32)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="DeviceCreateInfo">
+      <MemberSignature Language="C#" Value="DeviceCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType DeviceCreateInfo = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="DeviceQueueCreateInfo">
+      <MemberSignature Language="C#" Value="DeviceQueueCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType DeviceQueueCreateInfo = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="DisplayModeCreateInfoKhr">
+      <MemberSignature Language="C#" Value="DisplayModeCreateInfoKhr" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType DisplayModeCreateInfoKhr = int32(1000002000)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="DisplayPresentInfoKhr">
+      <MemberSignature Language="C#" Value="DisplayPresentInfoKhr" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType DisplayPresentInfoKhr = int32(1000003000)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="DisplaySurfaceCreateInfoKhr">
+      <MemberSignature Language="C#" Value="DisplaySurfaceCreateInfoKhr" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType DisplaySurfaceCreateInfoKhr = int32(1000002001)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="EventCreateInfo">
+      <MemberSignature Language="C#" Value="EventCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType EventCreateInfo = int32(10)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="FenceCreateInfo">
+      <MemberSignature Language="C#" Value="FenceCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType FenceCreateInfo = int32(8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="FramebufferCreateInfo">
+      <MemberSignature Language="C#" Value="FramebufferCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType FramebufferCreateInfo = int32(37)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="GraphicsPipelineCreateInfo">
+      <MemberSignature Language="C#" Value="GraphicsPipelineCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType GraphicsPipelineCreateInfo = int32(28)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ImageCreateInfo">
+      <MemberSignature Language="C#" Value="ImageCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType ImageCreateInfo = int32(14)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ImageMemoryBarrier">
+      <MemberSignature Language="C#" Value="ImageMemoryBarrier" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType ImageMemoryBarrier = int32(45)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ImageViewCreateInfo">
+      <MemberSignature Language="C#" Value="ImageViewCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType ImageViewCreateInfo = int32(15)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="InstanceCreateInfo">
+      <MemberSignature Language="C#" Value="InstanceCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType InstanceCreateInfo = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="LoaderDeviceCreateInfo">
+      <MemberSignature Language="C#" Value="LoaderDeviceCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType LoaderDeviceCreateInfo = int32(48)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="LoaderInstanceCreateInfo">
+      <MemberSignature Language="C#" Value="LoaderInstanceCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType LoaderInstanceCreateInfo = int32(47)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="MappedMemoryRange">
+      <MemberSignature Language="C#" Value="MappedMemoryRange" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType MappedMemoryRange = int32(6)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="MemoryAllocateInfo">
+      <MemberSignature Language="C#" Value="MemoryAllocateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType MemoryAllocateInfo = int32(5)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="MemoryBarrier">
+      <MemberSignature Language="C#" Value="MemoryBarrier" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType MemoryBarrier = int32(46)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="MirSurfaceCreateInfoKhr">
+      <MemberSignature Language="C#" Value="MirSurfaceCreateInfoKhr" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType MirSurfaceCreateInfoKhr = int32(1000007000)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="PipelineCacheCreateInfo">
+      <MemberSignature Language="C#" Value="PipelineCacheCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType PipelineCacheCreateInfo = int32(17)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="PipelineColorBlendStateCreateInfo">
+      <MemberSignature Language="C#" Value="PipelineColorBlendStateCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType PipelineColorBlendStateCreateInfo = int32(26)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="PipelineDepthStencilStateCreateInfo">
+      <MemberSignature Language="C#" Value="PipelineDepthStencilStateCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType PipelineDepthStencilStateCreateInfo = int32(25)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="PipelineDynamicStateCreateInfo">
+      <MemberSignature Language="C#" Value="PipelineDynamicStateCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType PipelineDynamicStateCreateInfo = int32(27)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="PipelineInputAssemblyStateCreateInfo">
+      <MemberSignature Language="C#" Value="PipelineInputAssemblyStateCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType PipelineInputAssemblyStateCreateInfo = int32(20)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="PipelineLayoutCreateInfo">
+      <MemberSignature Language="C#" Value="PipelineLayoutCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType PipelineLayoutCreateInfo = int32(30)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="PipelineMultisampleStateCreateInfo">
+      <MemberSignature Language="C#" Value="PipelineMultisampleStateCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType PipelineMultisampleStateCreateInfo = int32(24)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="PipelineRasterizationStateCreateInfo">
+      <MemberSignature Language="C#" Value="PipelineRasterizationStateCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType PipelineRasterizationStateCreateInfo = int32(23)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="PipelineShaderStageCreateInfo">
+      <MemberSignature Language="C#" Value="PipelineShaderStageCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType PipelineShaderStageCreateInfo = int32(18)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="PipelineTessellationStateCreateInfo">
+      <MemberSignature Language="C#" Value="PipelineTessellationStateCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType PipelineTessellationStateCreateInfo = int32(21)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="PipelineVertexInputStateCreateInfo">
+      <MemberSignature Language="C#" Value="PipelineVertexInputStateCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType PipelineVertexInputStateCreateInfo = int32(19)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="PipelineViewportStateCreateInfo">
+      <MemberSignature Language="C#" Value="PipelineViewportStateCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType PipelineViewportStateCreateInfo = int32(22)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="PresentInfoKhr">
+      <MemberSignature Language="C#" Value="PresentInfoKhr" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType PresentInfoKhr = int32(1000001001)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="QueryPoolCreateInfo">
+      <MemberSignature Language="C#" Value="QueryPoolCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType QueryPoolCreateInfo = int32(11)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="RenderPassBeginInfo">
+      <MemberSignature Language="C#" Value="RenderPassBeginInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType RenderPassBeginInfo = int32(43)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="RenderPassCreateInfo">
+      <MemberSignature Language="C#" Value="RenderPassCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType RenderPassCreateInfo = int32(38)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="SamplerCreateInfo">
+      <MemberSignature Language="C#" Value="SamplerCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType SamplerCreateInfo = int32(31)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="SemaphoreCreateInfo">
+      <MemberSignature Language="C#" Value="SemaphoreCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType SemaphoreCreateInfo = int32(9)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ShaderModuleCreateInfo">
+      <MemberSignature Language="C#" Value="ShaderModuleCreateInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType ShaderModuleCreateInfo = int32(16)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="SubmitInfo">
+      <MemberSignature Language="C#" Value="SubmitInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType SubmitInfo = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="SwapchainCreateInfoKhr">
+      <MemberSignature Language="C#" Value="SwapchainCreateInfoKhr" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType SwapchainCreateInfoKhr = int32(1000001000)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="WaylandSurfaceCreateInfoKhr">
+      <MemberSignature Language="C#" Value="WaylandSurfaceCreateInfoKhr" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType WaylandSurfaceCreateInfoKhr = int32(1000006000)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Win32SurfaceCreateInfoKhr">
+      <MemberSignature Language="C#" Value="Win32SurfaceCreateInfoKhr" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType Win32SurfaceCreateInfoKhr = int32(1000009000)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="WriteDescriptorSet">
+      <MemberSignature Language="C#" Value="WriteDescriptorSet" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType WriteDescriptorSet = int32(35)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="XcbSurfaceCreateInfoKhr">
+      <MemberSignature Language="C#" Value="XcbSurfaceCreateInfoKhr" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType XcbSurfaceCreateInfoKhr = int32(1000005000)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="XlibSurfaceCreateInfoKhr">
+      <MemberSignature Language="C#" Value="XlibSurfaceCreateInfoKhr" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.StructureType XlibSurfaceCreateInfoKhr = int32(1000004000)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.StructureType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

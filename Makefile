@@ -30,3 +30,11 @@ lib/gendarme-2.10/gendarme.exe:
 	-mkdir -p `dirname "$@"`
 	curl -o lib/gendarme-2.10/gendarme-2.10-bin.zip $(GENDARME_URL)
 	(cd lib/gendarme-2.10 ; unzip gendarme-2.10-bin.zip)
+
+update-docs: $(BIN_PATH)/Vulkan.dll
+	cp /Library/Frameworks/Mono.framework/Versions/Current/lib/mono/4.5/Facades/System.Runtime.dll .
+	cp /Library/Frameworks/Mono.framework/Versions/Current/lib/mono/4.5/Facades/System.Collections.dll .
+	mdoc update --out=docs/en $(BIN_PATH)/Vulkan.dll
+
+assemble-docs:
+	mdoc assemble --out=docs/Vulkan docs/en

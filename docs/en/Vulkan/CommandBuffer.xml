@@ -1,0 +1,1158 @@
+<Type Name="CommandBuffer" FullName="Vulkan.CommandBuffer">
+  <TypeSignature Language="C#" Value="public class CommandBuffer" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CommandBuffer extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CommandBuffer ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Begin">
+      <MemberSignature Language="C#" Value="public void Begin (Vulkan.CommandBufferBeginInfo pBeginInfo);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Begin(class Vulkan.CommandBufferBeginInfo pBeginInfo) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pBeginInfo" Type="Vulkan.CommandBufferBeginInfo" />
+      </Parameters>
+      <Docs>
+        <param name="pBeginInfo">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdBeginQuery">
+      <MemberSignature Language="C#" Value="public void CmdBeginQuery (Vulkan.QueryPool queryPool, uint query, Vulkan.QueryControlFlags flags);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdBeginQuery(class Vulkan.QueryPool queryPool, unsigned int32 query, valuetype Vulkan.QueryControlFlags flags) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="queryPool" Type="Vulkan.QueryPool" />
+        <Parameter Name="query" Type="System.UInt32" />
+        <Parameter Name="flags" Type="Vulkan.QueryControlFlags" />
+      </Parameters>
+      <Docs>
+        <param name="queryPool">To be added.</param>
+        <param name="query">To be added.</param>
+        <param name="flags">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdBeginRenderPass">
+      <MemberSignature Language="C#" Value="public void CmdBeginRenderPass (Vulkan.RenderPassBeginInfo pRenderPassBegin, Vulkan.SubpassContents contents);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdBeginRenderPass(class Vulkan.RenderPassBeginInfo pRenderPassBegin, valuetype Vulkan.SubpassContents contents) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pRenderPassBegin" Type="Vulkan.RenderPassBeginInfo" />
+        <Parameter Name="contents" Type="Vulkan.SubpassContents" />
+      </Parameters>
+      <Docs>
+        <param name="pRenderPassBegin">To be added.</param>
+        <param name="contents">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdBindDescriptorSets">
+      <MemberSignature Language="C#" Value="public void CmdBindDescriptorSets (Vulkan.PipelineBindPoint pipelineBindPoint, Vulkan.PipelineLayout layout, uint firstSet, uint descriptorSetCount, Vulkan.DescriptorSet pDescriptorSets, uint dynamicOffsetCount, uint pDynamicOffsets);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdBindDescriptorSets(valuetype Vulkan.PipelineBindPoint pipelineBindPoint, class Vulkan.PipelineLayout layout, unsigned int32 firstSet, unsigned int32 descriptorSetCount, class Vulkan.DescriptorSet pDescriptorSets, unsigned int32 dynamicOffsetCount, unsigned int32 pDynamicOffsets) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pipelineBindPoint" Type="Vulkan.PipelineBindPoint" />
+        <Parameter Name="layout" Type="Vulkan.PipelineLayout" />
+        <Parameter Name="firstSet" Type="System.UInt32" />
+        <Parameter Name="descriptorSetCount" Type="System.UInt32" />
+        <Parameter Name="pDescriptorSets" Type="Vulkan.DescriptorSet" />
+        <Parameter Name="dynamicOffsetCount" Type="System.UInt32" />
+        <Parameter Name="pDynamicOffsets" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="pipelineBindPoint">To be added.</param>
+        <param name="layout">To be added.</param>
+        <param name="firstSet">To be added.</param>
+        <param name="descriptorSetCount">To be added.</param>
+        <param name="pDescriptorSets">To be added.</param>
+        <param name="dynamicOffsetCount">To be added.</param>
+        <param name="pDynamicOffsets">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdBindIndexBuffer">
+      <MemberSignature Language="C#" Value="public void CmdBindIndexBuffer (Vulkan.Buffer buffer, Vulkan.DeviceSize offset, Vulkan.IndexType indexType);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdBindIndexBuffer(class Vulkan.Buffer buffer, valuetype Vulkan.DeviceSize offset, valuetype Vulkan.IndexType indexType) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="buffer" Type="Vulkan.Buffer" />
+        <Parameter Name="offset" Type="Vulkan.DeviceSize" />
+        <Parameter Name="indexType" Type="Vulkan.IndexType" />
+      </Parameters>
+      <Docs>
+        <param name="buffer">To be added.</param>
+        <param name="offset">To be added.</param>
+        <param name="indexType">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdBindPipeline">
+      <MemberSignature Language="C#" Value="public void CmdBindPipeline (Vulkan.PipelineBindPoint pipelineBindPoint, Vulkan.Pipeline pipeline);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdBindPipeline(valuetype Vulkan.PipelineBindPoint pipelineBindPoint, class Vulkan.Pipeline pipeline) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pipelineBindPoint" Type="Vulkan.PipelineBindPoint" />
+        <Parameter Name="pipeline" Type="Vulkan.Pipeline" />
+      </Parameters>
+      <Docs>
+        <param name="pipelineBindPoint">To be added.</param>
+        <param name="pipeline">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdBindVertexBuffers">
+      <MemberSignature Language="C#" Value="public void CmdBindVertexBuffers (uint firstBinding, uint bindingCount, Vulkan.Buffer pBuffers, Vulkan.DeviceSize pOffsets);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdBindVertexBuffers(unsigned int32 firstBinding, unsigned int32 bindingCount, class Vulkan.Buffer pBuffers, valuetype Vulkan.DeviceSize pOffsets) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="firstBinding" Type="System.UInt32" />
+        <Parameter Name="bindingCount" Type="System.UInt32" />
+        <Parameter Name="pBuffers" Type="Vulkan.Buffer" />
+        <Parameter Name="pOffsets" Type="Vulkan.DeviceSize" />
+      </Parameters>
+      <Docs>
+        <param name="firstBinding">To be added.</param>
+        <param name="bindingCount">To be added.</param>
+        <param name="pBuffers">To be added.</param>
+        <param name="pOffsets">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdBlitImage">
+      <MemberSignature Language="C#" Value="public void CmdBlitImage (Vulkan.Image srcImage, Vulkan.ImageLayout srcImageLayout, Vulkan.Image dstImage, Vulkan.ImageLayout dstImageLayout, uint regionCount, Vulkan.ImageBlit pRegions, Vulkan.Filter filter);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdBlitImage(class Vulkan.Image srcImage, valuetype Vulkan.ImageLayout srcImageLayout, class Vulkan.Image dstImage, valuetype Vulkan.ImageLayout dstImageLayout, unsigned int32 regionCount, class Vulkan.ImageBlit pRegions, valuetype Vulkan.Filter filter) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="srcImage" Type="Vulkan.Image" />
+        <Parameter Name="srcImageLayout" Type="Vulkan.ImageLayout" />
+        <Parameter Name="dstImage" Type="Vulkan.Image" />
+        <Parameter Name="dstImageLayout" Type="Vulkan.ImageLayout" />
+        <Parameter Name="regionCount" Type="System.UInt32" />
+        <Parameter Name="pRegions" Type="Vulkan.ImageBlit" />
+        <Parameter Name="filter" Type="Vulkan.Filter" />
+      </Parameters>
+      <Docs>
+        <param name="srcImage">To be added.</param>
+        <param name="srcImageLayout">To be added.</param>
+        <param name="dstImage">To be added.</param>
+        <param name="dstImageLayout">To be added.</param>
+        <param name="regionCount">To be added.</param>
+        <param name="pRegions">To be added.</param>
+        <param name="filter">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdClearAttachments">
+      <MemberSignature Language="C#" Value="public void CmdClearAttachments (uint attachmentCount, Vulkan.ClearAttachment pAttachments, uint rectCount, Vulkan.ClearRect pRects);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdClearAttachments(unsigned int32 attachmentCount, class Vulkan.ClearAttachment pAttachments, unsigned int32 rectCount, class Vulkan.ClearRect pRects) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="attachmentCount" Type="System.UInt32" />
+        <Parameter Name="pAttachments" Type="Vulkan.ClearAttachment" />
+        <Parameter Name="rectCount" Type="System.UInt32" />
+        <Parameter Name="pRects" Type="Vulkan.ClearRect" />
+      </Parameters>
+      <Docs>
+        <param name="attachmentCount">To be added.</param>
+        <param name="pAttachments">To be added.</param>
+        <param name="rectCount">To be added.</param>
+        <param name="pRects">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdClearColorImage">
+      <MemberSignature Language="C#" Value="public void CmdClearColorImage (Vulkan.Image image, Vulkan.ImageLayout imageLayout, Vulkan.ClearColorValue pColor, uint rangeCount, Vulkan.ImageSubresourceRange pRanges);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdClearColorImage(class Vulkan.Image image, valuetype Vulkan.ImageLayout imageLayout, class Vulkan.ClearColorValue pColor, unsigned int32 rangeCount, class Vulkan.ImageSubresourceRange pRanges) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="image" Type="Vulkan.Image" />
+        <Parameter Name="imageLayout" Type="Vulkan.ImageLayout" />
+        <Parameter Name="pColor" Type="Vulkan.ClearColorValue" />
+        <Parameter Name="rangeCount" Type="System.UInt32" />
+        <Parameter Name="pRanges" Type="Vulkan.ImageSubresourceRange" />
+      </Parameters>
+      <Docs>
+        <param name="image">To be added.</param>
+        <param name="imageLayout">To be added.</param>
+        <param name="pColor">To be added.</param>
+        <param name="rangeCount">To be added.</param>
+        <param name="pRanges">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdClearDepthStencilImage">
+      <MemberSignature Language="C#" Value="public void CmdClearDepthStencilImage (Vulkan.Image image, Vulkan.ImageLayout imageLayout, Vulkan.ClearDepthStencilValue pDepthStencil, uint rangeCount, Vulkan.ImageSubresourceRange pRanges);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdClearDepthStencilImage(class Vulkan.Image image, valuetype Vulkan.ImageLayout imageLayout, class Vulkan.ClearDepthStencilValue pDepthStencil, unsigned int32 rangeCount, class Vulkan.ImageSubresourceRange pRanges) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="image" Type="Vulkan.Image" />
+        <Parameter Name="imageLayout" Type="Vulkan.ImageLayout" />
+        <Parameter Name="pDepthStencil" Type="Vulkan.ClearDepthStencilValue" />
+        <Parameter Name="rangeCount" Type="System.UInt32" />
+        <Parameter Name="pRanges" Type="Vulkan.ImageSubresourceRange" />
+      </Parameters>
+      <Docs>
+        <param name="image">To be added.</param>
+        <param name="imageLayout">To be added.</param>
+        <param name="pDepthStencil">To be added.</param>
+        <param name="rangeCount">To be added.</param>
+        <param name="pRanges">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdCopyBuffer">
+      <MemberSignature Language="C#" Value="public void CmdCopyBuffer (Vulkan.Buffer srcBuffer, Vulkan.Buffer dstBuffer, uint regionCount, Vulkan.BufferCopy pRegions);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdCopyBuffer(class Vulkan.Buffer srcBuffer, class Vulkan.Buffer dstBuffer, unsigned int32 regionCount, class Vulkan.BufferCopy pRegions) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="srcBuffer" Type="Vulkan.Buffer" />
+        <Parameter Name="dstBuffer" Type="Vulkan.Buffer" />
+        <Parameter Name="regionCount" Type="System.UInt32" />
+        <Parameter Name="pRegions" Type="Vulkan.BufferCopy" />
+      </Parameters>
+      <Docs>
+        <param name="srcBuffer">To be added.</param>
+        <param name="dstBuffer">To be added.</param>
+        <param name="regionCount">To be added.</param>
+        <param name="pRegions">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdCopyBufferToImage">
+      <MemberSignature Language="C#" Value="public void CmdCopyBufferToImage (Vulkan.Buffer srcBuffer, Vulkan.Image dstImage, Vulkan.ImageLayout dstImageLayout, uint regionCount, Vulkan.BufferImageCopy pRegions);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdCopyBufferToImage(class Vulkan.Buffer srcBuffer, class Vulkan.Image dstImage, valuetype Vulkan.ImageLayout dstImageLayout, unsigned int32 regionCount, class Vulkan.BufferImageCopy pRegions) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="srcBuffer" Type="Vulkan.Buffer" />
+        <Parameter Name="dstImage" Type="Vulkan.Image" />
+        <Parameter Name="dstImageLayout" Type="Vulkan.ImageLayout" />
+        <Parameter Name="regionCount" Type="System.UInt32" />
+        <Parameter Name="pRegions" Type="Vulkan.BufferImageCopy" />
+      </Parameters>
+      <Docs>
+        <param name="srcBuffer">To be added.</param>
+        <param name="dstImage">To be added.</param>
+        <param name="dstImageLayout">To be added.</param>
+        <param name="regionCount">To be added.</param>
+        <param name="pRegions">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdCopyImage">
+      <MemberSignature Language="C#" Value="public void CmdCopyImage (Vulkan.Image srcImage, Vulkan.ImageLayout srcImageLayout, Vulkan.Image dstImage, Vulkan.ImageLayout dstImageLayout, uint regionCount, Vulkan.ImageCopy pRegions);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdCopyImage(class Vulkan.Image srcImage, valuetype Vulkan.ImageLayout srcImageLayout, class Vulkan.Image dstImage, valuetype Vulkan.ImageLayout dstImageLayout, unsigned int32 regionCount, class Vulkan.ImageCopy pRegions) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="srcImage" Type="Vulkan.Image" />
+        <Parameter Name="srcImageLayout" Type="Vulkan.ImageLayout" />
+        <Parameter Name="dstImage" Type="Vulkan.Image" />
+        <Parameter Name="dstImageLayout" Type="Vulkan.ImageLayout" />
+        <Parameter Name="regionCount" Type="System.UInt32" />
+        <Parameter Name="pRegions" Type="Vulkan.ImageCopy" />
+      </Parameters>
+      <Docs>
+        <param name="srcImage">To be added.</param>
+        <param name="srcImageLayout">To be added.</param>
+        <param name="dstImage">To be added.</param>
+        <param name="dstImageLayout">To be added.</param>
+        <param name="regionCount">To be added.</param>
+        <param name="pRegions">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdCopyImageToBuffer">
+      <MemberSignature Language="C#" Value="public void CmdCopyImageToBuffer (Vulkan.Image srcImage, Vulkan.ImageLayout srcImageLayout, Vulkan.Buffer dstBuffer, uint regionCount, Vulkan.BufferImageCopy pRegions);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdCopyImageToBuffer(class Vulkan.Image srcImage, valuetype Vulkan.ImageLayout srcImageLayout, class Vulkan.Buffer dstBuffer, unsigned int32 regionCount, class Vulkan.BufferImageCopy pRegions) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="srcImage" Type="Vulkan.Image" />
+        <Parameter Name="srcImageLayout" Type="Vulkan.ImageLayout" />
+        <Parameter Name="dstBuffer" Type="Vulkan.Buffer" />
+        <Parameter Name="regionCount" Type="System.UInt32" />
+        <Parameter Name="pRegions" Type="Vulkan.BufferImageCopy" />
+      </Parameters>
+      <Docs>
+        <param name="srcImage">To be added.</param>
+        <param name="srcImageLayout">To be added.</param>
+        <param name="dstBuffer">To be added.</param>
+        <param name="regionCount">To be added.</param>
+        <param name="pRegions">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdCopyQueryPoolResults">
+      <MemberSignature Language="C#" Value="public void CmdCopyQueryPoolResults (Vulkan.QueryPool queryPool, uint firstQuery, uint queryCount, Vulkan.Buffer dstBuffer, Vulkan.DeviceSize dstOffset, Vulkan.DeviceSize stride, Vulkan.QueryResultFlags flags);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdCopyQueryPoolResults(class Vulkan.QueryPool queryPool, unsigned int32 firstQuery, unsigned int32 queryCount, class Vulkan.Buffer dstBuffer, valuetype Vulkan.DeviceSize dstOffset, valuetype Vulkan.DeviceSize stride, valuetype Vulkan.QueryResultFlags flags) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="queryPool" Type="Vulkan.QueryPool" />
+        <Parameter Name="firstQuery" Type="System.UInt32" />
+        <Parameter Name="queryCount" Type="System.UInt32" />
+        <Parameter Name="dstBuffer" Type="Vulkan.Buffer" />
+        <Parameter Name="dstOffset" Type="Vulkan.DeviceSize" />
+        <Parameter Name="stride" Type="Vulkan.DeviceSize" />
+        <Parameter Name="flags" Type="Vulkan.QueryResultFlags" />
+      </Parameters>
+      <Docs>
+        <param name="queryPool">To be added.</param>
+        <param name="firstQuery">To be added.</param>
+        <param name="queryCount">To be added.</param>
+        <param name="dstBuffer">To be added.</param>
+        <param name="dstOffset">To be added.</param>
+        <param name="stride">To be added.</param>
+        <param name="flags">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdDispatch">
+      <MemberSignature Language="C#" Value="public void CmdDispatch (uint x, uint y, uint z);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdDispatch(unsigned int32 x, unsigned int32 y, unsigned int32 z) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x" Type="System.UInt32" />
+        <Parameter Name="y" Type="System.UInt32" />
+        <Parameter Name="z" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="x">To be added.</param>
+        <param name="y">To be added.</param>
+        <param name="z">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdDispatchIndirect">
+      <MemberSignature Language="C#" Value="public void CmdDispatchIndirect (Vulkan.Buffer buffer, Vulkan.DeviceSize offset);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdDispatchIndirect(class Vulkan.Buffer buffer, valuetype Vulkan.DeviceSize offset) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="buffer" Type="Vulkan.Buffer" />
+        <Parameter Name="offset" Type="Vulkan.DeviceSize" />
+      </Parameters>
+      <Docs>
+        <param name="buffer">To be added.</param>
+        <param name="offset">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdDraw">
+      <MemberSignature Language="C#" Value="public void CmdDraw (uint vertexCount, uint instanceCount, uint firstVertex, uint firstInstance);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdDraw(unsigned int32 vertexCount, unsigned int32 instanceCount, unsigned int32 firstVertex, unsigned int32 firstInstance) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="vertexCount" Type="System.UInt32" />
+        <Parameter Name="instanceCount" Type="System.UInt32" />
+        <Parameter Name="firstVertex" Type="System.UInt32" />
+        <Parameter Name="firstInstance" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="vertexCount">To be added.</param>
+        <param name="instanceCount">To be added.</param>
+        <param name="firstVertex">To be added.</param>
+        <param name="firstInstance">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdDrawIndexed">
+      <MemberSignature Language="C#" Value="public void CmdDrawIndexed (uint indexCount, uint instanceCount, uint firstIndex, int vertexOffset, uint firstInstance);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdDrawIndexed(unsigned int32 indexCount, unsigned int32 instanceCount, unsigned int32 firstIndex, int32 vertexOffset, unsigned int32 firstInstance) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="indexCount" Type="System.UInt32" />
+        <Parameter Name="instanceCount" Type="System.UInt32" />
+        <Parameter Name="firstIndex" Type="System.UInt32" />
+        <Parameter Name="vertexOffset" Type="System.Int32" />
+        <Parameter Name="firstInstance" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="indexCount">To be added.</param>
+        <param name="instanceCount">To be added.</param>
+        <param name="firstIndex">To be added.</param>
+        <param name="vertexOffset">To be added.</param>
+        <param name="firstInstance">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdDrawIndexedIndirect">
+      <MemberSignature Language="C#" Value="public void CmdDrawIndexedIndirect (Vulkan.Buffer buffer, Vulkan.DeviceSize offset, uint drawCount, uint stride);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdDrawIndexedIndirect(class Vulkan.Buffer buffer, valuetype Vulkan.DeviceSize offset, unsigned int32 drawCount, unsigned int32 stride) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="buffer" Type="Vulkan.Buffer" />
+        <Parameter Name="offset" Type="Vulkan.DeviceSize" />
+        <Parameter Name="drawCount" Type="System.UInt32" />
+        <Parameter Name="stride" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="buffer">To be added.</param>
+        <param name="offset">To be added.</param>
+        <param name="drawCount">To be added.</param>
+        <param name="stride">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdDrawIndirect">
+      <MemberSignature Language="C#" Value="public void CmdDrawIndirect (Vulkan.Buffer buffer, Vulkan.DeviceSize offset, uint drawCount, uint stride);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdDrawIndirect(class Vulkan.Buffer buffer, valuetype Vulkan.DeviceSize offset, unsigned int32 drawCount, unsigned int32 stride) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="buffer" Type="Vulkan.Buffer" />
+        <Parameter Name="offset" Type="Vulkan.DeviceSize" />
+        <Parameter Name="drawCount" Type="System.UInt32" />
+        <Parameter Name="stride" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="buffer">To be added.</param>
+        <param name="offset">To be added.</param>
+        <param name="drawCount">To be added.</param>
+        <param name="stride">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdEndQuery">
+      <MemberSignature Language="C#" Value="public void CmdEndQuery (Vulkan.QueryPool queryPool, uint query);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdEndQuery(class Vulkan.QueryPool queryPool, unsigned int32 query) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="queryPool" Type="Vulkan.QueryPool" />
+        <Parameter Name="query" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="queryPool">To be added.</param>
+        <param name="query">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdEndRenderPass">
+      <MemberSignature Language="C#" Value="public void CmdEndRenderPass ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdEndRenderPass() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdExecuteCommands">
+      <MemberSignature Language="C#" Value="public void CmdExecuteCommands (uint commandBufferCount, Vulkan.CommandBuffer pCommandBuffers);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdExecuteCommands(unsigned int32 commandBufferCount, class Vulkan.CommandBuffer pCommandBuffers) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="commandBufferCount" Type="System.UInt32" />
+        <Parameter Name="pCommandBuffers" Type="Vulkan.CommandBuffer" />
+      </Parameters>
+      <Docs>
+        <param name="commandBufferCount">To be added.</param>
+        <param name="pCommandBuffers">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdFillBuffer">
+      <MemberSignature Language="C#" Value="public void CmdFillBuffer (Vulkan.Buffer dstBuffer, Vulkan.DeviceSize dstOffset, Vulkan.DeviceSize size, uint data);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdFillBuffer(class Vulkan.Buffer dstBuffer, valuetype Vulkan.DeviceSize dstOffset, valuetype Vulkan.DeviceSize size, unsigned int32 data) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="dstBuffer" Type="Vulkan.Buffer" />
+        <Parameter Name="dstOffset" Type="Vulkan.DeviceSize" />
+        <Parameter Name="size" Type="Vulkan.DeviceSize" />
+        <Parameter Name="data" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="dstBuffer">To be added.</param>
+        <param name="dstOffset">To be added.</param>
+        <param name="size">To be added.</param>
+        <param name="data">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdNextSubpass">
+      <MemberSignature Language="C#" Value="public void CmdNextSubpass (Vulkan.SubpassContents contents);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdNextSubpass(valuetype Vulkan.SubpassContents contents) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="contents" Type="Vulkan.SubpassContents" />
+      </Parameters>
+      <Docs>
+        <param name="contents">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdPipelineBarrier">
+      <MemberSignature Language="C#" Value="public void CmdPipelineBarrier (Vulkan.PipelineStageFlags srcStageMask, Vulkan.PipelineStageFlags dstStageMask, Vulkan.DependencyFlags dependencyFlags, uint memoryBarrierCount, Vulkan.MemoryBarrier pMemoryBarriers, uint bufferMemoryBarrierCount, Vulkan.BufferMemoryBarrier pBufferMemoryBarriers, uint imageMemoryBarrierCount, Vulkan.ImageMemoryBarrier pImageMemoryBarriers);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdPipelineBarrier(valuetype Vulkan.PipelineStageFlags srcStageMask, valuetype Vulkan.PipelineStageFlags dstStageMask, valuetype Vulkan.DependencyFlags dependencyFlags, unsigned int32 memoryBarrierCount, class Vulkan.MemoryBarrier pMemoryBarriers, unsigned int32 bufferMemoryBarrierCount, class Vulkan.BufferMemoryBarrier pBufferMemoryBarriers, unsigned int32 imageMemoryBarrierCount, class Vulkan.ImageMemoryBarrier pImageMemoryBarriers) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="srcStageMask" Type="Vulkan.PipelineStageFlags" />
+        <Parameter Name="dstStageMask" Type="Vulkan.PipelineStageFlags" />
+        <Parameter Name="dependencyFlags" Type="Vulkan.DependencyFlags" />
+        <Parameter Name="memoryBarrierCount" Type="System.UInt32" />
+        <Parameter Name="pMemoryBarriers" Type="Vulkan.MemoryBarrier" />
+        <Parameter Name="bufferMemoryBarrierCount" Type="System.UInt32" />
+        <Parameter Name="pBufferMemoryBarriers" Type="Vulkan.BufferMemoryBarrier" />
+        <Parameter Name="imageMemoryBarrierCount" Type="System.UInt32" />
+        <Parameter Name="pImageMemoryBarriers" Type="Vulkan.ImageMemoryBarrier" />
+      </Parameters>
+      <Docs>
+        <param name="srcStageMask">To be added.</param>
+        <param name="dstStageMask">To be added.</param>
+        <param name="dependencyFlags">To be added.</param>
+        <param name="memoryBarrierCount">To be added.</param>
+        <param name="pMemoryBarriers">To be added.</param>
+        <param name="bufferMemoryBarrierCount">To be added.</param>
+        <param name="pBufferMemoryBarriers">To be added.</param>
+        <param name="imageMemoryBarrierCount">To be added.</param>
+        <param name="pImageMemoryBarriers">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdPushConstants">
+      <MemberSignature Language="C#" Value="public void CmdPushConstants (Vulkan.PipelineLayout layout, Vulkan.ShaderStageFlags stageFlags, uint offset, uint size, IntPtr pValues);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdPushConstants(class Vulkan.PipelineLayout layout, valuetype Vulkan.ShaderStageFlags stageFlags, unsigned int32 offset, unsigned int32 size, native int pValues) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="layout" Type="Vulkan.PipelineLayout" />
+        <Parameter Name="stageFlags" Type="Vulkan.ShaderStageFlags" />
+        <Parameter Name="offset" Type="System.UInt32" />
+        <Parameter Name="size" Type="System.UInt32" />
+        <Parameter Name="pValues" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="layout">To be added.</param>
+        <param name="stageFlags">To be added.</param>
+        <param name="offset">To be added.</param>
+        <param name="size">To be added.</param>
+        <param name="pValues">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdResetEvent">
+      <MemberSignature Language="C#" Value="public void CmdResetEvent (Vulkan.Event event, Vulkan.PipelineStageFlags stageMask);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdResetEvent(class Vulkan.Event event, valuetype Vulkan.PipelineStageFlags stageMask) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="event" Type="Vulkan.Event" />
+        <Parameter Name="stageMask" Type="Vulkan.PipelineStageFlags" />
+      </Parameters>
+      <Docs>
+        <param name="event">To be added.</param>
+        <param name="stageMask">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdResetQueryPool">
+      <MemberSignature Language="C#" Value="public void CmdResetQueryPool (Vulkan.QueryPool queryPool, uint firstQuery, uint queryCount);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdResetQueryPool(class Vulkan.QueryPool queryPool, unsigned int32 firstQuery, unsigned int32 queryCount) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="queryPool" Type="Vulkan.QueryPool" />
+        <Parameter Name="firstQuery" Type="System.UInt32" />
+        <Parameter Name="queryCount" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="queryPool">To be added.</param>
+        <param name="firstQuery">To be added.</param>
+        <param name="queryCount">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdResolveImage">
+      <MemberSignature Language="C#" Value="public void CmdResolveImage (Vulkan.Image srcImage, Vulkan.ImageLayout srcImageLayout, Vulkan.Image dstImage, Vulkan.ImageLayout dstImageLayout, uint regionCount, Vulkan.ImageResolve pRegions);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdResolveImage(class Vulkan.Image srcImage, valuetype Vulkan.ImageLayout srcImageLayout, class Vulkan.Image dstImage, valuetype Vulkan.ImageLayout dstImageLayout, unsigned int32 regionCount, class Vulkan.ImageResolve pRegions) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="srcImage" Type="Vulkan.Image" />
+        <Parameter Name="srcImageLayout" Type="Vulkan.ImageLayout" />
+        <Parameter Name="dstImage" Type="Vulkan.Image" />
+        <Parameter Name="dstImageLayout" Type="Vulkan.ImageLayout" />
+        <Parameter Name="regionCount" Type="System.UInt32" />
+        <Parameter Name="pRegions" Type="Vulkan.ImageResolve" />
+      </Parameters>
+      <Docs>
+        <param name="srcImage">To be added.</param>
+        <param name="srcImageLayout">To be added.</param>
+        <param name="dstImage">To be added.</param>
+        <param name="dstImageLayout">To be added.</param>
+        <param name="regionCount">To be added.</param>
+        <param name="pRegions">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdSetBlendConstants">
+      <MemberSignature Language="C#" Value="public void CmdSetBlendConstants (float blendConstants);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdSetBlendConstants(float32 blendConstants) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="blendConstants" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="blendConstants">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdSetDepthBias">
+      <MemberSignature Language="C#" Value="public void CmdSetDepthBias (float depthBiasConstantFactor, float depthBiasClamp, float depthBiasSlopeFactor);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdSetDepthBias(float32 depthBiasConstantFactor, float32 depthBiasClamp, float32 depthBiasSlopeFactor) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="depthBiasConstantFactor" Type="System.Single" />
+        <Parameter Name="depthBiasClamp" Type="System.Single" />
+        <Parameter Name="depthBiasSlopeFactor" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="depthBiasConstantFactor">To be added.</param>
+        <param name="depthBiasClamp">To be added.</param>
+        <param name="depthBiasSlopeFactor">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdSetDepthBounds">
+      <MemberSignature Language="C#" Value="public void CmdSetDepthBounds (float minDepthBounds, float maxDepthBounds);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdSetDepthBounds(float32 minDepthBounds, float32 maxDepthBounds) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="minDepthBounds" Type="System.Single" />
+        <Parameter Name="maxDepthBounds" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="minDepthBounds">To be added.</param>
+        <param name="maxDepthBounds">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdSetEvent">
+      <MemberSignature Language="C#" Value="public void CmdSetEvent (Vulkan.Event event, Vulkan.PipelineStageFlags stageMask);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdSetEvent(class Vulkan.Event event, valuetype Vulkan.PipelineStageFlags stageMask) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="event" Type="Vulkan.Event" />
+        <Parameter Name="stageMask" Type="Vulkan.PipelineStageFlags" />
+      </Parameters>
+      <Docs>
+        <param name="event">To be added.</param>
+        <param name="stageMask">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdSetLineWidth">
+      <MemberSignature Language="C#" Value="public void CmdSetLineWidth (float lineWidth);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdSetLineWidth(float32 lineWidth) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="lineWidth" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="lineWidth">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdSetScissor">
+      <MemberSignature Language="C#" Value="public void CmdSetScissor (uint firstScissor, uint scissorCount, Vulkan.Rect2D pScissors);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdSetScissor(unsigned int32 firstScissor, unsigned int32 scissorCount, class Vulkan.Rect2D pScissors) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="firstScissor" Type="System.UInt32" />
+        <Parameter Name="scissorCount" Type="System.UInt32" />
+        <Parameter Name="pScissors" Type="Vulkan.Rect2D" />
+      </Parameters>
+      <Docs>
+        <param name="firstScissor">To be added.</param>
+        <param name="scissorCount">To be added.</param>
+        <param name="pScissors">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdSetStencilCompareMask">
+      <MemberSignature Language="C#" Value="public void CmdSetStencilCompareMask (Vulkan.StencilFaceFlags faceMask, uint compareMask);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdSetStencilCompareMask(valuetype Vulkan.StencilFaceFlags faceMask, unsigned int32 compareMask) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="faceMask" Type="Vulkan.StencilFaceFlags" />
+        <Parameter Name="compareMask" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="faceMask">To be added.</param>
+        <param name="compareMask">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdSetStencilReference">
+      <MemberSignature Language="C#" Value="public void CmdSetStencilReference (Vulkan.StencilFaceFlags faceMask, uint reference);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdSetStencilReference(valuetype Vulkan.StencilFaceFlags faceMask, unsigned int32 reference) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="faceMask" Type="Vulkan.StencilFaceFlags" />
+        <Parameter Name="reference" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="faceMask">To be added.</param>
+        <param name="reference">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdSetStencilWriteMask">
+      <MemberSignature Language="C#" Value="public void CmdSetStencilWriteMask (Vulkan.StencilFaceFlags faceMask, uint writeMask);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdSetStencilWriteMask(valuetype Vulkan.StencilFaceFlags faceMask, unsigned int32 writeMask) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="faceMask" Type="Vulkan.StencilFaceFlags" />
+        <Parameter Name="writeMask" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="faceMask">To be added.</param>
+        <param name="writeMask">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdSetViewport">
+      <MemberSignature Language="C#" Value="public void CmdSetViewport (uint firstViewport, uint viewportCount, Vulkan.Viewport pViewports);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdSetViewport(unsigned int32 firstViewport, unsigned int32 viewportCount, class Vulkan.Viewport pViewports) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="firstViewport" Type="System.UInt32" />
+        <Parameter Name="viewportCount" Type="System.UInt32" />
+        <Parameter Name="pViewports" Type="Vulkan.Viewport" />
+      </Parameters>
+      <Docs>
+        <param name="firstViewport">To be added.</param>
+        <param name="viewportCount">To be added.</param>
+        <param name="pViewports">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdUpdateBuffer">
+      <MemberSignature Language="C#" Value="public void CmdUpdateBuffer (Vulkan.Buffer dstBuffer, Vulkan.DeviceSize dstOffset, Vulkan.DeviceSize dataSize, uint pData);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdUpdateBuffer(class Vulkan.Buffer dstBuffer, valuetype Vulkan.DeviceSize dstOffset, valuetype Vulkan.DeviceSize dataSize, unsigned int32 pData) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="dstBuffer" Type="Vulkan.Buffer" />
+        <Parameter Name="dstOffset" Type="Vulkan.DeviceSize" />
+        <Parameter Name="dataSize" Type="Vulkan.DeviceSize" />
+        <Parameter Name="pData" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="dstBuffer">To be added.</param>
+        <param name="dstOffset">To be added.</param>
+        <param name="dataSize">To be added.</param>
+        <param name="pData">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdWaitEvents">
+      <MemberSignature Language="C#" Value="public void CmdWaitEvents (uint eventCount, Vulkan.Event pEvents, Vulkan.PipelineStageFlags srcStageMask, Vulkan.PipelineStageFlags dstStageMask, uint memoryBarrierCount, Vulkan.MemoryBarrier pMemoryBarriers, uint bufferMemoryBarrierCount, Vulkan.BufferMemoryBarrier pBufferMemoryBarriers, uint imageMemoryBarrierCount, Vulkan.ImageMemoryBarrier pImageMemoryBarriers);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdWaitEvents(unsigned int32 eventCount, class Vulkan.Event pEvents, valuetype Vulkan.PipelineStageFlags srcStageMask, valuetype Vulkan.PipelineStageFlags dstStageMask, unsigned int32 memoryBarrierCount, class Vulkan.MemoryBarrier pMemoryBarriers, unsigned int32 bufferMemoryBarrierCount, class Vulkan.BufferMemoryBarrier pBufferMemoryBarriers, unsigned int32 imageMemoryBarrierCount, class Vulkan.ImageMemoryBarrier pImageMemoryBarriers) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="eventCount" Type="System.UInt32" />
+        <Parameter Name="pEvents" Type="Vulkan.Event" />
+        <Parameter Name="srcStageMask" Type="Vulkan.PipelineStageFlags" />
+        <Parameter Name="dstStageMask" Type="Vulkan.PipelineStageFlags" />
+        <Parameter Name="memoryBarrierCount" Type="System.UInt32" />
+        <Parameter Name="pMemoryBarriers" Type="Vulkan.MemoryBarrier" />
+        <Parameter Name="bufferMemoryBarrierCount" Type="System.UInt32" />
+        <Parameter Name="pBufferMemoryBarriers" Type="Vulkan.BufferMemoryBarrier" />
+        <Parameter Name="imageMemoryBarrierCount" Type="System.UInt32" />
+        <Parameter Name="pImageMemoryBarriers" Type="Vulkan.ImageMemoryBarrier" />
+      </Parameters>
+      <Docs>
+        <param name="eventCount">To be added.</param>
+        <param name="pEvents">To be added.</param>
+        <param name="srcStageMask">To be added.</param>
+        <param name="dstStageMask">To be added.</param>
+        <param name="memoryBarrierCount">To be added.</param>
+        <param name="pMemoryBarriers">To be added.</param>
+        <param name="bufferMemoryBarrierCount">To be added.</param>
+        <param name="pBufferMemoryBarriers">To be added.</param>
+        <param name="imageMemoryBarrierCount">To be added.</param>
+        <param name="pImageMemoryBarriers">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdWriteTimestamp">
+      <MemberSignature Language="C#" Value="public void CmdWriteTimestamp (Vulkan.PipelineStageFlags pipelineStage, Vulkan.QueryPool queryPool, uint query);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdWriteTimestamp(valuetype Vulkan.PipelineStageFlags pipelineStage, class Vulkan.QueryPool queryPool, unsigned int32 query) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pipelineStage" Type="Vulkan.PipelineStageFlags" />
+        <Parameter Name="queryPool" Type="Vulkan.QueryPool" />
+        <Parameter Name="query" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="pipelineStage">To be added.</param>
+        <param name="queryPool">To be added.</param>
+        <param name="query">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="End">
+      <MemberSignature Language="C#" Value="public void End ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void End() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Reset">
+      <MemberSignature Language="C#" Value="public void Reset (Vulkan.CommandBufferResetFlags flags);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Reset(valuetype Vulkan.CommandBufferResetFlags flags) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="flags" Type="Vulkan.CommandBufferResetFlags" />
+      </Parameters>
+      <Docs>
+        <param name="flags">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,456 @@
+<Type Name="PhysicalDevice" FullName="Vulkan.PhysicalDevice">
+  <TypeSignature Language="C#" Value="public class PhysicalDevice" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PhysicalDevice extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public PhysicalDevice ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateDevice">
+      <MemberSignature Language="C#" Value="public Vulkan.Device CreateDevice (Vulkan.DeviceCreateInfo pCreateInfo, Vulkan.AllocationCallbacks pAllocator);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.Device CreateDevice(class Vulkan.DeviceCreateInfo pCreateInfo, class Vulkan.AllocationCallbacks pAllocator) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Device</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pCreateInfo" Type="Vulkan.DeviceCreateInfo" />
+        <Parameter Name="pAllocator" Type="Vulkan.AllocationCallbacks" />
+      </Parameters>
+      <Docs>
+        <param name="pCreateInfo">To be added.</param>
+        <param name="pAllocator">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateDisplayModeKHR">
+      <MemberSignature Language="C#" Value="public Vulkan.DisplayModeKhr CreateDisplayModeKHR (Vulkan.DisplayKhr display, Vulkan.DisplayModeCreateInfoKhr pCreateInfo, Vulkan.AllocationCallbacks pAllocator);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.DisplayModeKhr CreateDisplayModeKHR(class Vulkan.DisplayKhr display, class Vulkan.DisplayModeCreateInfoKhr pCreateInfo, class Vulkan.AllocationCallbacks pAllocator) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DisplayModeKhr</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="display" Type="Vulkan.DisplayKhr" />
+        <Parameter Name="pCreateInfo" Type="Vulkan.DisplayModeCreateInfoKhr" />
+        <Parameter Name="pAllocator" Type="Vulkan.AllocationCallbacks" />
+      </Parameters>
+      <Docs>
+        <param name="display">To be added.</param>
+        <param name="pCreateInfo">To be added.</param>
+        <param name="pAllocator">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EnumerateDeviceExtensionProperties">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;Vulkan.ExtensionProperties&gt; EnumerateDeviceExtensionProperties (string pLayerName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;class Vulkan.ExtensionProperties&gt; EnumerateDeviceExtensionProperties(string pLayerName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;Vulkan.ExtensionProperties&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pLayerName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="pLayerName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EnumerateDeviceLayerProperties">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;Vulkan.LayerProperties&gt; EnumerateDeviceLayerProperties ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;class Vulkan.LayerProperties&gt; EnumerateDeviceLayerProperties() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;Vulkan.LayerProperties&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetDisplayModePropertiesKHR">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;Vulkan.DisplayModePropertiesKhr&gt; GetDisplayModePropertiesKHR (Vulkan.DisplayKhr display);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;class Vulkan.DisplayModePropertiesKhr&gt; GetDisplayModePropertiesKHR(class Vulkan.DisplayKhr display) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;Vulkan.DisplayModePropertiesKhr&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="display" Type="Vulkan.DisplayKhr" />
+      </Parameters>
+      <Docs>
+        <param name="display">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetDisplayPlaneCapabilitiesKHR">
+      <MemberSignature Language="C#" Value="public Vulkan.DisplayPlaneCapabilitiesKhr GetDisplayPlaneCapabilitiesKHR (Vulkan.DisplayModeKhr mode, uint planeIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.DisplayPlaneCapabilitiesKhr GetDisplayPlaneCapabilitiesKHR(class Vulkan.DisplayModeKhr mode, unsigned int32 planeIndex) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DisplayPlaneCapabilitiesKhr</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="mode" Type="Vulkan.DisplayModeKhr" />
+        <Parameter Name="planeIndex" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="mode">To be added.</param>
+        <param name="planeIndex">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetDisplayPlanePropertiesKHR">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;Vulkan.DisplayPlanePropertiesKhr&gt; GetDisplayPlanePropertiesKHR ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;class Vulkan.DisplayPlanePropertiesKhr&gt; GetDisplayPlanePropertiesKHR() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;Vulkan.DisplayPlanePropertiesKhr&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetDisplayPlaneSupportedDisplaysKHR">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;Vulkan.DisplayKhr&gt; GetDisplayPlaneSupportedDisplaysKHR (uint planeIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;class Vulkan.DisplayKhr&gt; GetDisplayPlaneSupportedDisplaysKHR(unsigned int32 planeIndex) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;Vulkan.DisplayKhr&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="planeIndex" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="planeIndex">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetDisplayPropertiesKHR">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;Vulkan.DisplayPropertiesKhr&gt; GetDisplayPropertiesKHR ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;class Vulkan.DisplayPropertiesKhr&gt; GetDisplayPropertiesKHR() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;Vulkan.DisplayPropertiesKhr&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetFeatures">
+      <MemberSignature Language="C#" Value="public Vulkan.PhysicalDeviceFeatures GetFeatures ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.PhysicalDeviceFeatures GetFeatures() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PhysicalDeviceFeatures</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetFormatProperties">
+      <MemberSignature Language="C#" Value="public Vulkan.FormatProperties GetFormatProperties (Vulkan.Format format);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.FormatProperties GetFormatProperties(valuetype Vulkan.Format format) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.FormatProperties</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="format" Type="Vulkan.Format" />
+      </Parameters>
+      <Docs>
+        <param name="format">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetImageFormatProperties">
+      <MemberSignature Language="C#" Value="public Vulkan.ImageFormatProperties GetImageFormatProperties (Vulkan.Format format, Vulkan.ImageType type, Vulkan.ImageTiling tiling, Vulkan.ImageUsageFlags usage, Vulkan.ImageCreateFlags flags);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.ImageFormatProperties GetImageFormatProperties(valuetype Vulkan.Format format, valuetype Vulkan.ImageType type, valuetype Vulkan.ImageTiling tiling, valuetype Vulkan.ImageUsageFlags usage, valuetype Vulkan.ImageCreateFlags flags) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageFormatProperties</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="format" Type="Vulkan.Format" />
+        <Parameter Name="type" Type="Vulkan.ImageType" />
+        <Parameter Name="tiling" Type="Vulkan.ImageTiling" />
+        <Parameter Name="usage" Type="Vulkan.ImageUsageFlags" />
+        <Parameter Name="flags" Type="Vulkan.ImageCreateFlags" />
+      </Parameters>
+      <Docs>
+        <param name="format">To be added.</param>
+        <param name="type">To be added.</param>
+        <param name="tiling">To be added.</param>
+        <param name="usage">To be added.</param>
+        <param name="flags">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetMemoryProperties">
+      <MemberSignature Language="C#" Value="public Vulkan.PhysicalDeviceMemoryProperties GetMemoryProperties ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.PhysicalDeviceMemoryProperties GetMemoryProperties() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PhysicalDeviceMemoryProperties</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetProperties">
+      <MemberSignature Language="C#" Value="public Vulkan.PhysicalDeviceProperties GetProperties ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.PhysicalDeviceProperties GetProperties() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PhysicalDeviceProperties</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetQueueFamilyProperties">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;Vulkan.QueueFamilyProperties&gt; GetQueueFamilyProperties ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;class Vulkan.QueueFamilyProperties&gt; GetQueueFamilyProperties() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;Vulkan.QueueFamilyProperties&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetSparseImageFormatProperties">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;Vulkan.SparseImageFormatProperties&gt; GetSparseImageFormatProperties (Vulkan.Format format, Vulkan.ImageType type, Vulkan.SampleCountFlags samples, Vulkan.ImageUsageFlags usage, Vulkan.ImageTiling tiling);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;class Vulkan.SparseImageFormatProperties&gt; GetSparseImageFormatProperties(valuetype Vulkan.Format format, valuetype Vulkan.ImageType type, valuetype Vulkan.SampleCountFlags samples, valuetype Vulkan.ImageUsageFlags usage, valuetype Vulkan.ImageTiling tiling) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;Vulkan.SparseImageFormatProperties&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="format" Type="Vulkan.Format" />
+        <Parameter Name="type" Type="Vulkan.ImageType" />
+        <Parameter Name="samples" Type="Vulkan.SampleCountFlags" />
+        <Parameter Name="usage" Type="Vulkan.ImageUsageFlags" />
+        <Parameter Name="tiling" Type="Vulkan.ImageTiling" />
+      </Parameters>
+      <Docs>
+        <param name="format">To be added.</param>
+        <param name="type">To be added.</param>
+        <param name="samples">To be added.</param>
+        <param name="usage">To be added.</param>
+        <param name="tiling">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetSurfaceCapabilitiesKHR">
+      <MemberSignature Language="C#" Value="public Vulkan.SurfaceCapabilitiesKhr GetSurfaceCapabilitiesKHR (Vulkan.SurfaceKhr surface);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.SurfaceCapabilitiesKhr GetSurfaceCapabilitiesKHR(class Vulkan.SurfaceKhr surface) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.SurfaceCapabilitiesKhr</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="surface" Type="Vulkan.SurfaceKhr" />
+      </Parameters>
+      <Docs>
+        <param name="surface">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetSurfaceFormatsKHR">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;Vulkan.SurfaceFormatKhr&gt; GetSurfaceFormatsKHR (Vulkan.SurfaceKhr surface);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;class Vulkan.SurfaceFormatKhr&gt; GetSurfaceFormatsKHR(class Vulkan.SurfaceKhr surface) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;Vulkan.SurfaceFormatKhr&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="surface" Type="Vulkan.SurfaceKhr" />
+      </Parameters>
+      <Docs>
+        <param name="surface">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetSurfacePresentModesKHR">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;Vulkan.PresentModeKhr&gt; GetSurfacePresentModesKHR (Vulkan.SurfaceKhr surface);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;valuetype Vulkan.PresentModeKhr&gt; GetSurfacePresentModesKHR(class Vulkan.SurfaceKhr surface) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;Vulkan.PresentModeKhr&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="surface" Type="Vulkan.SurfaceKhr" />
+      </Parameters>
+      <Docs>
+        <param name="surface">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetSurfaceSupportKHR">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 GetSurfaceSupportKHR (uint queueFamilyIndex, Vulkan.SurfaceKhr surface);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Vulkan.Bool32 GetSurfaceSupportKHR(unsigned int32 queueFamilyIndex, class Vulkan.SurfaceKhr surface) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="queueFamilyIndex" Type="System.UInt32" />
+        <Parameter Name="surface" Type="Vulkan.SurfaceKhr" />
+      </Parameters>
+      <Docs>
+        <param name="queueFamilyIndex">To be added.</param>
+        <param name="surface">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetWin32PresentationSupportKHR">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 GetWin32PresentationSupportKHR (uint queueFamilyIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Vulkan.Bool32 GetWin32PresentationSupportKHR(unsigned int32 queueFamilyIndex) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="queueFamilyIndex" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="queueFamilyIndex">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
