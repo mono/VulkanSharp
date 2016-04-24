@@ -277,9 +277,9 @@ namespace Vulkan
 			set { m->DeviceType = value; }
 		}
 
-		public char DeviceName {
-			get { return m->DeviceName; }
-			set { m->DeviceName = value; }
+		public string DeviceName {
+			get { return Marshal.PtrToStringAnsi ((IntPtr)m->DeviceName); }
+			set { Interop.Structure.MarshalFixedSizeString (m->DeviceName, value, 256); }
 		}
 
 		public Byte PipelineCacheUUID {
@@ -309,9 +309,9 @@ namespace Vulkan
 			m = (Interop.ExtensionProperties*) Interop.Structure.Allocate (typeof (Interop.ExtensionProperties));
 		}
 
-		public char ExtensionName {
-			get { return m->ExtensionName; }
-			set { m->ExtensionName = value; }
+		public string ExtensionName {
+			get { return Marshal.PtrToStringAnsi ((IntPtr)m->ExtensionName); }
+			set { Interop.Structure.MarshalFixedSizeString (m->ExtensionName, value, 256); }
 		}
 
 		public UInt32 SpecVersion {
@@ -329,9 +329,9 @@ namespace Vulkan
 			m = (Interop.LayerProperties*) Interop.Structure.Allocate (typeof (Interop.LayerProperties));
 		}
 
-		public char LayerName {
-			get { return m->LayerName; }
-			set { m->LayerName = value; }
+		public string LayerName {
+			get { return Marshal.PtrToStringAnsi ((IntPtr)m->LayerName); }
+			set { Interop.Structure.MarshalFixedSizeString (m->LayerName, value, 256); }
 		}
 
 		public UInt32 SpecVersion {
@@ -344,9 +344,9 @@ namespace Vulkan
 			set { m->ImplementationVersion = value; }
 		}
 
-		public char Description {
-			get { return m->Description; }
-			set { m->Description = value; }
+		public string Description {
+			get { return Marshal.PtrToStringAnsi ((IntPtr)m->Description); }
+			set { Interop.Structure.MarshalFixedSizeString (m->Description, value, 256); }
 		}
 	}
 

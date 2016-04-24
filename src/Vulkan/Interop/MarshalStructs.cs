@@ -82,7 +82,7 @@ namespace Vulkan.Interop
 		internal UInt32 VendorID;
 		internal UInt32 DeviceID;
 		internal PhysicalDeviceType DeviceType;
-		internal char DeviceName;
+		internal unsafe fixed byte DeviceName[256];
 		internal Byte PipelineCacheUUID;
 		internal IntPtr Limits;
 		internal IntPtr SparseProperties;
@@ -90,16 +90,16 @@ namespace Vulkan.Interop
 
 	internal struct ExtensionProperties
 	{
-		internal char ExtensionName;
+		internal unsafe fixed byte ExtensionName[256];
 		internal UInt32 SpecVersion;
 	}
 
 	internal struct LayerProperties
 	{
-		internal char LayerName;
+		internal unsafe fixed byte LayerName[256];
 		internal UInt32 SpecVersion;
 		internal UInt32 ImplementationVersion;
-		internal char Description;
+		internal unsafe fixed byte Description[256];
 	}
 
 	internal struct ApplicationInfo

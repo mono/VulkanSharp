@@ -14,7 +14,7 @@ using System.Collections.Generic;
 
 namespace Vulkan
 {
-	internal static partial class Commands
+	public static partial class Commands
 	{
 		public static List<LayerProperties> EnumerateInstanceLayerProperties ()
 		{
