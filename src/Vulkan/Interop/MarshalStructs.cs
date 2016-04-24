@@ -141,9 +141,9 @@ namespace Vulkan.Interop
 		internal UInt32 QueueCreateInfoCount;
 		internal IntPtr QueueCreateInfos;
 		internal UInt32 EnabledLayerCount;
-		internal IntPtr PEnabledLayerNames;
+		internal IntPtr EnabledLayerNames;
 		internal UInt32 EnabledExtensionCount;
-		internal IntPtr PEnabledExtensionNames;
+		internal IntPtr EnabledExtensionNames;
 		internal IntPtr EnabledFeatures;
 	}
 
@@ -154,9 +154,9 @@ namespace Vulkan.Interop
 		internal UInt32 Flags;
 		internal IntPtr ApplicationInfo;
 		internal UInt32 EnabledLayerCount;
-		internal IntPtr PEnabledLayerNames;
+		internal IntPtr EnabledLayerNames;
 		internal UInt32 EnabledExtensionCount;
-		internal IntPtr PEnabledExtensionNames;
+		internal IntPtr EnabledExtensionNames;
 	}
 
 	internal struct QueueFamilyProperties
