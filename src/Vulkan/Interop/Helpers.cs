@@ -17,5 +17,15 @@ namespace Vulkan.Interop
 
 			return ptr;
 		}
+
+		unsafe internal static void MarshalFixedSizeString (byte* dst, string src, int size)
+		{
+			var bytes = System.Text.UTF8Encoding.UTF8.GetBytes (src);
+			size = Math.Min (size - 1, bytes.Length);
+			int i;
+			for (i = 0; i < size; i++)
+				dst [i] = bytes[i];
+			dst [i] = 0;
+		}
 	}
 }

@@ -485,6 +485,13 @@ namespace VulkanSharp.Generator
 				// temporarily disable arrays csMemberType += "[]";
 			}
 
+			var isCharArray = false;
+			if (csMemberType == "char" && memberElement.Value.EndsWith ("]")) {
+				isCharArray = true;
+				//todo: handle max size, use 256 for now
+				if (isInterop)
+					csMemberName += "[256]";
+			}
 			string mod = "";
 			if (csMemberName.EndsWith ("]"))
 				mod = "unsafe fixed ";
@@ -504,6 +511,9 @@ namespace VulkanSharp.Generator
 			if (csMemberType == "Bool32" && !isInterop)
 				csMemberType = "bool";
 
+			if (csMemberType == "char" && isInterop)
+				csMemberType = "byte";
+
 			string attr = "";
 			string sec = isInterop ? "internal" : "public";
 			if (isUnion)
@@ -514,7 +524,14 @@ namespace VulkanSharp.Generator
 					csMemberType = "IntPtr";
 				IndentWriteLine ("{0}{1} {2}{3} {4};", attr, sec, mod, csMemberType, csMemberName);
 			} else {
-				if (structures.Contains (csMemberType) || handles.ContainsKey (csMemberType)) {
+				if (isCharArray) {
+					IndentWriteLine ("{0} string {1} {{", sec, csMemberName);
+					IndentLevel++;
+					IndentWriteLine ("get {{ return Marshal.PtrToStringAnsi ((IntPtr)m->{0}); }}", csMemberName);
+					IndentWriteLine ("set {{ Interop.Structure.MarshalFixedSizeString (m->{0}, value, 256); }}", csMemberName);
+					IndentLevel--;
+					IndentWriteLine ("}");
+				} else if (structures.Contains (csMemberType) || handles.ContainsKey (csMemberType)) {
 					IndentWriteLine ("{0} l{1};", csMemberType, csMemberName);
 					IndentWriteLine ("{0} {1} {2} {{", sec, csMemberType, csMemberName);
 					IndentLevel++;
