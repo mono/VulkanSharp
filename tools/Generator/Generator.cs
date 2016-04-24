@@ -1269,7 +1269,7 @@ namespace VulkanSharp.Generator
 		{
 			CreateFile ("Commands", UsingNamespaceFlags.Interop | UsingNamespaceFlags.Collections);
 
-			IndentWriteLine ("internal static partial class Commands");
+			IndentWriteLine ("public static partial class Commands");
 			IndentWriteLine ("{");
 			IndentLevel++;
 
