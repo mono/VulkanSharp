@@ -130,7 +130,7 @@ namespace Vulkan.Interop
 		internal UInt32 Flags;
 		internal UInt32 QueueFamilyIndex;
 		internal UInt32 QueueCount;
-		internal float QueuePriorities;
+		internal IntPtr QueuePriorities;
 	}
 
 	internal struct DeviceCreateInfo

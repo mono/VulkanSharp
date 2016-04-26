@@ -451,9 +451,28 @@ namespace Vulkan
 			set { m->QueueCount = value; }
 		}
 
-		public float QueuePriorities {
-			get { return m->QueuePriorities; }
-			set { m->QueuePriorities = value; }
+		public float[] QueuePriorities {
+			get {
+				var values = new float [m->QueueCount];
+				unsafe
+				{
+					float* ptr = (float*)m->QueuePriorities;
+					for (int i = 0; i < m->QueueCount; i++)
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->QueueCount = (uint)value.Length;
+				m->QueuePriorities = Marshal.AllocHGlobal ((int)(sizeof(float)*m->QueueCount));
+				unsafe
+				{
+					float* ptr = (float*)m->QueuePriorities;
+					for (int i = 0; i < m->QueueCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 	}
 
@@ -490,11 +509,11 @@ namespace Vulkan
 
 		public string[] EnabledLayerNames {
 			get {
-				var strings = new string [EnabledLayerCount];
+				var strings = new string [m->EnabledLayerCount];
 				unsafe
 				{
 					void** ptr = (void**)m->EnabledLayerNames;
-					for (int i = 0; i < EnabledLayerCount; i++)
+					for (int i = 0; i < m->EnabledLayerCount; i++)
 						strings [i] = Marshal.PtrToStringAnsi ((IntPtr)ptr [i]);
 				}
 				return strings;
@@ -502,11 +521,11 @@ namespace Vulkan
 
 			set {
 				m->EnabledLayerCount = (uint)value.Length;
-				m->EnabledLayerNames = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*EnabledLayerCount));
+				m->EnabledLayerNames = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*m->EnabledLayerCount));
 				unsafe
 				{
 					void** ptr = (void**)m->EnabledLayerNames;
-					for (int i = 0; i < EnabledLayerCount; i++)
+					for (int i = 0; i < m->EnabledLayerCount; i++)
 						ptr [i] = (void*) Marshal.StringToHGlobalAnsi (value [i]);
 				}
 			}
@@ -519,11 +538,11 @@ namespace Vulkan
 
 		public string[] EnabledExtensionNames {
 			get {
-				var strings = new string [EnabledExtensionCount];
+				var strings = new string [m->EnabledExtensionCount];
 				unsafe
 				{
 					void** ptr = (void**)m->EnabledExtensionNames;
-					for (int i = 0; i < EnabledExtensionCount; i++)
+					for (int i = 0; i < m->EnabledExtensionCount; i++)
 						strings [i] = Marshal.PtrToStringAnsi ((IntPtr)ptr [i]);
 				}
 				return strings;
@@ -531,11 +550,11 @@ namespace Vulkan
 
 			set {
 				m->EnabledExtensionCount = (uint)value.Length;
-				m->EnabledExtensionNames = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*EnabledExtensionCount));
+				m->EnabledExtensionNames = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*m->EnabledExtensionCount));
 				unsafe
 				{
 					void** ptr = (void**)m->EnabledExtensionNames;
-					for (int i = 0; i < EnabledExtensionCount; i++)
+					for (int i = 0; i < m->EnabledExtensionCount; i++)
 						ptr [i] = (void*) Marshal.StringToHGlobalAnsi (value [i]);
 				}
 			}
@@ -576,11 +595,11 @@ namespace Vulkan
 
 		public string[] EnabledLayerNames {
 			get {
-				var strings = new string [EnabledLayerCount];
+				var strings = new string [m->EnabledLayerCount];
 				unsafe
 				{
 					void** ptr = (void**)m->EnabledLayerNames;
-					for (int i = 0; i < EnabledLayerCount; i++)
+					for (int i = 0; i < m->EnabledLayerCount; i++)
 						strings [i] = Marshal.PtrToStringAnsi ((IntPtr)ptr [i]);
 				}
 				return strings;
@@ -588,11 +607,11 @@ namespace Vulkan
 
 			set {
 				m->EnabledLayerCount = (uint)value.Length;
-				m->EnabledLayerNames = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*EnabledLayerCount));
+				m->EnabledLayerNames = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*m->EnabledLayerCount));
 				unsafe
 				{
 					void** ptr = (void**)m->EnabledLayerNames;
-					for (int i = 0; i < EnabledLayerCount; i++)
+					for (int i = 0; i < m->EnabledLayerCount; i++)
 						ptr [i] = (void*) Marshal.StringToHGlobalAnsi (value [i]);
 				}
 			}
@@ -605,11 +624,11 @@ namespace Vulkan
 
 		public string[] EnabledExtensionNames {
 			get {
-				var strings = new string [EnabledExtensionCount];
+				var strings = new string [m->EnabledExtensionCount];
 				unsafe
 				{
 					void** ptr = (void**)m->EnabledExtensionNames;
-					for (int i = 0; i < EnabledExtensionCount; i++)
+					for (int i = 0; i < m->EnabledExtensionCount; i++)
 						strings [i] = Marshal.PtrToStringAnsi ((IntPtr)ptr [i]);
 				}
 				return strings;
@@ -617,11 +636,11 @@ namespace Vulkan
 
 			set {
 				m->EnabledExtensionCount = (uint)value.Length;
-				m->EnabledExtensionNames = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*EnabledExtensionCount));
+				m->EnabledExtensionNames = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*m->EnabledExtensionCount));
 				unsafe
 				{
 					void** ptr = (void**)m->EnabledExtensionNames;
-					for (int i = 0; i < EnabledExtensionCount; i++)
+					for (int i = 0; i < m->EnabledExtensionCount; i++)
 						ptr [i] = (void*) Marshal.StringToHGlobalAnsi (value [i]);
 				}
 			}
