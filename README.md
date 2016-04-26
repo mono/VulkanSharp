@@ -23,5 +23,5 @@ Vulkan on Android (NVIDIA's devices)
 [samples](https://developer.nvidia.com/vulkan-android)
 
 More Android Vulkan samples
-[googlesamples] https://github.com/googlesamples/android-vulkan-tutorials
-[examples and demos] https://github.com/SaschaWillems/Vulkan
+[googlesamples](https://github.com/googlesamples/android-vulkan-tutorials),
+[examples and demos](https://github.com/SaschaWillems/Vulkan)
