@@ -458,6 +458,7 @@ namespace VulkanSharp.Generator
 			if (!isInterop && csMemberType == "StructureType" && name == "sType")
 				return false;
 
+			var isArray = false;
 			bool isPointer = memberElement.Value.Contains (typeElement.Value + "*");
 			bool isDoublePointer = memberElement.Value.Contains (typeElement.Value + "**") || memberElement.Value.Contains (typeElement.Value + "* const*");
 			if (isPointer) {
@@ -469,6 +470,10 @@ namespace VulkanSharp.Generator
 					break;
 				case "char":
 					csMemberType = isDoublePointer ? (isInterop ? "IntPtr" : "string[]") : "string";
+					break;
+				case "float":
+					csMemberType = isInterop ? "IntPtr" : "float";
+					isArray = true;
 					break;
 				}
 				if (name.StartsWith ("p"))
@@ -531,6 +536,45 @@ namespace VulkanSharp.Generator
 					IndentWriteLine ("set {{ Interop.Structure.MarshalFixedSizeString (m->{0}, value, 256); }}", csMemberName);
 					IndentLevel--;
 					IndentWriteLine ("}");
+				} else if (isArray) {
+					IndentWriteLine ("{0} {1}[] {2} {{", sec, csMemberType,csMemberName);
+					IndentLevel++;
+					IndentWriteLine ("get {");
+					IndentLevel++;
+					// fixme: use mapping between names
+					string countName = "QueueCount";
+					IndentWriteLine ("var values = new {0} [m->{1}];", csMemberType, countName);
+					IndentWriteLine ("unsafe");
+					IndentWriteLine ("{");
+					IndentLevel++;
+					IndentWriteLine ("{0}* ptr = ({0}*)m->{1};", csMemberType, csMemberName);
+					IndentWriteLine ("for (int i = 0; i < m->{0}; i++)", countName);
+					IndentLevel++;
+					IndentWriteLine ("values [i] = ptr [i];");
+					IndentLevel -= 2;
+					IndentWriteLine ("}");
+					IndentWriteLine ("return values;");
+					IndentLevel--;
+					IndentWriteLine ("}");
+					WriteLine ();
+
+					IndentWriteLine ("set {");
+					IndentLevel++;
+					IndentWriteLine ("m->{0} = (uint)value.Length;", countName);
+					IndentWriteLine ("m->{0} = Marshal.AllocHGlobal ((int)(sizeof({1})*m->{2}));", csMemberName, csMemberType, countName);
+					IndentWriteLine ("unsafe");
+					IndentWriteLine ("{");
+					IndentLevel++;
+					IndentWriteLine ("{0}* ptr = ({0}*)m->{1};", csMemberType, csMemberName);
+					IndentWriteLine ("for (int i = 0; i < m->{0}; i++)", countName);
+					IndentLevel++;
+					IndentWriteLine ("ptr [i] = value [i];");
+					IndentLevel -= 2;
+					IndentWriteLine ("}");
+					IndentLevel--;
+					IndentWriteLine ("}");
+					IndentLevel--;
+					IndentWriteLine ("}");
 				} else if (structures.Contains (csMemberType) || handles.ContainsKey (csMemberType)) {
 					IndentWriteLine ("{0} l{1};", csMemberType, csMemberName);
 					IndentWriteLine ("{0} {1} {2} {{", sec, csMemberType, csMemberName);
@@ -555,12 +599,12 @@ namespace VulkanSharp.Generator
 					if (!csMemberName.EndsWith ("Names"))
 						throw new Exception (string.Format ("unable to handle member {0} {1}", csMemberType, csMemberName));
 					countName = csMemberName.Substring (0, csMemberName.Length - 5) + "Count";
-					IndentWriteLine ("var strings = new string [{0}];", countName);
+					IndentWriteLine ("var strings = new string [m->{0}];", countName);
 					IndentWriteLine ("unsafe");
 					IndentWriteLine ("{");
 					IndentLevel++;
 					IndentWriteLine ("void** ptr = (void**)m->{0};", csMemberName);
-					IndentWriteLine ("for (int i = 0; i < {0}; i++)", countName);
+					IndentWriteLine ("for (int i = 0; i < m->{0}; i++)", countName);
 					IndentLevel++;
 					IndentWriteLine ("strings [i] = Marshal.PtrToStringAnsi ((IntPtr)ptr [i]);");
 					IndentLevel-=2;
@@ -573,12 +617,12 @@ namespace VulkanSharp.Generator
 					IndentWriteLine ("set {");
 					IndentLevel++;
 					IndentWriteLine ("m->{0} = (uint)value.Length;", countName);
-					IndentWriteLine ("m->{0} = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*{1}));", csMemberName, countName);
+					IndentWriteLine ("m->{0} = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*m->{1}));", csMemberName, countName);
 					IndentWriteLine ("unsafe");
 					IndentWriteLine ("{");
 					IndentLevel++;
 					IndentWriteLine ("void** ptr = (void**)m->{0};", csMemberName);
-					IndentWriteLine ("for (int i = 0; i < {0}; i++)", countName);
+					IndentWriteLine ("for (int i = 0; i < m->{0}; i++)", countName);
 					IndentLevel++;
 					IndentWriteLine ("ptr [i] = (void*) Marshal.StringToHGlobalAnsi (value [i]);");
 					IndentLevel -= 2;
