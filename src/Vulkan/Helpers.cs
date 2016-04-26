@@ -50,5 +50,13 @@ namespace Vulkan
 			result = res;
 		}
 	}
+
+	public class Version
+	{
+		public static uint Make (uint major, uint minor, uint patch)
+		{
+			return (major << 22) | (minor << 12) | patch;
+		}
+	}
 }
 
