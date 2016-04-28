@@ -442,20 +442,34 @@ namespace VulkanSharp.Generator
 			IndentWriteLine ("}");
 		}
 
+		static Dictionary<string, string> fieldCounterMap = new Dictionary<string, string> {
+			{ "QueuePriorities", "QueueCount" },
+			{ "QueueFamilyIndices", "QueueFamilyIndexCount" },
+			{ "Code", "CodeSize" },
+			{ "PreserveAttachments", "PreserveAttachmentCount" },
+			{ "ImageIndices", "SwapchainCount" }
+		};
+
 		void WriteMemberArray (string csMemberType, string csMemberName, string sec)
 		{
+			string countName;
+			if (fieldCounterMap.ContainsKey (csMemberName))
+				countName = fieldCounterMap [csMemberName];
+			else
+				throw new Exception (string.Format ("do not know the counter for {0}", csMemberName));
+			// fixme: handle size_t sized arrays better
+			string cast = csMemberName == "Code" ? "(uint)" : "";
+			string cast2 = csMemberName == "Code" ? "(UIntPtr)" : "(uint)";
 			IndentWriteLine ("{0} {1}[] {2} {{", sec, csMemberType, csMemberName);
 			IndentLevel++;
 			IndentWriteLine ("get {");
 			IndentLevel++;
-			// fixme: use mapping between names
-			string countName = "QueueCount";
-			IndentWriteLine ("var values = new {0} [m->{1}];", csMemberType, countName);
+			IndentWriteLine ("var values = new {0} [{1}m->{2}];", csMemberType, cast, countName);
 			IndentWriteLine ("unsafe");
 			IndentWriteLine ("{");
 			IndentLevel++;
 			IndentWriteLine ("{0}* ptr = ({0}*)m->{1};", csMemberType, csMemberName);
-			IndentWriteLine ("for (int i = 0; i < m->{0}; i++)", countName);
+			IndentWriteLine ("for (int i = 0; i < {0}m->{1}; i++)", cast, countName);
 			IndentLevel++;
 			IndentWriteLine ("values [i] = ptr [i];");
 			IndentLevel -= 2;
@@ -467,13 +481,13 @@ namespace VulkanSharp.Generator
 
 			IndentWriteLine ("set {");
 			IndentLevel++;
-			IndentWriteLine ("m->{0} = (uint)value.Length;", countName);
-			IndentWriteLine ("m->{0} = Marshal.AllocHGlobal ((int)(sizeof({1})*m->{2}));", csMemberName, csMemberType, countName);
+			IndentWriteLine ("m->{0} = {1}value.Length;", countName, cast2);
+			IndentWriteLine ("m->{0} = Marshal.AllocHGlobal ((int)(sizeof({1})*{2}m->{3}));", csMemberName, csMemberType, cast, countName);
 			IndentWriteLine ("unsafe");
 			IndentWriteLine ("{");
 			IndentLevel++;
 			IndentWriteLine ("{0}* ptr = ({0}*)m->{1};", csMemberType, csMemberName);
-			IndentWriteLine ("for (int i = 0; i < m->{0}; i++)", countName);
+			IndentWriteLine ("for (int i = 0; i < {0}m->{1}; i++)", cast, countName);
 			IndentLevel++;
 			IndentWriteLine ("ptr [i] = value [i];");
 			IndentLevel -= 2;
@@ -490,7 +504,8 @@ namespace VulkanSharp.Generator
 			IndentWriteLine ("{0} {1} {2} {{", sec, csMemberType, csMemberName);
 			IndentLevel++;
 			IndentWriteLine ("get {{ return l{0}; }}", csMemberName);
-			IndentWriteLine ("set {{ l{0} = value; m->{0} = (IntPtr) value.m; }}", csMemberName);
+			var castType = handles.ContainsKey (csMemberType) ? GetHandleType (handles [csMemberType]) : "IntPtr";
+			IndentWriteLine ("set {{ l{0} = value; m->{0} = ({1})value.m; }}", csMemberName, castType);
 			IndentLevel--;
 			IndentWriteLine ("}");
 		}
@@ -590,6 +605,10 @@ namespace VulkanSharp.Generator
 					csMemberType = isInterop ? "IntPtr" : "float";
 					isArray = true;
 					break;
+				case "UInt32":
+					csMemberType = isInterop ? "IntPtr" : "UInt32";
+					isArray = true;
+					break;
 				}
 				if (name.StartsWith ("p"))
 					name = name.Substring (1);
@@ -640,7 +659,9 @@ namespace VulkanSharp.Generator
 				attr = "[FieldOffset (0)] ";
 
 			if (isInterop) {
-				if (structures.Contains (csMemberType) || handles.ContainsKey (csMemberType) || csMemberType == "string")
+				if (handles.ContainsKey (csMemberType)) {
+					csMemberType = GetHandleType (handles [csMemberType]);
+				} else if (structures.Contains (csMemberType) || csMemberType == "string")
 					csMemberType = "IntPtr";
 				IndentWriteLine ("{0}{1} {2}{3} {4};", attr, sec, mod, csMemberType, csMemberName);
 			} else {
