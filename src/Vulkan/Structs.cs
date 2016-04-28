@@ -155,13 +155,13 @@ namespace Vulkan
 		Offset2D lOffset;
 		public Offset2D Offset {
 			get { return lOffset; }
-			set { lOffset = value; m->Offset = (IntPtr) value.m; }
+			set { lOffset = value; m->Offset = (IntPtr)value.m; }
 		}
 
 		Extent2D lExtent;
 		public Extent2D Extent {
 			get { return lExtent; }
-			set { lExtent = value; m->Extent = (IntPtr) value.m; }
+			set { lExtent = value; m->Extent = (IntPtr)value.m; }
 		}
 	}
 
@@ -177,13 +177,13 @@ namespace Vulkan
 		Offset3D lOffset;
 		public Offset3D Offset {
 			get { return lOffset; }
-			set { lOffset = value; m->Offset = (IntPtr) value.m; }
+			set { lOffset = value; m->Offset = (IntPtr)value.m; }
 		}
 
 		Extent3D lExtent;
 		public Extent3D Extent {
 			get { return lExtent; }
-			set { lExtent = value; m->Extent = (IntPtr) value.m; }
+			set { lExtent = value; m->Extent = (IntPtr)value.m; }
 		}
 	}
 
@@ -199,7 +199,7 @@ namespace Vulkan
 		Rect2D lRect;
 		public Rect2D Rect {
 			get { return lRect; }
-			set { lRect = value; m->Rect = (IntPtr) value.m; }
+			set { lRect = value; m->Rect = (IntPtr)value.m; }
 		}
 
 		public UInt32 BaseArrayLayer {
@@ -290,13 +290,13 @@ namespace Vulkan
 		PhysicalDeviceLimits lLimits;
 		public PhysicalDeviceLimits Limits {
 			get { return lLimits; }
-			set { lLimits = value; m->Limits = (IntPtr) value.m; }
+			set { lLimits = value; m->Limits = (IntPtr)value.m; }
 		}
 
 		PhysicalDeviceSparseProperties lSparseProperties;
 		public PhysicalDeviceSparseProperties SparseProperties {
 			get { return lSparseProperties; }
-			set { lSparseProperties = value; m->SparseProperties = (IntPtr) value.m; }
+			set { lSparseProperties = value; m->SparseProperties = (IntPtr)value.m; }
 		}
 	}
 
@@ -499,7 +499,7 @@ namespace Vulkan
 		DeviceQueueCreateInfo lQueueCreateInfos;
 		public DeviceQueueCreateInfo QueueCreateInfos {
 			get { return lQueueCreateInfos; }
-			set { lQueueCreateInfos = value; m->QueueCreateInfos = (IntPtr) value.m; }
+			set { lQueueCreateInfos = value; m->QueueCreateInfos = (IntPtr)value.m; }
 		}
 
 		public UInt32 EnabledLayerCount {
@@ -563,7 +563,7 @@ namespace Vulkan
 		PhysicalDeviceFeatures lEnabledFeatures;
 		public PhysicalDeviceFeatures EnabledFeatures {
 			get { return lEnabledFeatures; }
-			set { lEnabledFeatures = value; m->EnabledFeatures = (IntPtr) value.m; }
+			set { lEnabledFeatures = value; m->EnabledFeatures = (IntPtr)value.m; }
 		}
 	}
 
@@ -585,7 +585,7 @@ namespace Vulkan
 		ApplicationInfo lApplicationInfo;
 		public ApplicationInfo ApplicationInfo {
 			get { return lApplicationInfo; }
-			set { lApplicationInfo = value; m->ApplicationInfo = (IntPtr) value.m; }
+			set { lApplicationInfo = value; m->ApplicationInfo = (IntPtr)value.m; }
 		}
 
 		public UInt32 EnabledLayerCount {
@@ -674,7 +674,7 @@ namespace Vulkan
 		Extent3D lMinImageTransferGranularity;
 		public Extent3D MinImageTransferGranularity {
 			get { return lMinImageTransferGranularity; }
-			set { lMinImageTransferGranularity = value; m->MinImageTransferGranularity = (IntPtr) value.m; }
+			set { lMinImageTransferGranularity = value; m->MinImageTransferGranularity = (IntPtr)value.m; }
 		}
 	}
 
@@ -695,7 +695,7 @@ namespace Vulkan
 		MemoryType lMemoryTypes;
 		public MemoryType MemoryTypes {
 			get { return lMemoryTypes; }
-			set { lMemoryTypes = value; m->MemoryTypes = (IntPtr) value.m; }
+			set { lMemoryTypes = value; m->MemoryTypes = (IntPtr)value.m; }
 		}
 
 		public UInt32 MemoryHeapCount {
@@ -706,7 +706,7 @@ namespace Vulkan
 		MemoryHeap lMemoryHeaps;
 		public MemoryHeap MemoryHeaps {
 			get { return lMemoryHeaps; }
-			set { lMemoryHeaps = value; m->MemoryHeaps = (IntPtr) value.m; }
+			set { lMemoryHeaps = value; m->MemoryHeaps = (IntPtr)value.m; }
 		}
 	}
 
@@ -773,7 +773,7 @@ namespace Vulkan
 		Extent3D lImageGranularity;
 		public Extent3D ImageGranularity {
 			get { return lImageGranularity; }
-			set { lImageGranularity = value; m->ImageGranularity = (IntPtr) value.m; }
+			set { lImageGranularity = value; m->ImageGranularity = (IntPtr)value.m; }
 		}
 
 		public UInt32 Flags {
@@ -794,7 +794,7 @@ namespace Vulkan
 		SparseImageFormatProperties lFormatProperties;
 		public SparseImageFormatProperties FormatProperties {
 			get { return lFormatProperties; }
-			set { lFormatProperties = value; m->FormatProperties = (IntPtr) value.m; }
+			set { lFormatProperties = value; m->FormatProperties = (IntPtr)value.m; }
 		}
 
 		public UInt32 ImageMipTailFirstLod {
@@ -871,7 +871,7 @@ namespace Vulkan
 		DeviceMemory lMemory;
 		public DeviceMemory Memory {
 			get { return lMemory; }
-			set { lMemory = value; m->Memory = (IntPtr) value.m; }
+			set { lMemory = value; m->Memory = (UInt64)value.m; }
 		}
 
 		public DeviceSize Offset {
@@ -922,7 +922,7 @@ namespace Vulkan
 		Extent3D lMaxExtent;
 		public Extent3D MaxExtent {
 			get { return lMaxExtent; }
-			set { lMaxExtent = value; m->MaxExtent = (IntPtr) value.m; }
+			set { lMaxExtent = value; m->MaxExtent = (IntPtr)value.m; }
 		}
 
 		public UInt32 MaxMipLevels {
@@ -958,7 +958,7 @@ namespace Vulkan
 		Buffer lBuffer;
 		public Buffer Buffer {
 			get { return lBuffer; }
-			set { lBuffer = value; m->Buffer = (IntPtr) value.m; }
+			set { lBuffer = value; m->Buffer = (UInt64)value.m; }
 		}
 
 		public DeviceSize Offset {
@@ -984,13 +984,13 @@ namespace Vulkan
 		Sampler lSampler;
 		public Sampler Sampler {
 			get { return lSampler; }
-			set { lSampler = value; m->Sampler = (IntPtr) value.m; }
+			set { lSampler = value; m->Sampler = (UInt64)value.m; }
 		}
 
 		ImageView lImageView;
 		public ImageView ImageView {
 			get { return lImageView; }
-			set { lImageView = value; m->ImageView = (IntPtr) value.m; }
+			set { lImageView = value; m->ImageView = (UInt64)value.m; }
 		}
 
 		public ImageLayout ImageLayout {
@@ -1012,7 +1012,7 @@ namespace Vulkan
 		DescriptorSet lDstSet;
 		public DescriptorSet DstSet {
 			get { return lDstSet; }
-			set { lDstSet = value; m->DstSet = (IntPtr) value.m; }
+			set { lDstSet = value; m->DstSet = (UInt64)value.m; }
 		}
 
 		public UInt32 DstBinding {
@@ -1038,19 +1038,19 @@ namespace Vulkan
 		DescriptorImageInfo lImageInfo;
 		public DescriptorImageInfo ImageInfo {
 			get { return lImageInfo; }
-			set { lImageInfo = value; m->ImageInfo = (IntPtr) value.m; }
+			set { lImageInfo = value; m->ImageInfo = (IntPtr)value.m; }
 		}
 
 		DescriptorBufferInfo lBufferInfo;
 		public DescriptorBufferInfo BufferInfo {
 			get { return lBufferInfo; }
-			set { lBufferInfo = value; m->BufferInfo = (IntPtr) value.m; }
+			set { lBufferInfo = value; m->BufferInfo = (IntPtr)value.m; }
 		}
 
 		BufferView lTexelBufferView;
 		public BufferView TexelBufferView {
 			get { return lTexelBufferView; }
-			set { lTexelBufferView = value; m->TexelBufferView = (IntPtr) value.m; }
+			set { lTexelBufferView = value; m->TexelBufferView = (UInt64)value.m; }
 		}
 	}
 
@@ -1067,7 +1067,7 @@ namespace Vulkan
 		DescriptorSet lSrcSet;
 		public DescriptorSet SrcSet {
 			get { return lSrcSet; }
-			set { lSrcSet = value; m->SrcSet = (IntPtr) value.m; }
+			set { lSrcSet = value; m->SrcSet = (UInt64)value.m; }
 		}
 
 		public UInt32 SrcBinding {
@@ -1083,7 +1083,7 @@ namespace Vulkan
 		DescriptorSet lDstSet;
 		public DescriptorSet DstSet {
 			get { return lDstSet; }
-			set { lDstSet = value; m->DstSet = (IntPtr) value.m; }
+			set { lDstSet = value; m->DstSet = (UInt64)value.m; }
 		}
 
 		public UInt32 DstBinding {
@@ -1137,9 +1137,28 @@ namespace Vulkan
 			set { m->QueueFamilyIndexCount = value; }
 		}
 
-		public UInt32 QueueFamilyIndices {
-			get { return m->QueueFamilyIndices; }
-			set { m->QueueFamilyIndices = value; }
+		public UInt32[] QueueFamilyIndices {
+			get {
+				var values = new UInt32 [m->QueueFamilyIndexCount];
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->QueueFamilyIndices;
+					for (int i = 0; i < m->QueueFamilyIndexCount; i++)
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->QueueFamilyIndexCount = (uint)value.Length;
+				m->QueueFamilyIndices = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*m->QueueFamilyIndexCount));
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->QueueFamilyIndices;
+					for (int i = 0; i < m->QueueFamilyIndexCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 	}
 
@@ -1161,7 +1180,7 @@ namespace Vulkan
 		Buffer lBuffer;
 		public Buffer Buffer {
 			get { return lBuffer; }
-			set { lBuffer = value; m->Buffer = (IntPtr) value.m; }
+			set { lBuffer = value; m->Buffer = (UInt64)value.m; }
 		}
 
 		public Format Format {
@@ -1324,7 +1343,7 @@ namespace Vulkan
 		Buffer lBuffer;
 		public Buffer Buffer {
 			get { return lBuffer; }
-			set { lBuffer = value; m->Buffer = (IntPtr) value.m; }
+			set { lBuffer = value; m->Buffer = (UInt64)value.m; }
 		}
 
 		public DeviceSize Offset {
@@ -1381,13 +1400,13 @@ namespace Vulkan
 		Image lImage;
 		public Image Image {
 			get { return lImage; }
-			set { lImage = value; m->Image = (IntPtr) value.m; }
+			set { lImage = value; m->Image = (UInt64)value.m; }
 		}
 
 		ImageSubresourceRange lSubresourceRange;
 		public ImageSubresourceRange SubresourceRange {
 			get { return lSubresourceRange; }
-			set { lSubresourceRange = value; m->SubresourceRange = (IntPtr) value.m; }
+			set { lSubresourceRange = value; m->SubresourceRange = (IntPtr)value.m; }
 		}
 	}
 
@@ -1419,7 +1438,7 @@ namespace Vulkan
 		Extent3D lExtent;
 		public Extent3D Extent {
 			get { return lExtent; }
-			set { lExtent = value; m->Extent = (IntPtr) value.m; }
+			set { lExtent = value; m->Extent = (IntPtr)value.m; }
 		}
 
 		public UInt32 MipLevels {
@@ -1457,9 +1476,28 @@ namespace Vulkan
 			set { m->QueueFamilyIndexCount = value; }
 		}
 
-		public UInt32 QueueFamilyIndices {
-			get { return m->QueueFamilyIndices; }
-			set { m->QueueFamilyIndices = value; }
+		public UInt32[] QueueFamilyIndices {
+			get {
+				var values = new UInt32 [m->QueueFamilyIndexCount];
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->QueueFamilyIndices;
+					for (int i = 0; i < m->QueueFamilyIndexCount; i++)
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->QueueFamilyIndexCount = (uint)value.Length;
+				m->QueueFamilyIndices = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*m->QueueFamilyIndexCount));
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->QueueFamilyIndices;
+					for (int i = 0; i < m->QueueFamilyIndexCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 
 		public ImageLayout InitialLayout {
@@ -1521,7 +1559,7 @@ namespace Vulkan
 		Image lImage;
 		public Image Image {
 			get { return lImage; }
-			set { lImage = value; m->Image = (IntPtr) value.m; }
+			set { lImage = value; m->Image = (UInt64)value.m; }
 		}
 
 		public ImageViewType ViewType {
@@ -1537,13 +1575,13 @@ namespace Vulkan
 		ComponentMapping lComponents;
 		public ComponentMapping Components {
 			get { return lComponents; }
-			set { lComponents = value; m->Components = (IntPtr) value.m; }
+			set { lComponents = value; m->Components = (IntPtr)value.m; }
 		}
 
 		ImageSubresourceRange lSubresourceRange;
 		public ImageSubresourceRange SubresourceRange {
 			get { return lSubresourceRange; }
-			set { lSubresourceRange = value; m->SubresourceRange = (IntPtr) value.m; }
+			set { lSubresourceRange = value; m->SubresourceRange = (IntPtr)value.m; }
 		}
 	}
 
@@ -1594,7 +1632,7 @@ namespace Vulkan
 		DeviceMemory lMemory;
 		public DeviceMemory Memory {
 			get { return lMemory; }
-			set { lMemory = value; m->Memory = (IntPtr) value.m; }
+			set { lMemory = value; m->Memory = (UInt64)value.m; }
 		}
 
 		public DeviceSize MemoryOffset {
@@ -1620,25 +1658,25 @@ namespace Vulkan
 		ImageSubresource lSubresource;
 		public ImageSubresource Subresource {
 			get { return lSubresource; }
-			set { lSubresource = value; m->Subresource = (IntPtr) value.m; }
+			set { lSubresource = value; m->Subresource = (IntPtr)value.m; }
 		}
 
 		Offset3D lOffset;
 		public Offset3D Offset {
 			get { return lOffset; }
-			set { lOffset = value; m->Offset = (IntPtr) value.m; }
+			set { lOffset = value; m->Offset = (IntPtr)value.m; }
 		}
 
 		Extent3D lExtent;
 		public Extent3D Extent {
 			get { return lExtent; }
-			set { lExtent = value; m->Extent = (IntPtr) value.m; }
+			set { lExtent = value; m->Extent = (IntPtr)value.m; }
 		}
 
 		DeviceMemory lMemory;
 		public DeviceMemory Memory {
 			get { return lMemory; }
-			set { lMemory = value; m->Memory = (IntPtr) value.m; }
+			set { lMemory = value; m->Memory = (UInt64)value.m; }
 		}
 
 		public DeviceSize MemoryOffset {
@@ -1664,7 +1702,7 @@ namespace Vulkan
 		Buffer lBuffer;
 		public Buffer Buffer {
 			get { return lBuffer; }
-			set { lBuffer = value; m->Buffer = (IntPtr) value.m; }
+			set { lBuffer = value; m->Buffer = (UInt64)value.m; }
 		}
 
 		public UInt32 BindCount {
@@ -1675,7 +1713,7 @@ namespace Vulkan
 		SparseMemoryBind lBinds;
 		public SparseMemoryBind Binds {
 			get { return lBinds; }
-			set { lBinds = value; m->Binds = (IntPtr) value.m; }
+			set { lBinds = value; m->Binds = (IntPtr)value.m; }
 		}
 	}
 
@@ -1691,7 +1729,7 @@ namespace Vulkan
 		Image lImage;
 		public Image Image {
 			get { return lImage; }
-			set { lImage = value; m->Image = (IntPtr) value.m; }
+			set { lImage = value; m->Image = (UInt64)value.m; }
 		}
 
 		public UInt32 BindCount {
@@ -1702,7 +1740,7 @@ namespace Vulkan
 		SparseMemoryBind lBinds;
 		public SparseMemoryBind Binds {
 			get { return lBinds; }
-			set { lBinds = value; m->Binds = (IntPtr) value.m; }
+			set { lBinds = value; m->Binds = (IntPtr)value.m; }
 		}
 	}
 
@@ -1718,7 +1756,7 @@ namespace Vulkan
 		Image lImage;
 		public Image Image {
 			get { return lImage; }
-			set { lImage = value; m->Image = (IntPtr) value.m; }
+			set { lImage = value; m->Image = (UInt64)value.m; }
 		}
 
 		public UInt32 BindCount {
@@ -1729,7 +1767,7 @@ namespace Vulkan
 		SparseImageMemoryBind lBinds;
 		public SparseImageMemoryBind Binds {
 			get { return lBinds; }
-			set { lBinds = value; m->Binds = (IntPtr) value.m; }
+			set { lBinds = value; m->Binds = (IntPtr)value.m; }
 		}
 	}
 
@@ -1751,7 +1789,7 @@ namespace Vulkan
 		Semaphore lWaitSemaphores;
 		public Semaphore WaitSemaphores {
 			get { return lWaitSemaphores; }
-			set { lWaitSemaphores = value; m->WaitSemaphores = (IntPtr) value.m; }
+			set { lWaitSemaphores = value; m->WaitSemaphores = (UInt64)value.m; }
 		}
 
 		public UInt32 BufferBindCount {
@@ -1762,7 +1800,7 @@ namespace Vulkan
 		SparseBufferMemoryBindInfo lBufferBinds;
 		public SparseBufferMemoryBindInfo BufferBinds {
 			get { return lBufferBinds; }
-			set { lBufferBinds = value; m->BufferBinds = (IntPtr) value.m; }
+			set { lBufferBinds = value; m->BufferBinds = (IntPtr)value.m; }
 		}
 
 		public UInt32 ImageOpaqueBindCount {
@@ -1773,7 +1811,7 @@ namespace Vulkan
 		SparseImageOpaqueMemoryBindInfo lImageOpaqueBinds;
 		public SparseImageOpaqueMemoryBindInfo ImageOpaqueBinds {
 			get { return lImageOpaqueBinds; }
-			set { lImageOpaqueBinds = value; m->ImageOpaqueBinds = (IntPtr) value.m; }
+			set { lImageOpaqueBinds = value; m->ImageOpaqueBinds = (IntPtr)value.m; }
 		}
 
 		public UInt32 ImageBindCount {
@@ -1784,7 +1822,7 @@ namespace Vulkan
 		SparseImageMemoryBindInfo lImageBinds;
 		public SparseImageMemoryBindInfo ImageBinds {
 			get { return lImageBinds; }
-			set { lImageBinds = value; m->ImageBinds = (IntPtr) value.m; }
+			set { lImageBinds = value; m->ImageBinds = (IntPtr)value.m; }
 		}
 
 		public UInt32 SignalSemaphoreCount {
@@ -1795,7 +1833,7 @@ namespace Vulkan
 		Semaphore lSignalSemaphores;
 		public Semaphore SignalSemaphores {
 			get { return lSignalSemaphores; }
-			set { lSignalSemaphores = value; m->SignalSemaphores = (IntPtr) value.m; }
+			set { lSignalSemaphores = value; m->SignalSemaphores = (UInt64)value.m; }
 		}
 	}
 
@@ -1811,31 +1849,31 @@ namespace Vulkan
 		ImageSubresourceLayers lSrcSubresource;
 		public ImageSubresourceLayers SrcSubresource {
 			get { return lSrcSubresource; }
-			set { lSrcSubresource = value; m->SrcSubresource = (IntPtr) value.m; }
+			set { lSrcSubresource = value; m->SrcSubresource = (IntPtr)value.m; }
 		}
 
 		Offset3D lSrcOffset;
 		public Offset3D SrcOffset {
 			get { return lSrcOffset; }
-			set { lSrcOffset = value; m->SrcOffset = (IntPtr) value.m; }
+			set { lSrcOffset = value; m->SrcOffset = (IntPtr)value.m; }
 		}
 
 		ImageSubresourceLayers lDstSubresource;
 		public ImageSubresourceLayers DstSubresource {
 			get { return lDstSubresource; }
-			set { lDstSubresource = value; m->DstSubresource = (IntPtr) value.m; }
+			set { lDstSubresource = value; m->DstSubresource = (IntPtr)value.m; }
 		}
 
 		Offset3D lDstOffset;
 		public Offset3D DstOffset {
 			get { return lDstOffset; }
-			set { lDstOffset = value; m->DstOffset = (IntPtr) value.m; }
+			set { lDstOffset = value; m->DstOffset = (IntPtr)value.m; }
 		}
 
 		Extent3D lExtent;
 		public Extent3D Extent {
 			get { return lExtent; }
-			set { lExtent = value; m->Extent = (IntPtr) value.m; }
+			set { lExtent = value; m->Extent = (IntPtr)value.m; }
 		}
 	}
 
@@ -1851,25 +1889,25 @@ namespace Vulkan
 		ImageSubresourceLayers lSrcSubresource;
 		public ImageSubresourceLayers SrcSubresource {
 			get { return lSrcSubresource; }
-			set { lSrcSubresource = value; m->SrcSubresource = (IntPtr) value.m; }
+			set { lSrcSubresource = value; m->SrcSubresource = (IntPtr)value.m; }
 		}
 
 		Offset3D lSrcOffsets;
 		public Offset3D SrcOffsets {
 			get { return lSrcOffsets; }
-			set { lSrcOffsets = value; m->SrcOffsets = (IntPtr) value.m; }
+			set { lSrcOffsets = value; m->SrcOffsets = (IntPtr)value.m; }
 		}
 
 		ImageSubresourceLayers lDstSubresource;
 		public ImageSubresourceLayers DstSubresource {
 			get { return lDstSubresource; }
-			set { lDstSubresource = value; m->DstSubresource = (IntPtr) value.m; }
+			set { lDstSubresource = value; m->DstSubresource = (IntPtr)value.m; }
 		}
 
 		Offset3D lDstOffsets;
 		public Offset3D DstOffsets {
 			get { return lDstOffsets; }
-			set { lDstOffsets = value; m->DstOffsets = (IntPtr) value.m; }
+			set { lDstOffsets = value; m->DstOffsets = (IntPtr)value.m; }
 		}
 	}
 
@@ -1900,19 +1938,19 @@ namespace Vulkan
 		ImageSubresourceLayers lImageSubresource;
 		public ImageSubresourceLayers ImageSubresource {
 			get { return lImageSubresource; }
-			set { lImageSubresource = value; m->ImageSubresource = (IntPtr) value.m; }
+			set { lImageSubresource = value; m->ImageSubresource = (IntPtr)value.m; }
 		}
 
 		Offset3D lImageOffset;
 		public Offset3D ImageOffset {
 			get { return lImageOffset; }
-			set { lImageOffset = value; m->ImageOffset = (IntPtr) value.m; }
+			set { lImageOffset = value; m->ImageOffset = (IntPtr)value.m; }
 		}
 
 		Extent3D lImageExtent;
 		public Extent3D ImageExtent {
 			get { return lImageExtent; }
-			set { lImageExtent = value; m->ImageExtent = (IntPtr) value.m; }
+			set { lImageExtent = value; m->ImageExtent = (IntPtr)value.m; }
 		}
 	}
 
@@ -1928,31 +1966,31 @@ namespace Vulkan
 		ImageSubresourceLayers lSrcSubresource;
 		public ImageSubresourceLayers SrcSubresource {
 			get { return lSrcSubresource; }
-			set { lSrcSubresource = value; m->SrcSubresource = (IntPtr) value.m; }
+			set { lSrcSubresource = value; m->SrcSubresource = (IntPtr)value.m; }
 		}
 
 		Offset3D lSrcOffset;
 		public Offset3D SrcOffset {
 			get { return lSrcOffset; }
-			set { lSrcOffset = value; m->SrcOffset = (IntPtr) value.m; }
+			set { lSrcOffset = value; m->SrcOffset = (IntPtr)value.m; }
 		}
 
 		ImageSubresourceLayers lDstSubresource;
 		public ImageSubresourceLayers DstSubresource {
 			get { return lDstSubresource; }
-			set { lDstSubresource = value; m->DstSubresource = (IntPtr) value.m; }
+			set { lDstSubresource = value; m->DstSubresource = (IntPtr)value.m; }
 		}
 
 		Offset3D lDstOffset;
 		public Offset3D DstOffset {
 			get { return lDstOffset; }
-			set { lDstOffset = value; m->DstOffset = (IntPtr) value.m; }
+			set { lDstOffset = value; m->DstOffset = (IntPtr)value.m; }
 		}
 
 		Extent3D lExtent;
 		public Extent3D Extent {
 			get { return lExtent; }
-			set { lExtent = value; m->Extent = (IntPtr) value.m; }
+			set { lExtent = value; m->Extent = (IntPtr)value.m; }
 		}
 	}
 
@@ -1976,9 +2014,28 @@ namespace Vulkan
 			set { m->CodeSize = value; }
 		}
 
-		public UInt32 Code {
-			get { return m->Code; }
-			set { m->Code = value; }
+		public UInt32[] Code {
+			get {
+				var values = new UInt32 [(uint)m->CodeSize];
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->Code;
+					for (int i = 0; i < (uint)m->CodeSize; i++)
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->CodeSize = (UIntPtr)value.Length;
+				m->Code = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*(uint)m->CodeSize));
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->Code;
+					for (int i = 0; i < (uint)m->CodeSize; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 	}
 
@@ -2014,7 +2071,7 @@ namespace Vulkan
 		Sampler lImmutableSamplers;
 		public Sampler ImmutableSamplers {
 			get { return lImmutableSamplers; }
-			set { lImmutableSamplers = value; m->ImmutableSamplers = (IntPtr) value.m; }
+			set { lImmutableSamplers = value; m->ImmutableSamplers = (UInt64)value.m; }
 		}
 	}
 
@@ -2041,7 +2098,7 @@ namespace Vulkan
 		DescriptorSetLayoutBinding lBindings;
 		public DescriptorSetLayoutBinding Bindings {
 			get { return lBindings; }
-			set { lBindings = value; m->Bindings = (IntPtr) value.m; }
+			set { lBindings = value; m->Bindings = (IntPtr)value.m; }
 		}
 	}
 
@@ -2093,7 +2150,7 @@ namespace Vulkan
 		DescriptorPoolSize lPoolSizes;
 		public DescriptorPoolSize PoolSizes {
 			get { return lPoolSizes; }
-			set { lPoolSizes = value; m->PoolSizes = (IntPtr) value.m; }
+			set { lPoolSizes = value; m->PoolSizes = (IntPtr)value.m; }
 		}
 	}
 
@@ -2110,7 +2167,7 @@ namespace Vulkan
 		DescriptorPool lDescriptorPool;
 		public DescriptorPool DescriptorPool {
 			get { return lDescriptorPool; }
-			set { lDescriptorPool = value; m->DescriptorPool = (IntPtr) value.m; }
+			set { lDescriptorPool = value; m->DescriptorPool = (UInt64)value.m; }
 		}
 
 		public UInt32 DescriptorSetCount {
@@ -2121,7 +2178,7 @@ namespace Vulkan
 		DescriptorSetLayout lSetLayouts;
 		public DescriptorSetLayout SetLayouts {
 			get { return lSetLayouts; }
-			set { lSetLayouts = value; m->SetLayouts = (IntPtr) value.m; }
+			set { lSetLayouts = value; m->SetLayouts = (UInt64)value.m; }
 		}
 	}
 
@@ -2167,7 +2224,7 @@ namespace Vulkan
 		SpecializationMapEntry lMapEntries;
 		public SpecializationMapEntry MapEntries {
 			get { return lMapEntries; }
-			set { lMapEntries = value; m->MapEntries = (IntPtr) value.m; }
+			set { lMapEntries = value; m->MapEntries = (IntPtr)value.m; }
 		}
 
 		public UIntPtr DataSize {
@@ -2204,7 +2261,7 @@ namespace Vulkan
 		ShaderModule lModule;
 		public ShaderModule Module {
 			get { return lModule; }
-			set { lModule = value; m->Module = (IntPtr) value.m; }
+			set { lModule = value; m->Module = (UInt64)value.m; }
 		}
 
 		public string Name {
@@ -2215,7 +2272,7 @@ namespace Vulkan
 		SpecializationInfo lSpecializationInfo;
 		public SpecializationInfo SpecializationInfo {
 			get { return lSpecializationInfo; }
-			set { lSpecializationInfo = value; m->SpecializationInfo = (IntPtr) value.m; }
+			set { lSpecializationInfo = value; m->SpecializationInfo = (IntPtr)value.m; }
 		}
 	}
 
@@ -2237,19 +2294,19 @@ namespace Vulkan
 		PipelineShaderStageCreateInfo lStage;
 		public PipelineShaderStageCreateInfo Stage {
 			get { return lStage; }
-			set { lStage = value; m->Stage = (IntPtr) value.m; }
+			set { lStage = value; m->Stage = (IntPtr)value.m; }
 		}
 
 		PipelineLayout lLayout;
 		public PipelineLayout Layout {
 			get { return lLayout; }
-			set { lLayout = value; m->Layout = (IntPtr) value.m; }
+			set { lLayout = value; m->Layout = (UInt64)value.m; }
 		}
 
 		Pipeline lBasePipelineHandle;
 		public Pipeline BasePipelineHandle {
 			get { return lBasePipelineHandle; }
-			set { lBasePipelineHandle = value; m->BasePipelineHandle = (IntPtr) value.m; }
+			set { lBasePipelineHandle = value; m->BasePipelineHandle = (UInt64)value.m; }
 		}
 
 		public Int32 BasePipelineIndex {
@@ -2336,7 +2393,7 @@ namespace Vulkan
 		VertexInputBindingDescription lVertexBindingDescriptions;
 		public VertexInputBindingDescription VertexBindingDescriptions {
 			get { return lVertexBindingDescriptions; }
-			set { lVertexBindingDescriptions = value; m->VertexBindingDescriptions = (IntPtr) value.m; }
+			set { lVertexBindingDescriptions = value; m->VertexBindingDescriptions = (IntPtr)value.m; }
 		}
 
 		public UInt32 VertexAttributeDescriptionCount {
@@ -2347,7 +2404,7 @@ namespace Vulkan
 		VertexInputAttributeDescription lVertexAttributeDescriptions;
 		public VertexInputAttributeDescription VertexAttributeDescriptions {
 			get { return lVertexAttributeDescriptions; }
-			set { lVertexAttributeDescriptions = value; m->VertexAttributeDescriptions = (IntPtr) value.m; }
+			set { lVertexAttributeDescriptions = value; m->VertexAttributeDescriptions = (IntPtr)value.m; }
 		}
 	}
 
@@ -2421,7 +2478,7 @@ namespace Vulkan
 		Viewport lViewports;
 		public Viewport Viewports {
 			get { return lViewports; }
-			set { lViewports = value; m->Viewports = (IntPtr) value.m; }
+			set { lViewports = value; m->Viewports = (IntPtr)value.m; }
 		}
 
 		public UInt32 ScissorCount {
@@ -2432,7 +2489,7 @@ namespace Vulkan
 		Rect2D lScissors;
 		public Rect2D Scissors {
 			get { return lScissors; }
-			set { lScissors = value; m->Scissors = (IntPtr) value.m; }
+			set { lScissors = value; m->Scissors = (IntPtr)value.m; }
 		}
 	}
 
@@ -2631,7 +2688,7 @@ namespace Vulkan
 		PipelineColorBlendAttachmentState lAttachments;
 		public PipelineColorBlendAttachmentState Attachments {
 			get { return lAttachments; }
-			set { lAttachments = value; m->Attachments = (IntPtr) value.m; }
+			set { lAttachments = value; m->Attachments = (IntPtr)value.m; }
 		}
 
 		public float BlendConstants {
@@ -2754,13 +2811,13 @@ namespace Vulkan
 		StencilOpState lFront;
 		public StencilOpState Front {
 			get { return lFront; }
-			set { lFront = value; m->Front = (IntPtr) value.m; }
+			set { lFront = value; m->Front = (IntPtr)value.m; }
 		}
 
 		StencilOpState lBack;
 		public StencilOpState Back {
 			get { return lBack; }
-			set { lBack = value; m->Back = (IntPtr) value.m; }
+			set { lBack = value; m->Back = (IntPtr)value.m; }
 		}
 
 		public float MinDepthBounds {
@@ -2797,73 +2854,73 @@ namespace Vulkan
 		PipelineShaderStageCreateInfo lStages;
 		public PipelineShaderStageCreateInfo Stages {
 			get { return lStages; }
-			set { lStages = value; m->Stages = (IntPtr) value.m; }
+			set { lStages = value; m->Stages = (IntPtr)value.m; }
 		}
 
 		PipelineVertexInputStateCreateInfo lVertexInputState;
 		public PipelineVertexInputStateCreateInfo VertexInputState {
 			get { return lVertexInputState; }
-			set { lVertexInputState = value; m->VertexInputState = (IntPtr) value.m; }
+			set { lVertexInputState = value; m->VertexInputState = (IntPtr)value.m; }
 		}
 
 		PipelineInputAssemblyStateCreateInfo lInputAssemblyState;
 		public PipelineInputAssemblyStateCreateInfo InputAssemblyState {
 			get { return lInputAssemblyState; }
-			set { lInputAssemblyState = value; m->InputAssemblyState = (IntPtr) value.m; }
+			set { lInputAssemblyState = value; m->InputAssemblyState = (IntPtr)value.m; }
 		}
 
 		PipelineTessellationStateCreateInfo lTessellationState;
 		public PipelineTessellationStateCreateInfo TessellationState {
 			get { return lTessellationState; }
-			set { lTessellationState = value; m->TessellationState = (IntPtr) value.m; }
+			set { lTessellationState = value; m->TessellationState = (IntPtr)value.m; }
 		}
 
 		PipelineViewportStateCreateInfo lViewportState;
 		public PipelineViewportStateCreateInfo ViewportState {
 			get { return lViewportState; }
-			set { lViewportState = value; m->ViewportState = (IntPtr) value.m; }
+			set { lViewportState = value; m->ViewportState = (IntPtr)value.m; }
 		}
 
 		PipelineRasterizationStateCreateInfo lRasterizationState;
 		public PipelineRasterizationStateCreateInfo RasterizationState {
 			get { return lRasterizationState; }
-			set { lRasterizationState = value; m->RasterizationState = (IntPtr) value.m; }
+			set { lRasterizationState = value; m->RasterizationState = (IntPtr)value.m; }
 		}
 
 		PipelineMultisampleStateCreateInfo lMultisampleState;
 		public PipelineMultisampleStateCreateInfo MultisampleState {
 			get { return lMultisampleState; }
-			set { lMultisampleState = value; m->MultisampleState = (IntPtr) value.m; }
+			set { lMultisampleState = value; m->MultisampleState = (IntPtr)value.m; }
 		}
 
 		PipelineDepthStencilStateCreateInfo lDepthStencilState;
 		public PipelineDepthStencilStateCreateInfo DepthStencilState {
 			get { return lDepthStencilState; }
-			set { lDepthStencilState = value; m->DepthStencilState = (IntPtr) value.m; }
+			set { lDepthStencilState = value; m->DepthStencilState = (IntPtr)value.m; }
 		}
 
 		PipelineColorBlendStateCreateInfo lColorBlendState;
 		public PipelineColorBlendStateCreateInfo ColorBlendState {
 			get { return lColorBlendState; }
-			set { lColorBlendState = value; m->ColorBlendState = (IntPtr) value.m; }
+			set { lColorBlendState = value; m->ColorBlendState = (IntPtr)value.m; }
 		}
 
 		PipelineDynamicStateCreateInfo lDynamicState;
 		public PipelineDynamicStateCreateInfo DynamicState {
 			get { return lDynamicState; }
-			set { lDynamicState = value; m->DynamicState = (IntPtr) value.m; }
+			set { lDynamicState = value; m->DynamicState = (IntPtr)value.m; }
 		}
 
 		PipelineLayout lLayout;
 		public PipelineLayout Layout {
 			get { return lLayout; }
-			set { lLayout = value; m->Layout = (IntPtr) value.m; }
+			set { lLayout = value; m->Layout = (UInt64)value.m; }
 		}
 
 		RenderPass lRenderPass;
 		public RenderPass RenderPass {
 			get { return lRenderPass; }
-			set { lRenderPass = value; m->RenderPass = (IntPtr) value.m; }
+			set { lRenderPass = value; m->RenderPass = (UInt64)value.m; }
 		}
 
 		public UInt32 Subpass {
@@ -2874,7 +2931,7 @@ namespace Vulkan
 		Pipeline lBasePipelineHandle;
 		public Pipeline BasePipelineHandle {
 			get { return lBasePipelineHandle; }
-			set { lBasePipelineHandle = value; m->BasePipelineHandle = (IntPtr) value.m; }
+			set { lBasePipelineHandle = value; m->BasePipelineHandle = (UInt64)value.m; }
 		}
 
 		public Int32 BasePipelineIndex {
@@ -2957,7 +3014,7 @@ namespace Vulkan
 		DescriptorSetLayout lSetLayouts;
 		public DescriptorSetLayout SetLayouts {
 			get { return lSetLayouts; }
-			set { lSetLayouts = value; m->SetLayouts = (IntPtr) value.m; }
+			set { lSetLayouts = value; m->SetLayouts = (UInt64)value.m; }
 		}
 
 		public UInt32 PushConstantRangeCount {
@@ -2968,7 +3025,7 @@ namespace Vulkan
 		PushConstantRange lPushConstantRanges;
 		public PushConstantRange PushConstantRanges {
 			get { return lPushConstantRanges; }
-			set { lPushConstantRanges = value; m->PushConstantRanges = (IntPtr) value.m; }
+			set { lPushConstantRanges = value; m->PushConstantRanges = (IntPtr)value.m; }
 		}
 	}
 
@@ -3097,7 +3154,7 @@ namespace Vulkan
 		CommandPool lCommandPool;
 		public CommandPool CommandPool {
 			get { return lCommandPool; }
-			set { lCommandPool = value; m->CommandPool = (IntPtr) value.m; }
+			set { lCommandPool = value; m->CommandPool = (UInt64)value.m; }
 		}
 
 		public CommandBufferLevel Level {
@@ -3124,7 +3181,7 @@ namespace Vulkan
 		RenderPass lRenderPass;
 		public RenderPass RenderPass {
 			get { return lRenderPass; }
-			set { lRenderPass = value; m->RenderPass = (IntPtr) value.m; }
+			set { lRenderPass = value; m->RenderPass = (UInt64)value.m; }
 		}
 
 		public UInt32 Subpass {
@@ -3135,7 +3192,7 @@ namespace Vulkan
 		Framebuffer lFramebuffer;
 		public Framebuffer Framebuffer {
 			get { return lFramebuffer; }
-			set { lFramebuffer = value; m->Framebuffer = (IntPtr) value.m; }
+			set { lFramebuffer = value; m->Framebuffer = (UInt64)value.m; }
 		}
 
 		public bool OcclusionQueryEnable {
@@ -3172,7 +3229,7 @@ namespace Vulkan
 		CommandBufferInheritanceInfo lInheritanceInfo;
 		public CommandBufferInheritanceInfo InheritanceInfo {
 			get { return lInheritanceInfo; }
-			set { lInheritanceInfo = value; m->InheritanceInfo = (IntPtr) value.m; }
+			set { lInheritanceInfo = value; m->InheritanceInfo = (IntPtr)value.m; }
 		}
 	}
 
@@ -3189,19 +3246,19 @@ namespace Vulkan
 		RenderPass lRenderPass;
 		public RenderPass RenderPass {
 			get { return lRenderPass; }
-			set { lRenderPass = value; m->RenderPass = (IntPtr) value.m; }
+			set { lRenderPass = value; m->RenderPass = (UInt64)value.m; }
 		}
 
 		Framebuffer lFramebuffer;
 		public Framebuffer Framebuffer {
 			get { return lFramebuffer; }
-			set { lFramebuffer = value; m->Framebuffer = (IntPtr) value.m; }
+			set { lFramebuffer = value; m->Framebuffer = (UInt64)value.m; }
 		}
 
 		Rect2D lRenderArea;
 		public Rect2D RenderArea {
 			get { return lRenderArea; }
-			set { lRenderArea = value; m->RenderArea = (IntPtr) value.m; }
+			set { lRenderArea = value; m->RenderArea = (IntPtr)value.m; }
 		}
 
 		public UInt32 ClearValueCount {
@@ -3212,7 +3269,7 @@ namespace Vulkan
 		ClearValue lClearValues;
 		public ClearValue ClearValues {
 			get { return lClearValues; }
-			set { lClearValues = value; m->ClearValues = (IntPtr) value.m; }
+			set { lClearValues = value; m->ClearValues = (IntPtr)value.m; }
 		}
 	}
 
@@ -3258,7 +3315,7 @@ namespace Vulkan
 		ClearValue lClearValue;
 		public ClearValue ClearValue {
 			get { return lClearValue; }
-			set { lClearValue = value; m->ClearValue = (IntPtr) value.m; }
+			set { lClearValue = value; m->ClearValue = (IntPtr)value.m; }
 		}
 	}
 
@@ -3364,7 +3421,7 @@ namespace Vulkan
 		AttachmentReference lInputAttachments;
 		public AttachmentReference InputAttachments {
 			get { return lInputAttachments; }
-			set { lInputAttachments = value; m->InputAttachments = (IntPtr) value.m; }
+			set { lInputAttachments = value; m->InputAttachments = (IntPtr)value.m; }
 		}
 
 		public UInt32 ColorAttachmentCount {
@@ -3375,19 +3432,19 @@ namespace Vulkan
 		AttachmentReference lColorAttachments;
 		public AttachmentReference ColorAttachments {
 			get { return lColorAttachments; }
-			set { lColorAttachments = value; m->ColorAttachments = (IntPtr) value.m; }
+			set { lColorAttachments = value; m->ColorAttachments = (IntPtr)value.m; }
 		}
 
 		AttachmentReference lResolveAttachments;
 		public AttachmentReference ResolveAttachments {
 			get { return lResolveAttachments; }
-			set { lResolveAttachments = value; m->ResolveAttachments = (IntPtr) value.m; }
+			set { lResolveAttachments = value; m->ResolveAttachments = (IntPtr)value.m; }
 		}
 
 		AttachmentReference lDepthStencilAttachment;
 		public AttachmentReference DepthStencilAttachment {
 			get { return lDepthStencilAttachment; }
-			set { lDepthStencilAttachment = value; m->DepthStencilAttachment = (IntPtr) value.m; }
+			set { lDepthStencilAttachment = value; m->DepthStencilAttachment = (IntPtr)value.m; }
 		}
 
 		public UInt32 PreserveAttachmentCount {
@@ -3395,9 +3452,28 @@ namespace Vulkan
 			set { m->PreserveAttachmentCount = value; }
 		}
 
-		public UInt32 PreserveAttachments {
-			get { return m->PreserveAttachments; }
-			set { m->PreserveAttachments = value; }
+		public UInt32[] PreserveAttachments {
+			get {
+				var values = new UInt32 [m->PreserveAttachmentCount];
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->PreserveAttachments;
+					for (int i = 0; i < m->PreserveAttachmentCount; i++)
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->PreserveAttachmentCount = (uint)value.Length;
+				m->PreserveAttachments = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*m->PreserveAttachmentCount));
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->PreserveAttachments;
+					for (int i = 0; i < m->PreserveAttachmentCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 	}
 
@@ -3469,7 +3545,7 @@ namespace Vulkan
 		AttachmentDescription lAttachments;
 		public AttachmentDescription Attachments {
 			get { return lAttachments; }
-			set { lAttachments = value; m->Attachments = (IntPtr) value.m; }
+			set { lAttachments = value; m->Attachments = (IntPtr)value.m; }
 		}
 
 		public UInt32 SubpassCount {
@@ -3480,7 +3556,7 @@ namespace Vulkan
 		SubpassDescription lSubpasses;
 		public SubpassDescription Subpasses {
 			get { return lSubpasses; }
-			set { lSubpasses = value; m->Subpasses = (IntPtr) value.m; }
+			set { lSubpasses = value; m->Subpasses = (IntPtr)value.m; }
 		}
 
 		public UInt32 DependencyCount {
@@ -3491,7 +3567,7 @@ namespace Vulkan
 		SubpassDependency lDependencies;
 		public SubpassDependency Dependencies {
 			get { return lDependencies; }
-			set { lDependencies = value; m->Dependencies = (IntPtr) value.m; }
+			set { lDependencies = value; m->Dependencies = (IntPtr)value.m; }
 		}
 	}
 
@@ -4452,7 +4528,7 @@ namespace Vulkan
 		RenderPass lRenderPass;
 		public RenderPass RenderPass {
 			get { return lRenderPass; }
-			set { lRenderPass = value; m->RenderPass = (IntPtr) value.m; }
+			set { lRenderPass = value; m->RenderPass = (UInt64)value.m; }
 		}
 
 		public UInt32 AttachmentCount {
@@ -4463,7 +4539,7 @@ namespace Vulkan
 		ImageView lAttachments;
 		public ImageView Attachments {
 			get { return lAttachments; }
-			set { lAttachments = value; m->Attachments = (IntPtr) value.m; }
+			set { lAttachments = value; m->Attachments = (UInt64)value.m; }
 		}
 
 		public UInt32 Width {
@@ -4590,7 +4666,7 @@ namespace Vulkan
 		Semaphore lWaitSemaphores;
 		public Semaphore WaitSemaphores {
 			get { return lWaitSemaphores; }
-			set { lWaitSemaphores = value; m->WaitSemaphores = (IntPtr) value.m; }
+			set { lWaitSemaphores = value; m->WaitSemaphores = (UInt64)value.m; }
 		}
 
 		public UInt32 WaitDstStageMask {
@@ -4606,7 +4682,7 @@ namespace Vulkan
 		CommandBuffer lCommandBuffers;
 		public CommandBuffer CommandBuffers {
 			get { return lCommandBuffers; }
-			set { lCommandBuffers = value; m->CommandBuffers = (IntPtr) value.m; }
+			set { lCommandBuffers = value; m->CommandBuffers = (IntPtr)value.m; }
 		}
 
 		public UInt32 SignalSemaphoreCount {
@@ -4617,7 +4693,7 @@ namespace Vulkan
 		Semaphore lSignalSemaphores;
 		public Semaphore SignalSemaphores {
 			get { return lSignalSemaphores; }
-			set { lSignalSemaphores = value; m->SignalSemaphores = (IntPtr) value.m; }
+			set { lSignalSemaphores = value; m->SignalSemaphores = (UInt64)value.m; }
 		}
 	}
 
@@ -4633,7 +4709,7 @@ namespace Vulkan
 		DisplayKhr lDisplay;
 		public DisplayKhr Display {
 			get { return lDisplay; }
-			set { lDisplay = value; m->Display = (IntPtr) value.m; }
+			set { lDisplay = value; m->Display = (UInt64)value.m; }
 		}
 
 		public string DisplayName {
@@ -4644,13 +4720,13 @@ namespace Vulkan
 		Extent2D lPhysicalDimensions;
 		public Extent2D PhysicalDimensions {
 			get { return lPhysicalDimensions; }
-			set { lPhysicalDimensions = value; m->PhysicalDimensions = (IntPtr) value.m; }
+			set { lPhysicalDimensions = value; m->PhysicalDimensions = (IntPtr)value.m; }
 		}
 
 		Extent2D lPhysicalResolution;
 		public Extent2D PhysicalResolution {
 			get { return lPhysicalResolution; }
-			set { lPhysicalResolution = value; m->PhysicalResolution = (IntPtr) value.m; }
+			set { lPhysicalResolution = value; m->PhysicalResolution = (IntPtr)value.m; }
 		}
 
 		public SurfaceTransformFlagsKhr SupportedTransforms {
@@ -4681,7 +4757,7 @@ namespace Vulkan
 		DisplayKhr lCurrentDisplay;
 		public DisplayKhr CurrentDisplay {
 			get { return lCurrentDisplay; }
-			set { lCurrentDisplay = value; m->CurrentDisplay = (IntPtr) value.m; }
+			set { lCurrentDisplay = value; m->CurrentDisplay = (UInt64)value.m; }
 		}
 
 		public UInt32 CurrentStackIndex {
@@ -4702,7 +4778,7 @@ namespace Vulkan
 		Extent2D lVisibleRegion;
 		public Extent2D VisibleRegion {
 			get { return lVisibleRegion; }
-			set { lVisibleRegion = value; m->VisibleRegion = (IntPtr) value.m; }
+			set { lVisibleRegion = value; m->VisibleRegion = (IntPtr)value.m; }
 		}
 
 		public UInt32 RefreshRate {
@@ -4723,13 +4799,13 @@ namespace Vulkan
 		DisplayModeKhr lDisplayMode;
 		public DisplayModeKhr DisplayMode {
 			get { return lDisplayMode; }
-			set { lDisplayMode = value; m->DisplayMode = (IntPtr) value.m; }
+			set { lDisplayMode = value; m->DisplayMode = (UInt64)value.m; }
 		}
 
 		DisplayModeParametersKhr lParameters;
 		public DisplayModeParametersKhr Parameters {
 			get { return lParameters; }
-			set { lParameters = value; m->Parameters = (IntPtr) value.m; }
+			set { lParameters = value; m->Parameters = (IntPtr)value.m; }
 		}
 	}
 
@@ -4751,7 +4827,7 @@ namespace Vulkan
 		DisplayModeParametersKhr lParameters;
 		public DisplayModeParametersKhr Parameters {
 			get { return lParameters; }
-			set { lParameters = value; m->Parameters = (IntPtr) value.m; }
+			set { lParameters = value; m->Parameters = (IntPtr)value.m; }
 		}
 	}
 
@@ -4772,49 +4848,49 @@ namespace Vulkan
 		Offset2D lMinSrcPosition;
 		public Offset2D MinSrcPosition {
 			get { return lMinSrcPosition; }
-			set { lMinSrcPosition = value; m->MinSrcPosition = (IntPtr) value.m; }
+			set { lMinSrcPosition = value; m->MinSrcPosition = (IntPtr)value.m; }
 		}
 
 		Offset2D lMaxSrcPosition;
 		public Offset2D MaxSrcPosition {
 			get { return lMaxSrcPosition; }
-			set { lMaxSrcPosition = value; m->MaxSrcPosition = (IntPtr) value.m; }
+			set { lMaxSrcPosition = value; m->MaxSrcPosition = (IntPtr)value.m; }
 		}
 
 		Extent2D lMinSrcExtent;
 		public Extent2D MinSrcExtent {
 			get { return lMinSrcExtent; }
-			set { lMinSrcExtent = value; m->MinSrcExtent = (IntPtr) value.m; }
+			set { lMinSrcExtent = value; m->MinSrcExtent = (IntPtr)value.m; }
 		}
 
 		Extent2D lMaxSrcExtent;
 		public Extent2D MaxSrcExtent {
 			get { return lMaxSrcExtent; }
-			set { lMaxSrcExtent = value; m->MaxSrcExtent = (IntPtr) value.m; }
+			set { lMaxSrcExtent = value; m->MaxSrcExtent = (IntPtr)value.m; }
 		}
 
 		Offset2D lMinDstPosition;
 		public Offset2D MinDstPosition {
 			get { return lMinDstPosition; }
-			set { lMinDstPosition = value; m->MinDstPosition = (IntPtr) value.m; }
+			set { lMinDstPosition = value; m->MinDstPosition = (IntPtr)value.m; }
 		}
 
 		Offset2D lMaxDstPosition;
 		public Offset2D MaxDstPosition {
 			get { return lMaxDstPosition; }
-			set { lMaxDstPosition = value; m->MaxDstPosition = (IntPtr) value.m; }
+			set { lMaxDstPosition = value; m->MaxDstPosition = (IntPtr)value.m; }
 		}
 
 		Extent2D lMinDstExtent;
 		public Extent2D MinDstExtent {
 			get { return lMinDstExtent; }
-			set { lMinDstExtent = value; m->MinDstExtent = (IntPtr) value.m; }
+			set { lMinDstExtent = value; m->MinDstExtent = (IntPtr)value.m; }
 		}
 
 		Extent2D lMaxDstExtent;
 		public Extent2D MaxDstExtent {
 			get { return lMaxDstExtent; }
-			set { lMaxDstExtent = value; m->MaxDstExtent = (IntPtr) value.m; }
+			set { lMaxDstExtent = value; m->MaxDstExtent = (IntPtr)value.m; }
 		}
 	}
 
@@ -4836,7 +4912,7 @@ namespace Vulkan
 		DisplayModeKhr lDisplayMode;
 		public DisplayModeKhr DisplayMode {
 			get { return lDisplayMode; }
-			set { lDisplayMode = value; m->DisplayMode = (IntPtr) value.m; }
+			set { lDisplayMode = value; m->DisplayMode = (UInt64)value.m; }
 		}
 
 		public UInt32 PlaneIndex {
@@ -4867,7 +4943,7 @@ namespace Vulkan
 		Extent2D lImageExtent;
 		public Extent2D ImageExtent {
 			get { return lImageExtent; }
-			set { lImageExtent = value; m->ImageExtent = (IntPtr) value.m; }
+			set { lImageExtent = value; m->ImageExtent = (IntPtr)value.m; }
 		}
 	}
 
@@ -4884,13 +4960,13 @@ namespace Vulkan
 		Rect2D lSrcRect;
 		public Rect2D SrcRect {
 			get { return lSrcRect; }
-			set { lSrcRect = value; m->SrcRect = (IntPtr) value.m; }
+			set { lSrcRect = value; m->SrcRect = (IntPtr)value.m; }
 		}
 
 		Rect2D lDstRect;
 		public Rect2D DstRect {
 			get { return lDstRect; }
-			set { lDstRect = value; m->DstRect = (IntPtr) value.m; }
+			set { lDstRect = value; m->DstRect = (IntPtr)value.m; }
 		}
 
 		public bool Persistent {
@@ -4921,19 +4997,19 @@ namespace Vulkan
 		Extent2D lCurrentExtent;
 		public Extent2D CurrentExtent {
 			get { return lCurrentExtent; }
-			set { lCurrentExtent = value; m->CurrentExtent = (IntPtr) value.m; }
+			set { lCurrentExtent = value; m->CurrentExtent = (IntPtr)value.m; }
 		}
 
 		Extent2D lMinImageExtent;
 		public Extent2D MinImageExtent {
 			get { return lMinImageExtent; }
-			set { lMinImageExtent = value; m->MinImageExtent = (IntPtr) value.m; }
+			set { lMinImageExtent = value; m->MinImageExtent = (IntPtr)value.m; }
 		}
 
 		Extent2D lMaxImageExtent;
 		public Extent2D MaxImageExtent {
 			get { return lMaxImageExtent; }
-			set { lMaxImageExtent = value; m->MaxImageExtent = (IntPtr) value.m; }
+			set { lMaxImageExtent = value; m->MaxImageExtent = (IntPtr)value.m; }
 		}
 
 		public UInt32 MaxImageArrayLayers {
@@ -5000,7 +5076,7 @@ namespace Vulkan
 		SurfaceKhr lSurface;
 		public SurfaceKhr Surface {
 			get { return lSurface; }
-			set { lSurface = value; m->Surface = (IntPtr) value.m; }
+			set { lSurface = value; m->Surface = (UInt64)value.m; }
 		}
 
 		public UInt32 MinImageCount {
@@ -5021,7 +5097,7 @@ namespace Vulkan
 		Extent2D lImageExtent;
 		public Extent2D ImageExtent {
 			get { return lImageExtent; }
-			set { lImageExtent = value; m->ImageExtent = (IntPtr) value.m; }
+			set { lImageExtent = value; m->ImageExtent = (IntPtr)value.m; }
 		}
 
 		public UInt32 ImageArrayLayers {
@@ -5044,9 +5120,28 @@ namespace Vulkan
 			set { m->QueueFamilyIndexCount = value; }
 		}
 
-		public UInt32 QueueFamilyIndices {
-			get { return m->QueueFamilyIndices; }
-			set { m->QueueFamilyIndices = value; }
+		public UInt32[] QueueFamilyIndices {
+			get {
+				var values = new UInt32 [m->QueueFamilyIndexCount];
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->QueueFamilyIndices;
+					for (int i = 0; i < m->QueueFamilyIndexCount; i++)
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->QueueFamilyIndexCount = (uint)value.Length;
+				m->QueueFamilyIndices = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*m->QueueFamilyIndexCount));
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->QueueFamilyIndices;
+					for (int i = 0; i < m->QueueFamilyIndexCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 
 		public SurfaceTransformFlagsKhr PreTransform {
@@ -5072,7 +5167,7 @@ namespace Vulkan
 		SwapchainKhr lOldSwapchain;
 		public SwapchainKhr OldSwapchain {
 			get { return lOldSwapchain; }
-			set { lOldSwapchain = value; m->OldSwapchain = (IntPtr) value.m; }
+			set { lOldSwapchain = value; m->OldSwapchain = (UInt64)value.m; }
 		}
 	}
 
@@ -5094,7 +5189,7 @@ namespace Vulkan
 		Semaphore lWaitSemaphores;
 		public Semaphore WaitSemaphores {
 			get { return lWaitSemaphores; }
-			set { lWaitSemaphores = value; m->WaitSemaphores = (IntPtr) value.m; }
+			set { lWaitSemaphores = value; m->WaitSemaphores = (UInt64)value.m; }
 		}
 
 		public UInt32 SwapchainCount {
@@ -5105,12 +5200,31 @@ namespace Vulkan
 		SwapchainKhr lSwapchains;
 		public SwapchainKhr Swapchains {
 			get { return lSwapchains; }
-			set { lSwapchains = value; m->Swapchains = (IntPtr) value.m; }
+			set { lSwapchains = value; m->Swapchains = (UInt64)value.m; }
 		}
 
-		public UInt32 ImageIndices {
-			get { return m->ImageIndices; }
-			set { m->ImageIndices = value; }
+		public UInt32[] ImageIndices {
+			get {
+				var values = new UInt32 [m->SwapchainCount];
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->ImageIndices;
+					for (int i = 0; i < m->SwapchainCount; i++)
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->SwapchainCount = (uint)value.Length;
+				m->ImageIndices = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*m->SwapchainCount));
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->ImageIndices;
+					for (int i = 0; i < m->SwapchainCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 
 		public Result Results {

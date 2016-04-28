@@ -49,13 +49,13 @@ namespace Vulkan
 		ClearColorValue lColor;
 		public ClearColorValue Color {
 			get { return lColor; }
-			set { lColor = value; m->Color = (IntPtr) value.m; }
+			set { lColor = value; m->Color = (IntPtr)value.m; }
 		}
 
 		ClearDepthStencilValue lDepthStencil;
 		public ClearDepthStencilValue DepthStencil {
 			get { return lDepthStencil; }
-			set { lDepthStencil = value; m->DepthStencil = (IntPtr) value.m; }
+			set { lDepthStencil = value; m->DepthStencil = (IntPtr)value.m; }
 		}
 	}
 }
