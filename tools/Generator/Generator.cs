@@ -14,9 +14,10 @@ namespace VulkanSharp.Generator
 		StreamWriter writer;
 		bool isUnion;
 		bool isInterop;
+		bool needsMarshalling;
 
 		Dictionary<string, string> typesTranslation = new Dictionary<string, string> () { { "ANativeWindow", "IntPtr" }  };
-		HashSet<string> structures = new HashSet<string> ();
+		Dictionary<string, StructInfo> structures = new Dictionary<string, StructInfo> ();
 		Dictionary<string, HandleInfo> handles = new Dictionary<string,HandleInfo> ();
 		Dictionary<string, List<EnumExtensionInfo>> enumExtensions = new Dictionary<string, List<EnumExtensionInfo>> ();
 
@@ -31,6 +32,12 @@ namespace VulkanSharp.Generator
 			Collections = 2,
 			Vulkan = 4,
 			VulkanInterop = 8
+		}
+
+		class StructInfo
+		{
+			public string name;
+			public bool needsMarshalling;
 		}
 
 		class HandleInfo
@@ -500,12 +507,22 @@ namespace VulkanSharp.Generator
 
 		void WriteMemberStructOrHandle (string csMemberType, string csMemberName, string sec)
 		{
-			IndentWriteLine ("{0} l{1};", csMemberType, csMemberName);
+			bool isMarshalled = true;
+			if (structures.ContainsKey (csMemberType))
+				isMarshalled = structures [csMemberType].needsMarshalling;
+
+			if (isMarshalled)
+				IndentWriteLine ("{0} l{1};", csMemberType, csMemberName);
 			IndentWriteLine ("{0} {1} {2} {{", sec, csMemberType, csMemberName);
 			IndentLevel++;
-			IndentWriteLine ("get {{ return l{0}; }}", csMemberName);
-			var castType = handles.ContainsKey (csMemberType) ? GetHandleType (handles [csMemberType]) : "IntPtr";
-			IndentWriteLine ("set {{ l{0} = value; m->{0} = ({1})value.m; }}", csMemberName, castType);
+			if (isMarshalled) {
+				IndentWriteLine ("get {{ return l{0}; }}", csMemberName);
+				var castType = handles.ContainsKey (csMemberType) ? GetHandleType (handles [csMemberType]) : "IntPtr";
+				IndentWriteLine ("set {{ l{0} = value; m->{0} = ({1})value.m; }}", csMemberName, castType);
+			} else {
+				IndentWriteLine ("get {{ return m->{0}; }}", csMemberName);
+				IndentWriteLine ("set {{ m->{0} = value; }}", csMemberName);
+			}
 			IndentLevel--;
 			IndentWriteLine ("}");
 		}
@@ -585,7 +602,7 @@ namespace VulkanSharp.Generator
 
 			string name = nameElement.Value;
 
-			if (!isInterop && csMemberType == "StructureType" && name == "sType")
+			if (!isInterop && needsMarshalling && csMemberType == "StructureType" && name == "sType")
 				return false;
 
 			var isArray = false;
@@ -658,10 +675,10 @@ namespace VulkanSharp.Generator
 			if (isUnion)
 				attr = "[FieldOffset (0)] ";
 
-			if (isInterop) {
+			if (isInterop || !needsMarshalling) {
 				if (handles.ContainsKey (csMemberType)) {
 					csMemberType = GetHandleType (handles [csMemberType]);
-				} else if (structures.Contains (csMemberType) || csMemberType == "string")
+				} else if ((structures.ContainsKey (csMemberType) && structures [csMemberType].needsMarshalling) || csMemberType == "string")
 					csMemberType = "IntPtr";
 				IndentWriteLine ("{0}{1} {2}{3} {4};", attr, sec, mod, csMemberType, csMemberName);
 			} else {
@@ -669,7 +686,7 @@ namespace VulkanSharp.Generator
 					WriteMemberCharArray (csMemberName, sec);
 				else if (isArray)
 					WriteMemberArray (csMemberType, csMemberName, sec);
-				else if (structures.Contains (csMemberType) || handles.ContainsKey (csMemberType))
+				else if (structures.ContainsKey (csMemberType) || handles.ContainsKey (csMemberType))
 					WriteMemberStructOrHandle (csMemberType, csMemberName, sec);
 				else if (csMemberType == "string")
 					WriteMemberString (csMemberType, csMemberName, sec);
@@ -685,7 +702,7 @@ namespace VulkanSharp.Generator
 				}
 			}
 
-			return !isInterop;
+			return !isInterop && needsMarshalling;
 		}
 
 		HashSet<string> disabledStructs = new HashSet<string> {
@@ -704,13 +721,18 @@ namespace VulkanSharp.Generator
 				return false;
 
 			string csName = typesTranslation [name];
+			var info = structures [csName];
+			needsMarshalling = info.needsMarshalling;
+
+			if (isInterop && !needsMarshalling)
+				return false;
 
 			string mod = "";
-			if (isUnion && isInterop)
+			if (isUnion && (isInterop || !needsMarshalling))
 				IndentWriteLine ("[StructLayout (LayoutKind.Explicit)]");
 			if (!isInterop)
 				mod = "unsafe ";
-			IndentWriteLine ("{0}{1} {2} {3}", mod, isInterop ? "internal" : "public", isInterop ? "struct" : "class", csName);
+			IndentWriteLine ("{0}{1} {2} {3}", mod, isInterop ? "internal" : "public", (isInterop || !needsMarshalling) ? "struct" : "class", csName);
 			IndentWriteLine ("{");
 			IndentLevel++;
 
@@ -725,16 +747,18 @@ namespace VulkanSharp.Generator
 						hasSType = true;
 				}
 
-				IndentWriteLine ("internal {0}.{1}* m;\n", InteropNamespace, csName);
-				IndentWriteLine ("public {0} ()", csName);
-				IndentWriteLine ("{");
-				IndentLevel++;
-				IndentWriteLine ("m = ({0}.{1}*) Interop.Structure.Allocate (typeof ({0}.{1}));", InteropNamespace, csName);
-				if (hasSType) {
-					IndentWriteLine ("m->SType = StructureType.{0};", csName);
+				if (info.needsMarshalling) {
+					IndentWriteLine ("internal {0}.{1}* m;\n", InteropNamespace, csName);
+					IndentWriteLine ("public {0} ()", csName);
+					IndentWriteLine ("{");
+					IndentLevel++;
+					IndentWriteLine ("m = ({0}.{1}*) Interop.Structure.Allocate (typeof ({0}.{1}));", InteropNamespace, csName);
+					if (hasSType) {
+						IndentWriteLine ("m->SType = StructureType.{0};", csName);
+					}
+					IndentLevel--;
+					IndentWriteLine ("}\n");
 				}
-				IndentLevel--;
-				IndentWriteLine ("}\n");
 			}
 
 			GenerateMembers (structElement, WriteMember);
@@ -743,6 +767,17 @@ namespace VulkanSharp.Generator
 			IndentWriteLine ("}");
 
 			return true;
+		}
+
+		bool LearnStructureMembers (XElement structElement)
+		{
+			foreach (var memberElement in structElement.Elements ("member")) {
+				string member = memberElement.Value;
+				if (member.Contains ("*") || member.Contains ("["))
+					return true;
+			}
+
+			return false;
 		}
 
 		bool LearnStructure (XElement structElement)
@@ -757,7 +792,7 @@ namespace VulkanSharp.Generator
 				return false;
 
 			typesTranslation [name] = csName;
-			structures.Add (csName);
+			structures [csName] = new StructInfo () { name = name, needsMarshalling = LearnStructureMembers (structElement) };
 
 			return false;
 		}
@@ -785,7 +820,7 @@ namespace VulkanSharp.Generator
 
 		void GenerateUnions ()
 		{
-			CreateFile ("Unions");
+			CreateFile ("Unions", UsingNamespaceFlags.Interop);
 			isUnion = true;
 			GenerateType ("union", WriteStructOrUnion);
 			FinalizeFile ();
@@ -833,6 +868,7 @@ namespace VulkanSharp.Generator
 			public bool isFixed;
 			public bool isPointer;
 			public bool isConst;
+			public bool needsMarshalling;
 		}
 
 		string GetParamCsType (string type, ref bool isPointer, out bool isHandle)
@@ -882,7 +918,10 @@ namespace VulkanSharp.Generator
 					info.isOut = true;
 					outCount++;
 				}
-				info.isStruct = structures.Contains (info.csType);
+				info.isStruct = structures.ContainsKey (info.csType);
+				if (info.isStruct) {
+					info.needsMarshalling = structures [info.csType].needsMarshalling;
+				}
 				if (isPointer && type == "void" && !param.Value.Contains ("**"))
 					continue;
 				if (!isPointer || info.isStruct)
@@ -938,16 +977,16 @@ namespace VulkanSharp.Generator
 
 				if (passToNative) {
 					string paramName = info.isFixed ? "ptr" + name : name;
-					bool useHandlePtr = !info.isFixed && (info.isStruct || info.isHandle);
+					bool useHandlePtr = !info.isFixed && ((info.isStruct && info.needsMarshalling) || info.isHandle);
 
 					if (info == nullParameter)
 						Write ("null");
 					else if (info == ptrParam)
-						Write ("({0}{1}*)ptr{2}", info.isStruct ? "Interop." : "", info.isHandle ? GetHandleType (handles [info.csType]) : info.csType, info.csName);
+						Write ("({0}{1}*)ptr{2}", (info.isStruct && info.needsMarshalling) ? "Interop." : "", info.isHandle ? GetHandleType (handles [info.csType]) : info.csType, info.csName);
 					else if (isOptionalParam && info.isPointer && !info.isOut)
 						Write ("{0} != null ? {0}{1} : null", GetSafeParameterName(paramName), useHandlePtr ? ".m" : "");
 					else
-						Write ("{0}{1}{2}", (info.isPointer && !info.isStruct && !info.isFixed) ? "&" : "", GetSafeParameterName(paramName), useHandlePtr ? ".m" : "");
+						Write ("{0}{1}{2}", (info.isPointer && (!info.isStruct || !info.needsMarshalling) && !info.isFixed) ? "&" : "", GetSafeParameterName(paramName), useHandlePtr ? ".m" : "");
 				} else
 					Write ("{0}{1} {2}", info.isOut ? "out " : "", info.csType, keywords.Contains (name) ? "@" + name : name);
 			}
@@ -966,7 +1005,7 @@ namespace VulkanSharp.Generator
 
 		string GetManagedType (string csType)
 		{
-			if (structures.Contains (csType))
+			if (structures.ContainsKey (csType))
 				return "IntPtr";
 
 			if (handles.ContainsKey (csType))
@@ -1108,14 +1147,17 @@ namespace VulkanSharp.Generator
 			IndentWriteLine ("unsafe {");
 			IndentLevel++;
 
+			bool isInInterop = false;
 			if (createList) {
+				isInInterop = dataParam.isStruct && dataParam.needsMarshalling;
+
 				IndentWriteLine ("UInt32 {0};", intParam.csName);
 				IndentWrite ("{0}{1}Interop.NativeMethods.{2} (", hasResult ? "result = " : "", (ignoredParameters.Count == 0 && csType != "void") ? "return " : "", function);
 				WriteCommandParameters (commandElement, null, dataParam, null, isForHandle && !isExtension, true, paramsDict, isExtension);
 				WriteLine (");");
 				CommandHandleResult (hasResult);
 				WriteLine ();
-				IndentWriteLine ("int size = Marshal.SizeOf (typeof ({0}{1}));", dataParam.isStruct ? "Interop." : "", dataParam.isHandle ? GetHandleType (handles [dataParam.csType]) : dataParam.csType);
+				IndentWriteLine ("int size = Marshal.SizeOf (typeof ({0}{1}));", isInInterop ? "Interop." : "", dataParam.isHandle ? GetHandleType (handles [dataParam.csType]) : dataParam.csType);
 				IndentWriteLine ("var ptr{0} = Marshal.AllocHGlobal ((int)(size * {1}));", dataParam.csName, intParam.csName);
 			}
 
@@ -1166,9 +1208,12 @@ namespace VulkanSharp.Generator
 				IndentWriteLine ("var list = new List<{0}> ();", dataParam.csType);
 				IndentWriteLine ("for (int i = 0; i < {0}; i++) {{", intParam.csName);
 				IndentLevel++;
-				IndentWriteLine ("var item = new {0} ();", dataParam.csType);
-				IndentWriteLine ("item{0} = {1}(({2}{3}*)ptr{4})[i];", (dataParam.isStruct || dataParam.isHandle) ? ".m" : "", dataParam.isStruct ? "&" : "", dataParam.isStruct ? "Interop." : "", dataParam.isHandle ? GetHandleType (handles [dataParam.csType]) : dataParam.csType, dataParam.csName);
-				IndentWriteLine ("list.Add (item);");
+				if (isInInterop || !dataParam.isStruct) {
+					IndentWriteLine ("var item = new {0} ();", dataParam.csType);
+					IndentWriteLine ("item{0} = {1}(({2}{3}*)ptr{4})[i];", (dataParam.isStruct || dataParam.isHandle) ? ".m" : "", dataParam.isStruct ? "&" : "", isInInterop ? "Interop." : "", dataParam.isHandle ? GetHandleType (handles [dataParam.csType]) : dataParam.csType, dataParam.csName);
+					IndentWriteLine ("list.Add (item);");
+				} else
+					IndentWriteLine ("list.Add ((({0}*)ptr{1})[i]);", dataParam.csType, dataParam.csName);
 				IndentLevel--;
 				IndentWriteLine ("}");
 				WriteLine ();
@@ -1263,7 +1308,7 @@ namespace VulkanSharp.Generator
 						handle.commands.Add (commandElement);
 					csType = handle.type == "VK_DEFINE_HANDLE" ? "IntPtr" : "UInt64";
 				}
-				bool isStruct = structures.Contains (csType);
+				bool isStruct = structures.ContainsKey (csType);
 				bool isRequired = requiredTypes != null && requiredTypes.Contains (type);
 				if (isPointer) {
 					switch (csType) {
