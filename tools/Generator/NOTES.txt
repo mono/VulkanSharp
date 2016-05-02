@@ -6,5 +6,5 @@ extensions
 
 TODO:
   marshalling fixed sized arrays in structures
-  use simple structures where possible, we do not need marshal everything (like Offset2D, Rect2D, ...)
+  do not marshal structs/unions with fixed size arrays of valuetypes like ClearColorValue
   return arrays instead of list where possible (like EnumerateInstanceLayerProperties for example)
