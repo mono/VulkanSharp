@@ -9,6 +9,7 @@
 */
 
 using System;
+using System.Runtime.InteropServices;
 
 namespace Vulkan
 {
@@ -37,25 +38,10 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class ClearValue
+	[StructLayout (LayoutKind.Explicit)]
+	unsafe public struct ClearValue
 	{
-		internal Interop.ClearValue* m;
-
-		public ClearValue ()
-		{
-			m = (Interop.ClearValue*) Interop.Structure.Allocate (typeof (Interop.ClearValue));
-		}
-
-		ClearColorValue lColor;
-		public ClearColorValue Color {
-			get { return lColor; }
-			set { lColor = value; m->Color = (IntPtr)value.m; }
-		}
-
-		ClearDepthStencilValue lDepthStencil;
-		public ClearDepthStencilValue DepthStencil {
-			get { return lDepthStencil; }
-			set { lDepthStencil = value; m->DepthStencil = (IntPtr)value.m; }
-		}
+		[FieldOffset (0)] public IntPtr Color;
+		[FieldOffset (0)] public ClearDepthStencilValue DepthStencil;
 	}
 }

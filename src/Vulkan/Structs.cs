@@ -13,234 +13,67 @@ using System.Runtime.InteropServices;
 
 namespace Vulkan
 {
-	unsafe public class Offset2D
+	unsafe public struct Offset2D
 	{
-		internal Interop.Offset2D* m;
-
-		public Offset2D ()
-		{
-			m = (Interop.Offset2D*) Interop.Structure.Allocate (typeof (Interop.Offset2D));
-		}
-
-		public Int32 X {
-			get { return m->X; }
-			set { m->X = value; }
-		}
-
-		public Int32 Y {
-			get { return m->Y; }
-			set { m->Y = value; }
-		}
+		public Int32 X;
+		public Int32 Y;
 	}
 
-	unsafe public class Offset3D
+	unsafe public struct Offset3D
 	{
-		internal Interop.Offset3D* m;
-
-		public Offset3D ()
-		{
-			m = (Interop.Offset3D*) Interop.Structure.Allocate (typeof (Interop.Offset3D));
-		}
-
-		public Int32 X {
-			get { return m->X; }
-			set { m->X = value; }
-		}
-
-		public Int32 Y {
-			get { return m->Y; }
-			set { m->Y = value; }
-		}
-
-		public Int32 Z {
-			get { return m->Z; }
-			set { m->Z = value; }
-		}
+		public Int32 X;
+		public Int32 Y;
+		public Int32 Z;
 	}
 
-	unsafe public class Extent2D
+	unsafe public struct Extent2D
 	{
-		internal Interop.Extent2D* m;
-
-		public Extent2D ()
-		{
-			m = (Interop.Extent2D*) Interop.Structure.Allocate (typeof (Interop.Extent2D));
-		}
-
-		public UInt32 Width {
-			get { return m->Width; }
-			set { m->Width = value; }
-		}
-
-		public UInt32 Height {
-			get { return m->Height; }
-			set { m->Height = value; }
-		}
+		public UInt32 Width;
+		public UInt32 Height;
 	}
 
-	unsafe public class Extent3D
+	unsafe public struct Extent3D
 	{
-		internal Interop.Extent3D* m;
-
-		public Extent3D ()
-		{
-			m = (Interop.Extent3D*) Interop.Structure.Allocate (typeof (Interop.Extent3D));
-		}
-
-		public UInt32 Width {
-			get { return m->Width; }
-			set { m->Width = value; }
-		}
-
-		public UInt32 Height {
-			get { return m->Height; }
-			set { m->Height = value; }
-		}
-
-		public UInt32 Depth {
-			get { return m->Depth; }
-			set { m->Depth = value; }
-		}
+		public UInt32 Width;
+		public UInt32 Height;
+		public UInt32 Depth;
 	}
 
-	unsafe public class Viewport
+	unsafe public struct Viewport
 	{
-		internal Interop.Viewport* m;
-
-		public Viewport ()
-		{
-			m = (Interop.Viewport*) Interop.Structure.Allocate (typeof (Interop.Viewport));
-		}
-
-		public float X {
-			get { return m->X; }
-			set { m->X = value; }
-		}
-
-		public float Y {
-			get { return m->Y; }
-			set { m->Y = value; }
-		}
-
-		public float Width {
-			get { return m->Width; }
-			set { m->Width = value; }
-		}
-
-		public float Height {
-			get { return m->Height; }
-			set { m->Height = value; }
-		}
-
-		public float MinDepth {
-			get { return m->MinDepth; }
-			set { m->MinDepth = value; }
-		}
-
-		public float MaxDepth {
-			get { return m->MaxDepth; }
-			set { m->MaxDepth = value; }
-		}
+		public float X;
+		public float Y;
+		public float Width;
+		public float Height;
+		public float MinDepth;
+		public float MaxDepth;
 	}
 
-	unsafe public class Rect2D
+	unsafe public struct Rect2D
 	{
-		internal Interop.Rect2D* m;
-
-		public Rect2D ()
-		{
-			m = (Interop.Rect2D*) Interop.Structure.Allocate (typeof (Interop.Rect2D));
-		}
-
-		Offset2D lOffset;
-		public Offset2D Offset {
-			get { return lOffset; }
-			set { lOffset = value; m->Offset = (IntPtr)value.m; }
-		}
-
-		Extent2D lExtent;
-		public Extent2D Extent {
-			get { return lExtent; }
-			set { lExtent = value; m->Extent = (IntPtr)value.m; }
-		}
+		public Offset2D Offset;
+		public Extent2D Extent;
 	}
 
-	unsafe public class Rect3D
+	unsafe public struct Rect3D
 	{
-		internal Interop.Rect3D* m;
-
-		public Rect3D ()
-		{
-			m = (Interop.Rect3D*) Interop.Structure.Allocate (typeof (Interop.Rect3D));
-		}
-
-		Offset3D lOffset;
-		public Offset3D Offset {
-			get { return lOffset; }
-			set { lOffset = value; m->Offset = (IntPtr)value.m; }
-		}
-
-		Extent3D lExtent;
-		public Extent3D Extent {
-			get { return lExtent; }
-			set { lExtent = value; m->Extent = (IntPtr)value.m; }
-		}
+		public Offset3D Offset;
+		public Extent3D Extent;
 	}
 
-	unsafe public class ClearRect
+	unsafe public struct ClearRect
 	{
-		internal Interop.ClearRect* m;
-
-		public ClearRect ()
-		{
-			m = (Interop.ClearRect*) Interop.Structure.Allocate (typeof (Interop.ClearRect));
-		}
-
-		Rect2D lRect;
-		public Rect2D Rect {
-			get { return lRect; }
-			set { lRect = value; m->Rect = (IntPtr)value.m; }
-		}
-
-		public UInt32 BaseArrayLayer {
-			get { return m->BaseArrayLayer; }
-			set { m->BaseArrayLayer = value; }
-		}
-
-		public UInt32 LayerCount {
-			get { return m->LayerCount; }
-			set { m->LayerCount = value; }
-		}
+		public Rect2D Rect;
+		public UInt32 BaseArrayLayer;
+		public UInt32 LayerCount;
 	}
 
-	unsafe public class ComponentMapping
+	unsafe public struct ComponentMapping
 	{
-		internal Interop.ComponentMapping* m;
-
-		public ComponentMapping ()
-		{
-			m = (Interop.ComponentMapping*) Interop.Structure.Allocate (typeof (Interop.ComponentMapping));
-		}
-
-		public ComponentSwizzle R {
-			get { return m->R; }
-			set { m->R = value; }
-		}
-
-		public ComponentSwizzle G {
-			get { return m->G; }
-			set { m->G = value; }
-		}
-
-		public ComponentSwizzle B {
-			get { return m->B; }
-			set { m->B = value; }
-		}
-
-		public ComponentSwizzle A {
-			get { return m->A; }
-			set { m->A = value; }
-		}
+		public ComponentSwizzle R;
+		public ComponentSwizzle G;
+		public ComponentSwizzle B;
+		public ComponentSwizzle A;
 	}
 
 	unsafe public class PhysicalDeviceProperties
@@ -293,10 +126,9 @@ namespace Vulkan
 			set { lLimits = value; m->Limits = (IntPtr)value.m; }
 		}
 
-		PhysicalDeviceSparseProperties lSparseProperties;
 		public PhysicalDeviceSparseProperties SparseProperties {
-			get { return lSparseProperties; }
-			set { lSparseProperties = value; m->SparseProperties = (IntPtr)value.m; }
+			get { return m->SparseProperties; }
+			set { m->SparseProperties = value; }
 		}
 	}
 
@@ -560,10 +392,9 @@ namespace Vulkan
 			}
 		}
 
-		PhysicalDeviceFeatures lEnabledFeatures;
 		public PhysicalDeviceFeatures EnabledFeatures {
-			get { return lEnabledFeatures; }
-			set { lEnabledFeatures = value; m->EnabledFeatures = (IntPtr)value.m; }
+			get { return m->EnabledFeatures; }
+			set { m->EnabledFeatures = value; }
 		}
 	}
 
@@ -647,35 +478,12 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class QueueFamilyProperties
+	unsafe public struct QueueFamilyProperties
 	{
-		internal Interop.QueueFamilyProperties* m;
-
-		public QueueFamilyProperties ()
-		{
-			m = (Interop.QueueFamilyProperties*) Interop.Structure.Allocate (typeof (Interop.QueueFamilyProperties));
-		}
-
-		public UInt32 QueueFlags {
-			get { return m->QueueFlags; }
-			set { m->QueueFlags = value; }
-		}
-
-		public UInt32 QueueCount {
-			get { return m->QueueCount; }
-			set { m->QueueCount = value; }
-		}
-
-		public UInt32 TimestampValidBits {
-			get { return m->TimestampValidBits; }
-			set { m->TimestampValidBits = value; }
-		}
-
-		Extent3D lMinImageTransferGranularity;
-		public Extent3D MinImageTransferGranularity {
-			get { return lMinImageTransferGranularity; }
-			set { lMinImageTransferGranularity = value; m->MinImageTransferGranularity = (IntPtr)value.m; }
-		}
+		public UInt32 QueueFlags;
+		public UInt32 QueueCount;
+		public UInt32 TimestampValidBits;
+		public Extent3D MinImageTransferGranularity;
 	}
 
 	unsafe public class PhysicalDeviceMemoryProperties
@@ -692,10 +500,9 @@ namespace Vulkan
 			set { m->MemoryTypeCount = value; }
 		}
 
-		MemoryType lMemoryTypes;
 		public MemoryType MemoryTypes {
-			get { return lMemoryTypes; }
-			set { lMemoryTypes = value; m->MemoryTypes = (IntPtr)value.m; }
+			get { return m->MemoryTypes; }
+			set { m->MemoryTypes = value; }
 		}
 
 		public UInt32 MemoryHeapCount {
@@ -703,10 +510,9 @@ namespace Vulkan
 			set { m->MemoryHeapCount = value; }
 		}
 
-		MemoryHeap lMemoryHeaps;
 		public MemoryHeap MemoryHeaps {
-			get { return lMemoryHeaps; }
-			set { lMemoryHeaps = value; m->MemoryHeaps = (IntPtr)value.m; }
+			get { return m->MemoryHeaps; }
+			set { m->MemoryHeaps = value; }
 		}
 	}
 
@@ -731,131 +537,39 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class MemoryRequirements
+	unsafe public struct MemoryRequirements
 	{
-		internal Interop.MemoryRequirements* m;
-
-		public MemoryRequirements ()
-		{
-			m = (Interop.MemoryRequirements*) Interop.Structure.Allocate (typeof (Interop.MemoryRequirements));
-		}
-
-		public DeviceSize Size {
-			get { return m->Size; }
-			set { m->Size = value; }
-		}
-
-		public DeviceSize Alignment {
-			get { return m->Alignment; }
-			set { m->Alignment = value; }
-		}
-
-		public UInt32 MemoryTypeBits {
-			get { return m->MemoryTypeBits; }
-			set { m->MemoryTypeBits = value; }
-		}
+		public DeviceSize Size;
+		public DeviceSize Alignment;
+		public UInt32 MemoryTypeBits;
 	}
 
-	unsafe public class SparseImageFormatProperties
+	unsafe public struct SparseImageFormatProperties
 	{
-		internal Interop.SparseImageFormatProperties* m;
-
-		public SparseImageFormatProperties ()
-		{
-			m = (Interop.SparseImageFormatProperties*) Interop.Structure.Allocate (typeof (Interop.SparseImageFormatProperties));
-		}
-
-		public UInt32 AspectMask {
-			get { return m->AspectMask; }
-			set { m->AspectMask = value; }
-		}
-
-		Extent3D lImageGranularity;
-		public Extent3D ImageGranularity {
-			get { return lImageGranularity; }
-			set { lImageGranularity = value; m->ImageGranularity = (IntPtr)value.m; }
-		}
-
-		public UInt32 Flags {
-			get { return m->Flags; }
-			set { m->Flags = value; }
-		}
+		public UInt32 AspectMask;
+		public Extent3D ImageGranularity;
+		public UInt32 Flags;
 	}
 
-	unsafe public class SparseImageMemoryRequirements
+	unsafe public struct SparseImageMemoryRequirements
 	{
-		internal Interop.SparseImageMemoryRequirements* m;
-
-		public SparseImageMemoryRequirements ()
-		{
-			m = (Interop.SparseImageMemoryRequirements*) Interop.Structure.Allocate (typeof (Interop.SparseImageMemoryRequirements));
-		}
-
-		SparseImageFormatProperties lFormatProperties;
-		public SparseImageFormatProperties FormatProperties {
-			get { return lFormatProperties; }
-			set { lFormatProperties = value; m->FormatProperties = (IntPtr)value.m; }
-		}
-
-		public UInt32 ImageMipTailFirstLod {
-			get { return m->ImageMipTailFirstLod; }
-			set { m->ImageMipTailFirstLod = value; }
-		}
-
-		public DeviceSize ImageMipTailSize {
-			get { return m->ImageMipTailSize; }
-			set { m->ImageMipTailSize = value; }
-		}
-
-		public DeviceSize ImageMipTailOffset {
-			get { return m->ImageMipTailOffset; }
-			set { m->ImageMipTailOffset = value; }
-		}
-
-		public DeviceSize ImageMipTailStride {
-			get { return m->ImageMipTailStride; }
-			set { m->ImageMipTailStride = value; }
-		}
+		public SparseImageFormatProperties FormatProperties;
+		public UInt32 ImageMipTailFirstLod;
+		public DeviceSize ImageMipTailSize;
+		public DeviceSize ImageMipTailOffset;
+		public DeviceSize ImageMipTailStride;
 	}
 
-	unsafe public class MemoryType
+	unsafe public struct MemoryType
 	{
-		internal Interop.MemoryType* m;
-
-		public MemoryType ()
-		{
-			m = (Interop.MemoryType*) Interop.Structure.Allocate (typeof (Interop.MemoryType));
-		}
-
-		public UInt32 PropertyFlags {
-			get { return m->PropertyFlags; }
-			set { m->PropertyFlags = value; }
-		}
-
-		public UInt32 HeapIndex {
-			get { return m->HeapIndex; }
-			set { m->HeapIndex = value; }
-		}
+		public UInt32 PropertyFlags;
+		public UInt32 HeapIndex;
 	}
 
-	unsafe public class MemoryHeap
+	unsafe public struct MemoryHeap
 	{
-		internal Interop.MemoryHeap* m;
-
-		public MemoryHeap ()
-		{
-			m = (Interop.MemoryHeap*) Interop.Structure.Allocate (typeof (Interop.MemoryHeap));
-		}
-
-		public DeviceSize Size {
-			get { return m->Size; }
-			set { m->Size = value; }
-		}
-
-		public UInt32 Flags {
-			get { return m->Flags; }
-			set { m->Flags = value; }
-		}
+		public DeviceSize Size;
+		public UInt32 Flags;
 	}
 
 	unsafe public class MappedMemoryRange
@@ -885,118 +599,34 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class FormatProperties
+	unsafe public struct FormatProperties
 	{
-		internal Interop.FormatProperties* m;
-
-		public FormatProperties ()
-		{
-			m = (Interop.FormatProperties*) Interop.Structure.Allocate (typeof (Interop.FormatProperties));
-		}
-
-		public UInt32 LinearTilingFeatures {
-			get { return m->LinearTilingFeatures; }
-			set { m->LinearTilingFeatures = value; }
-		}
-
-		public UInt32 OptimalTilingFeatures {
-			get { return m->OptimalTilingFeatures; }
-			set { m->OptimalTilingFeatures = value; }
-		}
-
-		public UInt32 BufferFeatures {
-			get { return m->BufferFeatures; }
-			set { m->BufferFeatures = value; }
-		}
+		public UInt32 LinearTilingFeatures;
+		public UInt32 OptimalTilingFeatures;
+		public UInt32 BufferFeatures;
 	}
 
-	unsafe public class ImageFormatProperties
+	unsafe public struct ImageFormatProperties
 	{
-		internal Interop.ImageFormatProperties* m;
-
-		public ImageFormatProperties ()
-		{
-			m = (Interop.ImageFormatProperties*) Interop.Structure.Allocate (typeof (Interop.ImageFormatProperties));
-		}
-
-		Extent3D lMaxExtent;
-		public Extent3D MaxExtent {
-			get { return lMaxExtent; }
-			set { lMaxExtent = value; m->MaxExtent = (IntPtr)value.m; }
-		}
-
-		public UInt32 MaxMipLevels {
-			get { return m->MaxMipLevels; }
-			set { m->MaxMipLevels = value; }
-		}
-
-		public UInt32 MaxArrayLayers {
-			get { return m->MaxArrayLayers; }
-			set { m->MaxArrayLayers = value; }
-		}
-
-		public UInt32 SampleCounts {
-			get { return m->SampleCounts; }
-			set { m->SampleCounts = value; }
-		}
-
-		public DeviceSize MaxResourceSize {
-			get { return m->MaxResourceSize; }
-			set { m->MaxResourceSize = value; }
-		}
+		public Extent3D MaxExtent;
+		public UInt32 MaxMipLevels;
+		public UInt32 MaxArrayLayers;
+		public UInt32 SampleCounts;
+		public DeviceSize MaxResourceSize;
 	}
 
-	unsafe public class DescriptorBufferInfo
+	unsafe public struct DescriptorBufferInfo
 	{
-		internal Interop.DescriptorBufferInfo* m;
-
-		public DescriptorBufferInfo ()
-		{
-			m = (Interop.DescriptorBufferInfo*) Interop.Structure.Allocate (typeof (Interop.DescriptorBufferInfo));
-		}
-
-		Buffer lBuffer;
-		public Buffer Buffer {
-			get { return lBuffer; }
-			set { lBuffer = value; m->Buffer = (UInt64)value.m; }
-		}
-
-		public DeviceSize Offset {
-			get { return m->Offset; }
-			set { m->Offset = value; }
-		}
-
-		public DeviceSize Range {
-			get { return m->Range; }
-			set { m->Range = value; }
-		}
+		public UInt64 Buffer;
+		public DeviceSize Offset;
+		public DeviceSize Range;
 	}
 
-	unsafe public class DescriptorImageInfo
+	unsafe public struct DescriptorImageInfo
 	{
-		internal Interop.DescriptorImageInfo* m;
-
-		public DescriptorImageInfo ()
-		{
-			m = (Interop.DescriptorImageInfo*) Interop.Structure.Allocate (typeof (Interop.DescriptorImageInfo));
-		}
-
-		Sampler lSampler;
-		public Sampler Sampler {
-			get { return lSampler; }
-			set { lSampler = value; m->Sampler = (UInt64)value.m; }
-		}
-
-		ImageView lImageView;
-		public ImageView ImageView {
-			get { return lImageView; }
-			set { lImageView = value; m->ImageView = (UInt64)value.m; }
-		}
-
-		public ImageLayout ImageLayout {
-			get { return m->ImageLayout; }
-			set { m->ImageLayout = value; }
-		}
+		public UInt64 Sampler;
+		public UInt64 ImageView;
+		public ImageLayout ImageLayout;
 	}
 
 	unsafe public class WriteDescriptorSet
@@ -1035,16 +665,14 @@ namespace Vulkan
 			set { m->DescriptorType = value; }
 		}
 
-		DescriptorImageInfo lImageInfo;
 		public DescriptorImageInfo ImageInfo {
-			get { return lImageInfo; }
-			set { lImageInfo = value; m->ImageInfo = (IntPtr)value.m; }
+			get { return m->ImageInfo; }
+			set { m->ImageInfo = value; }
 		}
 
-		DescriptorBufferInfo lBufferInfo;
 		public DescriptorBufferInfo BufferInfo {
-			get { return lBufferInfo; }
-			set { lBufferInfo = value; m->BufferInfo = (IntPtr)value.m; }
+			get { return m->BufferInfo; }
+			set { m->BufferInfo = value; }
 		}
 
 		BufferView lTexelBufferView;
@@ -1199,94 +827,28 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class ImageSubresource
+	unsafe public struct ImageSubresource
 	{
-		internal Interop.ImageSubresource* m;
-
-		public ImageSubresource ()
-		{
-			m = (Interop.ImageSubresource*) Interop.Structure.Allocate (typeof (Interop.ImageSubresource));
-		}
-
-		public UInt32 AspectMask {
-			get { return m->AspectMask; }
-			set { m->AspectMask = value; }
-		}
-
-		public UInt32 MipLevel {
-			get { return m->MipLevel; }
-			set { m->MipLevel = value; }
-		}
-
-		public UInt32 ArrayLayer {
-			get { return m->ArrayLayer; }
-			set { m->ArrayLayer = value; }
-		}
+		public UInt32 AspectMask;
+		public UInt32 MipLevel;
+		public UInt32 ArrayLayer;
 	}
 
-	unsafe public class ImageSubresourceLayers
+	unsafe public struct ImageSubresourceLayers
 	{
-		internal Interop.ImageSubresourceLayers* m;
-
-		public ImageSubresourceLayers ()
-		{
-			m = (Interop.ImageSubresourceLayers*) Interop.Structure.Allocate (typeof (Interop.ImageSubresourceLayers));
-		}
-
-		public UInt32 AspectMask {
-			get { return m->AspectMask; }
-			set { m->AspectMask = value; }
-		}
-
-		public UInt32 MipLevel {
-			get { return m->MipLevel; }
-			set { m->MipLevel = value; }
-		}
-
-		public UInt32 BaseArrayLayer {
-			get { return m->BaseArrayLayer; }
-			set { m->BaseArrayLayer = value; }
-		}
-
-		public UInt32 LayerCount {
-			get { return m->LayerCount; }
-			set { m->LayerCount = value; }
-		}
+		public UInt32 AspectMask;
+		public UInt32 MipLevel;
+		public UInt32 BaseArrayLayer;
+		public UInt32 LayerCount;
 	}
 
-	unsafe public class ImageSubresourceRange
+	unsafe public struct ImageSubresourceRange
 	{
-		internal Interop.ImageSubresourceRange* m;
-
-		public ImageSubresourceRange ()
-		{
-			m = (Interop.ImageSubresourceRange*) Interop.Structure.Allocate (typeof (Interop.ImageSubresourceRange));
-		}
-
-		public UInt32 AspectMask {
-			get { return m->AspectMask; }
-			set { m->AspectMask = value; }
-		}
-
-		public UInt32 BaseMipLevel {
-			get { return m->BaseMipLevel; }
-			set { m->BaseMipLevel = value; }
-		}
-
-		public UInt32 LevelCount {
-			get { return m->LevelCount; }
-			set { m->LevelCount = value; }
-		}
-
-		public UInt32 BaseArrayLayer {
-			get { return m->BaseArrayLayer; }
-			set { m->BaseArrayLayer = value; }
-		}
-
-		public UInt32 LayerCount {
-			get { return m->LayerCount; }
-			set { m->LayerCount = value; }
-		}
+		public UInt32 AspectMask;
+		public UInt32 BaseMipLevel;
+		public UInt32 LevelCount;
+		public UInt32 BaseArrayLayer;
+		public UInt32 LayerCount;
 	}
 
 	unsafe public class MemoryBarrier
@@ -1403,10 +965,9 @@ namespace Vulkan
 			set { lImage = value; m->Image = (UInt64)value.m; }
 		}
 
-		ImageSubresourceRange lSubresourceRange;
 		public ImageSubresourceRange SubresourceRange {
-			get { return lSubresourceRange; }
-			set { lSubresourceRange = value; m->SubresourceRange = (IntPtr)value.m; }
+			get { return m->SubresourceRange; }
+			set { m->SubresourceRange = value; }
 		}
 	}
 
@@ -1435,10 +996,9 @@ namespace Vulkan
 			set { m->Format = value; }
 		}
 
-		Extent3D lExtent;
 		public Extent3D Extent {
-			get { return lExtent; }
-			set { lExtent = value; m->Extent = (IntPtr)value.m; }
+			get { return m->Extent; }
+			set { m->Extent = value; }
 		}
 
 		public UInt32 MipLevels {
@@ -1506,39 +1066,13 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class SubresourceLayout
+	unsafe public struct SubresourceLayout
 	{
-		internal Interop.SubresourceLayout* m;
-
-		public SubresourceLayout ()
-		{
-			m = (Interop.SubresourceLayout*) Interop.Structure.Allocate (typeof (Interop.SubresourceLayout));
-		}
-
-		public DeviceSize Offset {
-			get { return m->Offset; }
-			set { m->Offset = value; }
-		}
-
-		public DeviceSize Size {
-			get { return m->Size; }
-			set { m->Size = value; }
-		}
-
-		public DeviceSize RowPitch {
-			get { return m->RowPitch; }
-			set { m->RowPitch = value; }
-		}
-
-		public DeviceSize ArrayPitch {
-			get { return m->ArrayPitch; }
-			set { m->ArrayPitch = value; }
-		}
-
-		public DeviceSize DepthPitch {
-			get { return m->DepthPitch; }
-			set { m->DepthPitch = value; }
-		}
+		public DeviceSize Offset;
+		public DeviceSize Size;
+		public DeviceSize RowPitch;
+		public DeviceSize ArrayPitch;
+		public DeviceSize DepthPitch;
 	}
 
 	unsafe public class ImageViewCreateInfo
@@ -1572,122 +1106,41 @@ namespace Vulkan
 			set { m->Format = value; }
 		}
 
-		ComponentMapping lComponents;
 		public ComponentMapping Components {
-			get { return lComponents; }
-			set { lComponents = value; m->Components = (IntPtr)value.m; }
+			get { return m->Components; }
+			set { m->Components = value; }
 		}
 
-		ImageSubresourceRange lSubresourceRange;
 		public ImageSubresourceRange SubresourceRange {
-			get { return lSubresourceRange; }
-			set { lSubresourceRange = value; m->SubresourceRange = (IntPtr)value.m; }
+			get { return m->SubresourceRange; }
+			set { m->SubresourceRange = value; }
 		}
 	}
 
-	unsafe public class BufferCopy
+	unsafe public struct BufferCopy
 	{
-		internal Interop.BufferCopy* m;
-
-		public BufferCopy ()
-		{
-			m = (Interop.BufferCopy*) Interop.Structure.Allocate (typeof (Interop.BufferCopy));
-		}
-
-		public DeviceSize SrcOffset {
-			get { return m->SrcOffset; }
-			set { m->SrcOffset = value; }
-		}
-
-		public DeviceSize DstOffset {
-			get { return m->DstOffset; }
-			set { m->DstOffset = value; }
-		}
-
-		public DeviceSize Size {
-			get { return m->Size; }
-			set { m->Size = value; }
-		}
+		public DeviceSize SrcOffset;
+		public DeviceSize DstOffset;
+		public DeviceSize Size;
 	}
 
-	unsafe public class SparseMemoryBind
+	unsafe public struct SparseMemoryBind
 	{
-		internal Interop.SparseMemoryBind* m;
-
-		public SparseMemoryBind ()
-		{
-			m = (Interop.SparseMemoryBind*) Interop.Structure.Allocate (typeof (Interop.SparseMemoryBind));
-		}
-
-		public DeviceSize ResourceOffset {
-			get { return m->ResourceOffset; }
-			set { m->ResourceOffset = value; }
-		}
-
-		public DeviceSize Size {
-			get { return m->Size; }
-			set { m->Size = value; }
-		}
-
-		DeviceMemory lMemory;
-		public DeviceMemory Memory {
-			get { return lMemory; }
-			set { lMemory = value; m->Memory = (UInt64)value.m; }
-		}
-
-		public DeviceSize MemoryOffset {
-			get { return m->MemoryOffset; }
-			set { m->MemoryOffset = value; }
-		}
-
-		public UInt32 Flags {
-			get { return m->Flags; }
-			set { m->Flags = value; }
-		}
+		public DeviceSize ResourceOffset;
+		public DeviceSize Size;
+		public UInt64 Memory;
+		public DeviceSize MemoryOffset;
+		public UInt32 Flags;
 	}
 
-	unsafe public class SparseImageMemoryBind
+	unsafe public struct SparseImageMemoryBind
 	{
-		internal Interop.SparseImageMemoryBind* m;
-
-		public SparseImageMemoryBind ()
-		{
-			m = (Interop.SparseImageMemoryBind*) Interop.Structure.Allocate (typeof (Interop.SparseImageMemoryBind));
-		}
-
-		ImageSubresource lSubresource;
-		public ImageSubresource Subresource {
-			get { return lSubresource; }
-			set { lSubresource = value; m->Subresource = (IntPtr)value.m; }
-		}
-
-		Offset3D lOffset;
-		public Offset3D Offset {
-			get { return lOffset; }
-			set { lOffset = value; m->Offset = (IntPtr)value.m; }
-		}
-
-		Extent3D lExtent;
-		public Extent3D Extent {
-			get { return lExtent; }
-			set { lExtent = value; m->Extent = (IntPtr)value.m; }
-		}
-
-		DeviceMemory lMemory;
-		public DeviceMemory Memory {
-			get { return lMemory; }
-			set { lMemory = value; m->Memory = (UInt64)value.m; }
-		}
-
-		public DeviceSize MemoryOffset {
-			get { return m->MemoryOffset; }
-			set { m->MemoryOffset = value; }
-		}
-
-		public UInt32 Flags {
-			get { return m->Flags; }
-			set { m->Flags = value; }
-		}
+		public ImageSubresource Subresource;
+		public Offset3D Offset;
+		public Extent3D Extent;
+		public UInt64 Memory;
+		public DeviceSize MemoryOffset;
+		public UInt32 Flags;
 	}
 
 	unsafe public class SparseBufferMemoryBindInfo
@@ -1710,10 +1163,9 @@ namespace Vulkan
 			set { m->BindCount = value; }
 		}
 
-		SparseMemoryBind lBinds;
 		public SparseMemoryBind Binds {
-			get { return lBinds; }
-			set { lBinds = value; m->Binds = (IntPtr)value.m; }
+			get { return m->Binds; }
+			set { m->Binds = value; }
 		}
 	}
 
@@ -1737,10 +1189,9 @@ namespace Vulkan
 			set { m->BindCount = value; }
 		}
 
-		SparseMemoryBind lBinds;
 		public SparseMemoryBind Binds {
-			get { return lBinds; }
-			set { lBinds = value; m->Binds = (IntPtr)value.m; }
+			get { return m->Binds; }
+			set { m->Binds = value; }
 		}
 	}
 
@@ -1764,10 +1215,9 @@ namespace Vulkan
 			set { m->BindCount = value; }
 		}
 
-		SparseImageMemoryBind lBinds;
 		public SparseImageMemoryBind Binds {
-			get { return lBinds; }
-			set { lBinds = value; m->Binds = (IntPtr)value.m; }
+			get { return m->Binds; }
+			set { m->Binds = value; }
 		}
 	}
 
@@ -1837,44 +1287,13 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class ImageCopy
+	unsafe public struct ImageCopy
 	{
-		internal Interop.ImageCopy* m;
-
-		public ImageCopy ()
-		{
-			m = (Interop.ImageCopy*) Interop.Structure.Allocate (typeof (Interop.ImageCopy));
-		}
-
-		ImageSubresourceLayers lSrcSubresource;
-		public ImageSubresourceLayers SrcSubresource {
-			get { return lSrcSubresource; }
-			set { lSrcSubresource = value; m->SrcSubresource = (IntPtr)value.m; }
-		}
-
-		Offset3D lSrcOffset;
-		public Offset3D SrcOffset {
-			get { return lSrcOffset; }
-			set { lSrcOffset = value; m->SrcOffset = (IntPtr)value.m; }
-		}
-
-		ImageSubresourceLayers lDstSubresource;
-		public ImageSubresourceLayers DstSubresource {
-			get { return lDstSubresource; }
-			set { lDstSubresource = value; m->DstSubresource = (IntPtr)value.m; }
-		}
-
-		Offset3D lDstOffset;
-		public Offset3D DstOffset {
-			get { return lDstOffset; }
-			set { lDstOffset = value; m->DstOffset = (IntPtr)value.m; }
-		}
-
-		Extent3D lExtent;
-		public Extent3D Extent {
-			get { return lExtent; }
-			set { lExtent = value; m->Extent = (IntPtr)value.m; }
-		}
+		public ImageSubresourceLayers SrcSubresource;
+		public Offset3D SrcOffset;
+		public ImageSubresourceLayers DstSubresource;
+		public Offset3D DstOffset;
+		public Extent3D Extent;
 	}
 
 	unsafe public class ImageBlit
@@ -1886,112 +1305,44 @@ namespace Vulkan
 			m = (Interop.ImageBlit*) Interop.Structure.Allocate (typeof (Interop.ImageBlit));
 		}
 
-		ImageSubresourceLayers lSrcSubresource;
 		public ImageSubresourceLayers SrcSubresource {
-			get { return lSrcSubresource; }
-			set { lSrcSubresource = value; m->SrcSubresource = (IntPtr)value.m; }
+			get { return m->SrcSubresource; }
+			set { m->SrcSubresource = value; }
 		}
 
-		Offset3D lSrcOffsets;
 		public Offset3D SrcOffsets {
-			get { return lSrcOffsets; }
-			set { lSrcOffsets = value; m->SrcOffsets = (IntPtr)value.m; }
+			get { return m->SrcOffsets; }
+			set { m->SrcOffsets = value; }
 		}
 
-		ImageSubresourceLayers lDstSubresource;
 		public ImageSubresourceLayers DstSubresource {
-			get { return lDstSubresource; }
-			set { lDstSubresource = value; m->DstSubresource = (IntPtr)value.m; }
+			get { return m->DstSubresource; }
+			set { m->DstSubresource = value; }
 		}
 
-		Offset3D lDstOffsets;
 		public Offset3D DstOffsets {
-			get { return lDstOffsets; }
-			set { lDstOffsets = value; m->DstOffsets = (IntPtr)value.m; }
+			get { return m->DstOffsets; }
+			set { m->DstOffsets = value; }
 		}
 	}
 
-	unsafe public class BufferImageCopy
+	unsafe public struct BufferImageCopy
 	{
-		internal Interop.BufferImageCopy* m;
-
-		public BufferImageCopy ()
-		{
-			m = (Interop.BufferImageCopy*) Interop.Structure.Allocate (typeof (Interop.BufferImageCopy));
-		}
-
-		public DeviceSize BufferOffset {
-			get { return m->BufferOffset; }
-			set { m->BufferOffset = value; }
-		}
-
-		public UInt32 BufferRowLength {
-			get { return m->BufferRowLength; }
-			set { m->BufferRowLength = value; }
-		}
-
-		public UInt32 BufferImageHeight {
-			get { return m->BufferImageHeight; }
-			set { m->BufferImageHeight = value; }
-		}
-
-		ImageSubresourceLayers lImageSubresource;
-		public ImageSubresourceLayers ImageSubresource {
-			get { return lImageSubresource; }
-			set { lImageSubresource = value; m->ImageSubresource = (IntPtr)value.m; }
-		}
-
-		Offset3D lImageOffset;
-		public Offset3D ImageOffset {
-			get { return lImageOffset; }
-			set { lImageOffset = value; m->ImageOffset = (IntPtr)value.m; }
-		}
-
-		Extent3D lImageExtent;
-		public Extent3D ImageExtent {
-			get { return lImageExtent; }
-			set { lImageExtent = value; m->ImageExtent = (IntPtr)value.m; }
-		}
+		public DeviceSize BufferOffset;
+		public UInt32 BufferRowLength;
+		public UInt32 BufferImageHeight;
+		public ImageSubresourceLayers ImageSubresource;
+		public Offset3D ImageOffset;
+		public Extent3D ImageExtent;
 	}
 
-	unsafe public class ImageResolve
+	unsafe public struct ImageResolve
 	{
-		internal Interop.ImageResolve* m;
-
-		public ImageResolve ()
-		{
-			m = (Interop.ImageResolve*) Interop.Structure.Allocate (typeof (Interop.ImageResolve));
-		}
-
-		ImageSubresourceLayers lSrcSubresource;
-		public ImageSubresourceLayers SrcSubresource {
-			get { return lSrcSubresource; }
-			set { lSrcSubresource = value; m->SrcSubresource = (IntPtr)value.m; }
-		}
-
-		Offset3D lSrcOffset;
-		public Offset3D SrcOffset {
-			get { return lSrcOffset; }
-			set { lSrcOffset = value; m->SrcOffset = (IntPtr)value.m; }
-		}
-
-		ImageSubresourceLayers lDstSubresource;
-		public ImageSubresourceLayers DstSubresource {
-			get { return lDstSubresource; }
-			set { lDstSubresource = value; m->DstSubresource = (IntPtr)value.m; }
-		}
-
-		Offset3D lDstOffset;
-		public Offset3D DstOffset {
-			get { return lDstOffset; }
-			set { lDstOffset = value; m->DstOffset = (IntPtr)value.m; }
-		}
-
-		Extent3D lExtent;
-		public Extent3D Extent {
-			get { return lExtent; }
-			set { lExtent = value; m->Extent = (IntPtr)value.m; }
-		}
+		public ImageSubresourceLayers SrcSubresource;
+		public Offset3D SrcOffset;
+		public ImageSubresourceLayers DstSubresource;
+		public Offset3D DstOffset;
+		public Extent3D Extent;
 	}
 
 	unsafe public class ShaderModuleCreateInfo
@@ -2102,24 +1453,10 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class DescriptorPoolSize
+	unsafe public struct DescriptorPoolSize
 	{
-		internal Interop.DescriptorPoolSize* m;
-
-		public DescriptorPoolSize ()
-		{
-			m = (Interop.DescriptorPoolSize*) Interop.Structure.Allocate (typeof (Interop.DescriptorPoolSize));
-		}
-
-		public DescriptorType Type {
-			get { return m->Type; }
-			set { m->Type = value; }
-		}
-
-		public UInt32 DescriptorCount {
-			get { return m->DescriptorCount; }
-			set { m->DescriptorCount = value; }
-		}
+		public DescriptorType Type;
+		public UInt32 DescriptorCount;
 	}
 
 	unsafe public class DescriptorPoolCreateInfo
@@ -2147,10 +1484,9 @@ namespace Vulkan
 			set { m->PoolSizeCount = value; }
 		}
 
-		DescriptorPoolSize lPoolSizes;
 		public DescriptorPoolSize PoolSizes {
-			get { return lPoolSizes; }
-			set { lPoolSizes = value; m->PoolSizes = (IntPtr)value.m; }
+			get { return m->PoolSizes; }
+			set { m->PoolSizes = value; }
 		}
 	}
 
@@ -2182,29 +1518,11 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class SpecializationMapEntry
+	unsafe public struct SpecializationMapEntry
 	{
-		internal Interop.SpecializationMapEntry* m;
-
-		public SpecializationMapEntry ()
-		{
-			m = (Interop.SpecializationMapEntry*) Interop.Structure.Allocate (typeof (Interop.SpecializationMapEntry));
-		}
-
-		public UInt32 ConstantID {
-			get { return m->ConstantID; }
-			set { m->ConstantID = value; }
-		}
-
-		public UInt32 Offset {
-			get { return m->Offset; }
-			set { m->Offset = value; }
-		}
-
-		public UIntPtr Size {
-			get { return m->Size; }
-			set { m->Size = value; }
-		}
+		public UInt32 ConstantID;
+		public UInt32 Offset;
+		public UIntPtr Size;
 	}
 
 	unsafe public class SpecializationInfo
@@ -2221,10 +1539,9 @@ namespace Vulkan
 			set { m->MapEntryCount = value; }
 		}
 
-		SpecializationMapEntry lMapEntries;
 		public SpecializationMapEntry MapEntries {
-			get { return lMapEntries; }
-			set { lMapEntries = value; m->MapEntries = (IntPtr)value.m; }
+			get { return m->MapEntries; }
+			set { m->MapEntries = value; }
 		}
 
 		public UIntPtr DataSize {
@@ -2315,59 +1632,19 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class VertexInputBindingDescription
+	unsafe public struct VertexInputBindingDescription
 	{
-		internal Interop.VertexInputBindingDescription* m;
-
-		public VertexInputBindingDescription ()
-		{
-			m = (Interop.VertexInputBindingDescription*) Interop.Structure.Allocate (typeof (Interop.VertexInputBindingDescription));
-		}
-
-		public UInt32 Binding {
-			get { return m->Binding; }
-			set { m->Binding = value; }
-		}
-
-		public UInt32 Stride {
-			get { return m->Stride; }
-			set { m->Stride = value; }
-		}
-
-		public VertexInputRate InputRate {
-			get { return m->InputRate; }
-			set { m->InputRate = value; }
-		}
+		public UInt32 Binding;
+		public UInt32 Stride;
+		public VertexInputRate InputRate;
 	}
 
-	unsafe public class VertexInputAttributeDescription
+	unsafe public struct VertexInputAttributeDescription
 	{
-		internal Interop.VertexInputAttributeDescription* m;
-
-		public VertexInputAttributeDescription ()
-		{
-			m = (Interop.VertexInputAttributeDescription*) Interop.Structure.Allocate (typeof (Interop.VertexInputAttributeDescription));
-		}
-
-		public UInt32 Location {
-			get { return m->Location; }
-			set { m->Location = value; }
-		}
-
-		public UInt32 Binding {
-			get { return m->Binding; }
-			set { m->Binding = value; }
-		}
-
-		public Format Format {
-			get { return m->Format; }
-			set { m->Format = value; }
-		}
-
-		public UInt32 Offset {
-			get { return m->Offset; }
-			set { m->Offset = value; }
-		}
+		public UInt32 Location;
+		public UInt32 Binding;
+		public Format Format;
+		public UInt32 Offset;
 	}
 
 	unsafe public class PipelineVertexInputStateCreateInfo
@@ -2390,10 +1667,9 @@ namespace Vulkan
 			set { m->VertexBindingDescriptionCount = value; }
 		}
 
-		VertexInputBindingDescription lVertexBindingDescriptions;
 		public VertexInputBindingDescription VertexBindingDescriptions {
-			get { return lVertexBindingDescriptions; }
-			set { lVertexBindingDescriptions = value; m->VertexBindingDescriptions = (IntPtr)value.m; }
+			get { return m->VertexBindingDescriptions; }
+			set { m->VertexBindingDescriptions = value; }
 		}
 
 		public UInt32 VertexAttributeDescriptionCount {
@@ -2401,10 +1677,9 @@ namespace Vulkan
 			set { m->VertexAttributeDescriptionCount = value; }
 		}
 
-		VertexInputAttributeDescription lVertexAttributeDescriptions;
 		public VertexInputAttributeDescription VertexAttributeDescriptions {
-			get { return lVertexAttributeDescriptions; }
-			set { lVertexAttributeDescriptions = value; m->VertexAttributeDescriptions = (IntPtr)value.m; }
+			get { return m->VertexAttributeDescriptions; }
+			set { m->VertexAttributeDescriptions = value; }
 		}
 	}
 
@@ -2475,10 +1750,9 @@ namespace Vulkan
 			set { m->ViewportCount = value; }
 		}
 
-		Viewport lViewports;
 		public Viewport Viewports {
-			get { return lViewports; }
-			set { lViewports = value; m->Viewports = (IntPtr)value.m; }
+			get { return m->Viewports; }
+			set { m->Viewports = value; }
 		}
 
 		public UInt32 ScissorCount {
@@ -2486,10 +1760,9 @@ namespace Vulkan
 			set { m->ScissorCount = value; }
 		}
 
-		Rect2D lScissors;
 		public Rect2D Scissors {
-			get { return lScissors; }
-			set { lScissors = value; m->Scissors = (IntPtr)value.m; }
+			get { return m->Scissors; }
+			set { m->Scissors = value; }
 		}
 	}
 
@@ -2605,54 +1878,16 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class PipelineColorBlendAttachmentState
+	unsafe public struct PipelineColorBlendAttachmentState
 	{
-		internal Interop.PipelineColorBlendAttachmentState* m;
-
-		public PipelineColorBlendAttachmentState ()
-		{
-			m = (Interop.PipelineColorBlendAttachmentState*) Interop.Structure.Allocate (typeof (Interop.PipelineColorBlendAttachmentState));
-		}
-
-		public bool BlendEnable {
-			get { return m->BlendEnable; }
-			set { m->BlendEnable = value; }
-		}
-
-		public BlendFactor SrcColorBlendFactor {
-			get { return m->SrcColorBlendFactor; }
-			set { m->SrcColorBlendFactor = value; }
-		}
-
-		public BlendFactor DstColorBlendFactor {
-			get { return m->DstColorBlendFactor; }
-			set { m->DstColorBlendFactor = value; }
-		}
-
-		public BlendOp ColorBlendOp {
-			get { return m->ColorBlendOp; }
-			set { m->ColorBlendOp = value; }
-		}
-
-		public BlendFactor SrcAlphaBlendFactor {
-			get { return m->SrcAlphaBlendFactor; }
-			set { m->SrcAlphaBlendFactor = value; }
-		}
-
-		public BlendFactor DstAlphaBlendFactor {
-			get { return m->DstAlphaBlendFactor; }
-			set { m->DstAlphaBlendFactor = value; }
-		}
-
-		public BlendOp AlphaBlendOp {
-			get { return m->AlphaBlendOp; }
-			set { m->AlphaBlendOp = value; }
-		}
-
-		public UInt32 ColorWriteMask {
-			get { return m->ColorWriteMask; }
-			set { m->ColorWriteMask = value; }
-		}
+		public bool BlendEnable;
+		public BlendFactor SrcColorBlendFactor;
+		public BlendFactor DstColorBlendFactor;
+		public BlendOp ColorBlendOp;
+		public BlendFactor SrcAlphaBlendFactor;
+		public BlendFactor DstAlphaBlendFactor;
+		public BlendOp AlphaBlendOp;
+		public UInt32 ColorWriteMask;
 	}
 
 	unsafe public class PipelineColorBlendStateCreateInfo
@@ -2685,10 +1920,9 @@ namespace Vulkan
 			set { m->AttachmentCount = value; }
 		}
 
-		PipelineColorBlendAttachmentState lAttachments;
 		public PipelineColorBlendAttachmentState Attachments {
-			get { return lAttachments; }
-			set { lAttachments = value; m->Attachments = (IntPtr)value.m; }
+			get { return m->Attachments; }
+			set { m->Attachments = value; }
 		}
 
 		public float BlendConstants {
@@ -2723,49 +1957,15 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class StencilOpState
+	unsafe public struct StencilOpState
 	{
-		internal Interop.StencilOpState* m;
-
-		public StencilOpState ()
-		{
-			m = (Interop.StencilOpState*) Interop.Structure.Allocate (typeof (Interop.StencilOpState));
-		}
-
-		public StencilOp FailOp {
-			get { return m->FailOp; }
-			set { m->FailOp = value; }
-		}
-
-		public StencilOp PassOp {
-			get { return m->PassOp; }
-			set { m->PassOp = value; }
-		}
-
-		public StencilOp DepthFailOp {
-			get { return m->DepthFailOp; }
-			set { m->DepthFailOp = value; }
-		}
-
-		public CompareOp CompareOp {
-			get { return m->CompareOp; }
-			set { m->CompareOp = value; }
-		}
-
-		public UInt32 CompareMask {
-			get { return m->CompareMask; }
-			set { m->CompareMask = value; }
-		}
-
-		public UInt32 WriteMask {
-			get { return m->WriteMask; }
-			set { m->WriteMask = value; }
-		}
-
-		public UInt32 Reference {
-			get { return m->Reference; }
-			set { m->Reference = value; }
-		}
+		public StencilOp FailOp;
+		public StencilOp PassOp;
+		public StencilOp DepthFailOp;
+		public CompareOp CompareOp;
+		public UInt32 CompareMask;
+		public UInt32 WriteMask;
+		public UInt32 Reference;
 	}
 
 	unsafe public class PipelineDepthStencilStateCreateInfo
@@ -2808,16 +2008,14 @@ namespace Vulkan
 			set { m->StencilTestEnable = value; }
 		}
 
-		StencilOpState lFront;
 		public StencilOpState Front {
-			get { return lFront; }
-			set { lFront = value; m->Front = (IntPtr)value.m; }
+			get { return m->Front; }
+			set { m->Front = value; }
 		}
 
-		StencilOpState lBack;
 		public StencilOpState Back {
-			get { return lBack; }
-			set { lBack = value; m->Back = (IntPtr)value.m; }
+			get { return m->Back; }
+			set { m->Back = value; }
 		}
 
 		public float MinDepthBounds {
@@ -2966,29 +2164,11 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class PushConstantRange
+	unsafe public struct PushConstantRange
 	{
-		internal Interop.PushConstantRange* m;
-
-		public PushConstantRange ()
-		{
-			m = (Interop.PushConstantRange*) Interop.Structure.Allocate (typeof (Interop.PushConstantRange));
-		}
-
-		public UInt32 StageFlags {
-			get { return m->StageFlags; }
-			set { m->StageFlags = value; }
-		}
-
-		public UInt32 Offset {
-			get { return m->Offset; }
-			set { m->Offset = value; }
-		}
-
-		public UInt32 Size {
-			get { return m->Size; }
-			set { m->Size = value; }
-		}
+		public UInt32 StageFlags;
+		public UInt32 Offset;
+		public UInt32 Size;
 	}
 
 	unsafe public class PipelineLayoutCreateInfo
@@ -3022,10 +2202,9 @@ namespace Vulkan
 			set { m->PushConstantRangeCount = value; }
 		}
 
-		PushConstantRange lPushConstantRanges;
 		public PushConstantRange PushConstantRanges {
-			get { return lPushConstantRanges; }
-			set { lPushConstantRanges = value; m->PushConstantRanges = (IntPtr)value.m; }
+			get { return m->PushConstantRanges; }
+			set { m->PushConstantRanges = value; }
 		}
 	}
 
@@ -3255,10 +2434,9 @@ namespace Vulkan
 			set { lFramebuffer = value; m->Framebuffer = (UInt64)value.m; }
 		}
 
-		Rect2D lRenderArea;
 		public Rect2D RenderArea {
-			get { return lRenderArea; }
-			set { lRenderArea = value; m->RenderArea = (IntPtr)value.m; }
+			get { return m->RenderArea; }
+			set { m->RenderArea = value; }
 		}
 
 		public UInt32 ClearValueCount {
@@ -3266,132 +2444,42 @@ namespace Vulkan
 			set { m->ClearValueCount = value; }
 		}
 
-		ClearValue lClearValues;
 		public ClearValue ClearValues {
-			get { return lClearValues; }
-			set { lClearValues = value; m->ClearValues = (IntPtr)value.m; }
+			get { return m->ClearValues; }
+			set { m->ClearValues = value; }
 		}
 	}
 
-	unsafe public class ClearDepthStencilValue
+	unsafe public struct ClearDepthStencilValue
 	{
-		internal Interop.ClearDepthStencilValue* m;
-
-		public ClearDepthStencilValue ()
-		{
-			m = (Interop.ClearDepthStencilValue*) Interop.Structure.Allocate (typeof (Interop.ClearDepthStencilValue));
-		}
-
-		public float Depth {
-			get { return m->Depth; }
-			set { m->Depth = value; }
-		}
-
-		public UInt32 Stencil {
-			get { return m->Stencil; }
-			set { m->Stencil = value; }
-		}
+		public float Depth;
+		public UInt32 Stencil;
 	}
 
-	unsafe public class ClearAttachment
+	unsafe public struct ClearAttachment
 	{
-		internal Interop.ClearAttachment* m;
-
-		public ClearAttachment ()
-		{
-			m = (Interop.ClearAttachment*) Interop.Structure.Allocate (typeof (Interop.ClearAttachment));
-		}
-
-		public UInt32 AspectMask {
-			get { return m->AspectMask; }
-			set { m->AspectMask = value; }
-		}
-
-		public UInt32 ColorAttachment {
-			get { return m->ColorAttachment; }
-			set { m->ColorAttachment = value; }
-		}
-
-		ClearValue lClearValue;
-		public ClearValue ClearValue {
-			get { return lClearValue; }
-			set { lClearValue = value; m->ClearValue = (IntPtr)value.m; }
-		}
+		public UInt32 AspectMask;
+		public UInt32 ColorAttachment;
+		public ClearValue ClearValue;
 	}
 
-	unsafe public class AttachmentDescription
+	unsafe public struct AttachmentDescription
 	{
-		internal Interop.AttachmentDescription* m;
-
-		public AttachmentDescription ()
-		{
-			m = (Interop.AttachmentDescription*) Interop.Structure.Allocate (typeof (Interop.AttachmentDescription));
-		}
-
-		public UInt32 Flags {
-			get { return m->Flags; }
-			set { m->Flags = value; }
-		}
-
-		public Format Format {
-			get { return m->Format; }
-			set { m->Format = value; }
-		}
-
-		public UInt32 Samples {
-			get { return m->Samples; }
-			set { m->Samples = value; }
-		}
-
-		public AttachmentLoadOp LoadOp {
-			get { return m->LoadOp; }
-			set { m->LoadOp = value; }
-		}
-
-		public AttachmentStoreOp StoreOp {
-			get { return m->StoreOp; }
-			set { m->StoreOp = value; }
-		}
-
-		public AttachmentLoadOp StencilLoadOp {
-			get { return m->StencilLoadOp; }
-			set { m->StencilLoadOp = value; }
-		}
-
-		public AttachmentStoreOp StencilStoreOp {
-			get { return m->StencilStoreOp; }
-			set { m->StencilStoreOp = value; }
-		}
-
-		public ImageLayout InitialLayout {
-			get { return m->InitialLayout; }
-			set { m->InitialLayout = value; }
-		}
-
-		public ImageLayout FinalLayout {
-			get { return m->FinalLayout; }
-			set { m->FinalLayout = value; }
-		}
+		public UInt32 Flags;
+		public Format Format;
+		public UInt32 Samples;
+		public AttachmentLoadOp LoadOp;
+		public AttachmentStoreOp StoreOp;
+		public AttachmentLoadOp StencilLoadOp;
+		public AttachmentStoreOp StencilStoreOp;
+		public ImageLayout InitialLayout;
+		public ImageLayout FinalLayout;
 	}
 
-	unsafe public class AttachmentReference
+	unsafe public struct AttachmentReference
 	{
-		internal Interop.AttachmentReference* m;
-
-		public AttachmentReference ()
-		{
-			m = (Interop.AttachmentReference*) Interop.Structure.Allocate (typeof (Interop.AttachmentReference));
-		}
-
-		public UInt32 Attachment {
-			get { return m->Attachment; }
-			set { m->Attachment = value; }
-		}
-
-		public ImageLayout Layout {
-			get { return m->Layout; }
-			set { m->Layout = value; }
-		}
+		public UInt32 Attachment;
+		public ImageLayout Layout;
 	}
 
 	unsafe public class SubpassDescription
@@ -3418,10 +2506,9 @@ namespace Vulkan
 			set { m->InputAttachmentCount = value; }
 		}
 
-		AttachmentReference lInputAttachments;
 		public AttachmentReference InputAttachments {
-			get { return lInputAttachments; }
-			set { lInputAttachments = value; m->InputAttachments = (IntPtr)value.m; }
+			get { return m->InputAttachments; }
+			set { m->InputAttachments = value; }
 		}
 
 		public UInt32 ColorAttachmentCount {
@@ -3429,22 +2516,19 @@ namespace Vulkan
 			set { m->ColorAttachmentCount = value; }
 		}
 
-		AttachmentReference lColorAttachments;
 		public AttachmentReference ColorAttachments {
-			get { return lColorAttachments; }
-			set { lColorAttachments = value; m->ColorAttachments = (IntPtr)value.m; }
+			get { return m->ColorAttachments; }
+			set { m->ColorAttachments = value; }
 		}
 
-		AttachmentReference lResolveAttachments;
 		public AttachmentReference ResolveAttachments {
-			get { return lResolveAttachments; }
-			set { lResolveAttachments = value; m->ResolveAttachments = (IntPtr)value.m; }
+			get { return m->ResolveAttachments; }
+			set { m->ResolveAttachments = value; }
 		}
 
-		AttachmentReference lDepthStencilAttachment;
 		public AttachmentReference DepthStencilAttachment {
-			get { return lDepthStencilAttachment; }
-			set { lDepthStencilAttachment = value; m->DepthStencilAttachment = (IntPtr)value.m; }
+			get { return m->DepthStencilAttachment; }
+			set { m->DepthStencilAttachment = value; }
 		}
 
 		public UInt32 PreserveAttachmentCount {
@@ -3477,49 +2561,15 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class SubpassDependency
+	unsafe public struct SubpassDependency
 	{
-		internal Interop.SubpassDependency* m;
-
-		public SubpassDependency ()
-		{
-			m = (Interop.SubpassDependency*) Interop.Structure.Allocate (typeof (Interop.SubpassDependency));
-		}
-
-		public UInt32 SrcSubpass {
-			get { return m->SrcSubpass; }
-			set { m->SrcSubpass = value; }
-		}
-
-		public UInt32 DstSubpass {
-			get { return m->DstSubpass; }
-			set { m->DstSubpass = value; }
-		}
-
-		public UInt32 SrcStageMask {
-			get { return m->SrcStageMask; }
-			set { m->SrcStageMask = value; }
-		}
-
-		public UInt32 DstStageMask {
-			get { return m->DstStageMask; }
-			set { m->DstStageMask = value; }
-		}
-
-		public UInt32 SrcAccessMask {
-			get { return m->SrcAccessMask; }
-			set { m->SrcAccessMask = value; }
-		}
-
-		public UInt32 DstAccessMask {
-			get { return m->DstAccessMask; }
-			set { m->DstAccessMask = value; }
-		}
-
-		public UInt32 DependencyFlags {
-			get { return m->DependencyFlags; }
-			set { m->DependencyFlags = value; }
-		}
+		public UInt32 SrcSubpass;
+		public UInt32 DstSubpass;
+		public UInt32 SrcStageMask;
+		public UInt32 DstStageMask;
+		public UInt32 SrcAccessMask;
+		public UInt32 DstAccessMask;
+		public UInt32 DependencyFlags;
 	}
 
 	unsafe public class RenderPassCreateInfo
@@ -3542,10 +2592,9 @@ namespace Vulkan
 			set { m->AttachmentCount = value; }
 		}
 
-		AttachmentDescription lAttachments;
 		public AttachmentDescription Attachments {
-			get { return lAttachments; }
-			set { lAttachments = value; m->Attachments = (IntPtr)value.m; }
+			get { return m->Attachments; }
+			set { m->Attachments = value; }
 		}
 
 		public UInt32 SubpassCount {
@@ -3564,10 +2613,9 @@ namespace Vulkan
 			set { m->DependencyCount = value; }
 		}
 
-		SubpassDependency lDependencies;
 		public SubpassDependency Dependencies {
-			get { return lDependencies; }
-			set { lDependencies = value; m->Dependencies = (IntPtr)value.m; }
+			get { return m->Dependencies; }
+			set { m->Dependencies = value; }
 		}
 	}
 
@@ -3603,324 +2651,72 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class PhysicalDeviceFeatures
+	unsafe public struct PhysicalDeviceFeatures
 	{
-		internal Interop.PhysicalDeviceFeatures* m;
-
-		public PhysicalDeviceFeatures ()
-		{
-			m = (Interop.PhysicalDeviceFeatures*) Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceFeatures));
-		}
-
-		public bool RobustBufferAccess {
-			get { return m->RobustBufferAccess; }
-			set { m->RobustBufferAccess = value; }
-		}
-
-		public bool FullDrawIndexUint32 {
-			get { return m->FullDrawIndexUint32; }
-			set { m->FullDrawIndexUint32 = value; }
-		}
-
-		public bool ImageCubeArray {
-			get { return m->ImageCubeArray; }
-			set { m->ImageCubeArray = value; }
-		}
-
-		public bool IndependentBlend {
-			get { return m->IndependentBlend; }
-			set { m->IndependentBlend = value; }
-		}
-
-		public bool GeometryShader {
-			get { return m->GeometryShader; }
-			set { m->GeometryShader = value; }
-		}
-
-		public bool TessellationShader {
-			get { return m->TessellationShader; }
-			set { m->TessellationShader = value; }
-		}
-
-		public bool SampleRateShading {
-			get { return m->SampleRateShading; }
-			set { m->SampleRateShading = value; }
-		}
-
-		public bool DualSrcBlend {
-			get { return m->DualSrcBlend; }
-			set { m->DualSrcBlend = value; }
-		}
-
-		public bool LogicOp {
-			get { return m->LogicOp; }
-			set { m->LogicOp = value; }
-		}
-
-		public bool MultiDrawIndirect {
-			get { return m->MultiDrawIndirect; }
-			set { m->MultiDrawIndirect = value; }
-		}
-
-		public bool DrawIndirectFirstInstance {
-			get { return m->DrawIndirectFirstInstance; }
-			set { m->DrawIndirectFirstInstance = value; }
-		}
-
-		public bool DepthClamp {
-			get { return m->DepthClamp; }
-			set { m->DepthClamp = value; }
-		}
-
-		public bool DepthBiasClamp {
-			get { return m->DepthBiasClamp; }
-			set { m->DepthBiasClamp = value; }
-		}
-
-		public bool FillModeNonSolid {
-			get { return m->FillModeNonSolid; }
-			set { m->FillModeNonSolid = value; }
-		}
-
-		public bool DepthBounds {
-			get { return m->DepthBounds; }
-			set { m->DepthBounds = value; }
-		}
-
-		public bool WideLines {
-			get { return m->WideLines; }
-			set { m->WideLines = value; }
-		}
-
-		public bool LargePoints {
-			get { return m->LargePoints; }
-			set { m->LargePoints = value; }
-		}
-
-		public bool AlphaToOne {
-			get { return m->AlphaToOne; }
-			set { m->AlphaToOne = value; }
-		}
-
-		public bool MultiViewport {
-			get { return m->MultiViewport; }
-			set { m->MultiViewport = value; }
-		}
-
-		public bool SamplerAnisotropy {
-			get { return m->SamplerAnisotropy; }
-			set { m->SamplerAnisotropy = value; }
-		}
-
-		public bool TextureCompressionETC2 {
-			get { return m->TextureCompressionETC2; }
-			set { m->TextureCompressionETC2 = value; }
-		}
-
-		public bool TextureCompressionASTCLdr {
-			get { return m->TextureCompressionASTCLdr; }
-			set { m->TextureCompressionASTCLdr = value; }
-		}
-
-		public bool TextureCompressionBC {
-			get { return m->TextureCompressionBC; }
-			set { m->TextureCompressionBC = value; }
-		}
-
-		public bool OcclusionQueryPrecise {
-			get { return m->OcclusionQueryPrecise; }
-			set { m->OcclusionQueryPrecise = value; }
-		}
-
-		public bool PipelineStatisticsQuery {
-			get { return m->PipelineStatisticsQuery; }
-			set { m->PipelineStatisticsQuery = value; }
-		}
-
-		public bool VertexPipelineStoresAndAtomics {
-			get { return m->VertexPipelineStoresAndAtomics; }
-			set { m->VertexPipelineStoresAndAtomics = value; }
-		}
-
-		public bool FragmentStoresAndAtomics {
-			get { return m->FragmentStoresAndAtomics; }
-			set { m->FragmentStoresAndAtomics = value; }
-		}
-
-		public bool ShaderTessellationAndGeometryPointSize {
-			get { return m->ShaderTessellationAndGeometryPointSize; }
-			set { m->ShaderTessellationAndGeometryPointSize = value; }
-		}
-
-		public bool ShaderImageGatherExtended {
-			get { return m->ShaderImageGatherExtended; }
-			set { m->ShaderImageGatherExtended = value; }
-		}
-
-		public bool ShaderStorageImageExtendedFormats {
-			get { return m->ShaderStorageImageExtendedFormats; }
-			set { m->ShaderStorageImageExtendedFormats = value; }
-		}
-
-		public bool ShaderStorageImageMultisample {
-			get { return m->ShaderStorageImageMultisample; }
-			set { m->ShaderStorageImageMultisample = value; }
-		}
-
-		public bool ShaderStorageImageReadWithoutFormat {
-			get { return m->ShaderStorageImageReadWithoutFormat; }
-			set { m->ShaderStorageImageReadWithoutFormat = value; }
-		}
-
-		public bool ShaderStorageImageWriteWithoutFormat {
-			get { return m->ShaderStorageImageWriteWithoutFormat; }
-			set { m->ShaderStorageImageWriteWithoutFormat = value; }
-		}
-
-		public bool ShaderUniformBufferArrayDynamicIndexing {
-			get { return m->ShaderUniformBufferArrayDynamicIndexing; }
-			set { m->ShaderUniformBufferArrayDynamicIndexing = value; }
-		}
-
-		public bool ShaderSampledImageArrayDynamicIndexing {
-			get { return m->ShaderSampledImageArrayDynamicIndexing; }
-			set { m->ShaderSampledImageArrayDynamicIndexing = value; }
-		}
-
-		public bool ShaderStorageBufferArrayDynamicIndexing {
-			get { return m->ShaderStorageBufferArrayDynamicIndexing; }
-			set { m->ShaderStorageBufferArrayDynamicIndexing = value; }
-		}
-
-		public bool ShaderStorageImageArrayDynamicIndexing {
-			get { return m->ShaderStorageImageArrayDynamicIndexing; }
-			set { m->ShaderStorageImageArrayDynamicIndexing = value; }
-		}
-
-		public bool ShaderClipDistance {
-			get { return m->ShaderClipDistance; }
-			set { m->ShaderClipDistance = value; }
-		}
-
-		public bool ShaderCullDistance {
-			get { return m->ShaderCullDistance; }
-			set { m->ShaderCullDistance = value; }
-		}
-
-		public bool ShaderFloat64 {
-			get { return m->ShaderFloat64; }
-			set { m->ShaderFloat64 = value; }
-		}
-
-		public bool ShaderInt64 {
-			get { return m->ShaderInt64; }
-			set { m->ShaderInt64 = value; }
-		}
-
-		public bool ShaderInt16 {
-			get { return m->ShaderInt16; }
-			set { m->ShaderInt16 = value; }
-		}
-
-		public bool ShaderResourceResidency {
-			get { return m->ShaderResourceResidency; }
-			set { m->ShaderResourceResidency = value; }
-		}
-
-		public bool ShaderResourceMinLod {
-			get { return m->ShaderResourceMinLod; }
-			set { m->ShaderResourceMinLod = value; }
-		}
-
-		public bool SparseBinding {
-			get { return m->SparseBinding; }
-			set { m->SparseBinding = value; }
-		}
-
-		public bool SparseResidencyBuffer {
-			get { return m->SparseResidencyBuffer; }
-			set { m->SparseResidencyBuffer = value; }
-		}
-
-		public bool SparseResidencyImage2D {
-			get { return m->SparseResidencyImage2D; }
-			set { m->SparseResidencyImage2D = value; }
-		}
-
-		public bool SparseResidencyImage3D {
-			get { return m->SparseResidencyImage3D; }
-			set { m->SparseResidencyImage3D = value; }
-		}
-
-		public bool SparseResidency2Samples {
-			get { return m->SparseResidency2Samples; }
-			set { m->SparseResidency2Samples = value; }
-		}
-
-		public bool SparseResidency4Samples {
-			get { return m->SparseResidency4Samples; }
-			set { m->SparseResidency4Samples = value; }
-		}
-
-		public bool SparseResidency8Samples {
-			get { return m->SparseResidency8Samples; }
-			set { m->SparseResidency8Samples = value; }
-		}
-
-		public bool SparseResidency16Samples {
-			get { return m->SparseResidency16Samples; }
-			set { m->SparseResidency16Samples = value; }
-		}
-
-		public bool SparseResidencyAliased {
-			get { return m->SparseResidencyAliased; }
-			set { m->SparseResidencyAliased = value; }
-		}
-
-		public bool VariableMultisampleRate {
-			get { return m->VariableMultisampleRate; }
-			set { m->VariableMultisampleRate = value; }
-		}
-
-		public bool InheritedQueries {
-			get { return m->InheritedQueries; }
-			set { m->InheritedQueries = value; }
-		}
+		public bool RobustBufferAccess;
+		public bool FullDrawIndexUint32;
+		public bool ImageCubeArray;
+		public bool IndependentBlend;
+		public bool GeometryShader;
+		public bool TessellationShader;
+		public bool SampleRateShading;
+		public bool DualSrcBlend;
+		public bool LogicOp;
+		public bool MultiDrawIndirect;
+		public bool DrawIndirectFirstInstance;
+		public bool DepthClamp;
+		public bool DepthBiasClamp;
+		public bool FillModeNonSolid;
+		public bool DepthBounds;
+		public bool WideLines;
+		public bool LargePoints;
+		public bool AlphaToOne;
+		public bool MultiViewport;
+		public bool SamplerAnisotropy;
+		public bool TextureCompressionETC2;
+		public bool TextureCompressionASTCLdr;
+		public bool TextureCompressionBC;
+		public bool OcclusionQueryPrecise;
+		public bool PipelineStatisticsQuery;
+		public bool VertexPipelineStoresAndAtomics;
+		public bool FragmentStoresAndAtomics;
+		public bool ShaderTessellationAndGeometryPointSize;
+		public bool ShaderImageGatherExtended;
+		public bool ShaderStorageImageExtendedFormats;
+		public bool ShaderStorageImageMultisample;
+		public bool ShaderStorageImageReadWithoutFormat;
+		public bool ShaderStorageImageWriteWithoutFormat;
+		public bool ShaderUniformBufferArrayDynamicIndexing;
+		public bool ShaderSampledImageArrayDynamicIndexing;
+		public bool ShaderStorageBufferArrayDynamicIndexing;
+		public bool ShaderStorageImageArrayDynamicIndexing;
+		public bool ShaderClipDistance;
+		public bool ShaderCullDistance;
+		public bool ShaderFloat64;
+		public bool ShaderInt64;
+		public bool ShaderInt16;
+		public bool ShaderResourceResidency;
+		public bool ShaderResourceMinLod;
+		public bool SparseBinding;
+		public bool SparseResidencyBuffer;
+		public bool SparseResidencyImage2D;
+		public bool SparseResidencyImage3D;
+		public bool SparseResidency2Samples;
+		public bool SparseResidency4Samples;
+		public bool SparseResidency8Samples;
+		public bool SparseResidency16Samples;
+		public bool SparseResidencyAliased;
+		public bool VariableMultisampleRate;
+		public bool InheritedQueries;
 	}
 
-	unsafe public class PhysicalDeviceSparseProperties
+	unsafe public struct PhysicalDeviceSparseProperties
 	{
-		internal Interop.PhysicalDeviceSparseProperties* m;
-
-		public PhysicalDeviceSparseProperties ()
-		{
-			m = (Interop.PhysicalDeviceSparseProperties*) Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceSparseProperties));
-		}
-
-		public bool ResidencyStandard2DBlockShape {
-			get { return m->ResidencyStandard2DBlockShape; }
-			set { m->ResidencyStandard2DBlockShape = value; }
-		}
-
-		public bool ResidencyStandard2DMultisampleBlockShape {
-			get { return m->ResidencyStandard2DMultisampleBlockShape; }
-			set { m->ResidencyStandard2DMultisampleBlockShape = value; }
-		}
-
-		public bool ResidencyStandard3DBlockShape {
-			get { return m->ResidencyStandard3DBlockShape; }
-			set { m->ResidencyStandard3DBlockShape = value; }
-		}
-
-		public bool ResidencyAlignedMipSize {
-			get { return m->ResidencyAlignedMipSize; }
-			set { m->ResidencyAlignedMipSize = value; }
-		}
-
-		public bool ResidencyNonResidentStrict {
-			get { return m->ResidencyNonResidentStrict; }
-			set { m->ResidencyNonResidentStrict = value; }
-		}
+		public bool ResidencyStandard2DBlockShape;
+		public bool ResidencyStandard2DMultisampleBlockShape;
+		public bool ResidencyStandard3DBlockShape;
+		public bool ResidencyAlignedMipSize;
+		public bool ResidencyNonResidentStrict;
 	}
 
 	unsafe public class PhysicalDeviceLimits
@@ -4558,94 +3354,28 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class DrawIndirectCommand
+	unsafe public struct DrawIndirectCommand
 	{
-		internal Interop.DrawIndirectCommand* m;
-
-		public DrawIndirectCommand ()
-		{
-			m = (Interop.DrawIndirectCommand*) Interop.Structure.Allocate (typeof (Interop.DrawIndirectCommand));
-		}
-
-		public UInt32 VertexCount {
-			get { return m->VertexCount; }
-			set { m->VertexCount = value; }
-		}
-
-		public UInt32 InstanceCount {
-			get { return m->InstanceCount; }
-			set { m->InstanceCount = value; }
-		}
-
-		public UInt32 FirstVertex {
-			get { return m->FirstVertex; }
-			set { m->FirstVertex = value; }
-		}
-
-		public UInt32 FirstInstance {
-			get { return m->FirstInstance; }
-			set { m->FirstInstance = value; }
-		}
+		public UInt32 VertexCount;
+		public UInt32 InstanceCount;
+		public UInt32 FirstVertex;
+		public UInt32 FirstInstance;
 	}
 
-	unsafe public class DrawIndexedIndirectCommand
+	unsafe public struct DrawIndexedIndirectCommand
 	{
-		internal Interop.DrawIndexedIndirectCommand* m;
-
-		public DrawIndexedIndirectCommand ()
-		{
-			m = (Interop.DrawIndexedIndirectCommand*) Interop.Structure.Allocate (typeof (Interop.DrawIndexedIndirectCommand));
-		}
-
-		public UInt32 IndexCount {
-			get { return m->IndexCount; }
-			set { m->IndexCount = value; }
-		}
-
-		public UInt32 InstanceCount {
-			get { return m->InstanceCount; }
-			set { m->InstanceCount = value; }
-		}
-
-		public UInt32 FirstIndex {
-			get { return m->FirstIndex; }
-			set { m->FirstIndex = value; }
-		}
-
-		public Int32 VertexOffset {
-			get { return m->VertexOffset; }
-			set { m->VertexOffset = value; }
-		}
-
-		public UInt32 FirstInstance {
-			get { return m->FirstInstance; }
-			set { m->FirstInstance = value; }
-		}
+		public UInt32 IndexCount;
+		public UInt32 InstanceCount;
+		public UInt32 FirstIndex;
+		public Int32 VertexOffset;
+		public UInt32 FirstInstance;
 	}
 
-	unsafe public class DispatchIndirectCommand
+	unsafe public struct DispatchIndirectCommand
 	{
-		internal Interop.DispatchIndirectCommand* m;
-
-		public DispatchIndirectCommand ()
-		{
-			m = (Interop.DispatchIndirectCommand*) Interop.Structure.Allocate (typeof (Interop.DispatchIndirectCommand));
-		}
-
-		public UInt32 X {
-			get { return m->X; }
-			set { m->X = value; }
-		}
-
-		public UInt32 Y {
-			get { return m->Y; }
-			set { m->Y = value; }
-		}
-
-		public UInt32 Z {
-			get { return m->Z; }
-			set { m->Z = value; }
-		}
+		public UInt32 X;
+		public UInt32 Y;
+		public UInt32 Z;
 	}
 
 	unsafe public class SubmitInfo
@@ -4717,16 +3447,14 @@ namespace Vulkan
 			set { m->DisplayName = Marshal.StringToHGlobalAnsi (value); }
 		}
 
-		Extent2D lPhysicalDimensions;
 		public Extent2D PhysicalDimensions {
-			get { return lPhysicalDimensions; }
-			set { lPhysicalDimensions = value; m->PhysicalDimensions = (IntPtr)value.m; }
+			get { return m->PhysicalDimensions; }
+			set { m->PhysicalDimensions = value; }
 		}
 
-		Extent2D lPhysicalResolution;
 		public Extent2D PhysicalResolution {
-			get { return lPhysicalResolution; }
-			set { lPhysicalResolution = value; m->PhysicalResolution = (IntPtr)value.m; }
+			get { return m->PhysicalResolution; }
+			set { m->PhysicalResolution = value; }
 		}
 
 		public SurfaceTransformFlagsKhr SupportedTransforms {
@@ -4745,68 +3473,22 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class DisplayPlanePropertiesKhr
+	unsafe public struct DisplayPlanePropertiesKhr
 	{
-		internal Interop.DisplayPlanePropertiesKhr* m;
-
-		public DisplayPlanePropertiesKhr ()
-		{
-			m = (Interop.DisplayPlanePropertiesKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayPlanePropertiesKhr));
-		}
-
-		DisplayKhr lCurrentDisplay;
-		public DisplayKhr CurrentDisplay {
-			get { return lCurrentDisplay; }
-			set { lCurrentDisplay = value; m->CurrentDisplay = (UInt64)value.m; }
-		}
-
-		public UInt32 CurrentStackIndex {
-			get { return m->CurrentStackIndex; }
-			set { m->CurrentStackIndex = value; }
-		}
+		public UInt64 CurrentDisplay;
+		public UInt32 CurrentStackIndex;
 	}
 
-	unsafe public class DisplayModeParametersKhr
+	unsafe public struct DisplayModeParametersKhr
 	{
-		internal Interop.DisplayModeParametersKhr* m;
-
-		public DisplayModeParametersKhr ()
-		{
-			m = (Interop.DisplayModeParametersKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayModeParametersKhr));
-		}
-
-		Extent2D lVisibleRegion;
-		public Extent2D VisibleRegion {
-			get { return lVisibleRegion; }
-			set { lVisibleRegion = value; m->VisibleRegion = (IntPtr)value.m; }
-		}
-
-		public UInt32 RefreshRate {
-			get { return m->RefreshRate; }
-			set { m->RefreshRate = value; }
-		}
+		public Extent2D VisibleRegion;
+		public UInt32 RefreshRate;
 	}
 
-	unsafe public class DisplayModePropertiesKhr
+	unsafe public struct DisplayModePropertiesKhr
 	{
-		internal Interop.DisplayModePropertiesKhr* m;
-
-		public DisplayModePropertiesKhr ()
-		{
-			m = (Interop.DisplayModePropertiesKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayModePropertiesKhr));
-		}
-
-		DisplayModeKhr lDisplayMode;
-		public DisplayModeKhr DisplayMode {
-			get { return lDisplayMode; }
-			set { lDisplayMode = value; m->DisplayMode = (UInt64)value.m; }
-		}
-
-		DisplayModeParametersKhr lParameters;
-		public DisplayModeParametersKhr Parameters {
-			get { return lParameters; }
-			set { lParameters = value; m->Parameters = (IntPtr)value.m; }
-		}
+		public UInt64 DisplayMode;
+		public DisplayModeParametersKhr Parameters;
 	}
 
 	unsafe public class DisplayModeCreateInfoKhr
@@ -4824,74 +3506,23 @@ namespace Vulkan
 			set { m->Flags = value; }
 		}
 
-		DisplayModeParametersKhr lParameters;
 		public DisplayModeParametersKhr Parameters {
-			get { return lParameters; }
-			set { lParameters = value; m->Parameters = (IntPtr)value.m; }
+			get { return m->Parameters; }
+			set { m->Parameters = value; }
 		}
 	}
 
-	unsafe public class DisplayPlaneCapabilitiesKhr
+	unsafe public struct DisplayPlaneCapabilitiesKhr
 	{
-		internal Interop.DisplayPlaneCapabilitiesKhr* m;
-
-		public DisplayPlaneCapabilitiesKhr ()
-		{
-			m = (Interop.DisplayPlaneCapabilitiesKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayPlaneCapabilitiesKhr));
-		}
-
-		public DisplayPlaneAlphaFlagsKhr SupportedAlpha {
-			get { return m->SupportedAlpha; }
-			set { m->SupportedAlpha = value; }
-		}
-
-		Offset2D lMinSrcPosition;
-		public Offset2D MinSrcPosition {
-			get { return lMinSrcPosition; }
-			set { lMinSrcPosition = value; m->MinSrcPosition = (IntPtr)value.m; }
-		}
-
-		Offset2D lMaxSrcPosition;
-		public Offset2D MaxSrcPosition {
-			get { return lMaxSrcPosition; }
-			set { lMaxSrcPosition = value; m->MaxSrcPosition = (IntPtr)value.m; }
-		}
-
-		Extent2D lMinSrcExtent;
-		public Extent2D MinSrcExtent {
-			get { return lMinSrcExtent; }
-			set { lMinSrcExtent = value; m->MinSrcExtent = (IntPtr)value.m; }
-		}
-
-		Extent2D lMaxSrcExtent;
-		public Extent2D MaxSrcExtent {
-			get { return lMaxSrcExtent; }
-			set { lMaxSrcExtent = value; m->MaxSrcExtent = (IntPtr)value.m; }
-		}
-
-		Offset2D lMinDstPosition;
-		public Offset2D MinDstPosition {
-			get { return lMinDstPosition; }
-			set { lMinDstPosition = value; m->MinDstPosition = (IntPtr)value.m; }
-		}
-
-		Offset2D lMaxDstPosition;
-		public Offset2D MaxDstPosition {
-			get { return lMaxDstPosition; }
-			set { lMaxDstPosition = value; m->MaxDstPosition = (IntPtr)value.m; }
-		}
-
-		Extent2D lMinDstExtent;
-		public Extent2D MinDstExtent {
-			get { return lMinDstExtent; }
-			set { lMinDstExtent = value; m->MinDstExtent = (IntPtr)value.m; }
-		}
-
-		Extent2D lMaxDstExtent;
-		public Extent2D MaxDstExtent {
-			get { return lMaxDstExtent; }
-			set { lMaxDstExtent = value; m->MaxDstExtent = (IntPtr)value.m; }
-		}
+		public DisplayPlaneAlphaFlagsKhr SupportedAlpha;
+		public Offset2D MinSrcPosition;
+		public Offset2D MaxSrcPosition;
+		public Extent2D MinSrcExtent;
+		public Extent2D MaxSrcExtent;
+		public Offset2D MinDstPosition;
+		public Offset2D MaxDstPosition;
+		public Extent2D MinDstExtent;
+		public Extent2D MaxDstExtent;
 	}
 
 	unsafe public class DisplaySurfaceCreateInfoKhr
@@ -4940,10 +3571,9 @@ namespace Vulkan
 			set { m->AlphaMode = value; }
 		}
 
-		Extent2D lImageExtent;
 		public Extent2D ImageExtent {
-			get { return lImageExtent; }
-			set { lImageExtent = value; m->ImageExtent = (IntPtr)value.m; }
+			get { return m->ImageExtent; }
+			set { m->ImageExtent = value; }
 		}
 	}
 
@@ -4957,16 +3587,14 @@ namespace Vulkan
 			m->SType = StructureType.DisplayPresentInfoKhr;
 		}
 
-		Rect2D lSrcRect;
 		public Rect2D SrcRect {
-			get { return lSrcRect; }
-			set { lSrcRect = value; m->SrcRect = (IntPtr)value.m; }
+			get { return m->SrcRect; }
+			set { m->SrcRect = value; }
 		}
 
-		Rect2D lDstRect;
 		public Rect2D DstRect {
-			get { return lDstRect; }
-			set { lDstRect = value; m->DstRect = (IntPtr)value.m; }
+			get { return m->DstRect; }
+			set { m->DstRect = value; }
 		}
 
 		public bool Persistent {
@@ -4975,87 +3603,24 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class SurfaceCapabilitiesKhr
+	unsafe public struct SurfaceCapabilitiesKhr
 	{
-		internal Interop.SurfaceCapabilitiesKhr* m;
-
-		public SurfaceCapabilitiesKhr ()
-		{
-			m = (Interop.SurfaceCapabilitiesKhr*) Interop.Structure.Allocate (typeof (Interop.SurfaceCapabilitiesKhr));
-		}
-
-		public UInt32 MinImageCount {
-			get { return m->MinImageCount; }
-			set { m->MinImageCount = value; }
-		}
-
-		public UInt32 MaxImageCount {
-			get { return m->MaxImageCount; }
-			set { m->MaxImageCount = value; }
-		}
-
-		Extent2D lCurrentExtent;
-		public Extent2D CurrentExtent {
-			get { return lCurrentExtent; }
-			set { lCurrentExtent = value; m->CurrentExtent = (IntPtr)value.m; }
-		}
-
-		Extent2D lMinImageExtent;
-		public Extent2D MinImageExtent {
-			get { return lMinImageExtent; }
-			set { lMinImageExtent = value; m->MinImageExtent = (IntPtr)value.m; }
-		}
-
-		Extent2D lMaxImageExtent;
-		public Extent2D MaxImageExtent {
-			get { return lMaxImageExtent; }
-			set { lMaxImageExtent = value; m->MaxImageExtent = (IntPtr)value.m; }
-		}
-
-		public UInt32 MaxImageArrayLayers {
-			get { return m->MaxImageArrayLayers; }
-			set { m->MaxImageArrayLayers = value; }
-		}
-
-		public SurfaceTransformFlagsKhr SupportedTransforms {
-			get { return m->SupportedTransforms; }
-			set { m->SupportedTransforms = value; }
-		}
-
-		public SurfaceTransformFlagsKhr CurrentTransform {
-			get { return m->CurrentTransform; }
-			set { m->CurrentTransform = value; }
-		}
-
-		public CompositeAlphaFlagsKhr SupportedCompositeAlpha {
-			get { return m->SupportedCompositeAlpha; }
-			set { m->SupportedCompositeAlpha = value; }
-		}
-
-		public UInt32 SupportedUsageFlags {
-			get { return m->SupportedUsageFlags; }
-			set { m->SupportedUsageFlags = value; }
-		}
+		public UInt32 MinImageCount;
+		public UInt32 MaxImageCount;
+		public Extent2D CurrentExtent;
+		public Extent2D MinImageExtent;
+		public Extent2D MaxImageExtent;
+		public UInt32 MaxImageArrayLayers;
+		public SurfaceTransformFlagsKhr SupportedTransforms;
+		public SurfaceTransformFlagsKhr CurrentTransform;
+		public CompositeAlphaFlagsKhr SupportedCompositeAlpha;
+		public UInt32 SupportedUsageFlags;
 	}
 
-	unsafe public class SurfaceFormatKhr
+	unsafe public struct SurfaceFormatKhr
 	{
-		internal Interop.SurfaceFormatKhr* m;
-
-		public SurfaceFormatKhr ()
-		{
-			m = (Interop.SurfaceFormatKhr*) Interop.Structure.Allocate (typeof (Interop.SurfaceFormatKhr));
-		}
-
-		public Format Format {
-			get { return m->Format; }
-			set { m->Format = value; }
-		}
-
-		public ColorSpaceKhr ColorSpace {
-			get { return m->ColorSpace; }
-			set { m->ColorSpace = value; }
-		}
+		public Format Format;
+		public ColorSpaceKhr ColorSpace;
 	}
 
 	unsafe public class SwapchainCreateInfoKhr
@@ -5094,10 +3659,9 @@ namespace Vulkan
 			set { m->ImageColorSpace = value; }
 		}
 
-		Extent2D lImageExtent;
 		public Extent2D ImageExtent {
-			get { return lImageExtent; }
-			set { lImageExtent = value; m->ImageExtent = (IntPtr)value.m; }
+			get { return m->ImageExtent; }
+			set { m->ImageExtent = value; }
 		}
 
 		public UInt32 ImageArrayLayers {

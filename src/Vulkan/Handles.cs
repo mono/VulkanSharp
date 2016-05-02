@@ -135,15 +135,13 @@ namespace Vulkan
 				UInt32 pQueueFamilyPropertyCount;
 				Interop.NativeMethods.vkGetPhysicalDeviceQueueFamilyProperties (this.m, &pQueueFamilyPropertyCount, null);
 
-				int size = Marshal.SizeOf (typeof (Interop.QueueFamilyProperties));
+				int size = Marshal.SizeOf (typeof (QueueFamilyProperties));
 				var ptrpQueueFamilyProperties = Marshal.AllocHGlobal ((int)(size * pQueueFamilyPropertyCount));
-				Interop.NativeMethods.vkGetPhysicalDeviceQueueFamilyProperties (this.m, &pQueueFamilyPropertyCount, (Interop.QueueFamilyProperties*)ptrpQueueFamilyProperties);
+				Interop.NativeMethods.vkGetPhysicalDeviceQueueFamilyProperties (this.m, &pQueueFamilyPropertyCount, (QueueFamilyProperties*)ptrpQueueFamilyProperties);
 
 				var list = new List<QueueFamilyProperties> ();
 				for (int i = 0; i < pQueueFamilyPropertyCount; i++) {
-					var item = new QueueFamilyProperties ();
-					item.m = &((Interop.QueueFamilyProperties*)ptrpQueueFamilyProperties)[i];
-					list.Add (item);
+					list.Add (((QueueFamilyProperties*)ptrpQueueFamilyProperties)[i]);
 				}
 
 				return list;
@@ -166,7 +164,7 @@ namespace Vulkan
 			PhysicalDeviceFeatures pFeatures;
 			unsafe {
 				pFeatures = new PhysicalDeviceFeatures ();
-				Interop.NativeMethods.vkGetPhysicalDeviceFeatures (this.m, pFeatures.m);
+				Interop.NativeMethods.vkGetPhysicalDeviceFeatures (this.m, &pFeatures);
 
 				return pFeatures;
 			}
@@ -177,7 +175,7 @@ namespace Vulkan
 			FormatProperties pFormatProperties;
 			unsafe {
 				pFormatProperties = new FormatProperties ();
-				Interop.NativeMethods.vkGetPhysicalDeviceFormatProperties (this.m, format, pFormatProperties.m);
+				Interop.NativeMethods.vkGetPhysicalDeviceFormatProperties (this.m, format, &pFormatProperties);
 
 				return pFormatProperties;
 			}
@@ -189,7 +187,7 @@ namespace Vulkan
 			ImageFormatProperties pImageFormatProperties;
 			unsafe {
 				pImageFormatProperties = new ImageFormatProperties ();
-				result = Interop.NativeMethods.vkGetPhysicalDeviceImageFormatProperties (this.m, format, type, tiling, usage, flags, pImageFormatProperties.m);
+				result = Interop.NativeMethods.vkGetPhysicalDeviceImageFormatProperties (this.m, format, type, tiling, usage, flags, &pImageFormatProperties);
 				if (result != Result.Success)
 					throw new ResultException (result);
 
@@ -272,15 +270,13 @@ namespace Vulkan
 				UInt32 pPropertyCount;
 				Interop.NativeMethods.vkGetPhysicalDeviceSparseImageFormatProperties (this.m, format, type, samples, usage, tiling, &pPropertyCount, null);
 
-				int size = Marshal.SizeOf (typeof (Interop.SparseImageFormatProperties));
+				int size = Marshal.SizeOf (typeof (SparseImageFormatProperties));
 				var ptrpProperties = Marshal.AllocHGlobal ((int)(size * pPropertyCount));
-				Interop.NativeMethods.vkGetPhysicalDeviceSparseImageFormatProperties (this.m, format, type, samples, usage, tiling, &pPropertyCount, (Interop.SparseImageFormatProperties*)ptrpProperties);
+				Interop.NativeMethods.vkGetPhysicalDeviceSparseImageFormatProperties (this.m, format, type, samples, usage, tiling, &pPropertyCount, (SparseImageFormatProperties*)ptrpProperties);
 
 				var list = new List<SparseImageFormatProperties> ();
 				for (int i = 0; i < pPropertyCount; i++) {
-					var item = new SparseImageFormatProperties ();
-					item.m = &((Interop.SparseImageFormatProperties*)ptrpProperties)[i];
-					list.Add (item);
+					list.Add (((SparseImageFormatProperties*)ptrpProperties)[i]);
 				}
 
 				return list;
@@ -322,17 +318,15 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 
-				int size = Marshal.SizeOf (typeof (Interop.DisplayPlanePropertiesKhr));
+				int size = Marshal.SizeOf (typeof (DisplayPlanePropertiesKhr));
 				var ptrpProperties = Marshal.AllocHGlobal ((int)(size * pPropertyCount));
-				result = Interop.NativeMethods.vkGetPhysicalDeviceDisplayPlanePropertiesKHR (this.m, &pPropertyCount, (Interop.DisplayPlanePropertiesKhr*)ptrpProperties);
+				result = Interop.NativeMethods.vkGetPhysicalDeviceDisplayPlanePropertiesKHR (this.m, &pPropertyCount, (DisplayPlanePropertiesKhr*)ptrpProperties);
 				if (result != Result.Success)
 					throw new ResultException (result);
 
 				var list = new List<DisplayPlanePropertiesKhr> ();
 				for (int i = 0; i < pPropertyCount; i++) {
-					var item = new DisplayPlanePropertiesKhr ();
-					item.m = &((Interop.DisplayPlanePropertiesKhr*)ptrpProperties)[i];
-					list.Add (item);
+					list.Add (((DisplayPlanePropertiesKhr*)ptrpProperties)[i]);
 				}
 
 				return list;
@@ -374,17 +368,15 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 
-				int size = Marshal.SizeOf (typeof (Interop.DisplayModePropertiesKhr));
+				int size = Marshal.SizeOf (typeof (DisplayModePropertiesKhr));
 				var ptrpProperties = Marshal.AllocHGlobal ((int)(size * pPropertyCount));
-				result = Interop.NativeMethods.vkGetDisplayModePropertiesKHR (this.m, display.m, &pPropertyCount, (Interop.DisplayModePropertiesKhr*)ptrpProperties);
+				result = Interop.NativeMethods.vkGetDisplayModePropertiesKHR (this.m, display.m, &pPropertyCount, (DisplayModePropertiesKhr*)ptrpProperties);
 				if (result != Result.Success)
 					throw new ResultException (result);
 
 				var list = new List<DisplayModePropertiesKhr> ();
 				for (int i = 0; i < pPropertyCount; i++) {
-					var item = new DisplayModePropertiesKhr ();
-					item.m = &((Interop.DisplayModePropertiesKhr*)ptrpProperties)[i];
-					list.Add (item);
+					list.Add (((DisplayModePropertiesKhr*)ptrpProperties)[i]);
 				}
 
 				return list;
@@ -414,7 +406,7 @@ namespace Vulkan
 			DisplayPlaneCapabilitiesKhr pCapabilities;
 			unsafe {
 				pCapabilities = new DisplayPlaneCapabilitiesKhr ();
-				result = Interop.NativeMethods.vkGetDisplayPlaneCapabilitiesKHR (this.m, mode.m, planeIndex, pCapabilities.m);
+				result = Interop.NativeMethods.vkGetDisplayPlaneCapabilitiesKHR (this.m, mode.m, planeIndex, &pCapabilities);
 				if (result != Result.Success)
 					throw new ResultException (result);
 
@@ -442,7 +434,7 @@ namespace Vulkan
 			SurfaceCapabilitiesKhr pSurfaceCapabilities;
 			unsafe {
 				pSurfaceCapabilities = new SurfaceCapabilitiesKhr ();
-				result = Interop.NativeMethods.vkGetPhysicalDeviceSurfaceCapabilitiesKHR (this.m, surface.m, pSurfaceCapabilities.m);
+				result = Interop.NativeMethods.vkGetPhysicalDeviceSurfaceCapabilitiesKHR (this.m, surface.m, &pSurfaceCapabilities);
 				if (result != Result.Success)
 					throw new ResultException (result);
 
@@ -459,17 +451,15 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 
-				int size = Marshal.SizeOf (typeof (Interop.SurfaceFormatKhr));
+				int size = Marshal.SizeOf (typeof (SurfaceFormatKhr));
 				var ptrpSurfaceFormats = Marshal.AllocHGlobal ((int)(size * pSurfaceFormatCount));
-				result = Interop.NativeMethods.vkGetPhysicalDeviceSurfaceFormatsKHR (this.m, surface.m, &pSurfaceFormatCount, (Interop.SurfaceFormatKhr*)ptrpSurfaceFormats);
+				result = Interop.NativeMethods.vkGetPhysicalDeviceSurfaceFormatsKHR (this.m, surface.m, &pSurfaceFormatCount, (SurfaceFormatKhr*)ptrpSurfaceFormats);
 				if (result != Result.Success)
 					throw new ResultException (result);
 
 				var list = new List<SurfaceFormatKhr> ();
 				for (int i = 0; i < pSurfaceFormatCount; i++) {
-					var item = new SurfaceFormatKhr ();
-					item.m = &((Interop.SurfaceFormatKhr*)ptrpSurfaceFormats)[i];
-					list.Add (item);
+					list.Add (((SurfaceFormatKhr*)ptrpSurfaceFormats)[i]);
 				}
 
 				return list;
@@ -633,7 +623,7 @@ namespace Vulkan
 			MemoryRequirements pMemoryRequirements;
 			unsafe {
 				pMemoryRequirements = new MemoryRequirements ();
-				Interop.NativeMethods.vkGetBufferMemoryRequirements (this.m, buffer.m, pMemoryRequirements.m);
+				Interop.NativeMethods.vkGetBufferMemoryRequirements (this.m, buffer.m, &pMemoryRequirements);
 
 				return pMemoryRequirements;
 			}
@@ -654,7 +644,7 @@ namespace Vulkan
 			MemoryRequirements pMemoryRequirements;
 			unsafe {
 				pMemoryRequirements = new MemoryRequirements ();
-				Interop.NativeMethods.vkGetImageMemoryRequirements (this.m, image.m, pMemoryRequirements.m);
+				Interop.NativeMethods.vkGetImageMemoryRequirements (this.m, image.m, &pMemoryRequirements);
 
 				return pMemoryRequirements;
 			}
@@ -676,15 +666,13 @@ namespace Vulkan
 				UInt32 pSparseMemoryRequirementCount;
 				Interop.NativeMethods.vkGetImageSparseMemoryRequirements (this.m, image.m, &pSparseMemoryRequirementCount, null);
 
-				int size = Marshal.SizeOf (typeof (Interop.SparseImageMemoryRequirements));
+				int size = Marshal.SizeOf (typeof (SparseImageMemoryRequirements));
 				var ptrpSparseMemoryRequirements = Marshal.AllocHGlobal ((int)(size * pSparseMemoryRequirementCount));
-				Interop.NativeMethods.vkGetImageSparseMemoryRequirements (this.m, image.m, &pSparseMemoryRequirementCount, (Interop.SparseImageMemoryRequirements*)ptrpSparseMemoryRequirements);
+				Interop.NativeMethods.vkGetImageSparseMemoryRequirements (this.m, image.m, &pSparseMemoryRequirementCount, (SparseImageMemoryRequirements*)ptrpSparseMemoryRequirements);
 
 				var list = new List<SparseImageMemoryRequirements> ();
 				for (int i = 0; i < pSparseMemoryRequirementCount; i++) {
-					var item = new SparseImageMemoryRequirements ();
-					item.m = &((Interop.SparseImageMemoryRequirements*)ptrpSparseMemoryRequirements)[i];
-					list.Add (item);
+					list.Add (((SparseImageMemoryRequirements*)ptrpSparseMemoryRequirements)[i]);
 				}
 
 				return list;
@@ -946,7 +934,7 @@ namespace Vulkan
 			SubresourceLayout pLayout;
 			unsafe {
 				pLayout = new SubresourceLayout ();
-				Interop.NativeMethods.vkGetImageSubresourceLayout (this.m, image.m, pSubresource.m, pLayout.m);
+				Interop.NativeMethods.vkGetImageSubresourceLayout (this.m, image.m, &pSubresource, &pLayout);
 
 				return pLayout;
 			}
@@ -1288,7 +1276,7 @@ namespace Vulkan
 			Extent2D pGranularity;
 			unsafe {
 				pGranularity = new Extent2D ();
-				Interop.NativeMethods.vkGetRenderAreaGranularity (this.m, renderPass.m, pGranularity.m);
+				Interop.NativeMethods.vkGetRenderAreaGranularity (this.m, renderPass.m, &pGranularity);
 
 				return pGranularity;
 			}
@@ -1527,14 +1515,14 @@ namespace Vulkan
 		public void CmdSetViewport (UInt32 firstViewport, UInt32 viewportCount, Viewport pViewports)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdSetViewport (this.m, firstViewport, viewportCount, pViewports.m);
+				Interop.NativeMethods.vkCmdSetViewport (this.m, firstViewport, viewportCount, &pViewports);
 			}
 		}
 
 		public void CmdSetScissor (UInt32 firstScissor, UInt32 scissorCount, Rect2D pScissors)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdSetScissor (this.m, firstScissor, scissorCount, pScissors.m);
+				Interop.NativeMethods.vkCmdSetScissor (this.m, firstScissor, scissorCount, &pScissors);
 			}
 		}
 
@@ -1661,14 +1649,14 @@ namespace Vulkan
 		public void CmdCopyBuffer (Buffer srcBuffer, Buffer dstBuffer, UInt32 regionCount, BufferCopy pRegions)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdCopyBuffer (this.m, srcBuffer.m, dstBuffer.m, regionCount, pRegions.m);
+				Interop.NativeMethods.vkCmdCopyBuffer (this.m, srcBuffer.m, dstBuffer.m, regionCount, &pRegions);
 			}
 		}
 
 		public void CmdCopyImage (Image srcImage, ImageLayout srcImageLayout, Image dstImage, ImageLayout dstImageLayout, UInt32 regionCount, ImageCopy pRegions)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdCopyImage (this.m, srcImage.m, srcImageLayout, dstImage.m, dstImageLayout, regionCount, pRegions.m);
+				Interop.NativeMethods.vkCmdCopyImage (this.m, srcImage.m, srcImageLayout, dstImage.m, dstImageLayout, regionCount, &pRegions);
 			}
 		}
 
@@ -1682,14 +1670,14 @@ namespace Vulkan
 		public void CmdCopyBufferToImage (Buffer srcBuffer, Image dstImage, ImageLayout dstImageLayout, UInt32 regionCount, BufferImageCopy pRegions)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdCopyBufferToImage (this.m, srcBuffer.m, dstImage.m, dstImageLayout, regionCount, pRegions.m);
+				Interop.NativeMethods.vkCmdCopyBufferToImage (this.m, srcBuffer.m, dstImage.m, dstImageLayout, regionCount, &pRegions);
 			}
 		}
 
 		public void CmdCopyImageToBuffer (Image srcImage, ImageLayout srcImageLayout, Buffer dstBuffer, UInt32 regionCount, BufferImageCopy pRegions)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdCopyImageToBuffer (this.m, srcImage.m, srcImageLayout, dstBuffer.m, regionCount, pRegions.m);
+				Interop.NativeMethods.vkCmdCopyImageToBuffer (this.m, srcImage.m, srcImageLayout, dstBuffer.m, regionCount, &pRegions);
 			}
 		}
 
@@ -1710,28 +1698,28 @@ namespace Vulkan
 		public void CmdClearColorImage (Image image, ImageLayout imageLayout, ClearColorValue pColor, UInt32 rangeCount, ImageSubresourceRange pRanges)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdClearColorImage (this.m, image.m, imageLayout, pColor.m, rangeCount, pRanges.m);
+				Interop.NativeMethods.vkCmdClearColorImage (this.m, image.m, imageLayout, pColor.m, rangeCount, &pRanges);
 			}
 		}
 
 		public void CmdClearDepthStencilImage (Image image, ImageLayout imageLayout, ClearDepthStencilValue pDepthStencil, UInt32 rangeCount, ImageSubresourceRange pRanges)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdClearDepthStencilImage (this.m, image.m, imageLayout, pDepthStencil.m, rangeCount, pRanges.m);
+				Interop.NativeMethods.vkCmdClearDepthStencilImage (this.m, image.m, imageLayout, &pDepthStencil, rangeCount, &pRanges);
 			}
 		}
 
 		public void CmdClearAttachments (UInt32 attachmentCount, ClearAttachment pAttachments, UInt32 rectCount, ClearRect pRects)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdClearAttachments (this.m, attachmentCount, pAttachments.m, rectCount, pRects.m);
+				Interop.NativeMethods.vkCmdClearAttachments (this.m, attachmentCount, &pAttachments, rectCount, &pRects);
 			}
 		}
 
 		public void CmdResolveImage (Image srcImage, ImageLayout srcImageLayout, Image dstImage, ImageLayout dstImageLayout, UInt32 regionCount, ImageResolve pRegions)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdResolveImage (this.m, srcImage.m, srcImageLayout, dstImage.m, dstImageLayout, regionCount, pRegions.m);
+				Interop.NativeMethods.vkCmdResolveImage (this.m, srcImage.m, srcImageLayout, dstImage.m, dstImageLayout, regionCount, &pRegions);
 			}
 		}
 
