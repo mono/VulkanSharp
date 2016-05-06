@@ -456,7 +456,12 @@ namespace VulkanSharp.Generator
 			{ "QueueFamilyIndices", "QueueFamilyIndexCount" },
 			{ "Code", "CodeSize" },
 			{ "PreserveAttachments", "PreserveAttachmentCount" },
-			{ "ImageIndices", "SwapchainCount" }
+			{ "ImageIndices", "SwapchainCount" },
+			{ "ColorAttachments", "ColorAttachmentCount" },
+			{ "SampleMask", "RasterizationSamples" },
+			{ "DynamicStates", "DynamicStateCount" },
+			{ "WaitDstStageMask", "WaitSemaphoreCount" },
+			{ "Results", "SwapchainCount" }
 		};
 
 		void WriteMemberArray (string csMemberType, string csMemberName, string sec)
@@ -507,7 +512,7 @@ namespace VulkanSharp.Generator
 			IndentWriteLine ("}");
 		}
 
-		void WriteMemberStructOrHandle (string csMemberType, string csMemberName, string sec)
+		void WriteMemberStructOrHandle (string csMemberType, string csMemberName, string sec, bool isPointer)
 		{
 			bool isMarshalled = true;
 			if (structures.ContainsKey (csMemberType))
@@ -515,12 +520,15 @@ namespace VulkanSharp.Generator
 
 			if (isMarshalled)
 				IndentWriteLine ("{0} l{1};", csMemberType, csMemberName);
-			IndentWriteLine ("{0} {1} {2} {{", sec, csMemberType, csMemberName);
+			IndentWriteLine ("{0} {1}{2} {3} {{", sec, csMemberType, (isPointer && !needsMarshalling) ? "?" : "", csMemberName);
 			IndentLevel++;
 			if (isMarshalled) {
 				IndentWriteLine ("get {{ return l{0}; }}", csMemberName);
 				var castType = handles.ContainsKey (csMemberType) ? GetHandleType (handles [csMemberType]) : "IntPtr";
 				IndentWriteLine ("set {{ l{0} = value; m->{0} = ({1})value.m; }}", csMemberName, castType);
+			} else if (isPointer) {
+				IndentWriteLine ("get {{ return ({0})Interop.Structure.MarshalPointerToObject (m->{1}, typeof ({0})); }}", csMemberType ,csMemberName);
+				IndentWriteLine ("set {{ m->{0} = Interop.Structure.MarshalObjectToPointer (m->{0}, value); }}", csMemberName);
 			} else {
 				IndentWriteLine ("get {{ return m->{0}; }}", csMemberName);
 				IndentWriteLine ("set {{ m->{0} = value; }}", csMemberName);
@@ -611,9 +619,14 @@ namespace VulkanSharp.Generator
 			bool isPointer = memberElement.Value.Contains (typeElement.Value + "*");
 			bool isDoublePointer = memberElement.Value.Contains (typeElement.Value + "**") || memberElement.Value.Contains (typeElement.Value + "* const*");
 			if (isPointer) {
+				if (name.StartsWith ("p"))
+					name = name.Substring (1);
+				if (name.StartsWith ("p"))
+					name = name.Substring (1);
+
 				switch (csMemberType) {
 				case "void":
-					if (!isInterop && name == "pNext")
+					if (!isInterop && name == "Next")
 						return false;
 					csMemberType = "IntPtr";
 					break;
@@ -624,15 +637,16 @@ namespace VulkanSharp.Generator
 					csMemberType = isInterop ? "IntPtr" : "float";
 					isArray = true;
 					break;
+				case "SampleMask":
 				case "UInt32":
 					csMemberType = isInterop ? "IntPtr" : "UInt32";
 					isArray = true;
 					break;
+				default:
+					if (fieldCounterMap.ContainsKey (TranslateCName (name)))
+						isArray = true;
+					break;
 				}
-				if (name.StartsWith ("p"))
-					name = name.Substring (1);
-				if (name.StartsWith ("p"))
-					name = name.Substring (1);
 			}
 			var csMemberName = TranslateCName (name);
 
@@ -666,10 +680,10 @@ namespace VulkanSharp.Generator
 			if (csMemberType == "SampleMask")
 				csMemberType = "UInt32";
 
-			if (csMemberType == "Bool32" && !isInterop)
+			if (csMemberType == "Bool32" && !isInterop && needsMarshalling)
 				csMemberType = "bool";
 
-			if (csMemberType == "char" && isInterop)
+			if (csMemberType == "char" && (isInterop || !needsMarshalling))
 				csMemberType = "byte";
 
 			string attr = "";
@@ -678,9 +692,11 @@ namespace VulkanSharp.Generator
 				attr = "[FieldOffset (0)] ";
 
 			if (isInterop || !needsMarshalling) {
+				if (structures.ContainsKey (csMemberType))
+					Console.WriteLine ("struct member type: {0} needs marshalling: {1}", csMemberType, structures [csMemberType].needsMarshalling);
 				if (handles.ContainsKey (csMemberType)) {
 					csMemberType = GetHandleType (handles [csMemberType]);
-				} else if ((structures.ContainsKey (csMemberType) && structures [csMemberType].needsMarshalling) || csMemberType == "string")
+				} else if ((structures.ContainsKey (csMemberType) && structures [csMemberType].needsMarshalling) || csMemberType == "string" || isPointer)
 					csMemberType = "IntPtr";
 				IndentWriteLine ("{0}{1} {2}{3} {4};", attr, sec, mod, csMemberType, csMemberName);
 			} else {
@@ -689,7 +705,7 @@ namespace VulkanSharp.Generator
 				else if (isArray)
 					WriteMemberArray (csMemberType, csMemberName, sec);
 				else if (structures.ContainsKey (csMemberType) || handles.ContainsKey (csMemberType))
-					WriteMemberStructOrHandle (csMemberType, csMemberName, sec);
+					WriteMemberStructOrHandle (csMemberType, csMemberName, sec, isPointer);
 				else if (csMemberType == "string")
 					WriteMemberString (csMemberType, csMemberName, sec);
 				else if (csMemberType == "string[]")
