@@ -81,7 +81,7 @@ namespace Vulkan.Interop
 		internal IntPtr EnabledLayerNames;
 		internal UInt32 EnabledExtensionCount;
 		internal IntPtr EnabledExtensionNames;
-		internal PhysicalDeviceFeatures EnabledFeatures;
+		internal IntPtr EnabledFeatures;
 	}
 
 	internal struct InstanceCreateInfo
@@ -130,8 +130,8 @@ namespace Vulkan.Interop
 		internal UInt32 DstArrayElement;
 		internal UInt32 DescriptorCount;
 		internal DescriptorType DescriptorType;
-		internal DescriptorImageInfo ImageInfo;
-		internal DescriptorBufferInfo BufferInfo;
+		internal IntPtr ImageInfo;
+		internal IntPtr BufferInfo;
 		internal UInt64 TexelBufferView;
 	}
 
@@ -241,21 +241,21 @@ namespace Vulkan.Interop
 	{
 		internal UInt64 Buffer;
 		internal UInt32 BindCount;
-		internal SparseMemoryBind Binds;
+		internal IntPtr Binds;
 	}
 
 	internal struct SparseImageOpaqueMemoryBindInfo
 	{
 		internal UInt64 Image;
 		internal UInt32 BindCount;
-		internal SparseMemoryBind Binds;
+		internal IntPtr Binds;
 	}
 
 	internal struct SparseImageMemoryBindInfo
 	{
 		internal UInt64 Image;
 		internal UInt32 BindCount;
-		internal SparseImageMemoryBind Binds;
+		internal IntPtr Binds;
 	}
 
 	internal struct BindSparseInfo
@@ -316,7 +316,7 @@ namespace Vulkan.Interop
 		internal UInt32 Flags;
 		internal UInt32 MaxSets;
 		internal UInt32 PoolSizeCount;
-		internal DescriptorPoolSize PoolSizes;
+		internal IntPtr PoolSizes;
 	}
 
 	internal struct DescriptorSetAllocateInfo
@@ -331,7 +331,7 @@ namespace Vulkan.Interop
 	internal struct SpecializationInfo
 	{
 		internal UInt32 MapEntryCount;
-		internal SpecializationMapEntry MapEntries;
+		internal IntPtr MapEntries;
 		internal UIntPtr DataSize;
 		internal IntPtr Data;
 	}
@@ -364,9 +364,9 @@ namespace Vulkan.Interop
 		internal IntPtr Next;
 		internal UInt32 Flags;
 		internal UInt32 VertexBindingDescriptionCount;
-		internal VertexInputBindingDescription VertexBindingDescriptions;
+		internal IntPtr VertexBindingDescriptions;
 		internal UInt32 VertexAttributeDescriptionCount;
-		internal VertexInputAttributeDescription VertexAttributeDescriptions;
+		internal IntPtr VertexAttributeDescriptions;
 	}
 
 	internal struct PipelineInputAssemblyStateCreateInfo
@@ -392,9 +392,9 @@ namespace Vulkan.Interop
 		internal IntPtr Next;
 		internal UInt32 Flags;
 		internal UInt32 ViewportCount;
-		internal Viewport Viewports;
+		internal IntPtr Viewports;
 		internal UInt32 ScissorCount;
-		internal Rect2D Scissors;
+		internal IntPtr Scissors;
 	}
 
 	internal struct PipelineRasterizationStateCreateInfo
@@ -422,7 +422,7 @@ namespace Vulkan.Interop
 		internal UInt32 RasterizationSamples;
 		internal Bool32 SampleShadingEnable;
 		internal float MinSampleShading;
-		internal UInt32 SampleMask;
+		internal IntPtr SampleMask;
 		internal Bool32 AlphaToCoverageEnable;
 		internal Bool32 AlphaToOneEnable;
 	}
@@ -435,7 +435,7 @@ namespace Vulkan.Interop
 		internal Bool32 LogicOpEnable;
 		internal LogicOp LogicOp;
 		internal UInt32 AttachmentCount;
-		internal PipelineColorBlendAttachmentState Attachments;
+		internal IntPtr Attachments;
 		internal float BlendConstants;
 	}
 
@@ -445,7 +445,7 @@ namespace Vulkan.Interop
 		internal IntPtr Next;
 		internal UInt32 Flags;
 		internal UInt32 DynamicStateCount;
-		internal DynamicState DynamicStates;
+		internal IntPtr DynamicStates;
 	}
 
 	internal struct PipelineDepthStencilStateCreateInfo
@@ -504,7 +504,7 @@ namespace Vulkan.Interop
 		internal UInt32 SetLayoutCount;
 		internal UInt64 SetLayouts;
 		internal UInt32 PushConstantRangeCount;
-		internal PushConstantRange PushConstantRanges;
+		internal IntPtr PushConstantRanges;
 	}
 
 	internal struct SamplerCreateInfo
@@ -574,7 +574,7 @@ namespace Vulkan.Interop
 		internal UInt64 Framebuffer;
 		internal Rect2D RenderArea;
 		internal UInt32 ClearValueCount;
-		internal ClearValue ClearValues;
+		internal IntPtr ClearValues;
 	}
 
 	internal struct SubpassDescription
@@ -582,11 +582,11 @@ namespace Vulkan.Interop
 		internal UInt32 Flags;
 		internal PipelineBindPoint PipelineBindPoint;
 		internal UInt32 InputAttachmentCount;
-		internal AttachmentReference InputAttachments;
+		internal IntPtr InputAttachments;
 		internal UInt32 ColorAttachmentCount;
-		internal AttachmentReference ColorAttachments;
-		internal AttachmentReference ResolveAttachments;
-		internal AttachmentReference DepthStencilAttachment;
+		internal IntPtr ColorAttachments;
+		internal IntPtr ResolveAttachments;
+		internal IntPtr DepthStencilAttachment;
 		internal UInt32 PreserveAttachmentCount;
 		internal IntPtr PreserveAttachments;
 	}
@@ -597,11 +597,11 @@ namespace Vulkan.Interop
 		internal IntPtr Next;
 		internal UInt32 Flags;
 		internal UInt32 AttachmentCount;
-		internal AttachmentDescription Attachments;
+		internal IntPtr Attachments;
 		internal UInt32 SubpassCount;
 		internal IntPtr Subpasses;
 		internal UInt32 DependencyCount;
-		internal SubpassDependency Dependencies;
+		internal IntPtr Dependencies;
 	}
 
 	internal struct EventCreateInfo
@@ -764,7 +764,7 @@ namespace Vulkan.Interop
 		internal IntPtr Next;
 		internal UInt32 WaitSemaphoreCount;
 		internal UInt64 WaitSemaphores;
-		internal UInt32 WaitDstStageMask;
+		internal IntPtr WaitDstStageMask;
 		internal UInt32 CommandBufferCount;
 		internal IntPtr CommandBuffers;
 		internal UInt32 SignalSemaphoreCount;
@@ -844,7 +844,7 @@ namespace Vulkan.Interop
 		internal UInt32 SwapchainCount;
 		internal UInt64 Swapchains;
 		internal IntPtr ImageIndices;
-		internal Result Results;
+		internal IntPtr Results;
 	}
 
 	internal struct DebugReportCallbackCreateInfoExt

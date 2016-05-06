@@ -393,8 +393,8 @@ namespace Vulkan
 		}
 
 		public PhysicalDeviceFeatures EnabledFeatures {
-			get { return m->EnabledFeatures; }
-			set { m->EnabledFeatures = value; }
+			get { return (PhysicalDeviceFeatures)Interop.Structure.MarshalPointerToObject (m->EnabledFeatures, typeof (PhysicalDeviceFeatures)); }
+			set { m->EnabledFeatures = Interop.Structure.MarshalObjectToPointer (m->EnabledFeatures, value); }
 		}
 	}
 
@@ -666,13 +666,13 @@ namespace Vulkan
 		}
 
 		public DescriptorImageInfo ImageInfo {
-			get { return m->ImageInfo; }
-			set { m->ImageInfo = value; }
+			get { return (DescriptorImageInfo)Interop.Structure.MarshalPointerToObject (m->ImageInfo, typeof (DescriptorImageInfo)); }
+			set { m->ImageInfo = Interop.Structure.MarshalObjectToPointer (m->ImageInfo, value); }
 		}
 
 		public DescriptorBufferInfo BufferInfo {
-			get { return m->BufferInfo; }
-			set { m->BufferInfo = value; }
+			get { return (DescriptorBufferInfo)Interop.Structure.MarshalPointerToObject (m->BufferInfo, typeof (DescriptorBufferInfo)); }
+			set { m->BufferInfo = Interop.Structure.MarshalObjectToPointer (m->BufferInfo, value); }
 		}
 
 		BufferView lTexelBufferView;
@@ -1164,8 +1164,8 @@ namespace Vulkan
 		}
 
 		public SparseMemoryBind Binds {
-			get { return m->Binds; }
-			set { m->Binds = value; }
+			get { return (SparseMemoryBind)Interop.Structure.MarshalPointerToObject (m->Binds, typeof (SparseMemoryBind)); }
+			set { m->Binds = Interop.Structure.MarshalObjectToPointer (m->Binds, value); }
 		}
 	}
 
@@ -1190,8 +1190,8 @@ namespace Vulkan
 		}
 
 		public SparseMemoryBind Binds {
-			get { return m->Binds; }
-			set { m->Binds = value; }
+			get { return (SparseMemoryBind)Interop.Structure.MarshalPointerToObject (m->Binds, typeof (SparseMemoryBind)); }
+			set { m->Binds = Interop.Structure.MarshalObjectToPointer (m->Binds, value); }
 		}
 	}
 
@@ -1216,8 +1216,8 @@ namespace Vulkan
 		}
 
 		public SparseImageMemoryBind Binds {
-			get { return m->Binds; }
-			set { m->Binds = value; }
+			get { return (SparseImageMemoryBind)Interop.Structure.MarshalPointerToObject (m->Binds, typeof (SparseImageMemoryBind)); }
+			set { m->Binds = Interop.Structure.MarshalObjectToPointer (m->Binds, value); }
 		}
 	}
 
@@ -1485,8 +1485,8 @@ namespace Vulkan
 		}
 
 		public DescriptorPoolSize PoolSizes {
-			get { return m->PoolSizes; }
-			set { m->PoolSizes = value; }
+			get { return (DescriptorPoolSize)Interop.Structure.MarshalPointerToObject (m->PoolSizes, typeof (DescriptorPoolSize)); }
+			set { m->PoolSizes = Interop.Structure.MarshalObjectToPointer (m->PoolSizes, value); }
 		}
 	}
 
@@ -1540,8 +1540,8 @@ namespace Vulkan
 		}
 
 		public SpecializationMapEntry MapEntries {
-			get { return m->MapEntries; }
-			set { m->MapEntries = value; }
+			get { return (SpecializationMapEntry)Interop.Structure.MarshalPointerToObject (m->MapEntries, typeof (SpecializationMapEntry)); }
+			set { m->MapEntries = Interop.Structure.MarshalObjectToPointer (m->MapEntries, value); }
 		}
 
 		public UIntPtr DataSize {
@@ -1668,8 +1668,8 @@ namespace Vulkan
 		}
 
 		public VertexInputBindingDescription VertexBindingDescriptions {
-			get { return m->VertexBindingDescriptions; }
-			set { m->VertexBindingDescriptions = value; }
+			get { return (VertexInputBindingDescription)Interop.Structure.MarshalPointerToObject (m->VertexBindingDescriptions, typeof (VertexInputBindingDescription)); }
+			set { m->VertexBindingDescriptions = Interop.Structure.MarshalObjectToPointer (m->VertexBindingDescriptions, value); }
 		}
 
 		public UInt32 VertexAttributeDescriptionCount {
@@ -1678,8 +1678,8 @@ namespace Vulkan
 		}
 
 		public VertexInputAttributeDescription VertexAttributeDescriptions {
-			get { return m->VertexAttributeDescriptions; }
-			set { m->VertexAttributeDescriptions = value; }
+			get { return (VertexInputAttributeDescription)Interop.Structure.MarshalPointerToObject (m->VertexAttributeDescriptions, typeof (VertexInputAttributeDescription)); }
+			set { m->VertexAttributeDescriptions = Interop.Structure.MarshalObjectToPointer (m->VertexAttributeDescriptions, value); }
 		}
 	}
 
@@ -1751,8 +1751,8 @@ namespace Vulkan
 		}
 
 		public Viewport Viewports {
-			get { return m->Viewports; }
-			set { m->Viewports = value; }
+			get { return (Viewport)Interop.Structure.MarshalPointerToObject (m->Viewports, typeof (Viewport)); }
+			set { m->Viewports = Interop.Structure.MarshalObjectToPointer (m->Viewports, value); }
 		}
 
 		public UInt32 ScissorCount {
@@ -1761,8 +1761,8 @@ namespace Vulkan
 		}
 
 		public Rect2D Scissors {
-			get { return m->Scissors; }
-			set { m->Scissors = value; }
+			get { return (Rect2D)Interop.Structure.MarshalPointerToObject (m->Scissors, typeof (Rect2D)); }
+			set { m->Scissors = Interop.Structure.MarshalObjectToPointer (m->Scissors, value); }
 		}
 	}
 
@@ -1862,9 +1862,28 @@ namespace Vulkan
 			set { m->MinSampleShading = value; }
 		}
 
-		public UInt32 SampleMask {
-			get { return m->SampleMask; }
-			set { m->SampleMask = value; }
+		public UInt32[] SampleMask {
+			get {
+				var values = new UInt32 [m->RasterizationSamples];
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->SampleMask;
+					for (int i = 0; i < m->RasterizationSamples; i++)
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->RasterizationSamples = (uint)value.Length;
+				m->SampleMask = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*m->RasterizationSamples));
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->SampleMask;
+					for (int i = 0; i < m->RasterizationSamples; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 
 		public bool AlphaToCoverageEnable {
@@ -1880,7 +1899,7 @@ namespace Vulkan
 
 	unsafe public struct PipelineColorBlendAttachmentState
 	{
-		public bool BlendEnable;
+		public Bool32 BlendEnable;
 		public BlendFactor SrcColorBlendFactor;
 		public BlendFactor DstColorBlendFactor;
 		public BlendOp ColorBlendOp;
@@ -1921,8 +1940,8 @@ namespace Vulkan
 		}
 
 		public PipelineColorBlendAttachmentState Attachments {
-			get { return m->Attachments; }
-			set { m->Attachments = value; }
+			get { return (PipelineColorBlendAttachmentState)Interop.Structure.MarshalPointerToObject (m->Attachments, typeof (PipelineColorBlendAttachmentState)); }
+			set { m->Attachments = Interop.Structure.MarshalObjectToPointer (m->Attachments, value); }
 		}
 
 		public float BlendConstants {
@@ -1951,9 +1970,28 @@ namespace Vulkan
 			set { m->DynamicStateCount = value; }
 		}
 
-		public DynamicState DynamicStates {
-			get { return m->DynamicStates; }
-			set { m->DynamicStates = value; }
+		public DynamicState[] DynamicStates {
+			get {
+				var values = new DynamicState [m->DynamicStateCount];
+				unsafe
+				{
+					DynamicState* ptr = (DynamicState*)m->DynamicStates;
+					for (int i = 0; i < m->DynamicStateCount; i++)
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->DynamicStateCount = (uint)value.Length;
+				m->DynamicStates = Marshal.AllocHGlobal ((int)(sizeof(DynamicState)*m->DynamicStateCount));
+				unsafe
+				{
+					DynamicState* ptr = (DynamicState*)m->DynamicStates;
+					for (int i = 0; i < m->DynamicStateCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 	}
 
@@ -2203,8 +2241,8 @@ namespace Vulkan
 		}
 
 		public PushConstantRange PushConstantRanges {
-			get { return m->PushConstantRanges; }
-			set { m->PushConstantRanges = value; }
+			get { return (PushConstantRange)Interop.Structure.MarshalPointerToObject (m->PushConstantRanges, typeof (PushConstantRange)); }
+			set { m->PushConstantRanges = Interop.Structure.MarshalObjectToPointer (m->PushConstantRanges, value); }
 		}
 	}
 
@@ -2445,8 +2483,8 @@ namespace Vulkan
 		}
 
 		public ClearValue ClearValues {
-			get { return m->ClearValues; }
-			set { m->ClearValues = value; }
+			get { return (ClearValue)Interop.Structure.MarshalPointerToObject (m->ClearValues, typeof (ClearValue)); }
+			set { m->ClearValues = Interop.Structure.MarshalObjectToPointer (m->ClearValues, value); }
 		}
 	}
 
@@ -2507,8 +2545,8 @@ namespace Vulkan
 		}
 
 		public AttachmentReference InputAttachments {
-			get { return m->InputAttachments; }
-			set { m->InputAttachments = value; }
+			get { return (AttachmentReference)Interop.Structure.MarshalPointerToObject (m->InputAttachments, typeof (AttachmentReference)); }
+			set { m->InputAttachments = Interop.Structure.MarshalObjectToPointer (m->InputAttachments, value); }
 		}
 
 		public UInt32 ColorAttachmentCount {
@@ -2516,19 +2554,38 @@ namespace Vulkan
 			set { m->ColorAttachmentCount = value; }
 		}
 
-		public AttachmentReference ColorAttachments {
-			get { return m->ColorAttachments; }
-			set { m->ColorAttachments = value; }
+		public AttachmentReference[] ColorAttachments {
+			get {
+				var values = new AttachmentReference [m->ColorAttachmentCount];
+				unsafe
+				{
+					AttachmentReference* ptr = (AttachmentReference*)m->ColorAttachments;
+					for (int i = 0; i < m->ColorAttachmentCount; i++)
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->ColorAttachmentCount = (uint)value.Length;
+				m->ColorAttachments = Marshal.AllocHGlobal ((int)(sizeof(AttachmentReference)*m->ColorAttachmentCount));
+				unsafe
+				{
+					AttachmentReference* ptr = (AttachmentReference*)m->ColorAttachments;
+					for (int i = 0; i < m->ColorAttachmentCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 
 		public AttachmentReference ResolveAttachments {
-			get { return m->ResolveAttachments; }
-			set { m->ResolveAttachments = value; }
+			get { return (AttachmentReference)Interop.Structure.MarshalPointerToObject (m->ResolveAttachments, typeof (AttachmentReference)); }
+			set { m->ResolveAttachments = Interop.Structure.MarshalObjectToPointer (m->ResolveAttachments, value); }
 		}
 
 		public AttachmentReference DepthStencilAttachment {
-			get { return m->DepthStencilAttachment; }
-			set { m->DepthStencilAttachment = value; }
+			get { return (AttachmentReference)Interop.Structure.MarshalPointerToObject (m->DepthStencilAttachment, typeof (AttachmentReference)); }
+			set { m->DepthStencilAttachment = Interop.Structure.MarshalObjectToPointer (m->DepthStencilAttachment, value); }
 		}
 
 		public UInt32 PreserveAttachmentCount {
@@ -2593,8 +2650,8 @@ namespace Vulkan
 		}
 
 		public AttachmentDescription Attachments {
-			get { return m->Attachments; }
-			set { m->Attachments = value; }
+			get { return (AttachmentDescription)Interop.Structure.MarshalPointerToObject (m->Attachments, typeof (AttachmentDescription)); }
+			set { m->Attachments = Interop.Structure.MarshalObjectToPointer (m->Attachments, value); }
 		}
 
 		public UInt32 SubpassCount {
@@ -2614,8 +2671,8 @@ namespace Vulkan
 		}
 
 		public SubpassDependency Dependencies {
-			get { return m->Dependencies; }
-			set { m->Dependencies = value; }
+			get { return (SubpassDependency)Interop.Structure.MarshalPointerToObject (m->Dependencies, typeof (SubpassDependency)); }
+			set { m->Dependencies = Interop.Structure.MarshalObjectToPointer (m->Dependencies, value); }
 		}
 	}
 
@@ -2653,70 +2710,70 @@ namespace Vulkan
 
 	unsafe public struct PhysicalDeviceFeatures
 	{
-		public bool RobustBufferAccess;
-		public bool FullDrawIndexUint32;
-		public bool ImageCubeArray;
-		public bool IndependentBlend;
-		public bool GeometryShader;
-		public bool TessellationShader;
-		public bool SampleRateShading;
-		public bool DualSrcBlend;
-		public bool LogicOp;
-		public bool MultiDrawIndirect;
-		public bool DrawIndirectFirstInstance;
-		public bool DepthClamp;
-		public bool DepthBiasClamp;
-		public bool FillModeNonSolid;
-		public bool DepthBounds;
-		public bool WideLines;
-		public bool LargePoints;
-		public bool AlphaToOne;
-		public bool MultiViewport;
-		public bool SamplerAnisotropy;
-		public bool TextureCompressionETC2;
-		public bool TextureCompressionASTCLdr;
-		public bool TextureCompressionBC;
-		public bool OcclusionQueryPrecise;
-		public bool PipelineStatisticsQuery;
-		public bool VertexPipelineStoresAndAtomics;
-		public bool FragmentStoresAndAtomics;
-		public bool ShaderTessellationAndGeometryPointSize;
-		public bool ShaderImageGatherExtended;
-		public bool ShaderStorageImageExtendedFormats;
-		public bool ShaderStorageImageMultisample;
-		public bool ShaderStorageImageReadWithoutFormat;
-		public bool ShaderStorageImageWriteWithoutFormat;
-		public bool ShaderUniformBufferArrayDynamicIndexing;
-		public bool ShaderSampledImageArrayDynamicIndexing;
-		public bool ShaderStorageBufferArrayDynamicIndexing;
-		public bool ShaderStorageImageArrayDynamicIndexing;
-		public bool ShaderClipDistance;
-		public bool ShaderCullDistance;
-		public bool ShaderFloat64;
-		public bool ShaderInt64;
-		public bool ShaderInt16;
-		public bool ShaderResourceResidency;
-		public bool ShaderResourceMinLod;
-		public bool SparseBinding;
-		public bool SparseResidencyBuffer;
-		public bool SparseResidencyImage2D;
-		public bool SparseResidencyImage3D;
-		public bool SparseResidency2Samples;
-		public bool SparseResidency4Samples;
-		public bool SparseResidency8Samples;
-		public bool SparseResidency16Samples;
-		public bool SparseResidencyAliased;
-		public bool VariableMultisampleRate;
-		public bool InheritedQueries;
+		public Bool32 RobustBufferAccess;
+		public Bool32 FullDrawIndexUint32;
+		public Bool32 ImageCubeArray;
+		public Bool32 IndependentBlend;
+		public Bool32 GeometryShader;
+		public Bool32 TessellationShader;
+		public Bool32 SampleRateShading;
+		public Bool32 DualSrcBlend;
+		public Bool32 LogicOp;
+		public Bool32 MultiDrawIndirect;
+		public Bool32 DrawIndirectFirstInstance;
+		public Bool32 DepthClamp;
+		public Bool32 DepthBiasClamp;
+		public Bool32 FillModeNonSolid;
+		public Bool32 DepthBounds;
+		public Bool32 WideLines;
+		public Bool32 LargePoints;
+		public Bool32 AlphaToOne;
+		public Bool32 MultiViewport;
+		public Bool32 SamplerAnisotropy;
+		public Bool32 TextureCompressionETC2;
+		public Bool32 TextureCompressionASTCLdr;
+		public Bool32 TextureCompressionBC;
+		public Bool32 OcclusionQueryPrecise;
+		public Bool32 PipelineStatisticsQuery;
+		public Bool32 VertexPipelineStoresAndAtomics;
+		public Bool32 FragmentStoresAndAtomics;
+		public Bool32 ShaderTessellationAndGeometryPointSize;
+		public Bool32 ShaderImageGatherExtended;
+		public Bool32 ShaderStorageImageExtendedFormats;
+		public Bool32 ShaderStorageImageMultisample;
+		public Bool32 ShaderStorageImageReadWithoutFormat;
+		public Bool32 ShaderStorageImageWriteWithoutFormat;
+		public Bool32 ShaderUniformBufferArrayDynamicIndexing;
+		public Bool32 ShaderSampledImageArrayDynamicIndexing;
+		public Bool32 ShaderStorageBufferArrayDynamicIndexing;
+		public Bool32 ShaderStorageImageArrayDynamicIndexing;
+		public Bool32 ShaderClipDistance;
+		public Bool32 ShaderCullDistance;
+		public Bool32 ShaderFloat64;
+		public Bool32 ShaderInt64;
+		public Bool32 ShaderInt16;
+		public Bool32 ShaderResourceResidency;
+		public Bool32 ShaderResourceMinLod;
+		public Bool32 SparseBinding;
+		public Bool32 SparseResidencyBuffer;
+		public Bool32 SparseResidencyImage2D;
+		public Bool32 SparseResidencyImage3D;
+		public Bool32 SparseResidency2Samples;
+		public Bool32 SparseResidency4Samples;
+		public Bool32 SparseResidency8Samples;
+		public Bool32 SparseResidency16Samples;
+		public Bool32 SparseResidencyAliased;
+		public Bool32 VariableMultisampleRate;
+		public Bool32 InheritedQueries;
 	}
 
 	unsafe public struct PhysicalDeviceSparseProperties
 	{
-		public bool ResidencyStandard2DBlockShape;
-		public bool ResidencyStandard2DMultisampleBlockShape;
-		public bool ResidencyStandard3DBlockShape;
-		public bool ResidencyAlignedMipSize;
-		public bool ResidencyNonResidentStrict;
+		public Bool32 ResidencyStandard2DBlockShape;
+		public Bool32 ResidencyStandard2DMultisampleBlockShape;
+		public Bool32 ResidencyStandard3DBlockShape;
+		public Bool32 ResidencyAlignedMipSize;
+		public Bool32 ResidencyNonResidentStrict;
 	}
 
 	unsafe public class PhysicalDeviceLimits
@@ -3399,9 +3456,28 @@ namespace Vulkan
 			set { lWaitSemaphores = value; m->WaitSemaphores = (UInt64)value.m; }
 		}
 
-		public UInt32 WaitDstStageMask {
-			get { return m->WaitDstStageMask; }
-			set { m->WaitDstStageMask = value; }
+		public UInt32[] WaitDstStageMask {
+			get {
+				var values = new UInt32 [m->WaitSemaphoreCount];
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->WaitDstStageMask;
+					for (int i = 0; i < m->WaitSemaphoreCount; i++)
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->WaitSemaphoreCount = (uint)value.Length;
+				m->WaitDstStageMask = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*m->WaitSemaphoreCount));
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->WaitDstStageMask;
+					for (int i = 0; i < m->WaitSemaphoreCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 
 		public UInt32 CommandBufferCount {
@@ -3791,9 +3867,28 @@ namespace Vulkan
 			}
 		}
 
-		public Result Results {
-			get { return m->Results; }
-			set { m->Results = value; }
+		public Result[] Results {
+			get {
+				var values = new Result [m->SwapchainCount];
+				unsafe
+				{
+					Result* ptr = (Result*)m->Results;
+					for (int i = 0; i < m->SwapchainCount; i++)
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->SwapchainCount = (uint)value.Length;
+				m->Results = Marshal.AllocHGlobal ((int)(sizeof(Result)*m->SwapchainCount));
+				unsafe
+				{
+					Result* ptr = (Result*)m->Results;
+					for (int i = 0; i < m->SwapchainCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 	}
 
