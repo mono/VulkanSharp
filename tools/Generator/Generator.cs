@@ -88,6 +88,7 @@ namespace VulkanSharp.Generator
 		}
 
 		static Dictionary<string, string> specialParts = new Dictionary<string, string> {
+			{ "AMD", "Amd" },
 			{ "API", "Api" },
 			{ "EXT", "Ext" },
 			{ "KHR", "Khr" },
@@ -165,6 +166,7 @@ namespace VulkanSharp.Generator
 		}
 
 		static Dictionary<string, string> extensions = new Dictionary<string, string> {
+			{ "AMD", "Amd" },
 			{ "EXT", "Ext" },
 			{ "IMG", "Img" },
 			{ "KHR", "Khr" }
