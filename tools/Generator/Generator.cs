@@ -452,18 +452,8 @@ namespace VulkanSharp.Generator
 		}
 
 		static Dictionary<string, string> fieldCounterMap = new Dictionary<string, string> {
-			{ "QueuePriorities", "QueueCount" },
-			{ "QueueFamilyIndices", "QueueFamilyIndexCount" },
 			{ "Code", "CodeSize" },
-			{ "PreserveAttachments", "PreserveAttachmentCount" },
-			{ "ImageIndices", "SwapchainCount" },
-			{ "ColorAttachments", "ColorAttachmentCount" },
-			{ "SampleMask", "RasterizationSamples" },
-			{ "DynamicStates", "DynamicStateCount" },
-			{ "WaitDstStageMask", "WaitSemaphoreCount" },
-			{ "Results", "SwapchainCount" },
-			{ "Attachments", "AttachmentCount" },
-			{ "TexelBufferView", "DescriptorCount" }
+			{ "SampleMask", "RasterizationSamples" }
 		};
 
 		void WriteMemberArray (string csMemberType, string csMemberName, string sec, XElement memberElement)
