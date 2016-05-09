@@ -3822,4 +3822,103 @@ namespace Vulkan
 			set { m->UserData = value; }
 		}
 	}
+
+	unsafe public class PipelineRasterizationStateRasterizationOrderAmd
+	{
+		internal Interop.PipelineRasterizationStateRasterizationOrderAmd* m;
+
+		public PipelineRasterizationStateRasterizationOrderAmd ()
+		{
+			m = (Interop.PipelineRasterizationStateRasterizationOrderAmd*) Interop.Structure.Allocate (typeof (Interop.PipelineRasterizationStateRasterizationOrderAmd));
+			m->SType = StructureType.PipelineRasterizationStateRasterizationOrderAmd;
+		}
+
+		public RasterizationOrderAmd RasterizationOrder {
+			get { return m->RasterizationOrder; }
+			set { m->RasterizationOrder = value; }
+		}
+	}
+
+	unsafe public class DebugMarkerObjectNameInfoExt
+	{
+		internal Interop.DebugMarkerObjectNameInfoExt* m;
+
+		public DebugMarkerObjectNameInfoExt ()
+		{
+			m = (Interop.DebugMarkerObjectNameInfoExt*) Interop.Structure.Allocate (typeof (Interop.DebugMarkerObjectNameInfoExt));
+			m->SType = StructureType.DebugMarkerObjectNameInfoExt;
+		}
+
+		public DebugReportObjectTypeExt ObjectType {
+			get { return m->ObjectType; }
+			set { m->ObjectType = value; }
+		}
+
+		public UInt64 Object {
+			get { return m->Object; }
+			set { m->Object = value; }
+		}
+
+		public string ObjectName {
+			get { return Marshal.PtrToStringAnsi (m->ObjectName); }
+			set { m->ObjectName = Marshal.StringToHGlobalAnsi (value); }
+		}
+	}
+
+	unsafe public class DebugMarkerObjectTagInfoExt
+	{
+		internal Interop.DebugMarkerObjectTagInfoExt* m;
+
+		public DebugMarkerObjectTagInfoExt ()
+		{
+			m = (Interop.DebugMarkerObjectTagInfoExt*) Interop.Structure.Allocate (typeof (Interop.DebugMarkerObjectTagInfoExt));
+			m->SType = StructureType.DebugMarkerObjectTagInfoExt;
+		}
+
+		public DebugReportObjectTypeExt ObjectType {
+			get { return m->ObjectType; }
+			set { m->ObjectType = value; }
+		}
+
+		public UInt64 Object {
+			get { return m->Object; }
+			set { m->Object = value; }
+		}
+
+		public UInt64 TagName {
+			get { return m->TagName; }
+			set { m->TagName = value; }
+		}
+
+		public UIntPtr TagSize {
+			get { return m->TagSize; }
+			set { m->TagSize = value; }
+		}
+
+		public IntPtr Tag {
+			get { return m->Tag; }
+			set { m->Tag = value; }
+		}
+	}
+
+	unsafe public class DebugMarkerMarkerInfoExt
+	{
+		internal Interop.DebugMarkerMarkerInfoExt* m;
+
+		public DebugMarkerMarkerInfoExt ()
+		{
+			m = (Interop.DebugMarkerMarkerInfoExt*) Interop.Structure.Allocate (typeof (Interop.DebugMarkerMarkerInfoExt));
+			m->SType = StructureType.DebugMarkerMarkerInfoExt;
+		}
+
+		public string MarkerName {
+			get { return Marshal.PtrToStringAnsi (m->MarkerName); }
+			set { m->MarkerName = Marshal.StringToHGlobalAnsi (value); }
+		}
+
+		public float Color {
+			get { return m->Color; }
+			set { m->Color = value; }
+		}
+	}
 }

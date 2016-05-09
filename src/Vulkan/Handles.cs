@@ -1424,6 +1424,34 @@ namespace Vulkan
 				return pImageIndex;
 			}
 		}
+
+		public DebugMarkerObjectNameInfoExt DebugMarkerSetObjectNameEXT ()
+		{
+			Result result;
+			DebugMarkerObjectNameInfoExt pNameInfo;
+			unsafe {
+				pNameInfo = new DebugMarkerObjectNameInfoExt ();
+				result = Interop.NativeMethods.vkDebugMarkerSetObjectNameEXT (this.m, pNameInfo.m);
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pNameInfo;
+			}
+		}
+
+		public DebugMarkerObjectTagInfoExt DebugMarkerSetObjectTagEXT ()
+		{
+			Result result;
+			DebugMarkerObjectTagInfoExt pTagInfo;
+			unsafe {
+				pTagInfo = new DebugMarkerObjectTagInfoExt ();
+				result = Interop.NativeMethods.vkDebugMarkerSetObjectTagEXT (this.m, pTagInfo.m);
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pTagInfo;
+			}
+		}
 	}
 
 	public partial class Queue
@@ -1826,6 +1854,35 @@ namespace Vulkan
 				fixed (IntPtr* ptrpCommandBuffers = &pCommandBuffers.m) {
 					Interop.NativeMethods.vkCmdExecuteCommands (this.m, commandBufferCount, ptrpCommandBuffers);
 				}
+			}
+		}
+
+		public DebugMarkerMarkerInfoExt CmdDebugMarkerBeginEXT ()
+		{
+			DebugMarkerMarkerInfoExt pMarkerInfo;
+			unsafe {
+				pMarkerInfo = new DebugMarkerMarkerInfoExt ();
+				Interop.NativeMethods.vkCmdDebugMarkerBeginEXT (this.m, pMarkerInfo.m);
+
+				return pMarkerInfo;
+			}
+		}
+
+		public void CmdDebugMarkerEndEXT ()
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdDebugMarkerEndEXT (this.m);
+			}
+		}
+
+		public DebugMarkerMarkerInfoExt CmdDebugMarkerInsertEXT ()
+		{
+			DebugMarkerMarkerInfoExt pMarkerInfo;
+			unsafe {
+				pMarkerInfo = new DebugMarkerMarkerInfoExt ();
+				Interop.NativeMethods.vkCmdDebugMarkerInsertEXT (this.m, pMarkerInfo.m);
+
+				return pMarkerInfo;
 			}
 		}
 	}

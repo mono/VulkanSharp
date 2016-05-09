@@ -855,4 +855,39 @@ namespace Vulkan.Interop
 		internal IntPtr PfnCallback;
 		internal IntPtr UserData;
 	}
+
+	internal struct PipelineRasterizationStateRasterizationOrderAmd
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal RasterizationOrderAmd RasterizationOrder;
+	}
+
+	internal struct DebugMarkerObjectNameInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal DebugReportObjectTypeExt ObjectType;
+		internal UInt64 Object;
+		internal IntPtr ObjectName;
+	}
+
+	internal struct DebugMarkerObjectTagInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal DebugReportObjectTypeExt ObjectType;
+		internal UInt64 Object;
+		internal UInt64 TagName;
+		internal UIntPtr TagSize;
+		internal IntPtr Tag;
+	}
+
+	internal struct DebugMarkerMarkerInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal IntPtr MarkerName;
+		internal float Color;
+	}
 }

@@ -493,5 +493,20 @@ namespace Vulkan.Interop
 
 		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
 		internal static unsafe extern void vkDebugReportMessageEXT (IntPtr instance, DebugReportFlagsExt flags, DebugReportObjectTypeExt objectType, UInt64 @object, UIntPtr location, Int32 messageCode, string pLayerPrefix, string pMessage);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkDebugMarkerSetObjectNameEXT (IntPtr device, DebugMarkerObjectNameInfoExt* pNameInfo);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkDebugMarkerSetObjectTagEXT (IntPtr device, DebugMarkerObjectTagInfoExt* pTagInfo);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkCmdDebugMarkerBeginEXT (IntPtr commandBuffer, DebugMarkerMarkerInfoExt* pMarkerInfo);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkCmdDebugMarkerEndEXT (IntPtr commandBuffer);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkCmdDebugMarkerInsertEXT (IntPtr commandBuffer, DebugMarkerMarkerInfoExt* pMarkerInfo);
 	}
 }

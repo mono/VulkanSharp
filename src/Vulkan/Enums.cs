@@ -784,6 +784,10 @@ namespace Vulkan
 		AndroidSurfaceCreateInfoKhr = 1000008000,
 		Win32SurfaceCreateInfoKhr = 1000009000,
 		DebugReportCallbackCreateInfoExt = 1000011000,
+		PipelineRasterizationStateRasterizationOrderAmd = 1000018000,
+		DebugMarkerObjectNameInfoExt = 1000022000,
+		DebugMarkerObjectTagInfoExt = 1000022001,
+		DebugMarkerMarkerInfoExt = 1000022002,
 	}
 
 	public enum SystemAllocationScope : int
@@ -980,5 +984,11 @@ namespace Vulkan
 	{
 		None = 0,
 		CallbackRef = 1,
+	}
+
+	public enum RasterizationOrderAmd : int
+	{
+		Strict = 0,
+		Relaxed = 1,
 	}
 }
