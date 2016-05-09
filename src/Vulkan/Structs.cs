@@ -289,7 +289,7 @@ namespace Vulkan
 				unsafe
 				{
 					float* ptr = (float*)m->QueuePriorities;
-					for (int i = 0; i < m->QueueCount; i++)
+					for (int i = 0; i < m->QueueCount; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -328,10 +328,30 @@ namespace Vulkan
 			set { m->QueueCreateInfoCount = value; }
 		}
 
-		DeviceQueueCreateInfo lQueueCreateInfos;
-		public DeviceQueueCreateInfo QueueCreateInfos {
-			get { return lQueueCreateInfos; }
-			set { lQueueCreateInfos = value; m->QueueCreateInfos = (IntPtr)value.m; }
+		public DeviceQueueCreateInfo[] QueueCreateInfos {
+			get {
+				var values = new DeviceQueueCreateInfo [m->QueueCreateInfoCount];
+				unsafe
+				{
+					Interop.DeviceQueueCreateInfo* ptr = (Interop.DeviceQueueCreateInfo*)m->QueueCreateInfos;
+					for (int i = 0; i < m->QueueCreateInfoCount; i++) {
+						values [i] = new DeviceQueueCreateInfo ();
+						*values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				m->QueueCreateInfoCount = (uint)value.Length;
+				m->QueueCreateInfos = Marshal.AllocHGlobal ((int)(sizeof(Interop.DeviceQueueCreateInfo)*m->QueueCreateInfoCount));
+				unsafe
+				{
+					Interop.DeviceQueueCreateInfo* ptr = (Interop.DeviceQueueCreateInfo*)m->QueueCreateInfos;
+					for (int i = 0; i < m->QueueCreateInfoCount; i++)
+						ptr [i] = *value [i].m;
+				}
+			}
 		}
 
 		public UInt32 EnabledLayerCount {
@@ -665,20 +685,78 @@ namespace Vulkan
 			set { m->DescriptorType = value; }
 		}
 
-		public DescriptorImageInfo ImageInfo {
-			get { return (DescriptorImageInfo)Interop.Structure.MarshalPointerToObject (m->ImageInfo, typeof (DescriptorImageInfo)); }
-			set { m->ImageInfo = Interop.Structure.MarshalObjectToPointer (m->ImageInfo, value); }
+		public DescriptorImageInfo[] ImageInfo {
+			get {
+				var values = new DescriptorImageInfo [m->DescriptorCount];
+				unsafe
+				{
+					DescriptorImageInfo* ptr = (DescriptorImageInfo*)m->ImageInfo;
+					for (int i = 0; i < m->DescriptorCount; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->DescriptorCount = (uint)value.Length;
+				m->ImageInfo = Marshal.AllocHGlobal ((int)(sizeof(DescriptorImageInfo)*m->DescriptorCount));
+				unsafe
+				{
+					DescriptorImageInfo* ptr = (DescriptorImageInfo*)m->ImageInfo;
+					for (int i = 0; i < m->DescriptorCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 
-		public DescriptorBufferInfo BufferInfo {
-			get { return (DescriptorBufferInfo)Interop.Structure.MarshalPointerToObject (m->BufferInfo, typeof (DescriptorBufferInfo)); }
-			set { m->BufferInfo = Interop.Structure.MarshalObjectToPointer (m->BufferInfo, value); }
+		public DescriptorBufferInfo[] BufferInfo {
+			get {
+				var values = new DescriptorBufferInfo [m->DescriptorCount];
+				unsafe
+				{
+					DescriptorBufferInfo* ptr = (DescriptorBufferInfo*)m->BufferInfo;
+					for (int i = 0; i < m->DescriptorCount; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->DescriptorCount = (uint)value.Length;
+				m->BufferInfo = Marshal.AllocHGlobal ((int)(sizeof(DescriptorBufferInfo)*m->DescriptorCount));
+				unsafe
+				{
+					DescriptorBufferInfo* ptr = (DescriptorBufferInfo*)m->BufferInfo;
+					for (int i = 0; i < m->DescriptorCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 
-		BufferView lTexelBufferView;
-		public BufferView TexelBufferView {
-			get { return lTexelBufferView; }
-			set { lTexelBufferView = value; m->TexelBufferView = (UInt64)value.m; }
+		public BufferView[] TexelBufferView {
+			get {
+				var values = new BufferView [m->DescriptorCount];
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->TexelBufferView;
+					for (int i = 0; i < m->DescriptorCount; i++) {
+						values [i] = new BufferView ();
+						values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				m->DescriptorCount = (uint)value.Length;
+				m->TexelBufferView = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->DescriptorCount));
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->TexelBufferView;
+					for (int i = 0; i < m->DescriptorCount; i++)
+						ptr [i] = value [i].m;
+				}
+			}
 		}
 	}
 
@@ -771,7 +849,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->QueueFamilyIndices;
-					for (int i = 0; i < m->QueueFamilyIndexCount; i++)
+					for (int i = 0; i < m->QueueFamilyIndexCount; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -1042,7 +1120,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->QueueFamilyIndices;
-					for (int i = 0; i < m->QueueFamilyIndexCount; i++)
+					for (int i = 0; i < m->QueueFamilyIndexCount; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -1163,9 +1241,28 @@ namespace Vulkan
 			set { m->BindCount = value; }
 		}
 
-		public SparseMemoryBind Binds {
-			get { return (SparseMemoryBind)Interop.Structure.MarshalPointerToObject (m->Binds, typeof (SparseMemoryBind)); }
-			set { m->Binds = Interop.Structure.MarshalObjectToPointer (m->Binds, value); }
+		public SparseMemoryBind[] Binds {
+			get {
+				var values = new SparseMemoryBind [m->BindCount];
+				unsafe
+				{
+					SparseMemoryBind* ptr = (SparseMemoryBind*)m->Binds;
+					for (int i = 0; i < m->BindCount; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->BindCount = (uint)value.Length;
+				m->Binds = Marshal.AllocHGlobal ((int)(sizeof(SparseMemoryBind)*m->BindCount));
+				unsafe
+				{
+					SparseMemoryBind* ptr = (SparseMemoryBind*)m->Binds;
+					for (int i = 0; i < m->BindCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 	}
 
@@ -1189,9 +1286,28 @@ namespace Vulkan
 			set { m->BindCount = value; }
 		}
 
-		public SparseMemoryBind Binds {
-			get { return (SparseMemoryBind)Interop.Structure.MarshalPointerToObject (m->Binds, typeof (SparseMemoryBind)); }
-			set { m->Binds = Interop.Structure.MarshalObjectToPointer (m->Binds, value); }
+		public SparseMemoryBind[] Binds {
+			get {
+				var values = new SparseMemoryBind [m->BindCount];
+				unsafe
+				{
+					SparseMemoryBind* ptr = (SparseMemoryBind*)m->Binds;
+					for (int i = 0; i < m->BindCount; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->BindCount = (uint)value.Length;
+				m->Binds = Marshal.AllocHGlobal ((int)(sizeof(SparseMemoryBind)*m->BindCount));
+				unsafe
+				{
+					SparseMemoryBind* ptr = (SparseMemoryBind*)m->Binds;
+					for (int i = 0; i < m->BindCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 	}
 
@@ -1215,9 +1331,28 @@ namespace Vulkan
 			set { m->BindCount = value; }
 		}
 
-		public SparseImageMemoryBind Binds {
-			get { return (SparseImageMemoryBind)Interop.Structure.MarshalPointerToObject (m->Binds, typeof (SparseImageMemoryBind)); }
-			set { m->Binds = Interop.Structure.MarshalObjectToPointer (m->Binds, value); }
+		public SparseImageMemoryBind[] Binds {
+			get {
+				var values = new SparseImageMemoryBind [m->BindCount];
+				unsafe
+				{
+					SparseImageMemoryBind* ptr = (SparseImageMemoryBind*)m->Binds;
+					for (int i = 0; i < m->BindCount; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->BindCount = (uint)value.Length;
+				m->Binds = Marshal.AllocHGlobal ((int)(sizeof(SparseImageMemoryBind)*m->BindCount));
+				unsafe
+				{
+					SparseImageMemoryBind* ptr = (SparseImageMemoryBind*)m->Binds;
+					for (int i = 0; i < m->BindCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 	}
 
@@ -1236,10 +1371,30 @@ namespace Vulkan
 			set { m->WaitSemaphoreCount = value; }
 		}
 
-		Semaphore lWaitSemaphores;
-		public Semaphore WaitSemaphores {
-			get { return lWaitSemaphores; }
-			set { lWaitSemaphores = value; m->WaitSemaphores = (UInt64)value.m; }
+		public Semaphore[] WaitSemaphores {
+			get {
+				var values = new Semaphore [m->WaitSemaphoreCount];
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->WaitSemaphores;
+					for (int i = 0; i < m->WaitSemaphoreCount; i++) {
+						values [i] = new Semaphore ();
+						values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				m->WaitSemaphoreCount = (uint)value.Length;
+				m->WaitSemaphores = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->WaitSemaphoreCount));
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->WaitSemaphores;
+					for (int i = 0; i < m->WaitSemaphoreCount; i++)
+						ptr [i] = value [i].m;
+				}
+			}
 		}
 
 		public UInt32 BufferBindCount {
@@ -1247,10 +1402,30 @@ namespace Vulkan
 			set { m->BufferBindCount = value; }
 		}
 
-		SparseBufferMemoryBindInfo lBufferBinds;
-		public SparseBufferMemoryBindInfo BufferBinds {
-			get { return lBufferBinds; }
-			set { lBufferBinds = value; m->BufferBinds = (IntPtr)value.m; }
+		public SparseBufferMemoryBindInfo[] BufferBinds {
+			get {
+				var values = new SparseBufferMemoryBindInfo [m->BufferBindCount];
+				unsafe
+				{
+					Interop.SparseBufferMemoryBindInfo* ptr = (Interop.SparseBufferMemoryBindInfo*)m->BufferBinds;
+					for (int i = 0; i < m->BufferBindCount; i++) {
+						values [i] = new SparseBufferMemoryBindInfo ();
+						*values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				m->BufferBindCount = (uint)value.Length;
+				m->BufferBinds = Marshal.AllocHGlobal ((int)(sizeof(Interop.SparseBufferMemoryBindInfo)*m->BufferBindCount));
+				unsafe
+				{
+					Interop.SparseBufferMemoryBindInfo* ptr = (Interop.SparseBufferMemoryBindInfo*)m->BufferBinds;
+					for (int i = 0; i < m->BufferBindCount; i++)
+						ptr [i] = *value [i].m;
+				}
+			}
 		}
 
 		public UInt32 ImageOpaqueBindCount {
@@ -1258,10 +1433,30 @@ namespace Vulkan
 			set { m->ImageOpaqueBindCount = value; }
 		}
 
-		SparseImageOpaqueMemoryBindInfo lImageOpaqueBinds;
-		public SparseImageOpaqueMemoryBindInfo ImageOpaqueBinds {
-			get { return lImageOpaqueBinds; }
-			set { lImageOpaqueBinds = value; m->ImageOpaqueBinds = (IntPtr)value.m; }
+		public SparseImageOpaqueMemoryBindInfo[] ImageOpaqueBinds {
+			get {
+				var values = new SparseImageOpaqueMemoryBindInfo [m->ImageOpaqueBindCount];
+				unsafe
+				{
+					Interop.SparseImageOpaqueMemoryBindInfo* ptr = (Interop.SparseImageOpaqueMemoryBindInfo*)m->ImageOpaqueBinds;
+					for (int i = 0; i < m->ImageOpaqueBindCount; i++) {
+						values [i] = new SparseImageOpaqueMemoryBindInfo ();
+						*values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				m->ImageOpaqueBindCount = (uint)value.Length;
+				m->ImageOpaqueBinds = Marshal.AllocHGlobal ((int)(sizeof(Interop.SparseImageOpaqueMemoryBindInfo)*m->ImageOpaqueBindCount));
+				unsafe
+				{
+					Interop.SparseImageOpaqueMemoryBindInfo* ptr = (Interop.SparseImageOpaqueMemoryBindInfo*)m->ImageOpaqueBinds;
+					for (int i = 0; i < m->ImageOpaqueBindCount; i++)
+						ptr [i] = *value [i].m;
+				}
+			}
 		}
 
 		public UInt32 ImageBindCount {
@@ -1269,10 +1464,30 @@ namespace Vulkan
 			set { m->ImageBindCount = value; }
 		}
 
-		SparseImageMemoryBindInfo lImageBinds;
-		public SparseImageMemoryBindInfo ImageBinds {
-			get { return lImageBinds; }
-			set { lImageBinds = value; m->ImageBinds = (IntPtr)value.m; }
+		public SparseImageMemoryBindInfo[] ImageBinds {
+			get {
+				var values = new SparseImageMemoryBindInfo [m->ImageBindCount];
+				unsafe
+				{
+					Interop.SparseImageMemoryBindInfo* ptr = (Interop.SparseImageMemoryBindInfo*)m->ImageBinds;
+					for (int i = 0; i < m->ImageBindCount; i++) {
+						values [i] = new SparseImageMemoryBindInfo ();
+						*values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				m->ImageBindCount = (uint)value.Length;
+				m->ImageBinds = Marshal.AllocHGlobal ((int)(sizeof(Interop.SparseImageMemoryBindInfo)*m->ImageBindCount));
+				unsafe
+				{
+					Interop.SparseImageMemoryBindInfo* ptr = (Interop.SparseImageMemoryBindInfo*)m->ImageBinds;
+					for (int i = 0; i < m->ImageBindCount; i++)
+						ptr [i] = *value [i].m;
+				}
+			}
 		}
 
 		public UInt32 SignalSemaphoreCount {
@@ -1280,10 +1495,30 @@ namespace Vulkan
 			set { m->SignalSemaphoreCount = value; }
 		}
 
-		Semaphore lSignalSemaphores;
-		public Semaphore SignalSemaphores {
-			get { return lSignalSemaphores; }
-			set { lSignalSemaphores = value; m->SignalSemaphores = (UInt64)value.m; }
+		public Semaphore[] SignalSemaphores {
+			get {
+				var values = new Semaphore [m->SignalSemaphoreCount];
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->SignalSemaphores;
+					for (int i = 0; i < m->SignalSemaphoreCount; i++) {
+						values [i] = new Semaphore ();
+						values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				m->SignalSemaphoreCount = (uint)value.Length;
+				m->SignalSemaphores = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->SignalSemaphoreCount));
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->SignalSemaphores;
+					for (int i = 0; i < m->SignalSemaphoreCount; i++)
+						ptr [i] = value [i].m;
+				}
+			}
 		}
 	}
 
@@ -1371,7 +1606,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->Code;
-					for (int i = 0; i < (uint)m->CodeSize; i++)
+					for (int i = 0; i < (uint)m->CodeSize; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -1419,10 +1654,30 @@ namespace Vulkan
 			set { m->StageFlags = value; }
 		}
 
-		Sampler lImmutableSamplers;
-		public Sampler ImmutableSamplers {
-			get { return lImmutableSamplers; }
-			set { lImmutableSamplers = value; m->ImmutableSamplers = (UInt64)value.m; }
+		public Sampler[] ImmutableSamplers {
+			get {
+				var values = new Sampler [m->DescriptorCount];
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->ImmutableSamplers;
+					for (int i = 0; i < m->DescriptorCount; i++) {
+						values [i] = new Sampler ();
+						values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				m->DescriptorCount = (uint)value.Length;
+				m->ImmutableSamplers = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->DescriptorCount));
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->ImmutableSamplers;
+					for (int i = 0; i < m->DescriptorCount; i++)
+						ptr [i] = value [i].m;
+				}
+			}
 		}
 	}
 
@@ -1446,10 +1701,30 @@ namespace Vulkan
 			set { m->BindingCount = value; }
 		}
 
-		DescriptorSetLayoutBinding lBindings;
-		public DescriptorSetLayoutBinding Bindings {
-			get { return lBindings; }
-			set { lBindings = value; m->Bindings = (IntPtr)value.m; }
+		public DescriptorSetLayoutBinding[] Bindings {
+			get {
+				var values = new DescriptorSetLayoutBinding [m->BindingCount];
+				unsafe
+				{
+					Interop.DescriptorSetLayoutBinding* ptr = (Interop.DescriptorSetLayoutBinding*)m->Bindings;
+					for (int i = 0; i < m->BindingCount; i++) {
+						values [i] = new DescriptorSetLayoutBinding ();
+						*values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				m->BindingCount = (uint)value.Length;
+				m->Bindings = Marshal.AllocHGlobal ((int)(sizeof(Interop.DescriptorSetLayoutBinding)*m->BindingCount));
+				unsafe
+				{
+					Interop.DescriptorSetLayoutBinding* ptr = (Interop.DescriptorSetLayoutBinding*)m->Bindings;
+					for (int i = 0; i < m->BindingCount; i++)
+						ptr [i] = *value [i].m;
+				}
+			}
 		}
 	}
 
@@ -1484,9 +1759,28 @@ namespace Vulkan
 			set { m->PoolSizeCount = value; }
 		}
 
-		public DescriptorPoolSize PoolSizes {
-			get { return (DescriptorPoolSize)Interop.Structure.MarshalPointerToObject (m->PoolSizes, typeof (DescriptorPoolSize)); }
-			set { m->PoolSizes = Interop.Structure.MarshalObjectToPointer (m->PoolSizes, value); }
+		public DescriptorPoolSize[] PoolSizes {
+			get {
+				var values = new DescriptorPoolSize [m->PoolSizeCount];
+				unsafe
+				{
+					DescriptorPoolSize* ptr = (DescriptorPoolSize*)m->PoolSizes;
+					for (int i = 0; i < m->PoolSizeCount; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->PoolSizeCount = (uint)value.Length;
+				m->PoolSizes = Marshal.AllocHGlobal ((int)(sizeof(DescriptorPoolSize)*m->PoolSizeCount));
+				unsafe
+				{
+					DescriptorPoolSize* ptr = (DescriptorPoolSize*)m->PoolSizes;
+					for (int i = 0; i < m->PoolSizeCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 	}
 
@@ -1511,10 +1805,30 @@ namespace Vulkan
 			set { m->DescriptorSetCount = value; }
 		}
 
-		DescriptorSetLayout lSetLayouts;
-		public DescriptorSetLayout SetLayouts {
-			get { return lSetLayouts; }
-			set { lSetLayouts = value; m->SetLayouts = (UInt64)value.m; }
+		public DescriptorSetLayout[] SetLayouts {
+			get {
+				var values = new DescriptorSetLayout [m->DescriptorSetCount];
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->SetLayouts;
+					for (int i = 0; i < m->DescriptorSetCount; i++) {
+						values [i] = new DescriptorSetLayout ();
+						values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				m->DescriptorSetCount = (uint)value.Length;
+				m->SetLayouts = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->DescriptorSetCount));
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->SetLayouts;
+					for (int i = 0; i < m->DescriptorSetCount; i++)
+						ptr [i] = value [i].m;
+				}
+			}
 		}
 	}
 
@@ -1539,9 +1853,28 @@ namespace Vulkan
 			set { m->MapEntryCount = value; }
 		}
 
-		public SpecializationMapEntry MapEntries {
-			get { return (SpecializationMapEntry)Interop.Structure.MarshalPointerToObject (m->MapEntries, typeof (SpecializationMapEntry)); }
-			set { m->MapEntries = Interop.Structure.MarshalObjectToPointer (m->MapEntries, value); }
+		public SpecializationMapEntry[] MapEntries {
+			get {
+				var values = new SpecializationMapEntry [m->MapEntryCount];
+				unsafe
+				{
+					SpecializationMapEntry* ptr = (SpecializationMapEntry*)m->MapEntries;
+					for (int i = 0; i < m->MapEntryCount; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->MapEntryCount = (uint)value.Length;
+				m->MapEntries = Marshal.AllocHGlobal ((int)(sizeof(SpecializationMapEntry)*m->MapEntryCount));
+				unsafe
+				{
+					SpecializationMapEntry* ptr = (SpecializationMapEntry*)m->MapEntries;
+					for (int i = 0; i < m->MapEntryCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 
 		public UIntPtr DataSize {
@@ -1667,9 +2000,28 @@ namespace Vulkan
 			set { m->VertexBindingDescriptionCount = value; }
 		}
 
-		public VertexInputBindingDescription VertexBindingDescriptions {
-			get { return (VertexInputBindingDescription)Interop.Structure.MarshalPointerToObject (m->VertexBindingDescriptions, typeof (VertexInputBindingDescription)); }
-			set { m->VertexBindingDescriptions = Interop.Structure.MarshalObjectToPointer (m->VertexBindingDescriptions, value); }
+		public VertexInputBindingDescription[] VertexBindingDescriptions {
+			get {
+				var values = new VertexInputBindingDescription [m->VertexBindingDescriptionCount];
+				unsafe
+				{
+					VertexInputBindingDescription* ptr = (VertexInputBindingDescription*)m->VertexBindingDescriptions;
+					for (int i = 0; i < m->VertexBindingDescriptionCount; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->VertexBindingDescriptionCount = (uint)value.Length;
+				m->VertexBindingDescriptions = Marshal.AllocHGlobal ((int)(sizeof(VertexInputBindingDescription)*m->VertexBindingDescriptionCount));
+				unsafe
+				{
+					VertexInputBindingDescription* ptr = (VertexInputBindingDescription*)m->VertexBindingDescriptions;
+					for (int i = 0; i < m->VertexBindingDescriptionCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 
 		public UInt32 VertexAttributeDescriptionCount {
@@ -1677,9 +2029,28 @@ namespace Vulkan
 			set { m->VertexAttributeDescriptionCount = value; }
 		}
 
-		public VertexInputAttributeDescription VertexAttributeDescriptions {
-			get { return (VertexInputAttributeDescription)Interop.Structure.MarshalPointerToObject (m->VertexAttributeDescriptions, typeof (VertexInputAttributeDescription)); }
-			set { m->VertexAttributeDescriptions = Interop.Structure.MarshalObjectToPointer (m->VertexAttributeDescriptions, value); }
+		public VertexInputAttributeDescription[] VertexAttributeDescriptions {
+			get {
+				var values = new VertexInputAttributeDescription [m->VertexAttributeDescriptionCount];
+				unsafe
+				{
+					VertexInputAttributeDescription* ptr = (VertexInputAttributeDescription*)m->VertexAttributeDescriptions;
+					for (int i = 0; i < m->VertexAttributeDescriptionCount; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->VertexAttributeDescriptionCount = (uint)value.Length;
+				m->VertexAttributeDescriptions = Marshal.AllocHGlobal ((int)(sizeof(VertexInputAttributeDescription)*m->VertexAttributeDescriptionCount));
+				unsafe
+				{
+					VertexInputAttributeDescription* ptr = (VertexInputAttributeDescription*)m->VertexAttributeDescriptions;
+					for (int i = 0; i < m->VertexAttributeDescriptionCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 	}
 
@@ -1750,9 +2121,28 @@ namespace Vulkan
 			set { m->ViewportCount = value; }
 		}
 
-		public Viewport Viewports {
-			get { return (Viewport)Interop.Structure.MarshalPointerToObject (m->Viewports, typeof (Viewport)); }
-			set { m->Viewports = Interop.Structure.MarshalObjectToPointer (m->Viewports, value); }
+		public Viewport[] Viewports {
+			get {
+				var values = new Viewport [m->ViewportCount];
+				unsafe
+				{
+					Viewport* ptr = (Viewport*)m->Viewports;
+					for (int i = 0; i < m->ViewportCount; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->ViewportCount = (uint)value.Length;
+				m->Viewports = Marshal.AllocHGlobal ((int)(sizeof(Viewport)*m->ViewportCount));
+				unsafe
+				{
+					Viewport* ptr = (Viewport*)m->Viewports;
+					for (int i = 0; i < m->ViewportCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 
 		public UInt32 ScissorCount {
@@ -1760,9 +2150,28 @@ namespace Vulkan
 			set { m->ScissorCount = value; }
 		}
 
-		public Rect2D Scissors {
-			get { return (Rect2D)Interop.Structure.MarshalPointerToObject (m->Scissors, typeof (Rect2D)); }
-			set { m->Scissors = Interop.Structure.MarshalObjectToPointer (m->Scissors, value); }
+		public Rect2D[] Scissors {
+			get {
+				var values = new Rect2D [m->ScissorCount];
+				unsafe
+				{
+					Rect2D* ptr = (Rect2D*)m->Scissors;
+					for (int i = 0; i < m->ScissorCount; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->ScissorCount = (uint)value.Length;
+				m->Scissors = Marshal.AllocHGlobal ((int)(sizeof(Rect2D)*m->ScissorCount));
+				unsafe
+				{
+					Rect2D* ptr = (Rect2D*)m->Scissors;
+					for (int i = 0; i < m->ScissorCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 	}
 
@@ -1868,7 +2277,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->SampleMask;
-					for (int i = 0; i < m->RasterizationSamples; i++)
+					for (int i = 0; i < m->RasterizationSamples; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -1939,9 +2348,28 @@ namespace Vulkan
 			set { m->AttachmentCount = value; }
 		}
 
-		public PipelineColorBlendAttachmentState Attachments {
-			get { return (PipelineColorBlendAttachmentState)Interop.Structure.MarshalPointerToObject (m->Attachments, typeof (PipelineColorBlendAttachmentState)); }
-			set { m->Attachments = Interop.Structure.MarshalObjectToPointer (m->Attachments, value); }
+		public PipelineColorBlendAttachmentState[] Attachments {
+			get {
+				var values = new PipelineColorBlendAttachmentState [m->AttachmentCount];
+				unsafe
+				{
+					PipelineColorBlendAttachmentState* ptr = (PipelineColorBlendAttachmentState*)m->Attachments;
+					for (int i = 0; i < m->AttachmentCount; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->AttachmentCount = (uint)value.Length;
+				m->Attachments = Marshal.AllocHGlobal ((int)(sizeof(PipelineColorBlendAttachmentState)*m->AttachmentCount));
+				unsafe
+				{
+					PipelineColorBlendAttachmentState* ptr = (PipelineColorBlendAttachmentState*)m->Attachments;
+					for (int i = 0; i < m->AttachmentCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 
 		public float BlendConstants {
@@ -1976,7 +2404,7 @@ namespace Vulkan
 				unsafe
 				{
 					DynamicState* ptr = (DynamicState*)m->DynamicStates;
-					for (int i = 0; i < m->DynamicStateCount; i++)
+					for (int i = 0; i < m->DynamicStateCount; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -2087,10 +2515,30 @@ namespace Vulkan
 			set { m->StageCount = value; }
 		}
 
-		PipelineShaderStageCreateInfo lStages;
-		public PipelineShaderStageCreateInfo Stages {
-			get { return lStages; }
-			set { lStages = value; m->Stages = (IntPtr)value.m; }
+		public PipelineShaderStageCreateInfo[] Stages {
+			get {
+				var values = new PipelineShaderStageCreateInfo [m->StageCount];
+				unsafe
+				{
+					Interop.PipelineShaderStageCreateInfo* ptr = (Interop.PipelineShaderStageCreateInfo*)m->Stages;
+					for (int i = 0; i < m->StageCount; i++) {
+						values [i] = new PipelineShaderStageCreateInfo ();
+						*values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				m->StageCount = (uint)value.Length;
+				m->Stages = Marshal.AllocHGlobal ((int)(sizeof(Interop.PipelineShaderStageCreateInfo)*m->StageCount));
+				unsafe
+				{
+					Interop.PipelineShaderStageCreateInfo* ptr = (Interop.PipelineShaderStageCreateInfo*)m->Stages;
+					for (int i = 0; i < m->StageCount; i++)
+						ptr [i] = *value [i].m;
+				}
+			}
 		}
 
 		PipelineVertexInputStateCreateInfo lVertexInputState;
@@ -2229,10 +2677,30 @@ namespace Vulkan
 			set { m->SetLayoutCount = value; }
 		}
 
-		DescriptorSetLayout lSetLayouts;
-		public DescriptorSetLayout SetLayouts {
-			get { return lSetLayouts; }
-			set { lSetLayouts = value; m->SetLayouts = (UInt64)value.m; }
+		public DescriptorSetLayout[] SetLayouts {
+			get {
+				var values = new DescriptorSetLayout [m->SetLayoutCount];
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->SetLayouts;
+					for (int i = 0; i < m->SetLayoutCount; i++) {
+						values [i] = new DescriptorSetLayout ();
+						values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				m->SetLayoutCount = (uint)value.Length;
+				m->SetLayouts = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->SetLayoutCount));
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->SetLayouts;
+					for (int i = 0; i < m->SetLayoutCount; i++)
+						ptr [i] = value [i].m;
+				}
+			}
 		}
 
 		public UInt32 PushConstantRangeCount {
@@ -2240,9 +2708,28 @@ namespace Vulkan
 			set { m->PushConstantRangeCount = value; }
 		}
 
-		public PushConstantRange PushConstantRanges {
-			get { return (PushConstantRange)Interop.Structure.MarshalPointerToObject (m->PushConstantRanges, typeof (PushConstantRange)); }
-			set { m->PushConstantRanges = Interop.Structure.MarshalObjectToPointer (m->PushConstantRanges, value); }
+		public PushConstantRange[] PushConstantRanges {
+			get {
+				var values = new PushConstantRange [m->PushConstantRangeCount];
+				unsafe
+				{
+					PushConstantRange* ptr = (PushConstantRange*)m->PushConstantRanges;
+					for (int i = 0; i < m->PushConstantRangeCount; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->PushConstantRangeCount = (uint)value.Length;
+				m->PushConstantRanges = Marshal.AllocHGlobal ((int)(sizeof(PushConstantRange)*m->PushConstantRangeCount));
+				unsafe
+				{
+					PushConstantRange* ptr = (PushConstantRange*)m->PushConstantRanges;
+					for (int i = 0; i < m->PushConstantRangeCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 	}
 
@@ -2482,9 +2969,28 @@ namespace Vulkan
 			set { m->ClearValueCount = value; }
 		}
 
-		public ClearValue ClearValues {
-			get { return (ClearValue)Interop.Structure.MarshalPointerToObject (m->ClearValues, typeof (ClearValue)); }
-			set { m->ClearValues = Interop.Structure.MarshalObjectToPointer (m->ClearValues, value); }
+		public ClearValue[] ClearValues {
+			get {
+				var values = new ClearValue [m->ClearValueCount];
+				unsafe
+				{
+					ClearValue* ptr = (ClearValue*)m->ClearValues;
+					for (int i = 0; i < m->ClearValueCount; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->ClearValueCount = (uint)value.Length;
+				m->ClearValues = Marshal.AllocHGlobal ((int)(sizeof(ClearValue)*m->ClearValueCount));
+				unsafe
+				{
+					ClearValue* ptr = (ClearValue*)m->ClearValues;
+					for (int i = 0; i < m->ClearValueCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 	}
 
@@ -2544,9 +3050,28 @@ namespace Vulkan
 			set { m->InputAttachmentCount = value; }
 		}
 
-		public AttachmentReference InputAttachments {
-			get { return (AttachmentReference)Interop.Structure.MarshalPointerToObject (m->InputAttachments, typeof (AttachmentReference)); }
-			set { m->InputAttachments = Interop.Structure.MarshalObjectToPointer (m->InputAttachments, value); }
+		public AttachmentReference[] InputAttachments {
+			get {
+				var values = new AttachmentReference [m->InputAttachmentCount];
+				unsafe
+				{
+					AttachmentReference* ptr = (AttachmentReference*)m->InputAttachments;
+					for (int i = 0; i < m->InputAttachmentCount; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->InputAttachmentCount = (uint)value.Length;
+				m->InputAttachments = Marshal.AllocHGlobal ((int)(sizeof(AttachmentReference)*m->InputAttachmentCount));
+				unsafe
+				{
+					AttachmentReference* ptr = (AttachmentReference*)m->InputAttachments;
+					for (int i = 0; i < m->InputAttachmentCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 
 		public UInt32 ColorAttachmentCount {
@@ -2560,7 +3085,7 @@ namespace Vulkan
 				unsafe
 				{
 					AttachmentReference* ptr = (AttachmentReference*)m->ColorAttachments;
-					for (int i = 0; i < m->ColorAttachmentCount; i++)
+					for (int i = 0; i < m->ColorAttachmentCount; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -2578,9 +3103,28 @@ namespace Vulkan
 			}
 		}
 
-		public AttachmentReference ResolveAttachments {
-			get { return (AttachmentReference)Interop.Structure.MarshalPointerToObject (m->ResolveAttachments, typeof (AttachmentReference)); }
-			set { m->ResolveAttachments = Interop.Structure.MarshalObjectToPointer (m->ResolveAttachments, value); }
+		public AttachmentReference[] ResolveAttachments {
+			get {
+				var values = new AttachmentReference [m->ColorAttachmentCount];
+				unsafe
+				{
+					AttachmentReference* ptr = (AttachmentReference*)m->ResolveAttachments;
+					for (int i = 0; i < m->ColorAttachmentCount; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->ColorAttachmentCount = (uint)value.Length;
+				m->ResolveAttachments = Marshal.AllocHGlobal ((int)(sizeof(AttachmentReference)*m->ColorAttachmentCount));
+				unsafe
+				{
+					AttachmentReference* ptr = (AttachmentReference*)m->ResolveAttachments;
+					for (int i = 0; i < m->ColorAttachmentCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 
 		public AttachmentReference DepthStencilAttachment {
@@ -2599,7 +3143,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->PreserveAttachments;
-					for (int i = 0; i < m->PreserveAttachmentCount; i++)
+					for (int i = 0; i < m->PreserveAttachmentCount; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -2649,9 +3193,28 @@ namespace Vulkan
 			set { m->AttachmentCount = value; }
 		}
 
-		public AttachmentDescription Attachments {
-			get { return (AttachmentDescription)Interop.Structure.MarshalPointerToObject (m->Attachments, typeof (AttachmentDescription)); }
-			set { m->Attachments = Interop.Structure.MarshalObjectToPointer (m->Attachments, value); }
+		public AttachmentDescription[] Attachments {
+			get {
+				var values = new AttachmentDescription [m->AttachmentCount];
+				unsafe
+				{
+					AttachmentDescription* ptr = (AttachmentDescription*)m->Attachments;
+					for (int i = 0; i < m->AttachmentCount; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->AttachmentCount = (uint)value.Length;
+				m->Attachments = Marshal.AllocHGlobal ((int)(sizeof(AttachmentDescription)*m->AttachmentCount));
+				unsafe
+				{
+					AttachmentDescription* ptr = (AttachmentDescription*)m->Attachments;
+					for (int i = 0; i < m->AttachmentCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 
 		public UInt32 SubpassCount {
@@ -2659,10 +3222,30 @@ namespace Vulkan
 			set { m->SubpassCount = value; }
 		}
 
-		SubpassDescription lSubpasses;
-		public SubpassDescription Subpasses {
-			get { return lSubpasses; }
-			set { lSubpasses = value; m->Subpasses = (IntPtr)value.m; }
+		public SubpassDescription[] Subpasses {
+			get {
+				var values = new SubpassDescription [m->SubpassCount];
+				unsafe
+				{
+					Interop.SubpassDescription* ptr = (Interop.SubpassDescription*)m->Subpasses;
+					for (int i = 0; i < m->SubpassCount; i++) {
+						values [i] = new SubpassDescription ();
+						*values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				m->SubpassCount = (uint)value.Length;
+				m->Subpasses = Marshal.AllocHGlobal ((int)(sizeof(Interop.SubpassDescription)*m->SubpassCount));
+				unsafe
+				{
+					Interop.SubpassDescription* ptr = (Interop.SubpassDescription*)m->Subpasses;
+					for (int i = 0; i < m->SubpassCount; i++)
+						ptr [i] = *value [i].m;
+				}
+			}
 		}
 
 		public UInt32 DependencyCount {
@@ -2670,9 +3253,28 @@ namespace Vulkan
 			set { m->DependencyCount = value; }
 		}
 
-		public SubpassDependency Dependencies {
-			get { return (SubpassDependency)Interop.Structure.MarshalPointerToObject (m->Dependencies, typeof (SubpassDependency)); }
-			set { m->Dependencies = Interop.Structure.MarshalObjectToPointer (m->Dependencies, value); }
+		public SubpassDependency[] Dependencies {
+			get {
+				var values = new SubpassDependency [m->DependencyCount];
+				unsafe
+				{
+					SubpassDependency* ptr = (SubpassDependency*)m->Dependencies;
+					for (int i = 0; i < m->DependencyCount; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				m->DependencyCount = (uint)value.Length;
+				m->Dependencies = Marshal.AllocHGlobal ((int)(sizeof(SubpassDependency)*m->DependencyCount));
+				unsafe
+				{
+					SubpassDependency* ptr = (SubpassDependency*)m->Dependencies;
+					for (int i = 0; i < m->DependencyCount; i++)
+						ptr [i] = value [i];
+				}
+			}
 		}
 	}
 
@@ -3389,10 +3991,30 @@ namespace Vulkan
 			set { m->AttachmentCount = value; }
 		}
 
-		ImageView lAttachments;
-		public ImageView Attachments {
-			get { return lAttachments; }
-			set { lAttachments = value; m->Attachments = (UInt64)value.m; }
+		public ImageView[] Attachments {
+			get {
+				var values = new ImageView [m->AttachmentCount];
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->Attachments;
+					for (int i = 0; i < m->AttachmentCount; i++) {
+						values [i] = new ImageView ();
+						values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				m->AttachmentCount = (uint)value.Length;
+				m->Attachments = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->AttachmentCount));
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->Attachments;
+					for (int i = 0; i < m->AttachmentCount; i++)
+						ptr [i] = value [i].m;
+				}
+			}
 		}
 
 		public UInt32 Width {
@@ -3450,10 +4072,30 @@ namespace Vulkan
 			set { m->WaitSemaphoreCount = value; }
 		}
 
-		Semaphore lWaitSemaphores;
-		public Semaphore WaitSemaphores {
-			get { return lWaitSemaphores; }
-			set { lWaitSemaphores = value; m->WaitSemaphores = (UInt64)value.m; }
+		public Semaphore[] WaitSemaphores {
+			get {
+				var values = new Semaphore [m->WaitSemaphoreCount];
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->WaitSemaphores;
+					for (int i = 0; i < m->WaitSemaphoreCount; i++) {
+						values [i] = new Semaphore ();
+						values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				m->WaitSemaphoreCount = (uint)value.Length;
+				m->WaitSemaphores = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->WaitSemaphoreCount));
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->WaitSemaphores;
+					for (int i = 0; i < m->WaitSemaphoreCount; i++)
+						ptr [i] = value [i].m;
+				}
+			}
 		}
 
 		public UInt32[] WaitDstStageMask {
@@ -3462,7 +4104,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->WaitDstStageMask;
-					for (int i = 0; i < m->WaitSemaphoreCount; i++)
+					for (int i = 0; i < m->WaitSemaphoreCount; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -3485,10 +4127,30 @@ namespace Vulkan
 			set { m->CommandBufferCount = value; }
 		}
 
-		CommandBuffer lCommandBuffers;
-		public CommandBuffer CommandBuffers {
-			get { return lCommandBuffers; }
-			set { lCommandBuffers = value; m->CommandBuffers = (IntPtr)value.m; }
+		public CommandBuffer[] CommandBuffers {
+			get {
+				var values = new CommandBuffer [m->CommandBufferCount];
+				unsafe
+				{
+					IntPtr* ptr = (IntPtr*)m->CommandBuffers;
+					for (int i = 0; i < m->CommandBufferCount; i++) {
+						values [i] = new CommandBuffer ();
+						values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				m->CommandBufferCount = (uint)value.Length;
+				m->CommandBuffers = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*m->CommandBufferCount));
+				unsafe
+				{
+					IntPtr* ptr = (IntPtr*)m->CommandBuffers;
+					for (int i = 0; i < m->CommandBufferCount; i++)
+						ptr [i] = value [i].m;
+				}
+			}
 		}
 
 		public UInt32 SignalSemaphoreCount {
@@ -3496,10 +4158,30 @@ namespace Vulkan
 			set { m->SignalSemaphoreCount = value; }
 		}
 
-		Semaphore lSignalSemaphores;
-		public Semaphore SignalSemaphores {
-			get { return lSignalSemaphores; }
-			set { lSignalSemaphores = value; m->SignalSemaphores = (UInt64)value.m; }
+		public Semaphore[] SignalSemaphores {
+			get {
+				var values = new Semaphore [m->SignalSemaphoreCount];
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->SignalSemaphores;
+					for (int i = 0; i < m->SignalSemaphoreCount; i++) {
+						values [i] = new Semaphore ();
+						values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				m->SignalSemaphoreCount = (uint)value.Length;
+				m->SignalSemaphores = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->SignalSemaphoreCount));
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->SignalSemaphores;
+					for (int i = 0; i < m->SignalSemaphoreCount; i++)
+						ptr [i] = value [i].m;
+				}
+			}
 		}
 	}
 
@@ -3766,7 +4448,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->QueueFamilyIndices;
-					for (int i = 0; i < m->QueueFamilyIndexCount; i++)
+					for (int i = 0; i < m->QueueFamilyIndexCount; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -3826,10 +4508,30 @@ namespace Vulkan
 			set { m->WaitSemaphoreCount = value; }
 		}
 
-		Semaphore lWaitSemaphores;
-		public Semaphore WaitSemaphores {
-			get { return lWaitSemaphores; }
-			set { lWaitSemaphores = value; m->WaitSemaphores = (UInt64)value.m; }
+		public Semaphore[] WaitSemaphores {
+			get {
+				var values = new Semaphore [m->WaitSemaphoreCount];
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->WaitSemaphores;
+					for (int i = 0; i < m->WaitSemaphoreCount; i++) {
+						values [i] = new Semaphore ();
+						values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				m->WaitSemaphoreCount = (uint)value.Length;
+				m->WaitSemaphores = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->WaitSemaphoreCount));
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->WaitSemaphores;
+					for (int i = 0; i < m->WaitSemaphoreCount; i++)
+						ptr [i] = value [i].m;
+				}
+			}
 		}
 
 		public UInt32 SwapchainCount {
@@ -3837,10 +4539,30 @@ namespace Vulkan
 			set { m->SwapchainCount = value; }
 		}
 
-		SwapchainKhr lSwapchains;
-		public SwapchainKhr Swapchains {
-			get { return lSwapchains; }
-			set { lSwapchains = value; m->Swapchains = (UInt64)value.m; }
+		public SwapchainKhr[] Swapchains {
+			get {
+				var values = new SwapchainKhr [m->SwapchainCount];
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->Swapchains;
+					for (int i = 0; i < m->SwapchainCount; i++) {
+						values [i] = new SwapchainKhr ();
+						values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				m->SwapchainCount = (uint)value.Length;
+				m->Swapchains = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->SwapchainCount));
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->Swapchains;
+					for (int i = 0; i < m->SwapchainCount; i++)
+						ptr [i] = value [i].m;
+				}
+			}
 		}
 
 		public UInt32[] ImageIndices {
@@ -3849,7 +4571,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->ImageIndices;
-					for (int i = 0; i < m->SwapchainCount; i++)
+					for (int i = 0; i < m->SwapchainCount; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -3873,7 +4595,7 @@ namespace Vulkan
 				unsafe
 				{
 					Result* ptr = (Result*)m->Results;
-					for (int i = 0; i < m->SwapchainCount; i++)
+					for (int i = 0; i < m->SwapchainCount; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
