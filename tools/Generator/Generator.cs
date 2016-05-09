@@ -461,15 +461,24 @@ namespace VulkanSharp.Generator
 			{ "SampleMask", "RasterizationSamples" },
 			{ "DynamicStates", "DynamicStateCount" },
 			{ "WaitDstStageMask", "WaitSemaphoreCount" },
-			{ "Results", "SwapchainCount" }
+			{ "Results", "SwapchainCount" },
+			{ "Attachments", "AttachmentCount" },
+			{ "TexelBufferView", "DescriptorCount" }
 		};
 
-		void WriteMemberArray (string csMemberType, string csMemberName, string sec)
+		void WriteMemberArray (string csMemberType, string csMemberName, string sec, XElement memberElement)
 		{
 			string countName;
+
+			var lenAttribute = memberElement.Attribute ("len");
+			var structNeedsMarshalling = structures.ContainsKey (csMemberType) && structures [csMemberType].needsMarshalling;
+			var isHandle = handles.ContainsKey (csMemberType);
+			var ptrType = isHandle ? GetHandleType (handles [csMemberType]) : csMemberType;
 			if (fieldCounterMap.ContainsKey (csMemberName))
 				countName = fieldCounterMap [csMemberName];
-			else
+			else if (lenAttribute != null) {
+				countName = TranslateCName (lenAttribute.Value);
+			} else
 				throw new Exception (string.Format ("do not know the counter for {0}", csMemberName));
 			// fixme: handle size_t sized arrays better
 			string cast = csMemberName == "Code" ? "(uint)" : "";
@@ -482,11 +491,21 @@ namespace VulkanSharp.Generator
 			IndentWriteLine ("unsafe");
 			IndentWriteLine ("{");
 			IndentLevel++;
-			IndentWriteLine ("{0}* ptr = ({0}*)m->{1};", csMemberType, csMemberName);
-			IndentWriteLine ("for (int i = 0; i < {0}m->{1}; i++)", cast, countName);
+			IndentWriteLine ("{0}{1}* ptr = ({0}{1}*)m->{2};", structNeedsMarshalling ? (InteropNamespace + ".") : "", ptrType, csMemberName);
+			IndentWriteLine ("for (int i = 0; i < {0}m->{1}; i++) {2}", cast, countName, (structNeedsMarshalling || isHandle) ? "{" : "");
 			IndentLevel++;
-			IndentWriteLine ("values [i] = ptr [i];");
-			IndentLevel -= 2;
+			if (structNeedsMarshalling) {
+				IndentWriteLine ("values [i] = new {0} ();", csMemberType);
+				IndentWriteLine ("*values [i].m = ptr [i];", csMemberType);
+			} else if (isHandle) {
+				IndentWriteLine ("values [i] = new {0} ();", csMemberType);
+				IndentWriteLine ("values [i].m = ptr [i];", csMemberType);
+			} else
+				IndentWriteLine ("values [i] = ptr [i];");
+			IndentLevel--;
+			if (structNeedsMarshalling || isHandle)
+				IndentWriteLine ("}");
+			IndentLevel --;
 			IndentWriteLine ("}");
 			IndentWriteLine ("return values;");
 			IndentLevel--;
@@ -496,14 +515,17 @@ namespace VulkanSharp.Generator
 			IndentWriteLine ("set {");
 			IndentLevel++;
 			IndentWriteLine ("m->{0} = {1}value.Length;", countName, cast2);
-			IndentWriteLine ("m->{0} = Marshal.AllocHGlobal ((int)(sizeof({1})*{2}m->{3}));", csMemberName, csMemberType, cast, countName);
+			IndentWriteLine ("m->{0} = Marshal.AllocHGlobal ((int)(sizeof({1}{2})*{3}m->{4}));", csMemberName, structNeedsMarshalling ? (InteropNamespace + ".") : "", ptrType, cast, countName);
 			IndentWriteLine ("unsafe");
 			IndentWriteLine ("{");
 			IndentLevel++;
-			IndentWriteLine ("{0}* ptr = ({0}*)m->{1};", csMemberType, csMemberName);
+			IndentWriteLine ("{0}{1}* ptr = ({0}{1}*)m->{2};", structNeedsMarshalling ? (InteropNamespace + ".") : "", ptrType, csMemberName);
 			IndentWriteLine ("for (int i = 0; i < {0}m->{1}; i++)", cast, countName);
 			IndentLevel++;
-			IndentWriteLine ("ptr [i] = value [i];");
+			if (structNeedsMarshalling)
+				IndentWriteLine ("ptr [i] = *value [i].m;");
+			else
+				IndentWriteLine ("ptr [i] = value [i]{0};", isHandle ? ".m" : "");
 			IndentLevel -= 2;
 			IndentWriteLine ("}");
 			IndentLevel--;
@@ -643,7 +665,8 @@ namespace VulkanSharp.Generator
 					isArray = true;
 					break;
 				default:
-					if (fieldCounterMap.ContainsKey (TranslateCName (name)))
+					var lenAttribute = memberElement.Attribute ("len");
+					if (lenAttribute != null || fieldCounterMap.ContainsKey (TranslateCName (name)))
 						isArray = true;
 					break;
 				}
@@ -694,7 +717,7 @@ namespace VulkanSharp.Generator
 			if (isInterop || !needsMarshalling) {
 				if (structures.ContainsKey (csMemberType))
 					Console.WriteLine ("struct member type: {0} needs marshalling: {1}", csMemberType, structures [csMemberType].needsMarshalling);
-				if (handles.ContainsKey (csMemberType)) {
+				if (handles.ContainsKey (csMemberType) && !isPointer) {
 					csMemberType = GetHandleType (handles [csMemberType]);
 				} else if ((structures.ContainsKey (csMemberType) && structures [csMemberType].needsMarshalling) || csMemberType == "string" || isPointer)
 					csMemberType = "IntPtr";
@@ -703,7 +726,7 @@ namespace VulkanSharp.Generator
 				if (isCharArray)
 					WriteMemberCharArray (csMemberName, sec);
 				else if (isArray)
-					WriteMemberArray (csMemberType, csMemberName, sec);
+					WriteMemberArray (csMemberType, csMemberName, sec, memberElement);
 				else if (structures.ContainsKey (csMemberType) || handles.ContainsKey (csMemberType))
 					WriteMemberStructOrHandle (csMemberType, csMemberName, sec, isPointer);
 				else if (csMemberType == "string")
