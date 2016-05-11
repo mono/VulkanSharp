@@ -456,6 +456,44 @@ namespace VulkanSharp.Generator
 			{ "SampleMask", "RasterizationSamples" }
 		};
 
+		void WriteMemberFixedArray (string csMemberType, string csMemberName, XElement memberElement)
+		{
+			int len = GetArrayLength (memberElement.Value);
+			IndentWriteLine ("{0}[] {1} {{", csMemberType, csMemberName);
+			IndentLevel++;
+			IndentWriteLine ("get {");
+			IndentLevel++;
+			IndentWriteLine ("var arr = new {0} [{1}];", csMemberType, len);
+			IndentWriteLine ("for (int i = 0; i < {0}; i++)", len);
+			IndentLevel++;
+			IndentWriteLine ("arr [i] = m->{0} [i];", csMemberName);
+			IndentLevel--;
+			IndentWriteLine ("return arr;");
+			IndentLevel--;
+			IndentWriteLine ("}");
+			WriteLine ();
+
+			IndentWriteLine ("set {");
+			IndentLevel++;
+			IndentWriteLine ("if (value.Length > {0})", len);
+			IndentLevel++;
+			IndentWriteLine ("throw new Exception (\"array too long\");");
+			IndentLevel--;
+			IndentWriteLine ("for (int i = 0; i < value.Length; i++)");
+			IndentLevel++;
+			IndentWriteLine ("m->{0} [i] = value [i];", csMemberName);
+			IndentLevel--;
+			IndentWriteLine ("for (int i = value.Length -1; i < {0}; i++)", len);
+			IndentLevel++;
+			IndentWriteLine ("m->{0} [i] = 0;", csMemberName);
+			IndentLevel--;
+
+			IndentLevel--;
+			IndentWriteLine ("}");
+			IndentLevel--;
+			IndentWriteLine ("}");
+		}
+
 		void WriteMemberArray (string csMemberType, string csMemberName, string sec, XElement memberElement)
 		{
 			string countName;
@@ -628,6 +666,7 @@ namespace VulkanSharp.Generator
 				return false;
 
 			var isArray = false;
+			var isFixedArray = false;
 			bool isPointer = memberElement.Value.Contains (typeElement.Value + "*");
 			bool isDoublePointer = memberElement.Value.Contains (typeElement.Value + "**") || memberElement.Value.Contains (typeElement.Value + "* const*");
 			if (isPointer) {
@@ -660,7 +699,8 @@ namespace VulkanSharp.Generator
 						isArray = true;
 					break;
 				}
-			}
+			} else if (memberElement.Value.Contains ('[') && GetArrayLength (memberElement.Value) > 0 && !structures.ContainsKey (csMemberType))
+				isFixedArray = true;
 			var csMemberName = TranslateCName (name);
 
 			// TODO: fixed arrays of structs
@@ -705,16 +745,28 @@ namespace VulkanSharp.Generator
 				attr = "[FieldOffset (0)] ";
 
 			if (isInterop || !needsMarshalling) {
+				string member = memberElement.Value;
+				string arrayPart = "";
+				string fixedPart = "";
+				if (member.Contains ('[') && !structures.ContainsKey (csMemberType)) {
+					int len = GetArrayLength (member);
+					if (len > 0) {
+						arrayPart = string.Format ("[{0}]", len);
+						fixedPart = "unsafe fixed ";
+					}
+				}
 				if (structures.ContainsKey (csMemberType))
 					Console.WriteLine ("struct member type: {0} needs marshalling: {1}", csMemberType, structures [csMemberType].needsMarshalling);
 				if (handles.ContainsKey (csMemberType) && !isPointer) {
 					csMemberType = GetHandleType (handles [csMemberType]);
 				} else if ((structures.ContainsKey (csMemberType) && structures [csMemberType].needsMarshalling) || csMemberType == "string" || isPointer)
 					csMemberType = "IntPtr";
-				IndentWriteLine ("{0}{1} {2}{3} {4};", attr, sec, mod, csMemberType, csMemberName);
+				IndentWriteLine ("{0}{1} {2}{3}{4} {5}{6};", attr, sec, fixedPart, mod, csMemberType, csMemberName, arrayPart);
 			} else {
 				if (isCharArray)
 					WriteMemberCharArray (csMemberName, sec);
+				else if (isFixedArray)
+					WriteMemberFixedArray (csMemberType, csMemberName, memberElement);
 				else if (isArray)
 					WriteMemberArray (csMemberType, csMemberName, sec, memberElement);
 				else if (structures.ContainsKey (csMemberType) || handles.ContainsKey (csMemberType))
@@ -798,6 +850,17 @@ namespace VulkanSharp.Generator
 			IndentWriteLine ("}");
 
 			return true;
+		}
+
+		int GetArrayLength (string member)
+		{
+			string len = member.Substring (member.IndexOf ('[') + 1);
+			len = len.Substring (0, len.IndexOf (']'));
+			try {
+				return Convert.ToInt32 (len);
+			} catch (FormatException) {
+				return -1;
+			}
 		}
 
 		bool LearnStructureMembers (XElement structElement)
