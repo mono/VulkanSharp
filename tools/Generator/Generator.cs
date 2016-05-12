@@ -574,8 +574,9 @@ namespace VulkanSharp.Generator
 			IndentLevel++;
 			if (isMarshalled) {
 				IndentWriteLine ("get {{ return l{0}; }}", csMemberName);
-				var castType = handles.ContainsKey (csMemberType) ? GetHandleType (handles [csMemberType]) : "IntPtr";
-				IndentWriteLine ("set {{ l{0} = value; m->{0} = ({1})value.m; }}", csMemberName, castType);
+				var isHandle = handles.ContainsKey (csMemberType);
+				var castType = isHandle ? GetHandleType (handles [csMemberType]) : "IntPtr";
+				IndentWriteLine ("set {{ l{0} = value; m->{0} = {1}value.m; }}", csMemberName, (isPointer || isHandle) ? string.Format ("({0})", castType) : "*");
 			} else if (isPointer) {
 				IndentWriteLine ("get {{ return ({0})Interop.Structure.MarshalPointerToObject (m->{1}, typeof ({0})); }}", csMemberType ,csMemberName);
 				IndentWriteLine ("set {{ m->{0} = Interop.Structure.MarshalObjectToPointer (m->{0}, value); }}", csMemberName);
@@ -759,7 +760,7 @@ namespace VulkanSharp.Generator
 					Console.WriteLine ("struct member type: {0} needs marshalling: {1}", csMemberType, structures [csMemberType].needsMarshalling);
 				if (handles.ContainsKey (csMemberType) && !isPointer) {
 					csMemberType = GetHandleType (handles [csMemberType]);
-				} else if ((structures.ContainsKey (csMemberType) && structures [csMemberType].needsMarshalling) || csMemberType == "string" || isPointer)
+				} else if ((!isInterop && structures.ContainsKey (csMemberType) && structures [csMemberType].needsMarshalling) || csMemberType == "string" || isPointer)
 					csMemberType = "IntPtr";
 				IndentWriteLine ("{0}{1} {2}{3}{4} {5}{6};", attr, sec, fixedPart, mod, csMemberType, csMemberName, arrayPart);
 			} else {
@@ -815,7 +816,7 @@ namespace VulkanSharp.Generator
 				IndentWriteLine ("[StructLayout (LayoutKind.Explicit)]");
 			if (!isInterop)
 				mod = "unsafe ";
-			IndentWriteLine ("{0}{1} {2} {3}", mod, isInterop ? "internal" : "public", (isInterop || !needsMarshalling) ? "struct" : "class", csName);
+			IndentWriteLine ("{0}{1} partial {2} {3}", mod, isInterop ? "internal" : "public", (isInterop || !needsMarshalling) ? "struct" : "class", csName);
 			IndentWriteLine ("{");
 			IndentLevel++;
 
@@ -867,7 +868,10 @@ namespace VulkanSharp.Generator
 		{
 			foreach (var memberElement in structElement.Elements ("member")) {
 				string member = memberElement.Value;
-				if (member.Contains ("*") || member.Contains ("["))
+				var typeElement = memberElement.Element ("type");
+				var csMemberType = GetTypeCsName (typeElement.Value, "member");
+
+				if (member.Contains ("*") || member.Contains ("[") || (structures.ContainsKey (csMemberType) && structures [csMemberType].needsMarshalling))
 					return true;
 			}
 
