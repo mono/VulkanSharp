@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 
 namespace Vulkan
 {
-	unsafe public class AndroidSurfaceCreateInfoKhr
+	unsafe public partial class AndroidSurfaceCreateInfoKhr
 	{
 		internal Android.Interop.AndroidSurfaceCreateInfoKhr* m;
 

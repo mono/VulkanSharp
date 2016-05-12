@@ -12,7 +12,7 @@ using System;
 
 namespace Vulkan.Android.Interop
 {
-	internal struct AndroidSurfaceCreateInfoKhr
+	internal partial struct AndroidSurfaceCreateInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;

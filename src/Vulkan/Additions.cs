@@ -21,4 +21,22 @@ namespace Vulkan
 		{
 		}
 	}
+
+	unsafe public partial class ClearColorValue
+	{
+		public ClearColorValue (float[] floatArray) : this ()
+		{
+			Float32 = floatArray;
+		}
+
+		public ClearColorValue (int[] intArray) : this ()
+		{
+			Int32 = intArray;
+		}
+
+		public ClearColorValue (uint[] uintArray) : this ()
+		{
+			Uint32 = uintArray;
+		}
+	}
 }

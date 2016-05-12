@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 
 namespace Vulkan
 {
-	unsafe public class ClearColorValue
+	unsafe public partial class ClearColorValue
 	{
 		internal Interop.ClearColorValue* m;
 
@@ -22,26 +22,79 @@ namespace Vulkan
 			m = (Interop.ClearColorValue*) Interop.Structure.Allocate (typeof (Interop.ClearColorValue));
 		}
 
-		public float Float32 {
-			get { return m->Float32; }
-			set { m->Float32 = value; }
+		float[] Float32 {
+			get {
+				var arr = new float [4];
+				for (int i = 0; i < 4; i++)
+					arr [i] = m->Float32 [i];
+				return arr;
+			}
+
+			set {
+				if (value.Length > 4)
+					throw new Exception ("array too long");
+				for (int i = 0; i < value.Length; i++)
+					m->Float32 [i] = value [i];
+				for (int i = value.Length -1; i < 4; i++)
+					m->Float32 [i] = 0;
+			}
 		}
 
-		public Int32 Int32 {
-			get { return m->Int32; }
-			set { m->Int32 = value; }
+		Int32[] Int32 {
+			get {
+				var arr = new Int32 [4];
+				for (int i = 0; i < 4; i++)
+					arr [i] = m->Int32 [i];
+				return arr;
+			}
+
+			set {
+				if (value.Length > 4)
+					throw new Exception ("array too long");
+				for (int i = 0; i < value.Length; i++)
+					m->Int32 [i] = value [i];
+				for (int i = value.Length -1; i < 4; i++)
+					m->Int32 [i] = 0;
+			}
 		}
 
-		public UInt32 Uint32 {
-			get { return m->Uint32; }
-			set { m->Uint32 = value; }
+		UInt32[] Uint32 {
+			get {
+				var arr = new UInt32 [4];
+				for (int i = 0; i < 4; i++)
+					arr [i] = m->Uint32 [i];
+				return arr;
+			}
+
+			set {
+				if (value.Length > 4)
+					throw new Exception ("array too long");
+				for (int i = 0; i < value.Length; i++)
+					m->Uint32 [i] = value [i];
+				for (int i = value.Length -1; i < 4; i++)
+					m->Uint32 [i] = 0;
+			}
 		}
 	}
 
-	[StructLayout (LayoutKind.Explicit)]
-	unsafe public struct ClearValue
+	unsafe public partial class ClearValue
 	{
-		[FieldOffset (0)] public IntPtr Color;
-		[FieldOffset (0)] public ClearDepthStencilValue DepthStencil;
+		internal Interop.ClearValue* m;
+
+		public ClearValue ()
+		{
+			m = (Interop.ClearValue*) Interop.Structure.Allocate (typeof (Interop.ClearValue));
+		}
+
+		ClearColorValue lColor;
+		public ClearColorValue Color {
+			get { return lColor; }
+			set { lColor = value; m->Color = *value.m; }
+		}
+
+		public ClearDepthStencilValue DepthStencil {
+			get { return m->DepthStencil; }
+			set { m->DepthStencil = value; }
+		}
 	}
 }

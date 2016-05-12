@@ -12,7 +12,7 @@ using System;
 
 namespace Vulkan.Interop
 {
-	internal struct PhysicalDeviceProperties
+	internal partial struct PhysicalDeviceProperties
 	{
 		internal UInt32 ApiVersion;
 		internal UInt32 DriverVersion;
@@ -21,17 +21,17 @@ namespace Vulkan.Interop
 		internal PhysicalDeviceType DeviceType;
 		internal unsafe fixed byte DeviceName[256];
 		internal Byte PipelineCacheUUID;
-		internal IntPtr Limits;
+		internal PhysicalDeviceLimits Limits;
 		internal PhysicalDeviceSparseProperties SparseProperties;
 	}
 
-	internal struct ExtensionProperties
+	internal partial struct ExtensionProperties
 	{
 		internal unsafe fixed byte ExtensionName[256];
 		internal UInt32 SpecVersion;
 	}
 
-	internal struct LayerProperties
+	internal partial struct LayerProperties
 	{
 		internal unsafe fixed byte LayerName[256];
 		internal UInt32 SpecVersion;
@@ -39,7 +39,7 @@ namespace Vulkan.Interop
 		internal unsafe fixed byte Description[256];
 	}
 
-	internal struct ApplicationInfo
+	internal partial struct ApplicationInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -50,7 +50,7 @@ namespace Vulkan.Interop
 		internal UInt32 ApiVersion;
 	}
 
-	internal struct AllocationCallbacks
+	internal partial struct AllocationCallbacks
 	{
 		internal IntPtr UserData;
 		internal IntPtr PfnAllocation;
@@ -60,7 +60,7 @@ namespace Vulkan.Interop
 		internal IntPtr PfnInternalFree;
 	}
 
-	internal struct DeviceQueueCreateInfo
+	internal partial struct DeviceQueueCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -70,7 +70,7 @@ namespace Vulkan.Interop
 		internal IntPtr QueuePriorities;
 	}
 
-	internal struct DeviceCreateInfo
+	internal partial struct DeviceCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -84,7 +84,7 @@ namespace Vulkan.Interop
 		internal IntPtr EnabledFeatures;
 	}
 
-	internal struct InstanceCreateInfo
+	internal partial struct InstanceCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -96,7 +96,7 @@ namespace Vulkan.Interop
 		internal IntPtr EnabledExtensionNames;
 	}
 
-	internal struct PhysicalDeviceMemoryProperties
+	internal partial struct PhysicalDeviceMemoryProperties
 	{
 		internal UInt32 MemoryTypeCount;
 		internal MemoryType MemoryTypes;
@@ -104,7 +104,7 @@ namespace Vulkan.Interop
 		internal MemoryHeap MemoryHeaps;
 	}
 
-	internal struct MemoryAllocateInfo
+	internal partial struct MemoryAllocateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -112,7 +112,7 @@ namespace Vulkan.Interop
 		internal UInt32 MemoryTypeIndex;
 	}
 
-	internal struct MappedMemoryRange
+	internal partial struct MappedMemoryRange
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -121,7 +121,7 @@ namespace Vulkan.Interop
 		internal DeviceSize Size;
 	}
 
-	internal struct WriteDescriptorSet
+	internal partial struct WriteDescriptorSet
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -135,7 +135,7 @@ namespace Vulkan.Interop
 		internal IntPtr TexelBufferView;
 	}
 
-	internal struct CopyDescriptorSet
+	internal partial struct CopyDescriptorSet
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -148,7 +148,7 @@ namespace Vulkan.Interop
 		internal UInt32 DescriptorCount;
 	}
 
-	internal struct BufferCreateInfo
+	internal partial struct BufferCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -160,7 +160,7 @@ namespace Vulkan.Interop
 		internal IntPtr QueueFamilyIndices;
 	}
 
-	internal struct BufferViewCreateInfo
+	internal partial struct BufferViewCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -171,7 +171,7 @@ namespace Vulkan.Interop
 		internal DeviceSize Range;
 	}
 
-	internal struct MemoryBarrier
+	internal partial struct MemoryBarrier
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -179,7 +179,7 @@ namespace Vulkan.Interop
 		internal UInt32 DstAccessMask;
 	}
 
-	internal struct BufferMemoryBarrier
+	internal partial struct BufferMemoryBarrier
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -192,7 +192,7 @@ namespace Vulkan.Interop
 		internal DeviceSize Size;
 	}
 
-	internal struct ImageMemoryBarrier
+	internal partial struct ImageMemoryBarrier
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -206,7 +206,7 @@ namespace Vulkan.Interop
 		internal ImageSubresourceRange SubresourceRange;
 	}
 
-	internal struct ImageCreateInfo
+	internal partial struct ImageCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -225,7 +225,7 @@ namespace Vulkan.Interop
 		internal ImageLayout InitialLayout;
 	}
 
-	internal struct ImageViewCreateInfo
+	internal partial struct ImageViewCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -237,28 +237,28 @@ namespace Vulkan.Interop
 		internal ImageSubresourceRange SubresourceRange;
 	}
 
-	internal struct SparseBufferMemoryBindInfo
+	internal partial struct SparseBufferMemoryBindInfo
 	{
 		internal UInt64 Buffer;
 		internal UInt32 BindCount;
 		internal IntPtr Binds;
 	}
 
-	internal struct SparseImageOpaqueMemoryBindInfo
+	internal partial struct SparseImageOpaqueMemoryBindInfo
 	{
 		internal UInt64 Image;
 		internal UInt32 BindCount;
 		internal IntPtr Binds;
 	}
 
-	internal struct SparseImageMemoryBindInfo
+	internal partial struct SparseImageMemoryBindInfo
 	{
 		internal UInt64 Image;
 		internal UInt32 BindCount;
 		internal IntPtr Binds;
 	}
 
-	internal struct BindSparseInfo
+	internal partial struct BindSparseInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -274,7 +274,7 @@ namespace Vulkan.Interop
 		internal IntPtr SignalSemaphores;
 	}
 
-	internal struct ImageBlit
+	internal partial struct ImageBlit
 	{
 		internal ImageSubresourceLayers SrcSubresource;
 		internal Offset3D SrcOffsets;
@@ -282,7 +282,7 @@ namespace Vulkan.Interop
 		internal Offset3D DstOffsets;
 	}
 
-	internal struct ShaderModuleCreateInfo
+	internal partial struct ShaderModuleCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -291,7 +291,7 @@ namespace Vulkan.Interop
 		internal IntPtr Code;
 	}
 
-	internal struct DescriptorSetLayoutBinding
+	internal partial struct DescriptorSetLayoutBinding
 	{
 		internal UInt32 Binding;
 		internal DescriptorType DescriptorType;
@@ -300,7 +300,7 @@ namespace Vulkan.Interop
 		internal IntPtr ImmutableSamplers;
 	}
 
-	internal struct DescriptorSetLayoutCreateInfo
+	internal partial struct DescriptorSetLayoutCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -309,7 +309,7 @@ namespace Vulkan.Interop
 		internal IntPtr Bindings;
 	}
 
-	internal struct DescriptorPoolCreateInfo
+	internal partial struct DescriptorPoolCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -319,7 +319,7 @@ namespace Vulkan.Interop
 		internal IntPtr PoolSizes;
 	}
 
-	internal struct DescriptorSetAllocateInfo
+	internal partial struct DescriptorSetAllocateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -328,7 +328,7 @@ namespace Vulkan.Interop
 		internal IntPtr SetLayouts;
 	}
 
-	internal struct SpecializationInfo
+	internal partial struct SpecializationInfo
 	{
 		internal UInt32 MapEntryCount;
 		internal IntPtr MapEntries;
@@ -336,7 +336,7 @@ namespace Vulkan.Interop
 		internal IntPtr Data;
 	}
 
-	internal struct PipelineShaderStageCreateInfo
+	internal partial struct PipelineShaderStageCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -347,18 +347,18 @@ namespace Vulkan.Interop
 		internal IntPtr SpecializationInfo;
 	}
 
-	internal struct ComputePipelineCreateInfo
+	internal partial struct ComputePipelineCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 Flags;
-		internal IntPtr Stage;
+		internal PipelineShaderStageCreateInfo Stage;
 		internal UInt64 Layout;
 		internal UInt64 BasePipelineHandle;
 		internal Int32 BasePipelineIndex;
 	}
 
-	internal struct PipelineVertexInputStateCreateInfo
+	internal partial struct PipelineVertexInputStateCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -369,7 +369,7 @@ namespace Vulkan.Interop
 		internal IntPtr VertexAttributeDescriptions;
 	}
 
-	internal struct PipelineInputAssemblyStateCreateInfo
+	internal partial struct PipelineInputAssemblyStateCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -378,7 +378,7 @@ namespace Vulkan.Interop
 		internal Bool32 PrimitiveRestartEnable;
 	}
 
-	internal struct PipelineTessellationStateCreateInfo
+	internal partial struct PipelineTessellationStateCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -386,7 +386,7 @@ namespace Vulkan.Interop
 		internal UInt32 PatchControlPoints;
 	}
 
-	internal struct PipelineViewportStateCreateInfo
+	internal partial struct PipelineViewportStateCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -397,7 +397,7 @@ namespace Vulkan.Interop
 		internal IntPtr Scissors;
 	}
 
-	internal struct PipelineRasterizationStateCreateInfo
+	internal partial struct PipelineRasterizationStateCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -414,7 +414,7 @@ namespace Vulkan.Interop
 		internal float LineWidth;
 	}
 
-	internal struct PipelineMultisampleStateCreateInfo
+	internal partial struct PipelineMultisampleStateCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -427,7 +427,7 @@ namespace Vulkan.Interop
 		internal Bool32 AlphaToOneEnable;
 	}
 
-	internal struct PipelineColorBlendStateCreateInfo
+	internal partial struct PipelineColorBlendStateCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -436,10 +436,10 @@ namespace Vulkan.Interop
 		internal LogicOp LogicOp;
 		internal UInt32 AttachmentCount;
 		internal IntPtr Attachments;
-		internal float BlendConstants;
+		internal unsafe fixed float BlendConstants[4];
 	}
 
-	internal struct PipelineDynamicStateCreateInfo
+	internal partial struct PipelineDynamicStateCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -448,7 +448,7 @@ namespace Vulkan.Interop
 		internal IntPtr DynamicStates;
 	}
 
-	internal struct PipelineDepthStencilStateCreateInfo
+	internal partial struct PipelineDepthStencilStateCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -464,7 +464,7 @@ namespace Vulkan.Interop
 		internal float MaxDepthBounds;
 	}
 
-	internal struct GraphicsPipelineCreateInfo
+	internal partial struct GraphicsPipelineCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -487,7 +487,7 @@ namespace Vulkan.Interop
 		internal Int32 BasePipelineIndex;
 	}
 
-	internal struct PipelineCacheCreateInfo
+	internal partial struct PipelineCacheCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -496,7 +496,7 @@ namespace Vulkan.Interop
 		internal IntPtr InitialData;
 	}
 
-	internal struct PipelineLayoutCreateInfo
+	internal partial struct PipelineLayoutCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -507,7 +507,7 @@ namespace Vulkan.Interop
 		internal IntPtr PushConstantRanges;
 	}
 
-	internal struct SamplerCreateInfo
+	internal partial struct SamplerCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -529,7 +529,7 @@ namespace Vulkan.Interop
 		internal Bool32 UnnormalizedCoordinates;
 	}
 
-	internal struct CommandPoolCreateInfo
+	internal partial struct CommandPoolCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -537,7 +537,7 @@ namespace Vulkan.Interop
 		internal UInt32 QueueFamilyIndex;
 	}
 
-	internal struct CommandBufferAllocateInfo
+	internal partial struct CommandBufferAllocateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -546,7 +546,7 @@ namespace Vulkan.Interop
 		internal UInt32 CommandBufferCount;
 	}
 
-	internal struct CommandBufferInheritanceInfo
+	internal partial struct CommandBufferInheritanceInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -558,7 +558,7 @@ namespace Vulkan.Interop
 		internal UInt32 PipelineStatistics;
 	}
 
-	internal struct CommandBufferBeginInfo
+	internal partial struct CommandBufferBeginInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -566,7 +566,7 @@ namespace Vulkan.Interop
 		internal IntPtr InheritanceInfo;
 	}
 
-	internal struct RenderPassBeginInfo
+	internal partial struct RenderPassBeginInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -577,7 +577,7 @@ namespace Vulkan.Interop
 		internal IntPtr ClearValues;
 	}
 
-	internal struct SubpassDescription
+	internal partial struct SubpassDescription
 	{
 		internal UInt32 Flags;
 		internal PipelineBindPoint PipelineBindPoint;
@@ -591,7 +591,7 @@ namespace Vulkan.Interop
 		internal IntPtr PreserveAttachments;
 	}
 
-	internal struct RenderPassCreateInfo
+	internal partial struct RenderPassCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -604,21 +604,21 @@ namespace Vulkan.Interop
 		internal IntPtr Dependencies;
 	}
 
-	internal struct EventCreateInfo
+	internal partial struct EventCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 Flags;
 	}
 
-	internal struct FenceCreateInfo
+	internal partial struct FenceCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 Flags;
 	}
 
-	internal struct PhysicalDeviceLimits
+	internal partial struct PhysicalDeviceLimits
 	{
 		internal UInt32 MaxImageDimension1D;
 		internal UInt32 MaxImageDimension2D;
@@ -672,9 +672,9 @@ namespace Vulkan.Interop
 		internal UInt32 MaxFragmentDualSrcAttachments;
 		internal UInt32 MaxFragmentCombinedOutputResources;
 		internal UInt32 MaxComputeSharedMemorySize;
-		internal UInt32 MaxComputeWorkGroupCount;
+		internal unsafe fixed UInt32 MaxComputeWorkGroupCount[3];
 		internal UInt32 MaxComputeWorkGroupInvocations;
-		internal UInt32 MaxComputeWorkGroupSize;
+		internal unsafe fixed UInt32 MaxComputeWorkGroupSize[3];
 		internal UInt32 SubPixelPrecisionBits;
 		internal UInt32 SubTexelPrecisionBits;
 		internal UInt32 MipmapPrecisionBits;
@@ -683,8 +683,8 @@ namespace Vulkan.Interop
 		internal float MaxSamplerLodBias;
 		internal float MaxSamplerAnisotropy;
 		internal UInt32 MaxViewports;
-		internal UInt32 MaxViewportDimensions;
-		internal float ViewportBoundsRange;
+		internal unsafe fixed UInt32 MaxViewportDimensions[2];
+		internal unsafe fixed float ViewportBoundsRange[2];
 		internal UInt32 ViewportSubPixelBits;
 		internal UIntPtr MinMemoryMapAlignment;
 		internal DeviceSize MinTexelBufferOffsetAlignment;
@@ -717,8 +717,8 @@ namespace Vulkan.Interop
 		internal UInt32 MaxCullDistances;
 		internal UInt32 MaxCombinedClipAndCullDistances;
 		internal UInt32 DiscreteQueuePriorities;
-		internal float PointSizeRange;
-		internal float LineWidthRange;
+		internal unsafe fixed float PointSizeRange[2];
+		internal unsafe fixed float LineWidthRange[2];
 		internal float PointSizeGranularity;
 		internal float LineWidthGranularity;
 		internal Bool32 StrictLines;
@@ -728,14 +728,14 @@ namespace Vulkan.Interop
 		internal DeviceSize NonCoherentAtomSize;
 	}
 
-	internal struct SemaphoreCreateInfo
+	internal partial struct SemaphoreCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 Flags;
 	}
 
-	internal struct QueryPoolCreateInfo
+	internal partial struct QueryPoolCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -745,7 +745,7 @@ namespace Vulkan.Interop
 		internal UInt32 PipelineStatistics;
 	}
 
-	internal struct FramebufferCreateInfo
+	internal partial struct FramebufferCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -758,7 +758,7 @@ namespace Vulkan.Interop
 		internal UInt32 Layers;
 	}
 
-	internal struct SubmitInfo
+	internal partial struct SubmitInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -771,7 +771,7 @@ namespace Vulkan.Interop
 		internal IntPtr SignalSemaphores;
 	}
 
-	internal struct DisplayPropertiesKhr
+	internal partial struct DisplayPropertiesKhr
 	{
 		internal UInt64 Display;
 		internal IntPtr DisplayName;
@@ -782,7 +782,7 @@ namespace Vulkan.Interop
 		internal Bool32 PersistentContent;
 	}
 
-	internal struct DisplayModeCreateInfoKhr
+	internal partial struct DisplayModeCreateInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -790,7 +790,7 @@ namespace Vulkan.Interop
 		internal DisplayModeParametersKhr Parameters;
 	}
 
-	internal struct DisplaySurfaceCreateInfoKhr
+	internal partial struct DisplaySurfaceCreateInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -804,7 +804,7 @@ namespace Vulkan.Interop
 		internal Extent2D ImageExtent;
 	}
 
-	internal struct DisplayPresentInfoKhr
+	internal partial struct DisplayPresentInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -813,7 +813,7 @@ namespace Vulkan.Interop
 		internal Bool32 Persistent;
 	}
 
-	internal struct SwapchainCreateInfoKhr
+	internal partial struct SwapchainCreateInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -835,7 +835,7 @@ namespace Vulkan.Interop
 		internal UInt64 OldSwapchain;
 	}
 
-	internal struct PresentInfoKhr
+	internal partial struct PresentInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -847,7 +847,7 @@ namespace Vulkan.Interop
 		internal IntPtr Results;
 	}
 
-	internal struct DebugReportCallbackCreateInfoExt
+	internal partial struct DebugReportCallbackCreateInfoExt
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -856,14 +856,14 @@ namespace Vulkan.Interop
 		internal IntPtr UserData;
 	}
 
-	internal struct PipelineRasterizationStateRasterizationOrderAmd
+	internal partial struct PipelineRasterizationStateRasterizationOrderAmd
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal RasterizationOrderAmd RasterizationOrder;
 	}
 
-	internal struct DebugMarkerObjectNameInfoExt
+	internal partial struct DebugMarkerObjectNameInfoExt
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -872,7 +872,7 @@ namespace Vulkan.Interop
 		internal IntPtr ObjectName;
 	}
 
-	internal struct DebugMarkerObjectTagInfoExt
+	internal partial struct DebugMarkerObjectTagInfoExt
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -883,11 +883,11 @@ namespace Vulkan.Interop
 		internal IntPtr Tag;
 	}
 
-	internal struct DebugMarkerMarkerInfoExt
+	internal partial struct DebugMarkerMarkerInfoExt
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal IntPtr MarkerName;
-		internal float Color;
+		internal unsafe fixed float Color[4];
 	}
 }

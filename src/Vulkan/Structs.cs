@@ -13,33 +13,33 @@ using System.Runtime.InteropServices;
 
 namespace Vulkan
 {
-	unsafe public struct Offset2D
+	unsafe public partial struct Offset2D
 	{
 		public Int32 X;
 		public Int32 Y;
 	}
 
-	unsafe public struct Offset3D
+	unsafe public partial struct Offset3D
 	{
 		public Int32 X;
 		public Int32 Y;
 		public Int32 Z;
 	}
 
-	unsafe public struct Extent2D
+	unsafe public partial struct Extent2D
 	{
 		public UInt32 Width;
 		public UInt32 Height;
 	}
 
-	unsafe public struct Extent3D
+	unsafe public partial struct Extent3D
 	{
 		public UInt32 Width;
 		public UInt32 Height;
 		public UInt32 Depth;
 	}
 
-	unsafe public struct Viewport
+	unsafe public partial struct Viewport
 	{
 		public float X;
 		public float Y;
@@ -49,26 +49,26 @@ namespace Vulkan
 		public float MaxDepth;
 	}
 
-	unsafe public struct Rect2D
+	unsafe public partial struct Rect2D
 	{
 		public Offset2D Offset;
 		public Extent2D Extent;
 	}
 
-	unsafe public struct Rect3D
+	unsafe public partial struct Rect3D
 	{
 		public Offset3D Offset;
 		public Extent3D Extent;
 	}
 
-	unsafe public struct ClearRect
+	unsafe public partial struct ClearRect
 	{
 		public Rect2D Rect;
 		public UInt32 BaseArrayLayer;
 		public UInt32 LayerCount;
 	}
 
-	unsafe public struct ComponentMapping
+	unsafe public partial struct ComponentMapping
 	{
 		public ComponentSwizzle R;
 		public ComponentSwizzle G;
@@ -76,7 +76,7 @@ namespace Vulkan
 		public ComponentSwizzle A;
 	}
 
-	unsafe public class PhysicalDeviceProperties
+	unsafe public partial class PhysicalDeviceProperties
 	{
 		internal Interop.PhysicalDeviceProperties* m;
 
@@ -123,7 +123,7 @@ namespace Vulkan
 		PhysicalDeviceLimits lLimits;
 		public PhysicalDeviceLimits Limits {
 			get { return lLimits; }
-			set { lLimits = value; m->Limits = (IntPtr)value.m; }
+			set { lLimits = value; m->Limits = *value.m; }
 		}
 
 		public PhysicalDeviceSparseProperties SparseProperties {
@@ -132,7 +132,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class ExtensionProperties
+	unsafe public partial class ExtensionProperties
 	{
 		internal Interop.ExtensionProperties* m;
 
@@ -152,7 +152,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class LayerProperties
+	unsafe public partial class LayerProperties
 	{
 		internal Interop.LayerProperties* m;
 
@@ -182,7 +182,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class ApplicationInfo
+	unsafe public partial class ApplicationInfo
 	{
 		internal Interop.ApplicationInfo* m;
 
@@ -218,7 +218,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class AllocationCallbacks
+	unsafe public partial class AllocationCallbacks
 	{
 		internal Interop.AllocationCallbacks* m;
 
@@ -258,7 +258,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class DeviceQueueCreateInfo
+	unsafe public partial class DeviceQueueCreateInfo
 	{
 		internal Interop.DeviceQueueCreateInfo* m;
 
@@ -308,7 +308,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class DeviceCreateInfo
+	unsafe public partial class DeviceCreateInfo
 	{
 		internal Interop.DeviceCreateInfo* m;
 
@@ -418,7 +418,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class InstanceCreateInfo
+	unsafe public partial class InstanceCreateInfo
 	{
 		internal Interop.InstanceCreateInfo* m;
 
@@ -498,7 +498,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public struct QueueFamilyProperties
+	unsafe public partial struct QueueFamilyProperties
 	{
 		public UInt32 QueueFlags;
 		public UInt32 QueueCount;
@@ -506,7 +506,7 @@ namespace Vulkan
 		public Extent3D MinImageTransferGranularity;
 	}
 
-	unsafe public class PhysicalDeviceMemoryProperties
+	unsafe public partial class PhysicalDeviceMemoryProperties
 	{
 		internal Interop.PhysicalDeviceMemoryProperties* m;
 
@@ -536,7 +536,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class MemoryAllocateInfo
+	unsafe public partial class MemoryAllocateInfo
 	{
 		internal Interop.MemoryAllocateInfo* m;
 
@@ -557,21 +557,21 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public struct MemoryRequirements
+	unsafe public partial struct MemoryRequirements
 	{
 		public DeviceSize Size;
 		public DeviceSize Alignment;
 		public UInt32 MemoryTypeBits;
 	}
 
-	unsafe public struct SparseImageFormatProperties
+	unsafe public partial struct SparseImageFormatProperties
 	{
 		public UInt32 AspectMask;
 		public Extent3D ImageGranularity;
 		public UInt32 Flags;
 	}
 
-	unsafe public struct SparseImageMemoryRequirements
+	unsafe public partial struct SparseImageMemoryRequirements
 	{
 		public SparseImageFormatProperties FormatProperties;
 		public UInt32 ImageMipTailFirstLod;
@@ -580,19 +580,19 @@ namespace Vulkan
 		public DeviceSize ImageMipTailStride;
 	}
 
-	unsafe public struct MemoryType
+	unsafe public partial struct MemoryType
 	{
 		public UInt32 PropertyFlags;
 		public UInt32 HeapIndex;
 	}
 
-	unsafe public struct MemoryHeap
+	unsafe public partial struct MemoryHeap
 	{
 		public DeviceSize Size;
 		public UInt32 Flags;
 	}
 
-	unsafe public class MappedMemoryRange
+	unsafe public partial class MappedMemoryRange
 	{
 		internal Interop.MappedMemoryRange* m;
 
@@ -619,14 +619,14 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public struct FormatProperties
+	unsafe public partial struct FormatProperties
 	{
 		public UInt32 LinearTilingFeatures;
 		public UInt32 OptimalTilingFeatures;
 		public UInt32 BufferFeatures;
 	}
 
-	unsafe public struct ImageFormatProperties
+	unsafe public partial struct ImageFormatProperties
 	{
 		public Extent3D MaxExtent;
 		public UInt32 MaxMipLevels;
@@ -635,21 +635,21 @@ namespace Vulkan
 		public DeviceSize MaxResourceSize;
 	}
 
-	unsafe public struct DescriptorBufferInfo
+	unsafe public partial struct DescriptorBufferInfo
 	{
 		public UInt64 Buffer;
 		public DeviceSize Offset;
 		public DeviceSize Range;
 	}
 
-	unsafe public struct DescriptorImageInfo
+	unsafe public partial struct DescriptorImageInfo
 	{
 		public UInt64 Sampler;
 		public UInt64 ImageView;
 		public ImageLayout ImageLayout;
 	}
 
-	unsafe public class WriteDescriptorSet
+	unsafe public partial class WriteDescriptorSet
 	{
 		internal Interop.WriteDescriptorSet* m;
 
@@ -760,7 +760,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class CopyDescriptorSet
+	unsafe public partial class CopyDescriptorSet
 	{
 		internal Interop.CopyDescriptorSet* m;
 
@@ -808,7 +808,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class BufferCreateInfo
+	unsafe public partial class BufferCreateInfo
 	{
 		internal Interop.BufferCreateInfo* m;
 
@@ -868,7 +868,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class BufferViewCreateInfo
+	unsafe public partial class BufferViewCreateInfo
 	{
 		internal Interop.BufferViewCreateInfo* m;
 
@@ -905,14 +905,14 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public struct ImageSubresource
+	unsafe public partial struct ImageSubresource
 	{
 		public UInt32 AspectMask;
 		public UInt32 MipLevel;
 		public UInt32 ArrayLayer;
 	}
 
-	unsafe public struct ImageSubresourceLayers
+	unsafe public partial struct ImageSubresourceLayers
 	{
 		public UInt32 AspectMask;
 		public UInt32 MipLevel;
@@ -920,7 +920,7 @@ namespace Vulkan
 		public UInt32 LayerCount;
 	}
 
-	unsafe public struct ImageSubresourceRange
+	unsafe public partial struct ImageSubresourceRange
 	{
 		public UInt32 AspectMask;
 		public UInt32 BaseMipLevel;
@@ -929,7 +929,7 @@ namespace Vulkan
 		public UInt32 LayerCount;
 	}
 
-	unsafe public class MemoryBarrier
+	unsafe public partial class MemoryBarrier
 	{
 		internal Interop.MemoryBarrier* m;
 
@@ -950,7 +950,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class BufferMemoryBarrier
+	unsafe public partial class BufferMemoryBarrier
 	{
 		internal Interop.BufferMemoryBarrier* m;
 
@@ -997,7 +997,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class ImageMemoryBarrier
+	unsafe public partial class ImageMemoryBarrier
 	{
 		internal Interop.ImageMemoryBarrier* m;
 
@@ -1049,7 +1049,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class ImageCreateInfo
+	unsafe public partial class ImageCreateInfo
 	{
 		internal Interop.ImageCreateInfo* m;
 
@@ -1144,7 +1144,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public struct SubresourceLayout
+	unsafe public partial struct SubresourceLayout
 	{
 		public DeviceSize Offset;
 		public DeviceSize Size;
@@ -1153,7 +1153,7 @@ namespace Vulkan
 		public DeviceSize DepthPitch;
 	}
 
-	unsafe public class ImageViewCreateInfo
+	unsafe public partial class ImageViewCreateInfo
 	{
 		internal Interop.ImageViewCreateInfo* m;
 
@@ -1195,14 +1195,14 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public struct BufferCopy
+	unsafe public partial struct BufferCopy
 	{
 		public DeviceSize SrcOffset;
 		public DeviceSize DstOffset;
 		public DeviceSize Size;
 	}
 
-	unsafe public struct SparseMemoryBind
+	unsafe public partial struct SparseMemoryBind
 	{
 		public DeviceSize ResourceOffset;
 		public DeviceSize Size;
@@ -1211,7 +1211,7 @@ namespace Vulkan
 		public UInt32 Flags;
 	}
 
-	unsafe public struct SparseImageMemoryBind
+	unsafe public partial struct SparseImageMemoryBind
 	{
 		public ImageSubresource Subresource;
 		public Offset3D Offset;
@@ -1221,7 +1221,7 @@ namespace Vulkan
 		public UInt32 Flags;
 	}
 
-	unsafe public class SparseBufferMemoryBindInfo
+	unsafe public partial class SparseBufferMemoryBindInfo
 	{
 		internal Interop.SparseBufferMemoryBindInfo* m;
 
@@ -1266,7 +1266,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class SparseImageOpaqueMemoryBindInfo
+	unsafe public partial class SparseImageOpaqueMemoryBindInfo
 	{
 		internal Interop.SparseImageOpaqueMemoryBindInfo* m;
 
@@ -1311,7 +1311,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class SparseImageMemoryBindInfo
+	unsafe public partial class SparseImageMemoryBindInfo
 	{
 		internal Interop.SparseImageMemoryBindInfo* m;
 
@@ -1356,7 +1356,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class BindSparseInfo
+	unsafe public partial class BindSparseInfo
 	{
 		internal Interop.BindSparseInfo* m;
 
@@ -1522,7 +1522,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public struct ImageCopy
+	unsafe public partial struct ImageCopy
 	{
 		public ImageSubresourceLayers SrcSubresource;
 		public Offset3D SrcOffset;
@@ -1531,7 +1531,7 @@ namespace Vulkan
 		public Extent3D Extent;
 	}
 
-	unsafe public class ImageBlit
+	unsafe public partial class ImageBlit
 	{
 		internal Interop.ImageBlit* m;
 
@@ -1561,7 +1561,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public struct BufferImageCopy
+	unsafe public partial struct BufferImageCopy
 	{
 		public DeviceSize BufferOffset;
 		public UInt32 BufferRowLength;
@@ -1571,7 +1571,7 @@ namespace Vulkan
 		public Extent3D ImageExtent;
 	}
 
-	unsafe public struct ImageResolve
+	unsafe public partial struct ImageResolve
 	{
 		public ImageSubresourceLayers SrcSubresource;
 		public Offset3D SrcOffset;
@@ -1580,7 +1580,7 @@ namespace Vulkan
 		public Extent3D Extent;
 	}
 
-	unsafe public class ShaderModuleCreateInfo
+	unsafe public partial class ShaderModuleCreateInfo
 	{
 		internal Interop.ShaderModuleCreateInfo* m;
 
@@ -1625,7 +1625,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class DescriptorSetLayoutBinding
+	unsafe public partial class DescriptorSetLayoutBinding
 	{
 		internal Interop.DescriptorSetLayoutBinding* m;
 
@@ -1681,7 +1681,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class DescriptorSetLayoutCreateInfo
+	unsafe public partial class DescriptorSetLayoutCreateInfo
 	{
 		internal Interop.DescriptorSetLayoutCreateInfo* m;
 
@@ -1728,13 +1728,13 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public struct DescriptorPoolSize
+	unsafe public partial struct DescriptorPoolSize
 	{
 		public DescriptorType Type;
 		public UInt32 DescriptorCount;
 	}
 
-	unsafe public class DescriptorPoolCreateInfo
+	unsafe public partial class DescriptorPoolCreateInfo
 	{
 		internal Interop.DescriptorPoolCreateInfo* m;
 
@@ -1784,7 +1784,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class DescriptorSetAllocateInfo
+	unsafe public partial class DescriptorSetAllocateInfo
 	{
 		internal Interop.DescriptorSetAllocateInfo* m;
 
@@ -1832,14 +1832,14 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public struct SpecializationMapEntry
+	unsafe public partial struct SpecializationMapEntry
 	{
 		public UInt32 ConstantID;
 		public UInt32 Offset;
 		public UIntPtr Size;
 	}
 
-	unsafe public class SpecializationInfo
+	unsafe public partial class SpecializationInfo
 	{
 		internal Interop.SpecializationInfo* m;
 
@@ -1888,7 +1888,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class PipelineShaderStageCreateInfo
+	unsafe public partial class PipelineShaderStageCreateInfo
 	{
 		internal Interop.PipelineShaderStageCreateInfo* m;
 
@@ -1926,7 +1926,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class ComputePipelineCreateInfo
+	unsafe public partial class ComputePipelineCreateInfo
 	{
 		internal Interop.ComputePipelineCreateInfo* m;
 
@@ -1944,7 +1944,7 @@ namespace Vulkan
 		PipelineShaderStageCreateInfo lStage;
 		public PipelineShaderStageCreateInfo Stage {
 			get { return lStage; }
-			set { lStage = value; m->Stage = (IntPtr)value.m; }
+			set { lStage = value; m->Stage = *value.m; }
 		}
 
 		PipelineLayout lLayout;
@@ -1965,14 +1965,14 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public struct VertexInputBindingDescription
+	unsafe public partial struct VertexInputBindingDescription
 	{
 		public UInt32 Binding;
 		public UInt32 Stride;
 		public VertexInputRate InputRate;
 	}
 
-	unsafe public struct VertexInputAttributeDescription
+	unsafe public partial struct VertexInputAttributeDescription
 	{
 		public UInt32 Location;
 		public UInt32 Binding;
@@ -1980,7 +1980,7 @@ namespace Vulkan
 		public UInt32 Offset;
 	}
 
-	unsafe public class PipelineVertexInputStateCreateInfo
+	unsafe public partial class PipelineVertexInputStateCreateInfo
 	{
 		internal Interop.PipelineVertexInputStateCreateInfo* m;
 
@@ -2054,7 +2054,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class PipelineInputAssemblyStateCreateInfo
+	unsafe public partial class PipelineInputAssemblyStateCreateInfo
 	{
 		internal Interop.PipelineInputAssemblyStateCreateInfo* m;
 
@@ -2080,7 +2080,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class PipelineTessellationStateCreateInfo
+	unsafe public partial class PipelineTessellationStateCreateInfo
 	{
 		internal Interop.PipelineTessellationStateCreateInfo* m;
 
@@ -2101,7 +2101,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class PipelineViewportStateCreateInfo
+	unsafe public partial class PipelineViewportStateCreateInfo
 	{
 		internal Interop.PipelineViewportStateCreateInfo* m;
 
@@ -2175,7 +2175,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class PipelineRasterizationStateCreateInfo
+	unsafe public partial class PipelineRasterizationStateCreateInfo
 	{
 		internal Interop.PipelineRasterizationStateCreateInfo* m;
 
@@ -2241,7 +2241,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class PipelineMultisampleStateCreateInfo
+	unsafe public partial class PipelineMultisampleStateCreateInfo
 	{
 		internal Interop.PipelineMultisampleStateCreateInfo* m;
 
@@ -2306,7 +2306,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public struct PipelineColorBlendAttachmentState
+	unsafe public partial struct PipelineColorBlendAttachmentState
 	{
 		public Bool32 BlendEnable;
 		public BlendFactor SrcColorBlendFactor;
@@ -2318,7 +2318,7 @@ namespace Vulkan
 		public UInt32 ColorWriteMask;
 	}
 
-	unsafe public class PipelineColorBlendStateCreateInfo
+	unsafe public partial class PipelineColorBlendStateCreateInfo
 	{
 		internal Interop.PipelineColorBlendStateCreateInfo* m;
 
@@ -2372,13 +2372,26 @@ namespace Vulkan
 			}
 		}
 
-		public float BlendConstants {
-			get { return m->BlendConstants; }
-			set { m->BlendConstants = value; }
+		float[] BlendConstants {
+			get {
+				var arr = new float [4];
+				for (int i = 0; i < 4; i++)
+					arr [i] = m->BlendConstants [i];
+				return arr;
+			}
+
+			set {
+				if (value.Length > 4)
+					throw new Exception ("array too long");
+				for (int i = 0; i < value.Length; i++)
+					m->BlendConstants [i] = value [i];
+				for (int i = value.Length -1; i < 4; i++)
+					m->BlendConstants [i] = 0;
+			}
 		}
 	}
 
-	unsafe public class PipelineDynamicStateCreateInfo
+	unsafe public partial class PipelineDynamicStateCreateInfo
 	{
 		internal Interop.PipelineDynamicStateCreateInfo* m;
 
@@ -2423,7 +2436,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public struct StencilOpState
+	unsafe public partial struct StencilOpState
 	{
 		public StencilOp FailOp;
 		public StencilOp PassOp;
@@ -2434,7 +2447,7 @@ namespace Vulkan
 		public UInt32 Reference;
 	}
 
-	unsafe public class PipelineDepthStencilStateCreateInfo
+	unsafe public partial class PipelineDepthStencilStateCreateInfo
 	{
 		internal Interop.PipelineDepthStencilStateCreateInfo* m;
 
@@ -2495,7 +2508,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class GraphicsPipelineCreateInfo
+	unsafe public partial class GraphicsPipelineCreateInfo
 	{
 		internal Interop.GraphicsPipelineCreateInfo* m;
 
@@ -2624,7 +2637,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class PipelineCacheCreateInfo
+	unsafe public partial class PipelineCacheCreateInfo
 	{
 		internal Interop.PipelineCacheCreateInfo* m;
 
@@ -2650,14 +2663,14 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public struct PushConstantRange
+	unsafe public partial struct PushConstantRange
 	{
 		public UInt32 StageFlags;
 		public UInt32 Offset;
 		public UInt32 Size;
 	}
 
-	unsafe public class PipelineLayoutCreateInfo
+	unsafe public partial class PipelineLayoutCreateInfo
 	{
 		internal Interop.PipelineLayoutCreateInfo* m;
 
@@ -2733,7 +2746,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class SamplerCreateInfo
+	unsafe public partial class SamplerCreateInfo
 	{
 		internal Interop.SamplerCreateInfo* m;
 
@@ -2824,7 +2837,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class CommandPoolCreateInfo
+	unsafe public partial class CommandPoolCreateInfo
 	{
 		internal Interop.CommandPoolCreateInfo* m;
 
@@ -2845,7 +2858,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class CommandBufferAllocateInfo
+	unsafe public partial class CommandBufferAllocateInfo
 	{
 		internal Interop.CommandBufferAllocateInfo* m;
 
@@ -2872,7 +2885,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class CommandBufferInheritanceInfo
+	unsafe public partial class CommandBufferInheritanceInfo
 	{
 		internal Interop.CommandBufferInheritanceInfo* m;
 
@@ -2915,7 +2928,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class CommandBufferBeginInfo
+	unsafe public partial class CommandBufferBeginInfo
 	{
 		internal Interop.CommandBufferBeginInfo* m;
 
@@ -2937,7 +2950,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class RenderPassBeginInfo
+	unsafe public partial class RenderPassBeginInfo
 	{
 		internal Interop.RenderPassBeginInfo* m;
 
@@ -2974,40 +2987,42 @@ namespace Vulkan
 				var values = new ClearValue [m->ClearValueCount];
 				unsafe
 				{
-					ClearValue* ptr = (ClearValue*)m->ClearValues;
-					for (int i = 0; i < m->ClearValueCount; i++) 
-						values [i] = ptr [i];
+					Interop.ClearValue* ptr = (Interop.ClearValue*)m->ClearValues;
+					for (int i = 0; i < m->ClearValueCount; i++) {
+						values [i] = new ClearValue ();
+						*values [i].m = ptr [i];
+					}
 				}
 				return values;
 			}
 
 			set {
 				m->ClearValueCount = (uint)value.Length;
-				m->ClearValues = Marshal.AllocHGlobal ((int)(sizeof(ClearValue)*m->ClearValueCount));
+				m->ClearValues = Marshal.AllocHGlobal ((int)(sizeof(Interop.ClearValue)*m->ClearValueCount));
 				unsafe
 				{
-					ClearValue* ptr = (ClearValue*)m->ClearValues;
+					Interop.ClearValue* ptr = (Interop.ClearValue*)m->ClearValues;
 					for (int i = 0; i < m->ClearValueCount; i++)
-						ptr [i] = value [i];
+						ptr [i] = *value [i].m;
 				}
 			}
 		}
 	}
 
-	unsafe public struct ClearDepthStencilValue
+	unsafe public partial struct ClearDepthStencilValue
 	{
 		public float Depth;
 		public UInt32 Stencil;
 	}
 
-	unsafe public struct ClearAttachment
+	unsafe public partial struct ClearAttachment
 	{
 		public UInt32 AspectMask;
 		public UInt32 ColorAttachment;
-		public ClearValue ClearValue;
+		public IntPtr ClearValue;
 	}
 
-	unsafe public struct AttachmentDescription
+	unsafe public partial struct AttachmentDescription
 	{
 		public UInt32 Flags;
 		public Format Format;
@@ -3020,13 +3035,13 @@ namespace Vulkan
 		public ImageLayout FinalLayout;
 	}
 
-	unsafe public struct AttachmentReference
+	unsafe public partial struct AttachmentReference
 	{
 		public UInt32 Attachment;
 		public ImageLayout Layout;
 	}
 
-	unsafe public class SubpassDescription
+	unsafe public partial class SubpassDescription
 	{
 		internal Interop.SubpassDescription* m;
 
@@ -3162,7 +3177,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public struct SubpassDependency
+	unsafe public partial struct SubpassDependency
 	{
 		public UInt32 SrcSubpass;
 		public UInt32 DstSubpass;
@@ -3173,7 +3188,7 @@ namespace Vulkan
 		public UInt32 DependencyFlags;
 	}
 
-	unsafe public class RenderPassCreateInfo
+	unsafe public partial class RenderPassCreateInfo
 	{
 		internal Interop.RenderPassCreateInfo* m;
 
@@ -3278,7 +3293,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class EventCreateInfo
+	unsafe public partial class EventCreateInfo
 	{
 		internal Interop.EventCreateInfo* m;
 
@@ -3294,7 +3309,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class FenceCreateInfo
+	unsafe public partial class FenceCreateInfo
 	{
 		internal Interop.FenceCreateInfo* m;
 
@@ -3310,7 +3325,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public struct PhysicalDeviceFeatures
+	unsafe public partial struct PhysicalDeviceFeatures
 	{
 		public Bool32 RobustBufferAccess;
 		public Bool32 FullDrawIndexUint32;
@@ -3369,7 +3384,7 @@ namespace Vulkan
 		public Bool32 InheritedQueries;
 	}
 
-	unsafe public struct PhysicalDeviceSparseProperties
+	unsafe public partial struct PhysicalDeviceSparseProperties
 	{
 		public Bool32 ResidencyStandard2DBlockShape;
 		public Bool32 ResidencyStandard2DMultisampleBlockShape;
@@ -3378,7 +3393,7 @@ namespace Vulkan
 		public Bool32 ResidencyNonResidentStrict;
 	}
 
-	unsafe public class PhysicalDeviceLimits
+	unsafe public partial class PhysicalDeviceLimits
 	{
 		internal Interop.PhysicalDeviceLimits* m;
 
@@ -3647,9 +3662,22 @@ namespace Vulkan
 			set { m->MaxComputeSharedMemorySize = value; }
 		}
 
-		public UInt32 MaxComputeWorkGroupCount {
-			get { return m->MaxComputeWorkGroupCount; }
-			set { m->MaxComputeWorkGroupCount = value; }
+		UInt32[] MaxComputeWorkGroupCount {
+			get {
+				var arr = new UInt32 [3];
+				for (int i = 0; i < 3; i++)
+					arr [i] = m->MaxComputeWorkGroupCount [i];
+				return arr;
+			}
+
+			set {
+				if (value.Length > 3)
+					throw new Exception ("array too long");
+				for (int i = 0; i < value.Length; i++)
+					m->MaxComputeWorkGroupCount [i] = value [i];
+				for (int i = value.Length -1; i < 3; i++)
+					m->MaxComputeWorkGroupCount [i] = 0;
+			}
 		}
 
 		public UInt32 MaxComputeWorkGroupInvocations {
@@ -3657,9 +3685,22 @@ namespace Vulkan
 			set { m->MaxComputeWorkGroupInvocations = value; }
 		}
 
-		public UInt32 MaxComputeWorkGroupSize {
-			get { return m->MaxComputeWorkGroupSize; }
-			set { m->MaxComputeWorkGroupSize = value; }
+		UInt32[] MaxComputeWorkGroupSize {
+			get {
+				var arr = new UInt32 [3];
+				for (int i = 0; i < 3; i++)
+					arr [i] = m->MaxComputeWorkGroupSize [i];
+				return arr;
+			}
+
+			set {
+				if (value.Length > 3)
+					throw new Exception ("array too long");
+				for (int i = 0; i < value.Length; i++)
+					m->MaxComputeWorkGroupSize [i] = value [i];
+				for (int i = value.Length -1; i < 3; i++)
+					m->MaxComputeWorkGroupSize [i] = 0;
+			}
 		}
 
 		public UInt32 SubPixelPrecisionBits {
@@ -3702,14 +3743,40 @@ namespace Vulkan
 			set { m->MaxViewports = value; }
 		}
 
-		public UInt32 MaxViewportDimensions {
-			get { return m->MaxViewportDimensions; }
-			set { m->MaxViewportDimensions = value; }
+		UInt32[] MaxViewportDimensions {
+			get {
+				var arr = new UInt32 [2];
+				for (int i = 0; i < 2; i++)
+					arr [i] = m->MaxViewportDimensions [i];
+				return arr;
+			}
+
+			set {
+				if (value.Length > 2)
+					throw new Exception ("array too long");
+				for (int i = 0; i < value.Length; i++)
+					m->MaxViewportDimensions [i] = value [i];
+				for (int i = value.Length -1; i < 2; i++)
+					m->MaxViewportDimensions [i] = 0;
+			}
 		}
 
-		public float ViewportBoundsRange {
-			get { return m->ViewportBoundsRange; }
-			set { m->ViewportBoundsRange = value; }
+		float[] ViewportBoundsRange {
+			get {
+				var arr = new float [2];
+				for (int i = 0; i < 2; i++)
+					arr [i] = m->ViewportBoundsRange [i];
+				return arr;
+			}
+
+			set {
+				if (value.Length > 2)
+					throw new Exception ("array too long");
+				for (int i = 0; i < value.Length; i++)
+					m->ViewportBoundsRange [i] = value [i];
+				for (int i = value.Length -1; i < 2; i++)
+					m->ViewportBoundsRange [i] = 0;
+			}
 		}
 
 		public UInt32 ViewportSubPixelBits {
@@ -3872,14 +3939,40 @@ namespace Vulkan
 			set { m->DiscreteQueuePriorities = value; }
 		}
 
-		public float PointSizeRange {
-			get { return m->PointSizeRange; }
-			set { m->PointSizeRange = value; }
+		float[] PointSizeRange {
+			get {
+				var arr = new float [2];
+				for (int i = 0; i < 2; i++)
+					arr [i] = m->PointSizeRange [i];
+				return arr;
+			}
+
+			set {
+				if (value.Length > 2)
+					throw new Exception ("array too long");
+				for (int i = 0; i < value.Length; i++)
+					m->PointSizeRange [i] = value [i];
+				for (int i = value.Length -1; i < 2; i++)
+					m->PointSizeRange [i] = 0;
+			}
 		}
 
-		public float LineWidthRange {
-			get { return m->LineWidthRange; }
-			set { m->LineWidthRange = value; }
+		float[] LineWidthRange {
+			get {
+				var arr = new float [2];
+				for (int i = 0; i < 2; i++)
+					arr [i] = m->LineWidthRange [i];
+				return arr;
+			}
+
+			set {
+				if (value.Length > 2)
+					throw new Exception ("array too long");
+				for (int i = 0; i < value.Length; i++)
+					m->LineWidthRange [i] = value [i];
+				for (int i = value.Length -1; i < 2; i++)
+					m->LineWidthRange [i] = 0;
+			}
 		}
 
 		public float PointSizeGranularity {
@@ -3918,7 +4011,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class SemaphoreCreateInfo
+	unsafe public partial class SemaphoreCreateInfo
 	{
 		internal Interop.SemaphoreCreateInfo* m;
 
@@ -3934,7 +4027,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class QueryPoolCreateInfo
+	unsafe public partial class QueryPoolCreateInfo
 	{
 		internal Interop.QueryPoolCreateInfo* m;
 
@@ -3965,7 +4058,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class FramebufferCreateInfo
+	unsafe public partial class FramebufferCreateInfo
 	{
 		internal Interop.FramebufferCreateInfo* m;
 
@@ -4033,7 +4126,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public struct DrawIndirectCommand
+	unsafe public partial struct DrawIndirectCommand
 	{
 		public UInt32 VertexCount;
 		public UInt32 InstanceCount;
@@ -4041,7 +4134,7 @@ namespace Vulkan
 		public UInt32 FirstInstance;
 	}
 
-	unsafe public struct DrawIndexedIndirectCommand
+	unsafe public partial struct DrawIndexedIndirectCommand
 	{
 		public UInt32 IndexCount;
 		public UInt32 InstanceCount;
@@ -4050,14 +4143,14 @@ namespace Vulkan
 		public UInt32 FirstInstance;
 	}
 
-	unsafe public struct DispatchIndirectCommand
+	unsafe public partial struct DispatchIndirectCommand
 	{
 		public UInt32 X;
 		public UInt32 Y;
 		public UInt32 Z;
 	}
 
-	unsafe public class SubmitInfo
+	unsafe public partial class SubmitInfo
 	{
 		internal Interop.SubmitInfo* m;
 
@@ -4185,7 +4278,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class DisplayPropertiesKhr
+	unsafe public partial class DisplayPropertiesKhr
 	{
 		internal Interop.DisplayPropertiesKhr* m;
 
@@ -4231,25 +4324,25 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public struct DisplayPlanePropertiesKhr
+	unsafe public partial struct DisplayPlanePropertiesKhr
 	{
 		public UInt64 CurrentDisplay;
 		public UInt32 CurrentStackIndex;
 	}
 
-	unsafe public struct DisplayModeParametersKhr
+	unsafe public partial struct DisplayModeParametersKhr
 	{
 		public Extent2D VisibleRegion;
 		public UInt32 RefreshRate;
 	}
 
-	unsafe public struct DisplayModePropertiesKhr
+	unsafe public partial struct DisplayModePropertiesKhr
 	{
 		public UInt64 DisplayMode;
 		public DisplayModeParametersKhr Parameters;
 	}
 
-	unsafe public class DisplayModeCreateInfoKhr
+	unsafe public partial class DisplayModeCreateInfoKhr
 	{
 		internal Interop.DisplayModeCreateInfoKhr* m;
 
@@ -4270,7 +4363,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public struct DisplayPlaneCapabilitiesKhr
+	unsafe public partial struct DisplayPlaneCapabilitiesKhr
 	{
 		public DisplayPlaneAlphaFlagsKhr SupportedAlpha;
 		public Offset2D MinSrcPosition;
@@ -4283,7 +4376,7 @@ namespace Vulkan
 		public Extent2D MaxDstExtent;
 	}
 
-	unsafe public class DisplaySurfaceCreateInfoKhr
+	unsafe public partial class DisplaySurfaceCreateInfoKhr
 	{
 		internal Interop.DisplaySurfaceCreateInfoKhr* m;
 
@@ -4335,7 +4428,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class DisplayPresentInfoKhr
+	unsafe public partial class DisplayPresentInfoKhr
 	{
 		internal Interop.DisplayPresentInfoKhr* m;
 
@@ -4361,7 +4454,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public struct SurfaceCapabilitiesKhr
+	unsafe public partial struct SurfaceCapabilitiesKhr
 	{
 		public UInt32 MinImageCount;
 		public UInt32 MaxImageCount;
@@ -4375,13 +4468,13 @@ namespace Vulkan
 		public UInt32 SupportedUsageFlags;
 	}
 
-	unsafe public struct SurfaceFormatKhr
+	unsafe public partial struct SurfaceFormatKhr
 	{
 		public Format Format;
 		public ColorSpaceKhr ColorSpace;
 	}
 
-	unsafe public class SwapchainCreateInfoKhr
+	unsafe public partial class SwapchainCreateInfoKhr
 	{
 		internal Interop.SwapchainCreateInfoKhr* m;
 
@@ -4493,7 +4586,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class PresentInfoKhr
+	unsafe public partial class PresentInfoKhr
 	{
 		internal Interop.PresentInfoKhr* m;
 
@@ -4614,7 +4707,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class DebugReportCallbackCreateInfoExt
+	unsafe public partial class DebugReportCallbackCreateInfoExt
 	{
 		internal Interop.DebugReportCallbackCreateInfoExt* m;
 
@@ -4640,7 +4733,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class PipelineRasterizationStateRasterizationOrderAmd
+	unsafe public partial class PipelineRasterizationStateRasterizationOrderAmd
 	{
 		internal Interop.PipelineRasterizationStateRasterizationOrderAmd* m;
 
@@ -4656,7 +4749,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class DebugMarkerObjectNameInfoExt
+	unsafe public partial class DebugMarkerObjectNameInfoExt
 	{
 		internal Interop.DebugMarkerObjectNameInfoExt* m;
 
@@ -4682,7 +4775,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class DebugMarkerObjectTagInfoExt
+	unsafe public partial class DebugMarkerObjectTagInfoExt
 	{
 		internal Interop.DebugMarkerObjectTagInfoExt* m;
 
@@ -4718,7 +4811,7 @@ namespace Vulkan
 		}
 	}
 
-	unsafe public class DebugMarkerMarkerInfoExt
+	unsafe public partial class DebugMarkerMarkerInfoExt
 	{
 		internal Interop.DebugMarkerMarkerInfoExt* m;
 
@@ -4733,9 +4826,22 @@ namespace Vulkan
 			set { m->MarkerName = Marshal.StringToHGlobalAnsi (value); }
 		}
 
-		public float Color {
-			get { return m->Color; }
-			set { m->Color = value; }
+		float[] Color {
+			get {
+				var arr = new float [4];
+				for (int i = 0; i < 4; i++)
+					arr [i] = m->Color [i];
+				return arr;
+			}
+
+			set {
+				if (value.Length > 4)
+					throw new Exception ("array too long");
+				for (int i = 0; i < value.Length; i++)
+					m->Color [i] = value [i];
+				for (int i = value.Length -1; i < 4; i++)
+					m->Color [i] = 0;
+			}
 		}
 	}
 }
