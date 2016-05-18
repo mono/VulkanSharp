@@ -459,7 +459,7 @@ namespace VulkanSharp.Generator
 		void WriteMemberFixedArray (string csMemberType, string csMemberName, XElement memberElement)
 		{
 			int len = GetArrayLength (memberElement.Value);
-			IndentWriteLine ("{0}[] {1} {{", csMemberType, csMemberName);
+			IndentWriteLine ("public {0}[] {1} {{", csMemberType, csMemberName);
 			IndentLevel++;
 			IndentWriteLine ("get {");
 			IndentLevel++;
@@ -483,7 +483,7 @@ namespace VulkanSharp.Generator
 			IndentLevel++;
 			IndentWriteLine ("m->{0} [i] = value [i];", csMemberName);
 			IndentLevel--;
-			IndentWriteLine ("for (int i = value.Length -1; i < {0}; i++)", len);
+			IndentWriteLine ("for (int i = value.Length; i < {0}; i++)", len);
 			IndentLevel++;
 			IndentWriteLine ("m->{0} [i] = 0;", csMemberName);
 			IndentLevel--;
