@@ -1262,7 +1262,7 @@ namespace VulkanSharp.Generator
 			if (fixedCount > 0) {
 				int count = 0;
 				foreach (var param in paramsDict) {
-					if (param.Value.isFixed && param.Value.isHandle) {
+					if (param.Value.isFixed && param.Value.isHandle && !param.Value.isConst) {
 						IndentWriteLine ("{0} = new {1} ();", param.Key, param.Value.csType);
 						count++;
 					}
