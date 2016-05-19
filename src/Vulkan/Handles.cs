@@ -707,8 +707,6 @@ namespace Vulkan
 		{
 			Result result;
 			unsafe {
-				pFences = new Fence ();
-
 				fixed (UInt64* ptrpFences = &pFences.m) {
 					result = Interop.NativeMethods.vkResetFences (this.m, fenceCount, ptrpFences);
 				}
@@ -731,8 +729,6 @@ namespace Vulkan
 		{
 			Result result;
 			unsafe {
-				pFences = new Fence ();
-
 				fixed (UInt64* ptrpFences = &pFences.m) {
 					result = Interop.NativeMethods.vkWaitForFences (this.m, fenceCount, ptrpFences, waitAll, timeout);
 				}
@@ -1028,8 +1024,6 @@ namespace Vulkan
 		{
 			Result result;
 			unsafe {
-				pSrcCaches = new PipelineCache ();
-
 				fixed (UInt64* ptrpSrcCaches = &pSrcCaches.m) {
 					result = Interop.NativeMethods.vkMergePipelineCaches (this.m, dstCache.m, srcCacheCount, ptrpSrcCaches);
 				}
@@ -1206,8 +1200,6 @@ namespace Vulkan
 		{
 			Result result;
 			unsafe {
-				pDescriptorSets = new DescriptorSet ();
-
 				fixed (UInt64* ptrpDescriptorSets = &pDescriptorSets.m) {
 					result = Interop.NativeMethods.vkFreeDescriptorSets (this.m, descriptorPool.m, descriptorSetCount, ptrpDescriptorSets);
 				}
@@ -1336,8 +1328,6 @@ namespace Vulkan
 		public void FreeCommandBuffers (CommandPool commandPool, UInt32 commandBufferCount, CommandBuffer pCommandBuffers)
 		{
 			unsafe {
-				pCommandBuffers = new CommandBuffer ();
-
 				fixed (IntPtr* ptrpCommandBuffers = &pCommandBuffers.m) {
 					Interop.NativeMethods.vkFreeCommandBuffers (this.m, commandPool.m, commandBufferCount, ptrpCommandBuffers);
 				}
@@ -1606,8 +1596,6 @@ namespace Vulkan
 		public void CmdBindDescriptorSets (PipelineBindPoint pipelineBindPoint, PipelineLayout layout, UInt32 firstSet, UInt32 descriptorSetCount, DescriptorSet pDescriptorSets, UInt32 dynamicOffsetCount, UInt32 pDynamicOffsets)
 		{
 			unsafe {
-				pDescriptorSets = new DescriptorSet ();
-
 				fixed (UInt64* ptrpDescriptorSets = &pDescriptorSets.m) {
 					Interop.NativeMethods.vkCmdBindDescriptorSets (this.m, pipelineBindPoint, layout.m, firstSet, descriptorSetCount, ptrpDescriptorSets, dynamicOffsetCount, &pDynamicOffsets);
 				}
@@ -1624,8 +1612,6 @@ namespace Vulkan
 		public void CmdBindVertexBuffers (UInt32 firstBinding, UInt32 bindingCount, Buffer pBuffers, DeviceSize pOffsets)
 		{
 			unsafe {
-				pBuffers = new Buffer ();
-
 				fixed (UInt64* ptrpBuffers = &pBuffers.m) {
 					Interop.NativeMethods.vkCmdBindVertexBuffers (this.m, firstBinding, bindingCount, ptrpBuffers, &pOffsets);
 				}
@@ -1768,8 +1754,6 @@ namespace Vulkan
 		public void CmdWaitEvents (UInt32 eventCount, Event pEvents, PipelineStageFlags srcStageMask, PipelineStageFlags dstStageMask, UInt32 memoryBarrierCount, MemoryBarrier pMemoryBarriers, UInt32 bufferMemoryBarrierCount, BufferMemoryBarrier pBufferMemoryBarriers, UInt32 imageMemoryBarrierCount, ImageMemoryBarrier pImageMemoryBarriers)
 		{
 			unsafe {
-				pEvents = new Event ();
-
 				fixed (UInt64* ptrpEvents = &pEvents.m) {
 					Interop.NativeMethods.vkCmdWaitEvents (this.m, eventCount, ptrpEvents, srcStageMask, dstStageMask, memoryBarrierCount, pMemoryBarriers.m, bufferMemoryBarrierCount, pBufferMemoryBarriers.m, imageMemoryBarrierCount, pImageMemoryBarriers.m);
 				}
@@ -1849,8 +1833,6 @@ namespace Vulkan
 		public void CmdExecuteCommands (UInt32 commandBufferCount, CommandBuffer pCommandBuffers)
 		{
 			unsafe {
-				pCommandBuffers = new CommandBuffer ();
-
 				fixed (IntPtr* ptrpCommandBuffers = &pCommandBuffers.m) {
 					Interop.NativeMethods.vkCmdExecuteCommands (this.m, commandBufferCount, ptrpCommandBuffers);
 				}

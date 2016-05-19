@@ -49,6 +49,7 @@
     <Compile Include="Interop\MarshalStructs.cs" />
     <Compile Include="Interop\ImportedCommands.cs" />
     <Compile Include="Handles.cs" />
+    <Compile Include="VulkanView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

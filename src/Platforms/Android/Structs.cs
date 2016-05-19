@@ -15,14 +15,6 @@ namespace Vulkan
 {
 	unsafe public partial class AndroidSurfaceCreateInfoKhr
 	{
-		internal Android.Interop.AndroidSurfaceCreateInfoKhr* m;
-
-		public AndroidSurfaceCreateInfoKhr ()
-		{
-			m = (Android.Interop.AndroidSurfaceCreateInfoKhr*) Interop.Structure.Allocate (typeof (Android.Interop.AndroidSurfaceCreateInfoKhr));
-			m->SType = StructureType.AndroidSurfaceCreateInfoKhr;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -32,6 +24,26 @@ namespace Vulkan
 			get { return m->Window; }
 			set { m->Window = value; }
 		}
+		internal Android.Interop.AndroidSurfaceCreateInfoKhr* m;
+
+		public AndroidSurfaceCreateInfoKhr ()
+		{
+			m = (Android.Interop.AndroidSurfaceCreateInfoKhr*) Interop.Structure.Allocate (typeof (Android.Interop.AndroidSurfaceCreateInfoKhr));
+			Initialize ();
+		}
+
+		internal AndroidSurfaceCreateInfoKhr (Android.Interop.AndroidSurfaceCreateInfoKhr* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.AndroidSurfaceCreateInfoKhr;
+		}
+
 	}
 
 }

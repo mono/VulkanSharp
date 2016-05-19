@@ -78,13 +78,6 @@ namespace Vulkan
 
 	unsafe public partial class PhysicalDeviceProperties
 	{
-		internal Interop.PhysicalDeviceProperties* m;
-
-		public PhysicalDeviceProperties ()
-		{
-			m = (Interop.PhysicalDeviceProperties*) Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceProperties));
-		}
-
 		public UInt32 ApiVersion {
 			get { return m->ApiVersion; }
 			set { m->ApiVersion = value; }
@@ -130,17 +123,30 @@ namespace Vulkan
 			get { return m->SparseProperties; }
 			set { m->SparseProperties = value; }
 		}
+		internal Interop.PhysicalDeviceProperties* m;
+
+		public PhysicalDeviceProperties ()
+		{
+			m = (Interop.PhysicalDeviceProperties*) Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceProperties));
+			Initialize ();
+		}
+
+		internal PhysicalDeviceProperties (Interop.PhysicalDeviceProperties* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			lLimits = new PhysicalDeviceLimits (&m->Limits);
+		}
+
 	}
 
 	unsafe public partial class ExtensionProperties
 	{
-		internal Interop.ExtensionProperties* m;
-
-		public ExtensionProperties ()
-		{
-			m = (Interop.ExtensionProperties*) Interop.Structure.Allocate (typeof (Interop.ExtensionProperties));
-		}
-
 		public string ExtensionName {
 			get { return Marshal.PtrToStringAnsi ((IntPtr)m->ExtensionName); }
 			set { Interop.Structure.MarshalFixedSizeString (m->ExtensionName, value, 256); }
@@ -150,17 +156,22 @@ namespace Vulkan
 			get { return m->SpecVersion; }
 			set { m->SpecVersion = value; }
 		}
+		internal Interop.ExtensionProperties* m;
+
+		public ExtensionProperties ()
+		{
+			m = (Interop.ExtensionProperties*) Interop.Structure.Allocate (typeof (Interop.ExtensionProperties));
+		}
+
+		internal ExtensionProperties (Interop.ExtensionProperties* ptr)
+		{
+			m = ptr;
+		}
+
 	}
 
 	unsafe public partial class LayerProperties
 	{
-		internal Interop.LayerProperties* m;
-
-		public LayerProperties ()
-		{
-			m = (Interop.LayerProperties*) Interop.Structure.Allocate (typeof (Interop.LayerProperties));
-		}
-
 		public string LayerName {
 			get { return Marshal.PtrToStringAnsi ((IntPtr)m->LayerName); }
 			set { Interop.Structure.MarshalFixedSizeString (m->LayerName, value, 256); }
@@ -180,18 +191,22 @@ namespace Vulkan
 			get { return Marshal.PtrToStringAnsi ((IntPtr)m->Description); }
 			set { Interop.Structure.MarshalFixedSizeString (m->Description, value, 256); }
 		}
+		internal Interop.LayerProperties* m;
+
+		public LayerProperties ()
+		{
+			m = (Interop.LayerProperties*) Interop.Structure.Allocate (typeof (Interop.LayerProperties));
+		}
+
+		internal LayerProperties (Interop.LayerProperties* ptr)
+		{
+			m = ptr;
+		}
+
 	}
 
 	unsafe public partial class ApplicationInfo
 	{
-		internal Interop.ApplicationInfo* m;
-
-		public ApplicationInfo ()
-		{
-			m = (Interop.ApplicationInfo*) Interop.Structure.Allocate (typeof (Interop.ApplicationInfo));
-			m->SType = StructureType.ApplicationInfo;
-		}
-
 		public string ApplicationName {
 			get { return Marshal.PtrToStringAnsi (m->ApplicationName); }
 			set { m->ApplicationName = Marshal.StringToHGlobalAnsi (value); }
@@ -216,17 +231,30 @@ namespace Vulkan
 			get { return m->ApiVersion; }
 			set { m->ApiVersion = value; }
 		}
+		internal Interop.ApplicationInfo* m;
+
+		public ApplicationInfo ()
+		{
+			m = (Interop.ApplicationInfo*) Interop.Structure.Allocate (typeof (Interop.ApplicationInfo));
+			Initialize ();
+		}
+
+		internal ApplicationInfo (Interop.ApplicationInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ApplicationInfo;
+		}
+
 	}
 
 	unsafe public partial class AllocationCallbacks
 	{
-		internal Interop.AllocationCallbacks* m;
-
-		public AllocationCallbacks ()
-		{
-			m = (Interop.AllocationCallbacks*) Interop.Structure.Allocate (typeof (Interop.AllocationCallbacks));
-		}
-
 		public IntPtr UserData {
 			get { return m->UserData; }
 			set { m->UserData = value; }
@@ -256,18 +284,22 @@ namespace Vulkan
 			get { return m->PfnInternalFree; }
 			set { m->PfnInternalFree = value; }
 		}
+		internal Interop.AllocationCallbacks* m;
+
+		public AllocationCallbacks ()
+		{
+			m = (Interop.AllocationCallbacks*) Interop.Structure.Allocate (typeof (Interop.AllocationCallbacks));
+		}
+
+		internal AllocationCallbacks (Interop.AllocationCallbacks* ptr)
+		{
+			m = ptr;
+		}
+
 	}
 
 	unsafe public partial class DeviceQueueCreateInfo
 	{
-		internal Interop.DeviceQueueCreateInfo* m;
-
-		public DeviceQueueCreateInfo ()
-		{
-			m = (Interop.DeviceQueueCreateInfo*) Interop.Structure.Allocate (typeof (Interop.DeviceQueueCreateInfo));
-			m->SType = StructureType.DeviceQueueCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -306,18 +338,30 @@ namespace Vulkan
 				}
 			}
 		}
+		internal Interop.DeviceQueueCreateInfo* m;
+
+		public DeviceQueueCreateInfo ()
+		{
+			m = (Interop.DeviceQueueCreateInfo*) Interop.Structure.Allocate (typeof (Interop.DeviceQueueCreateInfo));
+			Initialize ();
+		}
+
+		internal DeviceQueueCreateInfo (Interop.DeviceQueueCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DeviceQueueCreateInfo;
+		}
+
 	}
 
 	unsafe public partial class DeviceCreateInfo
 	{
-		internal Interop.DeviceCreateInfo* m;
-
-		public DeviceCreateInfo ()
-		{
-			m = (Interop.DeviceCreateInfo*) Interop.Structure.Allocate (typeof (Interop.DeviceCreateInfo));
-			m->SType = StructureType.DeviceCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -416,18 +460,30 @@ namespace Vulkan
 			get { return (PhysicalDeviceFeatures)Interop.Structure.MarshalPointerToObject (m->EnabledFeatures, typeof (PhysicalDeviceFeatures)); }
 			set { m->EnabledFeatures = Interop.Structure.MarshalObjectToPointer (m->EnabledFeatures, value); }
 		}
+		internal Interop.DeviceCreateInfo* m;
+
+		public DeviceCreateInfo ()
+		{
+			m = (Interop.DeviceCreateInfo*) Interop.Structure.Allocate (typeof (Interop.DeviceCreateInfo));
+			Initialize ();
+		}
+
+		internal DeviceCreateInfo (Interop.DeviceCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DeviceCreateInfo;
+		}
+
 	}
 
 	unsafe public partial class InstanceCreateInfo
 	{
-		internal Interop.InstanceCreateInfo* m;
-
-		public InstanceCreateInfo ()
-		{
-			m = (Interop.InstanceCreateInfo*) Interop.Structure.Allocate (typeof (Interop.InstanceCreateInfo));
-			m->SType = StructureType.InstanceCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -496,6 +552,26 @@ namespace Vulkan
 				}
 			}
 		}
+		internal Interop.InstanceCreateInfo* m;
+
+		public InstanceCreateInfo ()
+		{
+			m = (Interop.InstanceCreateInfo*) Interop.Structure.Allocate (typeof (Interop.InstanceCreateInfo));
+			Initialize ();
+		}
+
+		internal InstanceCreateInfo (Interop.InstanceCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.InstanceCreateInfo;
+		}
+
 	}
 
 	unsafe public partial struct QueueFamilyProperties
@@ -508,13 +584,6 @@ namespace Vulkan
 
 	unsafe public partial class PhysicalDeviceMemoryProperties
 	{
-		internal Interop.PhysicalDeviceMemoryProperties* m;
-
-		public PhysicalDeviceMemoryProperties ()
-		{
-			m = (Interop.PhysicalDeviceMemoryProperties*) Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceMemoryProperties));
-		}
-
 		public UInt32 MemoryTypeCount {
 			get { return m->MemoryTypeCount; }
 			set { m->MemoryTypeCount = value; }
@@ -534,18 +603,22 @@ namespace Vulkan
 			get { return m->MemoryHeaps; }
 			set { m->MemoryHeaps = value; }
 		}
+		internal Interop.PhysicalDeviceMemoryProperties* m;
+
+		public PhysicalDeviceMemoryProperties ()
+		{
+			m = (Interop.PhysicalDeviceMemoryProperties*) Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceMemoryProperties));
+		}
+
+		internal PhysicalDeviceMemoryProperties (Interop.PhysicalDeviceMemoryProperties* ptr)
+		{
+			m = ptr;
+		}
+
 	}
 
 	unsafe public partial class MemoryAllocateInfo
 	{
-		internal Interop.MemoryAllocateInfo* m;
-
-		public MemoryAllocateInfo ()
-		{
-			m = (Interop.MemoryAllocateInfo*) Interop.Structure.Allocate (typeof (Interop.MemoryAllocateInfo));
-			m->SType = StructureType.MemoryAllocateInfo;
-		}
-
 		public DeviceSize AllocationSize {
 			get { return m->AllocationSize; }
 			set { m->AllocationSize = value; }
@@ -555,6 +628,26 @@ namespace Vulkan
 			get { return m->MemoryTypeIndex; }
 			set { m->MemoryTypeIndex = value; }
 		}
+		internal Interop.MemoryAllocateInfo* m;
+
+		public MemoryAllocateInfo ()
+		{
+			m = (Interop.MemoryAllocateInfo*) Interop.Structure.Allocate (typeof (Interop.MemoryAllocateInfo));
+			Initialize ();
+		}
+
+		internal MemoryAllocateInfo (Interop.MemoryAllocateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.MemoryAllocateInfo;
+		}
+
 	}
 
 	unsafe public partial struct MemoryRequirements
@@ -594,14 +687,6 @@ namespace Vulkan
 
 	unsafe public partial class MappedMemoryRange
 	{
-		internal Interop.MappedMemoryRange* m;
-
-		public MappedMemoryRange ()
-		{
-			m = (Interop.MappedMemoryRange*) Interop.Structure.Allocate (typeof (Interop.MappedMemoryRange));
-			m->SType = StructureType.MappedMemoryRange;
-		}
-
 		DeviceMemory lMemory;
 		public DeviceMemory Memory {
 			get { return lMemory; }
@@ -617,6 +702,26 @@ namespace Vulkan
 			get { return m->Size; }
 			set { m->Size = value; }
 		}
+		internal Interop.MappedMemoryRange* m;
+
+		public MappedMemoryRange ()
+		{
+			m = (Interop.MappedMemoryRange*) Interop.Structure.Allocate (typeof (Interop.MappedMemoryRange));
+			Initialize ();
+		}
+
+		internal MappedMemoryRange (Interop.MappedMemoryRange* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.MappedMemoryRange;
+		}
+
 	}
 
 	unsafe public partial struct FormatProperties
@@ -651,14 +756,6 @@ namespace Vulkan
 
 	unsafe public partial class WriteDescriptorSet
 	{
-		internal Interop.WriteDescriptorSet* m;
-
-		public WriteDescriptorSet ()
-		{
-			m = (Interop.WriteDescriptorSet*) Interop.Structure.Allocate (typeof (Interop.WriteDescriptorSet));
-			m->SType = StructureType.WriteDescriptorSet;
-		}
-
 		DescriptorSet lDstSet;
 		public DescriptorSet DstSet {
 			get { return lDstSet; }
@@ -758,18 +855,30 @@ namespace Vulkan
 				}
 			}
 		}
+		internal Interop.WriteDescriptorSet* m;
+
+		public WriteDescriptorSet ()
+		{
+			m = (Interop.WriteDescriptorSet*) Interop.Structure.Allocate (typeof (Interop.WriteDescriptorSet));
+			Initialize ();
+		}
+
+		internal WriteDescriptorSet (Interop.WriteDescriptorSet* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.WriteDescriptorSet;
+		}
+
 	}
 
 	unsafe public partial class CopyDescriptorSet
 	{
-		internal Interop.CopyDescriptorSet* m;
-
-		public CopyDescriptorSet ()
-		{
-			m = (Interop.CopyDescriptorSet*) Interop.Structure.Allocate (typeof (Interop.CopyDescriptorSet));
-			m->SType = StructureType.CopyDescriptorSet;
-		}
-
 		DescriptorSet lSrcSet;
 		public DescriptorSet SrcSet {
 			get { return lSrcSet; }
@@ -806,18 +915,30 @@ namespace Vulkan
 			get { return m->DescriptorCount; }
 			set { m->DescriptorCount = value; }
 		}
+		internal Interop.CopyDescriptorSet* m;
+
+		public CopyDescriptorSet ()
+		{
+			m = (Interop.CopyDescriptorSet*) Interop.Structure.Allocate (typeof (Interop.CopyDescriptorSet));
+			Initialize ();
+		}
+
+		internal CopyDescriptorSet (Interop.CopyDescriptorSet* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.CopyDescriptorSet;
+		}
+
 	}
 
 	unsafe public partial class BufferCreateInfo
 	{
-		internal Interop.BufferCreateInfo* m;
-
-		public BufferCreateInfo ()
-		{
-			m = (Interop.BufferCreateInfo*) Interop.Structure.Allocate (typeof (Interop.BufferCreateInfo));
-			m->SType = StructureType.BufferCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -866,18 +987,30 @@ namespace Vulkan
 				}
 			}
 		}
+		internal Interop.BufferCreateInfo* m;
+
+		public BufferCreateInfo ()
+		{
+			m = (Interop.BufferCreateInfo*) Interop.Structure.Allocate (typeof (Interop.BufferCreateInfo));
+			Initialize ();
+		}
+
+		internal BufferCreateInfo (Interop.BufferCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.BufferCreateInfo;
+		}
+
 	}
 
 	unsafe public partial class BufferViewCreateInfo
 	{
-		internal Interop.BufferViewCreateInfo* m;
-
-		public BufferViewCreateInfo ()
-		{
-			m = (Interop.BufferViewCreateInfo*) Interop.Structure.Allocate (typeof (Interop.BufferViewCreateInfo));
-			m->SType = StructureType.BufferViewCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -903,6 +1036,26 @@ namespace Vulkan
 			get { return m->Range; }
 			set { m->Range = value; }
 		}
+		internal Interop.BufferViewCreateInfo* m;
+
+		public BufferViewCreateInfo ()
+		{
+			m = (Interop.BufferViewCreateInfo*) Interop.Structure.Allocate (typeof (Interop.BufferViewCreateInfo));
+			Initialize ();
+		}
+
+		internal BufferViewCreateInfo (Interop.BufferViewCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.BufferViewCreateInfo;
+		}
+
 	}
 
 	unsafe public partial struct ImageSubresource
@@ -931,14 +1084,6 @@ namespace Vulkan
 
 	unsafe public partial class MemoryBarrier
 	{
-		internal Interop.MemoryBarrier* m;
-
-		public MemoryBarrier ()
-		{
-			m = (Interop.MemoryBarrier*) Interop.Structure.Allocate (typeof (Interop.MemoryBarrier));
-			m->SType = StructureType.MemoryBarrier;
-		}
-
 		public UInt32 SrcAccessMask {
 			get { return m->SrcAccessMask; }
 			set { m->SrcAccessMask = value; }
@@ -948,18 +1093,30 @@ namespace Vulkan
 			get { return m->DstAccessMask; }
 			set { m->DstAccessMask = value; }
 		}
+		internal Interop.MemoryBarrier* m;
+
+		public MemoryBarrier ()
+		{
+			m = (Interop.MemoryBarrier*) Interop.Structure.Allocate (typeof (Interop.MemoryBarrier));
+			Initialize ();
+		}
+
+		internal MemoryBarrier (Interop.MemoryBarrier* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.MemoryBarrier;
+		}
+
 	}
 
 	unsafe public partial class BufferMemoryBarrier
 	{
-		internal Interop.BufferMemoryBarrier* m;
-
-		public BufferMemoryBarrier ()
-		{
-			m = (Interop.BufferMemoryBarrier*) Interop.Structure.Allocate (typeof (Interop.BufferMemoryBarrier));
-			m->SType = StructureType.BufferMemoryBarrier;
-		}
-
 		public UInt32 SrcAccessMask {
 			get { return m->SrcAccessMask; }
 			set { m->SrcAccessMask = value; }
@@ -995,18 +1152,30 @@ namespace Vulkan
 			get { return m->Size; }
 			set { m->Size = value; }
 		}
+		internal Interop.BufferMemoryBarrier* m;
+
+		public BufferMemoryBarrier ()
+		{
+			m = (Interop.BufferMemoryBarrier*) Interop.Structure.Allocate (typeof (Interop.BufferMemoryBarrier));
+			Initialize ();
+		}
+
+		internal BufferMemoryBarrier (Interop.BufferMemoryBarrier* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.BufferMemoryBarrier;
+		}
+
 	}
 
 	unsafe public partial class ImageMemoryBarrier
 	{
-		internal Interop.ImageMemoryBarrier* m;
-
-		public ImageMemoryBarrier ()
-		{
-			m = (Interop.ImageMemoryBarrier*) Interop.Structure.Allocate (typeof (Interop.ImageMemoryBarrier));
-			m->SType = StructureType.ImageMemoryBarrier;
-		}
-
 		public UInt32 SrcAccessMask {
 			get { return m->SrcAccessMask; }
 			set { m->SrcAccessMask = value; }
@@ -1047,18 +1216,30 @@ namespace Vulkan
 			get { return m->SubresourceRange; }
 			set { m->SubresourceRange = value; }
 		}
+		internal Interop.ImageMemoryBarrier* m;
+
+		public ImageMemoryBarrier ()
+		{
+			m = (Interop.ImageMemoryBarrier*) Interop.Structure.Allocate (typeof (Interop.ImageMemoryBarrier));
+			Initialize ();
+		}
+
+		internal ImageMemoryBarrier (Interop.ImageMemoryBarrier* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ImageMemoryBarrier;
+		}
+
 	}
 
 	unsafe public partial class ImageCreateInfo
 	{
-		internal Interop.ImageCreateInfo* m;
-
-		public ImageCreateInfo ()
-		{
-			m = (Interop.ImageCreateInfo*) Interop.Structure.Allocate (typeof (Interop.ImageCreateInfo));
-			m->SType = StructureType.ImageCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -1142,6 +1323,26 @@ namespace Vulkan
 			get { return m->InitialLayout; }
 			set { m->InitialLayout = value; }
 		}
+		internal Interop.ImageCreateInfo* m;
+
+		public ImageCreateInfo ()
+		{
+			m = (Interop.ImageCreateInfo*) Interop.Structure.Allocate (typeof (Interop.ImageCreateInfo));
+			Initialize ();
+		}
+
+		internal ImageCreateInfo (Interop.ImageCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ImageCreateInfo;
+		}
+
 	}
 
 	unsafe public partial struct SubresourceLayout
@@ -1155,14 +1356,6 @@ namespace Vulkan
 
 	unsafe public partial class ImageViewCreateInfo
 	{
-		internal Interop.ImageViewCreateInfo* m;
-
-		public ImageViewCreateInfo ()
-		{
-			m = (Interop.ImageViewCreateInfo*) Interop.Structure.Allocate (typeof (Interop.ImageViewCreateInfo));
-			m->SType = StructureType.ImageViewCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -1193,6 +1386,26 @@ namespace Vulkan
 			get { return m->SubresourceRange; }
 			set { m->SubresourceRange = value; }
 		}
+		internal Interop.ImageViewCreateInfo* m;
+
+		public ImageViewCreateInfo ()
+		{
+			m = (Interop.ImageViewCreateInfo*) Interop.Structure.Allocate (typeof (Interop.ImageViewCreateInfo));
+			Initialize ();
+		}
+
+		internal ImageViewCreateInfo (Interop.ImageViewCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ImageViewCreateInfo;
+		}
+
 	}
 
 	unsafe public partial struct BufferCopy
@@ -1223,13 +1436,6 @@ namespace Vulkan
 
 	unsafe public partial class SparseBufferMemoryBindInfo
 	{
-		internal Interop.SparseBufferMemoryBindInfo* m;
-
-		public SparseBufferMemoryBindInfo ()
-		{
-			m = (Interop.SparseBufferMemoryBindInfo*) Interop.Structure.Allocate (typeof (Interop.SparseBufferMemoryBindInfo));
-		}
-
 		Buffer lBuffer;
 		public Buffer Buffer {
 			get { return lBuffer; }
@@ -1264,17 +1470,29 @@ namespace Vulkan
 				}
 			}
 		}
+		internal Interop.SparseBufferMemoryBindInfo* m;
+
+		public SparseBufferMemoryBindInfo ()
+		{
+			m = (Interop.SparseBufferMemoryBindInfo*) Interop.Structure.Allocate (typeof (Interop.SparseBufferMemoryBindInfo));
+			Initialize ();
+		}
+
+		internal SparseBufferMemoryBindInfo (Interop.SparseBufferMemoryBindInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+		}
+
 	}
 
 	unsafe public partial class SparseImageOpaqueMemoryBindInfo
 	{
-		internal Interop.SparseImageOpaqueMemoryBindInfo* m;
-
-		public SparseImageOpaqueMemoryBindInfo ()
-		{
-			m = (Interop.SparseImageOpaqueMemoryBindInfo*) Interop.Structure.Allocate (typeof (Interop.SparseImageOpaqueMemoryBindInfo));
-		}
-
 		Image lImage;
 		public Image Image {
 			get { return lImage; }
@@ -1309,17 +1527,29 @@ namespace Vulkan
 				}
 			}
 		}
+		internal Interop.SparseImageOpaqueMemoryBindInfo* m;
+
+		public SparseImageOpaqueMemoryBindInfo ()
+		{
+			m = (Interop.SparseImageOpaqueMemoryBindInfo*) Interop.Structure.Allocate (typeof (Interop.SparseImageOpaqueMemoryBindInfo));
+			Initialize ();
+		}
+
+		internal SparseImageOpaqueMemoryBindInfo (Interop.SparseImageOpaqueMemoryBindInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+		}
+
 	}
 
 	unsafe public partial class SparseImageMemoryBindInfo
 	{
-		internal Interop.SparseImageMemoryBindInfo* m;
-
-		public SparseImageMemoryBindInfo ()
-		{
-			m = (Interop.SparseImageMemoryBindInfo*) Interop.Structure.Allocate (typeof (Interop.SparseImageMemoryBindInfo));
-		}
-
 		Image lImage;
 		public Image Image {
 			get { return lImage; }
@@ -1354,18 +1584,29 @@ namespace Vulkan
 				}
 			}
 		}
+		internal Interop.SparseImageMemoryBindInfo* m;
+
+		public SparseImageMemoryBindInfo ()
+		{
+			m = (Interop.SparseImageMemoryBindInfo*) Interop.Structure.Allocate (typeof (Interop.SparseImageMemoryBindInfo));
+			Initialize ();
+		}
+
+		internal SparseImageMemoryBindInfo (Interop.SparseImageMemoryBindInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+		}
+
 	}
 
 	unsafe public partial class BindSparseInfo
 	{
-		internal Interop.BindSparseInfo* m;
-
-		public BindSparseInfo ()
-		{
-			m = (Interop.BindSparseInfo*) Interop.Structure.Allocate (typeof (Interop.BindSparseInfo));
-			m->SType = StructureType.BindSparseInfo;
-		}
-
 		public UInt32 WaitSemaphoreCount {
 			get { return m->WaitSemaphoreCount; }
 			set { m->WaitSemaphoreCount = value; }
@@ -1520,6 +1761,26 @@ namespace Vulkan
 				}
 			}
 		}
+		internal Interop.BindSparseInfo* m;
+
+		public BindSparseInfo ()
+		{
+			m = (Interop.BindSparseInfo*) Interop.Structure.Allocate (typeof (Interop.BindSparseInfo));
+			Initialize ();
+		}
+
+		internal BindSparseInfo (Interop.BindSparseInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.BindSparseInfo;
+		}
+
 	}
 
 	unsafe public partial struct ImageCopy
@@ -1533,13 +1794,6 @@ namespace Vulkan
 
 	unsafe public partial class ImageBlit
 	{
-		internal Interop.ImageBlit* m;
-
-		public ImageBlit ()
-		{
-			m = (Interop.ImageBlit*) Interop.Structure.Allocate (typeof (Interop.ImageBlit));
-		}
-
 		public ImageSubresourceLayers SrcSubresource {
 			get { return m->SrcSubresource; }
 			set { m->SrcSubresource = value; }
@@ -1559,6 +1813,18 @@ namespace Vulkan
 			get { return m->DstOffsets; }
 			set { m->DstOffsets = value; }
 		}
+		internal Interop.ImageBlit* m;
+
+		public ImageBlit ()
+		{
+			m = (Interop.ImageBlit*) Interop.Structure.Allocate (typeof (Interop.ImageBlit));
+		}
+
+		internal ImageBlit (Interop.ImageBlit* ptr)
+		{
+			m = ptr;
+		}
+
 	}
 
 	unsafe public partial struct BufferImageCopy
@@ -1582,14 +1848,6 @@ namespace Vulkan
 
 	unsafe public partial class ShaderModuleCreateInfo
 	{
-		internal Interop.ShaderModuleCreateInfo* m;
-
-		public ShaderModuleCreateInfo ()
-		{
-			m = (Interop.ShaderModuleCreateInfo*) Interop.Structure.Allocate (typeof (Interop.ShaderModuleCreateInfo));
-			m->SType = StructureType.ShaderModuleCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -1623,17 +1881,30 @@ namespace Vulkan
 				}
 			}
 		}
+		internal Interop.ShaderModuleCreateInfo* m;
+
+		public ShaderModuleCreateInfo ()
+		{
+			m = (Interop.ShaderModuleCreateInfo*) Interop.Structure.Allocate (typeof (Interop.ShaderModuleCreateInfo));
+			Initialize ();
+		}
+
+		internal ShaderModuleCreateInfo (Interop.ShaderModuleCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ShaderModuleCreateInfo;
+		}
+
 	}
 
 	unsafe public partial class DescriptorSetLayoutBinding
 	{
-		internal Interop.DescriptorSetLayoutBinding* m;
-
-		public DescriptorSetLayoutBinding ()
-		{
-			m = (Interop.DescriptorSetLayoutBinding*) Interop.Structure.Allocate (typeof (Interop.DescriptorSetLayoutBinding));
-		}
-
 		public UInt32 Binding {
 			get { return m->Binding; }
 			set { m->Binding = value; }
@@ -1679,18 +1950,22 @@ namespace Vulkan
 				}
 			}
 		}
+		internal Interop.DescriptorSetLayoutBinding* m;
+
+		public DescriptorSetLayoutBinding ()
+		{
+			m = (Interop.DescriptorSetLayoutBinding*) Interop.Structure.Allocate (typeof (Interop.DescriptorSetLayoutBinding));
+		}
+
+		internal DescriptorSetLayoutBinding (Interop.DescriptorSetLayoutBinding* ptr)
+		{
+			m = ptr;
+		}
+
 	}
 
 	unsafe public partial class DescriptorSetLayoutCreateInfo
 	{
-		internal Interop.DescriptorSetLayoutCreateInfo* m;
-
-		public DescriptorSetLayoutCreateInfo ()
-		{
-			m = (Interop.DescriptorSetLayoutCreateInfo*) Interop.Structure.Allocate (typeof (Interop.DescriptorSetLayoutCreateInfo));
-			m->SType = StructureType.DescriptorSetLayoutCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -1726,6 +2001,26 @@ namespace Vulkan
 				}
 			}
 		}
+		internal Interop.DescriptorSetLayoutCreateInfo* m;
+
+		public DescriptorSetLayoutCreateInfo ()
+		{
+			m = (Interop.DescriptorSetLayoutCreateInfo*) Interop.Structure.Allocate (typeof (Interop.DescriptorSetLayoutCreateInfo));
+			Initialize ();
+		}
+
+		internal DescriptorSetLayoutCreateInfo (Interop.DescriptorSetLayoutCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DescriptorSetLayoutCreateInfo;
+		}
+
 	}
 
 	unsafe public partial struct DescriptorPoolSize
@@ -1736,14 +2031,6 @@ namespace Vulkan
 
 	unsafe public partial class DescriptorPoolCreateInfo
 	{
-		internal Interop.DescriptorPoolCreateInfo* m;
-
-		public DescriptorPoolCreateInfo ()
-		{
-			m = (Interop.DescriptorPoolCreateInfo*) Interop.Structure.Allocate (typeof (Interop.DescriptorPoolCreateInfo));
-			m->SType = StructureType.DescriptorPoolCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -1782,18 +2069,30 @@ namespace Vulkan
 				}
 			}
 		}
+		internal Interop.DescriptorPoolCreateInfo* m;
+
+		public DescriptorPoolCreateInfo ()
+		{
+			m = (Interop.DescriptorPoolCreateInfo*) Interop.Structure.Allocate (typeof (Interop.DescriptorPoolCreateInfo));
+			Initialize ();
+		}
+
+		internal DescriptorPoolCreateInfo (Interop.DescriptorPoolCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DescriptorPoolCreateInfo;
+		}
+
 	}
 
 	unsafe public partial class DescriptorSetAllocateInfo
 	{
-		internal Interop.DescriptorSetAllocateInfo* m;
-
-		public DescriptorSetAllocateInfo ()
-		{
-			m = (Interop.DescriptorSetAllocateInfo*) Interop.Structure.Allocate (typeof (Interop.DescriptorSetAllocateInfo));
-			m->SType = StructureType.DescriptorSetAllocateInfo;
-		}
-
 		DescriptorPool lDescriptorPool;
 		public DescriptorPool DescriptorPool {
 			get { return lDescriptorPool; }
@@ -1830,6 +2129,26 @@ namespace Vulkan
 				}
 			}
 		}
+		internal Interop.DescriptorSetAllocateInfo* m;
+
+		public DescriptorSetAllocateInfo ()
+		{
+			m = (Interop.DescriptorSetAllocateInfo*) Interop.Structure.Allocate (typeof (Interop.DescriptorSetAllocateInfo));
+			Initialize ();
+		}
+
+		internal DescriptorSetAllocateInfo (Interop.DescriptorSetAllocateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DescriptorSetAllocateInfo;
+		}
+
 	}
 
 	unsafe public partial struct SpecializationMapEntry
@@ -1841,13 +2160,6 @@ namespace Vulkan
 
 	unsafe public partial class SpecializationInfo
 	{
-		internal Interop.SpecializationInfo* m;
-
-		public SpecializationInfo ()
-		{
-			m = (Interop.SpecializationInfo*) Interop.Structure.Allocate (typeof (Interop.SpecializationInfo));
-		}
-
 		public UInt32 MapEntryCount {
 			get { return m->MapEntryCount; }
 			set { m->MapEntryCount = value; }
@@ -1886,18 +2198,22 @@ namespace Vulkan
 			get { return m->Data; }
 			set { m->Data = value; }
 		}
+		internal Interop.SpecializationInfo* m;
+
+		public SpecializationInfo ()
+		{
+			m = (Interop.SpecializationInfo*) Interop.Structure.Allocate (typeof (Interop.SpecializationInfo));
+		}
+
+		internal SpecializationInfo (Interop.SpecializationInfo* ptr)
+		{
+			m = ptr;
+		}
+
 	}
 
 	unsafe public partial class PipelineShaderStageCreateInfo
 	{
-		internal Interop.PipelineShaderStageCreateInfo* m;
-
-		public PipelineShaderStageCreateInfo ()
-		{
-			m = (Interop.PipelineShaderStageCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineShaderStageCreateInfo));
-			m->SType = StructureType.PipelineShaderStageCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -1924,18 +2240,30 @@ namespace Vulkan
 			get { return lSpecializationInfo; }
 			set { lSpecializationInfo = value; m->SpecializationInfo = (IntPtr)value.m; }
 		}
+		internal Interop.PipelineShaderStageCreateInfo* m;
+
+		public PipelineShaderStageCreateInfo ()
+		{
+			m = (Interop.PipelineShaderStageCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineShaderStageCreateInfo));
+			Initialize ();
+		}
+
+		internal PipelineShaderStageCreateInfo (Interop.PipelineShaderStageCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PipelineShaderStageCreateInfo;
+		}
+
 	}
 
 	unsafe public partial class ComputePipelineCreateInfo
 	{
-		internal Interop.ComputePipelineCreateInfo* m;
-
-		public ComputePipelineCreateInfo ()
-		{
-			m = (Interop.ComputePipelineCreateInfo*) Interop.Structure.Allocate (typeof (Interop.ComputePipelineCreateInfo));
-			m->SType = StructureType.ComputePipelineCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -1963,6 +2291,27 @@ namespace Vulkan
 			get { return m->BasePipelineIndex; }
 			set { m->BasePipelineIndex = value; }
 		}
+		internal Interop.ComputePipelineCreateInfo* m;
+
+		public ComputePipelineCreateInfo ()
+		{
+			m = (Interop.ComputePipelineCreateInfo*) Interop.Structure.Allocate (typeof (Interop.ComputePipelineCreateInfo));
+			Initialize ();
+		}
+
+		internal ComputePipelineCreateInfo (Interop.ComputePipelineCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ComputePipelineCreateInfo;
+			lStage = new PipelineShaderStageCreateInfo (&m->Stage);
+		}
+
 	}
 
 	unsafe public partial struct VertexInputBindingDescription
@@ -1982,14 +2331,6 @@ namespace Vulkan
 
 	unsafe public partial class PipelineVertexInputStateCreateInfo
 	{
-		internal Interop.PipelineVertexInputStateCreateInfo* m;
-
-		public PipelineVertexInputStateCreateInfo ()
-		{
-			m = (Interop.PipelineVertexInputStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineVertexInputStateCreateInfo));
-			m->SType = StructureType.PipelineVertexInputStateCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -2052,18 +2393,30 @@ namespace Vulkan
 				}
 			}
 		}
+		internal Interop.PipelineVertexInputStateCreateInfo* m;
+
+		public PipelineVertexInputStateCreateInfo ()
+		{
+			m = (Interop.PipelineVertexInputStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineVertexInputStateCreateInfo));
+			Initialize ();
+		}
+
+		internal PipelineVertexInputStateCreateInfo (Interop.PipelineVertexInputStateCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PipelineVertexInputStateCreateInfo;
+		}
+
 	}
 
 	unsafe public partial class PipelineInputAssemblyStateCreateInfo
 	{
-		internal Interop.PipelineInputAssemblyStateCreateInfo* m;
-
-		public PipelineInputAssemblyStateCreateInfo ()
-		{
-			m = (Interop.PipelineInputAssemblyStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineInputAssemblyStateCreateInfo));
-			m->SType = StructureType.PipelineInputAssemblyStateCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -2078,18 +2431,30 @@ namespace Vulkan
 			get { return m->PrimitiveRestartEnable; }
 			set { m->PrimitiveRestartEnable = value; }
 		}
+		internal Interop.PipelineInputAssemblyStateCreateInfo* m;
+
+		public PipelineInputAssemblyStateCreateInfo ()
+		{
+			m = (Interop.PipelineInputAssemblyStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineInputAssemblyStateCreateInfo));
+			Initialize ();
+		}
+
+		internal PipelineInputAssemblyStateCreateInfo (Interop.PipelineInputAssemblyStateCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PipelineInputAssemblyStateCreateInfo;
+		}
+
 	}
 
 	unsafe public partial class PipelineTessellationStateCreateInfo
 	{
-		internal Interop.PipelineTessellationStateCreateInfo* m;
-
-		public PipelineTessellationStateCreateInfo ()
-		{
-			m = (Interop.PipelineTessellationStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineTessellationStateCreateInfo));
-			m->SType = StructureType.PipelineTessellationStateCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -2099,18 +2464,30 @@ namespace Vulkan
 			get { return m->PatchControlPoints; }
 			set { m->PatchControlPoints = value; }
 		}
+		internal Interop.PipelineTessellationStateCreateInfo* m;
+
+		public PipelineTessellationStateCreateInfo ()
+		{
+			m = (Interop.PipelineTessellationStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineTessellationStateCreateInfo));
+			Initialize ();
+		}
+
+		internal PipelineTessellationStateCreateInfo (Interop.PipelineTessellationStateCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PipelineTessellationStateCreateInfo;
+		}
+
 	}
 
 	unsafe public partial class PipelineViewportStateCreateInfo
 	{
-		internal Interop.PipelineViewportStateCreateInfo* m;
-
-		public PipelineViewportStateCreateInfo ()
-		{
-			m = (Interop.PipelineViewportStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineViewportStateCreateInfo));
-			m->SType = StructureType.PipelineViewportStateCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -2173,18 +2550,30 @@ namespace Vulkan
 				}
 			}
 		}
+		internal Interop.PipelineViewportStateCreateInfo* m;
+
+		public PipelineViewportStateCreateInfo ()
+		{
+			m = (Interop.PipelineViewportStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineViewportStateCreateInfo));
+			Initialize ();
+		}
+
+		internal PipelineViewportStateCreateInfo (Interop.PipelineViewportStateCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PipelineViewportStateCreateInfo;
+		}
+
 	}
 
 	unsafe public partial class PipelineRasterizationStateCreateInfo
 	{
-		internal Interop.PipelineRasterizationStateCreateInfo* m;
-
-		public PipelineRasterizationStateCreateInfo ()
-		{
-			m = (Interop.PipelineRasterizationStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineRasterizationStateCreateInfo));
-			m->SType = StructureType.PipelineRasterizationStateCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -2239,18 +2628,30 @@ namespace Vulkan
 			get { return m->LineWidth; }
 			set { m->LineWidth = value; }
 		}
+		internal Interop.PipelineRasterizationStateCreateInfo* m;
+
+		public PipelineRasterizationStateCreateInfo ()
+		{
+			m = (Interop.PipelineRasterizationStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineRasterizationStateCreateInfo));
+			Initialize ();
+		}
+
+		internal PipelineRasterizationStateCreateInfo (Interop.PipelineRasterizationStateCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PipelineRasterizationStateCreateInfo;
+		}
+
 	}
 
 	unsafe public partial class PipelineMultisampleStateCreateInfo
 	{
-		internal Interop.PipelineMultisampleStateCreateInfo* m;
-
-		public PipelineMultisampleStateCreateInfo ()
-		{
-			m = (Interop.PipelineMultisampleStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineMultisampleStateCreateInfo));
-			m->SType = StructureType.PipelineMultisampleStateCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -2304,6 +2705,26 @@ namespace Vulkan
 			get { return m->AlphaToOneEnable; }
 			set { m->AlphaToOneEnable = value; }
 		}
+		internal Interop.PipelineMultisampleStateCreateInfo* m;
+
+		public PipelineMultisampleStateCreateInfo ()
+		{
+			m = (Interop.PipelineMultisampleStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineMultisampleStateCreateInfo));
+			Initialize ();
+		}
+
+		internal PipelineMultisampleStateCreateInfo (Interop.PipelineMultisampleStateCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PipelineMultisampleStateCreateInfo;
+		}
+
 	}
 
 	unsafe public partial struct PipelineColorBlendAttachmentState
@@ -2320,14 +2741,6 @@ namespace Vulkan
 
 	unsafe public partial class PipelineColorBlendStateCreateInfo
 	{
-		internal Interop.PipelineColorBlendStateCreateInfo* m;
-
-		public PipelineColorBlendStateCreateInfo ()
-		{
-			m = (Interop.PipelineColorBlendStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineColorBlendStateCreateInfo));
-			m->SType = StructureType.PipelineColorBlendStateCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -2372,7 +2785,7 @@ namespace Vulkan
 			}
 		}
 
-		float[] BlendConstants {
+		public float[] BlendConstants {
 			get {
 				var arr = new float [4];
 				for (int i = 0; i < 4; i++)
@@ -2385,22 +2798,34 @@ namespace Vulkan
 					throw new Exception ("array too long");
 				for (int i = 0; i < value.Length; i++)
 					m->BlendConstants [i] = value [i];
-				for (int i = value.Length -1; i < 4; i++)
+				for (int i = value.Length; i < 4; i++)
 					m->BlendConstants [i] = 0;
 			}
 		}
+		internal Interop.PipelineColorBlendStateCreateInfo* m;
+
+		public PipelineColorBlendStateCreateInfo ()
+		{
+			m = (Interop.PipelineColorBlendStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineColorBlendStateCreateInfo));
+			Initialize ();
+		}
+
+		internal PipelineColorBlendStateCreateInfo (Interop.PipelineColorBlendStateCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PipelineColorBlendStateCreateInfo;
+		}
+
 	}
 
 	unsafe public partial class PipelineDynamicStateCreateInfo
 	{
-		internal Interop.PipelineDynamicStateCreateInfo* m;
-
-		public PipelineDynamicStateCreateInfo ()
-		{
-			m = (Interop.PipelineDynamicStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineDynamicStateCreateInfo));
-			m->SType = StructureType.PipelineDynamicStateCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -2434,6 +2859,26 @@ namespace Vulkan
 				}
 			}
 		}
+		internal Interop.PipelineDynamicStateCreateInfo* m;
+
+		public PipelineDynamicStateCreateInfo ()
+		{
+			m = (Interop.PipelineDynamicStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineDynamicStateCreateInfo));
+			Initialize ();
+		}
+
+		internal PipelineDynamicStateCreateInfo (Interop.PipelineDynamicStateCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PipelineDynamicStateCreateInfo;
+		}
+
 	}
 
 	unsafe public partial struct StencilOpState
@@ -2449,14 +2894,6 @@ namespace Vulkan
 
 	unsafe public partial class PipelineDepthStencilStateCreateInfo
 	{
-		internal Interop.PipelineDepthStencilStateCreateInfo* m;
-
-		public PipelineDepthStencilStateCreateInfo ()
-		{
-			m = (Interop.PipelineDepthStencilStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineDepthStencilStateCreateInfo));
-			m->SType = StructureType.PipelineDepthStencilStateCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -2506,18 +2943,30 @@ namespace Vulkan
 			get { return m->MaxDepthBounds; }
 			set { m->MaxDepthBounds = value; }
 		}
+		internal Interop.PipelineDepthStencilStateCreateInfo* m;
+
+		public PipelineDepthStencilStateCreateInfo ()
+		{
+			m = (Interop.PipelineDepthStencilStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineDepthStencilStateCreateInfo));
+			Initialize ();
+		}
+
+		internal PipelineDepthStencilStateCreateInfo (Interop.PipelineDepthStencilStateCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PipelineDepthStencilStateCreateInfo;
+		}
+
 	}
 
 	unsafe public partial class GraphicsPipelineCreateInfo
 	{
-		internal Interop.GraphicsPipelineCreateInfo* m;
-
-		public GraphicsPipelineCreateInfo ()
-		{
-			m = (Interop.GraphicsPipelineCreateInfo*) Interop.Structure.Allocate (typeof (Interop.GraphicsPipelineCreateInfo));
-			m->SType = StructureType.GraphicsPipelineCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -2635,18 +3084,30 @@ namespace Vulkan
 			get { return m->BasePipelineIndex; }
 			set { m->BasePipelineIndex = value; }
 		}
+		internal Interop.GraphicsPipelineCreateInfo* m;
+
+		public GraphicsPipelineCreateInfo ()
+		{
+			m = (Interop.GraphicsPipelineCreateInfo*) Interop.Structure.Allocate (typeof (Interop.GraphicsPipelineCreateInfo));
+			Initialize ();
+		}
+
+		internal GraphicsPipelineCreateInfo (Interop.GraphicsPipelineCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.GraphicsPipelineCreateInfo;
+		}
+
 	}
 
 	unsafe public partial class PipelineCacheCreateInfo
 	{
-		internal Interop.PipelineCacheCreateInfo* m;
-
-		public PipelineCacheCreateInfo ()
-		{
-			m = (Interop.PipelineCacheCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineCacheCreateInfo));
-			m->SType = StructureType.PipelineCacheCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -2661,6 +3122,26 @@ namespace Vulkan
 			get { return m->InitialData; }
 			set { m->InitialData = value; }
 		}
+		internal Interop.PipelineCacheCreateInfo* m;
+
+		public PipelineCacheCreateInfo ()
+		{
+			m = (Interop.PipelineCacheCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineCacheCreateInfo));
+			Initialize ();
+		}
+
+		internal PipelineCacheCreateInfo (Interop.PipelineCacheCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PipelineCacheCreateInfo;
+		}
+
 	}
 
 	unsafe public partial struct PushConstantRange
@@ -2672,14 +3153,6 @@ namespace Vulkan
 
 	unsafe public partial class PipelineLayoutCreateInfo
 	{
-		internal Interop.PipelineLayoutCreateInfo* m;
-
-		public PipelineLayoutCreateInfo ()
-		{
-			m = (Interop.PipelineLayoutCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineLayoutCreateInfo));
-			m->SType = StructureType.PipelineLayoutCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -2744,18 +3217,30 @@ namespace Vulkan
 				}
 			}
 		}
+		internal Interop.PipelineLayoutCreateInfo* m;
+
+		public PipelineLayoutCreateInfo ()
+		{
+			m = (Interop.PipelineLayoutCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineLayoutCreateInfo));
+			Initialize ();
+		}
+
+		internal PipelineLayoutCreateInfo (Interop.PipelineLayoutCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PipelineLayoutCreateInfo;
+		}
+
 	}
 
 	unsafe public partial class SamplerCreateInfo
 	{
-		internal Interop.SamplerCreateInfo* m;
-
-		public SamplerCreateInfo ()
-		{
-			m = (Interop.SamplerCreateInfo*) Interop.Structure.Allocate (typeof (Interop.SamplerCreateInfo));
-			m->SType = StructureType.SamplerCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -2835,18 +3320,30 @@ namespace Vulkan
 			get { return m->UnnormalizedCoordinates; }
 			set { m->UnnormalizedCoordinates = value; }
 		}
+		internal Interop.SamplerCreateInfo* m;
+
+		public SamplerCreateInfo ()
+		{
+			m = (Interop.SamplerCreateInfo*) Interop.Structure.Allocate (typeof (Interop.SamplerCreateInfo));
+			Initialize ();
+		}
+
+		internal SamplerCreateInfo (Interop.SamplerCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.SamplerCreateInfo;
+		}
+
 	}
 
 	unsafe public partial class CommandPoolCreateInfo
 	{
-		internal Interop.CommandPoolCreateInfo* m;
-
-		public CommandPoolCreateInfo ()
-		{
-			m = (Interop.CommandPoolCreateInfo*) Interop.Structure.Allocate (typeof (Interop.CommandPoolCreateInfo));
-			m->SType = StructureType.CommandPoolCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -2856,18 +3353,30 @@ namespace Vulkan
 			get { return m->QueueFamilyIndex; }
 			set { m->QueueFamilyIndex = value; }
 		}
+		internal Interop.CommandPoolCreateInfo* m;
+
+		public CommandPoolCreateInfo ()
+		{
+			m = (Interop.CommandPoolCreateInfo*) Interop.Structure.Allocate (typeof (Interop.CommandPoolCreateInfo));
+			Initialize ();
+		}
+
+		internal CommandPoolCreateInfo (Interop.CommandPoolCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.CommandPoolCreateInfo;
+		}
+
 	}
 
 	unsafe public partial class CommandBufferAllocateInfo
 	{
-		internal Interop.CommandBufferAllocateInfo* m;
-
-		public CommandBufferAllocateInfo ()
-		{
-			m = (Interop.CommandBufferAllocateInfo*) Interop.Structure.Allocate (typeof (Interop.CommandBufferAllocateInfo));
-			m->SType = StructureType.CommandBufferAllocateInfo;
-		}
-
 		CommandPool lCommandPool;
 		public CommandPool CommandPool {
 			get { return lCommandPool; }
@@ -2883,18 +3392,30 @@ namespace Vulkan
 			get { return m->CommandBufferCount; }
 			set { m->CommandBufferCount = value; }
 		}
+		internal Interop.CommandBufferAllocateInfo* m;
+
+		public CommandBufferAllocateInfo ()
+		{
+			m = (Interop.CommandBufferAllocateInfo*) Interop.Structure.Allocate (typeof (Interop.CommandBufferAllocateInfo));
+			Initialize ();
+		}
+
+		internal CommandBufferAllocateInfo (Interop.CommandBufferAllocateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.CommandBufferAllocateInfo;
+		}
+
 	}
 
 	unsafe public partial class CommandBufferInheritanceInfo
 	{
-		internal Interop.CommandBufferInheritanceInfo* m;
-
-		public CommandBufferInheritanceInfo ()
-		{
-			m = (Interop.CommandBufferInheritanceInfo*) Interop.Structure.Allocate (typeof (Interop.CommandBufferInheritanceInfo));
-			m->SType = StructureType.CommandBufferInheritanceInfo;
-		}
-
 		RenderPass lRenderPass;
 		public RenderPass RenderPass {
 			get { return lRenderPass; }
@@ -2926,18 +3447,30 @@ namespace Vulkan
 			get { return m->PipelineStatistics; }
 			set { m->PipelineStatistics = value; }
 		}
+		internal Interop.CommandBufferInheritanceInfo* m;
+
+		public CommandBufferInheritanceInfo ()
+		{
+			m = (Interop.CommandBufferInheritanceInfo*) Interop.Structure.Allocate (typeof (Interop.CommandBufferInheritanceInfo));
+			Initialize ();
+		}
+
+		internal CommandBufferInheritanceInfo (Interop.CommandBufferInheritanceInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.CommandBufferInheritanceInfo;
+		}
+
 	}
 
 	unsafe public partial class CommandBufferBeginInfo
 	{
-		internal Interop.CommandBufferBeginInfo* m;
-
-		public CommandBufferBeginInfo ()
-		{
-			m = (Interop.CommandBufferBeginInfo*) Interop.Structure.Allocate (typeof (Interop.CommandBufferBeginInfo));
-			m->SType = StructureType.CommandBufferBeginInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -2948,18 +3481,30 @@ namespace Vulkan
 			get { return lInheritanceInfo; }
 			set { lInheritanceInfo = value; m->InheritanceInfo = (IntPtr)value.m; }
 		}
+		internal Interop.CommandBufferBeginInfo* m;
+
+		public CommandBufferBeginInfo ()
+		{
+			m = (Interop.CommandBufferBeginInfo*) Interop.Structure.Allocate (typeof (Interop.CommandBufferBeginInfo));
+			Initialize ();
+		}
+
+		internal CommandBufferBeginInfo (Interop.CommandBufferBeginInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.CommandBufferBeginInfo;
+		}
+
 	}
 
 	unsafe public partial class RenderPassBeginInfo
 	{
-		internal Interop.RenderPassBeginInfo* m;
-
-		public RenderPassBeginInfo ()
-		{
-			m = (Interop.RenderPassBeginInfo*) Interop.Structure.Allocate (typeof (Interop.RenderPassBeginInfo));
-			m->SType = StructureType.RenderPassBeginInfo;
-		}
-
 		RenderPass lRenderPass;
 		public RenderPass RenderPass {
 			get { return lRenderPass; }
@@ -3007,6 +3552,26 @@ namespace Vulkan
 				}
 			}
 		}
+		internal Interop.RenderPassBeginInfo* m;
+
+		public RenderPassBeginInfo ()
+		{
+			m = (Interop.RenderPassBeginInfo*) Interop.Structure.Allocate (typeof (Interop.RenderPassBeginInfo));
+			Initialize ();
+		}
+
+		internal RenderPassBeginInfo (Interop.RenderPassBeginInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.RenderPassBeginInfo;
+		}
+
 	}
 
 	unsafe public partial struct ClearDepthStencilValue
@@ -3043,13 +3608,6 @@ namespace Vulkan
 
 	unsafe public partial class SubpassDescription
 	{
-		internal Interop.SubpassDescription* m;
-
-		public SubpassDescription ()
-		{
-			m = (Interop.SubpassDescription*) Interop.Structure.Allocate (typeof (Interop.SubpassDescription));
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -3175,6 +3733,18 @@ namespace Vulkan
 				}
 			}
 		}
+		internal Interop.SubpassDescription* m;
+
+		public SubpassDescription ()
+		{
+			m = (Interop.SubpassDescription*) Interop.Structure.Allocate (typeof (Interop.SubpassDescription));
+		}
+
+		internal SubpassDescription (Interop.SubpassDescription* ptr)
+		{
+			m = ptr;
+		}
+
 	}
 
 	unsafe public partial struct SubpassDependency
@@ -3190,14 +3760,6 @@ namespace Vulkan
 
 	unsafe public partial class RenderPassCreateInfo
 	{
-		internal Interop.RenderPassCreateInfo* m;
-
-		public RenderPassCreateInfo ()
-		{
-			m = (Interop.RenderPassCreateInfo*) Interop.Structure.Allocate (typeof (Interop.RenderPassCreateInfo));
-			m->SType = StructureType.RenderPassCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -3291,38 +3853,82 @@ namespace Vulkan
 				}
 			}
 		}
+		internal Interop.RenderPassCreateInfo* m;
+
+		public RenderPassCreateInfo ()
+		{
+			m = (Interop.RenderPassCreateInfo*) Interop.Structure.Allocate (typeof (Interop.RenderPassCreateInfo));
+			Initialize ();
+		}
+
+		internal RenderPassCreateInfo (Interop.RenderPassCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.RenderPassCreateInfo;
+		}
+
 	}
 
 	unsafe public partial class EventCreateInfo
 	{
+		public UInt32 Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
 		internal Interop.EventCreateInfo* m;
 
 		public EventCreateInfo ()
 		{
 			m = (Interop.EventCreateInfo*) Interop.Structure.Allocate (typeof (Interop.EventCreateInfo));
+			Initialize ();
+		}
+
+		internal EventCreateInfo (Interop.EventCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
 			m->SType = StructureType.EventCreateInfo;
 		}
 
-		public UInt32 Flags {
-			get { return m->Flags; }
-			set { m->Flags = value; }
-		}
 	}
 
 	unsafe public partial class FenceCreateInfo
 	{
+		public UInt32 Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
 		internal Interop.FenceCreateInfo* m;
 
 		public FenceCreateInfo ()
 		{
 			m = (Interop.FenceCreateInfo*) Interop.Structure.Allocate (typeof (Interop.FenceCreateInfo));
+			Initialize ();
+		}
+
+		internal FenceCreateInfo (Interop.FenceCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
 			m->SType = StructureType.FenceCreateInfo;
 		}
 
-		public UInt32 Flags {
-			get { return m->Flags; }
-			set { m->Flags = value; }
-		}
 	}
 
 	unsafe public partial struct PhysicalDeviceFeatures
@@ -3395,13 +4001,6 @@ namespace Vulkan
 
 	unsafe public partial class PhysicalDeviceLimits
 	{
-		internal Interop.PhysicalDeviceLimits* m;
-
-		public PhysicalDeviceLimits ()
-		{
-			m = (Interop.PhysicalDeviceLimits*) Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceLimits));
-		}
-
 		public UInt32 MaxImageDimension1D {
 			get { return m->MaxImageDimension1D; }
 			set { m->MaxImageDimension1D = value; }
@@ -3662,7 +4261,7 @@ namespace Vulkan
 			set { m->MaxComputeSharedMemorySize = value; }
 		}
 
-		UInt32[] MaxComputeWorkGroupCount {
+		public UInt32[] MaxComputeWorkGroupCount {
 			get {
 				var arr = new UInt32 [3];
 				for (int i = 0; i < 3; i++)
@@ -3675,7 +4274,7 @@ namespace Vulkan
 					throw new Exception ("array too long");
 				for (int i = 0; i < value.Length; i++)
 					m->MaxComputeWorkGroupCount [i] = value [i];
-				for (int i = value.Length -1; i < 3; i++)
+				for (int i = value.Length; i < 3; i++)
 					m->MaxComputeWorkGroupCount [i] = 0;
 			}
 		}
@@ -3685,7 +4284,7 @@ namespace Vulkan
 			set { m->MaxComputeWorkGroupInvocations = value; }
 		}
 
-		UInt32[] MaxComputeWorkGroupSize {
+		public UInt32[] MaxComputeWorkGroupSize {
 			get {
 				var arr = new UInt32 [3];
 				for (int i = 0; i < 3; i++)
@@ -3698,7 +4297,7 @@ namespace Vulkan
 					throw new Exception ("array too long");
 				for (int i = 0; i < value.Length; i++)
 					m->MaxComputeWorkGroupSize [i] = value [i];
-				for (int i = value.Length -1; i < 3; i++)
+				for (int i = value.Length; i < 3; i++)
 					m->MaxComputeWorkGroupSize [i] = 0;
 			}
 		}
@@ -3743,7 +4342,7 @@ namespace Vulkan
 			set { m->MaxViewports = value; }
 		}
 
-		UInt32[] MaxViewportDimensions {
+		public UInt32[] MaxViewportDimensions {
 			get {
 				var arr = new UInt32 [2];
 				for (int i = 0; i < 2; i++)
@@ -3756,12 +4355,12 @@ namespace Vulkan
 					throw new Exception ("array too long");
 				for (int i = 0; i < value.Length; i++)
 					m->MaxViewportDimensions [i] = value [i];
-				for (int i = value.Length -1; i < 2; i++)
+				for (int i = value.Length; i < 2; i++)
 					m->MaxViewportDimensions [i] = 0;
 			}
 		}
 
-		float[] ViewportBoundsRange {
+		public float[] ViewportBoundsRange {
 			get {
 				var arr = new float [2];
 				for (int i = 0; i < 2; i++)
@@ -3774,7 +4373,7 @@ namespace Vulkan
 					throw new Exception ("array too long");
 				for (int i = 0; i < value.Length; i++)
 					m->ViewportBoundsRange [i] = value [i];
-				for (int i = value.Length -1; i < 2; i++)
+				for (int i = value.Length; i < 2; i++)
 					m->ViewportBoundsRange [i] = 0;
 			}
 		}
@@ -3939,7 +4538,7 @@ namespace Vulkan
 			set { m->DiscreteQueuePriorities = value; }
 		}
 
-		float[] PointSizeRange {
+		public float[] PointSizeRange {
 			get {
 				var arr = new float [2];
 				for (int i = 0; i < 2; i++)
@@ -3952,12 +4551,12 @@ namespace Vulkan
 					throw new Exception ("array too long");
 				for (int i = 0; i < value.Length; i++)
 					m->PointSizeRange [i] = value [i];
-				for (int i = value.Length -1; i < 2; i++)
+				for (int i = value.Length; i < 2; i++)
 					m->PointSizeRange [i] = 0;
 			}
 		}
 
-		float[] LineWidthRange {
+		public float[] LineWidthRange {
 			get {
 				var arr = new float [2];
 				for (int i = 0; i < 2; i++)
@@ -3970,7 +4569,7 @@ namespace Vulkan
 					throw new Exception ("array too long");
 				for (int i = 0; i < value.Length; i++)
 					m->LineWidthRange [i] = value [i];
-				for (int i = value.Length -1; i < 2; i++)
+				for (int i = value.Length; i < 2; i++)
 					m->LineWidthRange [i] = 0;
 			}
 		}
@@ -4009,34 +4608,50 @@ namespace Vulkan
 			get { return m->NonCoherentAtomSize; }
 			set { m->NonCoherentAtomSize = value; }
 		}
+		internal Interop.PhysicalDeviceLimits* m;
+
+		public PhysicalDeviceLimits ()
+		{
+			m = (Interop.PhysicalDeviceLimits*) Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceLimits));
+		}
+
+		internal PhysicalDeviceLimits (Interop.PhysicalDeviceLimits* ptr)
+		{
+			m = ptr;
+		}
+
 	}
 
 	unsafe public partial class SemaphoreCreateInfo
 	{
+		public UInt32 Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
 		internal Interop.SemaphoreCreateInfo* m;
 
 		public SemaphoreCreateInfo ()
 		{
 			m = (Interop.SemaphoreCreateInfo*) Interop.Structure.Allocate (typeof (Interop.SemaphoreCreateInfo));
+			Initialize ();
+		}
+
+		internal SemaphoreCreateInfo (Interop.SemaphoreCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
 			m->SType = StructureType.SemaphoreCreateInfo;
 		}
 
-		public UInt32 Flags {
-			get { return m->Flags; }
-			set { m->Flags = value; }
-		}
 	}
 
 	unsafe public partial class QueryPoolCreateInfo
 	{
-		internal Interop.QueryPoolCreateInfo* m;
-
-		public QueryPoolCreateInfo ()
-		{
-			m = (Interop.QueryPoolCreateInfo*) Interop.Structure.Allocate (typeof (Interop.QueryPoolCreateInfo));
-			m->SType = StructureType.QueryPoolCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -4056,18 +4671,30 @@ namespace Vulkan
 			get { return m->PipelineStatistics; }
 			set { m->PipelineStatistics = value; }
 		}
+		internal Interop.QueryPoolCreateInfo* m;
+
+		public QueryPoolCreateInfo ()
+		{
+			m = (Interop.QueryPoolCreateInfo*) Interop.Structure.Allocate (typeof (Interop.QueryPoolCreateInfo));
+			Initialize ();
+		}
+
+		internal QueryPoolCreateInfo (Interop.QueryPoolCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.QueryPoolCreateInfo;
+		}
+
 	}
 
 	unsafe public partial class FramebufferCreateInfo
 	{
-		internal Interop.FramebufferCreateInfo* m;
-
-		public FramebufferCreateInfo ()
-		{
-			m = (Interop.FramebufferCreateInfo*) Interop.Structure.Allocate (typeof (Interop.FramebufferCreateInfo));
-			m->SType = StructureType.FramebufferCreateInfo;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -4124,6 +4751,26 @@ namespace Vulkan
 			get { return m->Layers; }
 			set { m->Layers = value; }
 		}
+		internal Interop.FramebufferCreateInfo* m;
+
+		public FramebufferCreateInfo ()
+		{
+			m = (Interop.FramebufferCreateInfo*) Interop.Structure.Allocate (typeof (Interop.FramebufferCreateInfo));
+			Initialize ();
+		}
+
+		internal FramebufferCreateInfo (Interop.FramebufferCreateInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.FramebufferCreateInfo;
+		}
+
 	}
 
 	unsafe public partial struct DrawIndirectCommand
@@ -4152,14 +4799,6 @@ namespace Vulkan
 
 	unsafe public partial class SubmitInfo
 	{
-		internal Interop.SubmitInfo* m;
-
-		public SubmitInfo ()
-		{
-			m = (Interop.SubmitInfo*) Interop.Structure.Allocate (typeof (Interop.SubmitInfo));
-			m->SType = StructureType.SubmitInfo;
-		}
-
 		public UInt32 WaitSemaphoreCount {
 			get { return m->WaitSemaphoreCount; }
 			set { m->WaitSemaphoreCount = value; }
@@ -4276,17 +4915,30 @@ namespace Vulkan
 				}
 			}
 		}
+		internal Interop.SubmitInfo* m;
+
+		public SubmitInfo ()
+		{
+			m = (Interop.SubmitInfo*) Interop.Structure.Allocate (typeof (Interop.SubmitInfo));
+			Initialize ();
+		}
+
+		internal SubmitInfo (Interop.SubmitInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.SubmitInfo;
+		}
+
 	}
 
 	unsafe public partial class DisplayPropertiesKhr
 	{
-		internal Interop.DisplayPropertiesKhr* m;
-
-		public DisplayPropertiesKhr ()
-		{
-			m = (Interop.DisplayPropertiesKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayPropertiesKhr));
-		}
-
 		DisplayKhr lDisplay;
 		public DisplayKhr Display {
 			get { return lDisplay; }
@@ -4322,6 +4974,25 @@ namespace Vulkan
 			get { return m->PersistentContent; }
 			set { m->PersistentContent = value; }
 		}
+		internal Interop.DisplayPropertiesKhr* m;
+
+		public DisplayPropertiesKhr ()
+		{
+			m = (Interop.DisplayPropertiesKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayPropertiesKhr));
+			Initialize ();
+		}
+
+		internal DisplayPropertiesKhr (Interop.DisplayPropertiesKhr* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+		}
+
 	}
 
 	unsafe public partial struct DisplayPlanePropertiesKhr
@@ -4344,14 +5015,6 @@ namespace Vulkan
 
 	unsafe public partial class DisplayModeCreateInfoKhr
 	{
-		internal Interop.DisplayModeCreateInfoKhr* m;
-
-		public DisplayModeCreateInfoKhr ()
-		{
-			m = (Interop.DisplayModeCreateInfoKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayModeCreateInfoKhr));
-			m->SType = StructureType.DisplayModeCreateInfoKhr;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -4361,6 +5024,26 @@ namespace Vulkan
 			get { return m->Parameters; }
 			set { m->Parameters = value; }
 		}
+		internal Interop.DisplayModeCreateInfoKhr* m;
+
+		public DisplayModeCreateInfoKhr ()
+		{
+			m = (Interop.DisplayModeCreateInfoKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayModeCreateInfoKhr));
+			Initialize ();
+		}
+
+		internal DisplayModeCreateInfoKhr (Interop.DisplayModeCreateInfoKhr* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DisplayModeCreateInfoKhr;
+		}
+
 	}
 
 	unsafe public partial struct DisplayPlaneCapabilitiesKhr
@@ -4378,14 +5061,6 @@ namespace Vulkan
 
 	unsafe public partial class DisplaySurfaceCreateInfoKhr
 	{
-		internal Interop.DisplaySurfaceCreateInfoKhr* m;
-
-		public DisplaySurfaceCreateInfoKhr ()
-		{
-			m = (Interop.DisplaySurfaceCreateInfoKhr*) Interop.Structure.Allocate (typeof (Interop.DisplaySurfaceCreateInfoKhr));
-			m->SType = StructureType.DisplaySurfaceCreateInfoKhr;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -4426,18 +5101,30 @@ namespace Vulkan
 			get { return m->ImageExtent; }
 			set { m->ImageExtent = value; }
 		}
+		internal Interop.DisplaySurfaceCreateInfoKhr* m;
+
+		public DisplaySurfaceCreateInfoKhr ()
+		{
+			m = (Interop.DisplaySurfaceCreateInfoKhr*) Interop.Structure.Allocate (typeof (Interop.DisplaySurfaceCreateInfoKhr));
+			Initialize ();
+		}
+
+		internal DisplaySurfaceCreateInfoKhr (Interop.DisplaySurfaceCreateInfoKhr* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DisplaySurfaceCreateInfoKhr;
+		}
+
 	}
 
 	unsafe public partial class DisplayPresentInfoKhr
 	{
-		internal Interop.DisplayPresentInfoKhr* m;
-
-		public DisplayPresentInfoKhr ()
-		{
-			m = (Interop.DisplayPresentInfoKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayPresentInfoKhr));
-			m->SType = StructureType.DisplayPresentInfoKhr;
-		}
-
 		public Rect2D SrcRect {
 			get { return m->SrcRect; }
 			set { m->SrcRect = value; }
@@ -4452,6 +5139,26 @@ namespace Vulkan
 			get { return m->Persistent; }
 			set { m->Persistent = value; }
 		}
+		internal Interop.DisplayPresentInfoKhr* m;
+
+		public DisplayPresentInfoKhr ()
+		{
+			m = (Interop.DisplayPresentInfoKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayPresentInfoKhr));
+			Initialize ();
+		}
+
+		internal DisplayPresentInfoKhr (Interop.DisplayPresentInfoKhr* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DisplayPresentInfoKhr;
+		}
+
 	}
 
 	unsafe public partial struct SurfaceCapabilitiesKhr
@@ -4476,14 +5183,6 @@ namespace Vulkan
 
 	unsafe public partial class SwapchainCreateInfoKhr
 	{
-		internal Interop.SwapchainCreateInfoKhr* m;
-
-		public SwapchainCreateInfoKhr ()
-		{
-			m = (Interop.SwapchainCreateInfoKhr*) Interop.Structure.Allocate (typeof (Interop.SwapchainCreateInfoKhr));
-			m->SType = StructureType.SwapchainCreateInfoKhr;
-		}
-
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -4584,18 +5283,30 @@ namespace Vulkan
 			get { return lOldSwapchain; }
 			set { lOldSwapchain = value; m->OldSwapchain = (UInt64)value.m; }
 		}
+		internal Interop.SwapchainCreateInfoKhr* m;
+
+		public SwapchainCreateInfoKhr ()
+		{
+			m = (Interop.SwapchainCreateInfoKhr*) Interop.Structure.Allocate (typeof (Interop.SwapchainCreateInfoKhr));
+			Initialize ();
+		}
+
+		internal SwapchainCreateInfoKhr (Interop.SwapchainCreateInfoKhr* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.SwapchainCreateInfoKhr;
+		}
+
 	}
 
 	unsafe public partial class PresentInfoKhr
 	{
-		internal Interop.PresentInfoKhr* m;
-
-		public PresentInfoKhr ()
-		{
-			m = (Interop.PresentInfoKhr*) Interop.Structure.Allocate (typeof (Interop.PresentInfoKhr));
-			m->SType = StructureType.PresentInfoKhr;
-		}
-
 		public UInt32 WaitSemaphoreCount {
 			get { return m->WaitSemaphoreCount; }
 			set { m->WaitSemaphoreCount = value; }
@@ -4705,18 +5416,30 @@ namespace Vulkan
 				}
 			}
 		}
+		internal Interop.PresentInfoKhr* m;
+
+		public PresentInfoKhr ()
+		{
+			m = (Interop.PresentInfoKhr*) Interop.Structure.Allocate (typeof (Interop.PresentInfoKhr));
+			Initialize ();
+		}
+
+		internal PresentInfoKhr (Interop.PresentInfoKhr* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PresentInfoKhr;
+		}
+
 	}
 
 	unsafe public partial class DebugReportCallbackCreateInfoExt
 	{
-		internal Interop.DebugReportCallbackCreateInfoExt* m;
-
-		public DebugReportCallbackCreateInfoExt ()
-		{
-			m = (Interop.DebugReportCallbackCreateInfoExt*) Interop.Structure.Allocate (typeof (Interop.DebugReportCallbackCreateInfoExt));
-			m->SType = StructureType.DebugReportCallbackCreateInfoExt;
-		}
-
 		public DebugReportFlagsExt Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
@@ -4731,34 +5454,58 @@ namespace Vulkan
 			get { return m->UserData; }
 			set { m->UserData = value; }
 		}
+		internal Interop.DebugReportCallbackCreateInfoExt* m;
+
+		public DebugReportCallbackCreateInfoExt ()
+		{
+			m = (Interop.DebugReportCallbackCreateInfoExt*) Interop.Structure.Allocate (typeof (Interop.DebugReportCallbackCreateInfoExt));
+			Initialize ();
+		}
+
+		internal DebugReportCallbackCreateInfoExt (Interop.DebugReportCallbackCreateInfoExt* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DebugReportCallbackCreateInfoExt;
+		}
+
 	}
 
 	unsafe public partial class PipelineRasterizationStateRasterizationOrderAmd
 	{
+		public RasterizationOrderAmd RasterizationOrder {
+			get { return m->RasterizationOrder; }
+			set { m->RasterizationOrder = value; }
+		}
 		internal Interop.PipelineRasterizationStateRasterizationOrderAmd* m;
 
 		public PipelineRasterizationStateRasterizationOrderAmd ()
 		{
 			m = (Interop.PipelineRasterizationStateRasterizationOrderAmd*) Interop.Structure.Allocate (typeof (Interop.PipelineRasterizationStateRasterizationOrderAmd));
+			Initialize ();
+		}
+
+		internal PipelineRasterizationStateRasterizationOrderAmd (Interop.PipelineRasterizationStateRasterizationOrderAmd* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
 			m->SType = StructureType.PipelineRasterizationStateRasterizationOrderAmd;
 		}
 
-		public RasterizationOrderAmd RasterizationOrder {
-			get { return m->RasterizationOrder; }
-			set { m->RasterizationOrder = value; }
-		}
 	}
 
 	unsafe public partial class DebugMarkerObjectNameInfoExt
 	{
-		internal Interop.DebugMarkerObjectNameInfoExt* m;
-
-		public DebugMarkerObjectNameInfoExt ()
-		{
-			m = (Interop.DebugMarkerObjectNameInfoExt*) Interop.Structure.Allocate (typeof (Interop.DebugMarkerObjectNameInfoExt));
-			m->SType = StructureType.DebugMarkerObjectNameInfoExt;
-		}
-
 		public DebugReportObjectTypeExt ObjectType {
 			get { return m->ObjectType; }
 			set { m->ObjectType = value; }
@@ -4773,18 +5520,30 @@ namespace Vulkan
 			get { return Marshal.PtrToStringAnsi (m->ObjectName); }
 			set { m->ObjectName = Marshal.StringToHGlobalAnsi (value); }
 		}
+		internal Interop.DebugMarkerObjectNameInfoExt* m;
+
+		public DebugMarkerObjectNameInfoExt ()
+		{
+			m = (Interop.DebugMarkerObjectNameInfoExt*) Interop.Structure.Allocate (typeof (Interop.DebugMarkerObjectNameInfoExt));
+			Initialize ();
+		}
+
+		internal DebugMarkerObjectNameInfoExt (Interop.DebugMarkerObjectNameInfoExt* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DebugMarkerObjectNameInfoExt;
+		}
+
 	}
 
 	unsafe public partial class DebugMarkerObjectTagInfoExt
 	{
-		internal Interop.DebugMarkerObjectTagInfoExt* m;
-
-		public DebugMarkerObjectTagInfoExt ()
-		{
-			m = (Interop.DebugMarkerObjectTagInfoExt*) Interop.Structure.Allocate (typeof (Interop.DebugMarkerObjectTagInfoExt));
-			m->SType = StructureType.DebugMarkerObjectTagInfoExt;
-		}
-
 		public DebugReportObjectTypeExt ObjectType {
 			get { return m->ObjectType; }
 			set { m->ObjectType = value; }
@@ -4809,24 +5568,36 @@ namespace Vulkan
 			get { return m->Tag; }
 			set { m->Tag = value; }
 		}
+		internal Interop.DebugMarkerObjectTagInfoExt* m;
+
+		public DebugMarkerObjectTagInfoExt ()
+		{
+			m = (Interop.DebugMarkerObjectTagInfoExt*) Interop.Structure.Allocate (typeof (Interop.DebugMarkerObjectTagInfoExt));
+			Initialize ();
+		}
+
+		internal DebugMarkerObjectTagInfoExt (Interop.DebugMarkerObjectTagInfoExt* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DebugMarkerObjectTagInfoExt;
+		}
+
 	}
 
 	unsafe public partial class DebugMarkerMarkerInfoExt
 	{
-		internal Interop.DebugMarkerMarkerInfoExt* m;
-
-		public DebugMarkerMarkerInfoExt ()
-		{
-			m = (Interop.DebugMarkerMarkerInfoExt*) Interop.Structure.Allocate (typeof (Interop.DebugMarkerMarkerInfoExt));
-			m->SType = StructureType.DebugMarkerMarkerInfoExt;
-		}
-
 		public string MarkerName {
 			get { return Marshal.PtrToStringAnsi (m->MarkerName); }
 			set { m->MarkerName = Marshal.StringToHGlobalAnsi (value); }
 		}
 
-		float[] Color {
+		public float[] Color {
 			get {
 				var arr = new float [4];
 				for (int i = 0; i < 4; i++)
@@ -4839,9 +5610,29 @@ namespace Vulkan
 					throw new Exception ("array too long");
 				for (int i = 0; i < value.Length; i++)
 					m->Color [i] = value [i];
-				for (int i = value.Length -1; i < 4; i++)
+				for (int i = value.Length; i < 4; i++)
 					m->Color [i] = 0;
 			}
 		}
+		internal Interop.DebugMarkerMarkerInfoExt* m;
+
+		public DebugMarkerMarkerInfoExt ()
+		{
+			m = (Interop.DebugMarkerMarkerInfoExt*) Interop.Structure.Allocate (typeof (Interop.DebugMarkerMarkerInfoExt));
+			Initialize ();
+		}
+
+		internal DebugMarkerMarkerInfoExt (Interop.DebugMarkerMarkerInfoExt* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DebugMarkerMarkerInfoExt;
+		}
+
 	}
 }
