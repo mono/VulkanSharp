@@ -12,10 +12,13 @@ namespace Vulkan.Android
 		public Instance Instance;
 		protected IntPtr aNativeWindow = IntPtr.Zero;
 
-		public VulkanView (Context context) : base (context)
+		public VulkanView (Context context, Instance instance = null) : base (context)
 		{
 			Holder.AddCallback (this);
-			CreateInstance ();
+			if (instance == null)
+				CreateDefaultInstance ();
+			else
+				Instance = instance;
 			SetWillNotDraw (false);
 		}
 
@@ -25,6 +28,7 @@ namespace Vulkan.Android
 				NativeMethods.ANativeWindow_release (aNativeWindow);
 
 			aNativeWindow = NativeMethods.ANativeWindow_fromSurface (JniEnvironment.EnvironmentPointer, Holder.Surface.Handle);
+			NativeWindowAcquired ();
 		}
 
 		public void SurfaceCreated (ISurfaceHolder holder)
@@ -44,16 +48,18 @@ namespace Vulkan.Android
 		{
 		}
 
-		protected void CreateInstance ()
+		protected virtual void NativeWindowAcquired ()
 		{
-			var appInfo = new ApplicationInfo ();
-			appInfo.ApiVersion = Vulkan.Version.Make (1, 0, 0);
+		}
 
-			var info = new InstanceCreateInfo ();
-			info.ApplicationInfo = appInfo;
-			info.EnabledExtensionCount = 2;
-			info.EnabledExtensionNames = new string [] { "VK_KHR_surface", "VK_KHR_android_surface" };
-			Instance = new Instance (info);
+		protected void CreateDefaultInstance ()
+		{
+			Instance = new Instance (new InstanceCreateInfo () {
+				EnabledExtensionNames = new string [] { "VK_KHR_surface", "VK_KHR_android_surface" },
+				ApplicationInfo = new ApplicationInfo () {
+					ApiVersion = Vulkan.Version.Make (1, 0, 0)
+				}
+			});
 		}
 	}
 
