@@ -56,7 +56,6 @@ namespace ClearView
 				PreTransform = SurfaceTransformFlagsKhr.Identity,
 				ImageArrayLayers = 1,
 				ImageSharingMode = SharingMode.Exclusive,
-				QueueFamilyIndexCount = 1,
 				QueueFamilyIndices = new uint [] { 0 },
 				PresentMode = PresentModeKhr.Fifo,
 				CompositeAlpha = CompositeAlphaFlagsKhr.Inherit
@@ -76,13 +75,10 @@ namespace ClearView
 			var attRef = new AttachmentReference () { Layout = ImageLayout.ColorAttachmentOptimal };
 			var subpassDesc = new SubpassDescription () {
 				PipelineBindPoint = PipelineBindPoint.Graphics,
-				ColorAttachmentCount = 1,
 				ColorAttachments = new AttachmentReference [] { attRef },
 			};
 			var renderPassCreateInfo = new RenderPassCreateInfo () {
-				AttachmentCount = 1,
 				Attachments = new AttachmentDescription [] { attDesc },
-				SubpassCount = 1,
 				Subpasses = new SubpassDescription [] { subpassDesc },
 			};
 			var renderPass = device.CreateRenderPass (renderPassCreateInfo, null);
