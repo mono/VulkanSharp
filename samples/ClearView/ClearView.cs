@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Vulkan.Android;
 using Vulkan;
 
