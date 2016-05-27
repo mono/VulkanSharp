@@ -12,7 +12,7 @@ namespace ClearView
 		Semaphore semaphore;
 		Fence fence;
 		CommandBuffer [] commandBuffers;
-		bool initialized = false;
+		bool initialized;
 
 		public ClearView (Android.Content.Context context) : base (context)
 		{
@@ -55,17 +55,17 @@ namespace ClearView
 		{
 			var displayViews = new ImageView [images.Length];
 			for (int i = 0; i < images.Length; i++) {
-				var viewCreateInfo = new ImageViewCreateInfo () {
+				var viewCreateInfo = new ImageViewCreateInfo {
 					Image = images [i],
 					ViewType = ImageViewType.View2D,
 					Format = surfaceFormat.Format,
-					Components = new ComponentMapping () {
+					Components = new ComponentMapping {
 						R = ComponentSwizzle.R,
 						G = ComponentSwizzle.G,
 						B = ComponentSwizzle.B,
 						A = ComponentSwizzle.A
 					},
-					SubresourceRange = new ImageSubresourceRange () {
+					SubresourceRange = new ImageSubresourceRange {
 						AspectMask = (uint)ImageAspectFlags.Color,
 						LevelCount = 1,
 						LayerCount = 1
@@ -75,7 +75,7 @@ namespace ClearView
 			}
 			var framebuffers = new Framebuffer [images.Length];
 			for (int i = 0; i < images.Length; i++) {
-				var frameBufferCreateInfo = new FramebufferCreateInfo () {
+				var frameBufferCreateInfo = new FramebufferCreateInfo {
 					Layers = 1,
 					RenderPass = renderPass,
 					Attachments = new ImageView [] { displayViews [i] },
@@ -89,11 +89,11 @@ namespace ClearView
 
 		CommandBuffer[] CreateCommandBuffers (Image[] images, Framebuffer[] framebuffers, RenderPass renderPass, SurfaceCapabilitiesKhr surfaceCapabilities)
 		{
-			var createPoolInfo = new CommandPoolCreateInfo () { Flags = (uint)CommandPoolCreateFlags.ResetCommandBuffer };
+			var createPoolInfo = new CommandPoolCreateInfo { Flags = (uint)CommandPoolCreateFlags.ResetCommandBuffer };
 			var commandPool = device.CreateCommandPool (createPoolInfo, null);
 			var buffers = new CommandBuffer [images.Length];
 			for (int i = 0; i < images.Length; i++) {
-				var commandBufferAllocateInfo = new CommandBufferAllocateInfo () {
+				var commandBufferAllocateInfo = new CommandBufferAllocateInfo {
 					Level = CommandBufferLevel.Primary,
 					CommandPool = commandPool,
 					CommandBufferCount = 1
@@ -102,11 +102,11 @@ namespace ClearView
 
 				var commandBufferBeginInfo = new CommandBufferBeginInfo ();
 				buffers [i].Begin (commandBufferBeginInfo);
-				var renderPassBeginInfo = new RenderPassBeginInfo () {
+				var renderPassBeginInfo = new RenderPassBeginInfo {
 					Framebuffer = framebuffers [i],
 					RenderPass = renderPass,
-					ClearValues = new ClearValue [] { new ClearValue () { Color = new ClearColorValue (new float [4] { 0.9f, 0.7f, 0.0f, 1.0f }) } },
-					RenderArea = new Rect2D () { Extent = surfaceCapabilities.CurrentExtent }
+					ClearValues = new ClearValue [] { new ClearValue { Color = new ClearColorValue (new float [] { 0.9f, 0.7f, 0.0f, 1.0f }) } },
+					RenderArea = new Rect2D { Extent = surfaceCapabilities.CurrentExtent }
 				};
 				buffers [i].CmdBeginRenderPass (renderPassBeginInfo, SubpassContents.Inline);
 				buffers [i].CmdEndRenderPass ();
@@ -117,7 +117,7 @@ namespace ClearView
 
 		RenderPass CreateRenderPass (SurfaceFormatKhr surfaceFormat)
 		{
-			var attDesc = new AttachmentDescription () {
+			var attDesc = new AttachmentDescription {
 				Format = surfaceFormat.Format,
 				Samples = (uint)SampleCountFlags.Count1,
 				LoadOp = AttachmentLoadOp.Clear,
@@ -127,14 +127,14 @@ namespace ClearView
 				InitialLayout = ImageLayout.ColorAttachmentOptimal,
 				FinalLayout = ImageLayout.ColorAttachmentOptimal
 			};
-			var attRef = new AttachmentReference () { Layout = ImageLayout.ColorAttachmentOptimal };
-			var subpassDesc = new SubpassDescription () {
+			var attRef = new AttachmentReference { Layout = ImageLayout.ColorAttachmentOptimal };
+			var subpassDesc = new SubpassDescription {
 				PipelineBindPoint = PipelineBindPoint.Graphics,
-				ColorAttachments = new AttachmentReference [] { attRef },
+				ColorAttachments = new AttachmentReference [] { attRef }
 			};
-			var renderPassCreateInfo = new RenderPassCreateInfo () {
+			var renderPassCreateInfo = new RenderPassCreateInfo {
 				Attachments = new AttachmentDescription [] { attDesc },
-				Subpasses = new SubpassDescription [] { subpassDesc },
+				Subpasses = new SubpassDescription [] { subpassDesc }
 			};
 			return device.CreateRenderPass (renderPassCreateInfo, null);
 		}
@@ -142,7 +142,7 @@ namespace ClearView
 		public void InitializeVulkan ()
 		{
 			var devices = Instance.EnumeratePhysicalDevices ();
-			var surface = Instance.CreateAndroidSurfaceKHR (new AndroidSurfaceCreateInfoKhr () { Window = aNativeWindow }, null);
+			var surface = Instance.CreateAndroidSurfaceKHR (new AndroidSurfaceCreateInfoKhr { Window = aNativeWindow }, null);
 			var queueInfo = new DeviceQueueCreateInfo { QueuePriorities = new float [] { 1.0f } };
 			var deviceInfo = new DeviceCreateInfo {
 				EnabledExtensionNames = new string [] { "VK_KHR_swapchain", "VK_KHR_display_swapchain" },
@@ -165,7 +165,7 @@ namespace ClearView
 			initialized = true;
 		}
 
-		protected override void OnDraw (global::Android.Graphics.Canvas canvas)
+		protected override void OnDraw (Android.Graphics.Canvas canvas)
 		{
 			if (initialized)
 				DrawFrame ();
@@ -173,17 +173,17 @@ namespace ClearView
 
 		void DrawFrame ()
 		{
-			uint nextIndex = device.AcquireNextImageKHR (swapchain, UInt64.MaxValue, semaphore, fence);
+			uint nextIndex = device.AcquireNextImageKHR (swapchain, ulong.MaxValue, semaphore, fence);
 			device.ResetFences (1, fence);
-			var submitInfo = new SubmitInfo () {
+			var submitInfo = new SubmitInfo {
 				WaitSemaphores = new Semaphore [] { semaphore },
 				CommandBuffers = new CommandBuffer [] { commandBuffers [nextIndex] }
 			};
 			queue.Submit (1, submitInfo, fence);
 			device.WaitForFences (1, fence, true, 100000000);
-			var presentInfo = new PresentInfoKhr () {
+			var presentInfo = new PresentInfoKhr {
 				Swapchains = new SwapchainKhr [] { swapchain },
-				ImageIndices = new uint [] { nextIndex },
+				ImageIndices = new uint [] { nextIndex }
 			};
 			queue.PresentKHR (presentInfo);
 		}
