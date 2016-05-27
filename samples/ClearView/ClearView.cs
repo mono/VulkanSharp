@@ -52,10 +52,10 @@ namespace ClearView
 			return device.CreateSwapchainKHR (swapchainInfo, null);
 		}
 
-		Framebuffer [] CreateFramebuffers (List<Image> images, SurfaceFormatKhr surfaceFormat, SurfaceCapabilitiesKhr surfaceCapabilities, RenderPass renderPass)
+		Framebuffer [] CreateFramebuffers (Image[] images, SurfaceFormatKhr surfaceFormat, SurfaceCapabilitiesKhr surfaceCapabilities, RenderPass renderPass)
 		{
-			var displayViews = new ImageView [images.Count];
-			for (int i = 0; i < images.Count; i++) {
+			var displayViews = new ImageView [images.Length];
+			for (int i = 0; i < images.Length; i++) {
 				var viewCreateInfo = new ImageViewCreateInfo () {
 					Image = images [i],
 					ViewType = ImageViewType.View2D,
@@ -74,8 +74,8 @@ namespace ClearView
 				};
 				displayViews [i] = device.CreateImageView (viewCreateInfo, null);
 			}
-			var framebuffers = new Framebuffer [images.Count];
-			for (int i = 0; i < images.Count; i++) {
+			var framebuffers = new Framebuffer [images.Length];
+			for (int i = 0; i < images.Length; i++) {
 				var frameBufferCreateInfo = new FramebufferCreateInfo () {
 					Layers = 1,
 					RenderPass = renderPass,
@@ -88,12 +88,12 @@ namespace ClearView
 			return framebuffers;
 		}
 
-		CommandBuffer[] CreateCommandBuffers (List<Image> images, Framebuffer[] framebuffers, RenderPass renderPass, SurfaceCapabilitiesKhr surfaceCapabilities)
+		CommandBuffer[] CreateCommandBuffers (Image[] images, Framebuffer[] framebuffers, RenderPass renderPass, SurfaceCapabilitiesKhr surfaceCapabilities)
 		{
 			var createPoolInfo = new CommandPoolCreateInfo () { Flags = (uint)CommandPoolCreateFlags.ResetCommandBuffer };
 			var commandPool = device.CreateCommandPool (createPoolInfo, null);
-			var buffers = new CommandBuffer [images.Count];
-			for (int i = 0; i < images.Count; i++) {
+			var buffers = new CommandBuffer [images.Length];
+			for (int i = 0; i < images.Length; i++) {
 				var commandBufferAllocateInfo = new CommandBufferAllocateInfo () {
 					Level = CommandBufferLevel.Primary,
 					CommandPool = commandPool,

@@ -7,6 +7,5 @@ extensions
 TODO:
   marshalling fixed sized arrays in structures
   do not marshal structs/unions with fixed size arrays of valuetypes like ClearColorValue
-  return arrays instead of list where possible (like EnumerateInstanceLayerProperties for example)
   handle null values in arrays
   improve commands like ResetFences (issue #11)
