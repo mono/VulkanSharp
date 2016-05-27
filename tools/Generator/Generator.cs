@@ -1163,7 +1163,7 @@ namespace VulkanSharp.Generator
 			"vkCreateInstance"
 		};
 
-		bool CommandShouldCreateList (XElement commandElement, Dictionary<string, ParamInfo> paramsDict, ref ParamInfo intParam, ref ParamInfo dataParam)
+		bool CommandShouldCreateArray (XElement commandElement, Dictionary<string, ParamInfo> paramsDict, ref ParamInfo intParam, ref ParamInfo dataParam)
 		{
 			ParamInfo outUInt = null;
 			foreach (var param in commandElement.Elements ("param")) {
@@ -1242,7 +1242,7 @@ namespace VulkanSharp.Generator
 			ParamInfo intParam = null;
 			ParamInfo dataParam = null;
 			var ignoredParameters = new List<ParamInfo> ();
-			bool createList = false;
+			bool createArray = false;
 			if (csType == "void") {
 				if (outCount == 1) {
 					foreach (var param in paramsDict) {
@@ -1262,15 +1262,15 @@ namespace VulkanSharp.Generator
 					}
 					csType = firstOutParam.csType;
 				} else if (outCount > 1) {
-					createList = CommandShouldCreateList (commandElement, paramsDict, ref intParam, ref dataParam);
-					if (createList) {
+					createArray = CommandShouldCreateArray (commandElement, paramsDict, ref intParam, ref dataParam);
+					if (createArray) {
 						ignoredParameters.Add (intParam);
 						ignoredParameters.Add (dataParam);
 						intParam.isFixed = false;
 						dataParam.isFixed = false;
 						intParam.isOut = false;
 						dataParam.isOut = false;
-						csType = string.Format ("List<{0}>", dataParam.csType);
+						csType = string.Format ("{0}[]", dataParam.csType);
 					}
 				}
 			}
@@ -1288,7 +1288,7 @@ namespace VulkanSharp.Generator
 			IndentLevel++;
 
 			bool isInInterop = false;
-			if (createList) {
+			if (createArray) {
 				isInInterop = dataParam.isStruct && dataParam.needsMarshalling;
 
 				IndentWriteLine ("UInt32 {0};", intParam.csName);
@@ -1343,21 +1343,28 @@ namespace VulkanSharp.Generator
 			if (firstOutParam != null) {
 				WriteLine ();
 				IndentWriteLine ("return {0};", firstOutParam.csName);
-			} else if (createList) {
+			} else if (createArray) {
 				WriteLine ();
-				IndentWriteLine ("var list = new List<{0}> ();", dataParam.csType);
+				IndentWriteLine ("if ({0} <= 0)", intParam.csName);
+				IndentLevel++;
+				IndentWriteLine ("return null;");
+				IndentLevel--;
+				IndentWriteLine ("var arr = new {0} [{1}];", dataParam.csType, intParam.csName);
 				IndentWriteLine ("for (int i = 0; i < {0}; i++) {{", intParam.csName);
 				IndentLevel++;
 				if (isInInterop || !dataParam.isStruct) {
-					IndentWriteLine ("var item = new {0} ();", dataParam.csType);
-					IndentWriteLine ("item{0} = {1}(({2}{3}*)ptr{4})[i];", (dataParam.isStruct || dataParam.isHandle) ? ".m" : "", dataParam.isStruct ? "&" : "", isInInterop ? "Interop." : "", dataParam.isHandle ? GetHandleType (handles [dataParam.csType]) : dataParam.csType, dataParam.csName);
-					IndentWriteLine ("list.Add (item);");
+					if (dataParam.isStruct)
+						IndentWriteLine ("arr [i] = new {0} ({1}(({2}{3}*)ptr{4}) [i]);", dataParam.csType, dataParam.isStruct ? "&" : "", isInInterop ? "Interop." : "", dataParam.isHandle ? GetHandleType (handles [dataParam.csType]) : dataParam.csType, dataParam.csName);
+					else {
+						IndentWriteLine ("arr [i] = new {0} ();", dataParam.csType);
+						IndentWriteLine ("arr [i]{0} = {1}(({2}{3}*)ptr{4}) [i];", (dataParam.isStruct || dataParam.isHandle) ? ".m" : "", dataParam.isStruct ? "&" : "", isInInterop ? "Interop." : "", dataParam.isHandle ? GetHandleType (handles [dataParam.csType]) : dataParam.csType, dataParam.csName);
+					}
 				} else
-					IndentWriteLine ("list.Add ((({0}*)ptr{1})[i]);", dataParam.csType, dataParam.csName);
+					IndentWriteLine ("arr [i] = ((({0}*)ptr{1}) [i]);", dataParam.csType, dataParam.csName);
 				IndentLevel--;
 				IndentWriteLine ("}");
 				WriteLine ();
-				IndentWriteLine ("return list;");
+				IndentWriteLine ("return arr;");
 			}
 
 			IndentLevel--;
