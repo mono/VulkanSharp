@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Vulkan.Android;
 using Vulkan;
 
@@ -32,25 +33,13 @@ namespace ClearView
 			throw new Exception ("didn't find the R8g8b8a8Unorm format");
 		}
 
-		public void InitializeVulkan ()
+		SwapchainKhr CreateSwapchain (SurfaceKhr surface, SurfaceCapabilitiesKhr surfaceCapabilities, SurfaceFormatKhr surfaceFormat)
 		{
-			var devices = Instance.EnumeratePhysicalDevices ();
-			var surface = Instance.CreateAndroidSurfaceKHR (new AndroidSurfaceCreateInfoKhr () { Window = aNativeWindow }, null);
-			var queueInfo = new DeviceQueueCreateInfo { QueuePriorities = new float [] { 1.0f } };
-			var deviceInfo = new DeviceCreateInfo {
-				EnabledExtensionNames = new string [] { "VK_KHR_swapchain", "VK_KHR_display_swapchain" },
-				QueueCreateInfos = new DeviceQueueCreateInfo [] { queueInfo }
-			};
-			var physicalDevice = devices [0];
-			device = physicalDevice.CreateDevice (deviceInfo, null);
-			queue = device.GetQueue (0, 0);
-			var surfaceCapabilities = physicalDevice.GetSurfaceCapabilitiesKHR (surface);
-			var format = SelectFormat (physicalDevice, surface);
 			var swapchainInfo = new SwapchainCreateInfoKhr {
 				Surface = surface,
 				MinImageCount = surfaceCapabilities.MinImageCount,
-				ImageFormat = format.Format,
-				ImageColorSpace = format.ColorSpace,
+				ImageFormat = surfaceFormat.Format,
+				ImageColorSpace = surfaceFormat.ColorSpace,
 				ImageExtent = surfaceCapabilities.CurrentExtent,
 				ImageUsage = (uint)ImageUsageFlags.ColorAttachment,
 				PreTransform = SurfaceTransformFlagsKhr.Identity,
@@ -60,35 +49,17 @@ namespace ClearView
 				PresentMode = PresentModeKhr.Fifo,
 				CompositeAlpha = CompositeAlphaFlagsKhr.Inherit
 			};
-			swapchain = device.CreateSwapchainKHR (swapchainInfo, null);
-			var images = device.GetSwapchainImagesKHR (swapchain);
-			var attDesc = new AttachmentDescription () {
-				Format = format.Format,
-				Samples = (uint)SampleCountFlags.Count1,
-				LoadOp = AttachmentLoadOp.Clear,
-				StoreOp = AttachmentStoreOp.Store,
-				StencilLoadOp = AttachmentLoadOp.DontCare,
-				StencilStoreOp = AttachmentStoreOp.DontCare,
-				InitialLayout = ImageLayout.ColorAttachmentOptimal,
-				FinalLayout = ImageLayout.ColorAttachmentOptimal
-			};
-			var attRef = new AttachmentReference () { Layout = ImageLayout.ColorAttachmentOptimal };
-			var subpassDesc = new SubpassDescription () {
-				PipelineBindPoint = PipelineBindPoint.Graphics,
-				ColorAttachments = new AttachmentReference [] { attRef },
-			};
-			var renderPassCreateInfo = new RenderPassCreateInfo () {
-				Attachments = new AttachmentDescription [] { attDesc },
-				Subpasses = new SubpassDescription [] { subpassDesc },
-			};
-			var renderPass = device.CreateRenderPass (renderPassCreateInfo, null);
-			var images2 = device.GetSwapchainImagesKHR (swapchain);
-			var displayViews = new ImageView [images2.Count];
-			for (int i = 0; i < images2.Count; i++) {
+			return device.CreateSwapchainKHR (swapchainInfo, null);
+		}
+
+		Framebuffer [] CreateFramebuffers (List<Image> images, SurfaceFormatKhr surfaceFormat, SurfaceCapabilitiesKhr surfaceCapabilities, RenderPass renderPass)
+		{
+			var displayViews = new ImageView [images.Count];
+			for (int i = 0; i < images.Count; i++) {
 				var viewCreateInfo = new ImageViewCreateInfo () {
-					Image = images2 [i],
+					Image = images [i],
 					ViewType = ImageViewType.View2D,
-					Format = format.Format,
+					Format = surfaceFormat.Format,
 					Components = new ComponentMapping () {
 						R = ComponentSwizzle.R,
 						G = ComponentSwizzle.G,
@@ -114,29 +85,80 @@ namespace ClearView
 				};
 				framebuffers [i] = device.CreateFramebuffer (frameBufferCreateInfo, null);
 			}
+			return framebuffers;
+		}
+
+		CommandBuffer[] CreateCommandBuffers (List<Image> images, Framebuffer[] framebuffers, RenderPass renderPass, SurfaceCapabilitiesKhr surfaceCapabilities)
+		{
 			var createPoolInfo = new CommandPoolCreateInfo () { Flags = (uint)CommandPoolCreateFlags.ResetCommandBuffer };
 			var commandPool = device.CreateCommandPool (createPoolInfo, null);
-			commandBuffers = new CommandBuffer [images.Count];
+			var buffers = new CommandBuffer [images.Count];
 			for (int i = 0; i < images.Count; i++) {
 				var commandBufferAllocateInfo = new CommandBufferAllocateInfo () {
 					Level = CommandBufferLevel.Primary,
 					CommandPool = commandPool,
 					CommandBufferCount = 1
 				};
-				commandBuffers [i] = device.AllocateCommandBuffers (commandBufferAllocateInfo);
+				buffers [i] = device.AllocateCommandBuffers (commandBufferAllocateInfo);
 
 				var commandBufferBeginInfo = new CommandBufferBeginInfo ();
-				commandBuffers [i].Begin (commandBufferBeginInfo);
+				buffers [i].Begin (commandBufferBeginInfo);
 				var renderPassBeginInfo = new RenderPassBeginInfo () {
 					Framebuffer = framebuffers [i],
 					RenderPass = renderPass,
 					ClearValues = new ClearValue [] { new ClearValue () { Color = new ClearColorValue (new float [4] { 0.9f, 0.7f, 0.0f, 1.0f }) } },
 					RenderArea = new Rect2D () { Extent = surfaceCapabilities.CurrentExtent }
 				};
-				commandBuffers [i].CmdBeginRenderPass (renderPassBeginInfo, SubpassContents.Inline);
-				commandBuffers [i].CmdEndRenderPass ();
-				commandBuffers [i].End ();
+				buffers [i].CmdBeginRenderPass (renderPassBeginInfo, SubpassContents.Inline);
+				buffers [i].CmdEndRenderPass ();
+				buffers [i].End ();
 			}
+			return buffers;
+		}
+
+		RenderPass CreateRenderPass (SurfaceFormatKhr surfaceFormat)
+		{
+			var attDesc = new AttachmentDescription () {
+				Format = surfaceFormat.Format,
+				Samples = (uint)SampleCountFlags.Count1,
+				LoadOp = AttachmentLoadOp.Clear,
+				StoreOp = AttachmentStoreOp.Store,
+				StencilLoadOp = AttachmentLoadOp.DontCare,
+				StencilStoreOp = AttachmentStoreOp.DontCare,
+				InitialLayout = ImageLayout.ColorAttachmentOptimal,
+				FinalLayout = ImageLayout.ColorAttachmentOptimal
+			};
+			var attRef = new AttachmentReference () { Layout = ImageLayout.ColorAttachmentOptimal };
+			var subpassDesc = new SubpassDescription () {
+				PipelineBindPoint = PipelineBindPoint.Graphics,
+				ColorAttachments = new AttachmentReference [] { attRef },
+			};
+			var renderPassCreateInfo = new RenderPassCreateInfo () {
+				Attachments = new AttachmentDescription [] { attDesc },
+				Subpasses = new SubpassDescription [] { subpassDesc },
+			};
+			return device.CreateRenderPass (renderPassCreateInfo, null);
+		}
+
+		public void InitializeVulkan ()
+		{
+			var devices = Instance.EnumeratePhysicalDevices ();
+			var surface = Instance.CreateAndroidSurfaceKHR (new AndroidSurfaceCreateInfoKhr () { Window = aNativeWindow }, null);
+			var queueInfo = new DeviceQueueCreateInfo { QueuePriorities = new float [] { 1.0f } };
+			var deviceInfo = new DeviceCreateInfo {
+				EnabledExtensionNames = new string [] { "VK_KHR_swapchain", "VK_KHR_display_swapchain" },
+				QueueCreateInfos = new DeviceQueueCreateInfo [] { queueInfo }
+			};
+			var physicalDevice = devices [0];
+			device = physicalDevice.CreateDevice (deviceInfo, null);
+			queue = device.GetQueue (0, 0);
+			var surfaceCapabilities = physicalDevice.GetSurfaceCapabilitiesKHR (surface);
+			var surfaceFormat = SelectFormat (physicalDevice, surface);
+			swapchain = CreateSwapchain (surface, surfaceCapabilities, surfaceFormat);
+			var images = device.GetSwapchainImagesKHR (swapchain);
+			var renderPass = CreateRenderPass (surfaceFormat);
+			var framebuffers = CreateFramebuffers (images, surfaceFormat, surfaceCapabilities, renderPass);
+			commandBuffers = CreateCommandBuffers (images, framebuffers, renderPass, surfaceCapabilities);
 			var fenceInfo = new FenceCreateInfo ();
 			fence = device.CreateFence (fenceInfo, null);
 			var semaphoreInfo = new SemaphoreCreateInfo ();
