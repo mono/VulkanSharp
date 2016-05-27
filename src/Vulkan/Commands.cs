@@ -16,7 +16,7 @@ namespace Vulkan
 {
 	public static partial class Commands
 	{
-		public static List<LayerProperties> EnumerateInstanceLayerProperties ()
+		public static LayerProperties[] EnumerateInstanceLayerProperties ()
 		{
 			Result result;
 			unsafe {
@@ -31,18 +31,18 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 
-				var list = new List<LayerProperties> ();
+				if (pPropertyCount <= 0)
+					return null;
+				var arr = new LayerProperties [pPropertyCount];
 				for (int i = 0; i < pPropertyCount; i++) {
-					var item = new LayerProperties ();
-					item.m = &((Interop.LayerProperties*)ptrpProperties)[i];
-					list.Add (item);
+					arr [i] = new LayerProperties (&((Interop.LayerProperties*)ptrpProperties) [i]);
 				}
 
-				return list;
+				return arr;
 			}
 		}
 
-		public static List<ExtensionProperties> EnumerateInstanceExtensionProperties (string pLayerName)
+		public static ExtensionProperties[] EnumerateInstanceExtensionProperties (string pLayerName)
 		{
 			Result result;
 			unsafe {
@@ -57,14 +57,14 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 
-				var list = new List<ExtensionProperties> ();
+				if (pPropertyCount <= 0)
+					return null;
+				var arr = new ExtensionProperties [pPropertyCount];
 				for (int i = 0; i < pPropertyCount; i++) {
-					var item = new ExtensionProperties ();
-					item.m = &((Interop.ExtensionProperties*)ptrpProperties)[i];
-					list.Add (item);
+					arr [i] = new ExtensionProperties (&((Interop.ExtensionProperties*)ptrpProperties) [i]);
 				}
 
-				return list;
+				return arr;
 			}
 		}
 	}

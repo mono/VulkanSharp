@@ -25,7 +25,7 @@ namespace Vulkan
 			}
 		}
 
-		public List<PhysicalDevice> EnumeratePhysicalDevices ()
+		public PhysicalDevice[] EnumeratePhysicalDevices ()
 		{
 			Result result;
 			unsafe {
@@ -40,14 +40,15 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 
-				var list = new List<PhysicalDevice> ();
+				if (pPhysicalDeviceCount <= 0)
+					return null;
+				var arr = new PhysicalDevice [pPhysicalDeviceCount];
 				for (int i = 0; i < pPhysicalDeviceCount; i++) {
-					var item = new PhysicalDevice ();
-					item.m = ((IntPtr*)ptrpPhysicalDevices)[i];
-					list.Add (item);
+					arr [i] = new PhysicalDevice ();
+					arr [i].m = ((IntPtr*)ptrpPhysicalDevices) [i];
 				}
 
-				return list;
+				return arr;
 			}
 		}
 
@@ -129,7 +130,7 @@ namespace Vulkan
 			}
 		}
 
-		public List<QueueFamilyProperties> GetQueueFamilyProperties ()
+		public QueueFamilyProperties[] GetQueueFamilyProperties ()
 		{
 			unsafe {
 				UInt32 pQueueFamilyPropertyCount;
@@ -139,12 +140,14 @@ namespace Vulkan
 				var ptrpQueueFamilyProperties = Marshal.AllocHGlobal ((int)(size * pQueueFamilyPropertyCount));
 				Interop.NativeMethods.vkGetPhysicalDeviceQueueFamilyProperties (this.m, &pQueueFamilyPropertyCount, (QueueFamilyProperties*)ptrpQueueFamilyProperties);
 
-				var list = new List<QueueFamilyProperties> ();
+				if (pQueueFamilyPropertyCount <= 0)
+					return null;
+				var arr = new QueueFamilyProperties [pQueueFamilyPropertyCount];
 				for (int i = 0; i < pQueueFamilyPropertyCount; i++) {
-					list.Add (((QueueFamilyProperties*)ptrpQueueFamilyProperties)[i]);
+					arr [i] = (((QueueFamilyProperties*)ptrpQueueFamilyProperties) [i]);
 				}
 
-				return list;
+				return arr;
 			}
 		}
 
@@ -212,7 +215,7 @@ namespace Vulkan
 			}
 		}
 
-		public List<LayerProperties> EnumerateDeviceLayerProperties ()
+		public LayerProperties[] EnumerateDeviceLayerProperties ()
 		{
 			Result result;
 			unsafe {
@@ -227,18 +230,18 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 
-				var list = new List<LayerProperties> ();
+				if (pPropertyCount <= 0)
+					return null;
+				var arr = new LayerProperties [pPropertyCount];
 				for (int i = 0; i < pPropertyCount; i++) {
-					var item = new LayerProperties ();
-					item.m = &((Interop.LayerProperties*)ptrpProperties)[i];
-					list.Add (item);
+					arr [i] = new LayerProperties (&((Interop.LayerProperties*)ptrpProperties) [i]);
 				}
 
-				return list;
+				return arr;
 			}
 		}
 
-		public List<ExtensionProperties> EnumerateDeviceExtensionProperties (string pLayerName)
+		public ExtensionProperties[] EnumerateDeviceExtensionProperties (string pLayerName)
 		{
 			Result result;
 			unsafe {
@@ -253,18 +256,18 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 
-				var list = new List<ExtensionProperties> ();
+				if (pPropertyCount <= 0)
+					return null;
+				var arr = new ExtensionProperties [pPropertyCount];
 				for (int i = 0; i < pPropertyCount; i++) {
-					var item = new ExtensionProperties ();
-					item.m = &((Interop.ExtensionProperties*)ptrpProperties)[i];
-					list.Add (item);
+					arr [i] = new ExtensionProperties (&((Interop.ExtensionProperties*)ptrpProperties) [i]);
 				}
 
-				return list;
+				return arr;
 			}
 		}
 
-		public List<SparseImageFormatProperties> GetSparseImageFormatProperties (Format format, ImageType type, SampleCountFlags samples, ImageUsageFlags usage, ImageTiling tiling)
+		public SparseImageFormatProperties[] GetSparseImageFormatProperties (Format format, ImageType type, SampleCountFlags samples, ImageUsageFlags usage, ImageTiling tiling)
 		{
 			unsafe {
 				UInt32 pPropertyCount;
@@ -274,16 +277,18 @@ namespace Vulkan
 				var ptrpProperties = Marshal.AllocHGlobal ((int)(size * pPropertyCount));
 				Interop.NativeMethods.vkGetPhysicalDeviceSparseImageFormatProperties (this.m, format, type, samples, usage, tiling, &pPropertyCount, (SparseImageFormatProperties*)ptrpProperties);
 
-				var list = new List<SparseImageFormatProperties> ();
+				if (pPropertyCount <= 0)
+					return null;
+				var arr = new SparseImageFormatProperties [pPropertyCount];
 				for (int i = 0; i < pPropertyCount; i++) {
-					list.Add (((SparseImageFormatProperties*)ptrpProperties)[i]);
+					arr [i] = (((SparseImageFormatProperties*)ptrpProperties) [i]);
 				}
 
-				return list;
+				return arr;
 			}
 		}
 
-		public List<DisplayPropertiesKhr> GetDisplayPropertiesKHR ()
+		public DisplayPropertiesKhr[] GetDisplayPropertiesKHR ()
 		{
 			Result result;
 			unsafe {
@@ -298,18 +303,18 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 
-				var list = new List<DisplayPropertiesKhr> ();
+				if (pPropertyCount <= 0)
+					return null;
+				var arr = new DisplayPropertiesKhr [pPropertyCount];
 				for (int i = 0; i < pPropertyCount; i++) {
-					var item = new DisplayPropertiesKhr ();
-					item.m = &((Interop.DisplayPropertiesKhr*)ptrpProperties)[i];
-					list.Add (item);
+					arr [i] = new DisplayPropertiesKhr (&((Interop.DisplayPropertiesKhr*)ptrpProperties) [i]);
 				}
 
-				return list;
+				return arr;
 			}
 		}
 
-		public List<DisplayPlanePropertiesKhr> GetDisplayPlanePropertiesKHR ()
+		public DisplayPlanePropertiesKhr[] GetDisplayPlanePropertiesKHR ()
 		{
 			Result result;
 			unsafe {
@@ -324,16 +329,18 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 
-				var list = new List<DisplayPlanePropertiesKhr> ();
+				if (pPropertyCount <= 0)
+					return null;
+				var arr = new DisplayPlanePropertiesKhr [pPropertyCount];
 				for (int i = 0; i < pPropertyCount; i++) {
-					list.Add (((DisplayPlanePropertiesKhr*)ptrpProperties)[i]);
+					arr [i] = (((DisplayPlanePropertiesKhr*)ptrpProperties) [i]);
 				}
 
-				return list;
+				return arr;
 			}
 		}
 
-		public List<DisplayKhr> GetDisplayPlaneSupportedDisplaysKHR (UInt32 planeIndex)
+		public DisplayKhr[] GetDisplayPlaneSupportedDisplaysKHR (UInt32 planeIndex)
 		{
 			Result result;
 			unsafe {
@@ -348,18 +355,19 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 
-				var list = new List<DisplayKhr> ();
+				if (pDisplayCount <= 0)
+					return null;
+				var arr = new DisplayKhr [pDisplayCount];
 				for (int i = 0; i < pDisplayCount; i++) {
-					var item = new DisplayKhr ();
-					item.m = ((UInt64*)ptrpDisplays)[i];
-					list.Add (item);
+					arr [i] = new DisplayKhr ();
+					arr [i].m = ((UInt64*)ptrpDisplays) [i];
 				}
 
-				return list;
+				return arr;
 			}
 		}
 
-		public List<DisplayModePropertiesKhr> GetDisplayModePropertiesKHR (DisplayKhr display)
+		public DisplayModePropertiesKhr[] GetDisplayModePropertiesKHR (DisplayKhr display)
 		{
 			Result result;
 			unsafe {
@@ -374,12 +382,14 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 
-				var list = new List<DisplayModePropertiesKhr> ();
+				if (pPropertyCount <= 0)
+					return null;
+				var arr = new DisplayModePropertiesKhr [pPropertyCount];
 				for (int i = 0; i < pPropertyCount; i++) {
-					list.Add (((DisplayModePropertiesKhr*)ptrpProperties)[i]);
+					arr [i] = (((DisplayModePropertiesKhr*)ptrpProperties) [i]);
 				}
 
-				return list;
+				return arr;
 			}
 		}
 
@@ -442,7 +452,7 @@ namespace Vulkan
 			}
 		}
 
-		public List<SurfaceFormatKhr> GetSurfaceFormatsKHR (SurfaceKhr surface)
+		public SurfaceFormatKhr[] GetSurfaceFormatsKHR (SurfaceKhr surface)
 		{
 			Result result;
 			unsafe {
@@ -457,16 +467,18 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 
-				var list = new List<SurfaceFormatKhr> ();
+				if (pSurfaceFormatCount <= 0)
+					return null;
+				var arr = new SurfaceFormatKhr [pSurfaceFormatCount];
 				for (int i = 0; i < pSurfaceFormatCount; i++) {
-					list.Add (((SurfaceFormatKhr*)ptrpSurfaceFormats)[i]);
+					arr [i] = (((SurfaceFormatKhr*)ptrpSurfaceFormats) [i]);
 				}
 
-				return list;
+				return arr;
 			}
 		}
 
-		public List<PresentModeKhr> GetSurfacePresentModesKHR (SurfaceKhr surface)
+		public PresentModeKhr[] GetSurfacePresentModesKHR (SurfaceKhr surface)
 		{
 			Result result;
 			unsafe {
@@ -481,14 +493,15 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 
-				var list = new List<PresentModeKhr> ();
+				if (pPresentModeCount <= 0)
+					return null;
+				var arr = new PresentModeKhr [pPresentModeCount];
 				for (int i = 0; i < pPresentModeCount; i++) {
-					var item = new PresentModeKhr ();
-					item = ((PresentModeKhr*)ptrpPresentModes)[i];
-					list.Add (item);
+					arr [i] = new PresentModeKhr ();
+					arr [i] = ((PresentModeKhr*)ptrpPresentModes) [i];
 				}
 
-				return list;
+				return arr;
 			}
 		}
 
@@ -660,7 +673,7 @@ namespace Vulkan
 			}
 		}
 
-		public List<SparseImageMemoryRequirements> GetImageSparseMemoryRequirements (Image image)
+		public SparseImageMemoryRequirements[] GetImageSparseMemoryRequirements (Image image)
 		{
 			unsafe {
 				UInt32 pSparseMemoryRequirementCount;
@@ -670,12 +683,14 @@ namespace Vulkan
 				var ptrpSparseMemoryRequirements = Marshal.AllocHGlobal ((int)(size * pSparseMemoryRequirementCount));
 				Interop.NativeMethods.vkGetImageSparseMemoryRequirements (this.m, image.m, &pSparseMemoryRequirementCount, (SparseImageMemoryRequirements*)ptrpSparseMemoryRequirements);
 
-				var list = new List<SparseImageMemoryRequirements> ();
+				if (pSparseMemoryRequirementCount <= 0)
+					return null;
+				var arr = new SparseImageMemoryRequirements [pSparseMemoryRequirementCount];
 				for (int i = 0; i < pSparseMemoryRequirementCount; i++) {
-					list.Add (((SparseImageMemoryRequirements*)ptrpSparseMemoryRequirements)[i]);
+					arr [i] = (((SparseImageMemoryRequirements*)ptrpSparseMemoryRequirements) [i]);
 				}
 
-				return list;
+				return arr;
 			}
 		}
 
@@ -1375,7 +1390,7 @@ namespace Vulkan
 			}
 		}
 
-		public List<Image> GetSwapchainImagesKHR (SwapchainKhr swapchain)
+		public Image[] GetSwapchainImagesKHR (SwapchainKhr swapchain)
 		{
 			Result result;
 			unsafe {
@@ -1390,14 +1405,15 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 
-				var list = new List<Image> ();
+				if (pSwapchainImageCount <= 0)
+					return null;
+				var arr = new Image [pSwapchainImageCount];
 				for (int i = 0; i < pSwapchainImageCount; i++) {
-					var item = new Image ();
-					item.m = ((UInt64*)ptrpSwapchainImages)[i];
-					list.Add (item);
+					arr [i] = new Image ();
+					arr [i].m = ((UInt64*)ptrpSwapchainImages) [i];
 				}
 
-				return list;
+				return arr;
 			}
 		}
 
