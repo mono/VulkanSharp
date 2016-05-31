@@ -38,3 +38,7 @@ update-docs: $(BIN_PATH)/Vulkan.dll
 
 assemble-docs:
 	mdoc assemble --out=docs/Vulkan docs/en
+
+run-android-samples:
+	xbuild /t:Install\;_Run samples/Inspector/Inspector.csproj
+	xbuild /t:Install\;_Run samples/ClearView/ClearView.csproj
