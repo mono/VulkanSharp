@@ -509,12 +509,26 @@ namespace VulkanSharp.Generator
 			} else
 				throw new Exception (string.Format ("do not know the counter for {0}", csMemberName));
 			// fixme: handle size_t sized arrays better
-			string cast = csMemberName == "Code" ? "(uint)" : "";
-			string cast2 = csMemberName == "Code" ? "(UIntPtr)" : "(uint)";
+			string zero;
+			string cast;
+			string cast2;
+			if (csMemberName == "Code") {
+				cast = "(uint)";
+				cast2 = "(UIntPtr)";
+				zero = "UIntPtr.Zero";
+			} else {
+				cast = "";
+				cast2 = "(uint)";
+				zero = "0";
+			}
 			IndentWriteLine ("{0} {1}[] {2} {{", sec, csMemberType, csMemberName);
 			IndentLevel++;
 			IndentWriteLine ("get {");
 			IndentLevel++;
+			IndentWriteLine ("if (m->{0} == {1})", countName, zero);
+			IndentLevel++;
+			IndentWriteLine ("return null;");
+			IndentLevel--;
 			IndentWriteLine ("var values = new {0} [{1}m->{2}];", csMemberType, cast, countName);
 			IndentWriteLine ("unsafe");
 			IndentWriteLine ("{");
@@ -542,6 +556,13 @@ namespace VulkanSharp.Generator
 
 			IndentWriteLine ("set {");
 			IndentLevel++;
+			IndentWriteLine ("if (value == null) {");
+			IndentLevel++;
+			IndentWriteLine ("m->{0} = {1};", countName, zero);
+			IndentWriteLine ("m->{0} = IntPtr.Zero;", csMemberName);
+			IndentWriteLine ("return;");
+			IndentLevel--;
+			IndentWriteLine ("}");
 			IndentWriteLine ("m->{0} = {1}value.Length;", countName, cast2);
 			IndentWriteLine ("m->{0} = Marshal.AllocHGlobal ((int)(sizeof({1}{2})*{3}m->{4}));", csMemberName, structNeedsMarshalling ? (InteropNamespace + ".") : "", ptrType, cast, countName);
 			IndentWriteLine ("unsafe");
@@ -610,6 +631,10 @@ namespace VulkanSharp.Generator
 			if (!csMemberName.EndsWith ("Names"))
 				throw new Exception (string.Format ("unable to handle member {0} {1}", csMemberType, csMemberName));
 			countName = csMemberName.Substring (0, csMemberName.Length - 5) + "Count";
+			IndentWriteLine ("if (m->{0} == 0)", countName);
+			IndentLevel++;
+			IndentWriteLine ("return null;");
+			IndentLevel--;
 			IndentWriteLine ("var strings = new string [m->{0}];", countName);
 			IndentWriteLine ("unsafe");
 			IndentWriteLine ("{");
@@ -627,6 +652,13 @@ namespace VulkanSharp.Generator
 
 			IndentWriteLine ("set {");
 			IndentLevel++;
+			IndentWriteLine ("if (value == null) {");
+			IndentLevel++;
+			IndentWriteLine ("m->{0} = 0;", countName);
+			IndentWriteLine ("m->{0} = IntPtr.Zero;", csMemberName);
+			IndentWriteLine ("return;");
+			IndentLevel--;
+			IndentWriteLine ("}");
 			IndentWriteLine ("m->{0} = (uint)value.Length;", countName);
 			IndentWriteLine ("m->{0} = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*m->{1}));", csMemberName, countName);
 			IndentWriteLine ("unsafe");
