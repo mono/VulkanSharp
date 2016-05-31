@@ -317,6 +317,8 @@ namespace Vulkan
 
 		public float[] QueuePriorities {
 			get {
+				if (m->QueueCount == 0)
+					return null;
 				var values = new float [m->QueueCount];
 				unsafe
 				{
@@ -328,6 +330,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->QueueCount = 0;
+					m->QueuePriorities = IntPtr.Zero;
+					return;
+				}
 				m->QueueCount = (uint)value.Length;
 				m->QueuePriorities = Marshal.AllocHGlobal ((int)(sizeof(float)*m->QueueCount));
 				unsafe
@@ -374,6 +381,8 @@ namespace Vulkan
 
 		public DeviceQueueCreateInfo[] QueueCreateInfos {
 			get {
+				if (m->QueueCreateInfoCount == 0)
+					return null;
 				var values = new DeviceQueueCreateInfo [m->QueueCreateInfoCount];
 				unsafe
 				{
@@ -387,6 +396,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->QueueCreateInfoCount = 0;
+					m->QueueCreateInfos = IntPtr.Zero;
+					return;
+				}
 				m->QueueCreateInfoCount = (uint)value.Length;
 				m->QueueCreateInfos = Marshal.AllocHGlobal ((int)(sizeof(Interop.DeviceQueueCreateInfo)*m->QueueCreateInfoCount));
 				unsafe
@@ -405,6 +419,8 @@ namespace Vulkan
 
 		public string[] EnabledLayerNames {
 			get {
+				if (m->EnabledLayerCount == 0)
+					return null;
 				var strings = new string [m->EnabledLayerCount];
 				unsafe
 				{
@@ -416,6 +432,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->EnabledLayerCount = 0;
+					m->EnabledLayerNames = IntPtr.Zero;
+					return;
+				}
 				m->EnabledLayerCount = (uint)value.Length;
 				m->EnabledLayerNames = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*m->EnabledLayerCount));
 				unsafe
@@ -434,6 +455,8 @@ namespace Vulkan
 
 		public string[] EnabledExtensionNames {
 			get {
+				if (m->EnabledExtensionCount == 0)
+					return null;
 				var strings = new string [m->EnabledExtensionCount];
 				unsafe
 				{
@@ -445,6 +468,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->EnabledExtensionCount = 0;
+					m->EnabledExtensionNames = IntPtr.Zero;
+					return;
+				}
 				m->EnabledExtensionCount = (uint)value.Length;
 				m->EnabledExtensionNames = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*m->EnabledExtensionCount));
 				unsafe
@@ -502,6 +530,8 @@ namespace Vulkan
 
 		public string[] EnabledLayerNames {
 			get {
+				if (m->EnabledLayerCount == 0)
+					return null;
 				var strings = new string [m->EnabledLayerCount];
 				unsafe
 				{
@@ -513,6 +543,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->EnabledLayerCount = 0;
+					m->EnabledLayerNames = IntPtr.Zero;
+					return;
+				}
 				m->EnabledLayerCount = (uint)value.Length;
 				m->EnabledLayerNames = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*m->EnabledLayerCount));
 				unsafe
@@ -531,6 +566,8 @@ namespace Vulkan
 
 		public string[] EnabledExtensionNames {
 			get {
+				if (m->EnabledExtensionCount == 0)
+					return null;
 				var strings = new string [m->EnabledExtensionCount];
 				unsafe
 				{
@@ -542,6 +579,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->EnabledExtensionCount = 0;
+					m->EnabledExtensionNames = IntPtr.Zero;
+					return;
+				}
 				m->EnabledExtensionCount = (uint)value.Length;
 				m->EnabledExtensionNames = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*m->EnabledExtensionCount));
 				unsafe
@@ -784,6 +826,8 @@ namespace Vulkan
 
 		public DescriptorImageInfo[] ImageInfo {
 			get {
+				if (m->DescriptorCount == 0)
+					return null;
 				var values = new DescriptorImageInfo [m->DescriptorCount];
 				unsafe
 				{
@@ -795,6 +839,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->DescriptorCount = 0;
+					m->ImageInfo = IntPtr.Zero;
+					return;
+				}
 				m->DescriptorCount = (uint)value.Length;
 				m->ImageInfo = Marshal.AllocHGlobal ((int)(sizeof(DescriptorImageInfo)*m->DescriptorCount));
 				unsafe
@@ -808,6 +857,8 @@ namespace Vulkan
 
 		public DescriptorBufferInfo[] BufferInfo {
 			get {
+				if (m->DescriptorCount == 0)
+					return null;
 				var values = new DescriptorBufferInfo [m->DescriptorCount];
 				unsafe
 				{
@@ -819,6 +870,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->DescriptorCount = 0;
+					m->BufferInfo = IntPtr.Zero;
+					return;
+				}
 				m->DescriptorCount = (uint)value.Length;
 				m->BufferInfo = Marshal.AllocHGlobal ((int)(sizeof(DescriptorBufferInfo)*m->DescriptorCount));
 				unsafe
@@ -832,6 +888,8 @@ namespace Vulkan
 
 		public BufferView[] TexelBufferView {
 			get {
+				if (m->DescriptorCount == 0)
+					return null;
 				var values = new BufferView [m->DescriptorCount];
 				unsafe
 				{
@@ -845,6 +903,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->DescriptorCount = 0;
+					m->TexelBufferView = IntPtr.Zero;
+					return;
+				}
 				m->DescriptorCount = (uint)value.Length;
 				m->TexelBufferView = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->DescriptorCount));
 				unsafe
@@ -966,6 +1029,8 @@ namespace Vulkan
 
 		public UInt32[] QueueFamilyIndices {
 			get {
+				if (m->QueueFamilyIndexCount == 0)
+					return null;
 				var values = new UInt32 [m->QueueFamilyIndexCount];
 				unsafe
 				{
@@ -977,6 +1042,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->QueueFamilyIndexCount = 0;
+					m->QueueFamilyIndices = IntPtr.Zero;
+					return;
+				}
 				m->QueueFamilyIndexCount = (uint)value.Length;
 				m->QueueFamilyIndices = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*m->QueueFamilyIndexCount));
 				unsafe
@@ -1297,6 +1367,8 @@ namespace Vulkan
 
 		public UInt32[] QueueFamilyIndices {
 			get {
+				if (m->QueueFamilyIndexCount == 0)
+					return null;
 				var values = new UInt32 [m->QueueFamilyIndexCount];
 				unsafe
 				{
@@ -1308,6 +1380,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->QueueFamilyIndexCount = 0;
+					m->QueueFamilyIndices = IntPtr.Zero;
+					return;
+				}
 				m->QueueFamilyIndexCount = (uint)value.Length;
 				m->QueueFamilyIndices = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*m->QueueFamilyIndexCount));
 				unsafe
@@ -1449,6 +1526,8 @@ namespace Vulkan
 
 		public SparseMemoryBind[] Binds {
 			get {
+				if (m->BindCount == 0)
+					return null;
 				var values = new SparseMemoryBind [m->BindCount];
 				unsafe
 				{
@@ -1460,6 +1539,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->BindCount = 0;
+					m->Binds = IntPtr.Zero;
+					return;
+				}
 				m->BindCount = (uint)value.Length;
 				m->Binds = Marshal.AllocHGlobal ((int)(sizeof(SparseMemoryBind)*m->BindCount));
 				unsafe
@@ -1506,6 +1590,8 @@ namespace Vulkan
 
 		public SparseMemoryBind[] Binds {
 			get {
+				if (m->BindCount == 0)
+					return null;
 				var values = new SparseMemoryBind [m->BindCount];
 				unsafe
 				{
@@ -1517,6 +1603,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->BindCount = 0;
+					m->Binds = IntPtr.Zero;
+					return;
+				}
 				m->BindCount = (uint)value.Length;
 				m->Binds = Marshal.AllocHGlobal ((int)(sizeof(SparseMemoryBind)*m->BindCount));
 				unsafe
@@ -1563,6 +1654,8 @@ namespace Vulkan
 
 		public SparseImageMemoryBind[] Binds {
 			get {
+				if (m->BindCount == 0)
+					return null;
 				var values = new SparseImageMemoryBind [m->BindCount];
 				unsafe
 				{
@@ -1574,6 +1667,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->BindCount = 0;
+					m->Binds = IntPtr.Zero;
+					return;
+				}
 				m->BindCount = (uint)value.Length;
 				m->Binds = Marshal.AllocHGlobal ((int)(sizeof(SparseImageMemoryBind)*m->BindCount));
 				unsafe
@@ -1614,6 +1712,8 @@ namespace Vulkan
 
 		public Semaphore[] WaitSemaphores {
 			get {
+				if (m->WaitSemaphoreCount == 0)
+					return null;
 				var values = new Semaphore [m->WaitSemaphoreCount];
 				unsafe
 				{
@@ -1627,6 +1727,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->WaitSemaphoreCount = 0;
+					m->WaitSemaphores = IntPtr.Zero;
+					return;
+				}
 				m->WaitSemaphoreCount = (uint)value.Length;
 				m->WaitSemaphores = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->WaitSemaphoreCount));
 				unsafe
@@ -1645,6 +1750,8 @@ namespace Vulkan
 
 		public SparseBufferMemoryBindInfo[] BufferBinds {
 			get {
+				if (m->BufferBindCount == 0)
+					return null;
 				var values = new SparseBufferMemoryBindInfo [m->BufferBindCount];
 				unsafe
 				{
@@ -1658,6 +1765,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->BufferBindCount = 0;
+					m->BufferBinds = IntPtr.Zero;
+					return;
+				}
 				m->BufferBindCount = (uint)value.Length;
 				m->BufferBinds = Marshal.AllocHGlobal ((int)(sizeof(Interop.SparseBufferMemoryBindInfo)*m->BufferBindCount));
 				unsafe
@@ -1676,6 +1788,8 @@ namespace Vulkan
 
 		public SparseImageOpaqueMemoryBindInfo[] ImageOpaqueBinds {
 			get {
+				if (m->ImageOpaqueBindCount == 0)
+					return null;
 				var values = new SparseImageOpaqueMemoryBindInfo [m->ImageOpaqueBindCount];
 				unsafe
 				{
@@ -1689,6 +1803,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->ImageOpaqueBindCount = 0;
+					m->ImageOpaqueBinds = IntPtr.Zero;
+					return;
+				}
 				m->ImageOpaqueBindCount = (uint)value.Length;
 				m->ImageOpaqueBinds = Marshal.AllocHGlobal ((int)(sizeof(Interop.SparseImageOpaqueMemoryBindInfo)*m->ImageOpaqueBindCount));
 				unsafe
@@ -1707,6 +1826,8 @@ namespace Vulkan
 
 		public SparseImageMemoryBindInfo[] ImageBinds {
 			get {
+				if (m->ImageBindCount == 0)
+					return null;
 				var values = new SparseImageMemoryBindInfo [m->ImageBindCount];
 				unsafe
 				{
@@ -1720,6 +1841,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->ImageBindCount = 0;
+					m->ImageBinds = IntPtr.Zero;
+					return;
+				}
 				m->ImageBindCount = (uint)value.Length;
 				m->ImageBinds = Marshal.AllocHGlobal ((int)(sizeof(Interop.SparseImageMemoryBindInfo)*m->ImageBindCount));
 				unsafe
@@ -1738,6 +1864,8 @@ namespace Vulkan
 
 		public Semaphore[] SignalSemaphores {
 			get {
+				if (m->SignalSemaphoreCount == 0)
+					return null;
 				var values = new Semaphore [m->SignalSemaphoreCount];
 				unsafe
 				{
@@ -1751,6 +1879,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->SignalSemaphoreCount = 0;
+					m->SignalSemaphores = IntPtr.Zero;
+					return;
+				}
 				m->SignalSemaphoreCount = (uint)value.Length;
 				m->SignalSemaphores = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->SignalSemaphoreCount));
 				unsafe
@@ -1860,6 +1993,8 @@ namespace Vulkan
 
 		public UInt32[] Code {
 			get {
+				if (m->CodeSize == UIntPtr.Zero)
+					return null;
 				var values = new UInt32 [(uint)m->CodeSize];
 				unsafe
 				{
@@ -1871,6 +2006,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->CodeSize = UIntPtr.Zero;
+					m->Code = IntPtr.Zero;
+					return;
+				}
 				m->CodeSize = (UIntPtr)value.Length;
 				m->Code = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*(uint)m->CodeSize));
 				unsafe
@@ -1927,6 +2067,8 @@ namespace Vulkan
 
 		public Sampler[] ImmutableSamplers {
 			get {
+				if (m->DescriptorCount == 0)
+					return null;
 				var values = new Sampler [m->DescriptorCount];
 				unsafe
 				{
@@ -1940,6 +2082,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->DescriptorCount = 0;
+					m->ImmutableSamplers = IntPtr.Zero;
+					return;
+				}
 				m->DescriptorCount = (uint)value.Length;
 				m->ImmutableSamplers = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->DescriptorCount));
 				unsafe
@@ -1978,6 +2125,8 @@ namespace Vulkan
 
 		public DescriptorSetLayoutBinding[] Bindings {
 			get {
+				if (m->BindingCount == 0)
+					return null;
 				var values = new DescriptorSetLayoutBinding [m->BindingCount];
 				unsafe
 				{
@@ -1991,6 +2140,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->BindingCount = 0;
+					m->Bindings = IntPtr.Zero;
+					return;
+				}
 				m->BindingCount = (uint)value.Length;
 				m->Bindings = Marshal.AllocHGlobal ((int)(sizeof(Interop.DescriptorSetLayoutBinding)*m->BindingCount));
 				unsafe
@@ -2048,6 +2202,8 @@ namespace Vulkan
 
 		public DescriptorPoolSize[] PoolSizes {
 			get {
+				if (m->PoolSizeCount == 0)
+					return null;
 				var values = new DescriptorPoolSize [m->PoolSizeCount];
 				unsafe
 				{
@@ -2059,6 +2215,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->PoolSizeCount = 0;
+					m->PoolSizes = IntPtr.Zero;
+					return;
+				}
 				m->PoolSizeCount = (uint)value.Length;
 				m->PoolSizes = Marshal.AllocHGlobal ((int)(sizeof(DescriptorPoolSize)*m->PoolSizeCount));
 				unsafe
@@ -2106,6 +2267,8 @@ namespace Vulkan
 
 		public DescriptorSetLayout[] SetLayouts {
 			get {
+				if (m->DescriptorSetCount == 0)
+					return null;
 				var values = new DescriptorSetLayout [m->DescriptorSetCount];
 				unsafe
 				{
@@ -2119,6 +2282,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->DescriptorSetCount = 0;
+					m->SetLayouts = IntPtr.Zero;
+					return;
+				}
 				m->DescriptorSetCount = (uint)value.Length;
 				m->SetLayouts = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->DescriptorSetCount));
 				unsafe
@@ -2167,6 +2335,8 @@ namespace Vulkan
 
 		public SpecializationMapEntry[] MapEntries {
 			get {
+				if (m->MapEntryCount == 0)
+					return null;
 				var values = new SpecializationMapEntry [m->MapEntryCount];
 				unsafe
 				{
@@ -2178,6 +2348,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->MapEntryCount = 0;
+					m->MapEntries = IntPtr.Zero;
+					return;
+				}
 				m->MapEntryCount = (uint)value.Length;
 				m->MapEntries = Marshal.AllocHGlobal ((int)(sizeof(SpecializationMapEntry)*m->MapEntryCount));
 				unsafe
@@ -2343,6 +2518,8 @@ namespace Vulkan
 
 		public VertexInputBindingDescription[] VertexBindingDescriptions {
 			get {
+				if (m->VertexBindingDescriptionCount == 0)
+					return null;
 				var values = new VertexInputBindingDescription [m->VertexBindingDescriptionCount];
 				unsafe
 				{
@@ -2354,6 +2531,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->VertexBindingDescriptionCount = 0;
+					m->VertexBindingDescriptions = IntPtr.Zero;
+					return;
+				}
 				m->VertexBindingDescriptionCount = (uint)value.Length;
 				m->VertexBindingDescriptions = Marshal.AllocHGlobal ((int)(sizeof(VertexInputBindingDescription)*m->VertexBindingDescriptionCount));
 				unsafe
@@ -2372,6 +2554,8 @@ namespace Vulkan
 
 		public VertexInputAttributeDescription[] VertexAttributeDescriptions {
 			get {
+				if (m->VertexAttributeDescriptionCount == 0)
+					return null;
 				var values = new VertexInputAttributeDescription [m->VertexAttributeDescriptionCount];
 				unsafe
 				{
@@ -2383,6 +2567,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->VertexAttributeDescriptionCount = 0;
+					m->VertexAttributeDescriptions = IntPtr.Zero;
+					return;
+				}
 				m->VertexAttributeDescriptionCount = (uint)value.Length;
 				m->VertexAttributeDescriptions = Marshal.AllocHGlobal ((int)(sizeof(VertexInputAttributeDescription)*m->VertexAttributeDescriptionCount));
 				unsafe
@@ -2500,6 +2689,8 @@ namespace Vulkan
 
 		public Viewport[] Viewports {
 			get {
+				if (m->ViewportCount == 0)
+					return null;
 				var values = new Viewport [m->ViewportCount];
 				unsafe
 				{
@@ -2511,6 +2702,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->ViewportCount = 0;
+					m->Viewports = IntPtr.Zero;
+					return;
+				}
 				m->ViewportCount = (uint)value.Length;
 				m->Viewports = Marshal.AllocHGlobal ((int)(sizeof(Viewport)*m->ViewportCount));
 				unsafe
@@ -2529,6 +2725,8 @@ namespace Vulkan
 
 		public Rect2D[] Scissors {
 			get {
+				if (m->ScissorCount == 0)
+					return null;
 				var values = new Rect2D [m->ScissorCount];
 				unsafe
 				{
@@ -2540,6 +2738,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->ScissorCount = 0;
+					m->Scissors = IntPtr.Zero;
+					return;
+				}
 				m->ScissorCount = (uint)value.Length;
 				m->Scissors = Marshal.AllocHGlobal ((int)(sizeof(Rect2D)*m->ScissorCount));
 				unsafe
@@ -2674,6 +2877,8 @@ namespace Vulkan
 
 		public UInt32[] SampleMask {
 			get {
+				if (m->RasterizationSamples == 0)
+					return null;
 				var values = new UInt32 [m->RasterizationSamples];
 				unsafe
 				{
@@ -2685,6 +2890,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->RasterizationSamples = 0;
+					m->SampleMask = IntPtr.Zero;
+					return;
+				}
 				m->RasterizationSamples = (uint)value.Length;
 				m->SampleMask = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*m->RasterizationSamples));
 				unsafe
@@ -2763,6 +2973,8 @@ namespace Vulkan
 
 		public PipelineColorBlendAttachmentState[] Attachments {
 			get {
+				if (m->AttachmentCount == 0)
+					return null;
 				var values = new PipelineColorBlendAttachmentState [m->AttachmentCount];
 				unsafe
 				{
@@ -2774,6 +2986,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->AttachmentCount = 0;
+					m->Attachments = IntPtr.Zero;
+					return;
+				}
 				m->AttachmentCount = (uint)value.Length;
 				m->Attachments = Marshal.AllocHGlobal ((int)(sizeof(PipelineColorBlendAttachmentState)*m->AttachmentCount));
 				unsafe
@@ -2838,6 +3055,8 @@ namespace Vulkan
 
 		public DynamicState[] DynamicStates {
 			get {
+				if (m->DynamicStateCount == 0)
+					return null;
 				var values = new DynamicState [m->DynamicStateCount];
 				unsafe
 				{
@@ -2849,6 +3068,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->DynamicStateCount = 0;
+					m->DynamicStates = IntPtr.Zero;
+					return;
+				}
 				m->DynamicStateCount = (uint)value.Length;
 				m->DynamicStates = Marshal.AllocHGlobal ((int)(sizeof(DynamicState)*m->DynamicStateCount));
 				unsafe
@@ -2979,6 +3203,8 @@ namespace Vulkan
 
 		public PipelineShaderStageCreateInfo[] Stages {
 			get {
+				if (m->StageCount == 0)
+					return null;
 				var values = new PipelineShaderStageCreateInfo [m->StageCount];
 				unsafe
 				{
@@ -2992,6 +3218,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->StageCount = 0;
+					m->Stages = IntPtr.Zero;
+					return;
+				}
 				m->StageCount = (uint)value.Length;
 				m->Stages = Marshal.AllocHGlobal ((int)(sizeof(Interop.PipelineShaderStageCreateInfo)*m->StageCount));
 				unsafe
@@ -3165,6 +3396,8 @@ namespace Vulkan
 
 		public DescriptorSetLayout[] SetLayouts {
 			get {
+				if (m->SetLayoutCount == 0)
+					return null;
 				var values = new DescriptorSetLayout [m->SetLayoutCount];
 				unsafe
 				{
@@ -3178,6 +3411,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->SetLayoutCount = 0;
+					m->SetLayouts = IntPtr.Zero;
+					return;
+				}
 				m->SetLayoutCount = (uint)value.Length;
 				m->SetLayouts = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->SetLayoutCount));
 				unsafe
@@ -3196,6 +3434,8 @@ namespace Vulkan
 
 		public PushConstantRange[] PushConstantRanges {
 			get {
+				if (m->PushConstantRangeCount == 0)
+					return null;
 				var values = new PushConstantRange [m->PushConstantRangeCount];
 				unsafe
 				{
@@ -3207,6 +3447,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->PushConstantRangeCount = 0;
+					m->PushConstantRanges = IntPtr.Zero;
+					return;
+				}
 				m->PushConstantRangeCount = (uint)value.Length;
 				m->PushConstantRanges = Marshal.AllocHGlobal ((int)(sizeof(PushConstantRange)*m->PushConstantRangeCount));
 				unsafe
@@ -3529,6 +3774,8 @@ namespace Vulkan
 
 		public ClearValue[] ClearValues {
 			get {
+				if (m->ClearValueCount == 0)
+					return null;
 				var values = new ClearValue [m->ClearValueCount];
 				unsafe
 				{
@@ -3542,6 +3789,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->ClearValueCount = 0;
+					m->ClearValues = IntPtr.Zero;
+					return;
+				}
 				m->ClearValueCount = (uint)value.Length;
 				m->ClearValues = Marshal.AllocHGlobal ((int)(sizeof(Interop.ClearValue)*m->ClearValueCount));
 				unsafe
@@ -3625,6 +3877,8 @@ namespace Vulkan
 
 		public AttachmentReference[] InputAttachments {
 			get {
+				if (m->InputAttachmentCount == 0)
+					return null;
 				var values = new AttachmentReference [m->InputAttachmentCount];
 				unsafe
 				{
@@ -3636,6 +3890,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->InputAttachmentCount = 0;
+					m->InputAttachments = IntPtr.Zero;
+					return;
+				}
 				m->InputAttachmentCount = (uint)value.Length;
 				m->InputAttachments = Marshal.AllocHGlobal ((int)(sizeof(AttachmentReference)*m->InputAttachmentCount));
 				unsafe
@@ -3654,6 +3913,8 @@ namespace Vulkan
 
 		public AttachmentReference[] ColorAttachments {
 			get {
+				if (m->ColorAttachmentCount == 0)
+					return null;
 				var values = new AttachmentReference [m->ColorAttachmentCount];
 				unsafe
 				{
@@ -3665,6 +3926,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->ColorAttachmentCount = 0;
+					m->ColorAttachments = IntPtr.Zero;
+					return;
+				}
 				m->ColorAttachmentCount = (uint)value.Length;
 				m->ColorAttachments = Marshal.AllocHGlobal ((int)(sizeof(AttachmentReference)*m->ColorAttachmentCount));
 				unsafe
@@ -3678,6 +3944,8 @@ namespace Vulkan
 
 		public AttachmentReference[] ResolveAttachments {
 			get {
+				if (m->ColorAttachmentCount == 0)
+					return null;
 				var values = new AttachmentReference [m->ColorAttachmentCount];
 				unsafe
 				{
@@ -3689,6 +3957,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->ColorAttachmentCount = 0;
+					m->ResolveAttachments = IntPtr.Zero;
+					return;
+				}
 				m->ColorAttachmentCount = (uint)value.Length;
 				m->ResolveAttachments = Marshal.AllocHGlobal ((int)(sizeof(AttachmentReference)*m->ColorAttachmentCount));
 				unsafe
@@ -3712,6 +3985,8 @@ namespace Vulkan
 
 		public UInt32[] PreserveAttachments {
 			get {
+				if (m->PreserveAttachmentCount == 0)
+					return null;
 				var values = new UInt32 [m->PreserveAttachmentCount];
 				unsafe
 				{
@@ -3723,6 +3998,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->PreserveAttachmentCount = 0;
+					m->PreserveAttachments = IntPtr.Zero;
+					return;
+				}
 				m->PreserveAttachmentCount = (uint)value.Length;
 				m->PreserveAttachments = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*m->PreserveAttachmentCount));
 				unsafe
@@ -3772,6 +4052,8 @@ namespace Vulkan
 
 		public AttachmentDescription[] Attachments {
 			get {
+				if (m->AttachmentCount == 0)
+					return null;
 				var values = new AttachmentDescription [m->AttachmentCount];
 				unsafe
 				{
@@ -3783,6 +4065,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->AttachmentCount = 0;
+					m->Attachments = IntPtr.Zero;
+					return;
+				}
 				m->AttachmentCount = (uint)value.Length;
 				m->Attachments = Marshal.AllocHGlobal ((int)(sizeof(AttachmentDescription)*m->AttachmentCount));
 				unsafe
@@ -3801,6 +4088,8 @@ namespace Vulkan
 
 		public SubpassDescription[] Subpasses {
 			get {
+				if (m->SubpassCount == 0)
+					return null;
 				var values = new SubpassDescription [m->SubpassCount];
 				unsafe
 				{
@@ -3814,6 +4103,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->SubpassCount = 0;
+					m->Subpasses = IntPtr.Zero;
+					return;
+				}
 				m->SubpassCount = (uint)value.Length;
 				m->Subpasses = Marshal.AllocHGlobal ((int)(sizeof(Interop.SubpassDescription)*m->SubpassCount));
 				unsafe
@@ -3832,6 +4126,8 @@ namespace Vulkan
 
 		public SubpassDependency[] Dependencies {
 			get {
+				if (m->DependencyCount == 0)
+					return null;
 				var values = new SubpassDependency [m->DependencyCount];
 				unsafe
 				{
@@ -3843,6 +4139,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->DependencyCount = 0;
+					m->Dependencies = IntPtr.Zero;
+					return;
+				}
 				m->DependencyCount = (uint)value.Length;
 				m->Dependencies = Marshal.AllocHGlobal ((int)(sizeof(SubpassDependency)*m->DependencyCount));
 				unsafe
@@ -4713,6 +5014,8 @@ namespace Vulkan
 
 		public ImageView[] Attachments {
 			get {
+				if (m->AttachmentCount == 0)
+					return null;
 				var values = new ImageView [m->AttachmentCount];
 				unsafe
 				{
@@ -4726,6 +5029,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->AttachmentCount = 0;
+					m->Attachments = IntPtr.Zero;
+					return;
+				}
 				m->AttachmentCount = (uint)value.Length;
 				m->Attachments = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->AttachmentCount));
 				unsafe
@@ -4806,6 +5114,8 @@ namespace Vulkan
 
 		public Semaphore[] WaitSemaphores {
 			get {
+				if (m->WaitSemaphoreCount == 0)
+					return null;
 				var values = new Semaphore [m->WaitSemaphoreCount];
 				unsafe
 				{
@@ -4819,6 +5129,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->WaitSemaphoreCount = 0;
+					m->WaitSemaphores = IntPtr.Zero;
+					return;
+				}
 				m->WaitSemaphoreCount = (uint)value.Length;
 				m->WaitSemaphores = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->WaitSemaphoreCount));
 				unsafe
@@ -4832,6 +5147,8 @@ namespace Vulkan
 
 		public UInt32[] WaitDstStageMask {
 			get {
+				if (m->WaitSemaphoreCount == 0)
+					return null;
 				var values = new UInt32 [m->WaitSemaphoreCount];
 				unsafe
 				{
@@ -4843,6 +5160,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->WaitSemaphoreCount = 0;
+					m->WaitDstStageMask = IntPtr.Zero;
+					return;
+				}
 				m->WaitSemaphoreCount = (uint)value.Length;
 				m->WaitDstStageMask = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*m->WaitSemaphoreCount));
 				unsafe
@@ -4861,6 +5183,8 @@ namespace Vulkan
 
 		public CommandBuffer[] CommandBuffers {
 			get {
+				if (m->CommandBufferCount == 0)
+					return null;
 				var values = new CommandBuffer [m->CommandBufferCount];
 				unsafe
 				{
@@ -4874,6 +5198,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->CommandBufferCount = 0;
+					m->CommandBuffers = IntPtr.Zero;
+					return;
+				}
 				m->CommandBufferCount = (uint)value.Length;
 				m->CommandBuffers = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*m->CommandBufferCount));
 				unsafe
@@ -4892,6 +5221,8 @@ namespace Vulkan
 
 		public Semaphore[] SignalSemaphores {
 			get {
+				if (m->SignalSemaphoreCount == 0)
+					return null;
 				var values = new Semaphore [m->SignalSemaphoreCount];
 				unsafe
 				{
@@ -4905,6 +5236,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->SignalSemaphoreCount = 0;
+					m->SignalSemaphores = IntPtr.Zero;
+					return;
+				}
 				m->SignalSemaphoreCount = (uint)value.Length;
 				m->SignalSemaphores = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->SignalSemaphoreCount));
 				unsafe
@@ -5236,6 +5572,8 @@ namespace Vulkan
 
 		public UInt32[] QueueFamilyIndices {
 			get {
+				if (m->QueueFamilyIndexCount == 0)
+					return null;
 				var values = new UInt32 [m->QueueFamilyIndexCount];
 				unsafe
 				{
@@ -5247,6 +5585,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->QueueFamilyIndexCount = 0;
+					m->QueueFamilyIndices = IntPtr.Zero;
+					return;
+				}
 				m->QueueFamilyIndexCount = (uint)value.Length;
 				m->QueueFamilyIndices = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*m->QueueFamilyIndexCount));
 				unsafe
@@ -5314,6 +5657,8 @@ namespace Vulkan
 
 		public Semaphore[] WaitSemaphores {
 			get {
+				if (m->WaitSemaphoreCount == 0)
+					return null;
 				var values = new Semaphore [m->WaitSemaphoreCount];
 				unsafe
 				{
@@ -5327,6 +5672,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->WaitSemaphoreCount = 0;
+					m->WaitSemaphores = IntPtr.Zero;
+					return;
+				}
 				m->WaitSemaphoreCount = (uint)value.Length;
 				m->WaitSemaphores = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->WaitSemaphoreCount));
 				unsafe
@@ -5345,6 +5695,8 @@ namespace Vulkan
 
 		public SwapchainKhr[] Swapchains {
 			get {
+				if (m->SwapchainCount == 0)
+					return null;
 				var values = new SwapchainKhr [m->SwapchainCount];
 				unsafe
 				{
@@ -5358,6 +5710,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->SwapchainCount = 0;
+					m->Swapchains = IntPtr.Zero;
+					return;
+				}
 				m->SwapchainCount = (uint)value.Length;
 				m->Swapchains = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->SwapchainCount));
 				unsafe
@@ -5371,6 +5728,8 @@ namespace Vulkan
 
 		public UInt32[] ImageIndices {
 			get {
+				if (m->SwapchainCount == 0)
+					return null;
 				var values = new UInt32 [m->SwapchainCount];
 				unsafe
 				{
@@ -5382,6 +5741,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->SwapchainCount = 0;
+					m->ImageIndices = IntPtr.Zero;
+					return;
+				}
 				m->SwapchainCount = (uint)value.Length;
 				m->ImageIndices = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*m->SwapchainCount));
 				unsafe
@@ -5395,6 +5759,8 @@ namespace Vulkan
 
 		public Result[] Results {
 			get {
+				if (m->SwapchainCount == 0)
+					return null;
 				var values = new Result [m->SwapchainCount];
 				unsafe
 				{
@@ -5406,6 +5772,11 @@ namespace Vulkan
 			}
 
 			set {
+				if (value == null) {
+					m->SwapchainCount = 0;
+					m->Results = IntPtr.Zero;
+					return;
+				}
 				m->SwapchainCount = (uint)value.Length;
 				m->Results = Marshal.AllocHGlobal ((int)(sizeof(Result)*m->SwapchainCount));
 				unsafe
