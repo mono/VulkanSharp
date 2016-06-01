@@ -106,6 +106,7 @@ namespace VulkanSharp.Generator
 			{ "size_t", "UIntPtr" },
 			{ "xcb_connection_t", "IntPtr" },
 			{ "xcb_window_t", "IntPtr" },
+			{ "xcb_visualid_t", "Int32" }
 		};
 
 		string TranslateCName (string name)
@@ -1668,12 +1669,18 @@ namespace VulkanSharp.Generator
 				LearnExtension (element);
 		}
 
+		void PrepareExtensionSets (string[] extensionNames)
+		{
+			requiredTypes = new HashSet<string> ();
+			requiredCommands = new HashSet<string> ();
+
+			foreach (var name in extensionNames)
+				PrepareExtensionSets (name);
+		}
+
 		void PrepareExtensionSets (string extensionName)
 		{
 			var elements = from e in specTree.Elements ("extensions").Elements ("extension") where e.Attribute ("name").Value == extensionName select e.Element ("require");
-
-			requiredTypes = new HashSet<string> ();
-			requiredCommands = new HashSet<string> ();
 
 			foreach (var element in elements.Elements ()) {
 				switch (element.Name.ToString ()) {
@@ -1689,20 +1696,34 @@ namespace VulkanSharp.Generator
 
 		void GeneratePlatformExtension (string name, string extensionName)
 		{
+			GeneratePlatformExtension (name, new string [] { extensionName });
+		}
+
+		void GeneratePlatformExtension (string name, string[] extensionNames)
+		{
 			platform = name;
+			var currentPath = outputPath;
 			outputPath += string.Format ("{0}..{0}Platforms{0}{1}", Path.DirectorySeparatorChar, name);
 
-			PrepareExtensionSets (extensionName);
+			PrepareExtensionSets (extensionNames);
 
 			LearnStructsAndUnions ();
 			GenerateStructs ();
 			GenerateCommands ();
 			GenerateHandles ();
+
+			outputPath = currentPath;
 		}
 
 		void GenerateExtensions ()
 		{
 			GeneratePlatformExtension ("Android", "VK_KHR_android_surface");
+			GeneratePlatformExtension ("Linux", new string[] {
+				"VK_KHR_xlib_surface",
+				"VK_KHR_xcb_surface",
+				"VK_KHR_wayland_surface",
+				"VK_KHR_mir_surface" } );
+			GeneratePlatformExtension ("Windows", "VK_KHR_win32_surface");
 		}
 	}
 }
