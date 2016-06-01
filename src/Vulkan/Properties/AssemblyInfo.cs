@@ -26,3 +26,4 @@ using System.Runtime.CompilerServices;
 //[assembly: AssemblyKeyFile("")]
 
 [assembly: InternalsVisibleTo("Vulkan.Android")]
+[assembly: InternalsVisibleTo("Vulkan.Win32")]
