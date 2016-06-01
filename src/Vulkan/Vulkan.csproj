@@ -62,4 +62,9 @@
   <ItemGroup>
     <Folder Include="Interop\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Vulkan.dll.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

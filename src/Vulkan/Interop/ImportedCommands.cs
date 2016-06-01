@@ -15,7 +15,7 @@ namespace Vulkan.Interop
 {
 	internal static class NativeMethods
 	{
-		const string VulkanLibrary = "vulkan";
+		const string VulkanLibrary = "vulkan-1";
 
 		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
 		internal static unsafe extern Result vkCreateInstance (InstanceCreateInfo* pCreateInfo, AllocationCallbacks* pAllocator, IntPtr* pInstance);

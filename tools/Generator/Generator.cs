@@ -1578,7 +1578,7 @@ namespace VulkanSharp.Generator
 			IndentWriteLine ("internal static class NativeMethods");
 			IndentWriteLine ("{");
 			IndentLevel++;
-			IndentWriteLine ("const string VulkanLibrary = \"vulkan\";\n");
+			IndentWriteLine ("const string VulkanLibrary = \"{0}\";\n", (platform == null || platform == "Windows") ? "vulkan-1" : "vulkan");
 
 			bool written = false;
 			foreach (var command in specTree.Elements ("commands").Elements ("command")) {
