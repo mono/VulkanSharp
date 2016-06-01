@@ -16,7 +16,10 @@ namespace VulkanSharp.Generator
 		bool isInterop;
 		bool needsMarshalling;
 
-		Dictionary<string, string> typesTranslation = new Dictionary<string, string> () { { "ANativeWindow", "IntPtr" }  };
+		Dictionary<string, string> typesTranslation = new Dictionary<string, string> () {
+            { "ANativeWindow", "IntPtr" },
+            { "HWND", "IntPtr" },
+            { "HINSTANCE", "IntPtr" },  };
 		Dictionary<string, StructInfo> structures = new Dictionary<string, StructInfo> ();
 		Dictionary<string, HandleInfo> handles = new Dictionary<string,HandleInfo> ();
 		Dictionary<string, List<EnumExtensionInfo>> enumExtensions = new Dictionary<string, List<EnumExtensionInfo>> ();
@@ -1527,7 +1530,8 @@ namespace VulkanSharp.Generator
 			"vkCreateWaylandSurfaceKHR",
 			"vkGetPhysicalDeviceWaylandPresentationSupportKHR",
 			"vkCreateWin32SurfaceKHR",
-			"vkCreateXlibSurfaceKHR",
+            "vkGetPhysicalDeviceWin32PresentationSupportKHR",
+            "vkCreateXlibSurfaceKHR",
 			"vkGetPhysicalDeviceXlibPresentationSupportKHR",
 			"vkCreateXcbSurfaceKHR",
 			"vkCreateAndroidSurfaceKHR"
@@ -1690,6 +1694,8 @@ namespace VulkanSharp.Generator
 		void GeneratePlatformExtension (string name, string extensionName)
 		{
 			platform = name;
+
+		    var oldPath = outputPath;
 			outputPath += string.Format ("{0}..{0}Platforms{0}{1}", Path.DirectorySeparatorChar, name);
 
 			PrepareExtensionSets (extensionName);
@@ -1698,11 +1704,14 @@ namespace VulkanSharp.Generator
 			GenerateStructs ();
 			GenerateCommands ();
 			GenerateHandles ();
+
+		    outputPath = oldPath;
 		}
 
 		void GenerateExtensions ()
 		{
 			GeneratePlatformExtension ("Android", "VK_KHR_android_surface");
+			GeneratePlatformExtension ("Win32", "VK_KHR_win32_surface");
 		}
 	}
 }
