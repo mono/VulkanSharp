@@ -323,7 +323,7 @@ namespace Vulkan
 				unsafe
 				{
 					float* ptr = (float*)m->QueuePriorities;
-					for (int i = 0; i < m->QueueCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -336,11 +336,11 @@ namespace Vulkan
 					return;
 				}
 				m->QueueCount = (uint)value.Length;
-				m->QueuePriorities = Marshal.AllocHGlobal ((int)(sizeof(float)*m->QueueCount));
+				m->QueuePriorities = Marshal.AllocHGlobal ((int)(sizeof(float)*value.Length));
 				unsafe
 				{
 					float* ptr = (float*)m->QueuePriorities;
-					for (int i = 0; i < m->QueueCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -387,7 +387,7 @@ namespace Vulkan
 				unsafe
 				{
 					Interop.DeviceQueueCreateInfo* ptr = (Interop.DeviceQueueCreateInfo*)m->QueueCreateInfos;
-					for (int i = 0; i < m->QueueCreateInfoCount; i++) {
+					for (int i = 0; i < values.Length; i++) {
 						values [i] = new DeviceQueueCreateInfo ();
 						*values [i].m = ptr [i];
 					}
@@ -402,11 +402,11 @@ namespace Vulkan
 					return;
 				}
 				m->QueueCreateInfoCount = (uint)value.Length;
-				m->QueueCreateInfos = Marshal.AllocHGlobal ((int)(sizeof(Interop.DeviceQueueCreateInfo)*m->QueueCreateInfoCount));
+				m->QueueCreateInfos = Marshal.AllocHGlobal ((int)(sizeof(Interop.DeviceQueueCreateInfo)*value.Length));
 				unsafe
 				{
 					Interop.DeviceQueueCreateInfo* ptr = (Interop.DeviceQueueCreateInfo*)m->QueueCreateInfos;
-					for (int i = 0; i < m->QueueCreateInfoCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = *value [i].m;
 				}
 			}
@@ -832,7 +832,7 @@ namespace Vulkan
 				unsafe
 				{
 					DescriptorImageInfo* ptr = (DescriptorImageInfo*)m->ImageInfo;
-					for (int i = 0; i < m->DescriptorCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -845,11 +845,11 @@ namespace Vulkan
 					return;
 				}
 				m->DescriptorCount = (uint)value.Length;
-				m->ImageInfo = Marshal.AllocHGlobal ((int)(sizeof(DescriptorImageInfo)*m->DescriptorCount));
+				m->ImageInfo = Marshal.AllocHGlobal ((int)(sizeof(DescriptorImageInfo)*value.Length));
 				unsafe
 				{
 					DescriptorImageInfo* ptr = (DescriptorImageInfo*)m->ImageInfo;
-					for (int i = 0; i < m->DescriptorCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -863,7 +863,7 @@ namespace Vulkan
 				unsafe
 				{
 					DescriptorBufferInfo* ptr = (DescriptorBufferInfo*)m->BufferInfo;
-					for (int i = 0; i < m->DescriptorCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -876,11 +876,11 @@ namespace Vulkan
 					return;
 				}
 				m->DescriptorCount = (uint)value.Length;
-				m->BufferInfo = Marshal.AllocHGlobal ((int)(sizeof(DescriptorBufferInfo)*m->DescriptorCount));
+				m->BufferInfo = Marshal.AllocHGlobal ((int)(sizeof(DescriptorBufferInfo)*value.Length));
 				unsafe
 				{
 					DescriptorBufferInfo* ptr = (DescriptorBufferInfo*)m->BufferInfo;
-					for (int i = 0; i < m->DescriptorCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -894,7 +894,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->TexelBufferView;
-					for (int i = 0; i < m->DescriptorCount; i++) {
+					for (int i = 0; i < values.Length; i++) {
 						values [i] = new BufferView ();
 						values [i].m = ptr [i];
 					}
@@ -909,11 +909,11 @@ namespace Vulkan
 					return;
 				}
 				m->DescriptorCount = (uint)value.Length;
-				m->TexelBufferView = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->DescriptorCount));
+				m->TexelBufferView = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*value.Length));
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->TexelBufferView;
-					for (int i = 0; i < m->DescriptorCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i].m;
 				}
 			}
@@ -1035,7 +1035,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->QueueFamilyIndices;
-					for (int i = 0; i < m->QueueFamilyIndexCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -1048,11 +1048,11 @@ namespace Vulkan
 					return;
 				}
 				m->QueueFamilyIndexCount = (uint)value.Length;
-				m->QueueFamilyIndices = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*m->QueueFamilyIndexCount));
+				m->QueueFamilyIndices = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*value.Length));
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->QueueFamilyIndices;
-					for (int i = 0; i < m->QueueFamilyIndexCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -1373,7 +1373,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->QueueFamilyIndices;
-					for (int i = 0; i < m->QueueFamilyIndexCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -1386,11 +1386,11 @@ namespace Vulkan
 					return;
 				}
 				m->QueueFamilyIndexCount = (uint)value.Length;
-				m->QueueFamilyIndices = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*m->QueueFamilyIndexCount));
+				m->QueueFamilyIndices = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*value.Length));
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->QueueFamilyIndices;
-					for (int i = 0; i < m->QueueFamilyIndexCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -1532,7 +1532,7 @@ namespace Vulkan
 				unsafe
 				{
 					SparseMemoryBind* ptr = (SparseMemoryBind*)m->Binds;
-					for (int i = 0; i < m->BindCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -1545,11 +1545,11 @@ namespace Vulkan
 					return;
 				}
 				m->BindCount = (uint)value.Length;
-				m->Binds = Marshal.AllocHGlobal ((int)(sizeof(SparseMemoryBind)*m->BindCount));
+				m->Binds = Marshal.AllocHGlobal ((int)(sizeof(SparseMemoryBind)*value.Length));
 				unsafe
 				{
 					SparseMemoryBind* ptr = (SparseMemoryBind*)m->Binds;
-					for (int i = 0; i < m->BindCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -1596,7 +1596,7 @@ namespace Vulkan
 				unsafe
 				{
 					SparseMemoryBind* ptr = (SparseMemoryBind*)m->Binds;
-					for (int i = 0; i < m->BindCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -1609,11 +1609,11 @@ namespace Vulkan
 					return;
 				}
 				m->BindCount = (uint)value.Length;
-				m->Binds = Marshal.AllocHGlobal ((int)(sizeof(SparseMemoryBind)*m->BindCount));
+				m->Binds = Marshal.AllocHGlobal ((int)(sizeof(SparseMemoryBind)*value.Length));
 				unsafe
 				{
 					SparseMemoryBind* ptr = (SparseMemoryBind*)m->Binds;
-					for (int i = 0; i < m->BindCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -1660,7 +1660,7 @@ namespace Vulkan
 				unsafe
 				{
 					SparseImageMemoryBind* ptr = (SparseImageMemoryBind*)m->Binds;
-					for (int i = 0; i < m->BindCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -1673,11 +1673,11 @@ namespace Vulkan
 					return;
 				}
 				m->BindCount = (uint)value.Length;
-				m->Binds = Marshal.AllocHGlobal ((int)(sizeof(SparseImageMemoryBind)*m->BindCount));
+				m->Binds = Marshal.AllocHGlobal ((int)(sizeof(SparseImageMemoryBind)*value.Length));
 				unsafe
 				{
 					SparseImageMemoryBind* ptr = (SparseImageMemoryBind*)m->Binds;
-					for (int i = 0; i < m->BindCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -1718,7 +1718,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->WaitSemaphores;
-					for (int i = 0; i < m->WaitSemaphoreCount; i++) {
+					for (int i = 0; i < values.Length; i++) {
 						values [i] = new Semaphore ();
 						values [i].m = ptr [i];
 					}
@@ -1733,11 +1733,11 @@ namespace Vulkan
 					return;
 				}
 				m->WaitSemaphoreCount = (uint)value.Length;
-				m->WaitSemaphores = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->WaitSemaphoreCount));
+				m->WaitSemaphores = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*value.Length));
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->WaitSemaphores;
-					for (int i = 0; i < m->WaitSemaphoreCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i].m;
 				}
 			}
@@ -1756,7 +1756,7 @@ namespace Vulkan
 				unsafe
 				{
 					Interop.SparseBufferMemoryBindInfo* ptr = (Interop.SparseBufferMemoryBindInfo*)m->BufferBinds;
-					for (int i = 0; i < m->BufferBindCount; i++) {
+					for (int i = 0; i < values.Length; i++) {
 						values [i] = new SparseBufferMemoryBindInfo ();
 						*values [i].m = ptr [i];
 					}
@@ -1771,11 +1771,11 @@ namespace Vulkan
 					return;
 				}
 				m->BufferBindCount = (uint)value.Length;
-				m->BufferBinds = Marshal.AllocHGlobal ((int)(sizeof(Interop.SparseBufferMemoryBindInfo)*m->BufferBindCount));
+				m->BufferBinds = Marshal.AllocHGlobal ((int)(sizeof(Interop.SparseBufferMemoryBindInfo)*value.Length));
 				unsafe
 				{
 					Interop.SparseBufferMemoryBindInfo* ptr = (Interop.SparseBufferMemoryBindInfo*)m->BufferBinds;
-					for (int i = 0; i < m->BufferBindCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = *value [i].m;
 				}
 			}
@@ -1794,7 +1794,7 @@ namespace Vulkan
 				unsafe
 				{
 					Interop.SparseImageOpaqueMemoryBindInfo* ptr = (Interop.SparseImageOpaqueMemoryBindInfo*)m->ImageOpaqueBinds;
-					for (int i = 0; i < m->ImageOpaqueBindCount; i++) {
+					for (int i = 0; i < values.Length; i++) {
 						values [i] = new SparseImageOpaqueMemoryBindInfo ();
 						*values [i].m = ptr [i];
 					}
@@ -1809,11 +1809,11 @@ namespace Vulkan
 					return;
 				}
 				m->ImageOpaqueBindCount = (uint)value.Length;
-				m->ImageOpaqueBinds = Marshal.AllocHGlobal ((int)(sizeof(Interop.SparseImageOpaqueMemoryBindInfo)*m->ImageOpaqueBindCount));
+				m->ImageOpaqueBinds = Marshal.AllocHGlobal ((int)(sizeof(Interop.SparseImageOpaqueMemoryBindInfo)*value.Length));
 				unsafe
 				{
 					Interop.SparseImageOpaqueMemoryBindInfo* ptr = (Interop.SparseImageOpaqueMemoryBindInfo*)m->ImageOpaqueBinds;
-					for (int i = 0; i < m->ImageOpaqueBindCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = *value [i].m;
 				}
 			}
@@ -1832,7 +1832,7 @@ namespace Vulkan
 				unsafe
 				{
 					Interop.SparseImageMemoryBindInfo* ptr = (Interop.SparseImageMemoryBindInfo*)m->ImageBinds;
-					for (int i = 0; i < m->ImageBindCount; i++) {
+					for (int i = 0; i < values.Length; i++) {
 						values [i] = new SparseImageMemoryBindInfo ();
 						*values [i].m = ptr [i];
 					}
@@ -1847,11 +1847,11 @@ namespace Vulkan
 					return;
 				}
 				m->ImageBindCount = (uint)value.Length;
-				m->ImageBinds = Marshal.AllocHGlobal ((int)(sizeof(Interop.SparseImageMemoryBindInfo)*m->ImageBindCount));
+				m->ImageBinds = Marshal.AllocHGlobal ((int)(sizeof(Interop.SparseImageMemoryBindInfo)*value.Length));
 				unsafe
 				{
 					Interop.SparseImageMemoryBindInfo* ptr = (Interop.SparseImageMemoryBindInfo*)m->ImageBinds;
-					for (int i = 0; i < m->ImageBindCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = *value [i].m;
 				}
 			}
@@ -1870,7 +1870,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->SignalSemaphores;
-					for (int i = 0; i < m->SignalSemaphoreCount; i++) {
+					for (int i = 0; i < values.Length; i++) {
 						values [i] = new Semaphore ();
 						values [i].m = ptr [i];
 					}
@@ -1885,11 +1885,11 @@ namespace Vulkan
 					return;
 				}
 				m->SignalSemaphoreCount = (uint)value.Length;
-				m->SignalSemaphores = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->SignalSemaphoreCount));
+				m->SignalSemaphores = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*value.Length));
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->SignalSemaphores;
-					for (int i = 0; i < m->SignalSemaphoreCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i].m;
 				}
 			}
@@ -1995,11 +1995,11 @@ namespace Vulkan
 			get {
 				if (m->CodeSize == UIntPtr.Zero)
 					return null;
-				var values = new UInt32 [(uint)m->CodeSize];
+				var values = new UInt32 [((uint)m->CodeSize >> 2)];
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->Code;
-					for (int i = 0; i < (uint)m->CodeSize; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -2011,12 +2011,12 @@ namespace Vulkan
 					m->Code = IntPtr.Zero;
 					return;
 				}
-				m->CodeSize = (UIntPtr)value.Length;
-				m->Code = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*(uint)m->CodeSize));
+				m->CodeSize = (UIntPtr)(value.Length << 2);
+				m->Code = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*value.Length));
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->Code;
-					for (int i = 0; i < (uint)m->CodeSize; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -2073,7 +2073,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->ImmutableSamplers;
-					for (int i = 0; i < m->DescriptorCount; i++) {
+					for (int i = 0; i < values.Length; i++) {
 						values [i] = new Sampler ();
 						values [i].m = ptr [i];
 					}
@@ -2088,11 +2088,11 @@ namespace Vulkan
 					return;
 				}
 				m->DescriptorCount = (uint)value.Length;
-				m->ImmutableSamplers = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->DescriptorCount));
+				m->ImmutableSamplers = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*value.Length));
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->ImmutableSamplers;
-					for (int i = 0; i < m->DescriptorCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i].m;
 				}
 			}
@@ -2131,7 +2131,7 @@ namespace Vulkan
 				unsafe
 				{
 					Interop.DescriptorSetLayoutBinding* ptr = (Interop.DescriptorSetLayoutBinding*)m->Bindings;
-					for (int i = 0; i < m->BindingCount; i++) {
+					for (int i = 0; i < values.Length; i++) {
 						values [i] = new DescriptorSetLayoutBinding ();
 						*values [i].m = ptr [i];
 					}
@@ -2146,11 +2146,11 @@ namespace Vulkan
 					return;
 				}
 				m->BindingCount = (uint)value.Length;
-				m->Bindings = Marshal.AllocHGlobal ((int)(sizeof(Interop.DescriptorSetLayoutBinding)*m->BindingCount));
+				m->Bindings = Marshal.AllocHGlobal ((int)(sizeof(Interop.DescriptorSetLayoutBinding)*value.Length));
 				unsafe
 				{
 					Interop.DescriptorSetLayoutBinding* ptr = (Interop.DescriptorSetLayoutBinding*)m->Bindings;
-					for (int i = 0; i < m->BindingCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = *value [i].m;
 				}
 			}
@@ -2208,7 +2208,7 @@ namespace Vulkan
 				unsafe
 				{
 					DescriptorPoolSize* ptr = (DescriptorPoolSize*)m->PoolSizes;
-					for (int i = 0; i < m->PoolSizeCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -2221,11 +2221,11 @@ namespace Vulkan
 					return;
 				}
 				m->PoolSizeCount = (uint)value.Length;
-				m->PoolSizes = Marshal.AllocHGlobal ((int)(sizeof(DescriptorPoolSize)*m->PoolSizeCount));
+				m->PoolSizes = Marshal.AllocHGlobal ((int)(sizeof(DescriptorPoolSize)*value.Length));
 				unsafe
 				{
 					DescriptorPoolSize* ptr = (DescriptorPoolSize*)m->PoolSizes;
-					for (int i = 0; i < m->PoolSizeCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -2273,7 +2273,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->SetLayouts;
-					for (int i = 0; i < m->DescriptorSetCount; i++) {
+					for (int i = 0; i < values.Length; i++) {
 						values [i] = new DescriptorSetLayout ();
 						values [i].m = ptr [i];
 					}
@@ -2288,11 +2288,11 @@ namespace Vulkan
 					return;
 				}
 				m->DescriptorSetCount = (uint)value.Length;
-				m->SetLayouts = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->DescriptorSetCount));
+				m->SetLayouts = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*value.Length));
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->SetLayouts;
-					for (int i = 0; i < m->DescriptorSetCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i].m;
 				}
 			}
@@ -2341,7 +2341,7 @@ namespace Vulkan
 				unsafe
 				{
 					SpecializationMapEntry* ptr = (SpecializationMapEntry*)m->MapEntries;
-					for (int i = 0; i < m->MapEntryCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -2354,11 +2354,11 @@ namespace Vulkan
 					return;
 				}
 				m->MapEntryCount = (uint)value.Length;
-				m->MapEntries = Marshal.AllocHGlobal ((int)(sizeof(SpecializationMapEntry)*m->MapEntryCount));
+				m->MapEntries = Marshal.AllocHGlobal ((int)(sizeof(SpecializationMapEntry)*value.Length));
 				unsafe
 				{
 					SpecializationMapEntry* ptr = (SpecializationMapEntry*)m->MapEntries;
-					for (int i = 0; i < m->MapEntryCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -2524,7 +2524,7 @@ namespace Vulkan
 				unsafe
 				{
 					VertexInputBindingDescription* ptr = (VertexInputBindingDescription*)m->VertexBindingDescriptions;
-					for (int i = 0; i < m->VertexBindingDescriptionCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -2537,11 +2537,11 @@ namespace Vulkan
 					return;
 				}
 				m->VertexBindingDescriptionCount = (uint)value.Length;
-				m->VertexBindingDescriptions = Marshal.AllocHGlobal ((int)(sizeof(VertexInputBindingDescription)*m->VertexBindingDescriptionCount));
+				m->VertexBindingDescriptions = Marshal.AllocHGlobal ((int)(sizeof(VertexInputBindingDescription)*value.Length));
 				unsafe
 				{
 					VertexInputBindingDescription* ptr = (VertexInputBindingDescription*)m->VertexBindingDescriptions;
-					for (int i = 0; i < m->VertexBindingDescriptionCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -2560,7 +2560,7 @@ namespace Vulkan
 				unsafe
 				{
 					VertexInputAttributeDescription* ptr = (VertexInputAttributeDescription*)m->VertexAttributeDescriptions;
-					for (int i = 0; i < m->VertexAttributeDescriptionCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -2573,11 +2573,11 @@ namespace Vulkan
 					return;
 				}
 				m->VertexAttributeDescriptionCount = (uint)value.Length;
-				m->VertexAttributeDescriptions = Marshal.AllocHGlobal ((int)(sizeof(VertexInputAttributeDescription)*m->VertexAttributeDescriptionCount));
+				m->VertexAttributeDescriptions = Marshal.AllocHGlobal ((int)(sizeof(VertexInputAttributeDescription)*value.Length));
 				unsafe
 				{
 					VertexInputAttributeDescription* ptr = (VertexInputAttributeDescription*)m->VertexAttributeDescriptions;
-					for (int i = 0; i < m->VertexAttributeDescriptionCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -2695,7 +2695,7 @@ namespace Vulkan
 				unsafe
 				{
 					Viewport* ptr = (Viewport*)m->Viewports;
-					for (int i = 0; i < m->ViewportCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -2708,11 +2708,11 @@ namespace Vulkan
 					return;
 				}
 				m->ViewportCount = (uint)value.Length;
-				m->Viewports = Marshal.AllocHGlobal ((int)(sizeof(Viewport)*m->ViewportCount));
+				m->Viewports = Marshal.AllocHGlobal ((int)(sizeof(Viewport)*value.Length));
 				unsafe
 				{
 					Viewport* ptr = (Viewport*)m->Viewports;
-					for (int i = 0; i < m->ViewportCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -2731,7 +2731,7 @@ namespace Vulkan
 				unsafe
 				{
 					Rect2D* ptr = (Rect2D*)m->Scissors;
-					for (int i = 0; i < m->ScissorCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -2744,11 +2744,11 @@ namespace Vulkan
 					return;
 				}
 				m->ScissorCount = (uint)value.Length;
-				m->Scissors = Marshal.AllocHGlobal ((int)(sizeof(Rect2D)*m->ScissorCount));
+				m->Scissors = Marshal.AllocHGlobal ((int)(sizeof(Rect2D)*value.Length));
 				unsafe
 				{
 					Rect2D* ptr = (Rect2D*)m->Scissors;
-					for (int i = 0; i < m->ScissorCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -2883,7 +2883,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->SampleMask;
-					for (int i = 0; i < m->RasterizationSamples; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -2896,11 +2896,11 @@ namespace Vulkan
 					return;
 				}
 				m->RasterizationSamples = (uint)value.Length;
-				m->SampleMask = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*m->RasterizationSamples));
+				m->SampleMask = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*value.Length));
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->SampleMask;
-					for (int i = 0; i < m->RasterizationSamples; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -2979,7 +2979,7 @@ namespace Vulkan
 				unsafe
 				{
 					PipelineColorBlendAttachmentState* ptr = (PipelineColorBlendAttachmentState*)m->Attachments;
-					for (int i = 0; i < m->AttachmentCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -2992,11 +2992,11 @@ namespace Vulkan
 					return;
 				}
 				m->AttachmentCount = (uint)value.Length;
-				m->Attachments = Marshal.AllocHGlobal ((int)(sizeof(PipelineColorBlendAttachmentState)*m->AttachmentCount));
+				m->Attachments = Marshal.AllocHGlobal ((int)(sizeof(PipelineColorBlendAttachmentState)*value.Length));
 				unsafe
 				{
 					PipelineColorBlendAttachmentState* ptr = (PipelineColorBlendAttachmentState*)m->Attachments;
-					for (int i = 0; i < m->AttachmentCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -3061,7 +3061,7 @@ namespace Vulkan
 				unsafe
 				{
 					DynamicState* ptr = (DynamicState*)m->DynamicStates;
-					for (int i = 0; i < m->DynamicStateCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -3074,11 +3074,11 @@ namespace Vulkan
 					return;
 				}
 				m->DynamicStateCount = (uint)value.Length;
-				m->DynamicStates = Marshal.AllocHGlobal ((int)(sizeof(DynamicState)*m->DynamicStateCount));
+				m->DynamicStates = Marshal.AllocHGlobal ((int)(sizeof(DynamicState)*value.Length));
 				unsafe
 				{
 					DynamicState* ptr = (DynamicState*)m->DynamicStates;
-					for (int i = 0; i < m->DynamicStateCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -3209,7 +3209,7 @@ namespace Vulkan
 				unsafe
 				{
 					Interop.PipelineShaderStageCreateInfo* ptr = (Interop.PipelineShaderStageCreateInfo*)m->Stages;
-					for (int i = 0; i < m->StageCount; i++) {
+					for (int i = 0; i < values.Length; i++) {
 						values [i] = new PipelineShaderStageCreateInfo ();
 						*values [i].m = ptr [i];
 					}
@@ -3224,11 +3224,11 @@ namespace Vulkan
 					return;
 				}
 				m->StageCount = (uint)value.Length;
-				m->Stages = Marshal.AllocHGlobal ((int)(sizeof(Interop.PipelineShaderStageCreateInfo)*m->StageCount));
+				m->Stages = Marshal.AllocHGlobal ((int)(sizeof(Interop.PipelineShaderStageCreateInfo)*value.Length));
 				unsafe
 				{
 					Interop.PipelineShaderStageCreateInfo* ptr = (Interop.PipelineShaderStageCreateInfo*)m->Stages;
-					for (int i = 0; i < m->StageCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = *value [i].m;
 				}
 			}
@@ -3402,7 +3402,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->SetLayouts;
-					for (int i = 0; i < m->SetLayoutCount; i++) {
+					for (int i = 0; i < values.Length; i++) {
 						values [i] = new DescriptorSetLayout ();
 						values [i].m = ptr [i];
 					}
@@ -3417,11 +3417,11 @@ namespace Vulkan
 					return;
 				}
 				m->SetLayoutCount = (uint)value.Length;
-				m->SetLayouts = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->SetLayoutCount));
+				m->SetLayouts = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*value.Length));
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->SetLayouts;
-					for (int i = 0; i < m->SetLayoutCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i].m;
 				}
 			}
@@ -3440,7 +3440,7 @@ namespace Vulkan
 				unsafe
 				{
 					PushConstantRange* ptr = (PushConstantRange*)m->PushConstantRanges;
-					for (int i = 0; i < m->PushConstantRangeCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -3453,11 +3453,11 @@ namespace Vulkan
 					return;
 				}
 				m->PushConstantRangeCount = (uint)value.Length;
-				m->PushConstantRanges = Marshal.AllocHGlobal ((int)(sizeof(PushConstantRange)*m->PushConstantRangeCount));
+				m->PushConstantRanges = Marshal.AllocHGlobal ((int)(sizeof(PushConstantRange)*value.Length));
 				unsafe
 				{
 					PushConstantRange* ptr = (PushConstantRange*)m->PushConstantRanges;
-					for (int i = 0; i < m->PushConstantRangeCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -3780,7 +3780,7 @@ namespace Vulkan
 				unsafe
 				{
 					Interop.ClearValue* ptr = (Interop.ClearValue*)m->ClearValues;
-					for (int i = 0; i < m->ClearValueCount; i++) {
+					for (int i = 0; i < values.Length; i++) {
 						values [i] = new ClearValue ();
 						*values [i].m = ptr [i];
 					}
@@ -3795,11 +3795,11 @@ namespace Vulkan
 					return;
 				}
 				m->ClearValueCount = (uint)value.Length;
-				m->ClearValues = Marshal.AllocHGlobal ((int)(sizeof(Interop.ClearValue)*m->ClearValueCount));
+				m->ClearValues = Marshal.AllocHGlobal ((int)(sizeof(Interop.ClearValue)*value.Length));
 				unsafe
 				{
 					Interop.ClearValue* ptr = (Interop.ClearValue*)m->ClearValues;
-					for (int i = 0; i < m->ClearValueCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = *value [i].m;
 				}
 			}
@@ -3883,7 +3883,7 @@ namespace Vulkan
 				unsafe
 				{
 					AttachmentReference* ptr = (AttachmentReference*)m->InputAttachments;
-					for (int i = 0; i < m->InputAttachmentCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -3896,11 +3896,11 @@ namespace Vulkan
 					return;
 				}
 				m->InputAttachmentCount = (uint)value.Length;
-				m->InputAttachments = Marshal.AllocHGlobal ((int)(sizeof(AttachmentReference)*m->InputAttachmentCount));
+				m->InputAttachments = Marshal.AllocHGlobal ((int)(sizeof(AttachmentReference)*value.Length));
 				unsafe
 				{
 					AttachmentReference* ptr = (AttachmentReference*)m->InputAttachments;
-					for (int i = 0; i < m->InputAttachmentCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -3919,7 +3919,7 @@ namespace Vulkan
 				unsafe
 				{
 					AttachmentReference* ptr = (AttachmentReference*)m->ColorAttachments;
-					for (int i = 0; i < m->ColorAttachmentCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -3932,11 +3932,11 @@ namespace Vulkan
 					return;
 				}
 				m->ColorAttachmentCount = (uint)value.Length;
-				m->ColorAttachments = Marshal.AllocHGlobal ((int)(sizeof(AttachmentReference)*m->ColorAttachmentCount));
+				m->ColorAttachments = Marshal.AllocHGlobal ((int)(sizeof(AttachmentReference)*value.Length));
 				unsafe
 				{
 					AttachmentReference* ptr = (AttachmentReference*)m->ColorAttachments;
-					for (int i = 0; i < m->ColorAttachmentCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -3950,7 +3950,7 @@ namespace Vulkan
 				unsafe
 				{
 					AttachmentReference* ptr = (AttachmentReference*)m->ResolveAttachments;
-					for (int i = 0; i < m->ColorAttachmentCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -3963,11 +3963,11 @@ namespace Vulkan
 					return;
 				}
 				m->ColorAttachmentCount = (uint)value.Length;
-				m->ResolveAttachments = Marshal.AllocHGlobal ((int)(sizeof(AttachmentReference)*m->ColorAttachmentCount));
+				m->ResolveAttachments = Marshal.AllocHGlobal ((int)(sizeof(AttachmentReference)*value.Length));
 				unsafe
 				{
 					AttachmentReference* ptr = (AttachmentReference*)m->ResolveAttachments;
-					for (int i = 0; i < m->ColorAttachmentCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -3991,7 +3991,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->PreserveAttachments;
-					for (int i = 0; i < m->PreserveAttachmentCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -4004,11 +4004,11 @@ namespace Vulkan
 					return;
 				}
 				m->PreserveAttachmentCount = (uint)value.Length;
-				m->PreserveAttachments = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*m->PreserveAttachmentCount));
+				m->PreserveAttachments = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*value.Length));
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->PreserveAttachments;
-					for (int i = 0; i < m->PreserveAttachmentCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -4058,7 +4058,7 @@ namespace Vulkan
 				unsafe
 				{
 					AttachmentDescription* ptr = (AttachmentDescription*)m->Attachments;
-					for (int i = 0; i < m->AttachmentCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -4071,11 +4071,11 @@ namespace Vulkan
 					return;
 				}
 				m->AttachmentCount = (uint)value.Length;
-				m->Attachments = Marshal.AllocHGlobal ((int)(sizeof(AttachmentDescription)*m->AttachmentCount));
+				m->Attachments = Marshal.AllocHGlobal ((int)(sizeof(AttachmentDescription)*value.Length));
 				unsafe
 				{
 					AttachmentDescription* ptr = (AttachmentDescription*)m->Attachments;
-					for (int i = 0; i < m->AttachmentCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -4094,7 +4094,7 @@ namespace Vulkan
 				unsafe
 				{
 					Interop.SubpassDescription* ptr = (Interop.SubpassDescription*)m->Subpasses;
-					for (int i = 0; i < m->SubpassCount; i++) {
+					for (int i = 0; i < values.Length; i++) {
 						values [i] = new SubpassDescription ();
 						*values [i].m = ptr [i];
 					}
@@ -4109,11 +4109,11 @@ namespace Vulkan
 					return;
 				}
 				m->SubpassCount = (uint)value.Length;
-				m->Subpasses = Marshal.AllocHGlobal ((int)(sizeof(Interop.SubpassDescription)*m->SubpassCount));
+				m->Subpasses = Marshal.AllocHGlobal ((int)(sizeof(Interop.SubpassDescription)*value.Length));
 				unsafe
 				{
 					Interop.SubpassDescription* ptr = (Interop.SubpassDescription*)m->Subpasses;
-					for (int i = 0; i < m->SubpassCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = *value [i].m;
 				}
 			}
@@ -4132,7 +4132,7 @@ namespace Vulkan
 				unsafe
 				{
 					SubpassDependency* ptr = (SubpassDependency*)m->Dependencies;
-					for (int i = 0; i < m->DependencyCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -4145,11 +4145,11 @@ namespace Vulkan
 					return;
 				}
 				m->DependencyCount = (uint)value.Length;
-				m->Dependencies = Marshal.AllocHGlobal ((int)(sizeof(SubpassDependency)*m->DependencyCount));
+				m->Dependencies = Marshal.AllocHGlobal ((int)(sizeof(SubpassDependency)*value.Length));
 				unsafe
 				{
 					SubpassDependency* ptr = (SubpassDependency*)m->Dependencies;
-					for (int i = 0; i < m->DependencyCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -5020,7 +5020,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->Attachments;
-					for (int i = 0; i < m->AttachmentCount; i++) {
+					for (int i = 0; i < values.Length; i++) {
 						values [i] = new ImageView ();
 						values [i].m = ptr [i];
 					}
@@ -5035,11 +5035,11 @@ namespace Vulkan
 					return;
 				}
 				m->AttachmentCount = (uint)value.Length;
-				m->Attachments = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->AttachmentCount));
+				m->Attachments = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*value.Length));
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->Attachments;
-					for (int i = 0; i < m->AttachmentCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i].m;
 				}
 			}
@@ -5120,7 +5120,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->WaitSemaphores;
-					for (int i = 0; i < m->WaitSemaphoreCount; i++) {
+					for (int i = 0; i < values.Length; i++) {
 						values [i] = new Semaphore ();
 						values [i].m = ptr [i];
 					}
@@ -5135,11 +5135,11 @@ namespace Vulkan
 					return;
 				}
 				m->WaitSemaphoreCount = (uint)value.Length;
-				m->WaitSemaphores = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->WaitSemaphoreCount));
+				m->WaitSemaphores = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*value.Length));
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->WaitSemaphores;
-					for (int i = 0; i < m->WaitSemaphoreCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i].m;
 				}
 			}
@@ -5153,7 +5153,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->WaitDstStageMask;
-					for (int i = 0; i < m->WaitSemaphoreCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -5166,11 +5166,11 @@ namespace Vulkan
 					return;
 				}
 				m->WaitSemaphoreCount = (uint)value.Length;
-				m->WaitDstStageMask = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*m->WaitSemaphoreCount));
+				m->WaitDstStageMask = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*value.Length));
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->WaitDstStageMask;
-					for (int i = 0; i < m->WaitSemaphoreCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -5189,7 +5189,7 @@ namespace Vulkan
 				unsafe
 				{
 					IntPtr* ptr = (IntPtr*)m->CommandBuffers;
-					for (int i = 0; i < m->CommandBufferCount; i++) {
+					for (int i = 0; i < values.Length; i++) {
 						values [i] = new CommandBuffer ();
 						values [i].m = ptr [i];
 					}
@@ -5204,11 +5204,11 @@ namespace Vulkan
 					return;
 				}
 				m->CommandBufferCount = (uint)value.Length;
-				m->CommandBuffers = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*m->CommandBufferCount));
+				m->CommandBuffers = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*value.Length));
 				unsafe
 				{
 					IntPtr* ptr = (IntPtr*)m->CommandBuffers;
-					for (int i = 0; i < m->CommandBufferCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i].m;
 				}
 			}
@@ -5227,7 +5227,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->SignalSemaphores;
-					for (int i = 0; i < m->SignalSemaphoreCount; i++) {
+					for (int i = 0; i < values.Length; i++) {
 						values [i] = new Semaphore ();
 						values [i].m = ptr [i];
 					}
@@ -5242,11 +5242,11 @@ namespace Vulkan
 					return;
 				}
 				m->SignalSemaphoreCount = (uint)value.Length;
-				m->SignalSemaphores = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->SignalSemaphoreCount));
+				m->SignalSemaphores = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*value.Length));
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->SignalSemaphores;
-					for (int i = 0; i < m->SignalSemaphoreCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i].m;
 				}
 			}
@@ -5578,7 +5578,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->QueueFamilyIndices;
-					for (int i = 0; i < m->QueueFamilyIndexCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -5591,11 +5591,11 @@ namespace Vulkan
 					return;
 				}
 				m->QueueFamilyIndexCount = (uint)value.Length;
-				m->QueueFamilyIndices = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*m->QueueFamilyIndexCount));
+				m->QueueFamilyIndices = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*value.Length));
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->QueueFamilyIndices;
-					for (int i = 0; i < m->QueueFamilyIndexCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -5663,7 +5663,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->WaitSemaphores;
-					for (int i = 0; i < m->WaitSemaphoreCount; i++) {
+					for (int i = 0; i < values.Length; i++) {
 						values [i] = new Semaphore ();
 						values [i].m = ptr [i];
 					}
@@ -5678,11 +5678,11 @@ namespace Vulkan
 					return;
 				}
 				m->WaitSemaphoreCount = (uint)value.Length;
-				m->WaitSemaphores = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->WaitSemaphoreCount));
+				m->WaitSemaphores = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*value.Length));
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->WaitSemaphores;
-					for (int i = 0; i < m->WaitSemaphoreCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i].m;
 				}
 			}
@@ -5701,7 +5701,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->Swapchains;
-					for (int i = 0; i < m->SwapchainCount; i++) {
+					for (int i = 0; i < values.Length; i++) {
 						values [i] = new SwapchainKhr ();
 						values [i].m = ptr [i];
 					}
@@ -5716,11 +5716,11 @@ namespace Vulkan
 					return;
 				}
 				m->SwapchainCount = (uint)value.Length;
-				m->Swapchains = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*m->SwapchainCount));
+				m->Swapchains = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*value.Length));
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->Swapchains;
-					for (int i = 0; i < m->SwapchainCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i].m;
 				}
 			}
@@ -5734,7 +5734,7 @@ namespace Vulkan
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->ImageIndices;
-					for (int i = 0; i < m->SwapchainCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -5747,11 +5747,11 @@ namespace Vulkan
 					return;
 				}
 				m->SwapchainCount = (uint)value.Length;
-				m->ImageIndices = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*m->SwapchainCount));
+				m->ImageIndices = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*value.Length));
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->ImageIndices;
-					for (int i = 0; i < m->SwapchainCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
@@ -5765,7 +5765,7 @@ namespace Vulkan
 				unsafe
 				{
 					Result* ptr = (Result*)m->Results;
-					for (int i = 0; i < m->SwapchainCount; i++) 
+					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
 				return values;
@@ -5778,11 +5778,11 @@ namespace Vulkan
 					return;
 				}
 				m->SwapchainCount = (uint)value.Length;
-				m->Results = Marshal.AllocHGlobal ((int)(sizeof(Result)*m->SwapchainCount));
+				m->Results = Marshal.AllocHGlobal ((int)(sizeof(Result)*value.Length));
 				unsafe
 				{
 					Result* ptr = (Result*)m->Results;
-					for (int i = 0; i < m->SwapchainCount; i++)
+					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
 			}
