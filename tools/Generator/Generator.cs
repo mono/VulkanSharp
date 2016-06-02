@@ -510,17 +510,17 @@ namespace VulkanSharp.Generator
 			} else
 				throw new Exception (string.Format ("do not know the counter for {0}", csMemberName));
 			// fixme: handle size_t sized arrays better
-			string zero;
-			string cast;
-			string cast2;
+			string zero, cast, len, lenFromValue;
 			if (csMemberName == "Code") {
-				cast = "(uint)";
-				cast2 = "(UIntPtr)";
+				cast = "(UIntPtr)";
 				zero = "UIntPtr.Zero";
+				len = string.Format ("((uint)m->{0} >> 2)", countName);
+				lenFromValue = string.Format ("(value.Length << 2)");
 			} else {
-				cast = "";
-				cast2 = "(uint)";
+				cast = "(uint)";
 				zero = "0";
+				len = string.Format ("m->{0}", countName);
+				lenFromValue = "value.Length";
 			}
 			IndentWriteLine ("{0} {1}[] {2} {{", sec, csMemberType, csMemberName);
 			IndentLevel++;
@@ -530,12 +530,12 @@ namespace VulkanSharp.Generator
 			IndentLevel++;
 			IndentWriteLine ("return null;");
 			IndentLevel--;
-			IndentWriteLine ("var values = new {0} [{1}m->{2}];", csMemberType, cast, countName);
+			IndentWriteLine ("var values = new {0} [{1}];", csMemberType, len);
 			IndentWriteLine ("unsafe");
 			IndentWriteLine ("{");
 			IndentLevel++;
 			IndentWriteLine ("{0}{1}* ptr = ({0}{1}*)m->{2};", structNeedsMarshalling ? (InteropNamespace + ".") : "", ptrType, csMemberName);
-			IndentWriteLine ("for (int i = 0; i < {0}m->{1}; i++) {2}", cast, countName, (structNeedsMarshalling || isHandle) ? "{" : "");
+			IndentWriteLine ("for (int i = 0; i < values.Length; i++) {0}", (structNeedsMarshalling || isHandle) ? "{" : "");
 			IndentLevel++;
 			if (structNeedsMarshalling) {
 				IndentWriteLine ("values [i] = new {0} ();", csMemberType);
@@ -564,13 +564,13 @@ namespace VulkanSharp.Generator
 			IndentWriteLine ("return;");
 			IndentLevel--;
 			IndentWriteLine ("}");
-			IndentWriteLine ("m->{0} = {1}value.Length;", countName, cast2);
-			IndentWriteLine ("m->{0} = Marshal.AllocHGlobal ((int)(sizeof({1}{2})*{3}m->{4}));", csMemberName, structNeedsMarshalling ? (InteropNamespace + ".") : "", ptrType, cast, countName);
+			IndentWriteLine ("m->{0} = {1}{2};", countName, cast, lenFromValue);
+			IndentWriteLine ("m->{0} = Marshal.AllocHGlobal ((int)(sizeof({1}{2})*value.Length));", csMemberName, structNeedsMarshalling ? (InteropNamespace + ".") : "", ptrType);
 			IndentWriteLine ("unsafe");
 			IndentWriteLine ("{");
 			IndentLevel++;
 			IndentWriteLine ("{0}{1}* ptr = ({0}{1}*)m->{2};", structNeedsMarshalling ? (InteropNamespace + ".") : "", ptrType, csMemberName);
-			IndentWriteLine ("for (int i = 0; i < {0}m->{1}; i++)", cast, countName);
+			IndentWriteLine ("for (int i = 0; i < value.Length; i++)");
 			IndentLevel++;
 			if (structNeedsMarshalling)
 				IndentWriteLine ("ptr [i] = *value [i].m;");
