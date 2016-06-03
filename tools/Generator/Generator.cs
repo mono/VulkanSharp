@@ -16,7 +16,7 @@ namespace VulkanSharp.Generator
 		bool isInterop;
 		bool needsMarshalling;
 
-		Dictionary<string, string> typesTranslation = new Dictionary<string, string> () { { "ANativeWindow", "IntPtr" }  };
+		Dictionary<string, string> typesTranslation = new Dictionary<string, string> () { { "ANativeWindow", "IntPtr" }, { "HWND", "IntPtr" }, { "HINSTANCE", "IntPtr" } };
 		Dictionary<string, StructInfo> structures = new Dictionary<string, StructInfo> ();
 		Dictionary<string, HandleInfo> handles = new Dictionary<string,HandleInfo> ();
 		Dictionary<string, List<EnumExtensionInfo>> enumExtensions = new Dictionary<string, List<EnumExtensionInfo>> ();
@@ -1528,6 +1528,7 @@ namespace VulkanSharp.Generator
 			"vkCreateWaylandSurfaceKHR",
 			"vkGetPhysicalDeviceWaylandPresentationSupportKHR",
 			"vkCreateWin32SurfaceKHR",
+			"vkGetPhysicalDeviceWin32PresentationSupportKHR",
 			"vkCreateXlibSurfaceKHR",
 			"vkGetPhysicalDeviceXlibPresentationSupportKHR",
 			"vkCreateXcbSurfaceKHR",
