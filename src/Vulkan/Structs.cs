@@ -108,9 +108,22 @@ namespace Vulkan
 			set { Interop.Structure.MarshalFixedSizeString (m->DeviceName, value, 256); }
 		}
 
-		public Byte PipelineCacheUUID {
-			get { return m->PipelineCacheUUID; }
-			set { m->PipelineCacheUUID = value; }
+		public byte[] PipelineCacheUUID {
+			get {
+				var arr = new byte [16];
+				for (int i = 0; i < 16; i++)
+					arr [i] = m->PipelineCacheUUID [i];
+				return arr;
+			}
+
+			set {
+				if (value.Length > 16)
+					throw new Exception ("array too long");
+				for (int i = 0; i < value.Length; i++)
+					m->PipelineCacheUUID [i] = value [i];
+				for (int i = value.Length; i < 16; i++)
+					m->PipelineCacheUUID [i] = 0;
+			}
 		}
 
 		PhysicalDeviceLimits lLimits;
@@ -631,9 +644,27 @@ namespace Vulkan
 			set { m->MemoryTypeCount = value; }
 		}
 
-		public MemoryType MemoryTypes {
-			get { return m->MemoryTypes; }
-			set { m->MemoryTypes = value; }
+		public MemoryType[] MemoryTypes {
+			get {
+				var arr = new MemoryType [m->MemoryTypeCount];
+				for (int i = 0; i < m->MemoryTypeCount; i++)
+					unsafe
+					{
+						arr [i] = (&m->MemoryTypes0) [i];
+					}
+				return arr;
+			}
+
+			set {
+				if (value.Length > m->MemoryTypeCount)
+					throw new Exception ("array too long");
+				m->MemoryTypeCount = (uint)value.Length;
+				for (int i = 0; i < value.Length; i++)
+					unsafe
+					{
+						(&m->MemoryTypes0) [i] = value [i];
+					}
+			}
 		}
 
 		public UInt32 MemoryHeapCount {
@@ -641,9 +672,27 @@ namespace Vulkan
 			set { m->MemoryHeapCount = value; }
 		}
 
-		public MemoryHeap MemoryHeaps {
-			get { return m->MemoryHeaps; }
-			set { m->MemoryHeaps = value; }
+		public MemoryHeap[] MemoryHeaps {
+			get {
+				var arr = new MemoryHeap [m->MemoryHeapCount];
+				for (int i = 0; i < m->MemoryHeapCount; i++)
+					unsafe
+					{
+						arr [i] = (&m->MemoryHeaps0) [i];
+					}
+				return arr;
+			}
+
+			set {
+				if (value.Length > m->MemoryHeapCount)
+					throw new Exception ("array too long");
+				m->MemoryHeapCount = (uint)value.Length;
+				for (int i = 0; i < value.Length; i++)
+					unsafe
+					{
+						(&m->MemoryHeaps0) [i] = value [i];
+					}
+			}
 		}
 		internal Interop.PhysicalDeviceMemoryProperties* m;
 
@@ -1932,9 +1981,26 @@ namespace Vulkan
 			set { m->SrcSubresource = value; }
 		}
 
-		public Offset3D SrcOffsets {
-			get { return m->SrcOffsets; }
-			set { m->SrcOffsets = value; }
+		public Offset3D[] SrcOffsets {
+			get {
+				var arr = new Offset3D [2];
+				for (int i = 0; i < 2; i++)
+					unsafe
+					{
+						arr [i] = (&m->SrcOffsets0) [i];
+					}
+				return arr;
+			}
+
+			set {
+				if (value.Length > 2)
+					throw new Exception ("array too long");
+				for (int i = 0; i < value.Length; i++)
+					unsafe
+					{
+						(&m->SrcOffsets0) [i] = value [i];
+					}
+			}
 		}
 
 		public ImageSubresourceLayers DstSubresource {
@@ -1942,9 +2008,26 @@ namespace Vulkan
 			set { m->DstSubresource = value; }
 		}
 
-		public Offset3D DstOffsets {
-			get { return m->DstOffsets; }
-			set { m->DstOffsets = value; }
+		public Offset3D[] DstOffsets {
+			get {
+				var arr = new Offset3D [2];
+				for (int i = 0; i < 2; i++)
+					unsafe
+					{
+						arr [i] = (&m->DstOffsets0) [i];
+					}
+				return arr;
+			}
+
+			set {
+				if (value.Length > 2)
+					throw new Exception ("array too long");
+				for (int i = 0; i < value.Length; i++)
+					unsafe
+					{
+						(&m->DstOffsets0) [i] = value [i];
+					}
+			}
 		}
 		internal Interop.ImageBlit* m;
 

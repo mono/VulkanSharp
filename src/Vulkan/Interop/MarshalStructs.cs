@@ -20,7 +20,7 @@ namespace Vulkan.Interop
 		internal UInt32 DeviceID;
 		internal PhysicalDeviceType DeviceType;
 		internal unsafe fixed byte DeviceName[256];
-		internal Byte PipelineCacheUUID;
+		internal unsafe fixed byte PipelineCacheUUID[16];
 		internal PhysicalDeviceLimits Limits;
 		internal PhysicalDeviceSparseProperties SparseProperties;
 	}
@@ -99,9 +99,55 @@ namespace Vulkan.Interop
 	internal partial struct PhysicalDeviceMemoryProperties
 	{
 		internal UInt32 MemoryTypeCount;
-		internal MemoryType MemoryTypes;
+		internal MemoryType MemoryTypes0;
+		internal MemoryType MemoryTypes1;
+		internal MemoryType MemoryTypes2;
+		internal MemoryType MemoryTypes3;
+		internal MemoryType MemoryTypes4;
+		internal MemoryType MemoryTypes5;
+		internal MemoryType MemoryTypes6;
+		internal MemoryType MemoryTypes7;
+		internal MemoryType MemoryTypes8;
+		internal MemoryType MemoryTypes9;
+		internal MemoryType MemoryTypes10;
+		internal MemoryType MemoryTypes11;
+		internal MemoryType MemoryTypes12;
+		internal MemoryType MemoryTypes13;
+		internal MemoryType MemoryTypes14;
+		internal MemoryType MemoryTypes15;
+		internal MemoryType MemoryTypes16;
+		internal MemoryType MemoryTypes17;
+		internal MemoryType MemoryTypes18;
+		internal MemoryType MemoryTypes19;
+		internal MemoryType MemoryTypes20;
+		internal MemoryType MemoryTypes21;
+		internal MemoryType MemoryTypes22;
+		internal MemoryType MemoryTypes23;
+		internal MemoryType MemoryTypes24;
+		internal MemoryType MemoryTypes25;
+		internal MemoryType MemoryTypes26;
+		internal MemoryType MemoryTypes27;
+		internal MemoryType MemoryTypes28;
+		internal MemoryType MemoryTypes29;
+		internal MemoryType MemoryTypes30;
+		internal MemoryType MemoryTypes31;
 		internal UInt32 MemoryHeapCount;
-		internal MemoryHeap MemoryHeaps;
+		internal MemoryHeap MemoryHeaps0;
+		internal MemoryHeap MemoryHeaps1;
+		internal MemoryHeap MemoryHeaps2;
+		internal MemoryHeap MemoryHeaps3;
+		internal MemoryHeap MemoryHeaps4;
+		internal MemoryHeap MemoryHeaps5;
+		internal MemoryHeap MemoryHeaps6;
+		internal MemoryHeap MemoryHeaps7;
+		internal MemoryHeap MemoryHeaps8;
+		internal MemoryHeap MemoryHeaps9;
+		internal MemoryHeap MemoryHeaps10;
+		internal MemoryHeap MemoryHeaps11;
+		internal MemoryHeap MemoryHeaps12;
+		internal MemoryHeap MemoryHeaps13;
+		internal MemoryHeap MemoryHeaps14;
+		internal MemoryHeap MemoryHeaps15;
 	}
 
 	internal partial struct MemoryAllocateInfo
@@ -277,9 +323,11 @@ namespace Vulkan.Interop
 	internal partial struct ImageBlit
 	{
 		internal ImageSubresourceLayers SrcSubresource;
-		internal Offset3D SrcOffsets;
+		internal Offset3D SrcOffsets0;
+		internal Offset3D SrcOffsets1;
 		internal ImageSubresourceLayers DstSubresource;
-		internal Offset3D DstOffsets;
+		internal Offset3D DstOffsets0;
+		internal Offset3D DstOffsets1;
 	}
 
 	internal partial struct ShaderModuleCreateInfo
