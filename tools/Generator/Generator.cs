@@ -986,7 +986,7 @@ namespace VulkanSharp.Generator
 				var typeElement = memberElement.Element ("type");
 				var csMemberType = GetTypeCsName (typeElement.Value, "member");
 
-				if (member.Contains ("*") || member.Contains ("[") || (structures.ContainsKey (csMemberType) && structures [csMemberType].needsMarshalling))
+				if (member.Contains ("*") || member.Contains ("[") || (structures.ContainsKey (csMemberType) && structures [csMemberType].needsMarshalling) || handles.ContainsKey (csMemberType))
 					return true;
 			}
 
