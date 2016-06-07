@@ -102,7 +102,7 @@ namespace VulkanSharp.Generator
 			{ "int32_t", "Int32" },
 			{ "uint32_t", "UInt32" },
 			{ "uint64_t", "UInt64" },
-			{ "uint8_t", "Byte" },
+			{ "uint8_t", "byte" },
 			{ "size_t", "UIntPtr" },
 			{ "xcb_connection_t", "IntPtr" },
 			{ "xcb_window_t", "IntPtr" },
@@ -454,20 +454,33 @@ namespace VulkanSharp.Generator
 
 		static Dictionary<string, string> fieldCounterMap = new Dictionary<string, string> {
 			{ "Code", "CodeSize" },
-			{ "SampleMask", "RasterizationSamples" }
+			{ "SampleMask", "RasterizationSamples" },
+			{ "MemoryTypes", "MemoryTypeCount" },
+			{ "MemoryHeaps", "MemoryHeapCount" }
 		};
 
-		void WriteMemberFixedArray (string csMemberType, string csMemberName, XElement memberElement)
+		void WriteMemberFixedArray (string csMemberType, string csMemberName, XElement memberElement, bool isStruct)
 		{
-			int len = GetArrayLength (memberElement.Value);
+			string counter = fieldCounterMap.ContainsKey (csMemberName) ? fieldCounterMap [csMemberName] : null;
+			string len = GetArrayLength (memberElement);
 			IndentWriteLine ("public {0}[] {1} {{", csMemberType, csMemberName);
 			IndentLevel++;
 			IndentWriteLine ("get {");
 			IndentLevel++;
+			if (counter != null)
+				len = string.Format ("m->{0}", counter);
 			IndentWriteLine ("var arr = new {0} [{1}];", csMemberType, len);
 			IndentWriteLine ("for (int i = 0; i < {0}; i++)", len);
 			IndentLevel++;
-			IndentWriteLine ("arr [i] = m->{0} [i];", csMemberName);
+			if (isStruct) {
+				IndentWriteLine ("unsafe");
+				IndentWriteLine ("{");
+				IndentLevel++;
+				IndentWriteLine ("arr [i] = (&m->{0}0) [i];", csMemberName);
+				IndentLevel--;
+				IndentWriteLine ("}");
+			} else
+				IndentWriteLine ("arr [i] = m->{0} [i];", csMemberName);
 			IndentLevel--;
 			IndentWriteLine ("return arr;");
 			IndentLevel--;
@@ -480,15 +493,34 @@ namespace VulkanSharp.Generator
 			IndentLevel++;
 			IndentWriteLine ("throw new Exception (\"array too long\");");
 			IndentLevel--;
+			if (counter != null)
+				IndentWriteLine ("{0} = (uint)value.Length;", len);
 			IndentWriteLine ("for (int i = 0; i < value.Length; i++)");
 			IndentLevel++;
-			IndentWriteLine ("m->{0} [i] = value [i];", csMemberName);
+			if (isStruct) {
+				IndentWriteLine ("unsafe");
+				IndentWriteLine ("{");
+				IndentLevel++;
+				IndentWriteLine ("(&m->{0}0) [i] = value [i];", csMemberName);
+				IndentLevel--;
+				IndentWriteLine ("}");
+			} else
+				IndentWriteLine ("m->{0} [i] = value [i];", csMemberName);
 			IndentLevel--;
-			IndentWriteLine ("for (int i = value.Length; i < {0}; i++)", len);
-			IndentLevel++;
-			IndentWriteLine ("m->{0} [i] = 0;", csMemberName);
-			IndentLevel--;
-
+			if (counter == null && !isStruct) {
+				IndentWriteLine ("for (int i = value.Length; i < {0}; i++)", len);
+				IndentLevel++;
+				if (isStruct) {
+					IndentWriteLine ("unsafe");
+					IndentWriteLine ("{");
+					IndentLevel++;
+					IndentWriteLine ("(&m->{0}0) [i] = 0;", csMemberName);
+					IndentLevel--;
+					IndentWriteLine ("}");
+				} else
+					IndentWriteLine ("m->{0} [i] = 0;", csMemberName);
+				IndentLevel--;
+			}
 			IndentLevel--;
 			IndentWriteLine ("}");
 			IndentLevel--;
@@ -744,7 +776,7 @@ namespace VulkanSharp.Generator
 						isArray = true;
 					break;
 				}
-			} else if (memberElement.Value.Contains ('[') && GetArrayLength (memberElement.Value) > 0 && !structures.ContainsKey (csMemberType))
+			} else if (memberElement.Value.Contains ('[') && GetArrayLength (memberElement) != null && !(structures.ContainsKey (csMemberType) && structures [csMemberType].needsMarshalling))
 				isFixedArray = true;
 			var csMemberName = TranslateCName (name);
 
@@ -756,12 +788,8 @@ namespace VulkanSharp.Generator
 			}
 
 			var isCharArray = false;
-			if (csMemberType == "char" && memberElement.Value.EndsWith ("]")) {
+			if (csMemberType == "char" && memberElement.Value.EndsWith ("]"))
 				isCharArray = true;
-				//todo: handle max size, use 256 for now
-				if (isInterop)
-					csMemberName += "[256]";
-			}
 			string mod = "";
 			if (csMemberName.EndsWith ("]"))
 				mod = "unsafe fixed ";
@@ -789,32 +817,35 @@ namespace VulkanSharp.Generator
 			if (isUnion)
 				attr = "[FieldOffset (0)] ";
 
+			bool memberIsStructure = structures.ContainsKey (csMemberType);
 			if (isInterop || !needsMarshalling) {
 				string member = memberElement.Value;
 				string arrayPart = "";
 				string fixedPart = "";
-				if (member.Contains ('[') && !structures.ContainsKey (csMemberType)) {
-					int len = GetArrayLength (member);
-					if (len > 0) {
+				int count = 1;
+				if (member.Contains ('[') && !(memberIsStructure && structures [csMemberType].needsMarshalling)) {
+					string len = GetArrayLength (memberElement);
+					if (memberIsStructure)
+						count = Convert.ToInt32 (len);
+					else if (len != null) {
 						arrayPart = string.Format ("[{0}]", len);
 						fixedPart = "unsafe fixed ";
 					}
 				}
-				if (structures.ContainsKey (csMemberType))
-					Console.WriteLine ("struct member type: {0} needs marshalling: {1}", csMemberType, structures [csMemberType].needsMarshalling);
 				if (handles.ContainsKey (csMemberType) && !isPointer) {
 					csMemberType = GetHandleType (handles [csMemberType]);
-				} else if ((!isInterop && structures.ContainsKey (csMemberType) && structures [csMemberType].needsMarshalling) || csMemberType == "string" || isPointer)
+				} else if ((!isInterop && memberIsStructure && structures [csMemberType].needsMarshalling) || csMemberType == "string" || isPointer)
 					csMemberType = "IntPtr";
-				IndentWriteLine ("{0}{1} {2}{3}{4} {5}{6};", attr, sec, fixedPart, mod, csMemberType, csMemberName, arrayPart);
+				for (int i = 0; i < count; i++)
+					IndentWriteLine ("{0}{1} {2}{3}{4} {5}{6}{7};", attr, sec, fixedPart, mod, csMemberType, csMemberName, count > 1 ? i.ToString () : "", arrayPart);
 			} else {
 				if (isCharArray)
 					WriteMemberCharArray (csMemberName, sec);
 				else if (isFixedArray)
-					WriteMemberFixedArray (csMemberType, csMemberName, memberElement);
+					WriteMemberFixedArray (csMemberType, csMemberName, memberElement, memberIsStructure);
 				else if (isArray)
 					WriteMemberArray (csMemberType, csMemberName, sec, memberElement);
-				else if (structures.ContainsKey (csMemberType) || handles.ContainsKey (csMemberType))
+				else if (memberIsStructure || handles.ContainsKey (csMemberType))
 					WriteMemberStructOrHandle (csMemberType, csMemberName, sec, isPointer);
 				else if (csMemberType == "string")
 					WriteMemberString (csMemberType, csMemberName, sec);
@@ -928,15 +959,24 @@ namespace VulkanSharp.Generator
 			return true;
 		}
 
-		int GetArrayLength (string member)
+		string GetAPIConstant (string name)
 		{
-			string len = member.Substring (member.IndexOf ('[') + 1);
-			len = len.Substring (0, len.IndexOf (']'));
-			try {
-				return Convert.ToInt32 (len);
-			} catch (FormatException) {
-				return -1;
-			}
+			var constants = specTree.Elements ("enums").FirstOrDefault (e => e.Attribute ("name").Value == "API Constants");
+			if (constants == null)
+				return null;
+			var field = constants.Elements ("enum").FirstOrDefault (e => e.Attribute ("name").Value == name);
+			if (field == null)
+				return null;
+			return field.Attribute ("value").Value;
+		}
+
+		string GetArrayLength (XElement member)
+		{
+			var enumElement = member.Element ("enum");
+			if (enumElement != null)
+				return GetAPIConstant (enumElement.Value);
+			string len = member.Value.Substring (member.Value.IndexOf ('[') + 1);
+			return len.Substring (0, len.IndexOf (']'));
 		}
 
 		bool LearnStructureMembers (XElement structElement)
