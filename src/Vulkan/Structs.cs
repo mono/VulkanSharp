@@ -831,18 +831,81 @@ namespace Vulkan
 		public DeviceSize MaxResourceSize;
 	}
 
-	unsafe public partial struct DescriptorBufferInfo
+	unsafe public partial class DescriptorBufferInfo
 	{
-		public UInt64 Buffer;
-		public DeviceSize Offset;
-		public DeviceSize Range;
+		Buffer lBuffer;
+		public Buffer Buffer {
+			get { return lBuffer; }
+			set { lBuffer = value; m->Buffer = (UInt64)value.m; }
+		}
+
+		public DeviceSize Offset {
+			get { return m->Offset; }
+			set { m->Offset = value; }
+		}
+
+		public DeviceSize Range {
+			get { return m->Range; }
+			set { m->Range = value; }
+		}
+		internal Interop.DescriptorBufferInfo* m;
+
+		public DescriptorBufferInfo ()
+		{
+			m = (Interop.DescriptorBufferInfo*) Interop.Structure.Allocate (typeof (Interop.DescriptorBufferInfo));
+			Initialize ();
+		}
+
+		internal DescriptorBufferInfo (Interop.DescriptorBufferInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+		}
+
 	}
 
-	unsafe public partial struct DescriptorImageInfo
+	unsafe public partial class DescriptorImageInfo
 	{
-		public UInt64 Sampler;
-		public UInt64 ImageView;
-		public ImageLayout ImageLayout;
+		Sampler lSampler;
+		public Sampler Sampler {
+			get { return lSampler; }
+			set { lSampler = value; m->Sampler = (UInt64)value.m; }
+		}
+
+		ImageView lImageView;
+		public ImageView ImageView {
+			get { return lImageView; }
+			set { lImageView = value; m->ImageView = (UInt64)value.m; }
+		}
+
+		public ImageLayout ImageLayout {
+			get { return m->ImageLayout; }
+			set { m->ImageLayout = value; }
+		}
+		internal Interop.DescriptorImageInfo* m;
+
+		public DescriptorImageInfo ()
+		{
+			m = (Interop.DescriptorImageInfo*) Interop.Structure.Allocate (typeof (Interop.DescriptorImageInfo));
+			Initialize ();
+		}
+
+		internal DescriptorImageInfo (Interop.DescriptorImageInfo* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+		}
+
 	}
 
 	unsafe public partial class WriteDescriptorSet
@@ -880,9 +943,11 @@ namespace Vulkan
 				var values = new DescriptorImageInfo [m->DescriptorCount];
 				unsafe
 				{
-					DescriptorImageInfo* ptr = (DescriptorImageInfo*)m->ImageInfo;
-					for (int i = 0; i < values.Length; i++) 
-						values [i] = ptr [i];
+					Interop.DescriptorImageInfo* ptr = (Interop.DescriptorImageInfo*)m->ImageInfo;
+					for (int i = 0; i < values.Length; i++) {
+						values [i] = new DescriptorImageInfo ();
+						*values [i].m = ptr [i];
+					}
 				}
 				return values;
 			}
@@ -894,12 +959,12 @@ namespace Vulkan
 					return;
 				}
 				m->DescriptorCount = (uint)value.Length;
-				m->ImageInfo = Marshal.AllocHGlobal ((int)(sizeof(DescriptorImageInfo)*value.Length));
+				m->ImageInfo = Marshal.AllocHGlobal ((int)(sizeof(Interop.DescriptorImageInfo)*value.Length));
 				unsafe
 				{
-					DescriptorImageInfo* ptr = (DescriptorImageInfo*)m->ImageInfo;
+					Interop.DescriptorImageInfo* ptr = (Interop.DescriptorImageInfo*)m->ImageInfo;
 					for (int i = 0; i < value.Length; i++)
-						ptr [i] = value [i];
+						ptr [i] = *value [i].m;
 				}
 			}
 		}
@@ -911,9 +976,11 @@ namespace Vulkan
 				var values = new DescriptorBufferInfo [m->DescriptorCount];
 				unsafe
 				{
-					DescriptorBufferInfo* ptr = (DescriptorBufferInfo*)m->BufferInfo;
-					for (int i = 0; i < values.Length; i++) 
-						values [i] = ptr [i];
+					Interop.DescriptorBufferInfo* ptr = (Interop.DescriptorBufferInfo*)m->BufferInfo;
+					for (int i = 0; i < values.Length; i++) {
+						values [i] = new DescriptorBufferInfo ();
+						*values [i].m = ptr [i];
+					}
 				}
 				return values;
 			}
@@ -925,12 +992,12 @@ namespace Vulkan
 					return;
 				}
 				m->DescriptorCount = (uint)value.Length;
-				m->BufferInfo = Marshal.AllocHGlobal ((int)(sizeof(DescriptorBufferInfo)*value.Length));
+				m->BufferInfo = Marshal.AllocHGlobal ((int)(sizeof(Interop.DescriptorBufferInfo)*value.Length));
 				unsafe
 				{
-					DescriptorBufferInfo* ptr = (DescriptorBufferInfo*)m->BufferInfo;
+					Interop.DescriptorBufferInfo* ptr = (Interop.DescriptorBufferInfo*)m->BufferInfo;
 					for (int i = 0; i < value.Length; i++)
-						ptr [i] = value [i];
+						ptr [i] = *value [i].m;
 				}
 			}
 		}
@@ -1541,23 +1608,105 @@ namespace Vulkan
 		public DeviceSize Size;
 	}
 
-	unsafe public partial struct SparseMemoryBind
+	unsafe public partial class SparseMemoryBind
 	{
-		public DeviceSize ResourceOffset;
-		public DeviceSize Size;
-		public UInt64 Memory;
-		public DeviceSize MemoryOffset;
-		public UInt32 Flags;
+		public DeviceSize ResourceOffset {
+			get { return m->ResourceOffset; }
+			set { m->ResourceOffset = value; }
+		}
+
+		public DeviceSize Size {
+			get { return m->Size; }
+			set { m->Size = value; }
+		}
+
+		DeviceMemory lMemory;
+		public DeviceMemory Memory {
+			get { return lMemory; }
+			set { lMemory = value; m->Memory = (UInt64)value.m; }
+		}
+
+		public DeviceSize MemoryOffset {
+			get { return m->MemoryOffset; }
+			set { m->MemoryOffset = value; }
+		}
+
+		public UInt32 Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
+		internal Interop.SparseMemoryBind* m;
+
+		public SparseMemoryBind ()
+		{
+			m = (Interop.SparseMemoryBind*) Interop.Structure.Allocate (typeof (Interop.SparseMemoryBind));
+			Initialize ();
+		}
+
+		internal SparseMemoryBind (Interop.SparseMemoryBind* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+		}
+
 	}
 
-	unsafe public partial struct SparseImageMemoryBind
+	unsafe public partial class SparseImageMemoryBind
 	{
-		public ImageSubresource Subresource;
-		public Offset3D Offset;
-		public Extent3D Extent;
-		public UInt64 Memory;
-		public DeviceSize MemoryOffset;
-		public UInt32 Flags;
+		public ImageSubresource Subresource {
+			get { return m->Subresource; }
+			set { m->Subresource = value; }
+		}
+
+		public Offset3D Offset {
+			get { return m->Offset; }
+			set { m->Offset = value; }
+		}
+
+		public Extent3D Extent {
+			get { return m->Extent; }
+			set { m->Extent = value; }
+		}
+
+		DeviceMemory lMemory;
+		public DeviceMemory Memory {
+			get { return lMemory; }
+			set { lMemory = value; m->Memory = (UInt64)value.m; }
+		}
+
+		public DeviceSize MemoryOffset {
+			get { return m->MemoryOffset; }
+			set { m->MemoryOffset = value; }
+		}
+
+		public UInt32 Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
+		internal Interop.SparseImageMemoryBind* m;
+
+		public SparseImageMemoryBind ()
+		{
+			m = (Interop.SparseImageMemoryBind*) Interop.Structure.Allocate (typeof (Interop.SparseImageMemoryBind));
+			Initialize ();
+		}
+
+		internal SparseImageMemoryBind (Interop.SparseImageMemoryBind* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+		}
+
 	}
 
 	unsafe public partial class SparseBufferMemoryBindInfo
@@ -1580,9 +1729,11 @@ namespace Vulkan
 				var values = new SparseMemoryBind [m->BindCount];
 				unsafe
 				{
-					SparseMemoryBind* ptr = (SparseMemoryBind*)m->Binds;
-					for (int i = 0; i < values.Length; i++) 
-						values [i] = ptr [i];
+					Interop.SparseMemoryBind* ptr = (Interop.SparseMemoryBind*)m->Binds;
+					for (int i = 0; i < values.Length; i++) {
+						values [i] = new SparseMemoryBind ();
+						*values [i].m = ptr [i];
+					}
 				}
 				return values;
 			}
@@ -1594,12 +1745,12 @@ namespace Vulkan
 					return;
 				}
 				m->BindCount = (uint)value.Length;
-				m->Binds = Marshal.AllocHGlobal ((int)(sizeof(SparseMemoryBind)*value.Length));
+				m->Binds = Marshal.AllocHGlobal ((int)(sizeof(Interop.SparseMemoryBind)*value.Length));
 				unsafe
 				{
-					SparseMemoryBind* ptr = (SparseMemoryBind*)m->Binds;
+					Interop.SparseMemoryBind* ptr = (Interop.SparseMemoryBind*)m->Binds;
 					for (int i = 0; i < value.Length; i++)
-						ptr [i] = value [i];
+						ptr [i] = *value [i].m;
 				}
 			}
 		}
@@ -1644,9 +1795,11 @@ namespace Vulkan
 				var values = new SparseMemoryBind [m->BindCount];
 				unsafe
 				{
-					SparseMemoryBind* ptr = (SparseMemoryBind*)m->Binds;
-					for (int i = 0; i < values.Length; i++) 
-						values [i] = ptr [i];
+					Interop.SparseMemoryBind* ptr = (Interop.SparseMemoryBind*)m->Binds;
+					for (int i = 0; i < values.Length; i++) {
+						values [i] = new SparseMemoryBind ();
+						*values [i].m = ptr [i];
+					}
 				}
 				return values;
 			}
@@ -1658,12 +1811,12 @@ namespace Vulkan
 					return;
 				}
 				m->BindCount = (uint)value.Length;
-				m->Binds = Marshal.AllocHGlobal ((int)(sizeof(SparseMemoryBind)*value.Length));
+				m->Binds = Marshal.AllocHGlobal ((int)(sizeof(Interop.SparseMemoryBind)*value.Length));
 				unsafe
 				{
-					SparseMemoryBind* ptr = (SparseMemoryBind*)m->Binds;
+					Interop.SparseMemoryBind* ptr = (Interop.SparseMemoryBind*)m->Binds;
 					for (int i = 0; i < value.Length; i++)
-						ptr [i] = value [i];
+						ptr [i] = *value [i].m;
 				}
 			}
 		}
@@ -1708,9 +1861,11 @@ namespace Vulkan
 				var values = new SparseImageMemoryBind [m->BindCount];
 				unsafe
 				{
-					SparseImageMemoryBind* ptr = (SparseImageMemoryBind*)m->Binds;
-					for (int i = 0; i < values.Length; i++) 
-						values [i] = ptr [i];
+					Interop.SparseImageMemoryBind* ptr = (Interop.SparseImageMemoryBind*)m->Binds;
+					for (int i = 0; i < values.Length; i++) {
+						values [i] = new SparseImageMemoryBind ();
+						*values [i].m = ptr [i];
+					}
 				}
 				return values;
 			}
@@ -1722,12 +1877,12 @@ namespace Vulkan
 					return;
 				}
 				m->BindCount = (uint)value.Length;
-				m->Binds = Marshal.AllocHGlobal ((int)(sizeof(SparseImageMemoryBind)*value.Length));
+				m->Binds = Marshal.AllocHGlobal ((int)(sizeof(Interop.SparseImageMemoryBind)*value.Length));
 				unsafe
 				{
-					SparseImageMemoryBind* ptr = (SparseImageMemoryBind*)m->Binds;
+					Interop.SparseImageMemoryBind* ptr = (Interop.SparseImageMemoryBind*)m->Binds;
 					for (int i = 0; i < value.Length; i++)
-						ptr [i] = value [i];
+						ptr [i] = *value [i].m;
 				}
 			}
 		}
@@ -5414,10 +5569,37 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial struct DisplayPlanePropertiesKhr
+	unsafe public partial class DisplayPlanePropertiesKhr
 	{
-		public UInt64 CurrentDisplay;
-		public UInt32 CurrentStackIndex;
+		DisplayKhr lCurrentDisplay;
+		public DisplayKhr CurrentDisplay {
+			get { return lCurrentDisplay; }
+			set { lCurrentDisplay = value; m->CurrentDisplay = (UInt64)value.m; }
+		}
+
+		public UInt32 CurrentStackIndex {
+			get { return m->CurrentStackIndex; }
+			set { m->CurrentStackIndex = value; }
+		}
+		internal Interop.DisplayPlanePropertiesKhr* m;
+
+		public DisplayPlanePropertiesKhr ()
+		{
+			m = (Interop.DisplayPlanePropertiesKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayPlanePropertiesKhr));
+			Initialize ();
+		}
+
+		internal DisplayPlanePropertiesKhr (Interop.DisplayPlanePropertiesKhr* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+		}
+
 	}
 
 	unsafe public partial struct DisplayModeParametersKhr
@@ -5426,10 +5608,37 @@ namespace Vulkan
 		public UInt32 RefreshRate;
 	}
 
-	unsafe public partial struct DisplayModePropertiesKhr
+	unsafe public partial class DisplayModePropertiesKhr
 	{
-		public UInt64 DisplayMode;
-		public DisplayModeParametersKhr Parameters;
+		DisplayModeKhr lDisplayMode;
+		public DisplayModeKhr DisplayMode {
+			get { return lDisplayMode; }
+			set { lDisplayMode = value; m->DisplayMode = (UInt64)value.m; }
+		}
+
+		public DisplayModeParametersKhr Parameters {
+			get { return m->Parameters; }
+			set { m->Parameters = value; }
+		}
+		internal Interop.DisplayModePropertiesKhr* m;
+
+		public DisplayModePropertiesKhr ()
+		{
+			m = (Interop.DisplayModePropertiesKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayModePropertiesKhr));
+			Initialize ();
+		}
+
+		internal DisplayModePropertiesKhr (Interop.DisplayModePropertiesKhr* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+		}
+
 	}
 
 	unsafe public partial class DisplayModeCreateInfoKhr

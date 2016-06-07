@@ -167,6 +167,20 @@ namespace Vulkan.Interop
 		internal DeviceSize Size;
 	}
 
+	internal partial struct DescriptorBufferInfo
+	{
+		internal UInt64 Buffer;
+		internal DeviceSize Offset;
+		internal DeviceSize Range;
+	}
+
+	internal partial struct DescriptorImageInfo
+	{
+		internal UInt64 Sampler;
+		internal UInt64 ImageView;
+		internal ImageLayout ImageLayout;
+	}
+
 	internal partial struct WriteDescriptorSet
 	{
 		internal StructureType SType;
@@ -281,6 +295,25 @@ namespace Vulkan.Interop
 		internal Format Format;
 		internal ComponentMapping Components;
 		internal ImageSubresourceRange SubresourceRange;
+	}
+
+	internal partial struct SparseMemoryBind
+	{
+		internal DeviceSize ResourceOffset;
+		internal DeviceSize Size;
+		internal UInt64 Memory;
+		internal DeviceSize MemoryOffset;
+		internal UInt32 Flags;
+	}
+
+	internal partial struct SparseImageMemoryBind
+	{
+		internal ImageSubresource Subresource;
+		internal Offset3D Offset;
+		internal Extent3D Extent;
+		internal UInt64 Memory;
+		internal DeviceSize MemoryOffset;
+		internal UInt32 Flags;
 	}
 
 	internal partial struct SparseBufferMemoryBindInfo
@@ -828,6 +861,18 @@ namespace Vulkan.Interop
 		internal SurfaceTransformFlagsKhr SupportedTransforms;
 		internal Bool32 PlaneReorderPossible;
 		internal Bool32 PersistentContent;
+	}
+
+	internal partial struct DisplayPlanePropertiesKhr
+	{
+		internal UInt64 CurrentDisplay;
+		internal UInt32 CurrentStackIndex;
+	}
+
+	internal partial struct DisplayModePropertiesKhr
+	{
+		internal UInt64 DisplayMode;
+		internal DisplayModeParametersKhr Parameters;
 	}
 
 	internal partial struct DisplayModeCreateInfoKhr

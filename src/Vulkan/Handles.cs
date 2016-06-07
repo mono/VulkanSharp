@@ -323,9 +323,9 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 
-				int size = Marshal.SizeOf (typeof (DisplayPlanePropertiesKhr));
+				int size = Marshal.SizeOf (typeof (Interop.DisplayPlanePropertiesKhr));
 				var ptrpProperties = Marshal.AllocHGlobal ((int)(size * pPropertyCount));
-				result = Interop.NativeMethods.vkGetPhysicalDeviceDisplayPlanePropertiesKHR (this.m, &pPropertyCount, (DisplayPlanePropertiesKhr*)ptrpProperties);
+				result = Interop.NativeMethods.vkGetPhysicalDeviceDisplayPlanePropertiesKHR (this.m, &pPropertyCount, (Interop.DisplayPlanePropertiesKhr*)ptrpProperties);
 				if (result != Result.Success)
 					throw new ResultException (result);
 
@@ -333,7 +333,7 @@ namespace Vulkan
 					return null;
 				var arr = new DisplayPlanePropertiesKhr [pPropertyCount];
 				for (int i = 0; i < pPropertyCount; i++) {
-					arr [i] = (((DisplayPlanePropertiesKhr*)ptrpProperties) [i]);
+					arr [i] = new DisplayPlanePropertiesKhr (&((Interop.DisplayPlanePropertiesKhr*)ptrpProperties) [i]);
 				}
 
 				return arr;
@@ -376,9 +376,9 @@ namespace Vulkan
 				if (result != Result.Success)
 					throw new ResultException (result);
 
-				int size = Marshal.SizeOf (typeof (DisplayModePropertiesKhr));
+				int size = Marshal.SizeOf (typeof (Interop.DisplayModePropertiesKhr));
 				var ptrpProperties = Marshal.AllocHGlobal ((int)(size * pPropertyCount));
-				result = Interop.NativeMethods.vkGetDisplayModePropertiesKHR (this.m, display.m, &pPropertyCount, (DisplayModePropertiesKhr*)ptrpProperties);
+				result = Interop.NativeMethods.vkGetDisplayModePropertiesKHR (this.m, display.m, &pPropertyCount, (Interop.DisplayModePropertiesKhr*)ptrpProperties);
 				if (result != Result.Success)
 					throw new ResultException (result);
 
@@ -386,7 +386,7 @@ namespace Vulkan
 					return null;
 				var arr = new DisplayModePropertiesKhr [pPropertyCount];
 				for (int i = 0; i < pPropertyCount; i++) {
-					arr [i] = (((DisplayModePropertiesKhr*)ptrpProperties) [i]);
+					arr [i] = new DisplayModePropertiesKhr (&((Interop.DisplayModePropertiesKhr*)ptrpProperties) [i]);
 				}
 
 				return arr;
@@ -502,13 +502,6 @@ namespace Vulkan
 				}
 
 				return arr;
-			}
-		}
-
-		public Bool32 GetWin32PresentationSupportKHR (UInt32 queueFamilyIndex)
-		{
-			unsafe {
-				return Interop.NativeMethods.vkGetPhysicalDeviceWin32PresentationSupportKHR (this.m, queueFamilyIndex);
 			}
 		}
 	}

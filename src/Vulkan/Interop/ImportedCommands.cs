@@ -483,9 +483,6 @@ namespace Vulkan.Interop
 		internal static unsafe extern Result vkQueuePresentKHR (IntPtr queue, PresentInfoKhr* pPresentInfo);
 
 		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
-		internal static unsafe extern Bool32 vkGetPhysicalDeviceWin32PresentationSupportKHR (IntPtr physicalDevice, UInt32 queueFamilyIndex);
-
-		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
 		internal static unsafe extern Result vkCreateDebugReportCallbackEXT (IntPtr instance, DebugReportCallbackCreateInfoExt* pCreateInfo, AllocationCallbacks* pAllocator, UInt64* pCallback);
 
 		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
