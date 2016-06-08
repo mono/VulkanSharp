@@ -12,6 +12,7 @@ namespace Inspector
 		public InspectorView (Android.Content.Context context, TextView view) : base (context, CreateInstance ())
 		{
 			textView = view;
+			textView.MovementMethod = new Android.Text.Method.ScrollingMovementMethod ();
 			textView.Append ("Vulkan instance created\n\n");
 		}
 
@@ -55,6 +56,13 @@ namespace Inspector
 				                                surfaceCaps.SupportedUsageFlags,
 				                                surfaceCaps.SupportedTransforms,
 				                                surfaceCaps.SupportedCompositeAlpha));
+
+				textView.Append (string.Format ("\n\tMemory properties\n"));
+				var memProperties = device.GetMemoryProperties ();
+				foreach (var memType in memProperties.MemoryTypes)
+					textView.Append (string.Format ("\t\tType HeapIndex: {0} Flags: 0x{1:X}\n", memType.HeapIndex, memType.PropertyFlags));
+				foreach (var memHeap in memProperties.MemoryHeaps)
+					textView.Append (string.Format ("\t\tHeap Size: {0} Flags: 0x{1:X}\n", (ulong)memHeap.Size, memHeap.Flags));
 			}
 
 			inspectionDone = true;
