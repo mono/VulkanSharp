@@ -1369,6 +1369,10 @@ namespace VulkanSharp.Generator
 				WriteCommandParameters (commandElement, null, dataParam, null, isForHandle && !isExtension, true, paramsDict, isExtension);
 				WriteLine (");");
 				CommandHandleResult (hasResult);
+				IndentWriteLine ("if ({0} <= 0)", intParam.csName);
+				IndentLevel++;
+				IndentWriteLine ("return null;", dataParam.csType);
+				IndentLevel--;
 				WriteLine ();
 				IndentWriteLine ("int size = Marshal.SizeOf (typeof ({0}{1}));", isInInterop ? "Interop." : "", dataParam.isHandle ? GetHandleType (handles [dataParam.csType]) : dataParam.csType);
 				IndentWriteLine ("var ptr{0} = Marshal.AllocHGlobal ((int)(size * {1}));", dataParam.csName, intParam.csName);
