@@ -31,6 +31,16 @@ namespace Vulkan
 			return new DeviceSize { value = iValue };
 		}
 
+		public static implicit operator DeviceSize (uint iValue)
+		{
+			return new DeviceSize { value = iValue };
+		}
+
+		public static implicit operator DeviceSize (int iValue)
+		{
+			return new DeviceSize { value = (ulong)iValue };
+		}
+
 		public static implicit operator UInt64 (DeviceSize size)
 		{
 			return size.value;
