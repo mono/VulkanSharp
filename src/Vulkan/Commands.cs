@@ -24,6 +24,8 @@ namespace Vulkan
 				result = Interop.NativeMethods.vkEnumerateInstanceLayerProperties (&pPropertyCount, null);
 				if (result != Result.Success)
 					throw new ResultException (result);
+				if (pPropertyCount <= 0)
+					return null;
 
 				int size = Marshal.SizeOf (typeof (Interop.LayerProperties));
 				var ptrpProperties = Marshal.AllocHGlobal ((int)(size * pPropertyCount));
@@ -50,6 +52,8 @@ namespace Vulkan
 				result = Interop.NativeMethods.vkEnumerateInstanceExtensionProperties (pLayerName, &pPropertyCount, null);
 				if (result != Result.Success)
 					throw new ResultException (result);
+				if (pPropertyCount <= 0)
+					return null;
 
 				int size = Marshal.SizeOf (typeof (Interop.ExtensionProperties));
 				var ptrpProperties = Marshal.AllocHGlobal ((int)(size * pPropertyCount));
