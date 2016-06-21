@@ -1064,37 +1064,53 @@ namespace Vulkan
 			}
 		}
 
-		public Pipeline CreateGraphicsPipelines (PipelineCache pipelineCache, UInt32 createInfoCount, GraphicsPipelineCreateInfo pCreateInfos, AllocationCallbacks pAllocator)
+		public Pipeline[] CreateGraphicsPipelines (PipelineCache pipelineCache, UInt32 createInfoCount, GraphicsPipelineCreateInfo pCreateInfos, AllocationCallbacks pAllocator)
 		{
 			Result result;
-			Pipeline pPipelines;
 			unsafe {
-				pPipelines = new Pipeline ();
+				if (createInfoCount <= 0)
+					return null;
 
-				fixed (UInt64* ptrpPipelines = &pPipelines.m) {
-					result = Interop.NativeMethods.vkCreateGraphicsPipelines (this.m, pipelineCache.m, createInfoCount, pCreateInfos.m, pAllocator != null ? pAllocator.m : null, ptrpPipelines);
-				}
+				int size = Marshal.SizeOf (typeof (UInt64));
+				var ptrpPipelines = Marshal.AllocHGlobal ((int)(size * createInfoCount));
+				result = Interop.NativeMethods.vkCreateGraphicsPipelines (this.m, pipelineCache.m, createInfoCount, pCreateInfos.m, pAllocator != null ? pAllocator.m : null, (UInt64*)ptrpPipelines);
 				if (result != Result.Success)
 					throw new ResultException (result);
 
-				return pPipelines;
+				if (createInfoCount <= 0)
+					return null;
+				var arr = new Pipeline [createInfoCount];
+				for (int i = 0; i < createInfoCount; i++) {
+					arr [i] = new Pipeline ();
+					arr [i].m = ((UInt64*)ptrpPipelines) [i];
+				}
+
+				return arr;
 			}
 		}
 
-		public Pipeline CreateComputePipelines (PipelineCache pipelineCache, UInt32 createInfoCount, ComputePipelineCreateInfo pCreateInfos, AllocationCallbacks pAllocator)
+		public Pipeline[] CreateComputePipelines (PipelineCache pipelineCache, UInt32 createInfoCount, ComputePipelineCreateInfo pCreateInfos, AllocationCallbacks pAllocator)
 		{
 			Result result;
-			Pipeline pPipelines;
 			unsafe {
-				pPipelines = new Pipeline ();
+				if (createInfoCount <= 0)
+					return null;
 
-				fixed (UInt64* ptrpPipelines = &pPipelines.m) {
-					result = Interop.NativeMethods.vkCreateComputePipelines (this.m, pipelineCache.m, createInfoCount, pCreateInfos.m, pAllocator != null ? pAllocator.m : null, ptrpPipelines);
-				}
+				int size = Marshal.SizeOf (typeof (UInt64));
+				var ptrpPipelines = Marshal.AllocHGlobal ((int)(size * createInfoCount));
+				result = Interop.NativeMethods.vkCreateComputePipelines (this.m, pipelineCache.m, createInfoCount, pCreateInfos.m, pAllocator != null ? pAllocator.m : null, (UInt64*)ptrpPipelines);
 				if (result != Result.Success)
 					throw new ResultException (result);
 
-				return pPipelines;
+				if (createInfoCount <= 0)
+					return null;
+				var arr = new Pipeline [createInfoCount];
+				for (int i = 0; i < createInfoCount; i++) {
+					arr [i] = new Pipeline ();
+					arr [i].m = ((UInt64*)ptrpPipelines) [i];
+				}
+
+				return arr;
 			}
 		}
 
@@ -1211,20 +1227,28 @@ namespace Vulkan
 			}
 		}
 
-		public DescriptorSet AllocateDescriptorSets (DescriptorSetAllocateInfo pAllocateInfo)
+		public DescriptorSet[] AllocateDescriptorSets (DescriptorSetAllocateInfo pAllocateInfo)
 		{
 			Result result;
-			DescriptorSet pDescriptorSets;
 			unsafe {
-				pDescriptorSets = new DescriptorSet ();
+				if (pAllocateInfo.DescriptorSetCount <= 0)
+					return null;
 
-				fixed (UInt64* ptrpDescriptorSets = &pDescriptorSets.m) {
-					result = Interop.NativeMethods.vkAllocateDescriptorSets (this.m, pAllocateInfo.m, ptrpDescriptorSets);
-				}
+				int size = Marshal.SizeOf (typeof (UInt64));
+				var ptrpDescriptorSets = Marshal.AllocHGlobal ((int)(size * pAllocateInfo.DescriptorSetCount));
+				result = Interop.NativeMethods.vkAllocateDescriptorSets (this.m, pAllocateInfo.m, (UInt64*)ptrpDescriptorSets);
 				if (result != Result.Success)
 					throw new ResultException (result);
 
-				return pDescriptorSets;
+				if (pAllocateInfo.DescriptorSetCount <= 0)
+					return null;
+				var arr = new DescriptorSet [pAllocateInfo.DescriptorSetCount];
+				for (int i = 0; i < pAllocateInfo.DescriptorSetCount; i++) {
+					arr [i] = new DescriptorSet ();
+					arr [i].m = ((UInt64*)ptrpDescriptorSets) [i];
+				}
+
+				return arr;
 			}
 		}
 
@@ -1340,20 +1364,28 @@ namespace Vulkan
 			}
 		}
 
-		public CommandBuffer AllocateCommandBuffers (CommandBufferAllocateInfo pAllocateInfo)
+		public CommandBuffer[] AllocateCommandBuffers (CommandBufferAllocateInfo pAllocateInfo)
 		{
 			Result result;
-			CommandBuffer pCommandBuffers;
 			unsafe {
-				pCommandBuffers = new CommandBuffer ();
+				if (pAllocateInfo.CommandBufferCount <= 0)
+					return null;
 
-				fixed (IntPtr* ptrpCommandBuffers = &pCommandBuffers.m) {
-					result = Interop.NativeMethods.vkAllocateCommandBuffers (this.m, pAllocateInfo.m, ptrpCommandBuffers);
-				}
+				int size = Marshal.SizeOf (typeof (IntPtr));
+				var ptrpCommandBuffers = Marshal.AllocHGlobal ((int)(size * pAllocateInfo.CommandBufferCount));
+				result = Interop.NativeMethods.vkAllocateCommandBuffers (this.m, pAllocateInfo.m, (IntPtr*)ptrpCommandBuffers);
 				if (result != Result.Success)
 					throw new ResultException (result);
 
-				return pCommandBuffers;
+				if (pAllocateInfo.CommandBufferCount <= 0)
+					return null;
+				var arr = new CommandBuffer [pAllocateInfo.CommandBufferCount];
+				for (int i = 0; i < pAllocateInfo.CommandBufferCount; i++) {
+					arr [i] = new CommandBuffer ();
+					arr [i].m = ((IntPtr*)ptrpCommandBuffers) [i];
+				}
+
+				return arr;
 			}
 		}
 
@@ -1366,20 +1398,28 @@ namespace Vulkan
 			}
 		}
 
-		public SwapchainKhr CreateSharedSwapchainsKHR (UInt32 swapchainCount, SwapchainCreateInfoKhr pCreateInfos, AllocationCallbacks pAllocator)
+		public SwapchainKhr[] CreateSharedSwapchainsKHR (UInt32 swapchainCount, SwapchainCreateInfoKhr pCreateInfos, AllocationCallbacks pAllocator)
 		{
 			Result result;
-			SwapchainKhr pSwapchains;
 			unsafe {
-				pSwapchains = new SwapchainKhr ();
+				if (swapchainCount <= 0)
+					return null;
 
-				fixed (UInt64* ptrpSwapchains = &pSwapchains.m) {
-					result = Interop.NativeMethods.vkCreateSharedSwapchainsKHR (this.m, swapchainCount, pCreateInfos.m, pAllocator != null ? pAllocator.m : null, ptrpSwapchains);
-				}
+				int size = Marshal.SizeOf (typeof (UInt64));
+				var ptrpSwapchains = Marshal.AllocHGlobal ((int)(size * swapchainCount));
+				result = Interop.NativeMethods.vkCreateSharedSwapchainsKHR (this.m, swapchainCount, pCreateInfos.m, pAllocator != null ? pAllocator.m : null, (UInt64*)ptrpSwapchains);
 				if (result != Result.Success)
 					throw new ResultException (result);
 
-				return pSwapchains;
+				if (swapchainCount <= 0)
+					return null;
+				var arr = new SwapchainKhr [swapchainCount];
+				for (int i = 0; i < swapchainCount; i++) {
+					arr [i] = new SwapchainKhr ();
+					arr [i].m = ((UInt64*)ptrpSwapchains) [i];
+				}
+
+				return arr;
 			}
 		}
 
