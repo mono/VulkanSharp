@@ -91,14 +91,13 @@ namespace ClearView
 		{
 			var createPoolInfo = new CommandPoolCreateInfo { Flags = (uint)CommandPoolCreateFlags.ResetCommandBuffer };
 			var commandPool = device.CreateCommandPool (createPoolInfo, null);
-			var buffers = new CommandBuffer [images.Length];
+			var commandBufferAllocateInfo = new CommandBufferAllocateInfo {
+				Level = CommandBufferLevel.Primary,
+				CommandPool = commandPool,
+				CommandBufferCount = (uint)images.Length
+			};
+			var buffers = device.AllocateCommandBuffers (commandBufferAllocateInfo);
 			for (int i = 0; i < images.Length; i++) {
-				var commandBufferAllocateInfo = new CommandBufferAllocateInfo {
-					Level = CommandBufferLevel.Primary,
-					CommandPool = commandPool,
-					CommandBufferCount = 1
-				};
-				buffers [i] = device.AllocateCommandBuffers (commandBufferAllocateInfo);
 
 				var commandBufferBeginInfo = new CommandBufferBeginInfo ();
 				buffers [i].Begin (commandBufferBeginInfo);
