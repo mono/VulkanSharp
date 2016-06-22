@@ -548,6 +548,11 @@ namespace VulkanSharp.Generator
 				zero = "UIntPtr.Zero";
 				len = string.Format ("((uint)m->{0} >> 2)", countName);
 				lenFromValue = string.Format ("(value.Length << 2)");
+			} else if (csMemberName == "SampleMask") {
+				cast = "";
+				zero = "0";
+				len = string.Format ("((uint)m->{0} >> 5)", countName);
+				lenFromValue = string.Format ("(SampleCountFlags)(value.Length << 5)");
 			} else {
 				cast = "(uint)";
 				zero = "0";
@@ -793,9 +798,6 @@ namespace VulkanSharp.Generator
 			string mod = "";
 			if (csMemberName.EndsWith ("]"))
 				mod = "unsafe fixed ";
-
-			if (csMemberType.EndsWith ("Flags"))
-				csMemberType = "UInt32";
 
 			if (csMemberType.EndsWith ("FlagBits"))
 				csMemberType = csMemberType.Substring (0, csMemberType.Length - 4) + "s";
