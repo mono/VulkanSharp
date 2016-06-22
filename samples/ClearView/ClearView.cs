@@ -40,7 +40,7 @@ namespace ClearView
 				ImageFormat = surfaceFormat.Format,
 				ImageColorSpace = surfaceFormat.ColorSpace,
 				ImageExtent = surfaceCapabilities.CurrentExtent,
-				ImageUsage = (uint)ImageUsageFlags.ColorAttachment,
+				ImageUsage = ImageUsageFlags.ColorAttachment,
 				PreTransform = SurfaceTransformFlagsKhr.Identity,
 				ImageArrayLayers = 1,
 				ImageSharingMode = SharingMode.Exclusive,
@@ -66,7 +66,7 @@ namespace ClearView
 						A = ComponentSwizzle.A
 					},
 					SubresourceRange = new ImageSubresourceRange {
-						AspectMask = (uint)ImageAspectFlags.Color,
+						AspectMask = ImageAspectFlags.Color,
 						LevelCount = 1,
 						LayerCount = 1
 					}
@@ -89,7 +89,7 @@ namespace ClearView
 
 		CommandBuffer[] CreateCommandBuffers (Image[] images, Framebuffer[] framebuffers, RenderPass renderPass, SurfaceCapabilitiesKhr surfaceCapabilities)
 		{
-			var createPoolInfo = new CommandPoolCreateInfo { Flags = (uint)CommandPoolCreateFlags.ResetCommandBuffer };
+			var createPoolInfo = new CommandPoolCreateInfo { Flags = CommandPoolCreateFlags.ResetCommandBuffer };
 			var commandPool = device.CreateCommandPool (createPoolInfo, null);
 			var commandBufferAllocateInfo = new CommandBufferAllocateInfo {
 				Level = CommandBufferLevel.Primary,
@@ -118,7 +118,7 @@ namespace ClearView
 		{
 			var attDesc = new AttachmentDescription {
 				Format = surfaceFormat.Format,
-				Samples = (uint)SampleCountFlags.Count1,
+				Samples = SampleCountFlags.Count1,
 				LoadOp = AttachmentLoadOp.Clear,
 				StoreOp = AttachmentStoreOp.Store,
 				StencilLoadOp = AttachmentLoadOp.DontCare,
