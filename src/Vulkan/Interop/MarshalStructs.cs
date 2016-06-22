@@ -212,9 +212,9 @@ namespace Vulkan.Interop
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal UInt32 Flags;
+		internal BufferCreateFlags Flags;
 		internal DeviceSize Size;
-		internal UInt32 Usage;
+		internal BufferUsageFlags Usage;
 		internal SharingMode SharingMode;
 		internal UInt32 QueueFamilyIndexCount;
 		internal IntPtr QueueFamilyIndices;
@@ -235,16 +235,16 @@ namespace Vulkan.Interop
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal UInt32 SrcAccessMask;
-		internal UInt32 DstAccessMask;
+		internal AccessFlags SrcAccessMask;
+		internal AccessFlags DstAccessMask;
 	}
 
 	internal partial struct BufferMemoryBarrier
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal UInt32 SrcAccessMask;
-		internal UInt32 DstAccessMask;
+		internal AccessFlags SrcAccessMask;
+		internal AccessFlags DstAccessMask;
 		internal UInt32 SrcQueueFamilyIndex;
 		internal UInt32 DstQueueFamilyIndex;
 		internal UInt64 Buffer;
@@ -256,8 +256,8 @@ namespace Vulkan.Interop
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal UInt32 SrcAccessMask;
-		internal UInt32 DstAccessMask;
+		internal AccessFlags SrcAccessMask;
+		internal AccessFlags DstAccessMask;
 		internal ImageLayout OldLayout;
 		internal ImageLayout NewLayout;
 		internal UInt32 SrcQueueFamilyIndex;
@@ -270,15 +270,15 @@ namespace Vulkan.Interop
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal UInt32 Flags;
+		internal ImageCreateFlags Flags;
 		internal ImageType ImageType;
 		internal Format Format;
 		internal Extent3D Extent;
 		internal UInt32 MipLevels;
 		internal UInt32 ArrayLayers;
-		internal UInt32 Samples;
+		internal SampleCountFlags Samples;
 		internal ImageTiling Tiling;
-		internal UInt32 Usage;
+		internal ImageUsageFlags Usage;
 		internal SharingMode SharingMode;
 		internal UInt32 QueueFamilyIndexCount;
 		internal IntPtr QueueFamilyIndices;
@@ -303,7 +303,7 @@ namespace Vulkan.Interop
 		internal DeviceSize Size;
 		internal UInt64 Memory;
 		internal DeviceSize MemoryOffset;
-		internal UInt32 Flags;
+		internal SparseMemoryBindFlags Flags;
 	}
 
 	internal partial struct SparseImageMemoryBind
@@ -313,7 +313,7 @@ namespace Vulkan.Interop
 		internal Extent3D Extent;
 		internal UInt64 Memory;
 		internal DeviceSize MemoryOffset;
-		internal UInt32 Flags;
+		internal SparseMemoryBindFlags Flags;
 	}
 
 	internal partial struct SparseBufferMemoryBindInfo
@@ -377,7 +377,7 @@ namespace Vulkan.Interop
 		internal UInt32 Binding;
 		internal DescriptorType DescriptorType;
 		internal UInt32 DescriptorCount;
-		internal UInt32 StageFlags;
+		internal ShaderStageFlags StageFlags;
 		internal IntPtr ImmutableSamplers;
 	}
 
@@ -394,7 +394,7 @@ namespace Vulkan.Interop
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal UInt32 Flags;
+		internal DescriptorPoolCreateFlags Flags;
 		internal UInt32 MaxSets;
 		internal UInt32 PoolSizeCount;
 		internal IntPtr PoolSizes;
@@ -422,7 +422,7 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 Flags;
-		internal UInt32 Stage;
+		internal ShaderStageFlags Stage;
 		internal UInt64 Module;
 		internal IntPtr Name;
 		internal IntPtr SpecializationInfo;
@@ -432,7 +432,7 @@ namespace Vulkan.Interop
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal UInt32 Flags;
+		internal PipelineCreateFlags Flags;
 		internal PipelineShaderStageCreateInfo Stage;
 		internal UInt64 Layout;
 		internal UInt64 BasePipelineHandle;
@@ -486,7 +486,7 @@ namespace Vulkan.Interop
 		internal Bool32 DepthClampEnable;
 		internal Bool32 RasterizerDiscardEnable;
 		internal PolygonMode PolygonMode;
-		internal UInt32 CullMode;
+		internal CullModeFlags CullMode;
 		internal FrontFace FrontFace;
 		internal Bool32 DepthBiasEnable;
 		internal float DepthBiasConstantFactor;
@@ -500,7 +500,7 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 Flags;
-		internal UInt32 RasterizationSamples;
+		internal SampleCountFlags RasterizationSamples;
 		internal Bool32 SampleShadingEnable;
 		internal float MinSampleShading;
 		internal IntPtr SampleMask;
@@ -549,7 +549,7 @@ namespace Vulkan.Interop
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal UInt32 Flags;
+		internal PipelineCreateFlags Flags;
 		internal UInt32 StageCount;
 		internal IntPtr Stages;
 		internal IntPtr VertexInputState;
@@ -614,7 +614,7 @@ namespace Vulkan.Interop
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal UInt32 Flags;
+		internal CommandPoolCreateFlags Flags;
 		internal UInt32 QueueFamilyIndex;
 	}
 
@@ -635,15 +635,15 @@ namespace Vulkan.Interop
 		internal UInt32 Subpass;
 		internal UInt64 Framebuffer;
 		internal Bool32 OcclusionQueryEnable;
-		internal UInt32 QueryFlags;
-		internal UInt32 PipelineStatistics;
+		internal QueryControlFlags QueryFlags;
+		internal QueryPipelineStatisticFlags PipelineStatistics;
 	}
 
 	internal partial struct CommandBufferBeginInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal UInt32 Flags;
+		internal CommandBufferUsageFlags Flags;
 		internal IntPtr InheritanceInfo;
 	}
 
@@ -696,7 +696,7 @@ namespace Vulkan.Interop
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal UInt32 Flags;
+		internal FenceCreateFlags Flags;
 	}
 
 	internal partial struct PhysicalDeviceLimits
@@ -781,16 +781,16 @@ namespace Vulkan.Interop
 		internal UInt32 MaxFramebufferWidth;
 		internal UInt32 MaxFramebufferHeight;
 		internal UInt32 MaxFramebufferLayers;
-		internal UInt32 FramebufferColorSampleCounts;
-		internal UInt32 FramebufferDepthSampleCounts;
-		internal UInt32 FramebufferStencilSampleCounts;
-		internal UInt32 FramebufferNoAttachmentsSampleCounts;
+		internal SampleCountFlags FramebufferColorSampleCounts;
+		internal SampleCountFlags FramebufferDepthSampleCounts;
+		internal SampleCountFlags FramebufferStencilSampleCounts;
+		internal SampleCountFlags FramebufferNoAttachmentsSampleCounts;
 		internal UInt32 MaxColorAttachments;
-		internal UInt32 SampledImageColorSampleCounts;
-		internal UInt32 SampledImageIntegerSampleCounts;
-		internal UInt32 SampledImageDepthSampleCounts;
-		internal UInt32 SampledImageStencilSampleCounts;
-		internal UInt32 StorageImageSampleCounts;
+		internal SampleCountFlags SampledImageColorSampleCounts;
+		internal SampleCountFlags SampledImageIntegerSampleCounts;
+		internal SampleCountFlags SampledImageDepthSampleCounts;
+		internal SampleCountFlags SampledImageStencilSampleCounts;
+		internal SampleCountFlags StorageImageSampleCounts;
 		internal UInt32 MaxSampleMaskWords;
 		internal Bool32 TimestampComputeAndGraphics;
 		internal float TimestampPeriod;
@@ -823,7 +823,7 @@ namespace Vulkan.Interop
 		internal UInt32 Flags;
 		internal QueryType QueryType;
 		internal UInt32 QueryCount;
-		internal UInt32 PipelineStatistics;
+		internal QueryPipelineStatisticFlags PipelineStatistics;
 	}
 
 	internal partial struct FramebufferCreateInfo
@@ -917,7 +917,7 @@ namespace Vulkan.Interop
 		internal ColorSpaceKhr ImageColorSpace;
 		internal Extent2D ImageExtent;
 		internal UInt32 ImageArrayLayers;
-		internal UInt32 ImageUsage;
+		internal ImageUsageFlags ImageUsage;
 		internal SharingMode ImageSharingMode;
 		internal UInt32 QueueFamilyIndexCount;
 		internal IntPtr QueueFamilyIndices;

@@ -631,7 +631,7 @@ namespace Vulkan
 
 	unsafe public partial struct QueueFamilyProperties
 	{
-		public UInt32 QueueFlags;
+		public QueueFlags QueueFlags;
 		public UInt32 QueueCount;
 		public UInt32 TimestampValidBits;
 		public Extent3D MinImageTransferGranularity;
@@ -750,9 +750,9 @@ namespace Vulkan
 
 	unsafe public partial struct SparseImageFormatProperties
 	{
-		public UInt32 AspectMask;
+		public ImageAspectFlags AspectMask;
 		public Extent3D ImageGranularity;
-		public UInt32 Flags;
+		public SparseImageFormatFlags Flags;
 	}
 
 	unsafe public partial struct SparseImageMemoryRequirements
@@ -766,14 +766,14 @@ namespace Vulkan
 
 	unsafe public partial struct MemoryType
 	{
-		public UInt32 PropertyFlags;
+		public MemoryPropertyFlags PropertyFlags;
 		public UInt32 HeapIndex;
 	}
 
 	unsafe public partial struct MemoryHeap
 	{
 		public DeviceSize Size;
-		public UInt32 Flags;
+		public MemoryHeapFlags Flags;
 	}
 
 	unsafe public partial class MappedMemoryRange
@@ -817,9 +817,9 @@ namespace Vulkan
 
 	unsafe public partial struct FormatProperties
 	{
-		public UInt32 LinearTilingFeatures;
-		public UInt32 OptimalTilingFeatures;
-		public UInt32 BufferFeatures;
+		public FormatFeatureFlags LinearTilingFeatures;
+		public FormatFeatureFlags OptimalTilingFeatures;
+		public FormatFeatureFlags BufferFeatures;
 	}
 
 	unsafe public partial struct ImageFormatProperties
@@ -827,7 +827,7 @@ namespace Vulkan
 		public Extent3D MaxExtent;
 		public UInt32 MaxMipLevels;
 		public UInt32 MaxArrayLayers;
-		public UInt32 SampleCounts;
+		public SampleCountFlags SampleCounts;
 		public DeviceSize MaxResourceSize;
 	}
 
@@ -1118,7 +1118,7 @@ namespace Vulkan
 
 	unsafe public partial class BufferCreateInfo
 	{
-		public UInt32 Flags {
+		public BufferCreateFlags Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
 		}
@@ -1128,7 +1128,7 @@ namespace Vulkan
 			set { m->Size = value; }
 		}
 
-		public UInt32 Usage {
+		public BufferUsageFlags Usage {
 			get { return m->Usage; }
 			set { m->Usage = value; }
 		}
@@ -1246,14 +1246,14 @@ namespace Vulkan
 
 	unsafe public partial struct ImageSubresource
 	{
-		public UInt32 AspectMask;
+		public ImageAspectFlags AspectMask;
 		public UInt32 MipLevel;
 		public UInt32 ArrayLayer;
 	}
 
 	unsafe public partial struct ImageSubresourceLayers
 	{
-		public UInt32 AspectMask;
+		public ImageAspectFlags AspectMask;
 		public UInt32 MipLevel;
 		public UInt32 BaseArrayLayer;
 		public UInt32 LayerCount;
@@ -1261,7 +1261,7 @@ namespace Vulkan
 
 	unsafe public partial struct ImageSubresourceRange
 	{
-		public UInt32 AspectMask;
+		public ImageAspectFlags AspectMask;
 		public UInt32 BaseMipLevel;
 		public UInt32 LevelCount;
 		public UInt32 BaseArrayLayer;
@@ -1270,12 +1270,12 @@ namespace Vulkan
 
 	unsafe public partial class MemoryBarrier
 	{
-		public UInt32 SrcAccessMask {
+		public AccessFlags SrcAccessMask {
 			get { return m->SrcAccessMask; }
 			set { m->SrcAccessMask = value; }
 		}
 
-		public UInt32 DstAccessMask {
+		public AccessFlags DstAccessMask {
 			get { return m->DstAccessMask; }
 			set { m->DstAccessMask = value; }
 		}
@@ -1303,12 +1303,12 @@ namespace Vulkan
 
 	unsafe public partial class BufferMemoryBarrier
 	{
-		public UInt32 SrcAccessMask {
+		public AccessFlags SrcAccessMask {
 			get { return m->SrcAccessMask; }
 			set { m->SrcAccessMask = value; }
 		}
 
-		public UInt32 DstAccessMask {
+		public AccessFlags DstAccessMask {
 			get { return m->DstAccessMask; }
 			set { m->DstAccessMask = value; }
 		}
@@ -1362,12 +1362,12 @@ namespace Vulkan
 
 	unsafe public partial class ImageMemoryBarrier
 	{
-		public UInt32 SrcAccessMask {
+		public AccessFlags SrcAccessMask {
 			get { return m->SrcAccessMask; }
 			set { m->SrcAccessMask = value; }
 		}
 
-		public UInt32 DstAccessMask {
+		public AccessFlags DstAccessMask {
 			get { return m->DstAccessMask; }
 			set { m->DstAccessMask = value; }
 		}
@@ -1426,7 +1426,7 @@ namespace Vulkan
 
 	unsafe public partial class ImageCreateInfo
 	{
-		public UInt32 Flags {
+		public ImageCreateFlags Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
 		}
@@ -1456,7 +1456,7 @@ namespace Vulkan
 			set { m->ArrayLayers = value; }
 		}
 
-		public UInt32 Samples {
+		public SampleCountFlags Samples {
 			get { return m->Samples; }
 			set { m->Samples = value; }
 		}
@@ -1466,7 +1466,7 @@ namespace Vulkan
 			set { m->Tiling = value; }
 		}
 
-		public UInt32 Usage {
+		public ImageUsageFlags Usage {
 			get { return m->Usage; }
 			set { m->Usage = value; }
 		}
@@ -1631,7 +1631,7 @@ namespace Vulkan
 			set { m->MemoryOffset = value; }
 		}
 
-		public UInt32 Flags {
+		public SparseMemoryBindFlags Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
 		}
@@ -1684,7 +1684,7 @@ namespace Vulkan
 			set { m->MemoryOffset = value; }
 		}
 
-		public UInt32 Flags {
+		public SparseMemoryBindFlags Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
 		}
@@ -2298,7 +2298,7 @@ namespace Vulkan
 			set { m->DescriptorCount = value; }
 		}
 
-		public UInt32 StageFlags {
+		public ShaderStageFlags StageFlags {
 			get { return m->StageFlags; }
 			set { m->StageFlags = value; }
 		}
@@ -2423,7 +2423,7 @@ namespace Vulkan
 
 	unsafe public partial class DescriptorPoolCreateInfo
 	{
-		public UInt32 Flags {
+		public DescriptorPoolCreateFlags Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
 		}
@@ -2632,7 +2632,7 @@ namespace Vulkan
 			set { m->Flags = value; }
 		}
 
-		public UInt32 Stage {
+		public ShaderStageFlags Stage {
 			get { return m->Stage; }
 			set { m->Stage = value; }
 		}
@@ -2677,7 +2677,7 @@ namespace Vulkan
 
 	unsafe public partial class ComputePipelineCreateInfo
 	{
-		public UInt32 Flags {
+		public PipelineCreateFlags Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
 		}
@@ -3035,7 +3035,7 @@ namespace Vulkan
 			set { m->PolygonMode = value; }
 		}
 
-		public UInt32 CullMode {
+		public CullModeFlags CullMode {
 			get { return m->CullMode; }
 			set { m->CullMode = value; }
 		}
@@ -3098,7 +3098,7 @@ namespace Vulkan
 			set { m->Flags = value; }
 		}
 
-		public UInt32 RasterizationSamples {
+		public SampleCountFlags RasterizationSamples {
 			get { return m->RasterizationSamples; }
 			set { m->RasterizationSamples = value; }
 		}
@@ -3117,7 +3117,7 @@ namespace Vulkan
 			get {
 				if (m->RasterizationSamples == 0)
 					return null;
-				var values = new UInt32 [m->RasterizationSamples];
+				var values = new UInt32 [((uint)m->RasterizationSamples >> 5)];
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->SampleMask;
@@ -3133,7 +3133,7 @@ namespace Vulkan
 					m->SampleMask = IntPtr.Zero;
 					return;
 				}
-				m->RasterizationSamples = (uint)value.Length;
+				m->RasterizationSamples = (SampleCountFlags)(value.Length << 5);
 				m->SampleMask = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*value.Length));
 				unsafe
 				{
@@ -3184,7 +3184,7 @@ namespace Vulkan
 		public BlendFactor SrcAlphaBlendFactor;
 		public BlendFactor DstAlphaBlendFactor;
 		public BlendOp AlphaBlendOp;
-		public UInt32 ColorWriteMask;
+		public ColorComponentFlags ColorWriteMask;
 	}
 
 	unsafe public partial class PipelineColorBlendStateCreateInfo
@@ -3429,7 +3429,7 @@ namespace Vulkan
 
 	unsafe public partial class GraphicsPipelineCreateInfo
 	{
-		public UInt32 Flags {
+		public PipelineCreateFlags Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
 		}
@@ -3615,7 +3615,7 @@ namespace Vulkan
 
 	unsafe public partial struct PushConstantRange
 	{
-		public UInt32 StageFlags;
+		public ShaderStageFlags StageFlags;
 		public UInt32 Offset;
 		public UInt32 Size;
 	}
@@ -3827,7 +3827,7 @@ namespace Vulkan
 
 	unsafe public partial class CommandPoolCreateInfo
 	{
-		public UInt32 Flags {
+		public CommandPoolCreateFlags Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
 		}
@@ -3921,12 +3921,12 @@ namespace Vulkan
 			set { m->OcclusionQueryEnable = value; }
 		}
 
-		public UInt32 QueryFlags {
+		public QueryControlFlags QueryFlags {
 			get { return m->QueryFlags; }
 			set { m->QueryFlags = value; }
 		}
 
-		public UInt32 PipelineStatistics {
+		public QueryPipelineStatisticFlags PipelineStatistics {
 			get { return m->PipelineStatistics; }
 			set { m->PipelineStatistics = value; }
 		}
@@ -3954,7 +3954,7 @@ namespace Vulkan
 
 	unsafe public partial class CommandBufferBeginInfo
 	{
-		public UInt32 Flags {
+		public CommandBufferUsageFlags Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
 		}
@@ -4072,16 +4072,16 @@ namespace Vulkan
 
 	unsafe public partial struct ClearAttachment
 	{
-		public UInt32 AspectMask;
+		public ImageAspectFlags AspectMask;
 		public UInt32 ColorAttachment;
 		public IntPtr ClearValue;
 	}
 
 	unsafe public partial struct AttachmentDescription
 	{
-		public UInt32 Flags;
+		public AttachmentDescriptionFlags Flags;
 		public Format Format;
-		public UInt32 Samples;
+		public SampleCountFlags Samples;
 		public AttachmentLoadOp LoadOp;
 		public AttachmentStoreOp StoreOp;
 		public AttachmentLoadOp StencilLoadOp;
@@ -4269,11 +4269,11 @@ namespace Vulkan
 	{
 		public UInt32 SrcSubpass;
 		public UInt32 DstSubpass;
-		public UInt32 SrcStageMask;
-		public UInt32 DstStageMask;
-		public UInt32 SrcAccessMask;
-		public UInt32 DstAccessMask;
-		public UInt32 DependencyFlags;
+		public PipelineStageFlags SrcStageMask;
+		public PipelineStageFlags DstStageMask;
+		public AccessFlags SrcAccessMask;
+		public AccessFlags DstAccessMask;
+		public DependencyFlags DependencyFlags;
 	}
 
 	unsafe public partial class RenderPassCreateInfo
@@ -4444,7 +4444,7 @@ namespace Vulkan
 
 	unsafe public partial class FenceCreateInfo
 	{
-		public UInt32 Flags {
+		public FenceCreateFlags Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
 		}
@@ -4992,22 +4992,22 @@ namespace Vulkan
 			set { m->MaxFramebufferLayers = value; }
 		}
 
-		public UInt32 FramebufferColorSampleCounts {
+		public SampleCountFlags FramebufferColorSampleCounts {
 			get { return m->FramebufferColorSampleCounts; }
 			set { m->FramebufferColorSampleCounts = value; }
 		}
 
-		public UInt32 FramebufferDepthSampleCounts {
+		public SampleCountFlags FramebufferDepthSampleCounts {
 			get { return m->FramebufferDepthSampleCounts; }
 			set { m->FramebufferDepthSampleCounts = value; }
 		}
 
-		public UInt32 FramebufferStencilSampleCounts {
+		public SampleCountFlags FramebufferStencilSampleCounts {
 			get { return m->FramebufferStencilSampleCounts; }
 			set { m->FramebufferStencilSampleCounts = value; }
 		}
 
-		public UInt32 FramebufferNoAttachmentsSampleCounts {
+		public SampleCountFlags FramebufferNoAttachmentsSampleCounts {
 			get { return m->FramebufferNoAttachmentsSampleCounts; }
 			set { m->FramebufferNoAttachmentsSampleCounts = value; }
 		}
@@ -5017,27 +5017,27 @@ namespace Vulkan
 			set { m->MaxColorAttachments = value; }
 		}
 
-		public UInt32 SampledImageColorSampleCounts {
+		public SampleCountFlags SampledImageColorSampleCounts {
 			get { return m->SampledImageColorSampleCounts; }
 			set { m->SampledImageColorSampleCounts = value; }
 		}
 
-		public UInt32 SampledImageIntegerSampleCounts {
+		public SampleCountFlags SampledImageIntegerSampleCounts {
 			get { return m->SampledImageIntegerSampleCounts; }
 			set { m->SampledImageIntegerSampleCounts = value; }
 		}
 
-		public UInt32 SampledImageDepthSampleCounts {
+		public SampleCountFlags SampledImageDepthSampleCounts {
 			get { return m->SampledImageDepthSampleCounts; }
 			set { m->SampledImageDepthSampleCounts = value; }
 		}
 
-		public UInt32 SampledImageStencilSampleCounts {
+		public SampleCountFlags SampledImageStencilSampleCounts {
 			get { return m->SampledImageStencilSampleCounts; }
 			set { m->SampledImageStencilSampleCounts = value; }
 		}
 
-		public UInt32 StorageImageSampleCounts {
+		public SampleCountFlags StorageImageSampleCounts {
 			get { return m->StorageImageSampleCounts; }
 			set { m->StorageImageSampleCounts = value; }
 		}
@@ -5206,7 +5206,7 @@ namespace Vulkan
 			set { m->QueryCount = value; }
 		}
 
-		public UInt32 PipelineStatistics {
+		public QueryPipelineStatisticFlags PipelineStatistics {
 			get { return m->PipelineStatistics; }
 			set { m->PipelineStatistics = value; }
 		}
@@ -5383,14 +5383,14 @@ namespace Vulkan
 			}
 		}
 
-		public UInt32[] WaitDstStageMask {
+		public PipelineStageFlags[] WaitDstStageMask {
 			get {
 				if (m->WaitSemaphoreCount == 0)
 					return null;
-				var values = new UInt32 [m->WaitSemaphoreCount];
+				var values = new PipelineStageFlags [m->WaitSemaphoreCount];
 				unsafe
 				{
-					UInt32* ptr = (UInt32*)m->WaitDstStageMask;
+					PipelineStageFlags* ptr = (PipelineStageFlags*)m->WaitDstStageMask;
 					for (int i = 0; i < values.Length; i++) 
 						values [i] = ptr [i];
 				}
@@ -5404,10 +5404,10 @@ namespace Vulkan
 					return;
 				}
 				m->WaitSemaphoreCount = (uint)value.Length;
-				m->WaitDstStageMask = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*value.Length));
+				m->WaitDstStageMask = Marshal.AllocHGlobal ((int)(sizeof(PipelineStageFlags)*value.Length));
 				unsafe
 				{
-					UInt32* ptr = (UInt32*)m->WaitDstStageMask;
+					PipelineStageFlags* ptr = (PipelineStageFlags*)m->WaitDstStageMask;
 					for (int i = 0; i < value.Length; i++)
 						ptr [i] = value [i];
 				}
@@ -5800,7 +5800,7 @@ namespace Vulkan
 		public SurfaceTransformFlagsKhr SupportedTransforms;
 		public SurfaceTransformFlagsKhr CurrentTransform;
 		public CompositeAlphaFlagsKhr SupportedCompositeAlpha;
-		public UInt32 SupportedUsageFlags;
+		public ImageUsageFlags SupportedUsageFlags;
 	}
 
 	unsafe public partial struct SurfaceFormatKhr
@@ -5847,7 +5847,7 @@ namespace Vulkan
 			set { m->ImageArrayLayers = value; }
 		}
 
-		public UInt32 ImageUsage {
+		public ImageUsageFlags ImageUsage {
 			get { return m->ImageUsage; }
 			set { m->ImageUsage = value; }
 		}
