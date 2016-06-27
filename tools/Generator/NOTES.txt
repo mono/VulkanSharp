@@ -5,6 +5,5 @@ extensions
   finish extensions binding, generate more platform specific extensions
 
 TODO:
-  marshalling fixed sized arrays in structures
-  do not marshal structs/unions with fixed size arrays of valuetypes like ClearColorValue
   improve commands like ResetFences (issue #11)
+  optional parameters (like AllocationCallbacks) - set default values for method parameters
