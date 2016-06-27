@@ -42,3 +42,4 @@ assemble-docs:
 run-android-samples:
 	xbuild /t:Install\;_Run samples/Inspector/Inspector.csproj
 	xbuild /t:Install\;_Run samples/ClearView/ClearView.csproj
+	xbuild /t:Install\;_Run samples/XLogo/XLogo.csproj
