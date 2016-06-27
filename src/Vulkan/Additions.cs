@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Runtime.InteropServices;
+
 namespace Vulkan
 {
 	public partial class Instance
@@ -19,6 +21,35 @@ namespace Vulkan
 
 		public Instance () : this (new InstanceCreateInfo ())
 		{
+		}
+	}
+
+	unsafe public partial class ShaderModuleCreateInfo
+	{
+		public byte[] CodeBytes {
+			set {
+				/* todo free allocated memory when already set */
+				if (value == null) {
+					m->CodeSize = UIntPtr.Zero;
+					m->Code = IntPtr.Zero;
+					return;
+				}
+				m->CodeSize = (UIntPtr)value.Length;
+				m->Code = Marshal.AllocHGlobal (value.Length);
+				Marshal.Copy (value, 0, m->Code, value.Length);
+			}
+		}
+	}
+
+	public partial class Device
+	{
+		public ShaderModule CreateShaderModule (byte[] shaderCode, uint flags = 0, AllocationCallbacks allocator = null)
+		{
+			ShaderModuleCreateInfo createInfo = new ShaderModuleCreateInfo {
+				CodeBytes = shaderCode,
+				Flags = flags
+			};
+			return CreateShaderModule (createInfo, allocator);
 		}
 	}
 
