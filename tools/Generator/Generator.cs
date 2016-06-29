@@ -1154,11 +1154,50 @@ namespace VulkanSharp.Generator
 			return paramsDict;
 		}
 
-		void WriteCommandParameters (XElement commandElement, List<ParamInfo> ignoredParameters = null, ParamInfo nullParameter = null, ParamInfo ptrParam = null, bool isInstance = false, bool passToNative = false, Dictionary<string, ParamInfo> paramsDict = null, bool isExtension = false)
+		string GetDefaultValue (string csType)
+		{
+			if (csType.EndsWith ("Flags"))
+				return string.Format ("({0})0", csType);
+
+			switch (csType) {
+			case "IntPtr":
+				return "default(IntPtr)";
+			case "UInt32":
+				return "0";
+			}
+
+			return "null";
+		}
+
+		void WriteCommandParameters (XElement commandElement, List<ParamInfo> ignoredParameters = null, ParamInfo nullParameter = null, ParamInfo ptrParam = null, bool isInstance = false, bool passToNative = false, Dictionary<string, ParamInfo> paramsDict = null, bool isExtension = false, bool useOptional = false)
 		{
 			bool first = true;
 			bool previous = false;
+			string firstOptional = null;
 
+			if (useOptional) {
+				foreach (var param in commandElement.Elements ("param")) {
+					string name = GetParamName (param);
+					if (!paramsDict.ContainsKey (name))
+						continue;
+
+					var info = paramsDict [name];
+
+					if (ignoredParameters != null && ignoredParameters.Contains (info))
+						continue;
+
+					var optional = param.Attribute ("optional");
+					bool isOptionalParam = (optional != null && optional.Value == "true");
+
+					if (!isOptionalParam)
+						firstOptional = null;
+					else if (firstOptional == null) {
+						firstOptional = name;
+						Console.WriteLine ("rodo: firstOptional {0}", name);
+					}
+				}
+			}
+			var optionalPart = false;
 			foreach (var param in commandElement.Elements ("param")) {
 				string name = GetParamName (param);
 
@@ -1203,11 +1242,14 @@ namespace VulkanSharp.Generator
 					else if (info == ptrParam)
 						Write ("({0}{1}*)ptr{2}", (info.isStruct && info.needsMarshalling) ? "Interop." : "", info.isHandle ? GetHandleType (handles [info.csType]) : info.csType, info.csName);
 					else if (isOptionalParam && info.isPointer && !info.isOut)
-						Write ("{0} != null ? {0}{1} : null", GetSafeParameterName(paramName), useHandlePtr ? ".m" : "");
+						Write ("{0} != null ? {0}{1} : null", GetSafeParameterName (paramName), useHandlePtr ? ".m" : "");
 					else
-						Write ("{0}{1}{2}", (info.isPointer && (!info.isStruct || !info.needsMarshalling) && !info.isFixed) ? "&" : "", GetSafeParameterName(paramName), useHandlePtr ? ".m" : "");
-				} else
-					Write ("{0}{1} {2}", info.isOut ? "out " : "", info.csType, keywords.Contains (name) ? "@" + name : name);
+						Write ("{0}{1}{2}", (info.isPointer && (!info.isStruct || !info.needsMarshalling) && !info.isFixed) ? "&" : "", GetSafeParameterName (paramName), useHandlePtr ? ".m" : "");
+				} else {
+					if (firstOptional == name)
+						optionalPart = true;
+					Write ("{0}{1} {2}{3}", info.isOut ? "out " : "", info.csType, keywords.Contains (name) ? "@" + name : name, (optionalPart && isOptionalParam) ? string.Format (" = {0}", GetDefaultValue (info.csType)) : "");
+				}
 			}
 		}
 
@@ -1376,7 +1418,7 @@ namespace VulkanSharp.Generator
 			}
 
 			IndentWrite ("public {0}{1} {2} (", (!isExtension && isForHandle) ? "" : "static ", csType, csFunction);
-			WriteCommandParameters (commandElement, ignoredParameters, null, null, isForHandle && !isExtension, false, paramsDict, isExtension);
+			WriteCommandParameters (commandElement, ignoredParameters, null, null, isForHandle && !isExtension, false, paramsDict, isExtension, true);
 			WriteLine (")");
 			IndentWriteLine ("{");
 			IndentLevel++;
