@@ -44,7 +44,7 @@ namespace Vulkan
 			}
 		}
 
-		public static ExtensionProperties[] EnumerateInstanceExtensionProperties (string pLayerName)
+		public static ExtensionProperties[] EnumerateInstanceExtensionProperties (string pLayerName = null)
 		{
 			Result result;
 			unsafe {

@@ -16,7 +16,7 @@ namespace Vulkan.Windows
 {
 	public static class InstanceExtension
 	{
-		public static SurfaceKhr CreateWin32SurfaceKHR (this Instance instance, Win32SurfaceCreateInfoKhr pCreateInfo, AllocationCallbacks pAllocator)
+		public static SurfaceKhr CreateWin32SurfaceKHR (this Instance instance, Win32SurfaceCreateInfoKhr pCreateInfo, AllocationCallbacks pAllocator = null)
 		{
 			Result result;
 			SurfaceKhr pSurface;

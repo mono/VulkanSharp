@@ -16,7 +16,7 @@ namespace Vulkan.Android
 {
 	public static class InstanceExtension
 	{
-		public static SurfaceKhr CreateAndroidSurfaceKHR (this Instance instance, AndroidSurfaceCreateInfoKhr pCreateInfo, AllocationCallbacks pAllocator)
+		public static SurfaceKhr CreateAndroidSurfaceKHR (this Instance instance, AndroidSurfaceCreateInfoKhr pCreateInfo, AllocationCallbacks pAllocator = null)
 		{
 			Result result;
 			SurfaceKhr pSurface;
