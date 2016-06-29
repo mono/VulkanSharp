@@ -37,7 +37,7 @@ namespace Inspector
 		{
 			var surface = Instance.CreateAndroidSurfaceKHR (new AndroidSurfaceCreateInfoKhr () {
 				Window = aNativeWindow
-			}, null);
+			});
 
 			textView.Append ("Vulkan Android surface created\n\n");
 

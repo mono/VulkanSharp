@@ -72,7 +72,7 @@ namespace XLogo
 				CompositeAlpha = CompositeAlphaFlagsKhr.Inherit
 			};
 
-			return device.CreateSwapchainKHR (swapchainInfo, null);
+			return device.CreateSwapchainKHR (swapchainInfo);
 		}
 
 		Framebuffer [] CreateFramebuffers (Image [] images, SurfaceFormatKhr surfaceFormat)
@@ -96,7 +96,7 @@ namespace XLogo
 						LayerCount = 1
 					}
 				};
-				displayViews [i] = device.CreateImageView (viewCreateInfo, null);
+				displayViews [i] = device.CreateImageView (viewCreateInfo);
 			}
 			var framebuffers = new Framebuffer [images.Length];
 
@@ -108,16 +108,16 @@ namespace XLogo
 					Width = surfaceCapabilities.CurrentExtent.Width,
 					Height = surfaceCapabilities.CurrentExtent.Height
 				};
-				framebuffers [i] = device.CreateFramebuffer (frameBufferCreateInfo, null);
+				framebuffers [i] = device.CreateFramebuffer (frameBufferCreateInfo);
 			}
 
 			return framebuffers;
 		}
 
-		CommandBuffer [] CreateCommandBuffers (Image [] images, Framebuffer [] framebuffers, Pipeline pipeline, Buffer vertexBuffer, Buffer indexBuffer, uint indexLength, PipelineLayout pipelineLayout)
+		CommandBuffer [] CreateCommandBuffers (Image [] images, Framebuffer [] framebuffers, Pipeline pipeline, Buffer vertexBuffer, Buffer indexBuffer, uint indexLength)
 		{
 			var createPoolInfo = new CommandPoolCreateInfo { Flags = CommandPoolCreateFlags.ResetCommandBuffer };
-			var commandPool = device.CreateCommandPool (createPoolInfo, null);
+			var commandPool = device.CreateCommandPool (createPoolInfo);
 			var commandBufferAllocateInfo = new CommandBufferAllocateInfo {
 				Level = CommandBufferLevel.Primary,
 				CommandPool = commandPool,
@@ -169,7 +169,7 @@ namespace XLogo
 				Subpasses = new SubpassDescription [] { subpassDesc }
 			};
 
-			return device.CreateRenderPass (renderPassCreateInfo, null);
+			return device.CreateRenderPass (renderPassCreateInfo);
 		}
 
 		byte [] LoadResource (string name)
@@ -192,7 +192,7 @@ namespace XLogo
 				SharingMode = SharingMode.Exclusive,
 				QueueFamilyIndices = new uint [] { 0 }
 			};
-			var buffer = device.CreateBuffer (createBufferInfo, null);
+			var buffer = device.CreateBuffer (createBufferInfo);
 			var memoryReq = device.GetBufferMemoryRequirements (buffer);
 			var allocInfo = new MemoryAllocateInfo { AllocationSize = memoryReq.Size };
 			var memoryProperties = physicalDevice.GetMemoryProperties ();
@@ -210,7 +210,7 @@ namespace XLogo
 			if (!heapIndexSet)
 				allocInfo.MemoryTypeIndex = memoryProperties.MemoryTypes [0].HeapIndex;
 
-			var deviceMemory = device.AllocateMemory (allocInfo, null);
+			var deviceMemory = device.AllocateMemory (allocInfo);
 			var memPtr = device.MapMemory (deviceMemory, 0, size, 0);
 
 			if (type == typeof (float))
@@ -243,7 +243,7 @@ namespace XLogo
 				Bindings = new DescriptorSetLayoutBinding [] { layoutBinding }
 			};
 
-			return device.CreateDescriptorSetLayout (descriptorSetLayoutCreateInfo, null);
+			return device.CreateDescriptorSetLayout (descriptorSetLayoutCreateInfo);
 		}
 
 		Pipeline[] CreatePipelines ()
@@ -251,7 +251,7 @@ namespace XLogo
 			var pipelineLayoutCreateInfo = new PipelineLayoutCreateInfo {
 				SetLayouts = new DescriptorSetLayout [] { descriptorSetLayout }
 			};
-			pipelineLayout = device.CreatePipelineLayout (pipelineLayoutCreateInfo, null);
+			pipelineLayout = device.CreatePipelineLayout (pipelineLayoutCreateInfo);
 			var vertexShaderModule = device.CreateShaderModule (LoadResource ("XLogo.Shaders.shader.vert.spv"));
 			var fragmentShaderModule = device.CreateShaderModule (LoadResource ("XLogo.Shaders.shader.frag.spv"));
 			PipelineShaderStageCreateInfo [] pipelineShaderStages = {
@@ -323,12 +323,12 @@ namespace XLogo
 				RenderPass = renderPass
 			};
 
-			return device.CreateGraphicsPipelines (device.CreatePipelineCache (new PipelineCacheCreateInfo (), null), 1, pipelineCreateInfo, null);
+			return device.CreateGraphicsPipelines (device.CreatePipelineCache (new PipelineCacheCreateInfo ()), 1, pipelineCreateInfo);
 		}
 
 		Buffer CreateUniformBuffer (PhysicalDevice physicalDevice)
 		{
-			AreaUniformBuffer uniformBufferData = new AreaUniformBuffer {
+			var uniformBufferData = new AreaUniformBuffer {
 				width = surfaceCapabilities.CurrentExtent.Width,
 				height = surfaceCapabilities.CurrentExtent.Height
 			};
@@ -338,15 +338,15 @@ namespace XLogo
 
 		DescriptorSet[] CreateDescriptorSets ()
 		{
-			DescriptorPoolSize typeCount = new DescriptorPoolSize {
+			var typeCount = new DescriptorPoolSize {
 				Type = DescriptorType.UniformBuffer,
 				DescriptorCount = 1
 			};
-			DescriptorPoolCreateInfo descriptorPoolCreateInfo = new DescriptorPoolCreateInfo {
+			var descriptorPoolCreateInfo = new DescriptorPoolCreateInfo {
 				PoolSizes = new DescriptorPoolSize [] { typeCount },
 				MaxSets = 1
 			};
-			var descriptorPool = device.CreateDescriptorPool (descriptorPoolCreateInfo, null);
+			var descriptorPool = device.CreateDescriptorPool (descriptorPoolCreateInfo);
 
 			var descriptorSetAllocateInfo = new DescriptorSetAllocateInfo {
 				SetLayouts = new DescriptorSetLayout [] { descriptorSetLayout },
@@ -375,14 +375,14 @@ namespace XLogo
 		public void InitializeVulkan ()
 		{
 			var devices = Instance.EnumeratePhysicalDevices ();
-			var surface = Instance.CreateAndroidSurfaceKHR (new AndroidSurfaceCreateInfoKhr { Window = aNativeWindow }, null);
+			var surface = Instance.CreateAndroidSurfaceKHR (new AndroidSurfaceCreateInfoKhr { Window = aNativeWindow });
 			var queueInfo = new DeviceQueueCreateInfo { QueuePriorities = new float [] { 1.0f } };
 			var deviceInfo = new DeviceCreateInfo {
 				EnabledExtensionNames = new string [] { "VK_KHR_swapchain", "VK_KHR_display_swapchain" },
 				QueueCreateInfos = new DeviceQueueCreateInfo [] { queueInfo }
 			};
 			var physicalDevice = devices [0];
-			device = physicalDevice.CreateDevice (deviceInfo, null);
+			device = physicalDevice.CreateDevice (deviceInfo);
 			queue = device.GetQueue (0, 0);
 			surfaceCapabilities = physicalDevice.GetSurfaceCapabilitiesKHR (surface);
 			var surfaceFormat = SelectFormat (physicalDevice, surface);
@@ -399,11 +399,11 @@ namespace XLogo
 			descriptorSets = CreateDescriptorSets ();
 			UpdateDescriptorSets ();
 
-			commandBuffers = CreateCommandBuffers (images, framebuffers, pipelines [0], vertexBuffer, indexBuffer, (uint)Logo.Indexes.Length, pipelineLayout);
+			commandBuffers = CreateCommandBuffers (images, framebuffers, pipelines [0], vertexBuffer, indexBuffer, (uint)Logo.Indexes.Length);
 			var fenceInfo = new FenceCreateInfo ();
-			fence = device.CreateFence (fenceInfo, null);
+			fence = device.CreateFence (fenceInfo);
 			var semaphoreInfo = new SemaphoreCreateInfo ();
-			semaphore = device.CreateSemaphore (semaphoreInfo, null);
+			semaphore = device.CreateSemaphore (semaphoreInfo);
 			initialized = true;
 		}
 

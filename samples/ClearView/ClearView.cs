@@ -48,7 +48,7 @@ namespace ClearView
 				PresentMode = PresentModeKhr.Fifo,
 				CompositeAlpha = CompositeAlphaFlagsKhr.Inherit
 			};
-			return device.CreateSwapchainKHR (swapchainInfo, null);
+			return device.CreateSwapchainKHR (swapchainInfo);
 		}
 
 		Framebuffer [] CreateFramebuffers (Image[] images, SurfaceFormatKhr surfaceFormat, SurfaceCapabilitiesKhr surfaceCapabilities, RenderPass renderPass)
@@ -71,7 +71,7 @@ namespace ClearView
 						LayerCount = 1
 					}
 				};
-				displayViews [i] = device.CreateImageView (viewCreateInfo, null);
+				displayViews [i] = device.CreateImageView (viewCreateInfo);
 			}
 			var framebuffers = new Framebuffer [images.Length];
 			for (int i = 0; i < images.Length; i++) {
@@ -82,7 +82,7 @@ namespace ClearView
 					Width = surfaceCapabilities.CurrentExtent.Width,
 					Height = surfaceCapabilities.CurrentExtent.Height
 				};
-				framebuffers [i] = device.CreateFramebuffer (frameBufferCreateInfo, null);
+				framebuffers [i] = device.CreateFramebuffer (frameBufferCreateInfo);
 			}
 			return framebuffers;
 		}
@@ -90,7 +90,7 @@ namespace ClearView
 		CommandBuffer[] CreateCommandBuffers (Image[] images, Framebuffer[] framebuffers, RenderPass renderPass, SurfaceCapabilitiesKhr surfaceCapabilities)
 		{
 			var createPoolInfo = new CommandPoolCreateInfo { Flags = CommandPoolCreateFlags.ResetCommandBuffer };
-			var commandPool = device.CreateCommandPool (createPoolInfo, null);
+			var commandPool = device.CreateCommandPool (createPoolInfo);
 			var commandBufferAllocateInfo = new CommandBufferAllocateInfo {
 				Level = CommandBufferLevel.Primary,
 				CommandPool = commandPool,
@@ -135,20 +135,20 @@ namespace ClearView
 				Attachments = new AttachmentDescription [] { attDesc },
 				Subpasses = new SubpassDescription [] { subpassDesc }
 			};
-			return device.CreateRenderPass (renderPassCreateInfo, null);
+			return device.CreateRenderPass (renderPassCreateInfo);
 		}
 
 		public void InitializeVulkan ()
 		{
 			var devices = Instance.EnumeratePhysicalDevices ();
-			var surface = Instance.CreateAndroidSurfaceKHR (new AndroidSurfaceCreateInfoKhr { Window = aNativeWindow }, null);
+			var surface = Instance.CreateAndroidSurfaceKHR (new AndroidSurfaceCreateInfoKhr { Window = aNativeWindow });
 			var queueInfo = new DeviceQueueCreateInfo { QueuePriorities = new float [] { 1.0f } };
 			var deviceInfo = new DeviceCreateInfo {
 				EnabledExtensionNames = new string [] { "VK_KHR_swapchain", "VK_KHR_display_swapchain" },
 				QueueCreateInfos = new DeviceQueueCreateInfo [] { queueInfo }
 			};
 			var physicalDevice = devices [0];
-			device = physicalDevice.CreateDevice (deviceInfo, null);
+			device = physicalDevice.CreateDevice (deviceInfo);
 			queue = device.GetQueue (0, 0);
 			var surfaceCapabilities = physicalDevice.GetSurfaceCapabilitiesKHR (surface);
 			var surfaceFormat = SelectFormat (physicalDevice, surface);
@@ -158,9 +158,9 @@ namespace ClearView
 			var framebuffers = CreateFramebuffers (images, surfaceFormat, surfaceCapabilities, renderPass);
 			commandBuffers = CreateCommandBuffers (images, framebuffers, renderPass, surfaceCapabilities);
 			var fenceInfo = new FenceCreateInfo ();
-			fence = device.CreateFence (fenceInfo, null);
+			fence = device.CreateFence (fenceInfo);
 			var semaphoreInfo = new SemaphoreCreateInfo ();
-			semaphore = device.CreateSemaphore (semaphoreInfo, null);
+			semaphore = device.CreateSemaphore (semaphoreInfo);
 			initialized = true;
 		}
 
