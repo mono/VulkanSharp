@@ -95,6 +95,7 @@ namespace VulkanSharp.Generator
 			{ "1D", "1D" },
 			{ "2D", "2D" },
 			{ "3D", "3D" },
+			{ "NV", "Nv" }
 		};
 
 		// TODO: validate this mapping
@@ -170,7 +171,8 @@ namespace VulkanSharp.Generator
 			{ "AMD", "Amd" },
 			{ "EXT", "Ext" },
 			{ "IMG", "Img" },
-			{ "KHR", "Khr" }
+			{ "KHR", "Khr" },
+			{ "NV", "Nv" }
 		};
 
 		void WriteEnumField (string name, string value, string csEnumName)
