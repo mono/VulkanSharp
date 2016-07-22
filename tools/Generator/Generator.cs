@@ -1085,6 +1085,8 @@ namespace VulkanSharp.Generator
 			public bool isPointer;
 			public bool isConst;
 			public bool needsMarshalling;
+			public ParamInfo lenArray;
+			public bool isArray;
 		}
 
 		string GetParamCsType (string type, ref bool isPointer, out bool isHandle)
@@ -1239,16 +1241,21 @@ namespace VulkanSharp.Generator
 
 					if (info == nullParameter)
 						Write ("null");
-					else if (info == ptrParam)
+					else if (info.isArray) {
+						var arrayType = GetParamArrayType (info);
+						Write ("({0}*)array{1}", arrayType, info.csName);
+					} else if (info == ptrParam)
 						Write ("({0}{1}*)ptr{2}", (info.isStruct && info.needsMarshalling) ? "Interop." : "", info.isHandle ? GetHandleType (handles [info.csType]) : info.csType, info.csName);
 					else if (isOptionalParam && info.isPointer && !info.isOut)
 						Write ("{0} != null ? {0}{1} : null", GetSafeParameterName (paramName), useHandlePtr ? ".m" : "");
+					else if (info.lenArray != null)
+						Write ("(uint)len{0}", info.lenArray.csName);
 					else
 						Write ("{0}{1}{2}", (info.isPointer && (!info.isStruct || !info.needsMarshalling) && !info.isFixed) ? "&" : "", GetSafeParameterName (paramName), useHandlePtr ? ".m" : "");
 				} else {
 					if (firstOptional == name)
 						optionalPart = true;
-					Write ("{0}{1} {2}{3}", info.isOut ? "out " : "", info.csType, keywords.Contains (name) ? "@" + name : name, (optionalPart && isOptionalParam) ? string.Format (" = {0}", GetDefaultValue (info.csType)) : "");
+					Write ("{0}{1}{2} {3}{4}", info.isOut ? "out " : "", info.csType, info.isArray ? "[]" : "", keywords.Contains (name) ? "@" + name : name, (optionalPart && isOptionalParam) ? string.Format (" = {0}", GetDefaultValue (info.csType)) : "");
 				}
 			}
 		}
@@ -1328,6 +1335,17 @@ namespace VulkanSharp.Generator
 			return new ParamInfo { csName = len };
 		}
 
+		string GetParamArrayType (ParamInfo info)
+		{
+
+			if (info.isHandle)
+				return GetHandleType (handles [info.csType]);
+			if (info.isStruct && info.needsMarshalling)
+				return string.Format ("{0}.{1}", InteropNamespace, info.csType);
+
+			return info.csType;
+		}
+
 		bool WriteCommand (XElement commandElement, bool prependNewLine, bool isForHandle = false, string handleName = null, bool isExtension = false)
 		{
 			string function = commandElement.Element ("proto").Element ("name").Value;
@@ -1370,6 +1388,7 @@ namespace VulkanSharp.Generator
 
 			ParamInfo firstOutParam = null;
 			ParamInfo intParam = null;
+			string outLen = null;
 			ParamInfo dataParam = null;
 			var ignoredParameters = new List<ParamInfo> ();
 			bool createArray = false;
@@ -1400,8 +1419,6 @@ namespace VulkanSharp.Generator
 						dataParam = firstOutParam;
 						intParam.isFixed = false;
 						dataParam.isFixed = false;
-						intParam.isOut = false;
-						dataParam.isOut = false;
 					}
 				} else if (outCount > 1) {
 					createArray = CommandShouldCreateArray (commandElement, paramsDict, ref intParam, ref dataParam);
@@ -1410,12 +1427,33 @@ namespace VulkanSharp.Generator
 						ignoredParameters.Add (dataParam);
 						intParam.isFixed = false;
 						dataParam.isFixed = false;
-						intParam.isOut = false;
-						dataParam.isOut = false;
 						csType = string.Format ("{0}[]", dataParam.csType);
 					}
 				}
 			}
+
+			if (intParam != null)
+				outLen = intParam.csName;
+
+			int arrayParamCount = 0;
+			foreach (var param in paramsDict) {
+				var info = param.Value;
+				if (info.len != null && paramsDict.ContainsKey (info.len) && !info.isOut && info.csType != "IntPtr") {
+					var lenParameter = paramsDict [info.len];
+					ignoredParameters.Add (lenParameter);
+					info.isArray = true;
+					lenParameter.lenArray = info;
+					if (lenParameter.csName == outLen)
+						outLen = string.Format ("{0}.Length", info.csName);
+					info.isFixed = false;
+					arrayParamCount++;
+				}
+			}
+
+			if (intParam != null)
+				intParam.isOut = false;
+			if (dataParam != null)
+				dataParam.isOut = false;
 
 			IndentWrite ("public {0}{1} {2} (", (!isExtension && isForHandle) ? "" : "static ", csType, csFunction);
 			WriteCommandParameters (commandElement, ignoredParameters, null, null, isForHandle && !isExtension, false, paramsDict, isExtension, true);
@@ -1433,19 +1471,19 @@ namespace VulkanSharp.Generator
 			if (createArray) {
 				isInInterop = dataParam.isStruct && dataParam.needsMarshalling;
 				if (!hasLen) {
-					IndentWriteLine ("UInt32 {0};", intParam.csName);
+					IndentWriteLine ("UInt32 {0};", outLen);
 					IndentWrite ("{0}{1}Interop.NativeMethods.{2} (", hasResult ? "result = " : "", (ignoredParameters.Count == 0 && csType != "void") ? "return " : "", function);
 					WriteCommandParameters (commandElement, null, dataParam, null, isForHandle && !isExtension, true, paramsDict, isExtension);
 					WriteLine (");");
 					CommandHandleResult (hasResult);
 				}
-				IndentWriteLine ("if ({0} <= 0)", intParam.csName);
+				IndentWriteLine ("if ({0} <= 0)", outLen);
 				IndentLevel++;
-				IndentWriteLine ("return null;", dataParam.csType);
+				IndentWriteLine ("return null;");
 				IndentLevel--;
 				WriteLine ();
 				IndentWriteLine ("int size = Marshal.SizeOf (typeof ({0}{1}));", isInInterop ? "Interop." : "", dataParam.isHandle ? GetHandleType (handles [dataParam.csType]) : dataParam.csType);
-				IndentWriteLine ("var ptr{0} = Marshal.AllocHGlobal ((int)(size * {1}));", dataParam.csName, intParam.csName);
+				IndentWriteLine ("var ptr{0} = Marshal.AllocHGlobal ((int)(size * {1}));", dataParam.csName, outLen);
 			}
 
 			if (fixedCount > 0) {
@@ -1472,6 +1510,21 @@ namespace VulkanSharp.Generator
 					if (info.isOut && !info.isFixed) // && (ignoredParameters == null || !ignoredParameters.Contains (info)))
 						IndentWriteLine ("{0} = new {1} ();", param.Key, info.csType);
 				}
+			if (arrayParamCount > 0)
+				foreach (var param in paramsDict) {
+					var info = param.Value;
+					if (info.len != null && firstOutParam != info) {
+						IndentWriteLine ("var array{0} = {0} == null ? IntPtr.Zero : Marshal.AllocHGlobal ({0}.Length*sizeof ({1}));", info.csName, GetParamArrayType (info));
+						IndentWriteLine ("var len{0} = {0} == null ? 0 : {0}.Length;", info.csName);
+						IndentWriteLine ("if ({0} != null)", info.csName);
+						IndentLevel++;
+						IndentWriteLine ("for (int i = 0; i < {0}.Length; i++)", info.csName);
+						IndentLevel++;
+						IndentWriteLine ("(({0}*)array{1}) [i] = {3}({1} [i]{2});", GetParamArrayType (info), info.csName, ((info.isStruct && info.needsMarshalling) || info.isHandle) ? ".m" : "", (info.isStruct && info.needsMarshalling) ? "*" : "");
+						IndentLevel--;
+						IndentLevel--;
+					}
+				}
 
 			IndentWrite ("{0}{1}{2}.NativeMethods.{3} (", hasResult ? "result = " : "", (ignoredParameters.Count == 0 && csType != "void") ? "return " : "", InteropNamespace, function);
 			WriteCommandParameters (commandElement, null, null, dataParam, isForHandle && !isExtension, true, paramsDict, isExtension);
@@ -1486,18 +1539,24 @@ namespace VulkanSharp.Generator
 				}
 			}
 
+			if (arrayParamCount > 0)
+				foreach (var param in paramsDict) {
+					var info = param.Value;
+					if (info.len != null && firstOutParam != info)
+						IndentWriteLine ("Marshal.FreeHGlobal (array{0});", info.csName);
+				}
 			CommandHandleResult (hasResult);
 			if (firstOutParam != null && !createArray) {
 				WriteLine ();
 				IndentWriteLine ("return {0};", firstOutParam.csName);
 			} else if (createArray) {
 				WriteLine ();
-				IndentWriteLine ("if ({0} <= 0)", intParam.csName);
+				IndentWriteLine ("if ({0} <= 0)", outLen);
 				IndentLevel++;
 				IndentWriteLine ("return null;");
 				IndentLevel--;
-				IndentWriteLine ("var arr = new {0} [{1}];", dataParam.csType, intParam.csName);
-				IndentWriteLine ("for (int i = 0; i < {0}; i++) {{", intParam.csName);
+				IndentWriteLine ("var arr = new {0} [{1}];", dataParam.csType, outLen);
+				IndentWriteLine ("for (int i = 0; i < {0}; i++) {{", outLen);
 				IndentLevel++;
 				if (isInInterop || !dataParam.isStruct) {
 					if (dataParam.isStruct)
