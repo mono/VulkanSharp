@@ -615,21 +615,33 @@ namespace Vulkan
 			}
 		}
 
-		public void FlushMappedMemoryRanges (UInt32 memoryRangeCount, MappedMemoryRange pMemoryRanges)
+		public void FlushMappedMemoryRanges (MappedMemoryRange[] pMemoryRanges)
 		{
 			Result result;
 			unsafe {
-				result = Interop.NativeMethods.vkFlushMappedMemoryRanges (this.m, memoryRangeCount, pMemoryRanges.m);
+				var arraypMemoryRanges = pMemoryRanges == null ? IntPtr.Zero : Marshal.AllocHGlobal (pMemoryRanges.Length*sizeof (Interop.MappedMemoryRange));
+				var lenpMemoryRanges = pMemoryRanges == null ? 0 : pMemoryRanges.Length;
+				if (pMemoryRanges != null)
+					for (int i = 0; i < pMemoryRanges.Length; i++)
+						((Interop.MappedMemoryRange*)arraypMemoryRanges) [i] = *(pMemoryRanges [i].m);
+				result = Interop.NativeMethods.vkFlushMappedMemoryRanges (this.m, (uint)lenpMemoryRanges, (Interop.MappedMemoryRange*)arraypMemoryRanges);
+				Marshal.FreeHGlobal (arraypMemoryRanges);
 				if (result != Result.Success)
 					throw new ResultException (result);
 			}
 		}
 
-		public void InvalidateMappedMemoryRanges (UInt32 memoryRangeCount, MappedMemoryRange pMemoryRanges)
+		public void InvalidateMappedMemoryRanges (MappedMemoryRange[] pMemoryRanges)
 		{
 			Result result;
 			unsafe {
-				result = Interop.NativeMethods.vkInvalidateMappedMemoryRanges (this.m, memoryRangeCount, pMemoryRanges.m);
+				var arraypMemoryRanges = pMemoryRanges == null ? IntPtr.Zero : Marshal.AllocHGlobal (pMemoryRanges.Length*sizeof (Interop.MappedMemoryRange));
+				var lenpMemoryRanges = pMemoryRanges == null ? 0 : pMemoryRanges.Length;
+				if (pMemoryRanges != null)
+					for (int i = 0; i < pMemoryRanges.Length; i++)
+						((Interop.MappedMemoryRange*)arraypMemoryRanges) [i] = *(pMemoryRanges [i].m);
+				result = Interop.NativeMethods.vkInvalidateMappedMemoryRanges (this.m, (uint)lenpMemoryRanges, (Interop.MappedMemoryRange*)arraypMemoryRanges);
+				Marshal.FreeHGlobal (arraypMemoryRanges);
 				if (result != Result.Success)
 					throw new ResultException (result);
 			}
@@ -735,13 +747,17 @@ namespace Vulkan
 			}
 		}
 
-		public void ResetFences (UInt32 fenceCount, Fence pFences)
+		public void ResetFences (Fence[] pFences)
 		{
 			Result result;
 			unsafe {
-				fixed (UInt64* ptrpFences = &pFences.m) {
-					result = Interop.NativeMethods.vkResetFences (this.m, fenceCount, ptrpFences);
-				}
+				var arraypFences = pFences == null ? IntPtr.Zero : Marshal.AllocHGlobal (pFences.Length*sizeof (UInt64));
+				var lenpFences = pFences == null ? 0 : pFences.Length;
+				if (pFences != null)
+					for (int i = 0; i < pFences.Length; i++)
+						((UInt64*)arraypFences) [i] = (pFences [i].m);
+				result = Interop.NativeMethods.vkResetFences (this.m, (uint)lenpFences, (UInt64*)arraypFences);
+				Marshal.FreeHGlobal (arraypFences);
 				if (result != Result.Success)
 					throw new ResultException (result);
 			}
@@ -757,13 +773,17 @@ namespace Vulkan
 			}
 		}
 
-		public void WaitForFences (UInt32 fenceCount, Fence pFences, Bool32 waitAll, UInt64 timeout)
+		public void WaitForFences (Fence[] pFences, Bool32 waitAll, UInt64 timeout)
 		{
 			Result result;
 			unsafe {
-				fixed (UInt64* ptrpFences = &pFences.m) {
-					result = Interop.NativeMethods.vkWaitForFences (this.m, fenceCount, ptrpFences, waitAll, timeout);
-				}
+				var arraypFences = pFences == null ? IntPtr.Zero : Marshal.AllocHGlobal (pFences.Length*sizeof (UInt64));
+				var lenpFences = pFences == null ? 0 : pFences.Length;
+				if (pFences != null)
+					for (int i = 0; i < pFences.Length; i++)
+						((UInt64*)arraypFences) [i] = (pFences [i].m);
+				result = Interop.NativeMethods.vkWaitForFences (this.m, (uint)lenpFences, (UInt64*)arraypFences, waitAll, timeout);
+				Marshal.FreeHGlobal (arraypFences);
 				if (result != Result.Success)
 					throw new ResultException (result);
 			}
@@ -1052,35 +1072,45 @@ namespace Vulkan
 			}
 		}
 
-		public void MergePipelineCaches (PipelineCache dstCache, UInt32 srcCacheCount, PipelineCache pSrcCaches)
+		public void MergePipelineCaches (PipelineCache dstCache, PipelineCache[] pSrcCaches)
 		{
 			Result result;
 			unsafe {
-				fixed (UInt64* ptrpSrcCaches = &pSrcCaches.m) {
-					result = Interop.NativeMethods.vkMergePipelineCaches (this.m, dstCache.m, srcCacheCount, ptrpSrcCaches);
-				}
+				var arraypSrcCaches = pSrcCaches == null ? IntPtr.Zero : Marshal.AllocHGlobal (pSrcCaches.Length*sizeof (UInt64));
+				var lenpSrcCaches = pSrcCaches == null ? 0 : pSrcCaches.Length;
+				if (pSrcCaches != null)
+					for (int i = 0; i < pSrcCaches.Length; i++)
+						((UInt64*)arraypSrcCaches) [i] = (pSrcCaches [i].m);
+				result = Interop.NativeMethods.vkMergePipelineCaches (this.m, dstCache.m, (uint)lenpSrcCaches, (UInt64*)arraypSrcCaches);
+				Marshal.FreeHGlobal (arraypSrcCaches);
 				if (result != Result.Success)
 					throw new ResultException (result);
 			}
 		}
 
-		public Pipeline[] CreateGraphicsPipelines (PipelineCache pipelineCache, UInt32 createInfoCount, GraphicsPipelineCreateInfo pCreateInfos, AllocationCallbacks pAllocator = null)
+		public Pipeline[] CreateGraphicsPipelines (PipelineCache pipelineCache, GraphicsPipelineCreateInfo[] pCreateInfos, AllocationCallbacks pAllocator = null)
 		{
 			Result result;
 			unsafe {
-				if (createInfoCount <= 0)
+				if (pCreateInfos.Length <= 0)
 					return null;
 
 				int size = Marshal.SizeOf (typeof (UInt64));
-				var ptrpPipelines = Marshal.AllocHGlobal ((int)(size * createInfoCount));
-				result = Interop.NativeMethods.vkCreateGraphicsPipelines (this.m, pipelineCache.m, createInfoCount, pCreateInfos.m, pAllocator != null ? pAllocator.m : null, (UInt64*)ptrpPipelines);
+				var ptrpPipelines = Marshal.AllocHGlobal ((int)(size * pCreateInfos.Length));
+				var arraypCreateInfos = pCreateInfos == null ? IntPtr.Zero : Marshal.AllocHGlobal (pCreateInfos.Length*sizeof (Interop.GraphicsPipelineCreateInfo));
+				var lenpCreateInfos = pCreateInfos == null ? 0 : pCreateInfos.Length;
+				if (pCreateInfos != null)
+					for (int i = 0; i < pCreateInfos.Length; i++)
+						((Interop.GraphicsPipelineCreateInfo*)arraypCreateInfos) [i] = *(pCreateInfos [i].m);
+				result = Interop.NativeMethods.vkCreateGraphicsPipelines (this.m, pipelineCache.m, (uint)lenpCreateInfos, (Interop.GraphicsPipelineCreateInfo*)arraypCreateInfos, pAllocator != null ? pAllocator.m : null, (UInt64*)ptrpPipelines);
+				Marshal.FreeHGlobal (arraypCreateInfos);
 				if (result != Result.Success)
 					throw new ResultException (result);
 
-				if (createInfoCount <= 0)
+				if (pCreateInfos.Length <= 0)
 					return null;
-				var arr = new Pipeline [createInfoCount];
-				for (int i = 0; i < createInfoCount; i++) {
+				var arr = new Pipeline [pCreateInfos.Length];
+				for (int i = 0; i < pCreateInfos.Length; i++) {
 					arr [i] = new Pipeline ();
 					arr [i].m = ((UInt64*)ptrpPipelines) [i];
 				}
@@ -1089,23 +1119,29 @@ namespace Vulkan
 			}
 		}
 
-		public Pipeline[] CreateComputePipelines (PipelineCache pipelineCache, UInt32 createInfoCount, ComputePipelineCreateInfo pCreateInfos, AllocationCallbacks pAllocator = null)
+		public Pipeline[] CreateComputePipelines (PipelineCache pipelineCache, ComputePipelineCreateInfo[] pCreateInfos, AllocationCallbacks pAllocator = null)
 		{
 			Result result;
 			unsafe {
-				if (createInfoCount <= 0)
+				if (pCreateInfos.Length <= 0)
 					return null;
 
 				int size = Marshal.SizeOf (typeof (UInt64));
-				var ptrpPipelines = Marshal.AllocHGlobal ((int)(size * createInfoCount));
-				result = Interop.NativeMethods.vkCreateComputePipelines (this.m, pipelineCache.m, createInfoCount, pCreateInfos.m, pAllocator != null ? pAllocator.m : null, (UInt64*)ptrpPipelines);
+				var ptrpPipelines = Marshal.AllocHGlobal ((int)(size * pCreateInfos.Length));
+				var arraypCreateInfos = pCreateInfos == null ? IntPtr.Zero : Marshal.AllocHGlobal (pCreateInfos.Length*sizeof (Interop.ComputePipelineCreateInfo));
+				var lenpCreateInfos = pCreateInfos == null ? 0 : pCreateInfos.Length;
+				if (pCreateInfos != null)
+					for (int i = 0; i < pCreateInfos.Length; i++)
+						((Interop.ComputePipelineCreateInfo*)arraypCreateInfos) [i] = *(pCreateInfos [i].m);
+				result = Interop.NativeMethods.vkCreateComputePipelines (this.m, pipelineCache.m, (uint)lenpCreateInfos, (Interop.ComputePipelineCreateInfo*)arraypCreateInfos, pAllocator != null ? pAllocator.m : null, (UInt64*)ptrpPipelines);
+				Marshal.FreeHGlobal (arraypCreateInfos);
 				if (result != Result.Success)
 					throw new ResultException (result);
 
-				if (createInfoCount <= 0)
+				if (pCreateInfos.Length <= 0)
 					return null;
-				var arr = new Pipeline [createInfoCount];
-				for (int i = 0; i < createInfoCount; i++) {
+				var arr = new Pipeline [pCreateInfos.Length];
+				for (int i = 0; i < pCreateInfos.Length; i++) {
 					arr [i] = new Pipeline ();
 					arr [i].m = ((UInt64*)ptrpPipelines) [i];
 				}
@@ -1252,22 +1288,38 @@ namespace Vulkan
 			}
 		}
 
-		public void FreeDescriptorSets (DescriptorPool descriptorPool, UInt32 descriptorSetCount, DescriptorSet pDescriptorSets)
+		public void FreeDescriptorSets (DescriptorPool descriptorPool, DescriptorSet[] pDescriptorSets)
 		{
 			Result result;
 			unsafe {
-				fixed (UInt64* ptrpDescriptorSets = &pDescriptorSets.m) {
-					result = Interop.NativeMethods.vkFreeDescriptorSets (this.m, descriptorPool.m, descriptorSetCount, ptrpDescriptorSets);
-				}
+				var arraypDescriptorSets = pDescriptorSets == null ? IntPtr.Zero : Marshal.AllocHGlobal (pDescriptorSets.Length*sizeof (UInt64));
+				var lenpDescriptorSets = pDescriptorSets == null ? 0 : pDescriptorSets.Length;
+				if (pDescriptorSets != null)
+					for (int i = 0; i < pDescriptorSets.Length; i++)
+						((UInt64*)arraypDescriptorSets) [i] = (pDescriptorSets [i].m);
+				result = Interop.NativeMethods.vkFreeDescriptorSets (this.m, descriptorPool.m, (uint)lenpDescriptorSets, (UInt64*)arraypDescriptorSets);
+				Marshal.FreeHGlobal (arraypDescriptorSets);
 				if (result != Result.Success)
 					throw new ResultException (result);
 			}
 		}
 
-		public void UpdateDescriptorSets (UInt32 descriptorWriteCount, WriteDescriptorSet pDescriptorWrites, UInt32 descriptorCopyCount, CopyDescriptorSet pDescriptorCopies)
+		public void UpdateDescriptorSets (WriteDescriptorSet[] pDescriptorWrites, CopyDescriptorSet[] pDescriptorCopies)
 		{
 			unsafe {
-				Interop.NativeMethods.vkUpdateDescriptorSets (this.m, descriptorWriteCount, pDescriptorWrites.m, descriptorCopyCount, pDescriptorCopies.m);
+				var arraypDescriptorWrites = pDescriptorWrites == null ? IntPtr.Zero : Marshal.AllocHGlobal (pDescriptorWrites.Length*sizeof (Interop.WriteDescriptorSet));
+				var lenpDescriptorWrites = pDescriptorWrites == null ? 0 : pDescriptorWrites.Length;
+				if (pDescriptorWrites != null)
+					for (int i = 0; i < pDescriptorWrites.Length; i++)
+						((Interop.WriteDescriptorSet*)arraypDescriptorWrites) [i] = *(pDescriptorWrites [i].m);
+				var arraypDescriptorCopies = pDescriptorCopies == null ? IntPtr.Zero : Marshal.AllocHGlobal (pDescriptorCopies.Length*sizeof (Interop.CopyDescriptorSet));
+				var lenpDescriptorCopies = pDescriptorCopies == null ? 0 : pDescriptorCopies.Length;
+				if (pDescriptorCopies != null)
+					for (int i = 0; i < pDescriptorCopies.Length; i++)
+						((Interop.CopyDescriptorSet*)arraypDescriptorCopies) [i] = *(pDescriptorCopies [i].m);
+				Interop.NativeMethods.vkUpdateDescriptorSets (this.m, (uint)lenpDescriptorWrites, (Interop.WriteDescriptorSet*)arraypDescriptorWrites, (uint)lenpDescriptorCopies, (Interop.CopyDescriptorSet*)arraypDescriptorCopies);
+				Marshal.FreeHGlobal (arraypDescriptorWrites);
+				Marshal.FreeHGlobal (arraypDescriptorCopies);
 			}
 		}
 
@@ -1389,32 +1441,42 @@ namespace Vulkan
 			}
 		}
 
-		public void FreeCommandBuffers (CommandPool commandPool, UInt32 commandBufferCount, CommandBuffer pCommandBuffers)
+		public void FreeCommandBuffers (CommandPool commandPool, CommandBuffer[] pCommandBuffers)
 		{
 			unsafe {
-				fixed (IntPtr* ptrpCommandBuffers = &pCommandBuffers.m) {
-					Interop.NativeMethods.vkFreeCommandBuffers (this.m, commandPool.m, commandBufferCount, ptrpCommandBuffers);
-				}
+				var arraypCommandBuffers = pCommandBuffers == null ? IntPtr.Zero : Marshal.AllocHGlobal (pCommandBuffers.Length*sizeof (IntPtr));
+				var lenpCommandBuffers = pCommandBuffers == null ? 0 : pCommandBuffers.Length;
+				if (pCommandBuffers != null)
+					for (int i = 0; i < pCommandBuffers.Length; i++)
+						((IntPtr*)arraypCommandBuffers) [i] = (pCommandBuffers [i].m);
+				Interop.NativeMethods.vkFreeCommandBuffers (this.m, commandPool.m, (uint)lenpCommandBuffers, (IntPtr*)arraypCommandBuffers);
+				Marshal.FreeHGlobal (arraypCommandBuffers);
 			}
 		}
 
-		public SwapchainKhr[] CreateSharedSwapchainsKHR (UInt32 swapchainCount, SwapchainCreateInfoKhr pCreateInfos, AllocationCallbacks pAllocator = null)
+		public SwapchainKhr[] CreateSharedSwapchainsKHR (SwapchainCreateInfoKhr[] pCreateInfos, AllocationCallbacks pAllocator = null)
 		{
 			Result result;
 			unsafe {
-				if (swapchainCount <= 0)
+				if (pCreateInfos.Length <= 0)
 					return null;
 
 				int size = Marshal.SizeOf (typeof (UInt64));
-				var ptrpSwapchains = Marshal.AllocHGlobal ((int)(size * swapchainCount));
-				result = Interop.NativeMethods.vkCreateSharedSwapchainsKHR (this.m, swapchainCount, pCreateInfos.m, pAllocator != null ? pAllocator.m : null, (UInt64*)ptrpSwapchains);
+				var ptrpSwapchains = Marshal.AllocHGlobal ((int)(size * pCreateInfos.Length));
+				var arraypCreateInfos = pCreateInfos == null ? IntPtr.Zero : Marshal.AllocHGlobal (pCreateInfos.Length*sizeof (Interop.SwapchainCreateInfoKhr));
+				var lenpCreateInfos = pCreateInfos == null ? 0 : pCreateInfos.Length;
+				if (pCreateInfos != null)
+					for (int i = 0; i < pCreateInfos.Length; i++)
+						((Interop.SwapchainCreateInfoKhr*)arraypCreateInfos) [i] = *(pCreateInfos [i].m);
+				result = Interop.NativeMethods.vkCreateSharedSwapchainsKHR (this.m, (uint)lenpCreateInfos, (Interop.SwapchainCreateInfoKhr*)arraypCreateInfos, pAllocator != null ? pAllocator.m : null, (UInt64*)ptrpSwapchains);
+				Marshal.FreeHGlobal (arraypCreateInfos);
 				if (result != Result.Success)
 					throw new ResultException (result);
 
-				if (swapchainCount <= 0)
+				if (pCreateInfos.Length <= 0)
 					return null;
-				var arr = new SwapchainKhr [swapchainCount];
-				for (int i = 0; i < swapchainCount; i++) {
+				var arr = new SwapchainKhr [pCreateInfos.Length];
+				for (int i = 0; i < pCreateInfos.Length; i++) {
 					arr [i] = new SwapchainKhr ();
 					arr [i].m = ((UInt64*)ptrpSwapchains) [i];
 				}
@@ -1523,11 +1585,17 @@ namespace Vulkan
 	{
 		internal IntPtr m;
 
-		public void Submit (UInt32 submitCount, SubmitInfo pSubmits, Fence fence = null)
+		public void Submit (SubmitInfo[] pSubmits, Fence fence = null)
 		{
 			Result result;
 			unsafe {
-				result = Interop.NativeMethods.vkQueueSubmit (this.m, submitCount, pSubmits.m, fence.m);
+				var arraypSubmits = pSubmits == null ? IntPtr.Zero : Marshal.AllocHGlobal (pSubmits.Length*sizeof (Interop.SubmitInfo));
+				var lenpSubmits = pSubmits == null ? 0 : pSubmits.Length;
+				if (pSubmits != null)
+					for (int i = 0; i < pSubmits.Length; i++)
+						((Interop.SubmitInfo*)arraypSubmits) [i] = *(pSubmits [i].m);
+				result = Interop.NativeMethods.vkQueueSubmit (this.m, (uint)lenpSubmits, (Interop.SubmitInfo*)arraypSubmits, fence.m);
+				Marshal.FreeHGlobal (arraypSubmits);
 				if (result != Result.Success)
 					throw new ResultException (result);
 			}
@@ -1543,11 +1611,17 @@ namespace Vulkan
 			}
 		}
 
-		public void BindSparse (UInt32 bindInfoCount, BindSparseInfo pBindInfo, Fence fence = null)
+		public void BindSparse (BindSparseInfo[] pBindInfo, Fence fence = null)
 		{
 			Result result;
 			unsafe {
-				result = Interop.NativeMethods.vkQueueBindSparse (this.m, bindInfoCount, pBindInfo.m, fence.m);
+				var arraypBindInfo = pBindInfo == null ? IntPtr.Zero : Marshal.AllocHGlobal (pBindInfo.Length*sizeof (Interop.BindSparseInfo));
+				var lenpBindInfo = pBindInfo == null ? 0 : pBindInfo.Length;
+				if (pBindInfo != null)
+					for (int i = 0; i < pBindInfo.Length; i++)
+						((Interop.BindSparseInfo*)arraypBindInfo) [i] = *(pBindInfo [i].m);
+				result = Interop.NativeMethods.vkQueueBindSparse (this.m, (uint)lenpBindInfo, (Interop.BindSparseInfo*)arraypBindInfo, fence.m);
+				Marshal.FreeHGlobal (arraypBindInfo);
 				if (result != Result.Success)
 					throw new ResultException (result);
 			}
@@ -1605,17 +1679,29 @@ namespace Vulkan
 			}
 		}
 
-		public void CmdSetViewport (UInt32 firstViewport, UInt32 viewportCount, Viewport pViewports)
+		public void CmdSetViewport (UInt32 firstViewport, Viewport[] pViewports)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdSetViewport (this.m, firstViewport, viewportCount, &pViewports);
+				var arraypViewports = pViewports == null ? IntPtr.Zero : Marshal.AllocHGlobal (pViewports.Length*sizeof (Viewport));
+				var lenpViewports = pViewports == null ? 0 : pViewports.Length;
+				if (pViewports != null)
+					for (int i = 0; i < pViewports.Length; i++)
+						((Viewport*)arraypViewports) [i] = (pViewports [i]);
+				Interop.NativeMethods.vkCmdSetViewport (this.m, firstViewport, (uint)lenpViewports, (Viewport*)arraypViewports);
+				Marshal.FreeHGlobal (arraypViewports);
 			}
 		}
 
-		public void CmdSetScissor (UInt32 firstScissor, UInt32 scissorCount, Rect2D pScissors)
+		public void CmdSetScissor (UInt32 firstScissor, Rect2D[] pScissors)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdSetScissor (this.m, firstScissor, scissorCount, &pScissors);
+				var arraypScissors = pScissors == null ? IntPtr.Zero : Marshal.AllocHGlobal (pScissors.Length*sizeof (Rect2D));
+				var lenpScissors = pScissors == null ? 0 : pScissors.Length;
+				if (pScissors != null)
+					for (int i = 0; i < pScissors.Length; i++)
+						((Rect2D*)arraypScissors) [i] = (pScissors [i]);
+				Interop.NativeMethods.vkCmdSetScissor (this.m, firstScissor, (uint)lenpScissors, (Rect2D*)arraypScissors);
+				Marshal.FreeHGlobal (arraypScissors);
 			}
 		}
 
@@ -1668,12 +1754,22 @@ namespace Vulkan
 			}
 		}
 
-		public void CmdBindDescriptorSets (PipelineBindPoint pipelineBindPoint, PipelineLayout layout, UInt32 firstSet, UInt32 descriptorSetCount, DescriptorSet pDescriptorSets, UInt32 dynamicOffsetCount, UInt32 pDynamicOffsets)
+		public void CmdBindDescriptorSets (PipelineBindPoint pipelineBindPoint, PipelineLayout layout, UInt32 firstSet, DescriptorSet[] pDescriptorSets, UInt32[] pDynamicOffsets)
 		{
 			unsafe {
-				fixed (UInt64* ptrpDescriptorSets = &pDescriptorSets.m) {
-					Interop.NativeMethods.vkCmdBindDescriptorSets (this.m, pipelineBindPoint, layout.m, firstSet, descriptorSetCount, ptrpDescriptorSets, dynamicOffsetCount, &pDynamicOffsets);
-				}
+				var arraypDescriptorSets = pDescriptorSets == null ? IntPtr.Zero : Marshal.AllocHGlobal (pDescriptorSets.Length*sizeof (UInt64));
+				var lenpDescriptorSets = pDescriptorSets == null ? 0 : pDescriptorSets.Length;
+				if (pDescriptorSets != null)
+					for (int i = 0; i < pDescriptorSets.Length; i++)
+						((UInt64*)arraypDescriptorSets) [i] = (pDescriptorSets [i].m);
+				var arraypDynamicOffsets = pDynamicOffsets == null ? IntPtr.Zero : Marshal.AllocHGlobal (pDynamicOffsets.Length*sizeof (UInt32));
+				var lenpDynamicOffsets = pDynamicOffsets == null ? 0 : pDynamicOffsets.Length;
+				if (pDynamicOffsets != null)
+					for (int i = 0; i < pDynamicOffsets.Length; i++)
+						((UInt32*)arraypDynamicOffsets) [i] = (pDynamicOffsets [i]);
+				Interop.NativeMethods.vkCmdBindDescriptorSets (this.m, pipelineBindPoint, layout.m, firstSet, (uint)lenpDescriptorSets, (UInt64*)arraypDescriptorSets, (uint)lenpDynamicOffsets, (UInt32*)arraypDynamicOffsets);
+				Marshal.FreeHGlobal (arraypDescriptorSets);
+				Marshal.FreeHGlobal (arraypDynamicOffsets);
 			}
 		}
 
@@ -1684,12 +1780,22 @@ namespace Vulkan
 			}
 		}
 
-		public void CmdBindVertexBuffers (UInt32 firstBinding, UInt32 bindingCount, Buffer pBuffers, DeviceSize pOffsets)
+		public void CmdBindVertexBuffers (UInt32 firstBinding, Buffer[] pBuffers, DeviceSize[] pOffsets)
 		{
 			unsafe {
-				fixed (UInt64* ptrpBuffers = &pBuffers.m) {
-					Interop.NativeMethods.vkCmdBindVertexBuffers (this.m, firstBinding, bindingCount, ptrpBuffers, &pOffsets);
-				}
+				var arraypBuffers = pBuffers == null ? IntPtr.Zero : Marshal.AllocHGlobal (pBuffers.Length*sizeof (UInt64));
+				var lenpBuffers = pBuffers == null ? 0 : pBuffers.Length;
+				if (pBuffers != null)
+					for (int i = 0; i < pBuffers.Length; i++)
+						((UInt64*)arraypBuffers) [i] = (pBuffers [i].m);
+				var arraypOffsets = pOffsets == null ? IntPtr.Zero : Marshal.AllocHGlobal (pOffsets.Length*sizeof (DeviceSize));
+				var lenpOffsets = pOffsets == null ? 0 : pOffsets.Length;
+				if (pOffsets != null)
+					for (int i = 0; i < pOffsets.Length; i++)
+						((DeviceSize*)arraypOffsets) [i] = (pOffsets [i]);
+				Interop.NativeMethods.vkCmdBindVertexBuffers (this.m, firstBinding, (uint)lenpOffsets, (UInt64*)arraypBuffers, (DeviceSize*)arraypOffsets);
+				Marshal.FreeHGlobal (arraypBuffers);
+				Marshal.FreeHGlobal (arraypOffsets);
 			}
 		}
 
@@ -1735,45 +1841,75 @@ namespace Vulkan
 			}
 		}
 
-		public void CmdCopyBuffer (Buffer srcBuffer, Buffer dstBuffer, UInt32 regionCount, BufferCopy pRegions)
+		public void CmdCopyBuffer (Buffer srcBuffer, Buffer dstBuffer, BufferCopy[] pRegions)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdCopyBuffer (this.m, srcBuffer.m, dstBuffer.m, regionCount, &pRegions);
+				var arraypRegions = pRegions == null ? IntPtr.Zero : Marshal.AllocHGlobal (pRegions.Length*sizeof (BufferCopy));
+				var lenpRegions = pRegions == null ? 0 : pRegions.Length;
+				if (pRegions != null)
+					for (int i = 0; i < pRegions.Length; i++)
+						((BufferCopy*)arraypRegions) [i] = (pRegions [i]);
+				Interop.NativeMethods.vkCmdCopyBuffer (this.m, srcBuffer.m, dstBuffer.m, (uint)lenpRegions, (BufferCopy*)arraypRegions);
+				Marshal.FreeHGlobal (arraypRegions);
 			}
 		}
 
-		public void CmdCopyImage (Image srcImage, ImageLayout srcImageLayout, Image dstImage, ImageLayout dstImageLayout, UInt32 regionCount, ImageCopy pRegions)
+		public void CmdCopyImage (Image srcImage, ImageLayout srcImageLayout, Image dstImage, ImageLayout dstImageLayout, ImageCopy[] pRegions)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdCopyImage (this.m, srcImage.m, srcImageLayout, dstImage.m, dstImageLayout, regionCount, &pRegions);
+				var arraypRegions = pRegions == null ? IntPtr.Zero : Marshal.AllocHGlobal (pRegions.Length*sizeof (ImageCopy));
+				var lenpRegions = pRegions == null ? 0 : pRegions.Length;
+				if (pRegions != null)
+					for (int i = 0; i < pRegions.Length; i++)
+						((ImageCopy*)arraypRegions) [i] = (pRegions [i]);
+				Interop.NativeMethods.vkCmdCopyImage (this.m, srcImage.m, srcImageLayout, dstImage.m, dstImageLayout, (uint)lenpRegions, (ImageCopy*)arraypRegions);
+				Marshal.FreeHGlobal (arraypRegions);
 			}
 		}
 
-		public void CmdBlitImage (Image srcImage, ImageLayout srcImageLayout, Image dstImage, ImageLayout dstImageLayout, UInt32 regionCount, ImageBlit pRegions, Filter filter)
+		public void CmdBlitImage (Image srcImage, ImageLayout srcImageLayout, Image dstImage, ImageLayout dstImageLayout, ImageBlit[] pRegions, Filter filter)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdBlitImage (this.m, srcImage.m, srcImageLayout, dstImage.m, dstImageLayout, regionCount, pRegions.m, filter);
+				var arraypRegions = pRegions == null ? IntPtr.Zero : Marshal.AllocHGlobal (pRegions.Length*sizeof (Interop.ImageBlit));
+				var lenpRegions = pRegions == null ? 0 : pRegions.Length;
+				if (pRegions != null)
+					for (int i = 0; i < pRegions.Length; i++)
+						((Interop.ImageBlit*)arraypRegions) [i] = *(pRegions [i].m);
+				Interop.NativeMethods.vkCmdBlitImage (this.m, srcImage.m, srcImageLayout, dstImage.m, dstImageLayout, (uint)lenpRegions, (Interop.ImageBlit*)arraypRegions, filter);
+				Marshal.FreeHGlobal (arraypRegions);
 			}
 		}
 
-		public void CmdCopyBufferToImage (Buffer srcBuffer, Image dstImage, ImageLayout dstImageLayout, UInt32 regionCount, BufferImageCopy pRegions)
+		public void CmdCopyBufferToImage (Buffer srcBuffer, Image dstImage, ImageLayout dstImageLayout, BufferImageCopy[] pRegions)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdCopyBufferToImage (this.m, srcBuffer.m, dstImage.m, dstImageLayout, regionCount, &pRegions);
+				var arraypRegions = pRegions == null ? IntPtr.Zero : Marshal.AllocHGlobal (pRegions.Length*sizeof (BufferImageCopy));
+				var lenpRegions = pRegions == null ? 0 : pRegions.Length;
+				if (pRegions != null)
+					for (int i = 0; i < pRegions.Length; i++)
+						((BufferImageCopy*)arraypRegions) [i] = (pRegions [i]);
+				Interop.NativeMethods.vkCmdCopyBufferToImage (this.m, srcBuffer.m, dstImage.m, dstImageLayout, (uint)lenpRegions, (BufferImageCopy*)arraypRegions);
+				Marshal.FreeHGlobal (arraypRegions);
 			}
 		}
 
-		public void CmdCopyImageToBuffer (Image srcImage, ImageLayout srcImageLayout, Buffer dstBuffer, UInt32 regionCount, BufferImageCopy pRegions)
+		public void CmdCopyImageToBuffer (Image srcImage, ImageLayout srcImageLayout, Buffer dstBuffer, BufferImageCopy[] pRegions)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdCopyImageToBuffer (this.m, srcImage.m, srcImageLayout, dstBuffer.m, regionCount, &pRegions);
+				var arraypRegions = pRegions == null ? IntPtr.Zero : Marshal.AllocHGlobal (pRegions.Length*sizeof (BufferImageCopy));
+				var lenpRegions = pRegions == null ? 0 : pRegions.Length;
+				if (pRegions != null)
+					for (int i = 0; i < pRegions.Length; i++)
+						((BufferImageCopy*)arraypRegions) [i] = (pRegions [i]);
+				Interop.NativeMethods.vkCmdCopyImageToBuffer (this.m, srcImage.m, srcImageLayout, dstBuffer.m, (uint)lenpRegions, (BufferImageCopy*)arraypRegions);
+				Marshal.FreeHGlobal (arraypRegions);
 			}
 		}
 
-		public void CmdUpdateBuffer (Buffer dstBuffer, DeviceSize dstOffset, DeviceSize dataSize, UInt32 pData)
+		public void CmdUpdateBuffer (Buffer dstBuffer, DeviceSize dstOffset, DeviceSize dataSize, IntPtr pData)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdUpdateBuffer (this.m, dstBuffer.m, dstOffset, dataSize, &pData);
+				Interop.NativeMethods.vkCmdUpdateBuffer (this.m, dstBuffer.m, dstOffset, dataSize, pData);
 			}
 		}
 
@@ -1784,31 +1920,61 @@ namespace Vulkan
 			}
 		}
 
-		public void CmdClearColorImage (Image image, ImageLayout imageLayout, ClearColorValue pColor, UInt32 rangeCount, ImageSubresourceRange pRanges)
+		public void CmdClearColorImage (Image image, ImageLayout imageLayout, ClearColorValue pColor, ImageSubresourceRange[] pRanges)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdClearColorImage (this.m, image.m, imageLayout, pColor.m, rangeCount, &pRanges);
+				var arraypRanges = pRanges == null ? IntPtr.Zero : Marshal.AllocHGlobal (pRanges.Length*sizeof (ImageSubresourceRange));
+				var lenpRanges = pRanges == null ? 0 : pRanges.Length;
+				if (pRanges != null)
+					for (int i = 0; i < pRanges.Length; i++)
+						((ImageSubresourceRange*)arraypRanges) [i] = (pRanges [i]);
+				Interop.NativeMethods.vkCmdClearColorImage (this.m, image.m, imageLayout, pColor.m, (uint)lenpRanges, (ImageSubresourceRange*)arraypRanges);
+				Marshal.FreeHGlobal (arraypRanges);
 			}
 		}
 
-		public void CmdClearDepthStencilImage (Image image, ImageLayout imageLayout, ClearDepthStencilValue pDepthStencil, UInt32 rangeCount, ImageSubresourceRange pRanges)
+		public void CmdClearDepthStencilImage (Image image, ImageLayout imageLayout, ClearDepthStencilValue pDepthStencil, ImageSubresourceRange[] pRanges)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdClearDepthStencilImage (this.m, image.m, imageLayout, &pDepthStencil, rangeCount, &pRanges);
+				var arraypRanges = pRanges == null ? IntPtr.Zero : Marshal.AllocHGlobal (pRanges.Length*sizeof (ImageSubresourceRange));
+				var lenpRanges = pRanges == null ? 0 : pRanges.Length;
+				if (pRanges != null)
+					for (int i = 0; i < pRanges.Length; i++)
+						((ImageSubresourceRange*)arraypRanges) [i] = (pRanges [i]);
+				Interop.NativeMethods.vkCmdClearDepthStencilImage (this.m, image.m, imageLayout, &pDepthStencil, (uint)lenpRanges, (ImageSubresourceRange*)arraypRanges);
+				Marshal.FreeHGlobal (arraypRanges);
 			}
 		}
 
-		public void CmdClearAttachments (UInt32 attachmentCount, ClearAttachment pAttachments, UInt32 rectCount, ClearRect pRects)
+		public void CmdClearAttachments (ClearAttachment[] pAttachments, ClearRect[] pRects)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdClearAttachments (this.m, attachmentCount, &pAttachments, rectCount, &pRects);
+				var arraypAttachments = pAttachments == null ? IntPtr.Zero : Marshal.AllocHGlobal (pAttachments.Length*sizeof (ClearAttachment));
+				var lenpAttachments = pAttachments == null ? 0 : pAttachments.Length;
+				if (pAttachments != null)
+					for (int i = 0; i < pAttachments.Length; i++)
+						((ClearAttachment*)arraypAttachments) [i] = (pAttachments [i]);
+				var arraypRects = pRects == null ? IntPtr.Zero : Marshal.AllocHGlobal (pRects.Length*sizeof (ClearRect));
+				var lenpRects = pRects == null ? 0 : pRects.Length;
+				if (pRects != null)
+					for (int i = 0; i < pRects.Length; i++)
+						((ClearRect*)arraypRects) [i] = (pRects [i]);
+				Interop.NativeMethods.vkCmdClearAttachments (this.m, (uint)lenpAttachments, (ClearAttachment*)arraypAttachments, (uint)lenpRects, (ClearRect*)arraypRects);
+				Marshal.FreeHGlobal (arraypAttachments);
+				Marshal.FreeHGlobal (arraypRects);
 			}
 		}
 
-		public void CmdResolveImage (Image srcImage, ImageLayout srcImageLayout, Image dstImage, ImageLayout dstImageLayout, UInt32 regionCount, ImageResolve pRegions)
+		public void CmdResolveImage (Image srcImage, ImageLayout srcImageLayout, Image dstImage, ImageLayout dstImageLayout, ImageResolve[] pRegions)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdResolveImage (this.m, srcImage.m, srcImageLayout, dstImage.m, dstImageLayout, regionCount, &pRegions);
+				var arraypRegions = pRegions == null ? IntPtr.Zero : Marshal.AllocHGlobal (pRegions.Length*sizeof (ImageResolve));
+				var lenpRegions = pRegions == null ? 0 : pRegions.Length;
+				if (pRegions != null)
+					for (int i = 0; i < pRegions.Length; i++)
+						((ImageResolve*)arraypRegions) [i] = (pRegions [i]);
+				Interop.NativeMethods.vkCmdResolveImage (this.m, srcImage.m, srcImageLayout, dstImage.m, dstImageLayout, (uint)lenpRegions, (ImageResolve*)arraypRegions);
+				Marshal.FreeHGlobal (arraypRegions);
 			}
 		}
 
@@ -1826,19 +1992,59 @@ namespace Vulkan
 			}
 		}
 
-		public void CmdWaitEvents (UInt32 eventCount, Event pEvents, PipelineStageFlags srcStageMask, PipelineStageFlags dstStageMask, UInt32 memoryBarrierCount, MemoryBarrier pMemoryBarriers, UInt32 bufferMemoryBarrierCount, BufferMemoryBarrier pBufferMemoryBarriers, UInt32 imageMemoryBarrierCount, ImageMemoryBarrier pImageMemoryBarriers)
+		public void CmdWaitEvents (Event[] pEvents, PipelineStageFlags srcStageMask, PipelineStageFlags dstStageMask, MemoryBarrier[] pMemoryBarriers, BufferMemoryBarrier[] pBufferMemoryBarriers, ImageMemoryBarrier[] pImageMemoryBarriers)
 		{
 			unsafe {
-				fixed (UInt64* ptrpEvents = &pEvents.m) {
-					Interop.NativeMethods.vkCmdWaitEvents (this.m, eventCount, ptrpEvents, srcStageMask, dstStageMask, memoryBarrierCount, pMemoryBarriers.m, bufferMemoryBarrierCount, pBufferMemoryBarriers.m, imageMemoryBarrierCount, pImageMemoryBarriers.m);
-				}
+				var arraypEvents = pEvents == null ? IntPtr.Zero : Marshal.AllocHGlobal (pEvents.Length*sizeof (UInt64));
+				var lenpEvents = pEvents == null ? 0 : pEvents.Length;
+				if (pEvents != null)
+					for (int i = 0; i < pEvents.Length; i++)
+						((UInt64*)arraypEvents) [i] = (pEvents [i].m);
+				var arraypMemoryBarriers = pMemoryBarriers == null ? IntPtr.Zero : Marshal.AllocHGlobal (pMemoryBarriers.Length*sizeof (Interop.MemoryBarrier));
+				var lenpMemoryBarriers = pMemoryBarriers == null ? 0 : pMemoryBarriers.Length;
+				if (pMemoryBarriers != null)
+					for (int i = 0; i < pMemoryBarriers.Length; i++)
+						((Interop.MemoryBarrier*)arraypMemoryBarriers) [i] = *(pMemoryBarriers [i].m);
+				var arraypBufferMemoryBarriers = pBufferMemoryBarriers == null ? IntPtr.Zero : Marshal.AllocHGlobal (pBufferMemoryBarriers.Length*sizeof (Interop.BufferMemoryBarrier));
+				var lenpBufferMemoryBarriers = pBufferMemoryBarriers == null ? 0 : pBufferMemoryBarriers.Length;
+				if (pBufferMemoryBarriers != null)
+					for (int i = 0; i < pBufferMemoryBarriers.Length; i++)
+						((Interop.BufferMemoryBarrier*)arraypBufferMemoryBarriers) [i] = *(pBufferMemoryBarriers [i].m);
+				var arraypImageMemoryBarriers = pImageMemoryBarriers == null ? IntPtr.Zero : Marshal.AllocHGlobal (pImageMemoryBarriers.Length*sizeof (Interop.ImageMemoryBarrier));
+				var lenpImageMemoryBarriers = pImageMemoryBarriers == null ? 0 : pImageMemoryBarriers.Length;
+				if (pImageMemoryBarriers != null)
+					for (int i = 0; i < pImageMemoryBarriers.Length; i++)
+						((Interop.ImageMemoryBarrier*)arraypImageMemoryBarriers) [i] = *(pImageMemoryBarriers [i].m);
+				Interop.NativeMethods.vkCmdWaitEvents (this.m, (uint)lenpEvents, (UInt64*)arraypEvents, srcStageMask, dstStageMask, (uint)lenpMemoryBarriers, (Interop.MemoryBarrier*)arraypMemoryBarriers, (uint)lenpBufferMemoryBarriers, (Interop.BufferMemoryBarrier*)arraypBufferMemoryBarriers, (uint)lenpImageMemoryBarriers, (Interop.ImageMemoryBarrier*)arraypImageMemoryBarriers);
+				Marshal.FreeHGlobal (arraypEvents);
+				Marshal.FreeHGlobal (arraypMemoryBarriers);
+				Marshal.FreeHGlobal (arraypBufferMemoryBarriers);
+				Marshal.FreeHGlobal (arraypImageMemoryBarriers);
 			}
 		}
 
-		public void CmdPipelineBarrier (PipelineStageFlags srcStageMask, PipelineStageFlags dstStageMask, DependencyFlags dependencyFlags, UInt32 memoryBarrierCount, MemoryBarrier pMemoryBarriers, UInt32 bufferMemoryBarrierCount, BufferMemoryBarrier pBufferMemoryBarriers, UInt32 imageMemoryBarrierCount, ImageMemoryBarrier pImageMemoryBarriers)
+		public void CmdPipelineBarrier (PipelineStageFlags srcStageMask, PipelineStageFlags dstStageMask, DependencyFlags dependencyFlags, MemoryBarrier[] pMemoryBarriers, BufferMemoryBarrier[] pBufferMemoryBarriers, ImageMemoryBarrier[] pImageMemoryBarriers)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdPipelineBarrier (this.m, srcStageMask, dstStageMask, dependencyFlags, memoryBarrierCount, pMemoryBarriers.m, bufferMemoryBarrierCount, pBufferMemoryBarriers.m, imageMemoryBarrierCount, pImageMemoryBarriers.m);
+				var arraypMemoryBarriers = pMemoryBarriers == null ? IntPtr.Zero : Marshal.AllocHGlobal (pMemoryBarriers.Length*sizeof (Interop.MemoryBarrier));
+				var lenpMemoryBarriers = pMemoryBarriers == null ? 0 : pMemoryBarriers.Length;
+				if (pMemoryBarriers != null)
+					for (int i = 0; i < pMemoryBarriers.Length; i++)
+						((Interop.MemoryBarrier*)arraypMemoryBarriers) [i] = *(pMemoryBarriers [i].m);
+				var arraypBufferMemoryBarriers = pBufferMemoryBarriers == null ? IntPtr.Zero : Marshal.AllocHGlobal (pBufferMemoryBarriers.Length*sizeof (Interop.BufferMemoryBarrier));
+				var lenpBufferMemoryBarriers = pBufferMemoryBarriers == null ? 0 : pBufferMemoryBarriers.Length;
+				if (pBufferMemoryBarriers != null)
+					for (int i = 0; i < pBufferMemoryBarriers.Length; i++)
+						((Interop.BufferMemoryBarrier*)arraypBufferMemoryBarriers) [i] = *(pBufferMemoryBarriers [i].m);
+				var arraypImageMemoryBarriers = pImageMemoryBarriers == null ? IntPtr.Zero : Marshal.AllocHGlobal (pImageMemoryBarriers.Length*sizeof (Interop.ImageMemoryBarrier));
+				var lenpImageMemoryBarriers = pImageMemoryBarriers == null ? 0 : pImageMemoryBarriers.Length;
+				if (pImageMemoryBarriers != null)
+					for (int i = 0; i < pImageMemoryBarriers.Length; i++)
+						((Interop.ImageMemoryBarrier*)arraypImageMemoryBarriers) [i] = *(pImageMemoryBarriers [i].m);
+				Interop.NativeMethods.vkCmdPipelineBarrier (this.m, srcStageMask, dstStageMask, dependencyFlags, (uint)lenpMemoryBarriers, (Interop.MemoryBarrier*)arraypMemoryBarriers, (uint)lenpBufferMemoryBarriers, (Interop.BufferMemoryBarrier*)arraypBufferMemoryBarriers, (uint)lenpImageMemoryBarriers, (Interop.ImageMemoryBarrier*)arraypImageMemoryBarriers);
+				Marshal.FreeHGlobal (arraypMemoryBarriers);
+				Marshal.FreeHGlobal (arraypBufferMemoryBarriers);
+				Marshal.FreeHGlobal (arraypImageMemoryBarriers);
 			}
 		}
 
@@ -1905,12 +2111,16 @@ namespace Vulkan
 			}
 		}
 
-		public void CmdExecuteCommands (UInt32 commandBufferCount, CommandBuffer pCommandBuffers)
+		public void CmdExecuteCommands (CommandBuffer[] pCommandBuffers)
 		{
 			unsafe {
-				fixed (IntPtr* ptrpCommandBuffers = &pCommandBuffers.m) {
-					Interop.NativeMethods.vkCmdExecuteCommands (this.m, commandBufferCount, ptrpCommandBuffers);
-				}
+				var arraypCommandBuffers = pCommandBuffers == null ? IntPtr.Zero : Marshal.AllocHGlobal (pCommandBuffers.Length*sizeof (IntPtr));
+				var lenpCommandBuffers = pCommandBuffers == null ? 0 : pCommandBuffers.Length;
+				if (pCommandBuffers != null)
+					for (int i = 0; i < pCommandBuffers.Length; i++)
+						((IntPtr*)arraypCommandBuffers) [i] = (pCommandBuffers [i].m);
+				Interop.NativeMethods.vkCmdExecuteCommands (this.m, (uint)lenpCommandBuffers, (IntPtr*)arraypCommandBuffers);
+				Marshal.FreeHGlobal (arraypCommandBuffers);
 			}
 		}
 
