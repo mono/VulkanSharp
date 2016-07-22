@@ -5,5 +5,15 @@ extensions
   finish extensions binding, generate more platform specific extensions
 
 TODO:
-  improve commands like ResetFences (issue #11)
   optional parameters (like AllocationCallbacks) - set default values for method parameters
+
+ideas:
+
+  we might add simplified commands signatures for commands taking
+  arrays as parameter(s). to make it more comfortable to pass single
+  element to them
+
+  like having for example
+
+     public void ResetFences (Fence[] pFences)
+     public void ResetFence (Fence pFence)
