@@ -10,7 +10,7 @@ namespace XLogo
 		Queue queue;
 		SwapchainKhr swapchain;
 		Semaphore semaphore;
-		Fence fence;
+		Fence[] fences;
 		CommandBuffer [] commandBuffers;
 		DescriptorSet [] descriptorSets;
 		SurfaceCapabilitiesKhr surfaceCapabilities;
@@ -135,9 +135,9 @@ namespace XLogo
 					RenderArea = new Rect2D { Extent = surfaceCapabilities.CurrentExtent }
 				};
 				buffers [i].CmdBeginRenderPass (renderPassBeginInfo, SubpassContents.Inline);
-				buffers [i].CmdBindDescriptorSets (PipelineBindPoint.Graphics, pipelineLayout, 0, 1, descriptorSets [0], 0, 0);
+				buffers [i].CmdBindDescriptorSets (PipelineBindPoint.Graphics, pipelineLayout, 0, descriptorSets, null);
 				buffers [i].CmdBindPipeline (PipelineBindPoint.Graphics, pipeline);
-				buffers [i].CmdBindVertexBuffers (0, 1, vertexBuffer, 0);
+				buffers [i].CmdBindVertexBuffers (0, new Buffer [] { vertexBuffer }, new DeviceSize [] { 0 });
 				buffers [i].CmdBindIndexBuffer (indexBuffer, 0, IndexType.Uint16);
 				buffers [i].CmdDrawIndexed (indexLength, 1, 0, 0, 0);
 				buffers [i].CmdEndRenderPass ();
@@ -323,7 +323,7 @@ namespace XLogo
 				RenderPass = renderPass
 			};
 
-			return device.CreateGraphicsPipelines (device.CreatePipelineCache (new PipelineCacheCreateInfo ()), 1, pipelineCreateInfo);
+			return device.CreateGraphicsPipelines (device.CreatePipelineCache (new PipelineCacheCreateInfo ()), new GraphicsPipelineCreateInfo [] { pipelineCreateInfo });
 		}
 
 		Buffer CreateUniformBuffer (PhysicalDevice physicalDevice)
@@ -369,7 +369,7 @@ namespace XLogo
 				BufferInfo = new DescriptorBufferInfo [] { uniformBufferInfo }
 			};
 
-			device.UpdateDescriptorSets (1, writeDescriptorSet, 0, new CopyDescriptorSet ());
+			device.UpdateDescriptorSets (new WriteDescriptorSet [] { writeDescriptorSet }, null);
 		}
 
 		public void InitializeVulkan ()
@@ -401,7 +401,7 @@ namespace XLogo
 
 			commandBuffers = CreateCommandBuffers (images, framebuffers, pipelines [0], vertexBuffer, indexBuffer, (uint)Logo.Indexes.Length);
 			var fenceInfo = new FenceCreateInfo ();
-			fence = device.CreateFence (fenceInfo);
+			fences = new Fence [] { device.CreateFence (fenceInfo) };
 			var semaphoreInfo = new SemaphoreCreateInfo ();
 			semaphore = device.CreateSemaphore (semaphoreInfo);
 			initialized = true;
@@ -415,14 +415,14 @@ namespace XLogo
 
 		void DrawFrame ()
 		{
-			uint nextIndex = device.AcquireNextImageKHR (swapchain, ulong.MaxValue, semaphore, fence);
-			device.ResetFences (1, fence);
+			uint nextIndex = device.AcquireNextImageKHR (swapchain, ulong.MaxValue, semaphore, fences [0]);
+			device.ResetFences (fences);
 			var submitInfo = new SubmitInfo {
 				WaitSemaphores = new Semaphore [] { semaphore },
 				CommandBuffers = new CommandBuffer [] { commandBuffers [nextIndex] }
 			};
-			queue.Submit (1, submitInfo, fence);
-			device.WaitForFences (1, fence, true, 100000000);
+			queue.Submit (new SubmitInfo [] { submitInfo }, fences [0]);
+			device.WaitForFences (fences, true, 100000000);
 			var presentInfo = new PresentInfoKhr {
 				Swapchains = new SwapchainKhr [] { swapchain },
 				ImageIndices = new uint [] { nextIndex }
