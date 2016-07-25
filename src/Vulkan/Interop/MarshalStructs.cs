@@ -990,4 +990,26 @@ namespace Vulkan.Interop
 		internal IntPtr MarkerName;
 		internal unsafe fixed float Color[4];
 	}
+
+	internal partial struct DedicatedAllocationImageCreateInfoNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 DedicatedAllocation;
+	}
+
+	internal partial struct DedicatedAllocationBufferCreateInfoNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 DedicatedAllocation;
+	}
+
+	internal partial struct DedicatedAllocationMemoryAllocateInfoNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Image;
+		internal UInt64 Buffer;
+	}
 }
