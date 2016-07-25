@@ -1213,10 +1213,8 @@ namespace VulkanSharp.Generator
 
 					if (!isOptionalParam)
 						firstOptional = null;
-					else if (firstOptional == null) {
+					else if (firstOptional == null)
 						firstOptional = name;
-						Console.WriteLine ("rodo: firstOptional {0}", name);
-					}
 				}
 			}
 			var optionalPart = false;
