@@ -36,6 +36,7 @@ namespace VulkanSharp.Generator
 
 		class StructInfo
 		{
+			public XElement element;
 			public string name;
 			public bool needsMarshalling;
 		}
@@ -838,7 +839,7 @@ namespace VulkanSharp.Generator
 				}
 				if (handles.ContainsKey (csMemberType) && !isPointer) {
 					csMemberType = GetHandleType (handles [csMemberType]);
-				} else if ((!isInterop && memberIsStructure && structures [csMemberType].needsMarshalling) || csMemberType == "string" || isPointer)
+				} else if ((isPointer && !isInterop && memberIsStructure && structures [csMemberType].needsMarshalling) || csMemberType == "string" || isPointer)
 					csMemberType = "IntPtr";
 				for (int i = 0; i < count; i++)
 					IndentWriteLine ("{0}{1} {2}{3}{4} {5}{6}{7};", attr, sec, fixedPart, mod, csMemberType, csMemberName, count > 1 ? i.ToString () : "", arrayPart);
@@ -1009,15 +1010,32 @@ namespace VulkanSharp.Generator
 				return false;
 
 			typesTranslation [name] = csName;
-			structures [csName] = new StructInfo () { name = name, needsMarshalling = LearnStructureMembers (structElement) };
+			structures [csName] = new StructInfo () { name = name, needsMarshalling = LearnStructureMembers (structElement), element = structElement };
 
 			return false;
+		}
+
+		void CompleteMarshallingInfo ()
+		{
+			bool changed;
+			do {
+				changed = false;
+				foreach (var pair in structures) {
+					var info = pair.Value;
+					var structNeedsMarshalling = LearnStructureMembers (info.element);
+					if (structNeedsMarshalling != info.needsMarshalling) {
+						info.needsMarshalling = structNeedsMarshalling;
+						changed = true;
+					}
+				}
+			} while (changed);
 		}
 
 		void LearnStructsAndUnions ()
 		{
 			GenerateType ("struct", LearnStructure);
 			GenerateType ("union", LearnStructure);
+			CompleteMarshallingInfo ();
 		}
 
 		void GenerateStructs ()
@@ -1143,7 +1161,7 @@ namespace VulkanSharp.Generator
 				}
 				info.isStruct = structures.ContainsKey (info.csType);
 				if (info.isStruct) {
-					info.needsMarshalling = structures [info.csType].needsMarshalling;
+					info.needsMarshalling = (structures [info.csType].needsMarshalling || !isPointer);
 				}
 				if (isPointer && type == "void" && !param.Value.Contains ("**"))
 					continue;
