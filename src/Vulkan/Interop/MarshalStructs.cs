@@ -658,6 +658,13 @@ namespace Vulkan.Interop
 		internal IntPtr ClearValues;
 	}
 
+	internal partial struct ClearAttachment
+	{
+		internal ImageAspectFlags AspectMask;
+		internal UInt32 ColorAttachment;
+		internal ClearValue ClearValue;
+	}
+
 	internal partial struct SubpassDescription
 	{
 		internal UInt32 Flags;

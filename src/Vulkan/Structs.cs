@@ -4070,11 +4070,43 @@ namespace Vulkan
 		public UInt32 Stencil;
 	}
 
-	unsafe public partial struct ClearAttachment
+	unsafe public partial class ClearAttachment
 	{
-		public ImageAspectFlags AspectMask;
-		public UInt32 ColorAttachment;
-		public IntPtr ClearValue;
+		public ImageAspectFlags AspectMask {
+			get { return m->AspectMask; }
+			set { m->AspectMask = value; }
+		}
+
+		public UInt32 ColorAttachment {
+			get { return m->ColorAttachment; }
+			set { m->ColorAttachment = value; }
+		}
+
+		ClearValue lClearValue;
+		public ClearValue ClearValue {
+			get { return lClearValue; }
+			set { lClearValue = value; m->ClearValue = *value.m; }
+		}
+		internal Interop.ClearAttachment* m;
+
+		public ClearAttachment ()
+		{
+			m = (Interop.ClearAttachment*) Interop.Structure.Allocate (typeof (Interop.ClearAttachment));
+			Initialize ();
+		}
+
+		internal ClearAttachment (Interop.ClearAttachment* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			lClearValue = new ClearValue (&m->ClearValue);
+		}
+
 	}
 
 	unsafe public partial struct AttachmentDescription

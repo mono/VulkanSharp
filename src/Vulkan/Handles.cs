@@ -1949,17 +1949,17 @@ namespace Vulkan
 		public void CmdClearAttachments (ClearAttachment[] pAttachments, ClearRect[] pRects)
 		{
 			unsafe {
-				var arraypAttachments = pAttachments == null ? IntPtr.Zero : Marshal.AllocHGlobal (pAttachments.Length*sizeof (ClearAttachment));
+				var arraypAttachments = pAttachments == null ? IntPtr.Zero : Marshal.AllocHGlobal (pAttachments.Length*sizeof (Interop.ClearAttachment));
 				var lenpAttachments = pAttachments == null ? 0 : pAttachments.Length;
 				if (pAttachments != null)
 					for (int i = 0; i < pAttachments.Length; i++)
-						((ClearAttachment*)arraypAttachments) [i] = (pAttachments [i]);
+						((Interop.ClearAttachment*)arraypAttachments) [i] = *(pAttachments [i].m);
 				var arraypRects = pRects == null ? IntPtr.Zero : Marshal.AllocHGlobal (pRects.Length*sizeof (ClearRect));
 				var lenpRects = pRects == null ? 0 : pRects.Length;
 				if (pRects != null)
 					for (int i = 0; i < pRects.Length; i++)
 						((ClearRect*)arraypRects) [i] = (pRects [i]);
-				Interop.NativeMethods.vkCmdClearAttachments (this.m, (uint)lenpAttachments, (ClearAttachment*)arraypAttachments, (uint)lenpRects, (ClearRect*)arraypRects);
+				Interop.NativeMethods.vkCmdClearAttachments (this.m, (uint)lenpAttachments, (Interop.ClearAttachment*)arraypAttachments, (uint)lenpRects, (ClearRect*)arraypRects);
 				Marshal.FreeHGlobal (arraypAttachments);
 				Marshal.FreeHGlobal (arraypRects);
 			}
