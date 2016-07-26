@@ -20,6 +20,7 @@ namespace VulkanSharp.Generator
 		Dictionary<string, StructInfo> structures = new Dictionary<string, StructInfo> ();
 		Dictionary<string, HandleInfo> handles = new Dictionary<string,HandleInfo> ();
 		Dictionary<string, List<EnumExtensionInfo>> enumExtensions = new Dictionary<string, List<EnumExtensionInfo>> ();
+		HashSet<string> enums = new HashSet<string> ();
 
 		string platform;
 		HashSet<string> requiredTypes = null;
@@ -291,6 +292,8 @@ namespace VulkanSharp.Generator
 
 			IndentLevel--;
 			IndentWriteLine ("}");
+
+			enums.Add (csName);
 
 			return true;
 		}
@@ -1107,6 +1110,16 @@ namespace VulkanSharp.Generator
 			public bool needsMarshalling;
 			public ParamInfo lenArray;
 			public bool isArray;
+
+			public string MarshalSizeSource (Generator generator, bool isInInterop)
+			{
+				if (generator.enums.Contains (csType))
+					return "4"; // int enum
+
+				return string.Format ("Marshal.SizeOf (typeof ({0}{1}))",
+				                      isInInterop ? "Interop." : "",
+				                      isHandle ? generator.GetHandleType (generator.handles [csType]) : csType);
+			}
 		}
 
 		string GetParamCsType (string type, ref bool isPointer, out bool isHandle)
@@ -1500,7 +1513,7 @@ namespace VulkanSharp.Generator
 				IndentWriteLine ("return null;");
 				IndentLevel--;
 				WriteLine ();
-				IndentWriteLine ("int size = Marshal.SizeOf (typeof ({0}{1}));", isInInterop ? "Interop." : "", dataParam.isHandle ? GetHandleType (handles [dataParam.csType]) : dataParam.csType);
+				IndentWriteLine ("int size = {0};", dataParam.MarshalSizeSource (this, isInInterop));
 				IndentWriteLine ("var ptr{0} = Marshal.AllocHGlobal ((int)(size * {1}));", dataParam.csName, outLen);
 			}
 
