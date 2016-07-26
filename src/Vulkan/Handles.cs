@@ -509,7 +509,7 @@ namespace Vulkan
 				if (pPresentModeCount <= 0)
 					return null;
 
-				int size = Marshal.SizeOf (typeof (PresentModeKhr));
+				int size = 4;
 				var ptrpPresentModes = Marshal.AllocHGlobal ((int)(size * pPresentModeCount));
 				result = Interop.NativeMethods.vkGetPhysicalDeviceSurfacePresentModesKHR (this.m, surface.m, &pPresentModeCount, (PresentModeKhr*)ptrpPresentModes);
 				if (result != Result.Success)
