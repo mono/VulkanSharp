@@ -49,14 +49,17 @@ namespace Inspector
 
 				var surfaceCaps = device.GetSurfaceCapabilitiesKHR (surface);
 				textView.Append (string.Format ("\n\tSurface capabilities\n"));
-				textView.Append (string.Format ("\t\tImage count (min - max): {0} - {1}\n\t\tImage extent (min - max): {2}x{3} - {4}x{5}\n\t\tUsage flags: 0x{6:x}\n\t\tSupported transforms: 0x{7:x}\n\t\tSupported composite alpha flags: 0x{8:x}",
+				textView.Append (string.Format ("\t\tImage count (min - max): {0} - {1}\n\t\tImage extent (min - max): {2}x{3} - {4}x{5}\n\t\tUsage flags: 0x{6:x}\n\t\tSupported transforms: 0x{7:x}\n\t\tSupported composite alpha flags: 0x{8:x}\n",
 				                                surfaceCaps.MinImageCount, surfaceCaps.MaxImageCount,
 				                                surfaceCaps.MinImageExtent.Width, surfaceCaps.MinImageExtent.Height,
 				                                surfaceCaps.MaxImageExtent.Width, surfaceCaps.MaxImageExtent.Height,
 				                                surfaceCaps.SupportedUsageFlags,
 				                                surfaceCaps.SupportedTransforms,
 				                                surfaceCaps.SupportedCompositeAlpha));
-
+				textView.Append (string.Format ("\n\tSurface Present modes\n"));
+				var modes = device.GetSurfacePresentModesKHR (surface);
+				foreach (var mode in modes)
+					textView.Append (string.Format ("\t\tMode: {0}\n", mode));
 				textView.Append (string.Format ("\n\tMemory properties\n"));
 				var memProperties = device.GetMemoryProperties ();
 				foreach (var memType in memProperties.MemoryTypes)
