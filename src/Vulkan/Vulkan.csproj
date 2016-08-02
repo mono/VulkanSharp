@@ -55,7 +55,27 @@
   <PropertyGroup>
     <Runtime Condition="'$(OS)' != 'Windows_NT'">mono --debug</Runtime>
   </PropertyGroup>
-  <Target Name="BuildGeneratedSource" Inputs="$(OutputPath)\Generator.exe" Outputs="Vulkan\Enums.cs">
+  <UsingTask
+    TaskName="DownloadURL"
+    TaskFactory="CodeTaskFactory"
+    AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
+    <ParameterGroup>
+      <URL ParameterType="System.String" Required="true" />
+      <OutputFile ParameterType="System.String" Required="true" />
+    </ParameterGroup>
+    <Task>
+      <Reference Include="System" />
+      <Code Type="Fragment" Language="cs">
+        <![CDATA[
+            new System.Net.WebClient ().DownloadFile (URL, OutputFile);
+        ]]>
+      </Code>
+    </Task>
+  </UsingTask>
+  <Target Name="DownloadSpecification" Condition="'$(OS)' == 'Windows_NT'">
+    <DownloadURL URL="https://raw.githubusercontent.com/KhronosGroup/Vulkan-Docs/1.0/src/spec/vk.xml" OutputFile="$(OutputPath)\vk.xml" />
+  </Target>
+  <Target Name="BuildGeneratedSource" DependsOnTargets="DownloadSpecification" Inputs="$(OutputPath)\vk.xml;$(OutputPath)\Generator.exe" Outputs="Vulkan\Enums.cs">
     <MakeDir Directories="$(OutputPath)" />
     <Exec Command="$(Runtime) &quot;$(OutputPath)\Generator.exe&quot; $(OutputPath)\vk.xml ." />
   </Target>
