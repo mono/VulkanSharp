@@ -8,6 +8,12 @@ minutes](https://renderdoc.org/vulkan-in-30-minutes.html)
 
 ## Building
 
+### Windows
+
+To build VulkanSharp, open VulkanSharp.sln in Visual Studio and build the solution. Alternatively you can also build it on the command line, run the `msbuild VulkanSharp.sln` command. It should download the needed dependencies.
+
+### Mac/Linux
+
 To build VulkanSharp, run the `make` command, which will download
 the needed dependencies.
 
