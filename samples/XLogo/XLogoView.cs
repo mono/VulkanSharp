@@ -29,7 +29,6 @@ namespace XLogo
 			var instanceExtensions = new List<string> {
 				"VK_KHR_surface",
 				"VK_KHR_android_surface",
-				"VK_KHR_display"
 			};
 
 			return new Instance (new InstanceCreateInfo {
@@ -378,7 +377,7 @@ namespace XLogo
 			var surface = Instance.CreateAndroidSurfaceKHR (new AndroidSurfaceCreateInfoKhr { Window = aNativeWindow });
 			var queueInfo = new DeviceQueueCreateInfo { QueuePriorities = new float [] { 1.0f } };
 			var deviceInfo = new DeviceCreateInfo {
-				EnabledExtensionNames = new string [] { "VK_KHR_swapchain", "VK_KHR_display_swapchain" },
+				EnabledExtensionNames = new string [] { "VK_KHR_swapchain" },
 				QueueCreateInfos = new DeviceQueueCreateInfo [] { queueInfo }
 			};
 			var physicalDevice = devices [0];

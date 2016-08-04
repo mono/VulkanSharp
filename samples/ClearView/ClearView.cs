@@ -144,7 +144,7 @@ namespace ClearView
 			var surface = Instance.CreateAndroidSurfaceKHR (new AndroidSurfaceCreateInfoKhr { Window = aNativeWindow });
 			var queueInfo = new DeviceQueueCreateInfo { QueuePriorities = new float [] { 1.0f } };
 			var deviceInfo = new DeviceCreateInfo {
-				EnabledExtensionNames = new string [] { "VK_KHR_swapchain", "VK_KHR_display_swapchain" },
+				EnabledExtensionNames = new string [] { "VK_KHR_swapchain" },
 				QueueCreateInfos = new DeviceQueueCreateInfo [] { queueInfo }
 			};
 			var physicalDevice = devices [0];
