@@ -93,7 +93,7 @@ namespace Vulkan
 				pCallback = new DebugReportCallbackExt ();
 
 				fixed (UInt64* ptrpCallback = &pCallback.m) {
-					result = Interop.NativeMethods.vkCreateDebugReportCallbackEXT (this.m, pCreateInfo.m, pAllocator != null ? pAllocator.m : null, ptrpCallback);
+					result = vkCreateDebugReportCallbackEXT (this.m, pCreateInfo.m, pAllocator != null ? pAllocator.m : null, ptrpCallback);
 				}
 				if (result != Result.Success)
 					throw new ResultException (result);
@@ -105,14 +105,14 @@ namespace Vulkan
 		public void DestroyDebugReportCallbackEXT (DebugReportCallbackExt callback, AllocationCallbacks pAllocator = null)
 		{
 			unsafe {
-				Interop.NativeMethods.vkDestroyDebugReportCallbackEXT (this.m, callback.m, pAllocator != null ? pAllocator.m : null);
+				vkDestroyDebugReportCallbackEXT (this.m, callback.m, pAllocator != null ? pAllocator.m : null);
 			}
 		}
 
 		public void DebugReportMessageEXT (DebugReportFlagsExt flags, DebugReportObjectTypeExt objectType, UInt64 @object, UIntPtr location, Int32 messageCode, string pLayerPrefix, string pMessage)
 		{
 			unsafe {
-				Interop.NativeMethods.vkDebugReportMessageEXT (this.m, flags, objectType, @object, location, messageCode, pLayerPrefix, pMessage);
+				vkDebugReportMessageEXT (this.m, flags, objectType, @object, location, messageCode, pLayerPrefix, pMessage);
 			}
 		}
 	}
