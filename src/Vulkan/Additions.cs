@@ -1,10 +1,33 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using Vulkan.Interop;
 
 namespace Vulkan
 {
 	public partial class Instance
 	{
+		NativeMethods.vkCreateDebugReportCallbackEXT vkCreateDebugReportCallbackEXT;
+		NativeMethods.vkDestroyDebugReportCallbackEXT vkDestroyDebugReportCallbackEXT;
+		NativeMethods.vkDebugReportMessageEXT vkDebugReportMessageEXT;
+
+		Delegate GetMethod (string name, Type type)
+		{
+			var funcPtr = GetProcAddr (name);
+
+			if (funcPtr == IntPtr.Zero)
+				return null;
+
+			return Marshal.GetDelegateForFunctionPointer (funcPtr, type);
+		}
+
+		void InitializeFunctions ()
+		{
+
+			vkCreateDebugReportCallbackEXT = (NativeMethods.vkCreateDebugReportCallbackEXT)GetMethod ("vkCreateDebugReportCallbackEXT", typeof (NativeMethods.vkCreateDebugReportCallbackEXT));
+			vkDestroyDebugReportCallbackEXT = (NativeMethods.vkDestroyDebugReportCallbackEXT)GetMethod ("vkDestroyDebugReportCallbackEXT", typeof (NativeMethods.vkDestroyDebugReportCallbackEXT));
+			vkDebugReportMessageEXT = (NativeMethods.vkDebugReportMessageEXT)GetMethod ("vkDebugReportMessageEXT", typeof (NativeMethods.vkDebugReportMessageEXT));
+		}
+
 		public Instance (InstanceCreateInfo CreateInfo, AllocationCallbacks Allocator = null)
 		{
 			Result result;
@@ -17,10 +40,24 @@ namespace Vulkan
 
 			if (result != Result.Success)
 				throw new ResultException (result);
+
+			InitializeFunctions ();
 		}
 
 		public Instance () : this (new InstanceCreateInfo ())
 		{
+		}
+
+		public delegate Bool32 DebugReportCallback (DebugReportFlagsExt flags, DebugReportObjectTypeExt objectType, ulong objectHandle, IntPtr location, int messageCode, IntPtr layerPrefix, IntPtr message, IntPtr userData);
+
+		public void EnableDebug (DebugReportCallback d, DebugReportFlagsExt flags = DebugReportFlagsExt.Debug | DebugReportFlagsExt.Error | DebugReportFlagsExt.Information | DebugReportFlagsExt.PerformanceWarning | DebugReportFlagsExt.Warning)
+		{
+			var debugCreateInfo = new DebugReportCallbackCreateInfoExt () {
+				Flags = flags,
+				PfnCallback = Marshal.GetFunctionPointerForDelegate (d)
+			};
+
+			CreateDebugReportCallbackEXT (debugCreateInfo);
 		}
 	}
 

@@ -1503,7 +1503,7 @@ namespace VulkanSharp.Generator
 				isInInterop = dataParam.isStruct && dataParam.needsMarshalling;
 				if (!hasLen) {
 					IndentWriteLine ("UInt32 {0};", outLen);
-					IndentWrite ("{0}{1}Interop.NativeMethods.{2} (", hasResult ? "result = " : "", (ignoredParameters.Count == 0 && csType != "void") ? "return " : "", function);
+					IndentWrite ("{0}{1}{2}{3} (", hasResult ? "result = " : "", (ignoredParameters.Count == 0 && csType != "void") ? "return " : "", delegateUnmanagedCommands.Contains (function) ? "" : "Interop.NativeMethods.", function);
 					WriteCommandParameters (commandElement, null, dataParam, null, isForHandle && !isExtension, true, paramsDict, isExtension);
 					WriteLine (");");
 					CommandHandleResult (hasResult);
@@ -1557,7 +1557,7 @@ namespace VulkanSharp.Generator
 					}
 				}
 
-			IndentWrite ("{0}{1}{2}.NativeMethods.{3} (", hasResult ? "result = " : "", (ignoredParameters.Count == 0 && csType != "void") ? "return " : "", InteropNamespace, function);
+			IndentWrite ("{0}{1}{2}{3} (", hasResult ? "result = " : "", (ignoredParameters.Count == 0 && csType != "void") ? "return " : "", delegateUnmanagedCommands.Contains (function) ? "" : string.Format ("{0}.NativeMethods.", InteropNamespace), function);
 			WriteCommandParameters (commandElement, null, null, dataParam, isForHandle && !isExtension, true, paramsDict, isExtension);
 			WriteLine (");");
 
@@ -1739,6 +1739,12 @@ namespace VulkanSharp.Generator
 			"vkCreateAndroidSurfaceKHR"
 		};
 
+		HashSet<string> delegateUnmanagedCommands = new HashSet<string> {
+			"vkCreateDebugReportCallbackEXT",
+			"vkDestroyDebugReportCallbackEXT",
+			"vkDebugReportMessageEXT",
+		};
+
 		bool WriteUnmanagedCommand (XElement commandElement)
 		{
 			string function = commandElement.Element ("proto").Element ("name").Value;
@@ -1756,8 +1762,12 @@ namespace VulkanSharp.Generator
 			if (csType.StartsWith ("PFN_"))
 				csType = "IntPtr";
 
-			IndentWriteLine ("[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]");
-			IndentWrite ("internal static unsafe extern {0} {1} (", csType, function);
+			if (delegateUnmanagedCommands.Contains (function))
+				IndentWrite ("internal unsafe delegate {0} {1} (", csType, function);
+			else {
+				IndentWriteLine ("[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]");
+				IndentWrite ("internal static unsafe extern {0} {1} (", csType, function);
+			}
 			WriteUnmanagedCommandParameters (commandElement);
 			WriteLine (");");
 
