@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>VulkanSharp.Preview</id>
+    <version>0.0.1</version>
+    <authors>Xamarin Inc</authors>
+    <owners>rodo</owners>
+    <licenseUrl>https://github.com/mono/VulkanSharp/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/mono/VulkanSharp</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Open source .NET binding for the Vulkan API</description>
+    <releaseNotes>This is a preview of VulkanSharp project</releaseNotes>
+    <copyright>Copyright 2016 Xamarin Inc</copyright>
+    <tags>vulkan bindings</tags>
+    <references>
+      <group targetFramework="portable-net45+win8+MonoAndroid10">
+	<reference file="Vulkan.dll" />
+      </group>
+      <group targetFramework="MonoAndroid10">
+	<reference file="Vulkan.dll" />
+	<reference file="Vulkan.Android.dll" />
+      </group>
+    </references>
+    <!--
+    <dependencies>
+      <dependency id="SampleDependency" version="1.0" />
+    </dependencies>
+    -->
+  </metadata>
+  <files>
+    <file src="bin/Debug/Vulkan.dll*" target="lib/portable-net45+win8+MonoAndroid10" />
+
+    <file src="bin/Debug/Vulkan.dll*" target="lib/MonoAndroid10" />
+    <file src="src/Platforms/Android/bin/Debug/Vulkan.Android.dll*" target="lib/MonoAndroid10" />
+
+    <file src="bin/Debug/Vulkan.dll*" target="lib/win8" />
+    <file src="src/Platforms/Windows/bin/Debug/Vulkan.Windows.dll*" target="lib/win8" />
+  </files>
+</package>
