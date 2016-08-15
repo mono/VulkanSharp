@@ -938,6 +938,15 @@ namespace VulkanSharp.Generator
 				if (info.needsMarshalling) {
 					var needsInitialize = hasSType || initializeMembers.Count > 0;
 					IndentWriteLine ("internal {0}.{1}* m;\n", InteropNamespace, csName);
+					IndentWriteLine ("public IntPtr Handle {");
+					IndentLevel++;
+					IndentWriteLine ("get {");
+					IndentLevel++;
+					IndentWriteLine ("return (IntPtr)m;");
+					IndentLevel--;
+					IndentWriteLine ("}");
+					IndentLevel--;
+					IndentWriteLine ("}\n");
 					IndentWriteLine ("public {0} ()", csName);
 					IndentWriteLine ("{");
 					IndentLevel++;
@@ -1648,7 +1657,18 @@ namespace VulkanSharp.Generator
 			//// todo: implement marshalling
 			bool written = false;
 			if (requiredCommands == null) {
-				IndentWriteLine ("internal {0} m;", GetHandleType (info));
+				var handleType = GetHandleType (info);
+				IndentWriteLine ("internal {0} m;\n", handleType);
+				IndentWriteLine ("public {0} Handle {{", handleType);
+				IndentLevel++;
+				IndentWriteLine ("get {");
+				IndentLevel++;
+				IndentWriteLine ("return m;");
+				IndentLevel--;
+				IndentWriteLine ("}");
+				IndentLevel--;
+				IndentWriteLine ("}");
+
 				written = true;
 			}
 
