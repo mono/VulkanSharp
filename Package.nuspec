@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>VulkanSharp.Preview</id>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <authors>Xamarin Inc</authors>
     <owners>rodo</owners>
     <licenseUrl>https://github.com/mono/VulkanSharp/blob/master/LICENSE</licenseUrl>

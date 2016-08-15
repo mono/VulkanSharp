@@ -396,6 +396,14 @@ namespace Vulkan
 		Astc12x10SrgbBlock = 182,
 		Astc12x12UnormBlock = 183,
 		Astc12x12SrgbBlock = 184,
+		Pvrtc12bppUnormBlockImg = 1000054000,
+		Pvrtc14bppUnormBlockImg = 1000054001,
+		Pvrtc22bppUnormBlockImg = 1000054002,
+		Pvrtc24bppUnormBlockImg = 1000054003,
+		Pvrtc12bppSrgbBlockImg = 1000054004,
+		Pvrtc14bppSrgbBlockImg = 1000054005,
+		Pvrtc22bppSrgbBlockImg = 1000054006,
+		Pvrtc24bppSrgbBlockImg = 1000054007,
 	}
 
 	[Flags]

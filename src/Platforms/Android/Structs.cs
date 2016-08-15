@@ -26,6 +26,12 @@ namespace Vulkan
 		}
 		internal Android.Interop.AndroidSurfaceCreateInfoKhr* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public AndroidSurfaceCreateInfoKhr ()
 		{
 			m = (Android.Interop.AndroidSurfaceCreateInfoKhr*) Interop.Structure.Allocate (typeof (Android.Interop.AndroidSurfaceCreateInfoKhr));

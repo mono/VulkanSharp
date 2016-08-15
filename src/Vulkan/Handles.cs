@@ -18,6 +18,12 @@ namespace Vulkan
 	{
 		internal IntPtr m;
 
+		public IntPtr Handle {
+			get {
+				return m;
+			}
+		}
+
 		public void Destroy (AllocationCallbacks pAllocator = null)
 		{
 			unsafe {
@@ -120,6 +126,12 @@ namespace Vulkan
 	public partial class PhysicalDevice
 	{
 		internal IntPtr m;
+
+		public IntPtr Handle {
+			get {
+				return m;
+			}
+		}
 
 		public PhysicalDeviceProperties GetProperties ()
 		{
@@ -531,6 +543,12 @@ namespace Vulkan
 	public partial class Device
 	{
 		internal IntPtr m;
+
+		public IntPtr Handle {
+			get {
+				return m;
+			}
+		}
 
 		public IntPtr GetProcAddr (string pName)
 		{
@@ -1585,6 +1603,12 @@ namespace Vulkan
 	{
 		internal IntPtr m;
 
+		public IntPtr Handle {
+			get {
+				return m;
+			}
+		}
+
 		public void Submit (SubmitInfo[] pSubmits, Fence fence = null)
 		{
 			Result result;
@@ -1641,6 +1665,12 @@ namespace Vulkan
 	public partial class CommandBuffer
 	{
 		internal IntPtr m;
+
+		public IntPtr Handle {
+			get {
+				return m;
+			}
+		}
 
 		public void Begin (CommandBufferBeginInfo pBeginInfo)
 		{
@@ -2157,125 +2187,275 @@ namespace Vulkan
 	public partial class DeviceMemory
 	{
 		internal UInt64 m;
+
+		public UInt64 Handle {
+			get {
+				return m;
+			}
+		}
 	}
 
 	public partial class CommandPool
 	{
 		internal UInt64 m;
+
+		public UInt64 Handle {
+			get {
+				return m;
+			}
+		}
 	}
 
 	public partial class Buffer
 	{
 		internal UInt64 m;
+
+		public UInt64 Handle {
+			get {
+				return m;
+			}
+		}
 	}
 
 	public partial class BufferView
 	{
 		internal UInt64 m;
+
+		public UInt64 Handle {
+			get {
+				return m;
+			}
+		}
 	}
 
 	public partial class Image
 	{
 		internal UInt64 m;
+
+		public UInt64 Handle {
+			get {
+				return m;
+			}
+		}
 	}
 
 	public partial class ImageView
 	{
 		internal UInt64 m;
+
+		public UInt64 Handle {
+			get {
+				return m;
+			}
+		}
 	}
 
 	public partial class ShaderModule
 	{
 		internal UInt64 m;
+
+		public UInt64 Handle {
+			get {
+				return m;
+			}
+		}
 	}
 
 	public partial class Pipeline
 	{
 		internal UInt64 m;
+
+		public UInt64 Handle {
+			get {
+				return m;
+			}
+		}
 	}
 
 	public partial class PipelineLayout
 	{
 		internal UInt64 m;
+
+		public UInt64 Handle {
+			get {
+				return m;
+			}
+		}
 	}
 
 	public partial class Sampler
 	{
 		internal UInt64 m;
+
+		public UInt64 Handle {
+			get {
+				return m;
+			}
+		}
 	}
 
 	public partial class DescriptorSet
 	{
 		internal UInt64 m;
+
+		public UInt64 Handle {
+			get {
+				return m;
+			}
+		}
 	}
 
 	public partial class DescriptorSetLayout
 	{
 		internal UInt64 m;
+
+		public UInt64 Handle {
+			get {
+				return m;
+			}
+		}
 	}
 
 	public partial class DescriptorPool
 	{
 		internal UInt64 m;
+
+		public UInt64 Handle {
+			get {
+				return m;
+			}
+		}
 	}
 
 	public partial class Fence
 	{
 		internal UInt64 m;
+
+		public UInt64 Handle {
+			get {
+				return m;
+			}
+		}
 	}
 
 	public partial class Semaphore
 	{
 		internal UInt64 m;
+
+		public UInt64 Handle {
+			get {
+				return m;
+			}
+		}
 	}
 
 	public partial class Event
 	{
 		internal UInt64 m;
+
+		public UInt64 Handle {
+			get {
+				return m;
+			}
+		}
 	}
 
 	public partial class QueryPool
 	{
 		internal UInt64 m;
+
+		public UInt64 Handle {
+			get {
+				return m;
+			}
+		}
 	}
 
 	public partial class Framebuffer
 	{
 		internal UInt64 m;
+
+		public UInt64 Handle {
+			get {
+				return m;
+			}
+		}
 	}
 
 	public partial class RenderPass
 	{
 		internal UInt64 m;
+
+		public UInt64 Handle {
+			get {
+				return m;
+			}
+		}
 	}
 
 	public partial class PipelineCache
 	{
 		internal UInt64 m;
+
+		public UInt64 Handle {
+			get {
+				return m;
+			}
+		}
 	}
 
 	public partial class DisplayKhr
 	{
 		internal UInt64 m;
+
+		public UInt64 Handle {
+			get {
+				return m;
+			}
+		}
 	}
 
 	public partial class DisplayModeKhr
 	{
 		internal UInt64 m;
+
+		public UInt64 Handle {
+			get {
+				return m;
+			}
+		}
 	}
 
 	public partial class SurfaceKhr
 	{
 		internal UInt64 m;
+
+		public UInt64 Handle {
+			get {
+				return m;
+			}
+		}
 	}
 
 	public partial class SwapchainKhr
 	{
 		internal UInt64 m;
+
+		public UInt64 Handle {
+			get {
+				return m;
+			}
+		}
 	}
 
 	public partial class DebugReportCallbackExt
 	{
 		internal UInt64 m;
+
+		public UInt64 Handle {
+			get {
+				return m;
+			}
+		}
 	}
 }

@@ -138,6 +138,12 @@ namespace Vulkan
 		}
 		internal Interop.PhysicalDeviceProperties* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public PhysicalDeviceProperties ()
 		{
 			m = (Interop.PhysicalDeviceProperties*) Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceProperties));
@@ -170,6 +176,12 @@ namespace Vulkan
 			set { m->SpecVersion = value; }
 		}
 		internal Interop.ExtensionProperties* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public ExtensionProperties ()
 		{
@@ -205,6 +217,12 @@ namespace Vulkan
 			set { Interop.Structure.MarshalFixedSizeString (m->Description, value, 256); }
 		}
 		internal Interop.LayerProperties* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public LayerProperties ()
 		{
@@ -245,6 +263,12 @@ namespace Vulkan
 			set { m->ApiVersion = value; }
 		}
 		internal Interop.ApplicationInfo* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public ApplicationInfo ()
 		{
@@ -298,6 +322,12 @@ namespace Vulkan
 			set { m->PfnInternalFree = value; }
 		}
 		internal Interop.AllocationCallbacks* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public AllocationCallbacks ()
 		{
@@ -359,6 +389,12 @@ namespace Vulkan
 			}
 		}
 		internal Interop.DeviceQueueCreateInfo* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public DeviceQueueCreateInfo ()
 		{
@@ -503,6 +539,12 @@ namespace Vulkan
 		}
 		internal Interop.DeviceCreateInfo* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public DeviceCreateInfo ()
 		{
 			m = (Interop.DeviceCreateInfo*) Interop.Structure.Allocate (typeof (Interop.DeviceCreateInfo));
@@ -609,6 +651,12 @@ namespace Vulkan
 		}
 		internal Interop.InstanceCreateInfo* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public InstanceCreateInfo ()
 		{
 			m = (Interop.InstanceCreateInfo*) Interop.Structure.Allocate (typeof (Interop.InstanceCreateInfo));
@@ -696,6 +744,12 @@ namespace Vulkan
 		}
 		internal Interop.PhysicalDeviceMemoryProperties* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public PhysicalDeviceMemoryProperties ()
 		{
 			m = (Interop.PhysicalDeviceMemoryProperties*) Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceMemoryProperties));
@@ -720,6 +774,12 @@ namespace Vulkan
 			set { m->MemoryTypeIndex = value; }
 		}
 		internal Interop.MemoryAllocateInfo* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public MemoryAllocateInfo ()
 		{
@@ -795,6 +855,12 @@ namespace Vulkan
 		}
 		internal Interop.MappedMemoryRange* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public MappedMemoryRange ()
 		{
 			m = (Interop.MappedMemoryRange*) Interop.Structure.Allocate (typeof (Interop.MappedMemoryRange));
@@ -850,6 +916,12 @@ namespace Vulkan
 		}
 		internal Interop.DescriptorBufferInfo* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public DescriptorBufferInfo ()
 		{
 			m = (Interop.DescriptorBufferInfo*) Interop.Structure.Allocate (typeof (Interop.DescriptorBufferInfo));
@@ -888,6 +960,12 @@ namespace Vulkan
 			set { m->ImageLayout = value; }
 		}
 		internal Interop.DescriptorImageInfo* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public DescriptorImageInfo ()
 		{
@@ -1036,6 +1114,12 @@ namespace Vulkan
 		}
 		internal Interop.WriteDescriptorSet* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public WriteDescriptorSet ()
 		{
 			m = (Interop.WriteDescriptorSet*) Interop.Structure.Allocate (typeof (Interop.WriteDescriptorSet));
@@ -1095,6 +1179,12 @@ namespace Vulkan
 			set { m->DescriptorCount = value; }
 		}
 		internal Interop.CopyDescriptorSet* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public CopyDescriptorSet ()
 		{
@@ -1175,6 +1265,12 @@ namespace Vulkan
 		}
 		internal Interop.BufferCreateInfo* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public BufferCreateInfo ()
 		{
 			m = (Interop.BufferCreateInfo*) Interop.Structure.Allocate (typeof (Interop.BufferCreateInfo));
@@ -1223,6 +1319,12 @@ namespace Vulkan
 			set { m->Range = value; }
 		}
 		internal Interop.BufferViewCreateInfo* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public BufferViewCreateInfo ()
 		{
@@ -1280,6 +1382,12 @@ namespace Vulkan
 			set { m->DstAccessMask = value; }
 		}
 		internal Interop.MemoryBarrier* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public MemoryBarrier ()
 		{
@@ -1339,6 +1447,12 @@ namespace Vulkan
 			set { m->Size = value; }
 		}
 		internal Interop.BufferMemoryBarrier* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public BufferMemoryBarrier ()
 		{
@@ -1403,6 +1517,12 @@ namespace Vulkan
 			set { m->SubresourceRange = value; }
 		}
 		internal Interop.ImageMemoryBarrier* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public ImageMemoryBarrier ()
 		{
@@ -1518,6 +1638,12 @@ namespace Vulkan
 		}
 		internal Interop.ImageCreateInfo* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public ImageCreateInfo ()
 		{
 			m = (Interop.ImageCreateInfo*) Interop.Structure.Allocate (typeof (Interop.ImageCreateInfo));
@@ -1581,6 +1707,12 @@ namespace Vulkan
 		}
 		internal Interop.ImageViewCreateInfo* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public ImageViewCreateInfo ()
 		{
 			m = (Interop.ImageViewCreateInfo*) Interop.Structure.Allocate (typeof (Interop.ImageViewCreateInfo));
@@ -1637,6 +1769,12 @@ namespace Vulkan
 		}
 		internal Interop.SparseMemoryBind* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public SparseMemoryBind ()
 		{
 			m = (Interop.SparseMemoryBind*) Interop.Structure.Allocate (typeof (Interop.SparseMemoryBind));
@@ -1689,6 +1827,12 @@ namespace Vulkan
 			set { m->Flags = value; }
 		}
 		internal Interop.SparseImageMemoryBind* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public SparseImageMemoryBind ()
 		{
@@ -1756,6 +1900,12 @@ namespace Vulkan
 		}
 		internal Interop.SparseBufferMemoryBindInfo* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public SparseBufferMemoryBindInfo ()
 		{
 			m = (Interop.SparseBufferMemoryBindInfo*) Interop.Structure.Allocate (typeof (Interop.SparseBufferMemoryBindInfo));
@@ -1822,6 +1972,12 @@ namespace Vulkan
 		}
 		internal Interop.SparseImageOpaqueMemoryBindInfo* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public SparseImageOpaqueMemoryBindInfo ()
 		{
 			m = (Interop.SparseImageOpaqueMemoryBindInfo*) Interop.Structure.Allocate (typeof (Interop.SparseImageOpaqueMemoryBindInfo));
@@ -1887,6 +2043,12 @@ namespace Vulkan
 			}
 		}
 		internal Interop.SparseImageMemoryBindInfo* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public SparseImageMemoryBindInfo ()
 		{
@@ -2100,6 +2262,12 @@ namespace Vulkan
 		}
 		internal Interop.BindSparseInfo* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public BindSparseInfo ()
 		{
 			m = (Interop.BindSparseInfo*) Interop.Structure.Allocate (typeof (Interop.BindSparseInfo));
@@ -2186,6 +2354,12 @@ namespace Vulkan
 		}
 		internal Interop.ImageBlit* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public ImageBlit ()
 		{
 			m = (Interop.ImageBlit*) Interop.Structure.Allocate (typeof (Interop.ImageBlit));
@@ -2260,6 +2434,12 @@ namespace Vulkan
 			}
 		}
 		internal Interop.ShaderModuleCreateInfo* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public ShaderModuleCreateInfo ()
 		{
@@ -2337,6 +2517,12 @@ namespace Vulkan
 		}
 		internal Interop.DescriptorSetLayoutBinding* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public DescriptorSetLayoutBinding ()
 		{
 			m = (Interop.DescriptorSetLayoutBinding*) Interop.Structure.Allocate (typeof (Interop.DescriptorSetLayoutBinding));
@@ -2394,6 +2580,12 @@ namespace Vulkan
 			}
 		}
 		internal Interop.DescriptorSetLayoutCreateInfo* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public DescriptorSetLayoutCreateInfo ()
 		{
@@ -2470,6 +2662,12 @@ namespace Vulkan
 		}
 		internal Interop.DescriptorPoolCreateInfo* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public DescriptorPoolCreateInfo ()
 		{
 			m = (Interop.DescriptorPoolCreateInfo*) Interop.Structure.Allocate (typeof (Interop.DescriptorPoolCreateInfo));
@@ -2536,6 +2734,12 @@ namespace Vulkan
 			}
 		}
 		internal Interop.DescriptorSetAllocateInfo* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public DescriptorSetAllocateInfo ()
 		{
@@ -2613,6 +2817,12 @@ namespace Vulkan
 		}
 		internal Interop.SpecializationInfo* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public SpecializationInfo ()
 		{
 			m = (Interop.SpecializationInfo*) Interop.Structure.Allocate (typeof (Interop.SpecializationInfo));
@@ -2654,6 +2864,12 @@ namespace Vulkan
 			set { lSpecializationInfo = value; m->SpecializationInfo = (IntPtr)value.m; }
 		}
 		internal Interop.PipelineShaderStageCreateInfo* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public PipelineShaderStageCreateInfo ()
 		{
@@ -2705,6 +2921,12 @@ namespace Vulkan
 			set { m->BasePipelineIndex = value; }
 		}
 		internal Interop.ComputePipelineCreateInfo* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public ComputePipelineCreateInfo ()
 		{
@@ -2822,6 +3044,12 @@ namespace Vulkan
 		}
 		internal Interop.PipelineVertexInputStateCreateInfo* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public PipelineVertexInputStateCreateInfo ()
 		{
 			m = (Interop.PipelineVertexInputStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineVertexInputStateCreateInfo));
@@ -2860,6 +3088,12 @@ namespace Vulkan
 		}
 		internal Interop.PipelineInputAssemblyStateCreateInfo* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public PipelineInputAssemblyStateCreateInfo ()
 		{
 			m = (Interop.PipelineInputAssemblyStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineInputAssemblyStateCreateInfo));
@@ -2892,6 +3126,12 @@ namespace Vulkan
 			set { m->PatchControlPoints = value; }
 		}
 		internal Interop.PipelineTessellationStateCreateInfo* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public PipelineTessellationStateCreateInfo ()
 		{
@@ -2993,6 +3233,12 @@ namespace Vulkan
 		}
 		internal Interop.PipelineViewportStateCreateInfo* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public PipelineViewportStateCreateInfo ()
 		{
 			m = (Interop.PipelineViewportStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineViewportStateCreateInfo));
@@ -3070,6 +3316,12 @@ namespace Vulkan
 			set { m->LineWidth = value; }
 		}
 		internal Interop.PipelineRasterizationStateCreateInfo* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public PipelineRasterizationStateCreateInfo ()
 		{
@@ -3154,6 +3406,12 @@ namespace Vulkan
 			set { m->AlphaToOneEnable = value; }
 		}
 		internal Interop.PipelineMultisampleStateCreateInfo* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public PipelineMultisampleStateCreateInfo ()
 		{
@@ -3259,6 +3517,12 @@ namespace Vulkan
 		}
 		internal Interop.PipelineColorBlendStateCreateInfo* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public PipelineColorBlendStateCreateInfo ()
 		{
 			m = (Interop.PipelineColorBlendStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineColorBlendStateCreateInfo));
@@ -3322,6 +3586,12 @@ namespace Vulkan
 			}
 		}
 		internal Interop.PipelineDynamicStateCreateInfo* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public PipelineDynamicStateCreateInfo ()
 		{
@@ -3406,6 +3676,12 @@ namespace Vulkan
 			set { m->MaxDepthBounds = value; }
 		}
 		internal Interop.PipelineDepthStencilStateCreateInfo* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public PipelineDepthStencilStateCreateInfo ()
 		{
@@ -3555,6 +3831,12 @@ namespace Vulkan
 		}
 		internal Interop.GraphicsPipelineCreateInfo* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public GraphicsPipelineCreateInfo ()
 		{
 			m = (Interop.GraphicsPipelineCreateInfo*) Interop.Structure.Allocate (typeof (Interop.GraphicsPipelineCreateInfo));
@@ -3592,6 +3874,12 @@ namespace Vulkan
 			set { m->InitialData = value; }
 		}
 		internal Interop.PipelineCacheCreateInfo* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public PipelineCacheCreateInfo ()
 		{
@@ -3702,6 +3990,12 @@ namespace Vulkan
 		}
 		internal Interop.PipelineLayoutCreateInfo* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public PipelineLayoutCreateInfo ()
 		{
 			m = (Interop.PipelineLayoutCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineLayoutCreateInfo));
@@ -3805,6 +4099,12 @@ namespace Vulkan
 		}
 		internal Interop.SamplerCreateInfo* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public SamplerCreateInfo ()
 		{
 			m = (Interop.SamplerCreateInfo*) Interop.Structure.Allocate (typeof (Interop.SamplerCreateInfo));
@@ -3837,6 +4137,12 @@ namespace Vulkan
 			set { m->QueueFamilyIndex = value; }
 		}
 		internal Interop.CommandPoolCreateInfo* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public CommandPoolCreateInfo ()
 		{
@@ -3876,6 +4182,12 @@ namespace Vulkan
 			set { m->CommandBufferCount = value; }
 		}
 		internal Interop.CommandBufferAllocateInfo* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public CommandBufferAllocateInfo ()
 		{
@@ -3932,6 +4244,12 @@ namespace Vulkan
 		}
 		internal Interop.CommandBufferInheritanceInfo* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public CommandBufferInheritanceInfo ()
 		{
 			m = (Interop.CommandBufferInheritanceInfo*) Interop.Structure.Allocate (typeof (Interop.CommandBufferInheritanceInfo));
@@ -3965,6 +4283,12 @@ namespace Vulkan
 			set { lInheritanceInfo = value; m->InheritanceInfo = (IntPtr)value.m; }
 		}
 		internal Interop.CommandBufferBeginInfo* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public CommandBufferBeginInfo ()
 		{
@@ -4044,6 +4368,12 @@ namespace Vulkan
 		}
 		internal Interop.RenderPassBeginInfo* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public RenderPassBeginInfo ()
 		{
 			m = (Interop.RenderPassBeginInfo*) Interop.Structure.Allocate (typeof (Interop.RenderPassBeginInfo));
@@ -4088,6 +4418,12 @@ namespace Vulkan
 			set { lClearValue = value; m->ClearValue = *value.m; }
 		}
 		internal Interop.ClearAttachment* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public ClearAttachment ()
 		{
@@ -4285,6 +4621,12 @@ namespace Vulkan
 		}
 		internal Interop.SubpassDescription* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public SubpassDescription ()
 		{
 			m = (Interop.SubpassDescription*) Interop.Structure.Allocate (typeof (Interop.SubpassDescription));
@@ -4426,6 +4768,12 @@ namespace Vulkan
 		}
 		internal Interop.RenderPassCreateInfo* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public RenderPassCreateInfo ()
 		{
 			m = (Interop.RenderPassCreateInfo*) Interop.Structure.Allocate (typeof (Interop.RenderPassCreateInfo));
@@ -4454,6 +4802,12 @@ namespace Vulkan
 		}
 		internal Interop.EventCreateInfo* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public EventCreateInfo ()
 		{
 			m = (Interop.EventCreateInfo*) Interop.Structure.Allocate (typeof (Interop.EventCreateInfo));
@@ -4481,6 +4835,12 @@ namespace Vulkan
 			set { m->Flags = value; }
 		}
 		internal Interop.FenceCreateInfo* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public FenceCreateInfo ()
 		{
@@ -5181,6 +5541,12 @@ namespace Vulkan
 		}
 		internal Interop.PhysicalDeviceLimits* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public PhysicalDeviceLimits ()
 		{
 			m = (Interop.PhysicalDeviceLimits*) Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceLimits));
@@ -5200,6 +5566,12 @@ namespace Vulkan
 			set { m->Flags = value; }
 		}
 		internal Interop.SemaphoreCreateInfo* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public SemaphoreCreateInfo ()
 		{
@@ -5243,6 +5615,12 @@ namespace Vulkan
 			set { m->PipelineStatistics = value; }
 		}
 		internal Interop.QueryPoolCreateInfo* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public QueryPoolCreateInfo ()
 		{
@@ -5330,6 +5708,12 @@ namespace Vulkan
 			set { m->Layers = value; }
 		}
 		internal Interop.FramebufferCreateInfo* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public FramebufferCreateInfo ()
 		{
@@ -5523,6 +5907,12 @@ namespace Vulkan
 		}
 		internal Interop.SubmitInfo* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public SubmitInfo ()
 		{
 			m = (Interop.SubmitInfo*) Interop.Structure.Allocate (typeof (Interop.SubmitInfo));
@@ -5582,6 +5972,12 @@ namespace Vulkan
 		}
 		internal Interop.DisplayPropertiesKhr* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public DisplayPropertiesKhr ()
 		{
 			m = (Interop.DisplayPropertiesKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayPropertiesKhr));
@@ -5614,6 +6010,12 @@ namespace Vulkan
 			set { m->CurrentStackIndex = value; }
 		}
 		internal Interop.DisplayPlanePropertiesKhr* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public DisplayPlanePropertiesKhr ()
 		{
@@ -5654,6 +6056,12 @@ namespace Vulkan
 		}
 		internal Interop.DisplayModePropertiesKhr* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public DisplayModePropertiesKhr ()
 		{
 			m = (Interop.DisplayModePropertiesKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayModePropertiesKhr));
@@ -5685,6 +6093,12 @@ namespace Vulkan
 			set { m->Parameters = value; }
 		}
 		internal Interop.DisplayModeCreateInfoKhr* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public DisplayModeCreateInfoKhr ()
 		{
@@ -5763,6 +6177,12 @@ namespace Vulkan
 		}
 		internal Interop.DisplaySurfaceCreateInfoKhr* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public DisplaySurfaceCreateInfoKhr ()
 		{
 			m = (Interop.DisplaySurfaceCreateInfoKhr*) Interop.Structure.Allocate (typeof (Interop.DisplaySurfaceCreateInfoKhr));
@@ -5800,6 +6220,12 @@ namespace Vulkan
 			set { m->Persistent = value; }
 		}
 		internal Interop.DisplayPresentInfoKhr* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public DisplayPresentInfoKhr ()
 		{
@@ -5951,6 +6377,12 @@ namespace Vulkan
 			set { lOldSwapchain = value; m->OldSwapchain = (UInt64)value.m; }
 		}
 		internal Interop.SwapchainCreateInfoKhr* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public SwapchainCreateInfoKhr ()
 		{
@@ -6113,6 +6545,12 @@ namespace Vulkan
 		}
 		internal Interop.PresentInfoKhr* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public PresentInfoKhr ()
 		{
 			m = (Interop.PresentInfoKhr*) Interop.Structure.Allocate (typeof (Interop.PresentInfoKhr));
@@ -6151,6 +6589,12 @@ namespace Vulkan
 		}
 		internal Interop.DebugReportCallbackCreateInfoExt* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public DebugReportCallbackCreateInfoExt ()
 		{
 			m = (Interop.DebugReportCallbackCreateInfoExt*) Interop.Structure.Allocate (typeof (Interop.DebugReportCallbackCreateInfoExt));
@@ -6178,6 +6622,12 @@ namespace Vulkan
 			set { m->RasterizationOrder = value; }
 		}
 		internal Interop.PipelineRasterizationStateRasterizationOrderAmd* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public PipelineRasterizationStateRasterizationOrderAmd ()
 		{
@@ -6216,6 +6666,12 @@ namespace Vulkan
 			set { m->ObjectName = Marshal.StringToHGlobalAnsi (value); }
 		}
 		internal Interop.DebugMarkerObjectNameInfoExt* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public DebugMarkerObjectNameInfoExt ()
 		{
@@ -6265,6 +6721,12 @@ namespace Vulkan
 		}
 		internal Interop.DebugMarkerObjectTagInfoExt* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public DebugMarkerObjectTagInfoExt ()
 		{
 			m = (Interop.DebugMarkerObjectTagInfoExt*) Interop.Structure.Allocate (typeof (Interop.DebugMarkerObjectTagInfoExt));
@@ -6311,6 +6773,12 @@ namespace Vulkan
 		}
 		internal Interop.DebugMarkerMarkerInfoExt* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public DebugMarkerMarkerInfoExt ()
 		{
 			m = (Interop.DebugMarkerMarkerInfoExt*) Interop.Structure.Allocate (typeof (Interop.DebugMarkerMarkerInfoExt));
@@ -6339,6 +6807,12 @@ namespace Vulkan
 		}
 		internal Interop.DedicatedAllocationImageCreateInfoNv* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public DedicatedAllocationImageCreateInfoNv ()
 		{
 			m = (Interop.DedicatedAllocationImageCreateInfoNv*) Interop.Structure.Allocate (typeof (Interop.DedicatedAllocationImageCreateInfoNv));
@@ -6366,6 +6840,12 @@ namespace Vulkan
 			set { m->DedicatedAllocation = value; }
 		}
 		internal Interop.DedicatedAllocationBufferCreateInfoNv* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public DedicatedAllocationBufferCreateInfoNv ()
 		{
@@ -6401,6 +6881,12 @@ namespace Vulkan
 			set { lBuffer = value; m->Buffer = (UInt64)value.m; }
 		}
 		internal Interop.DedicatedAllocationMemoryAllocateInfoNv* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public DedicatedAllocationMemoryAllocateInfoNv ()
 		{

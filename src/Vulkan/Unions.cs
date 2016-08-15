@@ -70,6 +70,12 @@ namespace Vulkan
 		}
 		internal Interop.ClearColorValue* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public ClearColorValue ()
 		{
 			m = (Interop.ClearColorValue*) Interop.Structure.Allocate (typeof (Interop.ClearColorValue));
@@ -95,6 +101,12 @@ namespace Vulkan
 			set { m->DepthStencil = value; }
 		}
 		internal Interop.ClearValue* m;
+
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
 
 		public ClearValue ()
 		{

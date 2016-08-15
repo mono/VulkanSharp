@@ -31,6 +31,12 @@ namespace Vulkan
 		}
 		internal Windows.Interop.Win32SurfaceCreateInfoKhr* m;
 
+		public IntPtr Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
 		public Win32SurfaceCreateInfoKhr ()
 		{
 			m = (Windows.Interop.Win32SurfaceCreateInfoKhr*) Interop.Structure.Allocate (typeof (Windows.Interop.Win32SurfaceCreateInfoKhr));
