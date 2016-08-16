@@ -24,7 +24,7 @@ namespace Vulkan.Windows
 				pSurface = new SurfaceKhr ();
 
 				fixed (UInt64* ptrpSurface = &pSurface.m) {
-					result = Windows.Interop.NativeMethods.vkCreateWin32SurfaceKHR (instance.m, pCreateInfo.m, pAllocator != null ? pAllocator.m : null, ptrpSurface);
+					result = Windows.Interop.NativeMethods.vkCreateWin32SurfaceKHR (instance.m, pCreateInfo != null ? pCreateInfo.m : (Windows.Interop.Win32SurfaceCreateInfoKhr*)default(IntPtr), pAllocator != null ? pAllocator.m : null, ptrpSurface);
 				}
 				if (result != Result.Success)
 					throw new ResultException (result);

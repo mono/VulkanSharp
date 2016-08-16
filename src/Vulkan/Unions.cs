@@ -93,7 +93,7 @@ namespace Vulkan
 		ClearColorValue lColor;
 		public ClearColorValue Color {
 			get { return lColor; }
-			set { lColor = value; m->Color = *value.m; }
+			set { lColor = value; m->Color = value != null ? *value.m : default(Interop.ClearColorValue); }
 		}
 
 		public ClearDepthStencilValue DepthStencil {

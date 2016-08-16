@@ -24,7 +24,7 @@ namespace Vulkan.Android
 				pSurface = new SurfaceKhr ();
 
 				fixed (UInt64* ptrpSurface = &pSurface.m) {
-					result = Android.Interop.NativeMethods.vkCreateAndroidSurfaceKHR (instance.m, pCreateInfo.m, pAllocator != null ? pAllocator.m : null, ptrpSurface);
+					result = Android.Interop.NativeMethods.vkCreateAndroidSurfaceKHR (instance.m, pCreateInfo != null ? pCreateInfo.m : (Android.Interop.AndroidSurfaceCreateInfoKhr*)default(IntPtr), pAllocator != null ? pAllocator.m : null, ptrpSurface);
 				}
 				if (result != Result.Success)
 					throw new ResultException (result);
