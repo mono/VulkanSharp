@@ -643,7 +643,10 @@ namespace VulkanSharp.Generator
 			if (isMarshalled) {
 				IndentWriteLine ("get {{ return l{0}; }}", csMemberName);
 				var castType = isHandle ? GetHandleType (handles [csMemberType]) : "IntPtr";
-				IndentWriteLine ("set {{ l{0} = value; m->{0} = {1}value.m; }}", csMemberName, (isPointer || isHandle) ? string.Format ("({0})", castType) : "*");
+				if (isPointer || isHandle)
+					IndentWriteLine ("set {{ l{0} = value; m->{0} = value != null ? {1}value.m : default{1}; }}", csMemberName, string.Format ("({0})", castType));
+				else
+					IndentWriteLine ("set {{ l{0} = value; m->{0} = value != null ? *value.m : default({1}.{2}); }}", csMemberName, InteropNamespace, csMemberType);
 			} else if (isPointer) {
 				IndentWriteLine ("get {{ return ({0})Interop.Structure.MarshalPointerToObject (m->{1}, typeof ({0})); }}", csMemberType ,csMemberName);
 				IndentWriteLine ("set {{ m->{0} = Interop.Structure.MarshalObjectToPointer (m->{0}, value); }}", csMemberName);
@@ -1213,6 +1216,19 @@ namespace VulkanSharp.Generator
 			return "null";
 		}
 
+		string GetDefaultNativeValue (string csType)
+		{
+			if (csType.EndsWith ("Flags"))
+				return string.Format ("({0})0", csType);
+
+			if (handles.ContainsKey (csType))
+				csType = GetHandleType (handles [csType]);
+			else if (structures.ContainsKey (csType) && structures [csType].needsMarshalling)
+				return string.Format ("({0}.{1}*)default(IntPtr)", InteropNamespace, csType);
+
+			return string.Format ("default({0})", csType);
+		}
+
 		void WriteCommandParameters (XElement commandElement, List<ParamInfo> ignoredParameters = null, ParamInfo nullParameter = null, ParamInfo ptrParam = null, bool isInstance = false, bool passToNative = false, Dictionary<string, ParamInfo> paramsDict = null, bool isExtension = false, bool useOptional = false)
 		{
 			bool first = true;
@@ -1290,8 +1306,18 @@ namespace VulkanSharp.Generator
 						Write ("{0} != null ? {0}{1} : null", GetSafeParameterName (paramName), useHandlePtr ? ".m" : "");
 					else if (info.lenArray != null)
 						Write ("(uint)len{0}", info.lenArray.csName);
-					else
-						Write ("{0}{1}{2}", (info.isPointer && (!info.isStruct || !info.needsMarshalling) && !info.isFixed) ? "&" : "", GetSafeParameterName (paramName), useHandlePtr ? ".m" : "");
+					else {
+						var safeParamName = GetSafeParameterName (paramName);
+						var needsAddress = (info.isPointer && (!info.isStruct || !info.needsMarshalling) && !info.isFixed);
+						var nativeValue = GetDefaultNativeValue (info.csType);
+						if (useHandlePtr) {
+							if (!needsAddress && nativeValue == "null")
+								Write ("{0}?.m", safeParamName);
+							else
+								Write ("{0} != null ? {1}{0}.m : {2}", safeParamName, needsAddress ? "&" : "", nativeValue);
+						} else
+							Write ("{0}{1}", needsAddress ? "&" : "", safeParamName);
+					}
 				} else {
 					if (firstOptional == name)
 						optionalPart = true;
@@ -1633,6 +1659,9 @@ namespace VulkanSharp.Generator
 			}
 		}
 
+		HashSet<string> handlesWithDefaultConstructors = new HashSet<string> {
+			"Instance"
+		};
 		bool WriteHandle (XElement handleElement)
 		{
 			string csName = GetTypeCsName (handleElement.Element ("name").Value, "handle");
@@ -1650,10 +1679,12 @@ namespace VulkanSharp.Generator
 					return false;
 			}
 
-			IndentWriteLine ("public {0} class {1}{2}", isRequired ? "static" : "partial", csName, isRequired ? "Extension" : "");
+			var className = string.Format ("{0}{1}", csName, isRequired ? "Extension" : "");
+			IndentWriteLine ("public {0} class {1}", isRequired ? "static" : "partial", className);
 			IndentWriteLine ("{");
 			IndentLevel++;
-
+			if (!isRequired && !handlesWithDefaultConstructors.Contains (csName))
+				IndentWriteLine ("internal {0}() {{}}\n", className);
 			//// todo: implement marshalling
 			bool written = false;
 			if (requiredCommands == null) {
