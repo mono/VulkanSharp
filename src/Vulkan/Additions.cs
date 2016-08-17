@@ -4,7 +4,7 @@ using Vulkan.Interop;
 
 namespace Vulkan
 {
-	public partial class Instance
+	public partial class Instance : IDisposable
 	{
 		NativeMethods.vkCreateDebugReportCallbackEXT vkCreateDebugReportCallbackEXT;
 		NativeMethods.vkDestroyDebugReportCallbackEXT vkDestroyDebugReportCallbackEXT;
@@ -48,16 +48,34 @@ namespace Vulkan
 		{
 		}
 
+		public void Dispose ()
+		{
+			if (debugCallback != null && vkDestroyDebugReportCallbackEXT != null) {
+				DestroyDebugReportCallbackEXT (debugCallback);
+				debugCallback = null;
+			}
+			if (m != IntPtr.Zero) {
+				Destroy ();
+				m = IntPtr.Zero;
+			}
+		}
+
 		public delegate Bool32 DebugReportCallback (DebugReportFlagsExt flags, DebugReportObjectTypeExt objectType, ulong objectHandle, IntPtr location, int messageCode, IntPtr layerPrefix, IntPtr message, IntPtr userData);
 
+		DebugReportCallbackExt debugCallback;
 		public void EnableDebug (DebugReportCallback d, DebugReportFlagsExt flags = DebugReportFlagsExt.Debug | DebugReportFlagsExt.Error | DebugReportFlagsExt.Information | DebugReportFlagsExt.PerformanceWarning | DebugReportFlagsExt.Warning)
 		{
+			if (vkCreateDebugReportCallbackEXT == null)
+				throw new InvalidOperationException ("vkCreateDebugReportCallbackEXT is not available, possibly you might be missing VK_EXT_debug_report extension. Try to enable it when creating the Instance.");
+
 			var debugCreateInfo = new DebugReportCallbackCreateInfoExt () {
 				Flags = flags,
 				PfnCallback = Marshal.GetFunctionPointerForDelegate (d)
 			};
 
-			CreateDebugReportCallbackEXT (debugCreateInfo);
+			if (debugCallback != null)
+				DestroyDebugReportCallbackEXT (debugCallback);
+			debugCallback = CreateDebugReportCallbackEXT (debugCreateInfo);
 		}
 	}
 
