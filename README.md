@@ -1,14 +1,15 @@
 # VulkanSharp
 
-This project will provide a .NET binding for the
+This project provides a .NET binding for the
 [Vulkan](https://www.khronos.org/vulkan/) API.
 
 Nuget [package](https://www.nuget.org/packages/VulkanSharp.Preview/)
 
-Check our [samples](https://github.com/mono/VulkanSharp/tree/master/samples)
+Check our [samples](https://github.com/mono/VulkanSharp/tree/master/samples) to see examples of using VulkanSharp
 
-To learn more about Vulkan, you can check [Vulkan in 30
-minutes](https://renderdoc.org/vulkan-in-30-minutes.html)
+## Tutorials
+
+How to use [ValidationLayers](https://github.com/mono/VulkanSharp/blob/master/docs/development/ValidationLayers.md)
 
 ## Building
 
@@ -26,6 +27,9 @@ the needed dependencies.
 Specification from the Khronos group
 [xhtml](https://www.khronos.org/registry/vulkan/specs/1.0/xhtml/vkspec.html),
 [pdf](https://www.khronos.org/registry/vulkan/specs/1.0/pdf/vkspec.pdf)
+
+To learn more about Vulkan, you can check [Vulkan in 30
+minutes](https://renderdoc.org/vulkan-in-30-minutes.html)
 
 ### Vulkan on Android
 
