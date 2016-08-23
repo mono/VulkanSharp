@@ -9,7 +9,7 @@ Check our [samples](https://github.com/mono/VulkanSharp/tree/master/samples) to 
 
 ## Tutorials
 
-How to use [ValidationLayers](https://github.com/mono/VulkanSharp/blob/master/docs/development/ValidationLayers.md)
+How to use [Validation layers](https://github.com/mono/VulkanSharp/blob/master/docs/development/ValidationLayers.md)
 
 ## Building
 

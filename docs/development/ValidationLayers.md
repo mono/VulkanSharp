@@ -1,6 +1,6 @@
 # Validation layers
 
-Validation layers are special layers used to check the API usage and report debug information during the runtime. You can read more about them [here](https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers/blob/master/layers/README.md)
+Validation layers are special layers used to check the API usage and report debug information during the runtime. You can read more about them [here](https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers/blob/master/layers/README.md).
 
 ## Enabling the validation layers
 
@@ -53,7 +53,7 @@ static Bool32 DebugReportCallback (DebugReportFlagsExt flags, DebugReportObjectT
 Instance.DebugReportCallbackDelegate debugDelegate = new Instance.DebugReportCallbackDelegate (DebugReportCallback);
 ~~~~
 
-## Enabling debyg report
+## Enabling debug report
 
 And finally pass the callback to your Instance:
 
