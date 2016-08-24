@@ -7,6 +7,8 @@ Nuget [package](https://www.nuget.org/packages/VulkanSharp.Preview/)
 
 Check our [samples](https://github.com/mono/VulkanSharp/tree/master/samples) to see examples of using VulkanSharp
 
+Regular Jenkins [builds](https://jenkins.mono-project.com/view/All/job/VulkanSharp/) with every push/PR
+
 ## Tutorials
 
 How to use [Validation layers](https://github.com/mono/VulkanSharp/blob/master/docs/development/ValidationLayers.md)
