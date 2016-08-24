@@ -136,7 +136,7 @@ namespace XLogo
 				buffers [i].CmdBeginRenderPass (renderPassBeginInfo, SubpassContents.Inline);
 				buffers [i].CmdBindDescriptorSets (PipelineBindPoint.Graphics, pipelineLayout, 0, descriptorSets, null);
 				buffers [i].CmdBindPipeline (PipelineBindPoint.Graphics, pipeline);
-				buffers [i].CmdBindVertexBuffers (0, new Buffer [] { vertexBuffer }, new DeviceSize [] { 0 });
+				buffers [i].CmdBindVertexBuffer (0, vertexBuffer, 0);
 				buffers [i].CmdBindIndexBuffer (indexBuffer, 0, IndexType.Uint16);
 				buffers [i].CmdDrawIndexed (indexLength, 1, 0, 0, 0);
 				buffers [i].CmdEndRenderPass ();
