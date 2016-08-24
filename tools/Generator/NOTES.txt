@@ -6,3 +6,25 @@ extensions
 
 TODO:
   optional parameters (like AllocationCallbacks) - set default values for method parameters
+
+ideas:
+  add simplified properties to structures/unions for array properties to be able to assign
+  only one element. an example:
+  
+  var createBufferInfo = new BufferCreateInfo {
+    Size = size,
+    Usage = usageFlags,
+    SharingMode = SharingMode.Exclusive,
+		QueueFamilyIndices = new uint [] { 0 }
+  };
+  
+  so if add property QueueFamilyIndex we can simplify the code to
+  
+  var createBufferInfo = new BufferCreateInfo {
+    Size = size,
+    Usage = usageFlags,
+    SharingMode = SharingMode.Exclusive,
+		QueueFamilyIndex = 0
+  };
+  
+  under the hood we will set the counter to 1 and have one element array of indices
