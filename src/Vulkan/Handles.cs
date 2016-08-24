@@ -653,6 +653,16 @@ namespace Vulkan
 			}
 		}
 
+		public void FlushMappedMemoryRange (MappedMemoryRange pMemoryRange)
+		{
+			Result result;
+			unsafe {
+				result = Interop.NativeMethods.vkFlushMappedMemoryRanges (this.m, 1, pMemoryRange != null ? pMemoryRange.m : (Interop.MappedMemoryRange*)default(IntPtr));
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
 		public void InvalidateMappedMemoryRanges (MappedMemoryRange[] pMemoryRanges)
 		{
 			Result result;
@@ -664,6 +674,16 @@ namespace Vulkan
 						((Interop.MappedMemoryRange*)arraypMemoryRanges) [i] = *(pMemoryRanges [i].m);
 				result = Interop.NativeMethods.vkInvalidateMappedMemoryRanges (this.m, (uint)lenpMemoryRanges, (Interop.MappedMemoryRange*)arraypMemoryRanges);
 				Marshal.FreeHGlobal (arraypMemoryRanges);
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		public void InvalidateMappedMemoryRange (MappedMemoryRange pMemoryRange)
+		{
+			Result result;
+			unsafe {
+				result = Interop.NativeMethods.vkInvalidateMappedMemoryRanges (this.m, 1, pMemoryRange != null ? pMemoryRange.m : (Interop.MappedMemoryRange*)default(IntPtr));
 				if (result != Result.Success)
 					throw new ResultException (result);
 			}
@@ -785,6 +805,18 @@ namespace Vulkan
 			}
 		}
 
+		public void ResetFence (Fence pFence)
+		{
+			Result result;
+			unsafe {
+				fixed (UInt64* ptrpFence = &pFence.m) {
+					result = Interop.NativeMethods.vkResetFences (this.m, 1, ptrpFence);
+				}
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
 		public void GetFenceStatus (Fence fence)
 		{
 			Result result;
@@ -806,6 +838,18 @@ namespace Vulkan
 						((UInt64*)arraypFences) [i] = (pFences [i].m);
 				result = Interop.NativeMethods.vkWaitForFences (this.m, (uint)lenpFences, (UInt64*)arraypFences, waitAll, timeout);
 				Marshal.FreeHGlobal (arraypFences);
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		public void WaitForFence (Fence pFence, Bool32 waitAll, UInt64 timeout)
+		{
+			Result result;
+			unsafe {
+				fixed (UInt64* ptrpFence = &pFence.m) {
+					result = Interop.NativeMethods.vkWaitForFences (this.m, 1, ptrpFence, waitAll, timeout);
+				}
 				if (result != Result.Success)
 					throw new ResultException (result);
 			}
@@ -1110,6 +1154,18 @@ namespace Vulkan
 			}
 		}
 
+		public void MergePipelineCache (PipelineCache dstCache, PipelineCache pSrcCache)
+		{
+			Result result;
+			unsafe {
+				fixed (UInt64* ptrpSrcCache = &pSrcCache.m) {
+					result = Interop.NativeMethods.vkMergePipelineCaches (this.m, dstCache != null ? dstCache.m : default(UInt64), 1, ptrpSrcCache);
+				}
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
 		public Pipeline[] CreateGraphicsPipelines (PipelineCache pipelineCache, GraphicsPipelineCreateInfo[] pCreateInfos, AllocationCallbacks pAllocator = null)
 		{
 			Result result;
@@ -1326,6 +1382,18 @@ namespace Vulkan
 			}
 		}
 
+		public void FreeDescriptorSet (DescriptorPool descriptorPool, DescriptorSet pDescriptorSet)
+		{
+			Result result;
+			unsafe {
+				fixed (UInt64* ptrpDescriptorSet = &pDescriptorSet.m) {
+					result = Interop.NativeMethods.vkFreeDescriptorSets (this.m, descriptorPool != null ? descriptorPool.m : default(UInt64), 1, ptrpDescriptorSet);
+				}
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
 		public void UpdateDescriptorSets (WriteDescriptorSet[] pDescriptorWrites, CopyDescriptorSet[] pDescriptorCopies)
 		{
 			unsafe {
@@ -1342,6 +1410,13 @@ namespace Vulkan
 				Interop.NativeMethods.vkUpdateDescriptorSets (this.m, (uint)lenpDescriptorWrites, (Interop.WriteDescriptorSet*)arraypDescriptorWrites, (uint)lenpDescriptorCopies, (Interop.CopyDescriptorSet*)arraypDescriptorCopies);
 				Marshal.FreeHGlobal (arraypDescriptorWrites);
 				Marshal.FreeHGlobal (arraypDescriptorCopies);
+			}
+		}
+
+		public void UpdateDescriptorSet (WriteDescriptorSet pDescriptorWrite, CopyDescriptorSet pDescriptorCopie)
+		{
+			unsafe {
+				Interop.NativeMethods.vkUpdateDescriptorSets (this.m, 1, pDescriptorWrite != null ? pDescriptorWrite.m : (Interop.WriteDescriptorSet*)default(IntPtr), 1, pDescriptorCopie != null ? pDescriptorCopie.m : (Interop.CopyDescriptorSet*)default(IntPtr));
 			}
 		}
 
@@ -1473,6 +1548,15 @@ namespace Vulkan
 						((IntPtr*)arraypCommandBuffers) [i] = (pCommandBuffers [i].m);
 				Interop.NativeMethods.vkFreeCommandBuffers (this.m, commandPool != null ? commandPool.m : default(UInt64), (uint)lenpCommandBuffers, (IntPtr*)arraypCommandBuffers);
 				Marshal.FreeHGlobal (arraypCommandBuffers);
+			}
+		}
+
+		public void FreeCommandBuffer (CommandPool commandPool, CommandBuffer pCommandBuffer)
+		{
+			unsafe {
+				fixed (IntPtr* ptrpCommandBuffer = &pCommandBuffer.m) {
+					Interop.NativeMethods.vkFreeCommandBuffers (this.m, commandPool != null ? commandPool.m : default(UInt64), 1, ptrpCommandBuffer);
+				}
 			}
 		}
 
@@ -1631,6 +1715,16 @@ namespace Vulkan
 			}
 		}
 
+		public void Submit (SubmitInfo pSubmit, Fence fence = null)
+		{
+			Result result;
+			unsafe {
+				result = Interop.NativeMethods.vkQueueSubmit (this.m, 1, pSubmit != null ? pSubmit.m : (Interop.SubmitInfo*)default(IntPtr), fence != null ? fence.m : default(UInt64));
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
 		public void WaitIdle ()
 		{
 			Result result;
@@ -1652,6 +1746,16 @@ namespace Vulkan
 						((Interop.BindSparseInfo*)arraypBindInfo) [i] = *(pBindInfo [i].m);
 				result = Interop.NativeMethods.vkQueueBindSparse (this.m, (uint)lenpBindInfo, (Interop.BindSparseInfo*)arraypBindInfo, fence != null ? fence.m : default(UInt64));
 				Marshal.FreeHGlobal (arraypBindInfo);
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		public void BindSparse (BindSparseInfo pBindInfo, Fence fence = null)
+		{
+			Result result;
+			unsafe {
+				result = Interop.NativeMethods.vkQueueBindSparse (this.m, 1, pBindInfo != null ? pBindInfo.m : (Interop.BindSparseInfo*)default(IntPtr), fence != null ? fence.m : default(UInt64));
 				if (result != Result.Success)
 					throw new ResultException (result);
 			}
@@ -1730,6 +1834,13 @@ namespace Vulkan
 			}
 		}
 
+		public void CmdSetViewport (UInt32 firstViewport, Viewport pViewport)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdSetViewport (this.m, firstViewport, 1, &pViewport);
+			}
+		}
+
 		public void CmdSetScissor (UInt32 firstScissor, Rect2D[] pScissors)
 		{
 			unsafe {
@@ -1740,6 +1851,13 @@ namespace Vulkan
 						((Rect2D*)arraypScissors) [i] = (pScissors [i]);
 				Interop.NativeMethods.vkCmdSetScissor (this.m, firstScissor, (uint)lenpScissors, (Rect2D*)arraypScissors);
 				Marshal.FreeHGlobal (arraypScissors);
+			}
+		}
+
+		public void CmdSetScissor (UInt32 firstScissor, Rect2D pScissor)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdSetScissor (this.m, firstScissor, 1, &pScissor);
 			}
 		}
 
@@ -1811,6 +1929,15 @@ namespace Vulkan
 			}
 		}
 
+		public void CmdBindDescriptorSet (PipelineBindPoint pipelineBindPoint, PipelineLayout layout, UInt32 firstSet, DescriptorSet pDescriptorSet, UInt32 pDynamicOffset)
+		{
+			unsafe {
+				fixed (UInt64* ptrpDescriptorSet = &pDescriptorSet.m) {
+					Interop.NativeMethods.vkCmdBindDescriptorSets (this.m, pipelineBindPoint, layout != null ? layout.m : default(UInt64), firstSet, 1, ptrpDescriptorSet, 1, &pDynamicOffset);
+				}
+			}
+		}
+
 		public void CmdBindIndexBuffer (Buffer buffer, DeviceSize offset, IndexType indexType)
 		{
 			unsafe {
@@ -1834,6 +1961,15 @@ namespace Vulkan
 				Interop.NativeMethods.vkCmdBindVertexBuffers (this.m, firstBinding, (uint)lenpOffsets, (UInt64*)arraypBuffers, (DeviceSize*)arraypOffsets);
 				Marshal.FreeHGlobal (arraypBuffers);
 				Marshal.FreeHGlobal (arraypOffsets);
+			}
+		}
+
+		public void CmdBindVertexBuffer (UInt32 firstBinding, Buffer pBuffer, DeviceSize pOffset)
+		{
+			unsafe {
+				fixed (UInt64* ptrpBuffer = &pBuffer.m) {
+					Interop.NativeMethods.vkCmdBindVertexBuffers (this.m, firstBinding, 1, ptrpBuffer, &pOffset);
+				}
 			}
 		}
 
@@ -1892,6 +2028,13 @@ namespace Vulkan
 			}
 		}
 
+		public void CmdCopyBuffer (Buffer srcBuffer, Buffer dstBuffer, BufferCopy pRegion)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdCopyBuffer (this.m, srcBuffer != null ? srcBuffer.m : default(UInt64), dstBuffer != null ? dstBuffer.m : default(UInt64), 1, &pRegion);
+			}
+		}
+
 		public void CmdCopyImage (Image srcImage, ImageLayout srcImageLayout, Image dstImage, ImageLayout dstImageLayout, ImageCopy[] pRegions)
 		{
 			unsafe {
@@ -1902,6 +2045,13 @@ namespace Vulkan
 						((ImageCopy*)arraypRegions) [i] = (pRegions [i]);
 				Interop.NativeMethods.vkCmdCopyImage (this.m, srcImage != null ? srcImage.m : default(UInt64), srcImageLayout, dstImage != null ? dstImage.m : default(UInt64), dstImageLayout, (uint)lenpRegions, (ImageCopy*)arraypRegions);
 				Marshal.FreeHGlobal (arraypRegions);
+			}
+		}
+
+		public void CmdCopyImage (Image srcImage, ImageLayout srcImageLayout, Image dstImage, ImageLayout dstImageLayout, ImageCopy pRegion)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdCopyImage (this.m, srcImage != null ? srcImage.m : default(UInt64), srcImageLayout, dstImage != null ? dstImage.m : default(UInt64), dstImageLayout, 1, &pRegion);
 			}
 		}
 
@@ -1918,6 +2068,13 @@ namespace Vulkan
 			}
 		}
 
+		public void CmdBlitImage (Image srcImage, ImageLayout srcImageLayout, Image dstImage, ImageLayout dstImageLayout, ImageBlit pRegion, Filter filter)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdBlitImage (this.m, srcImage != null ? srcImage.m : default(UInt64), srcImageLayout, dstImage != null ? dstImage.m : default(UInt64), dstImageLayout, 1, pRegion != null ? pRegion.m : (Interop.ImageBlit*)default(IntPtr), filter);
+			}
+		}
+
 		public void CmdCopyBufferToImage (Buffer srcBuffer, Image dstImage, ImageLayout dstImageLayout, BufferImageCopy[] pRegions)
 		{
 			unsafe {
@@ -1931,6 +2088,13 @@ namespace Vulkan
 			}
 		}
 
+		public void CmdCopyBufferToImage (Buffer srcBuffer, Image dstImage, ImageLayout dstImageLayout, BufferImageCopy pRegion)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdCopyBufferToImage (this.m, srcBuffer != null ? srcBuffer.m : default(UInt64), dstImage != null ? dstImage.m : default(UInt64), dstImageLayout, 1, &pRegion);
+			}
+		}
+
 		public void CmdCopyImageToBuffer (Image srcImage, ImageLayout srcImageLayout, Buffer dstBuffer, BufferImageCopy[] pRegions)
 		{
 			unsafe {
@@ -1941,6 +2105,13 @@ namespace Vulkan
 						((BufferImageCopy*)arraypRegions) [i] = (pRegions [i]);
 				Interop.NativeMethods.vkCmdCopyImageToBuffer (this.m, srcImage != null ? srcImage.m : default(UInt64), srcImageLayout, dstBuffer != null ? dstBuffer.m : default(UInt64), (uint)lenpRegions, (BufferImageCopy*)arraypRegions);
 				Marshal.FreeHGlobal (arraypRegions);
+			}
+		}
+
+		public void CmdCopyImageToBuffer (Image srcImage, ImageLayout srcImageLayout, Buffer dstBuffer, BufferImageCopy pRegion)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdCopyImageToBuffer (this.m, srcImage != null ? srcImage.m : default(UInt64), srcImageLayout, dstBuffer != null ? dstBuffer.m : default(UInt64), 1, &pRegion);
 			}
 		}
 
@@ -1971,6 +2142,13 @@ namespace Vulkan
 			}
 		}
 
+		public void CmdClearColorImage (Image image, ImageLayout imageLayout, ClearColorValue pColor, ImageSubresourceRange pRange)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdClearColorImage (this.m, image != null ? image.m : default(UInt64), imageLayout, pColor != null ? pColor.m : (Interop.ClearColorValue*)default(IntPtr), 1, &pRange);
+			}
+		}
+
 		public void CmdClearDepthStencilImage (Image image, ImageLayout imageLayout, ClearDepthStencilValue pDepthStencil, ImageSubresourceRange[] pRanges)
 		{
 			unsafe {
@@ -1981,6 +2159,13 @@ namespace Vulkan
 						((ImageSubresourceRange*)arraypRanges) [i] = (pRanges [i]);
 				Interop.NativeMethods.vkCmdClearDepthStencilImage (this.m, image != null ? image.m : default(UInt64), imageLayout, &pDepthStencil, (uint)lenpRanges, (ImageSubresourceRange*)arraypRanges);
 				Marshal.FreeHGlobal (arraypRanges);
+			}
+		}
+
+		public void CmdClearDepthStencilImage (Image image, ImageLayout imageLayout, ClearDepthStencilValue pDepthStencil, ImageSubresourceRange pRange)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdClearDepthStencilImage (this.m, image != null ? image.m : default(UInt64), imageLayout, &pDepthStencil, 1, &pRange);
 			}
 		}
 
@@ -2003,6 +2188,13 @@ namespace Vulkan
 			}
 		}
 
+		public void CmdClearAttachment (ClearAttachment pAttachment, ClearRect pRect)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdClearAttachments (this.m, 1, pAttachment != null ? pAttachment.m : (Interop.ClearAttachment*)default(IntPtr), 1, &pRect);
+			}
+		}
+
 		public void CmdResolveImage (Image srcImage, ImageLayout srcImageLayout, Image dstImage, ImageLayout dstImageLayout, ImageResolve[] pRegions)
 		{
 			unsafe {
@@ -2013,6 +2205,13 @@ namespace Vulkan
 						((ImageResolve*)arraypRegions) [i] = (pRegions [i]);
 				Interop.NativeMethods.vkCmdResolveImage (this.m, srcImage != null ? srcImage.m : default(UInt64), srcImageLayout, dstImage != null ? dstImage.m : default(UInt64), dstImageLayout, (uint)lenpRegions, (ImageResolve*)arraypRegions);
 				Marshal.FreeHGlobal (arraypRegions);
+			}
+		}
+
+		public void CmdResolveImage (Image srcImage, ImageLayout srcImageLayout, Image dstImage, ImageLayout dstImageLayout, ImageResolve pRegion)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdResolveImage (this.m, srcImage != null ? srcImage.m : default(UInt64), srcImageLayout, dstImage != null ? dstImage.m : default(UInt64), dstImageLayout, 1, &pRegion);
 			}
 		}
 
@@ -2061,6 +2260,15 @@ namespace Vulkan
 			}
 		}
 
+		public void CmdWaitEvent (Event pEvent, PipelineStageFlags srcStageMask, PipelineStageFlags dstStageMask, MemoryBarrier pMemoryBarrier, BufferMemoryBarrier pBufferMemoryBarrier, ImageMemoryBarrier pImageMemoryBarrier)
+		{
+			unsafe {
+				fixed (UInt64* ptrpEvent = &pEvent.m) {
+					Interop.NativeMethods.vkCmdWaitEvents (this.m, 1, ptrpEvent, srcStageMask, dstStageMask, 1, pMemoryBarrier != null ? pMemoryBarrier.m : (Interop.MemoryBarrier*)default(IntPtr), 1, pBufferMemoryBarrier != null ? pBufferMemoryBarrier.m : (Interop.BufferMemoryBarrier*)default(IntPtr), 1, pImageMemoryBarrier != null ? pImageMemoryBarrier.m : (Interop.ImageMemoryBarrier*)default(IntPtr));
+				}
+			}
+		}
+
 		public void CmdPipelineBarrier (PipelineStageFlags srcStageMask, PipelineStageFlags dstStageMask, DependencyFlags dependencyFlags, MemoryBarrier[] pMemoryBarriers, BufferMemoryBarrier[] pBufferMemoryBarriers, ImageMemoryBarrier[] pImageMemoryBarriers)
 		{
 			unsafe {
@@ -2083,6 +2291,13 @@ namespace Vulkan
 				Marshal.FreeHGlobal (arraypMemoryBarriers);
 				Marshal.FreeHGlobal (arraypBufferMemoryBarriers);
 				Marshal.FreeHGlobal (arraypImageMemoryBarriers);
+			}
+		}
+
+		public void CmdPipelineBarrier (PipelineStageFlags srcStageMask, PipelineStageFlags dstStageMask, DependencyFlags dependencyFlag, MemoryBarrier pMemoryBarrier, BufferMemoryBarrier pBufferMemoryBarrier, ImageMemoryBarrier pImageMemoryBarrier)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdPipelineBarrier (this.m, srcStageMask, dstStageMask, dependencyFlag, 1, pMemoryBarrier != null ? pMemoryBarrier.m : (Interop.MemoryBarrier*)default(IntPtr), 1, pBufferMemoryBarrier != null ? pBufferMemoryBarrier.m : (Interop.BufferMemoryBarrier*)default(IntPtr), 1, pImageMemoryBarrier != null ? pImageMemoryBarrier.m : (Interop.ImageMemoryBarrier*)default(IntPtr));
 			}
 		}
 
@@ -2159,6 +2374,15 @@ namespace Vulkan
 						((IntPtr*)arraypCommandBuffers) [i] = (pCommandBuffers [i].m);
 				Interop.NativeMethods.vkCmdExecuteCommands (this.m, (uint)lenpCommandBuffers, (IntPtr*)arraypCommandBuffers);
 				Marshal.FreeHGlobal (arraypCommandBuffers);
+			}
+		}
+
+		public void CmdExecuteCommand (CommandBuffer pCommandBuffer)
+		{
+			unsafe {
+				fixed (IntPtr* ptrpCommandBuffer = &pCommandBuffer.m) {
+					Interop.NativeMethods.vkCmdExecuteCommands (this.m, 1, ptrpCommandBuffer);
+				}
 			}
 		}
 
