@@ -10,7 +10,7 @@ namespace ClearView
 		Queue queue;
 		SwapchainKhr swapchain;
 		Semaphore semaphore;
-		Fence[] fences;
+		Fence fence;
 		CommandBuffer [] commandBuffers;
 		bool initialized;
 
@@ -158,7 +158,7 @@ namespace ClearView
 			var framebuffers = CreateFramebuffers (images, surfaceFormat, surfaceCapabilities, renderPass);
 			commandBuffers = CreateCommandBuffers (images, framebuffers, renderPass, surfaceCapabilities);
 			var fenceInfo = new FenceCreateInfo ();
-			fences = new Fence [] { device.CreateFence (fenceInfo) };
+			fence = device.CreateFence (fenceInfo);
 			var semaphoreInfo = new SemaphoreCreateInfo ();
 			semaphore = device.CreateSemaphore (semaphoreInfo);
 			initialized = true;
@@ -172,14 +172,14 @@ namespace ClearView
 
 		void DrawFrame ()
 		{
-			uint nextIndex = device.AcquireNextImageKHR (swapchain, ulong.MaxValue, semaphore, fences [0]);
-			device.ResetFences (fences);
+			uint nextIndex = device.AcquireNextImageKHR (swapchain, ulong.MaxValue, semaphore, fence);
+			device.ResetFence (fence);
 			var submitInfo = new SubmitInfo {
 				WaitSemaphores = new Semaphore [] { semaphore },
 				CommandBuffers = new CommandBuffer [] { commandBuffers [nextIndex] }
 			};
-			queue.Submit (new SubmitInfo [] { submitInfo }, fences [0]);
-			device.WaitForFences (fences, true, 100000000);
+			queue.Submit (submitInfo, fence);
+			device.WaitForFence (fence, true, 100000000);
 			var presentInfo = new PresentInfoKhr {
 				Swapchains = new SwapchainKhr [] { swapchain },
 				ImageIndices = new uint [] { nextIndex }
