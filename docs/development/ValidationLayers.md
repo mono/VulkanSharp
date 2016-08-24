@@ -50,7 +50,7 @@ static Bool32 DebugReportCallback (DebugReportFlagsExt flags, DebugReportObjectT
 
         return false;
 }
-Instance.DebugReportCallbackDelegate debugDelegate = new Instance.DebugReportCallbackDelegate (DebugReportCallback);
+Instance.DebugReportCallback debugCallback = new Instance.DebugReportCallback (DebugReportCallback);
 ~~~~
 
 ## Enabling debug report
@@ -58,7 +58,7 @@ Instance.DebugReportCallbackDelegate debugDelegate = new Instance.DebugReportCal
 And finally pass the callback to your Instance:
 
 ~~~~
-instance.EnableDebug (debugDelegate);
+instance.EnableDebug (debugCallback);
 ~~~~
 
 ## Android
