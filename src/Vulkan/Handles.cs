@@ -657,7 +657,7 @@ namespace Vulkan
 		{
 			Result result;
 			unsafe {
-				result = Interop.NativeMethods.vkFlushMappedMemoryRanges (this.m, 1, pMemoryRange != null ? pMemoryRange.m : (Interop.MappedMemoryRange*)default(IntPtr));
+				result = Interop.NativeMethods.vkFlushMappedMemoryRanges (this.m, (UInt32)(pMemoryRange != null ? 1 : 0), pMemoryRange != null ? pMemoryRange.m : (Interop.MappedMemoryRange*)default(IntPtr));
 				if (result != Result.Success)
 					throw new ResultException (result);
 			}
@@ -683,7 +683,7 @@ namespace Vulkan
 		{
 			Result result;
 			unsafe {
-				result = Interop.NativeMethods.vkInvalidateMappedMemoryRanges (this.m, 1, pMemoryRange != null ? pMemoryRange.m : (Interop.MappedMemoryRange*)default(IntPtr));
+				result = Interop.NativeMethods.vkInvalidateMappedMemoryRanges (this.m, (UInt32)(pMemoryRange != null ? 1 : 0), pMemoryRange != null ? pMemoryRange.m : (Interop.MappedMemoryRange*)default(IntPtr));
 				if (result != Result.Success)
 					throw new ResultException (result);
 			}
@@ -810,7 +810,7 @@ namespace Vulkan
 			Result result;
 			unsafe {
 				fixed (UInt64* ptrpFence = &pFence.m) {
-					result = Interop.NativeMethods.vkResetFences (this.m, 1, ptrpFence);
+					result = Interop.NativeMethods.vkResetFences (this.m, (UInt32)(pFence != null ? 1 : 0), ptrpFence);
 				}
 				if (result != Result.Success)
 					throw new ResultException (result);
@@ -848,7 +848,7 @@ namespace Vulkan
 			Result result;
 			unsafe {
 				fixed (UInt64* ptrpFence = &pFence.m) {
-					result = Interop.NativeMethods.vkWaitForFences (this.m, 1, ptrpFence, waitAll, timeout);
+					result = Interop.NativeMethods.vkWaitForFences (this.m, (UInt32)(pFence != null ? 1 : 0), ptrpFence, waitAll, timeout);
 				}
 				if (result != Result.Success)
 					throw new ResultException (result);
@@ -1159,7 +1159,7 @@ namespace Vulkan
 			Result result;
 			unsafe {
 				fixed (UInt64* ptrpSrcCache = &pSrcCache.m) {
-					result = Interop.NativeMethods.vkMergePipelineCaches (this.m, dstCache != null ? dstCache.m : default(UInt64), 1, ptrpSrcCache);
+					result = Interop.NativeMethods.vkMergePipelineCaches (this.m, dstCache != null ? dstCache.m : default(UInt64), (UInt32)(pSrcCache != null ? 1 : 0), ptrpSrcCache);
 				}
 				if (result != Result.Success)
 					throw new ResultException (result);
@@ -1387,7 +1387,7 @@ namespace Vulkan
 			Result result;
 			unsafe {
 				fixed (UInt64* ptrpDescriptorSet = &pDescriptorSet.m) {
-					result = Interop.NativeMethods.vkFreeDescriptorSets (this.m, descriptorPool != null ? descriptorPool.m : default(UInt64), 1, ptrpDescriptorSet);
+					result = Interop.NativeMethods.vkFreeDescriptorSets (this.m, descriptorPool != null ? descriptorPool.m : default(UInt64), (UInt32)(pDescriptorSet != null ? 1 : 0), ptrpDescriptorSet);
 				}
 				if (result != Result.Success)
 					throw new ResultException (result);
@@ -1416,7 +1416,7 @@ namespace Vulkan
 		public void UpdateDescriptorSet (WriteDescriptorSet pDescriptorWrite, CopyDescriptorSet pDescriptorCopie)
 		{
 			unsafe {
-				Interop.NativeMethods.vkUpdateDescriptorSets (this.m, 1, pDescriptorWrite != null ? pDescriptorWrite.m : (Interop.WriteDescriptorSet*)default(IntPtr), 1, pDescriptorCopie != null ? pDescriptorCopie.m : (Interop.CopyDescriptorSet*)default(IntPtr));
+				Interop.NativeMethods.vkUpdateDescriptorSets (this.m, (UInt32)(pDescriptorWrite != null ? 1 : 0), pDescriptorWrite != null ? pDescriptorWrite.m : (Interop.WriteDescriptorSet*)default(IntPtr), (UInt32)(pDescriptorCopie != null ? 1 : 0), pDescriptorCopie != null ? pDescriptorCopie.m : (Interop.CopyDescriptorSet*)default(IntPtr));
 			}
 		}
 
@@ -1555,7 +1555,7 @@ namespace Vulkan
 		{
 			unsafe {
 				fixed (IntPtr* ptrpCommandBuffer = &pCommandBuffer.m) {
-					Interop.NativeMethods.vkFreeCommandBuffers (this.m, commandPool != null ? commandPool.m : default(UInt64), 1, ptrpCommandBuffer);
+					Interop.NativeMethods.vkFreeCommandBuffers (this.m, commandPool != null ? commandPool.m : default(UInt64), (UInt32)(pCommandBuffer != null ? 1 : 0), ptrpCommandBuffer);
 				}
 			}
 		}
@@ -1719,7 +1719,7 @@ namespace Vulkan
 		{
 			Result result;
 			unsafe {
-				result = Interop.NativeMethods.vkQueueSubmit (this.m, 1, pSubmit != null ? pSubmit.m : (Interop.SubmitInfo*)default(IntPtr), fence != null ? fence.m : default(UInt64));
+				result = Interop.NativeMethods.vkQueueSubmit (this.m, (UInt32)(pSubmit != null ? 1 : 0), pSubmit != null ? pSubmit.m : (Interop.SubmitInfo*)default(IntPtr), fence != null ? fence.m : default(UInt64));
 				if (result != Result.Success)
 					throw new ResultException (result);
 			}
@@ -1755,7 +1755,7 @@ namespace Vulkan
 		{
 			Result result;
 			unsafe {
-				result = Interop.NativeMethods.vkQueueBindSparse (this.m, 1, pBindInfo != null ? pBindInfo.m : (Interop.BindSparseInfo*)default(IntPtr), fence != null ? fence.m : default(UInt64));
+				result = Interop.NativeMethods.vkQueueBindSparse (this.m, (UInt32)(pBindInfo != null ? 1 : 0), pBindInfo != null ? pBindInfo.m : (Interop.BindSparseInfo*)default(IntPtr), fence != null ? fence.m : default(UInt64));
 				if (result != Result.Success)
 					throw new ResultException (result);
 			}
@@ -1834,10 +1834,12 @@ namespace Vulkan
 			}
 		}
 
-		public void CmdSetViewport (UInt32 firstViewport, Viewport pViewport)
+		public void CmdSetViewport (UInt32 firstViewport, Viewport? pViewport)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdSetViewport (this.m, firstViewport, 1, &pViewport);
+				Viewport valpViewport = pViewport ?? default(Viewport);
+				Viewport* ptrpViewport = pViewport != null ? &valpViewport : (Viewport*)IntPtr.Zero;
+				Interop.NativeMethods.vkCmdSetViewport (this.m, firstViewport, (UInt32)(pViewport != null ? 1 : 0), ptrpViewport);
 			}
 		}
 
@@ -1854,10 +1856,12 @@ namespace Vulkan
 			}
 		}
 
-		public void CmdSetScissor (UInt32 firstScissor, Rect2D pScissor)
+		public void CmdSetScissor (UInt32 firstScissor, Rect2D? pScissor)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdSetScissor (this.m, firstScissor, 1, &pScissor);
+				Rect2D valpScissor = pScissor ?? default(Rect2D);
+				Rect2D* ptrpScissor = pScissor != null ? &valpScissor : (Rect2D*)IntPtr.Zero;
+				Interop.NativeMethods.vkCmdSetScissor (this.m, firstScissor, (UInt32)(pScissor != null ? 1 : 0), ptrpScissor);
 			}
 		}
 
@@ -1929,11 +1933,13 @@ namespace Vulkan
 			}
 		}
 
-		public void CmdBindDescriptorSet (PipelineBindPoint pipelineBindPoint, PipelineLayout layout, UInt32 firstSet, DescriptorSet pDescriptorSet, UInt32 pDynamicOffset)
+		public void CmdBindDescriptorSet (PipelineBindPoint pipelineBindPoint, PipelineLayout layout, UInt32 firstSet, DescriptorSet pDescriptorSet, UInt32? pDynamicOffset)
 		{
 			unsafe {
 				fixed (UInt64* ptrpDescriptorSet = &pDescriptorSet.m) {
-					Interop.NativeMethods.vkCmdBindDescriptorSets (this.m, pipelineBindPoint, layout != null ? layout.m : default(UInt64), firstSet, 1, ptrpDescriptorSet, 1, &pDynamicOffset);
+					UInt32 valpDynamicOffset = pDynamicOffset ?? default(UInt32);
+					UInt32* ptrpDynamicOffset = pDynamicOffset != null ? &valpDynamicOffset : (UInt32*)IntPtr.Zero;
+					Interop.NativeMethods.vkCmdBindDescriptorSets (this.m, pipelineBindPoint, layout != null ? layout.m : default(UInt64), firstSet, (UInt32)(pDescriptorSet != null ? 1 : 0), ptrpDescriptorSet, (UInt32)(pDynamicOffset != null ? 1 : 0), ptrpDynamicOffset);
 				}
 			}
 		}
@@ -1968,7 +1974,7 @@ namespace Vulkan
 		{
 			unsafe {
 				fixed (UInt64* ptrpBuffer = &pBuffer.m) {
-					Interop.NativeMethods.vkCmdBindVertexBuffers (this.m, firstBinding, 1, ptrpBuffer, &pOffset);
+					Interop.NativeMethods.vkCmdBindVertexBuffers (this.m, firstBinding, (UInt32)(pOffset != null ? 1 : 0), ptrpBuffer, &pOffset);
 				}
 			}
 		}
@@ -2028,10 +2034,12 @@ namespace Vulkan
 			}
 		}
 
-		public void CmdCopyBuffer (Buffer srcBuffer, Buffer dstBuffer, BufferCopy pRegion)
+		public void CmdCopyBuffer (Buffer srcBuffer, Buffer dstBuffer, BufferCopy? pRegion)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdCopyBuffer (this.m, srcBuffer != null ? srcBuffer.m : default(UInt64), dstBuffer != null ? dstBuffer.m : default(UInt64), 1, &pRegion);
+				BufferCopy valpRegion = pRegion ?? default(BufferCopy);
+				BufferCopy* ptrpRegion = pRegion != null ? &valpRegion : (BufferCopy*)IntPtr.Zero;
+				Interop.NativeMethods.vkCmdCopyBuffer (this.m, srcBuffer != null ? srcBuffer.m : default(UInt64), dstBuffer != null ? dstBuffer.m : default(UInt64), (UInt32)(pRegion != null ? 1 : 0), ptrpRegion);
 			}
 		}
 
@@ -2048,10 +2056,12 @@ namespace Vulkan
 			}
 		}
 
-		public void CmdCopyImage (Image srcImage, ImageLayout srcImageLayout, Image dstImage, ImageLayout dstImageLayout, ImageCopy pRegion)
+		public void CmdCopyImage (Image srcImage, ImageLayout srcImageLayout, Image dstImage, ImageLayout dstImageLayout, ImageCopy? pRegion)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdCopyImage (this.m, srcImage != null ? srcImage.m : default(UInt64), srcImageLayout, dstImage != null ? dstImage.m : default(UInt64), dstImageLayout, 1, &pRegion);
+				ImageCopy valpRegion = pRegion ?? default(ImageCopy);
+				ImageCopy* ptrpRegion = pRegion != null ? &valpRegion : (ImageCopy*)IntPtr.Zero;
+				Interop.NativeMethods.vkCmdCopyImage (this.m, srcImage != null ? srcImage.m : default(UInt64), srcImageLayout, dstImage != null ? dstImage.m : default(UInt64), dstImageLayout, (UInt32)(pRegion != null ? 1 : 0), ptrpRegion);
 			}
 		}
 
@@ -2071,7 +2081,7 @@ namespace Vulkan
 		public void CmdBlitImage (Image srcImage, ImageLayout srcImageLayout, Image dstImage, ImageLayout dstImageLayout, ImageBlit pRegion, Filter filter)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdBlitImage (this.m, srcImage != null ? srcImage.m : default(UInt64), srcImageLayout, dstImage != null ? dstImage.m : default(UInt64), dstImageLayout, 1, pRegion != null ? pRegion.m : (Interop.ImageBlit*)default(IntPtr), filter);
+				Interop.NativeMethods.vkCmdBlitImage (this.m, srcImage != null ? srcImage.m : default(UInt64), srcImageLayout, dstImage != null ? dstImage.m : default(UInt64), dstImageLayout, (UInt32)(pRegion != null ? 1 : 0), pRegion != null ? pRegion.m : (Interop.ImageBlit*)default(IntPtr), filter);
 			}
 		}
 
@@ -2088,10 +2098,12 @@ namespace Vulkan
 			}
 		}
 
-		public void CmdCopyBufferToImage (Buffer srcBuffer, Image dstImage, ImageLayout dstImageLayout, BufferImageCopy pRegion)
+		public void CmdCopyBufferToImage (Buffer srcBuffer, Image dstImage, ImageLayout dstImageLayout, BufferImageCopy? pRegion)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdCopyBufferToImage (this.m, srcBuffer != null ? srcBuffer.m : default(UInt64), dstImage != null ? dstImage.m : default(UInt64), dstImageLayout, 1, &pRegion);
+				BufferImageCopy valpRegion = pRegion ?? default(BufferImageCopy);
+				BufferImageCopy* ptrpRegion = pRegion != null ? &valpRegion : (BufferImageCopy*)IntPtr.Zero;
+				Interop.NativeMethods.vkCmdCopyBufferToImage (this.m, srcBuffer != null ? srcBuffer.m : default(UInt64), dstImage != null ? dstImage.m : default(UInt64), dstImageLayout, (UInt32)(pRegion != null ? 1 : 0), ptrpRegion);
 			}
 		}
 
@@ -2108,10 +2120,12 @@ namespace Vulkan
 			}
 		}
 
-		public void CmdCopyImageToBuffer (Image srcImage, ImageLayout srcImageLayout, Buffer dstBuffer, BufferImageCopy pRegion)
+		public void CmdCopyImageToBuffer (Image srcImage, ImageLayout srcImageLayout, Buffer dstBuffer, BufferImageCopy? pRegion)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdCopyImageToBuffer (this.m, srcImage != null ? srcImage.m : default(UInt64), srcImageLayout, dstBuffer != null ? dstBuffer.m : default(UInt64), 1, &pRegion);
+				BufferImageCopy valpRegion = pRegion ?? default(BufferImageCopy);
+				BufferImageCopy* ptrpRegion = pRegion != null ? &valpRegion : (BufferImageCopy*)IntPtr.Zero;
+				Interop.NativeMethods.vkCmdCopyImageToBuffer (this.m, srcImage != null ? srcImage.m : default(UInt64), srcImageLayout, dstBuffer != null ? dstBuffer.m : default(UInt64), (UInt32)(pRegion != null ? 1 : 0), ptrpRegion);
 			}
 		}
 
@@ -2142,10 +2156,12 @@ namespace Vulkan
 			}
 		}
 
-		public void CmdClearColorImage (Image image, ImageLayout imageLayout, ClearColorValue pColor, ImageSubresourceRange pRange)
+		public void CmdClearColorImage (Image image, ImageLayout imageLayout, ClearColorValue pColor, ImageSubresourceRange? pRange)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdClearColorImage (this.m, image != null ? image.m : default(UInt64), imageLayout, pColor != null ? pColor.m : (Interop.ClearColorValue*)default(IntPtr), 1, &pRange);
+				ImageSubresourceRange valpRange = pRange ?? default(ImageSubresourceRange);
+				ImageSubresourceRange* ptrpRange = pRange != null ? &valpRange : (ImageSubresourceRange*)IntPtr.Zero;
+				Interop.NativeMethods.vkCmdClearColorImage (this.m, image != null ? image.m : default(UInt64), imageLayout, pColor != null ? pColor.m : (Interop.ClearColorValue*)default(IntPtr), (UInt32)(pRange != null ? 1 : 0), ptrpRange);
 			}
 		}
 
@@ -2162,10 +2178,12 @@ namespace Vulkan
 			}
 		}
 
-		public void CmdClearDepthStencilImage (Image image, ImageLayout imageLayout, ClearDepthStencilValue pDepthStencil, ImageSubresourceRange pRange)
+		public void CmdClearDepthStencilImage (Image image, ImageLayout imageLayout, ClearDepthStencilValue pDepthStencil, ImageSubresourceRange? pRange)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdClearDepthStencilImage (this.m, image != null ? image.m : default(UInt64), imageLayout, &pDepthStencil, 1, &pRange);
+				ImageSubresourceRange valpRange = pRange ?? default(ImageSubresourceRange);
+				ImageSubresourceRange* ptrpRange = pRange != null ? &valpRange : (ImageSubresourceRange*)IntPtr.Zero;
+				Interop.NativeMethods.vkCmdClearDepthStencilImage (this.m, image != null ? image.m : default(UInt64), imageLayout, &pDepthStencil, (UInt32)(pRange != null ? 1 : 0), ptrpRange);
 			}
 		}
 
@@ -2188,10 +2206,12 @@ namespace Vulkan
 			}
 		}
 
-		public void CmdClearAttachment (ClearAttachment pAttachment, ClearRect pRect)
+		public void CmdClearAttachment (ClearAttachment pAttachment, ClearRect? pRect)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdClearAttachments (this.m, 1, pAttachment != null ? pAttachment.m : (Interop.ClearAttachment*)default(IntPtr), 1, &pRect);
+				ClearRect valpRect = pRect ?? default(ClearRect);
+				ClearRect* ptrpRect = pRect != null ? &valpRect : (ClearRect*)IntPtr.Zero;
+				Interop.NativeMethods.vkCmdClearAttachments (this.m, (UInt32)(pAttachment != null ? 1 : 0), pAttachment != null ? pAttachment.m : (Interop.ClearAttachment*)default(IntPtr), (UInt32)(pRect != null ? 1 : 0), ptrpRect);
 			}
 		}
 
@@ -2208,10 +2228,12 @@ namespace Vulkan
 			}
 		}
 
-		public void CmdResolveImage (Image srcImage, ImageLayout srcImageLayout, Image dstImage, ImageLayout dstImageLayout, ImageResolve pRegion)
+		public void CmdResolveImage (Image srcImage, ImageLayout srcImageLayout, Image dstImage, ImageLayout dstImageLayout, ImageResolve? pRegion)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdResolveImage (this.m, srcImage != null ? srcImage.m : default(UInt64), srcImageLayout, dstImage != null ? dstImage.m : default(UInt64), dstImageLayout, 1, &pRegion);
+				ImageResolve valpRegion = pRegion ?? default(ImageResolve);
+				ImageResolve* ptrpRegion = pRegion != null ? &valpRegion : (ImageResolve*)IntPtr.Zero;
+				Interop.NativeMethods.vkCmdResolveImage (this.m, srcImage != null ? srcImage.m : default(UInt64), srcImageLayout, dstImage != null ? dstImage.m : default(UInt64), dstImageLayout, (UInt32)(pRegion != null ? 1 : 0), ptrpRegion);
 			}
 		}
 
@@ -2264,7 +2286,7 @@ namespace Vulkan
 		{
 			unsafe {
 				fixed (UInt64* ptrpEvent = &pEvent.m) {
-					Interop.NativeMethods.vkCmdWaitEvents (this.m, 1, ptrpEvent, srcStageMask, dstStageMask, 1, pMemoryBarrier != null ? pMemoryBarrier.m : (Interop.MemoryBarrier*)default(IntPtr), 1, pBufferMemoryBarrier != null ? pBufferMemoryBarrier.m : (Interop.BufferMemoryBarrier*)default(IntPtr), 1, pImageMemoryBarrier != null ? pImageMemoryBarrier.m : (Interop.ImageMemoryBarrier*)default(IntPtr));
+					Interop.NativeMethods.vkCmdWaitEvents (this.m, (UInt32)(pEvent != null ? 1 : 0), ptrpEvent, srcStageMask, dstStageMask, (UInt32)(pMemoryBarrier != null ? 1 : 0), pMemoryBarrier != null ? pMemoryBarrier.m : (Interop.MemoryBarrier*)default(IntPtr), (UInt32)(pBufferMemoryBarrier != null ? 1 : 0), pBufferMemoryBarrier != null ? pBufferMemoryBarrier.m : (Interop.BufferMemoryBarrier*)default(IntPtr), (UInt32)(pImageMemoryBarrier != null ? 1 : 0), pImageMemoryBarrier != null ? pImageMemoryBarrier.m : (Interop.ImageMemoryBarrier*)default(IntPtr));
 				}
 			}
 		}
@@ -2297,7 +2319,7 @@ namespace Vulkan
 		public void CmdPipelineBarrier (PipelineStageFlags srcStageMask, PipelineStageFlags dstStageMask, DependencyFlags dependencyFlag, MemoryBarrier pMemoryBarrier, BufferMemoryBarrier pBufferMemoryBarrier, ImageMemoryBarrier pImageMemoryBarrier)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdPipelineBarrier (this.m, srcStageMask, dstStageMask, dependencyFlag, 1, pMemoryBarrier != null ? pMemoryBarrier.m : (Interop.MemoryBarrier*)default(IntPtr), 1, pBufferMemoryBarrier != null ? pBufferMemoryBarrier.m : (Interop.BufferMemoryBarrier*)default(IntPtr), 1, pImageMemoryBarrier != null ? pImageMemoryBarrier.m : (Interop.ImageMemoryBarrier*)default(IntPtr));
+				Interop.NativeMethods.vkCmdPipelineBarrier (this.m, srcStageMask, dstStageMask, dependencyFlag, (UInt32)(pMemoryBarrier != null ? 1 : 0), pMemoryBarrier != null ? pMemoryBarrier.m : (Interop.MemoryBarrier*)default(IntPtr), (UInt32)(pBufferMemoryBarrier != null ? 1 : 0), pBufferMemoryBarrier != null ? pBufferMemoryBarrier.m : (Interop.BufferMemoryBarrier*)default(IntPtr), (UInt32)(pImageMemoryBarrier != null ? 1 : 0), pImageMemoryBarrier != null ? pImageMemoryBarrier.m : (Interop.ImageMemoryBarrier*)default(IntPtr));
 			}
 		}
 
@@ -2381,7 +2403,7 @@ namespace Vulkan
 		{
 			unsafe {
 				fixed (IntPtr* ptrpCommandBuffer = &pCommandBuffer.m) {
-					Interop.NativeMethods.vkCmdExecuteCommands (this.m, 1, ptrpCommandBuffer);
+					Interop.NativeMethods.vkCmdExecuteCommands (this.m, (UInt32)(pCommandBuffer != null ? 1 : 0), ptrpCommandBuffer);
 				}
 			}
 		}
