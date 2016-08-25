@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>VulkanSharp.Preview</id>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
     <authors>Xamarin Inc</authors>
     <owners>rodo</owners>
     <licenseUrl>https://github.com/mono/VulkanSharp/blob/master/LICENSE</licenseUrl>
@@ -10,14 +10,10 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Open source .NET binding for the Vulkan API</description>
     <releaseNotes>
-Added simplified methods for commands with array parameters.
-Disabled default constructors for structs, unions and handles.
-Allow passing null parameters.
-Fixed few memory issues (more memory related fixes on the way).
-Above fixes issues: #29, #36, #39
+Added Windows targetFramework
     </releaseNotes>
     <copyright>Copyright 2016 Xamarin Inc</copyright>
-    <tags>vulkan bindings</tags>
+    <tags>Vulkan C# Bindings 3D VulkanSharp Graphics OpenSource MultiPlatform Android Windows</tags>
     <references>
       <group targetFramework="portable-net45+win8+MonoAndroid10">
 	<reference file="Vulkan.dll" />
@@ -25,6 +21,10 @@ Above fixes issues: #29, #36, #39
       <group targetFramework="MonoAndroid10">
 	<reference file="Vulkan.dll" />
 	<reference file="Vulkan.Android.dll" />
+      </group>
+      <group targetFramework="win8">
+	<reference file="Vulkan.dll" />
+	<reference file="Vulkan.Windows.dll" />
       </group>
     </references>
     <!--
