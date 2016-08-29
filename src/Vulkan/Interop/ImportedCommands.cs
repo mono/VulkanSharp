@@ -502,5 +502,14 @@ namespace Vulkan.Interop
 
 		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
 		internal static unsafe extern void vkCmdDebugMarkerInsertEXT (IntPtr commandBuffer, DebugMarkerMarkerInfoExt* pMarkerInfo);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkGetPhysicalDeviceExternalImageFormatPropertiesNV (IntPtr physicalDevice, Format format, ImageType type, ImageTiling tiling, ImageUsageFlags usage, ImageCreateFlags flags, ExternalMemoryHandleTypeFlagsNv externalHandleType, ExternalImageFormatPropertiesNv* pExternalImageFormatProperties);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkCmdDrawIndirectCountAMD (IntPtr commandBuffer, UInt64 buffer, DeviceSize offset, UInt64 countBuffer, DeviceSize countBufferOffset, UInt32 maxDrawCount, UInt32 stride);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkCmdDrawIndexedIndirectCountAMD (IntPtr commandBuffer, UInt64 buffer, DeviceSize offset, UInt64 countBuffer, DeviceSize countBufferOffset, UInt32 maxDrawCount, UInt32 stride);
 	}
 }

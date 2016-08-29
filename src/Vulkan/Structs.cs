@@ -76,7 +76,7 @@ namespace Vulkan
 		public ComponentSwizzle A;
 	}
 
-	unsafe public partial class PhysicalDeviceProperties
+	unsafe public partial class PhysicalDeviceProperties : IMarshalling
 	{
 		public UInt32 ApiVersion {
 			get { return m->ApiVersion; }
@@ -138,7 +138,7 @@ namespace Vulkan
 		}
 		internal Interop.PhysicalDeviceProperties* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -164,7 +164,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class ExtensionProperties
+	unsafe public partial class ExtensionProperties : IMarshalling
 	{
 		public string ExtensionName {
 			get { return Marshal.PtrToStringAnsi ((IntPtr)m->ExtensionName); }
@@ -177,7 +177,7 @@ namespace Vulkan
 		}
 		internal Interop.ExtensionProperties* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -195,7 +195,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class LayerProperties
+	unsafe public partial class LayerProperties : IMarshalling
 	{
 		public string LayerName {
 			get { return Marshal.PtrToStringAnsi ((IntPtr)m->LayerName); }
@@ -218,7 +218,7 @@ namespace Vulkan
 		}
 		internal Interop.LayerProperties* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -236,7 +236,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class ApplicationInfo
+	unsafe public partial class ApplicationInfo : IMarshalling
 	{
 		public string ApplicationName {
 			get { return Marshal.PtrToStringAnsi (m->ApplicationName); }
@@ -264,7 +264,7 @@ namespace Vulkan
 		}
 		internal Interop.ApplicationInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -290,7 +290,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class AllocationCallbacks
+	unsafe public partial class AllocationCallbacks : IMarshalling
 	{
 		public IntPtr UserData {
 			get { return m->UserData; }
@@ -323,7 +323,7 @@ namespace Vulkan
 		}
 		internal Interop.AllocationCallbacks* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -341,7 +341,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DeviceQueueCreateInfo
+	unsafe public partial class DeviceQueueCreateInfo : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -390,7 +390,7 @@ namespace Vulkan
 		}
 		internal Interop.DeviceQueueCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -416,7 +416,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DeviceCreateInfo
+	unsafe public partial class DeviceCreateInfo : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -539,7 +539,7 @@ namespace Vulkan
 		}
 		internal Interop.DeviceCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -565,7 +565,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class InstanceCreateInfo
+	unsafe public partial class InstanceCreateInfo : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -651,7 +651,7 @@ namespace Vulkan
 		}
 		internal Interop.InstanceCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -685,7 +685,7 @@ namespace Vulkan
 		public Extent3D MinImageTransferGranularity;
 	}
 
-	unsafe public partial class PhysicalDeviceMemoryProperties
+	unsafe public partial class PhysicalDeviceMemoryProperties : IMarshalling
 	{
 		public UInt32 MemoryTypeCount {
 			get { return m->MemoryTypeCount; }
@@ -744,7 +744,7 @@ namespace Vulkan
 		}
 		internal Interop.PhysicalDeviceMemoryProperties* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -762,7 +762,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class MemoryAllocateInfo
+	unsafe public partial class MemoryAllocateInfo : IMarshalling
 	{
 		public DeviceSize AllocationSize {
 			get { return m->AllocationSize; }
@@ -775,7 +775,7 @@ namespace Vulkan
 		}
 		internal Interop.MemoryAllocateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -836,7 +836,7 @@ namespace Vulkan
 		public MemoryHeapFlags Flags;
 	}
 
-	unsafe public partial class MappedMemoryRange
+	unsafe public partial class MappedMemoryRange : IMarshalling
 	{
 		DeviceMemory lMemory;
 		public DeviceMemory Memory {
@@ -855,7 +855,7 @@ namespace Vulkan
 		}
 		internal Interop.MappedMemoryRange* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -897,7 +897,7 @@ namespace Vulkan
 		public DeviceSize MaxResourceSize;
 	}
 
-	unsafe public partial class DescriptorBufferInfo
+	unsafe public partial class DescriptorBufferInfo : IMarshalling
 	{
 		Buffer lBuffer;
 		public Buffer Buffer {
@@ -916,7 +916,7 @@ namespace Vulkan
 		}
 		internal Interop.DescriptorBufferInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -941,7 +941,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DescriptorImageInfo
+	unsafe public partial class DescriptorImageInfo : IMarshalling
 	{
 		Sampler lSampler;
 		public Sampler Sampler {
@@ -961,7 +961,7 @@ namespace Vulkan
 		}
 		internal Interop.DescriptorImageInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -986,7 +986,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class WriteDescriptorSet
+	unsafe public partial class WriteDescriptorSet : IMarshalling
 	{
 		DescriptorSet lDstSet;
 		public DescriptorSet DstSet {
@@ -1114,7 +1114,7 @@ namespace Vulkan
 		}
 		internal Interop.WriteDescriptorSet* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -1140,7 +1140,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class CopyDescriptorSet
+	unsafe public partial class CopyDescriptorSet : IMarshalling
 	{
 		DescriptorSet lSrcSet;
 		public DescriptorSet SrcSet {
@@ -1180,7 +1180,7 @@ namespace Vulkan
 		}
 		internal Interop.CopyDescriptorSet* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -1206,7 +1206,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class BufferCreateInfo
+	unsafe public partial class BufferCreateInfo : IMarshalling
 	{
 		public BufferCreateFlags Flags {
 			get { return m->Flags; }
@@ -1265,7 +1265,7 @@ namespace Vulkan
 		}
 		internal Interop.BufferCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -1291,7 +1291,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class BufferViewCreateInfo
+	unsafe public partial class BufferViewCreateInfo : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -1320,7 +1320,7 @@ namespace Vulkan
 		}
 		internal Interop.BufferViewCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -1370,7 +1370,7 @@ namespace Vulkan
 		public UInt32 LayerCount;
 	}
 
-	unsafe public partial class MemoryBarrier
+	unsafe public partial class MemoryBarrier : IMarshalling
 	{
 		public AccessFlags SrcAccessMask {
 			get { return m->SrcAccessMask; }
@@ -1383,7 +1383,7 @@ namespace Vulkan
 		}
 		internal Interop.MemoryBarrier* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -1409,7 +1409,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class BufferMemoryBarrier
+	unsafe public partial class BufferMemoryBarrier : IMarshalling
 	{
 		public AccessFlags SrcAccessMask {
 			get { return m->SrcAccessMask; }
@@ -1448,7 +1448,7 @@ namespace Vulkan
 		}
 		internal Interop.BufferMemoryBarrier* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -1474,7 +1474,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class ImageMemoryBarrier
+	unsafe public partial class ImageMemoryBarrier : IMarshalling
 	{
 		public AccessFlags SrcAccessMask {
 			get { return m->SrcAccessMask; }
@@ -1518,7 +1518,7 @@ namespace Vulkan
 		}
 		internal Interop.ImageMemoryBarrier* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -1544,7 +1544,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class ImageCreateInfo
+	unsafe public partial class ImageCreateInfo : IMarshalling
 	{
 		public ImageCreateFlags Flags {
 			get { return m->Flags; }
@@ -1638,7 +1638,7 @@ namespace Vulkan
 		}
 		internal Interop.ImageCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -1673,7 +1673,7 @@ namespace Vulkan
 		public DeviceSize DepthPitch;
 	}
 
-	unsafe public partial class ImageViewCreateInfo
+	unsafe public partial class ImageViewCreateInfo : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -1707,7 +1707,7 @@ namespace Vulkan
 		}
 		internal Interop.ImageViewCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -1740,7 +1740,7 @@ namespace Vulkan
 		public DeviceSize Size;
 	}
 
-	unsafe public partial class SparseMemoryBind
+	unsafe public partial class SparseMemoryBind : IMarshalling
 	{
 		public DeviceSize ResourceOffset {
 			get { return m->ResourceOffset; }
@@ -1769,7 +1769,7 @@ namespace Vulkan
 		}
 		internal Interop.SparseMemoryBind* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -1794,7 +1794,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class SparseImageMemoryBind
+	unsafe public partial class SparseImageMemoryBind : IMarshalling
 	{
 		public ImageSubresource Subresource {
 			get { return m->Subresource; }
@@ -1828,7 +1828,7 @@ namespace Vulkan
 		}
 		internal Interop.SparseImageMemoryBind* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -1853,7 +1853,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class SparseBufferMemoryBindInfo
+	unsafe public partial class SparseBufferMemoryBindInfo : IMarshalling
 	{
 		Buffer lBuffer;
 		public Buffer Buffer {
@@ -1900,7 +1900,7 @@ namespace Vulkan
 		}
 		internal Interop.SparseBufferMemoryBindInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -1925,7 +1925,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class SparseImageOpaqueMemoryBindInfo
+	unsafe public partial class SparseImageOpaqueMemoryBindInfo : IMarshalling
 	{
 		Image lImage;
 		public Image Image {
@@ -1972,7 +1972,7 @@ namespace Vulkan
 		}
 		internal Interop.SparseImageOpaqueMemoryBindInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -1997,7 +1997,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class SparseImageMemoryBindInfo
+	unsafe public partial class SparseImageMemoryBindInfo : IMarshalling
 	{
 		Image lImage;
 		public Image Image {
@@ -2044,7 +2044,7 @@ namespace Vulkan
 		}
 		internal Interop.SparseImageMemoryBindInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -2069,7 +2069,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class BindSparseInfo
+	unsafe public partial class BindSparseInfo : IMarshalling
 	{
 		public UInt32 WaitSemaphoreCount {
 			get { return m->WaitSemaphoreCount; }
@@ -2262,7 +2262,7 @@ namespace Vulkan
 		}
 		internal Interop.BindSparseInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -2297,7 +2297,7 @@ namespace Vulkan
 		public Extent3D Extent;
 	}
 
-	unsafe public partial class ImageBlit
+	unsafe public partial class ImageBlit : IMarshalling
 	{
 		public ImageSubresourceLayers SrcSubresource {
 			get { return m->SrcSubresource; }
@@ -2354,7 +2354,7 @@ namespace Vulkan
 		}
 		internal Interop.ImageBlit* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -2391,7 +2391,7 @@ namespace Vulkan
 		public Extent3D Extent;
 	}
 
-	unsafe public partial class ShaderModuleCreateInfo
+	unsafe public partial class ShaderModuleCreateInfo : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -2435,7 +2435,7 @@ namespace Vulkan
 		}
 		internal Interop.ShaderModuleCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -2461,7 +2461,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DescriptorSetLayoutBinding
+	unsafe public partial class DescriptorSetLayoutBinding : IMarshalling
 	{
 		public UInt32 Binding {
 			get { return m->Binding; }
@@ -2517,7 +2517,7 @@ namespace Vulkan
 		}
 		internal Interop.DescriptorSetLayoutBinding* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -2535,7 +2535,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DescriptorSetLayoutCreateInfo
+	unsafe public partial class DescriptorSetLayoutCreateInfo : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -2581,7 +2581,7 @@ namespace Vulkan
 		}
 		internal Interop.DescriptorSetLayoutCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -2613,7 +2613,7 @@ namespace Vulkan
 		public UInt32 DescriptorCount;
 	}
 
-	unsafe public partial class DescriptorPoolCreateInfo
+	unsafe public partial class DescriptorPoolCreateInfo : IMarshalling
 	{
 		public DescriptorPoolCreateFlags Flags {
 			get { return m->Flags; }
@@ -2662,7 +2662,7 @@ namespace Vulkan
 		}
 		internal Interop.DescriptorPoolCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -2688,7 +2688,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DescriptorSetAllocateInfo
+	unsafe public partial class DescriptorSetAllocateInfo : IMarshalling
 	{
 		DescriptorPool lDescriptorPool;
 		public DescriptorPool DescriptorPool {
@@ -2735,7 +2735,7 @@ namespace Vulkan
 		}
 		internal Interop.DescriptorSetAllocateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -2768,7 +2768,7 @@ namespace Vulkan
 		public UIntPtr Size;
 	}
 
-	unsafe public partial class SpecializationInfo
+	unsafe public partial class SpecializationInfo : IMarshalling
 	{
 		public UInt32 MapEntryCount {
 			get { return m->MapEntryCount; }
@@ -2817,7 +2817,7 @@ namespace Vulkan
 		}
 		internal Interop.SpecializationInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -2835,7 +2835,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class PipelineShaderStageCreateInfo
+	unsafe public partial class PipelineShaderStageCreateInfo : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -2865,7 +2865,7 @@ namespace Vulkan
 		}
 		internal Interop.PipelineShaderStageCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -2891,7 +2891,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class ComputePipelineCreateInfo
+	unsafe public partial class ComputePipelineCreateInfo : IMarshalling
 	{
 		public PipelineCreateFlags Flags {
 			get { return m->Flags; }
@@ -2922,7 +2922,7 @@ namespace Vulkan
 		}
 		internal Interop.ComputePipelineCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -2964,7 +2964,7 @@ namespace Vulkan
 		public UInt32 Offset;
 	}
 
-	unsafe public partial class PipelineVertexInputStateCreateInfo
+	unsafe public partial class PipelineVertexInputStateCreateInfo : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -3044,7 +3044,7 @@ namespace Vulkan
 		}
 		internal Interop.PipelineVertexInputStateCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -3070,7 +3070,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class PipelineInputAssemblyStateCreateInfo
+	unsafe public partial class PipelineInputAssemblyStateCreateInfo : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -3088,7 +3088,7 @@ namespace Vulkan
 		}
 		internal Interop.PipelineInputAssemblyStateCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -3114,7 +3114,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class PipelineTessellationStateCreateInfo
+	unsafe public partial class PipelineTessellationStateCreateInfo : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -3127,7 +3127,7 @@ namespace Vulkan
 		}
 		internal Interop.PipelineTessellationStateCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -3153,7 +3153,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class PipelineViewportStateCreateInfo
+	unsafe public partial class PipelineViewportStateCreateInfo : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -3233,7 +3233,7 @@ namespace Vulkan
 		}
 		internal Interop.PipelineViewportStateCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -3259,7 +3259,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class PipelineRasterizationStateCreateInfo
+	unsafe public partial class PipelineRasterizationStateCreateInfo : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -3317,7 +3317,7 @@ namespace Vulkan
 		}
 		internal Interop.PipelineRasterizationStateCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -3343,7 +3343,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class PipelineMultisampleStateCreateInfo
+	unsafe public partial class PipelineMultisampleStateCreateInfo : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -3407,7 +3407,7 @@ namespace Vulkan
 		}
 		internal Interop.PipelineMultisampleStateCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -3445,7 +3445,7 @@ namespace Vulkan
 		public ColorComponentFlags ColorWriteMask;
 	}
 
-	unsafe public partial class PipelineColorBlendStateCreateInfo
+	unsafe public partial class PipelineColorBlendStateCreateInfo : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -3517,7 +3517,7 @@ namespace Vulkan
 		}
 		internal Interop.PipelineColorBlendStateCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -3543,7 +3543,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class PipelineDynamicStateCreateInfo
+	unsafe public partial class PipelineDynamicStateCreateInfo : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -3587,7 +3587,7 @@ namespace Vulkan
 		}
 		internal Interop.PipelineDynamicStateCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -3624,7 +3624,7 @@ namespace Vulkan
 		public UInt32 Reference;
 	}
 
-	unsafe public partial class PipelineDepthStencilStateCreateInfo
+	unsafe public partial class PipelineDepthStencilStateCreateInfo : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -3677,7 +3677,7 @@ namespace Vulkan
 		}
 		internal Interop.PipelineDepthStencilStateCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -3703,7 +3703,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class GraphicsPipelineCreateInfo
+	unsafe public partial class GraphicsPipelineCreateInfo : IMarshalling
 	{
 		public PipelineCreateFlags Flags {
 			get { return m->Flags; }
@@ -3831,7 +3831,7 @@ namespace Vulkan
 		}
 		internal Interop.GraphicsPipelineCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -3857,7 +3857,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class PipelineCacheCreateInfo
+	unsafe public partial class PipelineCacheCreateInfo : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -3875,7 +3875,7 @@ namespace Vulkan
 		}
 		internal Interop.PipelineCacheCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -3908,7 +3908,7 @@ namespace Vulkan
 		public UInt32 Size;
 	}
 
-	unsafe public partial class PipelineLayoutCreateInfo
+	unsafe public partial class PipelineLayoutCreateInfo : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -3990,7 +3990,7 @@ namespace Vulkan
 		}
 		internal Interop.PipelineLayoutCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -4016,7 +4016,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class SamplerCreateInfo
+	unsafe public partial class SamplerCreateInfo : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -4099,7 +4099,7 @@ namespace Vulkan
 		}
 		internal Interop.SamplerCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -4125,7 +4125,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class CommandPoolCreateInfo
+	unsafe public partial class CommandPoolCreateInfo : IMarshalling
 	{
 		public CommandPoolCreateFlags Flags {
 			get { return m->Flags; }
@@ -4138,7 +4138,7 @@ namespace Vulkan
 		}
 		internal Interop.CommandPoolCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -4164,7 +4164,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class CommandBufferAllocateInfo
+	unsafe public partial class CommandBufferAllocateInfo : IMarshalling
 	{
 		CommandPool lCommandPool;
 		public CommandPool CommandPool {
@@ -4183,7 +4183,7 @@ namespace Vulkan
 		}
 		internal Interop.CommandBufferAllocateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -4209,7 +4209,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class CommandBufferInheritanceInfo
+	unsafe public partial class CommandBufferInheritanceInfo : IMarshalling
 	{
 		RenderPass lRenderPass;
 		public RenderPass RenderPass {
@@ -4244,7 +4244,7 @@ namespace Vulkan
 		}
 		internal Interop.CommandBufferInheritanceInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -4270,7 +4270,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class CommandBufferBeginInfo
+	unsafe public partial class CommandBufferBeginInfo : IMarshalling
 	{
 		public CommandBufferUsageFlags Flags {
 			get { return m->Flags; }
@@ -4284,7 +4284,7 @@ namespace Vulkan
 		}
 		internal Interop.CommandBufferBeginInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -4310,7 +4310,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class RenderPassBeginInfo
+	unsafe public partial class RenderPassBeginInfo : IMarshalling
 	{
 		RenderPass lRenderPass;
 		public RenderPass RenderPass {
@@ -4368,7 +4368,7 @@ namespace Vulkan
 		}
 		internal Interop.RenderPassBeginInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -4400,7 +4400,7 @@ namespace Vulkan
 		public UInt32 Stencil;
 	}
 
-	unsafe public partial class ClearAttachment
+	unsafe public partial class ClearAttachment : IMarshalling
 	{
 		public ImageAspectFlags AspectMask {
 			get { return m->AspectMask; }
@@ -4419,7 +4419,7 @@ namespace Vulkan
 		}
 		internal Interop.ClearAttachment* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -4464,7 +4464,7 @@ namespace Vulkan
 		public ImageLayout Layout;
 	}
 
-	unsafe public partial class SubpassDescription
+	unsafe public partial class SubpassDescription : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -4621,7 +4621,7 @@ namespace Vulkan
 		}
 		internal Interop.SubpassDescription* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -4650,7 +4650,7 @@ namespace Vulkan
 		public DependencyFlags DependencyFlags;
 	}
 
-	unsafe public partial class RenderPassCreateInfo
+	unsafe public partial class RenderPassCreateInfo : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -4768,7 +4768,7 @@ namespace Vulkan
 		}
 		internal Interop.RenderPassCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -4794,7 +4794,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class EventCreateInfo
+	unsafe public partial class EventCreateInfo : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -4802,7 +4802,7 @@ namespace Vulkan
 		}
 		internal Interop.EventCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -4828,7 +4828,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class FenceCreateInfo
+	unsafe public partial class FenceCreateInfo : IMarshalling
 	{
 		public FenceCreateFlags Flags {
 			get { return m->Flags; }
@@ -4836,7 +4836,7 @@ namespace Vulkan
 		}
 		internal Interop.FenceCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -4930,7 +4930,7 @@ namespace Vulkan
 		public Bool32 ResidencyNonResidentStrict;
 	}
 
-	unsafe public partial class PhysicalDeviceLimits
+	unsafe public partial class PhysicalDeviceLimits : IMarshalling
 	{
 		public UInt32 MaxImageDimension1D {
 			get { return m->MaxImageDimension1D; }
@@ -5541,7 +5541,7 @@ namespace Vulkan
 		}
 		internal Interop.PhysicalDeviceLimits* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -5559,7 +5559,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class SemaphoreCreateInfo
+	unsafe public partial class SemaphoreCreateInfo : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -5567,7 +5567,7 @@ namespace Vulkan
 		}
 		internal Interop.SemaphoreCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -5593,7 +5593,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class QueryPoolCreateInfo
+	unsafe public partial class QueryPoolCreateInfo : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -5616,7 +5616,7 @@ namespace Vulkan
 		}
 		internal Interop.QueryPoolCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -5642,7 +5642,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class FramebufferCreateInfo
+	unsafe public partial class FramebufferCreateInfo : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -5709,7 +5709,7 @@ namespace Vulkan
 		}
 		internal Interop.FramebufferCreateInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -5759,7 +5759,7 @@ namespace Vulkan
 		public UInt32 Z;
 	}
 
-	unsafe public partial class SubmitInfo
+	unsafe public partial class SubmitInfo : IMarshalling
 	{
 		public UInt32 WaitSemaphoreCount {
 			get { return m->WaitSemaphoreCount; }
@@ -5907,7 +5907,7 @@ namespace Vulkan
 		}
 		internal Interop.SubmitInfo* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -5933,7 +5933,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DisplayPropertiesKhr
+	unsafe public partial class DisplayPropertiesKhr : IMarshalling
 	{
 		DisplayKhr lDisplay;
 		public DisplayKhr Display {
@@ -5972,7 +5972,7 @@ namespace Vulkan
 		}
 		internal Interop.DisplayPropertiesKhr* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -5997,7 +5997,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DisplayPlanePropertiesKhr
+	unsafe public partial class DisplayPlanePropertiesKhr : IMarshalling
 	{
 		DisplayKhr lCurrentDisplay;
 		public DisplayKhr CurrentDisplay {
@@ -6011,7 +6011,7 @@ namespace Vulkan
 		}
 		internal Interop.DisplayPlanePropertiesKhr* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -6042,7 +6042,7 @@ namespace Vulkan
 		public UInt32 RefreshRate;
 	}
 
-	unsafe public partial class DisplayModePropertiesKhr
+	unsafe public partial class DisplayModePropertiesKhr : IMarshalling
 	{
 		DisplayModeKhr lDisplayMode;
 		public DisplayModeKhr DisplayMode {
@@ -6056,7 +6056,7 @@ namespace Vulkan
 		}
 		internal Interop.DisplayModePropertiesKhr* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -6081,7 +6081,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DisplayModeCreateInfoKhr
+	unsafe public partial class DisplayModeCreateInfoKhr : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -6094,7 +6094,7 @@ namespace Vulkan
 		}
 		internal Interop.DisplayModeCreateInfoKhr* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -6133,7 +6133,7 @@ namespace Vulkan
 		public Extent2D MaxDstExtent;
 	}
 
-	unsafe public partial class DisplaySurfaceCreateInfoKhr
+	unsafe public partial class DisplaySurfaceCreateInfoKhr : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -6177,7 +6177,7 @@ namespace Vulkan
 		}
 		internal Interop.DisplaySurfaceCreateInfoKhr* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -6203,7 +6203,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DisplayPresentInfoKhr
+	unsafe public partial class DisplayPresentInfoKhr : IMarshalling
 	{
 		public Rect2D SrcRect {
 			get { return m->SrcRect; }
@@ -6221,7 +6221,7 @@ namespace Vulkan
 		}
 		internal Interop.DisplayPresentInfoKhr* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -6267,7 +6267,7 @@ namespace Vulkan
 		public ColorSpaceKhr ColorSpace;
 	}
 
-	unsafe public partial class SwapchainCreateInfoKhr
+	unsafe public partial class SwapchainCreateInfoKhr : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -6378,7 +6378,7 @@ namespace Vulkan
 		}
 		internal Interop.SwapchainCreateInfoKhr* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -6404,7 +6404,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class PresentInfoKhr
+	unsafe public partial class PresentInfoKhr : IMarshalling
 	{
 		public UInt32 WaitSemaphoreCount {
 			get { return m->WaitSemaphoreCount; }
@@ -6545,7 +6545,7 @@ namespace Vulkan
 		}
 		internal Interop.PresentInfoKhr* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -6571,7 +6571,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DebugReportCallbackCreateInfoExt
+	unsafe public partial class DebugReportCallbackCreateInfoExt : IMarshalling
 	{
 		public DebugReportFlagsExt Flags {
 			get { return m->Flags; }
@@ -6589,7 +6589,7 @@ namespace Vulkan
 		}
 		internal Interop.DebugReportCallbackCreateInfoExt* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -6615,7 +6615,41 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class PipelineRasterizationStateRasterizationOrderAmd
+	unsafe public partial class DebugReportLayerFlagsExt : IMarshalling
+	{
+		public UInt64 EnabledValidationFlags {
+			get { return m->EnabledValidationFlags; }
+			set { m->EnabledValidationFlags = value; }
+		}
+		internal Interop.DebugReportLayerFlagsExt* m;
+
+		IntPtr IMarshalling.Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
+		public DebugReportLayerFlagsExt ()
+		{
+			m = (Interop.DebugReportLayerFlagsExt*) Interop.Structure.Allocate (typeof (Interop.DebugReportLayerFlagsExt));
+			Initialize ();
+		}
+
+		internal DebugReportLayerFlagsExt (Interop.DebugReportLayerFlagsExt* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DebugReportValidationFlagsExt;
+		}
+
+	}
+
+	unsafe public partial class PipelineRasterizationStateRasterizationOrderAmd : IMarshalling
 	{
 		public RasterizationOrderAmd RasterizationOrder {
 			get { return m->RasterizationOrder; }
@@ -6623,7 +6657,7 @@ namespace Vulkan
 		}
 		internal Interop.PipelineRasterizationStateRasterizationOrderAmd* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -6649,7 +6683,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DebugMarkerObjectNameInfoExt
+	unsafe public partial class DebugMarkerObjectNameInfoExt : IMarshalling
 	{
 		public DebugReportObjectTypeExt ObjectType {
 			get { return m->ObjectType; }
@@ -6667,7 +6701,7 @@ namespace Vulkan
 		}
 		internal Interop.DebugMarkerObjectNameInfoExt* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -6693,7 +6727,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DebugMarkerObjectTagInfoExt
+	unsafe public partial class DebugMarkerObjectTagInfoExt : IMarshalling
 	{
 		public DebugReportObjectTypeExt ObjectType {
 			get { return m->ObjectType; }
@@ -6721,7 +6755,7 @@ namespace Vulkan
 		}
 		internal Interop.DebugMarkerObjectTagInfoExt* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -6747,7 +6781,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DebugMarkerMarkerInfoExt
+	unsafe public partial class DebugMarkerMarkerInfoExt : IMarshalling
 	{
 		public string MarkerName {
 			get { return Marshal.PtrToStringAnsi (m->MarkerName); }
@@ -6773,7 +6807,7 @@ namespace Vulkan
 		}
 		internal Interop.DebugMarkerMarkerInfoExt* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -6799,7 +6833,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DedicatedAllocationImageCreateInfoNv
+	unsafe public partial class DedicatedAllocationImageCreateInfoNv : IMarshalling
 	{
 		public bool DedicatedAllocation {
 			get { return m->DedicatedAllocation; }
@@ -6807,7 +6841,7 @@ namespace Vulkan
 		}
 		internal Interop.DedicatedAllocationImageCreateInfoNv* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -6833,7 +6867,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DedicatedAllocationBufferCreateInfoNv
+	unsafe public partial class DedicatedAllocationBufferCreateInfoNv : IMarshalling
 	{
 		public bool DedicatedAllocation {
 			get { return m->DedicatedAllocation; }
@@ -6841,7 +6875,7 @@ namespace Vulkan
 		}
 		internal Interop.DedicatedAllocationBufferCreateInfoNv* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -6867,7 +6901,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DedicatedAllocationMemoryAllocateInfoNv
+	unsafe public partial class DedicatedAllocationMemoryAllocateInfoNv : IMarshalling
 	{
 		Image lImage;
 		public Image Image {
@@ -6882,7 +6916,7 @@ namespace Vulkan
 		}
 		internal Interop.DedicatedAllocationMemoryAllocateInfoNv* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -6907,4 +6941,81 @@ namespace Vulkan
 		}
 
 	}
+
+	unsafe public partial struct ExternalImageFormatPropertiesNv
+	{
+		public ImageFormatProperties ImageFormatProperties;
+		public ExternalMemoryFeatureFlagsNv ExternalMemoryFeatures;
+		public ExternalMemoryHandleTypeFlagsNv ExportFromImportedHandleTypes;
+		public ExternalMemoryHandleTypeFlagsNv CompatibleHandleTypes;
+	}
+
+	unsafe public partial class ExternalMemoryImageCreateInfoNv : IMarshalling
+	{
+		public ExternalMemoryHandleTypeFlagsNv HandleTypes {
+			get { return m->HandleTypes; }
+			set { m->HandleTypes = value; }
+		}
+		internal Interop.ExternalMemoryImageCreateInfoNv* m;
+
+		IntPtr IMarshalling.Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
+		public ExternalMemoryImageCreateInfoNv ()
+		{
+			m = (Interop.ExternalMemoryImageCreateInfoNv*) Interop.Structure.Allocate (typeof (Interop.ExternalMemoryImageCreateInfoNv));
+			Initialize ();
+		}
+
+		internal ExternalMemoryImageCreateInfoNv (Interop.ExternalMemoryImageCreateInfoNv* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ExternalMemoryImageCreateInfoNv;
+		}
+
+	}
+
+	unsafe public partial class ExportMemoryAllocateInfoNv : IMarshalling
+	{
+		public ExternalMemoryHandleTypeFlagsNv HandleTypes {
+			get { return m->HandleTypes; }
+			set { m->HandleTypes = value; }
+		}
+		internal Interop.ExportMemoryAllocateInfoNv* m;
+
+		IntPtr IMarshalling.Handle {
+			get {
+				return (IntPtr)m;
+			}
+		}
+
+		public ExportMemoryAllocateInfoNv ()
+		{
+			m = (Interop.ExportMemoryAllocateInfoNv*) Interop.Structure.Allocate (typeof (Interop.ExportMemoryAllocateInfoNv));
+			Initialize ();
+		}
+
+		internal ExportMemoryAllocateInfoNv (Interop.ExportMemoryAllocateInfoNv* ptr)
+		{
+			m = ptr;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ExportMemoryAllocateInfoNv;
+		}
+
+	}
+
 }

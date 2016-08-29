@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 
 namespace Vulkan
 {
-	unsafe public partial class ClearColorValue
+	unsafe public partial class ClearColorValue : IMarshalling
 	{
 		public float[] Float32 {
 			get {
@@ -70,7 +70,7 @@ namespace Vulkan
 		}
 		internal Interop.ClearColorValue* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}
@@ -88,7 +88,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class ClearValue
+	unsafe public partial class ClearValue : IMarshalling
 	{
 		ClearColorValue lColor;
 		public ClearColorValue Color {
@@ -102,7 +102,7 @@ namespace Vulkan
 		}
 		internal Interop.ClearValue* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}

@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 
 namespace Vulkan
 {
-	unsafe public partial class Win32SurfaceCreateInfoKhr
+	unsafe public partial class Win32SurfaceCreateInfoKhr : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -31,7 +31,7 @@ namespace Vulkan
 		}
 		internal Windows.Interop.Win32SurfaceCreateInfoKhr* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}

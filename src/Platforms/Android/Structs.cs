@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 
 namespace Vulkan
 {
-	unsafe public partial class AndroidSurfaceCreateInfoKhr
+	unsafe public partial class AndroidSurfaceCreateInfoKhr : IMarshalling
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -26,7 +26,7 @@ namespace Vulkan
 		}
 		internal Android.Interop.AndroidSurfaceCreateInfoKhr* m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return (IntPtr)m;
 			}

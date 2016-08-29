@@ -14,11 +14,11 @@ using System.Collections.Generic;
 
 namespace Vulkan
 {
-	public partial class Instance
+	public partial class Instance : IMarshalling
 	{
 		internal IntPtr m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return m;
 			}
@@ -123,13 +123,13 @@ namespace Vulkan
 		}
 	}
 
-	public partial class PhysicalDevice
+	public partial class PhysicalDevice : IMarshalling
 	{
 		internal PhysicalDevice() {}
 
 		internal IntPtr m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return m;
 			}
@@ -540,15 +540,29 @@ namespace Vulkan
 				return arr;
 			}
 		}
+
+		public ExternalImageFormatPropertiesNv GetExternalImageFormatPropertiesNV (Format format, ImageType type, ImageTiling tiling, ImageUsageFlags usage, ImageCreateFlags flags, ExternalMemoryHandleTypeFlagsNv externalHandleType)
+		{
+			Result result;
+			ExternalImageFormatPropertiesNv pExternalImageFormatProperties;
+			unsafe {
+				pExternalImageFormatProperties = new ExternalImageFormatPropertiesNv ();
+				result = Interop.NativeMethods.vkGetPhysicalDeviceExternalImageFormatPropertiesNV (this.m, format, type, tiling, usage, flags, externalHandleType, &pExternalImageFormatProperties);
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pExternalImageFormatProperties;
+			}
+		}
 	}
 
-	public partial class Device
+	public partial class Device : IMarshalling
 	{
 		internal Device() {}
 
 		internal IntPtr m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return m;
 			}
@@ -1687,13 +1701,13 @@ namespace Vulkan
 		}
 	}
 
-	public partial class Queue
+	public partial class Queue : IMarshalling
 	{
 		internal Queue() {}
 
 		internal IntPtr m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return m;
 			}
@@ -1772,13 +1786,13 @@ namespace Vulkan
 		}
 	}
 
-	public partial class CommandBuffer
+	public partial class CommandBuffer : IMarshalling
 	{
 		internal CommandBuffer() {}
 
 		internal IntPtr m;
 
-		public IntPtr Handle {
+		IntPtr IMarshalling.Handle {
 			get {
 				return m;
 			}
@@ -2436,327 +2450,341 @@ namespace Vulkan
 				return pMarkerInfo;
 			}
 		}
+
+		public void CmdDrawIndirectCountAMD (Buffer buffer, DeviceSize offset, Buffer countBuffer, DeviceSize countBufferOffset, UInt32 maxDrawCount, UInt32 stride)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdDrawIndirectCountAMD (this.m, buffer != null ? buffer.m : default(UInt64), offset, countBuffer != null ? countBuffer.m : default(UInt64), countBufferOffset, maxDrawCount, stride);
+			}
+		}
+
+		public void CmdDrawIndexedIndirectCountAMD (Buffer buffer, DeviceSize offset, Buffer countBuffer, DeviceSize countBufferOffset, UInt32 maxDrawCount, UInt32 stride)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdDrawIndexedIndirectCountAMD (this.m, buffer != null ? buffer.m : default(UInt64), offset, countBuffer != null ? countBuffer.m : default(UInt64), countBufferOffset, maxDrawCount, stride);
+			}
+		}
 	}
 
-	public partial class DeviceMemory
+	public partial class DeviceMemory : INonDispatchableHandleMarshalling
 	{
 		internal DeviceMemory() {}
 
 		internal UInt64 m;
 
-		public UInt64 Handle {
+		UInt64 INonDispatchableHandleMarshalling.Handle {
 			get {
 				return m;
 			}
 		}
 	}
 
-	public partial class CommandPool
+	public partial class CommandPool : INonDispatchableHandleMarshalling
 	{
 		internal CommandPool() {}
 
 		internal UInt64 m;
 
-		public UInt64 Handle {
+		UInt64 INonDispatchableHandleMarshalling.Handle {
 			get {
 				return m;
 			}
 		}
 	}
 
-	public partial class Buffer
+	public partial class Buffer : INonDispatchableHandleMarshalling
 	{
 		internal Buffer() {}
 
 		internal UInt64 m;
 
-		public UInt64 Handle {
+		UInt64 INonDispatchableHandleMarshalling.Handle {
 			get {
 				return m;
 			}
 		}
 	}
 
-	public partial class BufferView
+	public partial class BufferView : INonDispatchableHandleMarshalling
 	{
 		internal BufferView() {}
 
 		internal UInt64 m;
 
-		public UInt64 Handle {
+		UInt64 INonDispatchableHandleMarshalling.Handle {
 			get {
 				return m;
 			}
 		}
 	}
 
-	public partial class Image
+	public partial class Image : INonDispatchableHandleMarshalling
 	{
 		internal Image() {}
 
 		internal UInt64 m;
 
-		public UInt64 Handle {
+		UInt64 INonDispatchableHandleMarshalling.Handle {
 			get {
 				return m;
 			}
 		}
 	}
 
-	public partial class ImageView
+	public partial class ImageView : INonDispatchableHandleMarshalling
 	{
 		internal ImageView() {}
 
 		internal UInt64 m;
 
-		public UInt64 Handle {
+		UInt64 INonDispatchableHandleMarshalling.Handle {
 			get {
 				return m;
 			}
 		}
 	}
 
-	public partial class ShaderModule
+	public partial class ShaderModule : INonDispatchableHandleMarshalling
 	{
 		internal ShaderModule() {}
 
 		internal UInt64 m;
 
-		public UInt64 Handle {
+		UInt64 INonDispatchableHandleMarshalling.Handle {
 			get {
 				return m;
 			}
 		}
 	}
 
-	public partial class Pipeline
+	public partial class Pipeline : INonDispatchableHandleMarshalling
 	{
 		internal Pipeline() {}
 
 		internal UInt64 m;
 
-		public UInt64 Handle {
+		UInt64 INonDispatchableHandleMarshalling.Handle {
 			get {
 				return m;
 			}
 		}
 	}
 
-	public partial class PipelineLayout
+	public partial class PipelineLayout : INonDispatchableHandleMarshalling
 	{
 		internal PipelineLayout() {}
 
 		internal UInt64 m;
 
-		public UInt64 Handle {
+		UInt64 INonDispatchableHandleMarshalling.Handle {
 			get {
 				return m;
 			}
 		}
 	}
 
-	public partial class Sampler
+	public partial class Sampler : INonDispatchableHandleMarshalling
 	{
 		internal Sampler() {}
 
 		internal UInt64 m;
 
-		public UInt64 Handle {
+		UInt64 INonDispatchableHandleMarshalling.Handle {
 			get {
 				return m;
 			}
 		}
 	}
 
-	public partial class DescriptorSet
+	public partial class DescriptorSet : INonDispatchableHandleMarshalling
 	{
 		internal DescriptorSet() {}
 
 		internal UInt64 m;
 
-		public UInt64 Handle {
+		UInt64 INonDispatchableHandleMarshalling.Handle {
 			get {
 				return m;
 			}
 		}
 	}
 
-	public partial class DescriptorSetLayout
+	public partial class DescriptorSetLayout : INonDispatchableHandleMarshalling
 	{
 		internal DescriptorSetLayout() {}
 
 		internal UInt64 m;
 
-		public UInt64 Handle {
+		UInt64 INonDispatchableHandleMarshalling.Handle {
 			get {
 				return m;
 			}
 		}
 	}
 
-	public partial class DescriptorPool
+	public partial class DescriptorPool : INonDispatchableHandleMarshalling
 	{
 		internal DescriptorPool() {}
 
 		internal UInt64 m;
 
-		public UInt64 Handle {
+		UInt64 INonDispatchableHandleMarshalling.Handle {
 			get {
 				return m;
 			}
 		}
 	}
 
-	public partial class Fence
+	public partial class Fence : INonDispatchableHandleMarshalling
 	{
 		internal Fence() {}
 
 		internal UInt64 m;
 
-		public UInt64 Handle {
+		UInt64 INonDispatchableHandleMarshalling.Handle {
 			get {
 				return m;
 			}
 		}
 	}
 
-	public partial class Semaphore
+	public partial class Semaphore : INonDispatchableHandleMarshalling
 	{
 		internal Semaphore() {}
 
 		internal UInt64 m;
 
-		public UInt64 Handle {
+		UInt64 INonDispatchableHandleMarshalling.Handle {
 			get {
 				return m;
 			}
 		}
 	}
 
-	public partial class Event
+	public partial class Event : INonDispatchableHandleMarshalling
 	{
 		internal Event() {}
 
 		internal UInt64 m;
 
-		public UInt64 Handle {
+		UInt64 INonDispatchableHandleMarshalling.Handle {
 			get {
 				return m;
 			}
 		}
 	}
 
-	public partial class QueryPool
+	public partial class QueryPool : INonDispatchableHandleMarshalling
 	{
 		internal QueryPool() {}
 
 		internal UInt64 m;
 
-		public UInt64 Handle {
+		UInt64 INonDispatchableHandleMarshalling.Handle {
 			get {
 				return m;
 			}
 		}
 	}
 
-	public partial class Framebuffer
+	public partial class Framebuffer : INonDispatchableHandleMarshalling
 	{
 		internal Framebuffer() {}
 
 		internal UInt64 m;
 
-		public UInt64 Handle {
+		UInt64 INonDispatchableHandleMarshalling.Handle {
 			get {
 				return m;
 			}
 		}
 	}
 
-	public partial class RenderPass
+	public partial class RenderPass : INonDispatchableHandleMarshalling
 	{
 		internal RenderPass() {}
 
 		internal UInt64 m;
 
-		public UInt64 Handle {
+		UInt64 INonDispatchableHandleMarshalling.Handle {
 			get {
 				return m;
 			}
 		}
 	}
 
-	public partial class PipelineCache
+	public partial class PipelineCache : INonDispatchableHandleMarshalling
 	{
 		internal PipelineCache() {}
 
 		internal UInt64 m;
 
-		public UInt64 Handle {
+		UInt64 INonDispatchableHandleMarshalling.Handle {
 			get {
 				return m;
 			}
 		}
 	}
 
-	public partial class DisplayKhr
+	public partial class DisplayKhr : INonDispatchableHandleMarshalling
 	{
 		internal DisplayKhr() {}
 
 		internal UInt64 m;
 
-		public UInt64 Handle {
+		UInt64 INonDispatchableHandleMarshalling.Handle {
 			get {
 				return m;
 			}
 		}
 	}
 
-	public partial class DisplayModeKhr
+	public partial class DisplayModeKhr : INonDispatchableHandleMarshalling
 	{
 		internal DisplayModeKhr() {}
 
 		internal UInt64 m;
 
-		public UInt64 Handle {
+		UInt64 INonDispatchableHandleMarshalling.Handle {
 			get {
 				return m;
 			}
 		}
 	}
 
-	public partial class SurfaceKhr
+	public partial class SurfaceKhr : INonDispatchableHandleMarshalling
 	{
 		internal SurfaceKhr() {}
 
 		internal UInt64 m;
 
-		public UInt64 Handle {
+		UInt64 INonDispatchableHandleMarshalling.Handle {
 			get {
 				return m;
 			}
 		}
 	}
 
-	public partial class SwapchainKhr
+	public partial class SwapchainKhr : INonDispatchableHandleMarshalling
 	{
 		internal SwapchainKhr() {}
 
 		internal UInt64 m;
 
-		public UInt64 Handle {
+		UInt64 INonDispatchableHandleMarshalling.Handle {
 			get {
 				return m;
 			}
 		}
 	}
 
-	public partial class DebugReportCallbackExt
+	public partial class DebugReportCallbackExt : INonDispatchableHandleMarshalling
 	{
 		internal DebugReportCallbackExt() {}
 
 		internal UInt64 m;
 
-		public UInt64 Handle {
+		UInt64 INonDispatchableHandleMarshalling.Handle {
 			get {
 				return m;
 			}

@@ -956,6 +956,13 @@ namespace Vulkan.Interop
 		internal IntPtr UserData;
 	}
 
+	internal partial struct DebugReportLayerFlagsExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 EnabledValidationFlags;
+	}
+
 	internal partial struct PipelineRasterizationStateRasterizationOrderAmd
 	{
 		internal StructureType SType;
@@ -1012,4 +1019,19 @@ namespace Vulkan.Interop
 		internal UInt64 Image;
 		internal UInt64 Buffer;
 	}
+
+	internal partial struct ExternalMemoryImageCreateInfoNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalMemoryHandleTypeFlagsNv HandleTypes;
+	}
+
+	internal partial struct ExportMemoryAllocateInfoNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalMemoryHandleTypeFlagsNv HandleTypes;
+	}
+
 }

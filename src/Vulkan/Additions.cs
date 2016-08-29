@@ -125,4 +125,14 @@ namespace Vulkan
 			Uint32 = uintArray;
 		}
 	}
+
+	public interface IMarshalling
+	{
+		IntPtr Handle { get; }
+	}
+
+	public interface INonDispatchableHandleMarshalling
+	{
+		UInt64 Handle { get; }
+	}
 }
