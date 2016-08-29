@@ -16,7 +16,13 @@ namespace VulkanSharp.Generator
 		bool isInterop;
 		bool needsMarshalling;
 
-		Dictionary<string, string> typesTranslation = new Dictionary<string, string> () { { "ANativeWindow", "IntPtr" }, { "HWND", "IntPtr" }, { "HINSTANCE", "IntPtr" } };
+		Dictionary<string, string> typesTranslation = new Dictionary<string, string> () {
+			{ "ANativeWindow", "IntPtr" },
+			{ "HWND", "IntPtr" },
+			{ "HINSTANCE", "IntPtr" },
+			{ "HANDLE", "IntPtr" },
+			{ "DWORD", "UInt32" },
+		};
 		Dictionary<string, StructInfo> structures = new Dictionary<string, StructInfo> ();
 		Dictionary<string, HandleInfo> handles = new Dictionary<string,HandleInfo> ();
 		Dictionary<string, List<EnumExtensionInfo>> enumExtensions = new Dictionary<string, List<EnumExtensionInfo>> ();
@@ -252,6 +258,11 @@ namespace VulkanSharp.Generator
 				WriteEnumField (info.name, info.value.ToString (), csEnumName);
 		}
 
+		HashSet<string> knownBitmaps = new HashSet<string> {
+			"VkExternalMemoryHandleTypeFlagBitsNV",
+			"VkExternalMemoryFeatureFlagBitsNV",
+		};
+
 		bool WriteEnum (XElement enumElement)
 		{
 			string name = enumElement.Attribute ("name").Value;
@@ -267,7 +278,7 @@ namespace VulkanSharp.Generator
 			}
 
 			var enumsElement = values.First ();
-			if (enumsElement.Attribute ("type") != null && enumsElement.Attribute ("type").Value == "bitmask") {
+			if ((enumsElement.Attribute ("type") != null && enumsElement.Attribute ("type").Value == "bitmask") || knownBitmaps.Contains (name)) {
 				string suffix = null;
 				foreach (var ext in extensions)
 					if (csName.EndsWith (ext.Value)) {
@@ -462,7 +473,8 @@ namespace VulkanSharp.Generator
 			{ "Code", "CodeSize" },
 			{ "SampleMask", "RasterizationSamples" },
 			{ "MemoryTypes", "MemoryTypeCount" },
-			{ "MemoryHeaps", "MemoryHeapCount" }
+			{ "MemoryHeaps", "MemoryHeapCount" },
+			{ "AcquireTimeoutMilliseconds", "acquireCount" },
 		};
 
 		void WriteMemberFixedArray (string csMemberType, string csMemberName, XElement memberElement, bool isStruct)
@@ -882,6 +894,9 @@ namespace VulkanSharp.Generator
 			"MirSurfaceCreateInfoKhr",
 			"AndroidSurfaceCreateInfoKhr",
 			"Win32SurfaceCreateInfoKhr",
+			"ImportMemoryWin32HandleInfoNv",
+			"ExportMemoryWin32HandleInfoNv",
+			"Win32KeyedMutexAcquireReleaseInfoNv",
 		};
 
 		void WriteStructureInitializeMethod (List<StructMemberInfo> members, string csName, bool hasSType)
@@ -891,7 +906,8 @@ namespace VulkanSharp.Generator
 			IndentWriteLine ("{");
 			IndentLevel++;
 			if (hasSType)
-				IndentWriteLine ("m->SType = StructureType.{0};", csName);
+				// special case DebugReportLayerFlagsExt, remove once fixed in the spec?
+				IndentWriteLine ("m->SType = StructureType.{0};", csName == "DebugReportLayerFlagsExt" ? "DebugReportValidationFlagsExt" : csName);
 
 			foreach (var info in members)
 				if (handles.ContainsKey (info.csType) || (structures.ContainsKey (info.csType) && structures [info.csType].needsMarshalling))
@@ -920,7 +936,7 @@ namespace VulkanSharp.Generator
 				IndentWriteLine ("[StructLayout (LayoutKind.Explicit)]");
 			if (!isInterop)
 				mod = "unsafe ";
-			IndentWriteLine ("{0}{1} partial {2} {3}", mod, isInterop ? "internal" : "public", (isInterop || !needsMarshalling) ? "struct" : "class", csName);
+			IndentWriteLine ("{0}{1} partial {2} {3}{4}", mod, isInterop ? "internal" : "public", (isInterop || !needsMarshalling) ? "struct" : "class", csName, (!isInterop && info.needsMarshalling) ? " : IMarshalling" : "");
 			IndentWriteLine ("{");
 			IndentLevel++;
 
@@ -941,7 +957,7 @@ namespace VulkanSharp.Generator
 				if (info.needsMarshalling) {
 					var needsInitialize = hasSType || initializeMembers.Count > 0;
 					IndentWriteLine ("internal {0}.{1}* m;\n", InteropNamespace, csName);
-					IndentWriteLine ("public IntPtr Handle {");
+					IndentWriteLine ("IntPtr IMarshalling.Handle {");
 					IndentLevel++;
 					IndentWriteLine ("get {");
 					IndentLevel++;
@@ -1736,7 +1752,8 @@ namespace VulkanSharp.Generator
 			}
 
 			var className = string.Format ("{0}{1}", csName, isRequired ? "Extension" : "");
-			IndentWriteLine ("public {0} class {1}", isRequired ? "static" : "partial", className);
+			var marshallingInterface = info.type == "VK_DEFINE_NON_DISPATCHABLE_HANDLE" ? "INonDispatchableHandleMarshalling" : "IMarshalling";
+			IndentWriteLine ("public {0} class {1}{2}", isRequired ? "static" : "partial", className, isRequired ? "" : string.Format (" : {0}", marshallingInterface));
 			IndentWriteLine ("{");
 			IndentLevel++;
 			if (!isRequired && !handlesWithDefaultConstructors.Contains (csName))
@@ -1746,7 +1763,7 @@ namespace VulkanSharp.Generator
 			if (requiredCommands == null) {
 				var handleType = GetHandleType (info);
 				IndentWriteLine ("internal {0} m;\n", handleType);
-				IndentWriteLine ("public {0} Handle {{", handleType);
+				IndentWriteLine ("{0} {1}.Handle {{", handleType, marshallingInterface);
 				IndentLevel++;
 				IndentWriteLine ("get {");
 				IndentLevel++;
@@ -1843,7 +1860,8 @@ namespace VulkanSharp.Generator
 			"vkCreateXlibSurfaceKHR",
 			"vkGetPhysicalDeviceXlibPresentationSupportKHR",
 			"vkCreateXcbSurfaceKHR",
-			"vkCreateAndroidSurfaceKHR"
+			"vkCreateAndroidSurfaceKHR",
+			"vkGetMemoryWin32HandleNV",
 		};
 
 		HashSet<string> delegateUnmanagedCommands = new HashSet<string> {
