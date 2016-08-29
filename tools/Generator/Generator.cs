@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
@@ -16,7 +16,7 @@ namespace VulkanSharp.Generator
 		bool isInterop;
 		bool needsMarshalling;
 
-		Dictionary<string, string> typesTranslation = new Dictionary<string, string> () { { "ANativeWindow", "IntPtr" }, { "HWND", "IntPtr" }, { "HINSTANCE", "IntPtr" } };
+		Dictionary<string, string> typesTranslation = new Dictionary<string, string> () { { "ANativeWindow", "IntPtr" }, { "HWND", "IntPtr" }, { "HINSTANCE", "IntPtr" }, { "DWORD", "UInt32" }, { "HANDLE", "IntPtr" }, { "SECURITY_ATTRIBUTES", "UInt32" } };
 		Dictionary<string, StructInfo> structures = new Dictionary<string, StructInfo> ();
 		Dictionary<string, HandleInfo> handles = new Dictionary<string,HandleInfo> ();
 		Dictionary<string, List<EnumExtensionInfo>> enumExtensions = new Dictionary<string, List<EnumExtensionInfo>> ();
@@ -535,7 +535,7 @@ namespace VulkanSharp.Generator
 
 		void WriteMemberArray (string csMemberType, string csMemberName, string sec, XElement memberElement)
 		{
-			string countName;
+			string countName = null;
 
 			var lenAttribute = memberElement.Attribute ("len");
 			var structNeedsMarshalling = structures.ContainsKey (csMemberType) && structures [csMemberType].needsMarshalling;
@@ -545,8 +545,7 @@ namespace VulkanSharp.Generator
 				countName = fieldCounterMap [csMemberName];
 			else if (lenAttribute != null) {
 				countName = TranslateCName (lenAttribute.Value);
-			} else
-				throw new Exception (string.Format ("do not know the counter for {0}", csMemberName));
+			}
 			// fixme: handle size_t sized arrays better
 			string zero, cast, len, lenFromValue;
 			if (csMemberName == "Code") {
@@ -562,17 +561,23 @@ namespace VulkanSharp.Generator
 			} else {
 				cast = "(uint)";
 				zero = "0";
-				len = string.Format ("m->{0}", countName);
+                if (countName != null) len = string.Format("m->{0}", countName);
+                else len = string.Format("1");
+
 				lenFromValue = "value.Length";
 			}
 			IndentWriteLine ("{0} {1}[] {2} {{", sec, csMemberType, csMemberName);
 			IndentLevel++;
 			IndentWriteLine ("get {");
 			IndentLevel++;
-			IndentWriteLine ("if (m->{0} == {1})", countName, zero);
-			IndentLevel++;
-			IndentWriteLine ("return null;");
-			IndentLevel--;
+            if (countName != null)
+            {
+                IndentWriteLine("if (m->{0} == {1})", countName, zero);
+                IndentLevel++;
+                IndentWriteLine("return null;");
+                IndentLevel--;
+            }
+
 			IndentWriteLine ("var values = new {0} [{1}];", csMemberType, len);
 			IndentWriteLine ("unsafe");
 			IndentWriteLine ("{");
@@ -602,12 +607,12 @@ namespace VulkanSharp.Generator
 			IndentLevel++;
 			IndentWriteLine ("if (value == null) {");
 			IndentLevel++;
-			IndentWriteLine ("m->{0} = {1};", countName, zero);
+			if(countName != null)IndentWriteLine ("m->{0} = {1};", countName, zero);
 			IndentWriteLine ("m->{0} = IntPtr.Zero;", csMemberName);
 			IndentWriteLine ("return;");
 			IndentLevel--;
 			IndentWriteLine ("}");
-			IndentWriteLine ("m->{0} = {1}{2};", countName, cast, lenFromValue);
+			if(countName != null)IndentWriteLine ("m->{0} = {1}{2};", countName, cast, lenFromValue);
 			IndentWriteLine ("m->{0} = Marshal.AllocHGlobal ((int)(sizeof({1}{2})*value.Length));", csMemberName, structNeedsMarshalling ? (InteropNamespace + ".") : "", ptrType);
 			IndentWriteLine ("unsafe");
 			IndentWriteLine ("{");
