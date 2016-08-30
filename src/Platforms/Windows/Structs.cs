@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 
 namespace Vulkan
 {
-	unsafe public partial class Win32SurfaceCreateInfoKhr : IMarshalling
+	unsafe public partial class Win32SurfaceCreateInfoKhr : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -29,23 +29,22 @@ namespace Vulkan
 			get { return m->Hwnd; }
 			set { m->Hwnd = value; }
 		}
-		internal Windows.Interop.Win32SurfaceCreateInfoKhr* m;
+		internal Windows.Interop.Win32SurfaceCreateInfoKhr* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Windows.Interop.Win32SurfaceCreateInfoKhr*)native.Handle;
 			}
 		}
 
 		public Win32SurfaceCreateInfoKhr ()
 		{
-			m = (Windows.Interop.Win32SurfaceCreateInfoKhr*) Interop.Structure.Allocate (typeof (Windows.Interop.Win32SurfaceCreateInfoKhr));
+			native = Interop.Structure.Allocate (typeof (Windows.Interop.Win32SurfaceCreateInfoKhr));
 			Initialize ();
 		}
 
-		internal Win32SurfaceCreateInfoKhr (Windows.Interop.Win32SurfaceCreateInfoKhr* ptr)
+		internal Win32SurfaceCreateInfoKhr (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 

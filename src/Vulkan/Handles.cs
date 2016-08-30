@@ -43,7 +43,8 @@ namespace Vulkan
 					return null;
 
 				int size = Marshal.SizeOf (typeof (IntPtr));
-				var ptrpPhysicalDevices = Marshal.AllocHGlobal ((int)(size * pPhysicalDeviceCount));
+				var refpPhysicalDevices = new NativeReference ((int)(size * pPhysicalDeviceCount));
+				var ptrpPhysicalDevices = refpPhysicalDevices.Handle;
 				result = Interop.NativeMethods.vkEnumeratePhysicalDevices (this.m, &pPhysicalDeviceCount, (IntPtr*)ptrpPhysicalDevices);
 				if (result != Result.Success)
 					throw new ResultException (result);
@@ -55,6 +56,8 @@ namespace Vulkan
 					arr [i] = new PhysicalDevice ();
 					arr [i].m = ((IntPtr*)ptrpPhysicalDevices) [i];
 				}
+
+				refpPhysicalDevices.Release ();
 
 				return arr;
 			}
@@ -155,7 +158,8 @@ namespace Vulkan
 					return null;
 
 				int size = Marshal.SizeOf (typeof (QueueFamilyProperties));
-				var ptrpQueueFamilyProperties = Marshal.AllocHGlobal ((int)(size * pQueueFamilyPropertyCount));
+				var refpQueueFamilyProperties = new NativeReference ((int)(size * pQueueFamilyPropertyCount));
+				var ptrpQueueFamilyProperties = refpQueueFamilyProperties.Handle;
 				Interop.NativeMethods.vkGetPhysicalDeviceQueueFamilyProperties (this.m, &pQueueFamilyPropertyCount, (QueueFamilyProperties*)ptrpQueueFamilyProperties);
 
 				if (pQueueFamilyPropertyCount <= 0)
@@ -164,6 +168,8 @@ namespace Vulkan
 				for (int i = 0; i < pQueueFamilyPropertyCount; i++) {
 					arr [i] = (((QueueFamilyProperties*)ptrpQueueFamilyProperties) [i]);
 				}
+
+				refpQueueFamilyProperties.Release ();
 
 				return arr;
 			}
@@ -245,7 +251,8 @@ namespace Vulkan
 					return null;
 
 				int size = Marshal.SizeOf (typeof (Interop.LayerProperties));
-				var ptrpProperties = Marshal.AllocHGlobal ((int)(size * pPropertyCount));
+				var refpProperties = new NativeReference ((int)(size * pPropertyCount));
+				var ptrpProperties = refpProperties.Handle;
 				result = Interop.NativeMethods.vkEnumerateDeviceLayerProperties (this.m, &pPropertyCount, (Interop.LayerProperties*)ptrpProperties);
 				if (result != Result.Success)
 					throw new ResultException (result);
@@ -254,8 +261,10 @@ namespace Vulkan
 					return null;
 				var arr = new LayerProperties [pPropertyCount];
 				for (int i = 0; i < pPropertyCount; i++) {
-					arr [i] = new LayerProperties (&((Interop.LayerProperties*)ptrpProperties) [i]);
+					arr [i] = new LayerProperties (new NativePointer (refpProperties, (IntPtr)(&((Interop.LayerProperties*)ptrpProperties) [i])));
 				}
+
+				refpProperties.Release ();
 
 				return arr;
 			}
@@ -273,7 +282,8 @@ namespace Vulkan
 					return null;
 
 				int size = Marshal.SizeOf (typeof (Interop.ExtensionProperties));
-				var ptrpProperties = Marshal.AllocHGlobal ((int)(size * pPropertyCount));
+				var refpProperties = new NativeReference ((int)(size * pPropertyCount));
+				var ptrpProperties = refpProperties.Handle;
 				result = Interop.NativeMethods.vkEnumerateDeviceExtensionProperties (this.m, pLayerName, &pPropertyCount, (Interop.ExtensionProperties*)ptrpProperties);
 				if (result != Result.Success)
 					throw new ResultException (result);
@@ -282,8 +292,10 @@ namespace Vulkan
 					return null;
 				var arr = new ExtensionProperties [pPropertyCount];
 				for (int i = 0; i < pPropertyCount; i++) {
-					arr [i] = new ExtensionProperties (&((Interop.ExtensionProperties*)ptrpProperties) [i]);
+					arr [i] = new ExtensionProperties (new NativePointer (refpProperties, (IntPtr)(&((Interop.ExtensionProperties*)ptrpProperties) [i])));
 				}
+
+				refpProperties.Release ();
 
 				return arr;
 			}
@@ -298,7 +310,8 @@ namespace Vulkan
 					return null;
 
 				int size = Marshal.SizeOf (typeof (SparseImageFormatProperties));
-				var ptrpProperties = Marshal.AllocHGlobal ((int)(size * pPropertyCount));
+				var refpProperties = new NativeReference ((int)(size * pPropertyCount));
+				var ptrpProperties = refpProperties.Handle;
 				Interop.NativeMethods.vkGetPhysicalDeviceSparseImageFormatProperties (this.m, format, type, samples, usage, tiling, &pPropertyCount, (SparseImageFormatProperties*)ptrpProperties);
 
 				if (pPropertyCount <= 0)
@@ -307,6 +320,8 @@ namespace Vulkan
 				for (int i = 0; i < pPropertyCount; i++) {
 					arr [i] = (((SparseImageFormatProperties*)ptrpProperties) [i]);
 				}
+
+				refpProperties.Release ();
 
 				return arr;
 			}
@@ -324,7 +339,8 @@ namespace Vulkan
 					return null;
 
 				int size = Marshal.SizeOf (typeof (Interop.DisplayPropertiesKhr));
-				var ptrpProperties = Marshal.AllocHGlobal ((int)(size * pPropertyCount));
+				var refpProperties = new NativeReference ((int)(size * pPropertyCount));
+				var ptrpProperties = refpProperties.Handle;
 				result = Interop.NativeMethods.vkGetPhysicalDeviceDisplayPropertiesKHR (this.m, &pPropertyCount, (Interop.DisplayPropertiesKhr*)ptrpProperties);
 				if (result != Result.Success)
 					throw new ResultException (result);
@@ -333,8 +349,10 @@ namespace Vulkan
 					return null;
 				var arr = new DisplayPropertiesKhr [pPropertyCount];
 				for (int i = 0; i < pPropertyCount; i++) {
-					arr [i] = new DisplayPropertiesKhr (&((Interop.DisplayPropertiesKhr*)ptrpProperties) [i]);
+					arr [i] = new DisplayPropertiesKhr (new NativePointer (refpProperties, (IntPtr)(&((Interop.DisplayPropertiesKhr*)ptrpProperties) [i])));
 				}
+
+				refpProperties.Release ();
 
 				return arr;
 			}
@@ -352,7 +370,8 @@ namespace Vulkan
 					return null;
 
 				int size = Marshal.SizeOf (typeof (Interop.DisplayPlanePropertiesKhr));
-				var ptrpProperties = Marshal.AllocHGlobal ((int)(size * pPropertyCount));
+				var refpProperties = new NativeReference ((int)(size * pPropertyCount));
+				var ptrpProperties = refpProperties.Handle;
 				result = Interop.NativeMethods.vkGetPhysicalDeviceDisplayPlanePropertiesKHR (this.m, &pPropertyCount, (Interop.DisplayPlanePropertiesKhr*)ptrpProperties);
 				if (result != Result.Success)
 					throw new ResultException (result);
@@ -361,8 +380,10 @@ namespace Vulkan
 					return null;
 				var arr = new DisplayPlanePropertiesKhr [pPropertyCount];
 				for (int i = 0; i < pPropertyCount; i++) {
-					arr [i] = new DisplayPlanePropertiesKhr (&((Interop.DisplayPlanePropertiesKhr*)ptrpProperties) [i]);
+					arr [i] = new DisplayPlanePropertiesKhr (new NativePointer (refpProperties, (IntPtr)(&((Interop.DisplayPlanePropertiesKhr*)ptrpProperties) [i])));
 				}
+
+				refpProperties.Release ();
 
 				return arr;
 			}
@@ -380,7 +401,8 @@ namespace Vulkan
 					return null;
 
 				int size = Marshal.SizeOf (typeof (UInt64));
-				var ptrpDisplays = Marshal.AllocHGlobal ((int)(size * pDisplayCount));
+				var refpDisplays = new NativeReference ((int)(size * pDisplayCount));
+				var ptrpDisplays = refpDisplays.Handle;
 				result = Interop.NativeMethods.vkGetDisplayPlaneSupportedDisplaysKHR (this.m, planeIndex, &pDisplayCount, (UInt64*)ptrpDisplays);
 				if (result != Result.Success)
 					throw new ResultException (result);
@@ -392,6 +414,8 @@ namespace Vulkan
 					arr [i] = new DisplayKhr ();
 					arr [i].m = ((UInt64*)ptrpDisplays) [i];
 				}
+
+				refpDisplays.Release ();
 
 				return arr;
 			}
@@ -409,7 +433,8 @@ namespace Vulkan
 					return null;
 
 				int size = Marshal.SizeOf (typeof (Interop.DisplayModePropertiesKhr));
-				var ptrpProperties = Marshal.AllocHGlobal ((int)(size * pPropertyCount));
+				var refpProperties = new NativeReference ((int)(size * pPropertyCount));
+				var ptrpProperties = refpProperties.Handle;
 				result = Interop.NativeMethods.vkGetDisplayModePropertiesKHR (this.m, display != null ? display.m : default(UInt64), &pPropertyCount, (Interop.DisplayModePropertiesKhr*)ptrpProperties);
 				if (result != Result.Success)
 					throw new ResultException (result);
@@ -418,8 +443,10 @@ namespace Vulkan
 					return null;
 				var arr = new DisplayModePropertiesKhr [pPropertyCount];
 				for (int i = 0; i < pPropertyCount; i++) {
-					arr [i] = new DisplayModePropertiesKhr (&((Interop.DisplayModePropertiesKhr*)ptrpProperties) [i]);
+					arr [i] = new DisplayModePropertiesKhr (new NativePointer (refpProperties, (IntPtr)(&((Interop.DisplayModePropertiesKhr*)ptrpProperties) [i])));
 				}
+
+				refpProperties.Release ();
 
 				return arr;
 			}
@@ -496,7 +523,8 @@ namespace Vulkan
 					return null;
 
 				int size = Marshal.SizeOf (typeof (SurfaceFormatKhr));
-				var ptrpSurfaceFormats = Marshal.AllocHGlobal ((int)(size * pSurfaceFormatCount));
+				var refpSurfaceFormats = new NativeReference ((int)(size * pSurfaceFormatCount));
+				var ptrpSurfaceFormats = refpSurfaceFormats.Handle;
 				result = Interop.NativeMethods.vkGetPhysicalDeviceSurfaceFormatsKHR (this.m, surface != null ? surface.m : default(UInt64), &pSurfaceFormatCount, (SurfaceFormatKhr*)ptrpSurfaceFormats);
 				if (result != Result.Success)
 					throw new ResultException (result);
@@ -507,6 +535,8 @@ namespace Vulkan
 				for (int i = 0; i < pSurfaceFormatCount; i++) {
 					arr [i] = (((SurfaceFormatKhr*)ptrpSurfaceFormats) [i]);
 				}
+
+				refpSurfaceFormats.Release ();
 
 				return arr;
 			}
@@ -524,7 +554,8 @@ namespace Vulkan
 					return null;
 
 				int size = 4;
-				var ptrpPresentModes = Marshal.AllocHGlobal ((int)(size * pPresentModeCount));
+				var refpPresentModes = new NativeReference ((int)(size * pPresentModeCount));
+				var ptrpPresentModes = refpPresentModes.Handle;
 				result = Interop.NativeMethods.vkGetPhysicalDeviceSurfacePresentModesKHR (this.m, surface != null ? surface.m : default(UInt64), &pPresentModeCount, (PresentModeKhr*)ptrpPresentModes);
 				if (result != Result.Success)
 					throw new ResultException (result);
@@ -536,6 +567,8 @@ namespace Vulkan
 					arr [i] = new PresentModeKhr ();
 					arr [i] = ((PresentModeKhr*)ptrpPresentModes) [i];
 				}
+
+				refpPresentModes.Release ();
 
 				return arr;
 			}
@@ -765,7 +798,8 @@ namespace Vulkan
 					return null;
 
 				int size = Marshal.SizeOf (typeof (SparseImageMemoryRequirements));
-				var ptrpSparseMemoryRequirements = Marshal.AllocHGlobal ((int)(size * pSparseMemoryRequirementCount));
+				var refpSparseMemoryRequirements = new NativeReference ((int)(size * pSparseMemoryRequirementCount));
+				var ptrpSparseMemoryRequirements = refpSparseMemoryRequirements.Handle;
 				Interop.NativeMethods.vkGetImageSparseMemoryRequirements (this.m, image != null ? image.m : default(UInt64), &pSparseMemoryRequirementCount, (SparseImageMemoryRequirements*)ptrpSparseMemoryRequirements);
 
 				if (pSparseMemoryRequirementCount <= 0)
@@ -774,6 +808,8 @@ namespace Vulkan
 				for (int i = 0; i < pSparseMemoryRequirementCount; i++) {
 					arr [i] = (((SparseImageMemoryRequirements*)ptrpSparseMemoryRequirements) [i]);
 				}
+
+				refpSparseMemoryRequirements.Release ();
 
 				return arr;
 			}
@@ -1188,7 +1224,8 @@ namespace Vulkan
 					return null;
 
 				int size = Marshal.SizeOf (typeof (UInt64));
-				var ptrpPipelines = Marshal.AllocHGlobal ((int)(size * pCreateInfos.Length));
+				var refpPipelines = new NativeReference ((int)(size * pCreateInfos.Length));
+				var ptrpPipelines = refpPipelines.Handle;
 				var arraypCreateInfos = pCreateInfos == null ? IntPtr.Zero : Marshal.AllocHGlobal (pCreateInfos.Length*sizeof (Interop.GraphicsPipelineCreateInfo));
 				var lenpCreateInfos = pCreateInfos == null ? 0 : pCreateInfos.Length;
 				if (pCreateInfos != null)
@@ -1207,6 +1244,8 @@ namespace Vulkan
 					arr [i].m = ((UInt64*)ptrpPipelines) [i];
 				}
 
+				refpPipelines.Release ();
+
 				return arr;
 			}
 		}
@@ -1219,7 +1258,8 @@ namespace Vulkan
 					return null;
 
 				int size = Marshal.SizeOf (typeof (UInt64));
-				var ptrpPipelines = Marshal.AllocHGlobal ((int)(size * pCreateInfos.Length));
+				var refpPipelines = new NativeReference ((int)(size * pCreateInfos.Length));
+				var ptrpPipelines = refpPipelines.Handle;
 				var arraypCreateInfos = pCreateInfos == null ? IntPtr.Zero : Marshal.AllocHGlobal (pCreateInfos.Length*sizeof (Interop.ComputePipelineCreateInfo));
 				var lenpCreateInfos = pCreateInfos == null ? 0 : pCreateInfos.Length;
 				if (pCreateInfos != null)
@@ -1237,6 +1277,8 @@ namespace Vulkan
 					arr [i] = new Pipeline ();
 					arr [i].m = ((UInt64*)ptrpPipelines) [i];
 				}
+
+				refpPipelines.Release ();
 
 				return arr;
 			}
@@ -1363,7 +1405,8 @@ namespace Vulkan
 					return null;
 
 				int size = Marshal.SizeOf (typeof (UInt64));
-				var ptrpDescriptorSets = Marshal.AllocHGlobal ((int)(size * pAllocateInfo.DescriptorSetCount));
+				var refpDescriptorSets = new NativeReference ((int)(size * pAllocateInfo.DescriptorSetCount));
+				var ptrpDescriptorSets = refpDescriptorSets.Handle;
 				result = Interop.NativeMethods.vkAllocateDescriptorSets (this.m, pAllocateInfo != null ? pAllocateInfo.m : (Interop.DescriptorSetAllocateInfo*)default(IntPtr), (UInt64*)ptrpDescriptorSets);
 				if (result != Result.Success)
 					throw new ResultException (result);
@@ -1375,6 +1418,8 @@ namespace Vulkan
 					arr [i] = new DescriptorSet ();
 					arr [i].m = ((UInt64*)ptrpDescriptorSets) [i];
 				}
+
+				refpDescriptorSets.Release ();
 
 				return arr;
 			}
@@ -1535,7 +1580,8 @@ namespace Vulkan
 					return null;
 
 				int size = Marshal.SizeOf (typeof (IntPtr));
-				var ptrpCommandBuffers = Marshal.AllocHGlobal ((int)(size * pAllocateInfo.CommandBufferCount));
+				var refpCommandBuffers = new NativeReference ((int)(size * pAllocateInfo.CommandBufferCount));
+				var ptrpCommandBuffers = refpCommandBuffers.Handle;
 				result = Interop.NativeMethods.vkAllocateCommandBuffers (this.m, pAllocateInfo != null ? pAllocateInfo.m : (Interop.CommandBufferAllocateInfo*)default(IntPtr), (IntPtr*)ptrpCommandBuffers);
 				if (result != Result.Success)
 					throw new ResultException (result);
@@ -1547,6 +1593,8 @@ namespace Vulkan
 					arr [i] = new CommandBuffer ();
 					arr [i].m = ((IntPtr*)ptrpCommandBuffers) [i];
 				}
+
+				refpCommandBuffers.Release ();
 
 				return arr;
 			}
@@ -1582,7 +1630,8 @@ namespace Vulkan
 					return null;
 
 				int size = Marshal.SizeOf (typeof (UInt64));
-				var ptrpSwapchains = Marshal.AllocHGlobal ((int)(size * pCreateInfos.Length));
+				var refpSwapchains = new NativeReference ((int)(size * pCreateInfos.Length));
+				var ptrpSwapchains = refpSwapchains.Handle;
 				var arraypCreateInfos = pCreateInfos == null ? IntPtr.Zero : Marshal.AllocHGlobal (pCreateInfos.Length*sizeof (Interop.SwapchainCreateInfoKhr));
 				var lenpCreateInfos = pCreateInfos == null ? 0 : pCreateInfos.Length;
 				if (pCreateInfos != null)
@@ -1600,6 +1649,8 @@ namespace Vulkan
 					arr [i] = new SwapchainKhr ();
 					arr [i].m = ((UInt64*)ptrpSwapchains) [i];
 				}
+
+				refpSwapchains.Release ();
 
 				return arr;
 			}
@@ -1641,7 +1692,8 @@ namespace Vulkan
 					return null;
 
 				int size = Marshal.SizeOf (typeof (UInt64));
-				var ptrpSwapchainImages = Marshal.AllocHGlobal ((int)(size * pSwapchainImageCount));
+				var refpSwapchainImages = new NativeReference ((int)(size * pSwapchainImageCount));
+				var ptrpSwapchainImages = refpSwapchainImages.Handle;
 				result = Interop.NativeMethods.vkGetSwapchainImagesKHR (this.m, swapchain != null ? swapchain.m : default(UInt64), &pSwapchainImageCount, (UInt64*)ptrpSwapchainImages);
 				if (result != Result.Success)
 					throw new ResultException (result);
@@ -1653,6 +1705,8 @@ namespace Vulkan
 					arr [i] = new Image ();
 					arr [i].m = ((UInt64*)ptrpSwapchainImages) [i];
 				}
+
+				refpSwapchainImages.Release ();
 
 				return arr;
 			}

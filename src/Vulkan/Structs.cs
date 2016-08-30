@@ -76,7 +76,7 @@ namespace Vulkan
 		public ComponentSwizzle A;
 	}
 
-	unsafe public partial class PhysicalDeviceProperties : IMarshalling
+	unsafe public partial class PhysicalDeviceProperties : MarshalledObject
 	{
 		public UInt32 ApiVersion {
 			get { return m->ApiVersion; }
@@ -136,35 +136,34 @@ namespace Vulkan
 			get { return m->SparseProperties; }
 			set { m->SparseProperties = value; }
 		}
-		internal Interop.PhysicalDeviceProperties* m;
+		internal Interop.PhysicalDeviceProperties* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.PhysicalDeviceProperties*)native.Handle;
 			}
 		}
 
 		public PhysicalDeviceProperties ()
 		{
-			m = (Interop.PhysicalDeviceProperties*) Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceProperties));
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceProperties));
 			Initialize ();
 		}
 
-		internal PhysicalDeviceProperties (Interop.PhysicalDeviceProperties* ptr)
+		internal PhysicalDeviceProperties (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
 
 		internal void Initialize ()
 		{
-			lLimits = new PhysicalDeviceLimits (&m->Limits);
+			lLimits = new PhysicalDeviceLimits (new NativePointer (native.Reference, (IntPtr)(&m->Limits)));
 		}
 
 	}
 
-	unsafe public partial class ExtensionProperties : IMarshalling
+	unsafe public partial class ExtensionProperties : MarshalledObject
 	{
 		public string ExtensionName {
 			get { return Marshal.PtrToStringAnsi ((IntPtr)m->ExtensionName); }
@@ -175,27 +174,26 @@ namespace Vulkan
 			get { return m->SpecVersion; }
 			set { m->SpecVersion = value; }
 		}
-		internal Interop.ExtensionProperties* m;
+		internal Interop.ExtensionProperties* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.ExtensionProperties*)native.Handle;
 			}
 		}
 
 		public ExtensionProperties ()
 		{
-			m = (Interop.ExtensionProperties*) Interop.Structure.Allocate (typeof (Interop.ExtensionProperties));
+			native = Interop.Structure.Allocate (typeof (Interop.ExtensionProperties));
 		}
 
-		internal ExtensionProperties (Interop.ExtensionProperties* ptr)
+		internal ExtensionProperties (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 		}
 
 	}
 
-	unsafe public partial class LayerProperties : IMarshalling
+	unsafe public partial class LayerProperties : MarshalledObject
 	{
 		public string LayerName {
 			get { return Marshal.PtrToStringAnsi ((IntPtr)m->LayerName); }
@@ -216,27 +214,26 @@ namespace Vulkan
 			get { return Marshal.PtrToStringAnsi ((IntPtr)m->Description); }
 			set { Interop.Structure.MarshalFixedSizeString (m->Description, value, 256); }
 		}
-		internal Interop.LayerProperties* m;
+		internal Interop.LayerProperties* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.LayerProperties*)native.Handle;
 			}
 		}
 
 		public LayerProperties ()
 		{
-			m = (Interop.LayerProperties*) Interop.Structure.Allocate (typeof (Interop.LayerProperties));
+			native = Interop.Structure.Allocate (typeof (Interop.LayerProperties));
 		}
 
-		internal LayerProperties (Interop.LayerProperties* ptr)
+		internal LayerProperties (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 		}
 
 	}
 
-	unsafe public partial class ApplicationInfo : IMarshalling
+	unsafe public partial class ApplicationInfo : MarshalledObject
 	{
 		public string ApplicationName {
 			get { return Marshal.PtrToStringAnsi (m->ApplicationName); }
@@ -262,23 +259,22 @@ namespace Vulkan
 			get { return m->ApiVersion; }
 			set { m->ApiVersion = value; }
 		}
-		internal Interop.ApplicationInfo* m;
+		internal Interop.ApplicationInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.ApplicationInfo*)native.Handle;
 			}
 		}
 
 		public ApplicationInfo ()
 		{
-			m = (Interop.ApplicationInfo*) Interop.Structure.Allocate (typeof (Interop.ApplicationInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.ApplicationInfo));
 			Initialize ();
 		}
 
-		internal ApplicationInfo (Interop.ApplicationInfo* ptr)
+		internal ApplicationInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -290,7 +286,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class AllocationCallbacks : IMarshalling
+	unsafe public partial class AllocationCallbacks : MarshalledObject
 	{
 		public IntPtr UserData {
 			get { return m->UserData; }
@@ -321,27 +317,26 @@ namespace Vulkan
 			get { return m->PfnInternalFree; }
 			set { m->PfnInternalFree = value; }
 		}
-		internal Interop.AllocationCallbacks* m;
+		internal Interop.AllocationCallbacks* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.AllocationCallbacks*)native.Handle;
 			}
 		}
 
 		public AllocationCallbacks ()
 		{
-			m = (Interop.AllocationCallbacks*) Interop.Structure.Allocate (typeof (Interop.AllocationCallbacks));
+			native = Interop.Structure.Allocate (typeof (Interop.AllocationCallbacks));
 		}
 
-		internal AllocationCallbacks (Interop.AllocationCallbacks* ptr)
+		internal AllocationCallbacks (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 		}
 
 	}
 
-	unsafe public partial class DeviceQueueCreateInfo : IMarshalling
+	unsafe public partial class DeviceQueueCreateInfo : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -388,23 +383,22 @@ namespace Vulkan
 				}
 			}
 		}
-		internal Interop.DeviceQueueCreateInfo* m;
+		internal Interop.DeviceQueueCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.DeviceQueueCreateInfo*)native.Handle;
 			}
 		}
 
 		public DeviceQueueCreateInfo ()
 		{
-			m = (Interop.DeviceQueueCreateInfo*) Interop.Structure.Allocate (typeof (Interop.DeviceQueueCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.DeviceQueueCreateInfo));
 			Initialize ();
 		}
 
-		internal DeviceQueueCreateInfo (Interop.DeviceQueueCreateInfo* ptr)
+		internal DeviceQueueCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -416,7 +410,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DeviceCreateInfo : IMarshalling
+	unsafe public partial class DeviceCreateInfo : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -537,23 +531,22 @@ namespace Vulkan
 			get { return (PhysicalDeviceFeatures)Interop.Structure.MarshalPointerToObject (m->EnabledFeatures, typeof (PhysicalDeviceFeatures)); }
 			set { m->EnabledFeatures = Interop.Structure.MarshalObjectToPointer (m->EnabledFeatures, value); }
 		}
-		internal Interop.DeviceCreateInfo* m;
+		internal Interop.DeviceCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.DeviceCreateInfo*)native.Handle;
 			}
 		}
 
 		public DeviceCreateInfo ()
 		{
-			m = (Interop.DeviceCreateInfo*) Interop.Structure.Allocate (typeof (Interop.DeviceCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.DeviceCreateInfo));
 			Initialize ();
 		}
 
-		internal DeviceCreateInfo (Interop.DeviceCreateInfo* ptr)
+		internal DeviceCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -565,7 +558,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class InstanceCreateInfo : IMarshalling
+	unsafe public partial class InstanceCreateInfo : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -649,23 +642,22 @@ namespace Vulkan
 				}
 			}
 		}
-		internal Interop.InstanceCreateInfo* m;
+		internal Interop.InstanceCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.InstanceCreateInfo*)native.Handle;
 			}
 		}
 
 		public InstanceCreateInfo ()
 		{
-			m = (Interop.InstanceCreateInfo*) Interop.Structure.Allocate (typeof (Interop.InstanceCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.InstanceCreateInfo));
 			Initialize ();
 		}
 
-		internal InstanceCreateInfo (Interop.InstanceCreateInfo* ptr)
+		internal InstanceCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -685,7 +677,7 @@ namespace Vulkan
 		public Extent3D MinImageTransferGranularity;
 	}
 
-	unsafe public partial class PhysicalDeviceMemoryProperties : IMarshalling
+	unsafe public partial class PhysicalDeviceMemoryProperties : MarshalledObject
 	{
 		public UInt32 MemoryTypeCount {
 			get { return m->MemoryTypeCount; }
@@ -742,27 +734,26 @@ namespace Vulkan
 					}
 			}
 		}
-		internal Interop.PhysicalDeviceMemoryProperties* m;
+		internal Interop.PhysicalDeviceMemoryProperties* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.PhysicalDeviceMemoryProperties*)native.Handle;
 			}
 		}
 
 		public PhysicalDeviceMemoryProperties ()
 		{
-			m = (Interop.PhysicalDeviceMemoryProperties*) Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceMemoryProperties));
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceMemoryProperties));
 		}
 
-		internal PhysicalDeviceMemoryProperties (Interop.PhysicalDeviceMemoryProperties* ptr)
+		internal PhysicalDeviceMemoryProperties (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 		}
 
 	}
 
-	unsafe public partial class MemoryAllocateInfo : IMarshalling
+	unsafe public partial class MemoryAllocateInfo : MarshalledObject
 	{
 		public DeviceSize AllocationSize {
 			get { return m->AllocationSize; }
@@ -773,23 +764,22 @@ namespace Vulkan
 			get { return m->MemoryTypeIndex; }
 			set { m->MemoryTypeIndex = value; }
 		}
-		internal Interop.MemoryAllocateInfo* m;
+		internal Interop.MemoryAllocateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.MemoryAllocateInfo*)native.Handle;
 			}
 		}
 
 		public MemoryAllocateInfo ()
 		{
-			m = (Interop.MemoryAllocateInfo*) Interop.Structure.Allocate (typeof (Interop.MemoryAllocateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.MemoryAllocateInfo));
 			Initialize ();
 		}
 
-		internal MemoryAllocateInfo (Interop.MemoryAllocateInfo* ptr)
+		internal MemoryAllocateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -836,7 +826,7 @@ namespace Vulkan
 		public MemoryHeapFlags Flags;
 	}
 
-	unsafe public partial class MappedMemoryRange : IMarshalling
+	unsafe public partial class MappedMemoryRange : MarshalledObject
 	{
 		DeviceMemory lMemory;
 		public DeviceMemory Memory {
@@ -853,23 +843,22 @@ namespace Vulkan
 			get { return m->Size; }
 			set { m->Size = value; }
 		}
-		internal Interop.MappedMemoryRange* m;
+		internal Interop.MappedMemoryRange* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.MappedMemoryRange*)native.Handle;
 			}
 		}
 
 		public MappedMemoryRange ()
 		{
-			m = (Interop.MappedMemoryRange*) Interop.Structure.Allocate (typeof (Interop.MappedMemoryRange));
+			native = Interop.Structure.Allocate (typeof (Interop.MappedMemoryRange));
 			Initialize ();
 		}
 
-		internal MappedMemoryRange (Interop.MappedMemoryRange* ptr)
+		internal MappedMemoryRange (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -897,7 +886,7 @@ namespace Vulkan
 		public DeviceSize MaxResourceSize;
 	}
 
-	unsafe public partial class DescriptorBufferInfo : IMarshalling
+	unsafe public partial class DescriptorBufferInfo : MarshalledObject
 	{
 		Buffer lBuffer;
 		public Buffer Buffer {
@@ -914,23 +903,22 @@ namespace Vulkan
 			get { return m->Range; }
 			set { m->Range = value; }
 		}
-		internal Interop.DescriptorBufferInfo* m;
+		internal Interop.DescriptorBufferInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.DescriptorBufferInfo*)native.Handle;
 			}
 		}
 
 		public DescriptorBufferInfo ()
 		{
-			m = (Interop.DescriptorBufferInfo*) Interop.Structure.Allocate (typeof (Interop.DescriptorBufferInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.DescriptorBufferInfo));
 			Initialize ();
 		}
 
-		internal DescriptorBufferInfo (Interop.DescriptorBufferInfo* ptr)
+		internal DescriptorBufferInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -941,7 +929,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DescriptorImageInfo : IMarshalling
+	unsafe public partial class DescriptorImageInfo : MarshalledObject
 	{
 		Sampler lSampler;
 		public Sampler Sampler {
@@ -959,23 +947,22 @@ namespace Vulkan
 			get { return m->ImageLayout; }
 			set { m->ImageLayout = value; }
 		}
-		internal Interop.DescriptorImageInfo* m;
+		internal Interop.DescriptorImageInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.DescriptorImageInfo*)native.Handle;
 			}
 		}
 
 		public DescriptorImageInfo ()
 		{
-			m = (Interop.DescriptorImageInfo*) Interop.Structure.Allocate (typeof (Interop.DescriptorImageInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.DescriptorImageInfo));
 			Initialize ();
 		}
 
-		internal DescriptorImageInfo (Interop.DescriptorImageInfo* ptr)
+		internal DescriptorImageInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -986,7 +973,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class WriteDescriptorSet : IMarshalling
+	unsafe public partial class WriteDescriptorSet : MarshalledObject
 	{
 		DescriptorSet lDstSet;
 		public DescriptorSet DstSet {
@@ -1112,23 +1099,22 @@ namespace Vulkan
 				}
 			}
 		}
-		internal Interop.WriteDescriptorSet* m;
+		internal Interop.WriteDescriptorSet* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.WriteDescriptorSet*)native.Handle;
 			}
 		}
 
 		public WriteDescriptorSet ()
 		{
-			m = (Interop.WriteDescriptorSet*) Interop.Structure.Allocate (typeof (Interop.WriteDescriptorSet));
+			native = Interop.Structure.Allocate (typeof (Interop.WriteDescriptorSet));
 			Initialize ();
 		}
 
-		internal WriteDescriptorSet (Interop.WriteDescriptorSet* ptr)
+		internal WriteDescriptorSet (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -1140,7 +1126,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class CopyDescriptorSet : IMarshalling
+	unsafe public partial class CopyDescriptorSet : MarshalledObject
 	{
 		DescriptorSet lSrcSet;
 		public DescriptorSet SrcSet {
@@ -1178,23 +1164,22 @@ namespace Vulkan
 			get { return m->DescriptorCount; }
 			set { m->DescriptorCount = value; }
 		}
-		internal Interop.CopyDescriptorSet* m;
+		internal Interop.CopyDescriptorSet* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.CopyDescriptorSet*)native.Handle;
 			}
 		}
 
 		public CopyDescriptorSet ()
 		{
-			m = (Interop.CopyDescriptorSet*) Interop.Structure.Allocate (typeof (Interop.CopyDescriptorSet));
+			native = Interop.Structure.Allocate (typeof (Interop.CopyDescriptorSet));
 			Initialize ();
 		}
 
-		internal CopyDescriptorSet (Interop.CopyDescriptorSet* ptr)
+		internal CopyDescriptorSet (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -1206,7 +1191,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class BufferCreateInfo : IMarshalling
+	unsafe public partial class BufferCreateInfo : MarshalledObject
 	{
 		public BufferCreateFlags Flags {
 			get { return m->Flags; }
@@ -1263,23 +1248,22 @@ namespace Vulkan
 				}
 			}
 		}
-		internal Interop.BufferCreateInfo* m;
+		internal Interop.BufferCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.BufferCreateInfo*)native.Handle;
 			}
 		}
 
 		public BufferCreateInfo ()
 		{
-			m = (Interop.BufferCreateInfo*) Interop.Structure.Allocate (typeof (Interop.BufferCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.BufferCreateInfo));
 			Initialize ();
 		}
 
-		internal BufferCreateInfo (Interop.BufferCreateInfo* ptr)
+		internal BufferCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -1291,7 +1275,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class BufferViewCreateInfo : IMarshalling
+	unsafe public partial class BufferViewCreateInfo : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -1318,23 +1302,22 @@ namespace Vulkan
 			get { return m->Range; }
 			set { m->Range = value; }
 		}
-		internal Interop.BufferViewCreateInfo* m;
+		internal Interop.BufferViewCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.BufferViewCreateInfo*)native.Handle;
 			}
 		}
 
 		public BufferViewCreateInfo ()
 		{
-			m = (Interop.BufferViewCreateInfo*) Interop.Structure.Allocate (typeof (Interop.BufferViewCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.BufferViewCreateInfo));
 			Initialize ();
 		}
 
-		internal BufferViewCreateInfo (Interop.BufferViewCreateInfo* ptr)
+		internal BufferViewCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -1370,7 +1353,7 @@ namespace Vulkan
 		public UInt32 LayerCount;
 	}
 
-	unsafe public partial class MemoryBarrier : IMarshalling
+	unsafe public partial class MemoryBarrier : MarshalledObject
 	{
 		public AccessFlags SrcAccessMask {
 			get { return m->SrcAccessMask; }
@@ -1381,23 +1364,22 @@ namespace Vulkan
 			get { return m->DstAccessMask; }
 			set { m->DstAccessMask = value; }
 		}
-		internal Interop.MemoryBarrier* m;
+		internal Interop.MemoryBarrier* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.MemoryBarrier*)native.Handle;
 			}
 		}
 
 		public MemoryBarrier ()
 		{
-			m = (Interop.MemoryBarrier*) Interop.Structure.Allocate (typeof (Interop.MemoryBarrier));
+			native = Interop.Structure.Allocate (typeof (Interop.MemoryBarrier));
 			Initialize ();
 		}
 
-		internal MemoryBarrier (Interop.MemoryBarrier* ptr)
+		internal MemoryBarrier (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -1409,7 +1391,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class BufferMemoryBarrier : IMarshalling
+	unsafe public partial class BufferMemoryBarrier : MarshalledObject
 	{
 		public AccessFlags SrcAccessMask {
 			get { return m->SrcAccessMask; }
@@ -1446,23 +1428,22 @@ namespace Vulkan
 			get { return m->Size; }
 			set { m->Size = value; }
 		}
-		internal Interop.BufferMemoryBarrier* m;
+		internal Interop.BufferMemoryBarrier* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.BufferMemoryBarrier*)native.Handle;
 			}
 		}
 
 		public BufferMemoryBarrier ()
 		{
-			m = (Interop.BufferMemoryBarrier*) Interop.Structure.Allocate (typeof (Interop.BufferMemoryBarrier));
+			native = Interop.Structure.Allocate (typeof (Interop.BufferMemoryBarrier));
 			Initialize ();
 		}
 
-		internal BufferMemoryBarrier (Interop.BufferMemoryBarrier* ptr)
+		internal BufferMemoryBarrier (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -1474,7 +1455,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class ImageMemoryBarrier : IMarshalling
+	unsafe public partial class ImageMemoryBarrier : MarshalledObject
 	{
 		public AccessFlags SrcAccessMask {
 			get { return m->SrcAccessMask; }
@@ -1516,23 +1497,22 @@ namespace Vulkan
 			get { return m->SubresourceRange; }
 			set { m->SubresourceRange = value; }
 		}
-		internal Interop.ImageMemoryBarrier* m;
+		internal Interop.ImageMemoryBarrier* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.ImageMemoryBarrier*)native.Handle;
 			}
 		}
 
 		public ImageMemoryBarrier ()
 		{
-			m = (Interop.ImageMemoryBarrier*) Interop.Structure.Allocate (typeof (Interop.ImageMemoryBarrier));
+			native = Interop.Structure.Allocate (typeof (Interop.ImageMemoryBarrier));
 			Initialize ();
 		}
 
-		internal ImageMemoryBarrier (Interop.ImageMemoryBarrier* ptr)
+		internal ImageMemoryBarrier (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -1544,7 +1524,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class ImageCreateInfo : IMarshalling
+	unsafe public partial class ImageCreateInfo : MarshalledObject
 	{
 		public ImageCreateFlags Flags {
 			get { return m->Flags; }
@@ -1636,23 +1616,22 @@ namespace Vulkan
 			get { return m->InitialLayout; }
 			set { m->InitialLayout = value; }
 		}
-		internal Interop.ImageCreateInfo* m;
+		internal Interop.ImageCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.ImageCreateInfo*)native.Handle;
 			}
 		}
 
 		public ImageCreateInfo ()
 		{
-			m = (Interop.ImageCreateInfo*) Interop.Structure.Allocate (typeof (Interop.ImageCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.ImageCreateInfo));
 			Initialize ();
 		}
 
-		internal ImageCreateInfo (Interop.ImageCreateInfo* ptr)
+		internal ImageCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -1673,7 +1652,7 @@ namespace Vulkan
 		public DeviceSize DepthPitch;
 	}
 
-	unsafe public partial class ImageViewCreateInfo : IMarshalling
+	unsafe public partial class ImageViewCreateInfo : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -1705,23 +1684,22 @@ namespace Vulkan
 			get { return m->SubresourceRange; }
 			set { m->SubresourceRange = value; }
 		}
-		internal Interop.ImageViewCreateInfo* m;
+		internal Interop.ImageViewCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.ImageViewCreateInfo*)native.Handle;
 			}
 		}
 
 		public ImageViewCreateInfo ()
 		{
-			m = (Interop.ImageViewCreateInfo*) Interop.Structure.Allocate (typeof (Interop.ImageViewCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.ImageViewCreateInfo));
 			Initialize ();
 		}
 
-		internal ImageViewCreateInfo (Interop.ImageViewCreateInfo* ptr)
+		internal ImageViewCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -1740,7 +1718,7 @@ namespace Vulkan
 		public DeviceSize Size;
 	}
 
-	unsafe public partial class SparseMemoryBind : IMarshalling
+	unsafe public partial class SparseMemoryBind : MarshalledObject
 	{
 		public DeviceSize ResourceOffset {
 			get { return m->ResourceOffset; }
@@ -1767,23 +1745,22 @@ namespace Vulkan
 			get { return m->Flags; }
 			set { m->Flags = value; }
 		}
-		internal Interop.SparseMemoryBind* m;
+		internal Interop.SparseMemoryBind* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.SparseMemoryBind*)native.Handle;
 			}
 		}
 
 		public SparseMemoryBind ()
 		{
-			m = (Interop.SparseMemoryBind*) Interop.Structure.Allocate (typeof (Interop.SparseMemoryBind));
+			native = Interop.Structure.Allocate (typeof (Interop.SparseMemoryBind));
 			Initialize ();
 		}
 
-		internal SparseMemoryBind (Interop.SparseMemoryBind* ptr)
+		internal SparseMemoryBind (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -1794,7 +1771,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class SparseImageMemoryBind : IMarshalling
+	unsafe public partial class SparseImageMemoryBind : MarshalledObject
 	{
 		public ImageSubresource Subresource {
 			get { return m->Subresource; }
@@ -1826,23 +1803,22 @@ namespace Vulkan
 			get { return m->Flags; }
 			set { m->Flags = value; }
 		}
-		internal Interop.SparseImageMemoryBind* m;
+		internal Interop.SparseImageMemoryBind* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.SparseImageMemoryBind*)native.Handle;
 			}
 		}
 
 		public SparseImageMemoryBind ()
 		{
-			m = (Interop.SparseImageMemoryBind*) Interop.Structure.Allocate (typeof (Interop.SparseImageMemoryBind));
+			native = Interop.Structure.Allocate (typeof (Interop.SparseImageMemoryBind));
 			Initialize ();
 		}
 
-		internal SparseImageMemoryBind (Interop.SparseImageMemoryBind* ptr)
+		internal SparseImageMemoryBind (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -1853,7 +1829,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class SparseBufferMemoryBindInfo : IMarshalling
+	unsafe public partial class SparseBufferMemoryBindInfo : MarshalledObject
 	{
 		Buffer lBuffer;
 		public Buffer Buffer {
@@ -1898,23 +1874,22 @@ namespace Vulkan
 				}
 			}
 		}
-		internal Interop.SparseBufferMemoryBindInfo* m;
+		internal Interop.SparseBufferMemoryBindInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.SparseBufferMemoryBindInfo*)native.Handle;
 			}
 		}
 
 		public SparseBufferMemoryBindInfo ()
 		{
-			m = (Interop.SparseBufferMemoryBindInfo*) Interop.Structure.Allocate (typeof (Interop.SparseBufferMemoryBindInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.SparseBufferMemoryBindInfo));
 			Initialize ();
 		}
 
-		internal SparseBufferMemoryBindInfo (Interop.SparseBufferMemoryBindInfo* ptr)
+		internal SparseBufferMemoryBindInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -1925,7 +1900,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class SparseImageOpaqueMemoryBindInfo : IMarshalling
+	unsafe public partial class SparseImageOpaqueMemoryBindInfo : MarshalledObject
 	{
 		Image lImage;
 		public Image Image {
@@ -1970,23 +1945,22 @@ namespace Vulkan
 				}
 			}
 		}
-		internal Interop.SparseImageOpaqueMemoryBindInfo* m;
+		internal Interop.SparseImageOpaqueMemoryBindInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.SparseImageOpaqueMemoryBindInfo*)native.Handle;
 			}
 		}
 
 		public SparseImageOpaqueMemoryBindInfo ()
 		{
-			m = (Interop.SparseImageOpaqueMemoryBindInfo*) Interop.Structure.Allocate (typeof (Interop.SparseImageOpaqueMemoryBindInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.SparseImageOpaqueMemoryBindInfo));
 			Initialize ();
 		}
 
-		internal SparseImageOpaqueMemoryBindInfo (Interop.SparseImageOpaqueMemoryBindInfo* ptr)
+		internal SparseImageOpaqueMemoryBindInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -1997,7 +1971,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class SparseImageMemoryBindInfo : IMarshalling
+	unsafe public partial class SparseImageMemoryBindInfo : MarshalledObject
 	{
 		Image lImage;
 		public Image Image {
@@ -2042,23 +2016,22 @@ namespace Vulkan
 				}
 			}
 		}
-		internal Interop.SparseImageMemoryBindInfo* m;
+		internal Interop.SparseImageMemoryBindInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.SparseImageMemoryBindInfo*)native.Handle;
 			}
 		}
 
 		public SparseImageMemoryBindInfo ()
 		{
-			m = (Interop.SparseImageMemoryBindInfo*) Interop.Structure.Allocate (typeof (Interop.SparseImageMemoryBindInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.SparseImageMemoryBindInfo));
 			Initialize ();
 		}
 
-		internal SparseImageMemoryBindInfo (Interop.SparseImageMemoryBindInfo* ptr)
+		internal SparseImageMemoryBindInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -2069,7 +2042,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class BindSparseInfo : IMarshalling
+	unsafe public partial class BindSparseInfo : MarshalledObject
 	{
 		public UInt32 WaitSemaphoreCount {
 			get { return m->WaitSemaphoreCount; }
@@ -2260,23 +2233,22 @@ namespace Vulkan
 				}
 			}
 		}
-		internal Interop.BindSparseInfo* m;
+		internal Interop.BindSparseInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.BindSparseInfo*)native.Handle;
 			}
 		}
 
 		public BindSparseInfo ()
 		{
-			m = (Interop.BindSparseInfo*) Interop.Structure.Allocate (typeof (Interop.BindSparseInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.BindSparseInfo));
 			Initialize ();
 		}
 
-		internal BindSparseInfo (Interop.BindSparseInfo* ptr)
+		internal BindSparseInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -2297,7 +2269,7 @@ namespace Vulkan
 		public Extent3D Extent;
 	}
 
-	unsafe public partial class ImageBlit : IMarshalling
+	unsafe public partial class ImageBlit : MarshalledObject
 	{
 		public ImageSubresourceLayers SrcSubresource {
 			get { return m->SrcSubresource; }
@@ -2352,22 +2324,21 @@ namespace Vulkan
 					}
 			}
 		}
-		internal Interop.ImageBlit* m;
+		internal Interop.ImageBlit* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.ImageBlit*)native.Handle;
 			}
 		}
 
 		public ImageBlit ()
 		{
-			m = (Interop.ImageBlit*) Interop.Structure.Allocate (typeof (Interop.ImageBlit));
+			native = Interop.Structure.Allocate (typeof (Interop.ImageBlit));
 		}
 
-		internal ImageBlit (Interop.ImageBlit* ptr)
+		internal ImageBlit (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 		}
 
 	}
@@ -2391,7 +2362,7 @@ namespace Vulkan
 		public Extent3D Extent;
 	}
 
-	unsafe public partial class ShaderModuleCreateInfo : IMarshalling
+	unsafe public partial class ShaderModuleCreateInfo : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -2433,23 +2404,22 @@ namespace Vulkan
 				}
 			}
 		}
-		internal Interop.ShaderModuleCreateInfo* m;
+		internal Interop.ShaderModuleCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.ShaderModuleCreateInfo*)native.Handle;
 			}
 		}
 
 		public ShaderModuleCreateInfo ()
 		{
-			m = (Interop.ShaderModuleCreateInfo*) Interop.Structure.Allocate (typeof (Interop.ShaderModuleCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.ShaderModuleCreateInfo));
 			Initialize ();
 		}
 
-		internal ShaderModuleCreateInfo (Interop.ShaderModuleCreateInfo* ptr)
+		internal ShaderModuleCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -2461,7 +2431,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DescriptorSetLayoutBinding : IMarshalling
+	unsafe public partial class DescriptorSetLayoutBinding : MarshalledObject
 	{
 		public UInt32 Binding {
 			get { return m->Binding; }
@@ -2515,27 +2485,26 @@ namespace Vulkan
 				}
 			}
 		}
-		internal Interop.DescriptorSetLayoutBinding* m;
+		internal Interop.DescriptorSetLayoutBinding* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.DescriptorSetLayoutBinding*)native.Handle;
 			}
 		}
 
 		public DescriptorSetLayoutBinding ()
 		{
-			m = (Interop.DescriptorSetLayoutBinding*) Interop.Structure.Allocate (typeof (Interop.DescriptorSetLayoutBinding));
+			native = Interop.Structure.Allocate (typeof (Interop.DescriptorSetLayoutBinding));
 		}
 
-		internal DescriptorSetLayoutBinding (Interop.DescriptorSetLayoutBinding* ptr)
+		internal DescriptorSetLayoutBinding (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 		}
 
 	}
 
-	unsafe public partial class DescriptorSetLayoutCreateInfo : IMarshalling
+	unsafe public partial class DescriptorSetLayoutCreateInfo : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -2579,23 +2548,22 @@ namespace Vulkan
 				}
 			}
 		}
-		internal Interop.DescriptorSetLayoutCreateInfo* m;
+		internal Interop.DescriptorSetLayoutCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.DescriptorSetLayoutCreateInfo*)native.Handle;
 			}
 		}
 
 		public DescriptorSetLayoutCreateInfo ()
 		{
-			m = (Interop.DescriptorSetLayoutCreateInfo*) Interop.Structure.Allocate (typeof (Interop.DescriptorSetLayoutCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.DescriptorSetLayoutCreateInfo));
 			Initialize ();
 		}
 
-		internal DescriptorSetLayoutCreateInfo (Interop.DescriptorSetLayoutCreateInfo* ptr)
+		internal DescriptorSetLayoutCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -2613,7 +2581,7 @@ namespace Vulkan
 		public UInt32 DescriptorCount;
 	}
 
-	unsafe public partial class DescriptorPoolCreateInfo : IMarshalling
+	unsafe public partial class DescriptorPoolCreateInfo : MarshalledObject
 	{
 		public DescriptorPoolCreateFlags Flags {
 			get { return m->Flags; }
@@ -2660,23 +2628,22 @@ namespace Vulkan
 				}
 			}
 		}
-		internal Interop.DescriptorPoolCreateInfo* m;
+		internal Interop.DescriptorPoolCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.DescriptorPoolCreateInfo*)native.Handle;
 			}
 		}
 
 		public DescriptorPoolCreateInfo ()
 		{
-			m = (Interop.DescriptorPoolCreateInfo*) Interop.Structure.Allocate (typeof (Interop.DescriptorPoolCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.DescriptorPoolCreateInfo));
 			Initialize ();
 		}
 
-		internal DescriptorPoolCreateInfo (Interop.DescriptorPoolCreateInfo* ptr)
+		internal DescriptorPoolCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -2688,7 +2655,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DescriptorSetAllocateInfo : IMarshalling
+	unsafe public partial class DescriptorSetAllocateInfo : MarshalledObject
 	{
 		DescriptorPool lDescriptorPool;
 		public DescriptorPool DescriptorPool {
@@ -2733,23 +2700,22 @@ namespace Vulkan
 				}
 			}
 		}
-		internal Interop.DescriptorSetAllocateInfo* m;
+		internal Interop.DescriptorSetAllocateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.DescriptorSetAllocateInfo*)native.Handle;
 			}
 		}
 
 		public DescriptorSetAllocateInfo ()
 		{
-			m = (Interop.DescriptorSetAllocateInfo*) Interop.Structure.Allocate (typeof (Interop.DescriptorSetAllocateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.DescriptorSetAllocateInfo));
 			Initialize ();
 		}
 
-		internal DescriptorSetAllocateInfo (Interop.DescriptorSetAllocateInfo* ptr)
+		internal DescriptorSetAllocateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -2768,7 +2734,7 @@ namespace Vulkan
 		public UIntPtr Size;
 	}
 
-	unsafe public partial class SpecializationInfo : IMarshalling
+	unsafe public partial class SpecializationInfo : MarshalledObject
 	{
 		public UInt32 MapEntryCount {
 			get { return m->MapEntryCount; }
@@ -2815,27 +2781,26 @@ namespace Vulkan
 			get { return m->Data; }
 			set { m->Data = value; }
 		}
-		internal Interop.SpecializationInfo* m;
+		internal Interop.SpecializationInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.SpecializationInfo*)native.Handle;
 			}
 		}
 
 		public SpecializationInfo ()
 		{
-			m = (Interop.SpecializationInfo*) Interop.Structure.Allocate (typeof (Interop.SpecializationInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.SpecializationInfo));
 		}
 
-		internal SpecializationInfo (Interop.SpecializationInfo* ptr)
+		internal SpecializationInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 		}
 
 	}
 
-	unsafe public partial class PipelineShaderStageCreateInfo : IMarshalling
+	unsafe public partial class PipelineShaderStageCreateInfo : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -2863,23 +2828,22 @@ namespace Vulkan
 			get { return lSpecializationInfo; }
 			set { lSpecializationInfo = value; m->SpecializationInfo = value != null ? (IntPtr)value.m : default(IntPtr); }
 		}
-		internal Interop.PipelineShaderStageCreateInfo* m;
+		internal Interop.PipelineShaderStageCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.PipelineShaderStageCreateInfo*)native.Handle;
 			}
 		}
 
 		public PipelineShaderStageCreateInfo ()
 		{
-			m = (Interop.PipelineShaderStageCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineShaderStageCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.PipelineShaderStageCreateInfo));
 			Initialize ();
 		}
 
-		internal PipelineShaderStageCreateInfo (Interop.PipelineShaderStageCreateInfo* ptr)
+		internal PipelineShaderStageCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -2891,7 +2855,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class ComputePipelineCreateInfo : IMarshalling
+	unsafe public partial class ComputePipelineCreateInfo : MarshalledObject
 	{
 		public PipelineCreateFlags Flags {
 			get { return m->Flags; }
@@ -2920,23 +2884,22 @@ namespace Vulkan
 			get { return m->BasePipelineIndex; }
 			set { m->BasePipelineIndex = value; }
 		}
-		internal Interop.ComputePipelineCreateInfo* m;
+		internal Interop.ComputePipelineCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.ComputePipelineCreateInfo*)native.Handle;
 			}
 		}
 
 		public ComputePipelineCreateInfo ()
 		{
-			m = (Interop.ComputePipelineCreateInfo*) Interop.Structure.Allocate (typeof (Interop.ComputePipelineCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.ComputePipelineCreateInfo));
 			Initialize ();
 		}
 
-		internal ComputePipelineCreateInfo (Interop.ComputePipelineCreateInfo* ptr)
+		internal ComputePipelineCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -2944,7 +2907,7 @@ namespace Vulkan
 		internal void Initialize ()
 		{
 			m->SType = StructureType.ComputePipelineCreateInfo;
-			lStage = new PipelineShaderStageCreateInfo (&m->Stage);
+			lStage = new PipelineShaderStageCreateInfo (new NativePointer (native.Reference, (IntPtr)(&m->Stage)));
 		}
 
 	}
@@ -2964,7 +2927,7 @@ namespace Vulkan
 		public UInt32 Offset;
 	}
 
-	unsafe public partial class PipelineVertexInputStateCreateInfo : IMarshalling
+	unsafe public partial class PipelineVertexInputStateCreateInfo : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -3042,23 +3005,22 @@ namespace Vulkan
 				}
 			}
 		}
-		internal Interop.PipelineVertexInputStateCreateInfo* m;
+		internal Interop.PipelineVertexInputStateCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.PipelineVertexInputStateCreateInfo*)native.Handle;
 			}
 		}
 
 		public PipelineVertexInputStateCreateInfo ()
 		{
-			m = (Interop.PipelineVertexInputStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineVertexInputStateCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.PipelineVertexInputStateCreateInfo));
 			Initialize ();
 		}
 
-		internal PipelineVertexInputStateCreateInfo (Interop.PipelineVertexInputStateCreateInfo* ptr)
+		internal PipelineVertexInputStateCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -3070,7 +3032,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class PipelineInputAssemblyStateCreateInfo : IMarshalling
+	unsafe public partial class PipelineInputAssemblyStateCreateInfo : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -3086,23 +3048,22 @@ namespace Vulkan
 			get { return m->PrimitiveRestartEnable; }
 			set { m->PrimitiveRestartEnable = value; }
 		}
-		internal Interop.PipelineInputAssemblyStateCreateInfo* m;
+		internal Interop.PipelineInputAssemblyStateCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.PipelineInputAssemblyStateCreateInfo*)native.Handle;
 			}
 		}
 
 		public PipelineInputAssemblyStateCreateInfo ()
 		{
-			m = (Interop.PipelineInputAssemblyStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineInputAssemblyStateCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.PipelineInputAssemblyStateCreateInfo));
 			Initialize ();
 		}
 
-		internal PipelineInputAssemblyStateCreateInfo (Interop.PipelineInputAssemblyStateCreateInfo* ptr)
+		internal PipelineInputAssemblyStateCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -3114,7 +3075,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class PipelineTessellationStateCreateInfo : IMarshalling
+	unsafe public partial class PipelineTessellationStateCreateInfo : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -3125,23 +3086,22 @@ namespace Vulkan
 			get { return m->PatchControlPoints; }
 			set { m->PatchControlPoints = value; }
 		}
-		internal Interop.PipelineTessellationStateCreateInfo* m;
+		internal Interop.PipelineTessellationStateCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.PipelineTessellationStateCreateInfo*)native.Handle;
 			}
 		}
 
 		public PipelineTessellationStateCreateInfo ()
 		{
-			m = (Interop.PipelineTessellationStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineTessellationStateCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.PipelineTessellationStateCreateInfo));
 			Initialize ();
 		}
 
-		internal PipelineTessellationStateCreateInfo (Interop.PipelineTessellationStateCreateInfo* ptr)
+		internal PipelineTessellationStateCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -3153,7 +3113,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class PipelineViewportStateCreateInfo : IMarshalling
+	unsafe public partial class PipelineViewportStateCreateInfo : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -3231,23 +3191,22 @@ namespace Vulkan
 				}
 			}
 		}
-		internal Interop.PipelineViewportStateCreateInfo* m;
+		internal Interop.PipelineViewportStateCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.PipelineViewportStateCreateInfo*)native.Handle;
 			}
 		}
 
 		public PipelineViewportStateCreateInfo ()
 		{
-			m = (Interop.PipelineViewportStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineViewportStateCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.PipelineViewportStateCreateInfo));
 			Initialize ();
 		}
 
-		internal PipelineViewportStateCreateInfo (Interop.PipelineViewportStateCreateInfo* ptr)
+		internal PipelineViewportStateCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -3259,7 +3218,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class PipelineRasterizationStateCreateInfo : IMarshalling
+	unsafe public partial class PipelineRasterizationStateCreateInfo : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -3315,23 +3274,22 @@ namespace Vulkan
 			get { return m->LineWidth; }
 			set { m->LineWidth = value; }
 		}
-		internal Interop.PipelineRasterizationStateCreateInfo* m;
+		internal Interop.PipelineRasterizationStateCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.PipelineRasterizationStateCreateInfo*)native.Handle;
 			}
 		}
 
 		public PipelineRasterizationStateCreateInfo ()
 		{
-			m = (Interop.PipelineRasterizationStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineRasterizationStateCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.PipelineRasterizationStateCreateInfo));
 			Initialize ();
 		}
 
-		internal PipelineRasterizationStateCreateInfo (Interop.PipelineRasterizationStateCreateInfo* ptr)
+		internal PipelineRasterizationStateCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -3343,7 +3301,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class PipelineMultisampleStateCreateInfo : IMarshalling
+	unsafe public partial class PipelineMultisampleStateCreateInfo : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -3405,23 +3363,22 @@ namespace Vulkan
 			get { return m->AlphaToOneEnable; }
 			set { m->AlphaToOneEnable = value; }
 		}
-		internal Interop.PipelineMultisampleStateCreateInfo* m;
+		internal Interop.PipelineMultisampleStateCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.PipelineMultisampleStateCreateInfo*)native.Handle;
 			}
 		}
 
 		public PipelineMultisampleStateCreateInfo ()
 		{
-			m = (Interop.PipelineMultisampleStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineMultisampleStateCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.PipelineMultisampleStateCreateInfo));
 			Initialize ();
 		}
 
-		internal PipelineMultisampleStateCreateInfo (Interop.PipelineMultisampleStateCreateInfo* ptr)
+		internal PipelineMultisampleStateCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -3445,7 +3402,7 @@ namespace Vulkan
 		public ColorComponentFlags ColorWriteMask;
 	}
 
-	unsafe public partial class PipelineColorBlendStateCreateInfo : IMarshalling
+	unsafe public partial class PipelineColorBlendStateCreateInfo : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -3515,23 +3472,22 @@ namespace Vulkan
 					m->BlendConstants [i] = 0;
 			}
 		}
-		internal Interop.PipelineColorBlendStateCreateInfo* m;
+		internal Interop.PipelineColorBlendStateCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.PipelineColorBlendStateCreateInfo*)native.Handle;
 			}
 		}
 
 		public PipelineColorBlendStateCreateInfo ()
 		{
-			m = (Interop.PipelineColorBlendStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineColorBlendStateCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.PipelineColorBlendStateCreateInfo));
 			Initialize ();
 		}
 
-		internal PipelineColorBlendStateCreateInfo (Interop.PipelineColorBlendStateCreateInfo* ptr)
+		internal PipelineColorBlendStateCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -3543,7 +3499,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class PipelineDynamicStateCreateInfo : IMarshalling
+	unsafe public partial class PipelineDynamicStateCreateInfo : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -3585,23 +3541,22 @@ namespace Vulkan
 				}
 			}
 		}
-		internal Interop.PipelineDynamicStateCreateInfo* m;
+		internal Interop.PipelineDynamicStateCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.PipelineDynamicStateCreateInfo*)native.Handle;
 			}
 		}
 
 		public PipelineDynamicStateCreateInfo ()
 		{
-			m = (Interop.PipelineDynamicStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineDynamicStateCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.PipelineDynamicStateCreateInfo));
 			Initialize ();
 		}
 
-		internal PipelineDynamicStateCreateInfo (Interop.PipelineDynamicStateCreateInfo* ptr)
+		internal PipelineDynamicStateCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -3624,7 +3579,7 @@ namespace Vulkan
 		public UInt32 Reference;
 	}
 
-	unsafe public partial class PipelineDepthStencilStateCreateInfo : IMarshalling
+	unsafe public partial class PipelineDepthStencilStateCreateInfo : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -3675,23 +3630,22 @@ namespace Vulkan
 			get { return m->MaxDepthBounds; }
 			set { m->MaxDepthBounds = value; }
 		}
-		internal Interop.PipelineDepthStencilStateCreateInfo* m;
+		internal Interop.PipelineDepthStencilStateCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.PipelineDepthStencilStateCreateInfo*)native.Handle;
 			}
 		}
 
 		public PipelineDepthStencilStateCreateInfo ()
 		{
-			m = (Interop.PipelineDepthStencilStateCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineDepthStencilStateCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.PipelineDepthStencilStateCreateInfo));
 			Initialize ();
 		}
 
-		internal PipelineDepthStencilStateCreateInfo (Interop.PipelineDepthStencilStateCreateInfo* ptr)
+		internal PipelineDepthStencilStateCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -3703,7 +3657,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class GraphicsPipelineCreateInfo : IMarshalling
+	unsafe public partial class GraphicsPipelineCreateInfo : MarshalledObject
 	{
 		public PipelineCreateFlags Flags {
 			get { return m->Flags; }
@@ -3829,23 +3783,22 @@ namespace Vulkan
 			get { return m->BasePipelineIndex; }
 			set { m->BasePipelineIndex = value; }
 		}
-		internal Interop.GraphicsPipelineCreateInfo* m;
+		internal Interop.GraphicsPipelineCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.GraphicsPipelineCreateInfo*)native.Handle;
 			}
 		}
 
 		public GraphicsPipelineCreateInfo ()
 		{
-			m = (Interop.GraphicsPipelineCreateInfo*) Interop.Structure.Allocate (typeof (Interop.GraphicsPipelineCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.GraphicsPipelineCreateInfo));
 			Initialize ();
 		}
 
-		internal GraphicsPipelineCreateInfo (Interop.GraphicsPipelineCreateInfo* ptr)
+		internal GraphicsPipelineCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -3857,7 +3810,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class PipelineCacheCreateInfo : IMarshalling
+	unsafe public partial class PipelineCacheCreateInfo : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -3873,23 +3826,22 @@ namespace Vulkan
 			get { return m->InitialData; }
 			set { m->InitialData = value; }
 		}
-		internal Interop.PipelineCacheCreateInfo* m;
+		internal Interop.PipelineCacheCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.PipelineCacheCreateInfo*)native.Handle;
 			}
 		}
 
 		public PipelineCacheCreateInfo ()
 		{
-			m = (Interop.PipelineCacheCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineCacheCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.PipelineCacheCreateInfo));
 			Initialize ();
 		}
 
-		internal PipelineCacheCreateInfo (Interop.PipelineCacheCreateInfo* ptr)
+		internal PipelineCacheCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -3908,7 +3860,7 @@ namespace Vulkan
 		public UInt32 Size;
 	}
 
-	unsafe public partial class PipelineLayoutCreateInfo : IMarshalling
+	unsafe public partial class PipelineLayoutCreateInfo : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -3988,23 +3940,22 @@ namespace Vulkan
 				}
 			}
 		}
-		internal Interop.PipelineLayoutCreateInfo* m;
+		internal Interop.PipelineLayoutCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.PipelineLayoutCreateInfo*)native.Handle;
 			}
 		}
 
 		public PipelineLayoutCreateInfo ()
 		{
-			m = (Interop.PipelineLayoutCreateInfo*) Interop.Structure.Allocate (typeof (Interop.PipelineLayoutCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.PipelineLayoutCreateInfo));
 			Initialize ();
 		}
 
-		internal PipelineLayoutCreateInfo (Interop.PipelineLayoutCreateInfo* ptr)
+		internal PipelineLayoutCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -4016,7 +3967,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class SamplerCreateInfo : IMarshalling
+	unsafe public partial class SamplerCreateInfo : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -4097,23 +4048,22 @@ namespace Vulkan
 			get { return m->UnnormalizedCoordinates; }
 			set { m->UnnormalizedCoordinates = value; }
 		}
-		internal Interop.SamplerCreateInfo* m;
+		internal Interop.SamplerCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.SamplerCreateInfo*)native.Handle;
 			}
 		}
 
 		public SamplerCreateInfo ()
 		{
-			m = (Interop.SamplerCreateInfo*) Interop.Structure.Allocate (typeof (Interop.SamplerCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.SamplerCreateInfo));
 			Initialize ();
 		}
 
-		internal SamplerCreateInfo (Interop.SamplerCreateInfo* ptr)
+		internal SamplerCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -4125,7 +4075,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class CommandPoolCreateInfo : IMarshalling
+	unsafe public partial class CommandPoolCreateInfo : MarshalledObject
 	{
 		public CommandPoolCreateFlags Flags {
 			get { return m->Flags; }
@@ -4136,23 +4086,22 @@ namespace Vulkan
 			get { return m->QueueFamilyIndex; }
 			set { m->QueueFamilyIndex = value; }
 		}
-		internal Interop.CommandPoolCreateInfo* m;
+		internal Interop.CommandPoolCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.CommandPoolCreateInfo*)native.Handle;
 			}
 		}
 
 		public CommandPoolCreateInfo ()
 		{
-			m = (Interop.CommandPoolCreateInfo*) Interop.Structure.Allocate (typeof (Interop.CommandPoolCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.CommandPoolCreateInfo));
 			Initialize ();
 		}
 
-		internal CommandPoolCreateInfo (Interop.CommandPoolCreateInfo* ptr)
+		internal CommandPoolCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -4164,7 +4113,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class CommandBufferAllocateInfo : IMarshalling
+	unsafe public partial class CommandBufferAllocateInfo : MarshalledObject
 	{
 		CommandPool lCommandPool;
 		public CommandPool CommandPool {
@@ -4181,23 +4130,22 @@ namespace Vulkan
 			get { return m->CommandBufferCount; }
 			set { m->CommandBufferCount = value; }
 		}
-		internal Interop.CommandBufferAllocateInfo* m;
+		internal Interop.CommandBufferAllocateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.CommandBufferAllocateInfo*)native.Handle;
 			}
 		}
 
 		public CommandBufferAllocateInfo ()
 		{
-			m = (Interop.CommandBufferAllocateInfo*) Interop.Structure.Allocate (typeof (Interop.CommandBufferAllocateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.CommandBufferAllocateInfo));
 			Initialize ();
 		}
 
-		internal CommandBufferAllocateInfo (Interop.CommandBufferAllocateInfo* ptr)
+		internal CommandBufferAllocateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -4209,7 +4157,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class CommandBufferInheritanceInfo : IMarshalling
+	unsafe public partial class CommandBufferInheritanceInfo : MarshalledObject
 	{
 		RenderPass lRenderPass;
 		public RenderPass RenderPass {
@@ -4242,23 +4190,22 @@ namespace Vulkan
 			get { return m->PipelineStatistics; }
 			set { m->PipelineStatistics = value; }
 		}
-		internal Interop.CommandBufferInheritanceInfo* m;
+		internal Interop.CommandBufferInheritanceInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.CommandBufferInheritanceInfo*)native.Handle;
 			}
 		}
 
 		public CommandBufferInheritanceInfo ()
 		{
-			m = (Interop.CommandBufferInheritanceInfo*) Interop.Structure.Allocate (typeof (Interop.CommandBufferInheritanceInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.CommandBufferInheritanceInfo));
 			Initialize ();
 		}
 
-		internal CommandBufferInheritanceInfo (Interop.CommandBufferInheritanceInfo* ptr)
+		internal CommandBufferInheritanceInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -4270,7 +4217,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class CommandBufferBeginInfo : IMarshalling
+	unsafe public partial class CommandBufferBeginInfo : MarshalledObject
 	{
 		public CommandBufferUsageFlags Flags {
 			get { return m->Flags; }
@@ -4282,23 +4229,22 @@ namespace Vulkan
 			get { return lInheritanceInfo; }
 			set { lInheritanceInfo = value; m->InheritanceInfo = value != null ? (IntPtr)value.m : default(IntPtr); }
 		}
-		internal Interop.CommandBufferBeginInfo* m;
+		internal Interop.CommandBufferBeginInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.CommandBufferBeginInfo*)native.Handle;
 			}
 		}
 
 		public CommandBufferBeginInfo ()
 		{
-			m = (Interop.CommandBufferBeginInfo*) Interop.Structure.Allocate (typeof (Interop.CommandBufferBeginInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.CommandBufferBeginInfo));
 			Initialize ();
 		}
 
-		internal CommandBufferBeginInfo (Interop.CommandBufferBeginInfo* ptr)
+		internal CommandBufferBeginInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -4310,7 +4256,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class RenderPassBeginInfo : IMarshalling
+	unsafe public partial class RenderPassBeginInfo : MarshalledObject
 	{
 		RenderPass lRenderPass;
 		public RenderPass RenderPass {
@@ -4366,23 +4312,22 @@ namespace Vulkan
 				}
 			}
 		}
-		internal Interop.RenderPassBeginInfo* m;
+		internal Interop.RenderPassBeginInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.RenderPassBeginInfo*)native.Handle;
 			}
 		}
 
 		public RenderPassBeginInfo ()
 		{
-			m = (Interop.RenderPassBeginInfo*) Interop.Structure.Allocate (typeof (Interop.RenderPassBeginInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.RenderPassBeginInfo));
 			Initialize ();
 		}
 
-		internal RenderPassBeginInfo (Interop.RenderPassBeginInfo* ptr)
+		internal RenderPassBeginInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -4400,7 +4345,7 @@ namespace Vulkan
 		public UInt32 Stencil;
 	}
 
-	unsafe public partial class ClearAttachment : IMarshalling
+	unsafe public partial class ClearAttachment : MarshalledObject
 	{
 		public ImageAspectFlags AspectMask {
 			get { return m->AspectMask; }
@@ -4417,30 +4362,29 @@ namespace Vulkan
 			get { return lClearValue; }
 			set { lClearValue = value; m->ClearValue = value != null ? *value.m : default(Interop.ClearValue); }
 		}
-		internal Interop.ClearAttachment* m;
+		internal Interop.ClearAttachment* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.ClearAttachment*)native.Handle;
 			}
 		}
 
 		public ClearAttachment ()
 		{
-			m = (Interop.ClearAttachment*) Interop.Structure.Allocate (typeof (Interop.ClearAttachment));
+			native = Interop.Structure.Allocate (typeof (Interop.ClearAttachment));
 			Initialize ();
 		}
 
-		internal ClearAttachment (Interop.ClearAttachment* ptr)
+		internal ClearAttachment (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
 
 		internal void Initialize ()
 		{
-			lClearValue = new ClearValue (&m->ClearValue);
+			lClearValue = new ClearValue (new NativePointer (native.Reference, (IntPtr)(&m->ClearValue)));
 		}
 
 	}
@@ -4464,7 +4408,7 @@ namespace Vulkan
 		public ImageLayout Layout;
 	}
 
-	unsafe public partial class SubpassDescription : IMarshalling
+	unsafe public partial class SubpassDescription : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -4619,22 +4563,21 @@ namespace Vulkan
 				}
 			}
 		}
-		internal Interop.SubpassDescription* m;
+		internal Interop.SubpassDescription* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.SubpassDescription*)native.Handle;
 			}
 		}
 
 		public SubpassDescription ()
 		{
-			m = (Interop.SubpassDescription*) Interop.Structure.Allocate (typeof (Interop.SubpassDescription));
+			native = Interop.Structure.Allocate (typeof (Interop.SubpassDescription));
 		}
 
-		internal SubpassDescription (Interop.SubpassDescription* ptr)
+		internal SubpassDescription (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 		}
 
 	}
@@ -4650,7 +4593,7 @@ namespace Vulkan
 		public DependencyFlags DependencyFlags;
 	}
 
-	unsafe public partial class RenderPassCreateInfo : IMarshalling
+	unsafe public partial class RenderPassCreateInfo : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -4766,23 +4709,22 @@ namespace Vulkan
 				}
 			}
 		}
-		internal Interop.RenderPassCreateInfo* m;
+		internal Interop.RenderPassCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.RenderPassCreateInfo*)native.Handle;
 			}
 		}
 
 		public RenderPassCreateInfo ()
 		{
-			m = (Interop.RenderPassCreateInfo*) Interop.Structure.Allocate (typeof (Interop.RenderPassCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.RenderPassCreateInfo));
 			Initialize ();
 		}
 
-		internal RenderPassCreateInfo (Interop.RenderPassCreateInfo* ptr)
+		internal RenderPassCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -4794,29 +4736,28 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class EventCreateInfo : IMarshalling
+	unsafe public partial class EventCreateInfo : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
 		}
-		internal Interop.EventCreateInfo* m;
+		internal Interop.EventCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.EventCreateInfo*)native.Handle;
 			}
 		}
 
 		public EventCreateInfo ()
 		{
-			m = (Interop.EventCreateInfo*) Interop.Structure.Allocate (typeof (Interop.EventCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.EventCreateInfo));
 			Initialize ();
 		}
 
-		internal EventCreateInfo (Interop.EventCreateInfo* ptr)
+		internal EventCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -4828,29 +4769,28 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class FenceCreateInfo : IMarshalling
+	unsafe public partial class FenceCreateInfo : MarshalledObject
 	{
 		public FenceCreateFlags Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
 		}
-		internal Interop.FenceCreateInfo* m;
+		internal Interop.FenceCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.FenceCreateInfo*)native.Handle;
 			}
 		}
 
 		public FenceCreateInfo ()
 		{
-			m = (Interop.FenceCreateInfo*) Interop.Structure.Allocate (typeof (Interop.FenceCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.FenceCreateInfo));
 			Initialize ();
 		}
 
-		internal FenceCreateInfo (Interop.FenceCreateInfo* ptr)
+		internal FenceCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -4930,7 +4870,7 @@ namespace Vulkan
 		public Bool32 ResidencyNonResidentStrict;
 	}
 
-	unsafe public partial class PhysicalDeviceLimits : IMarshalling
+	unsafe public partial class PhysicalDeviceLimits : MarshalledObject
 	{
 		public UInt32 MaxImageDimension1D {
 			get { return m->MaxImageDimension1D; }
@@ -5539,49 +5479,47 @@ namespace Vulkan
 			get { return m->NonCoherentAtomSize; }
 			set { m->NonCoherentAtomSize = value; }
 		}
-		internal Interop.PhysicalDeviceLimits* m;
+		internal Interop.PhysicalDeviceLimits* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.PhysicalDeviceLimits*)native.Handle;
 			}
 		}
 
 		public PhysicalDeviceLimits ()
 		{
-			m = (Interop.PhysicalDeviceLimits*) Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceLimits));
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceLimits));
 		}
 
-		internal PhysicalDeviceLimits (Interop.PhysicalDeviceLimits* ptr)
+		internal PhysicalDeviceLimits (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 		}
 
 	}
 
-	unsafe public partial class SemaphoreCreateInfo : IMarshalling
+	unsafe public partial class SemaphoreCreateInfo : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
 		}
-		internal Interop.SemaphoreCreateInfo* m;
+		internal Interop.SemaphoreCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.SemaphoreCreateInfo*)native.Handle;
 			}
 		}
 
 		public SemaphoreCreateInfo ()
 		{
-			m = (Interop.SemaphoreCreateInfo*) Interop.Structure.Allocate (typeof (Interop.SemaphoreCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.SemaphoreCreateInfo));
 			Initialize ();
 		}
 
-		internal SemaphoreCreateInfo (Interop.SemaphoreCreateInfo* ptr)
+		internal SemaphoreCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -5593,7 +5531,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class QueryPoolCreateInfo : IMarshalling
+	unsafe public partial class QueryPoolCreateInfo : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -5614,23 +5552,22 @@ namespace Vulkan
 			get { return m->PipelineStatistics; }
 			set { m->PipelineStatistics = value; }
 		}
-		internal Interop.QueryPoolCreateInfo* m;
+		internal Interop.QueryPoolCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.QueryPoolCreateInfo*)native.Handle;
 			}
 		}
 
 		public QueryPoolCreateInfo ()
 		{
-			m = (Interop.QueryPoolCreateInfo*) Interop.Structure.Allocate (typeof (Interop.QueryPoolCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.QueryPoolCreateInfo));
 			Initialize ();
 		}
 
-		internal QueryPoolCreateInfo (Interop.QueryPoolCreateInfo* ptr)
+		internal QueryPoolCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -5642,7 +5579,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class FramebufferCreateInfo : IMarshalling
+	unsafe public partial class FramebufferCreateInfo : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -5707,23 +5644,22 @@ namespace Vulkan
 			get { return m->Layers; }
 			set { m->Layers = value; }
 		}
-		internal Interop.FramebufferCreateInfo* m;
+		internal Interop.FramebufferCreateInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.FramebufferCreateInfo*)native.Handle;
 			}
 		}
 
 		public FramebufferCreateInfo ()
 		{
-			m = (Interop.FramebufferCreateInfo*) Interop.Structure.Allocate (typeof (Interop.FramebufferCreateInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.FramebufferCreateInfo));
 			Initialize ();
 		}
 
-		internal FramebufferCreateInfo (Interop.FramebufferCreateInfo* ptr)
+		internal FramebufferCreateInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -5759,7 +5695,7 @@ namespace Vulkan
 		public UInt32 Z;
 	}
 
-	unsafe public partial class SubmitInfo : IMarshalling
+	unsafe public partial class SubmitInfo : MarshalledObject
 	{
 		public UInt32 WaitSemaphoreCount {
 			get { return m->WaitSemaphoreCount; }
@@ -5905,23 +5841,22 @@ namespace Vulkan
 				}
 			}
 		}
-		internal Interop.SubmitInfo* m;
+		internal Interop.SubmitInfo* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.SubmitInfo*)native.Handle;
 			}
 		}
 
 		public SubmitInfo ()
 		{
-			m = (Interop.SubmitInfo*) Interop.Structure.Allocate (typeof (Interop.SubmitInfo));
+			native = Interop.Structure.Allocate (typeof (Interop.SubmitInfo));
 			Initialize ();
 		}
 
-		internal SubmitInfo (Interop.SubmitInfo* ptr)
+		internal SubmitInfo (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -5933,7 +5868,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DisplayPropertiesKhr : IMarshalling
+	unsafe public partial class DisplayPropertiesKhr : MarshalledObject
 	{
 		DisplayKhr lDisplay;
 		public DisplayKhr Display {
@@ -5970,23 +5905,22 @@ namespace Vulkan
 			get { return m->PersistentContent; }
 			set { m->PersistentContent = value; }
 		}
-		internal Interop.DisplayPropertiesKhr* m;
+		internal Interop.DisplayPropertiesKhr* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.DisplayPropertiesKhr*)native.Handle;
 			}
 		}
 
 		public DisplayPropertiesKhr ()
 		{
-			m = (Interop.DisplayPropertiesKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayPropertiesKhr));
+			native = Interop.Structure.Allocate (typeof (Interop.DisplayPropertiesKhr));
 			Initialize ();
 		}
 
-		internal DisplayPropertiesKhr (Interop.DisplayPropertiesKhr* ptr)
+		internal DisplayPropertiesKhr (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -5997,7 +5931,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DisplayPlanePropertiesKhr : IMarshalling
+	unsafe public partial class DisplayPlanePropertiesKhr : MarshalledObject
 	{
 		DisplayKhr lCurrentDisplay;
 		public DisplayKhr CurrentDisplay {
@@ -6009,23 +5943,22 @@ namespace Vulkan
 			get { return m->CurrentStackIndex; }
 			set { m->CurrentStackIndex = value; }
 		}
-		internal Interop.DisplayPlanePropertiesKhr* m;
+		internal Interop.DisplayPlanePropertiesKhr* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.DisplayPlanePropertiesKhr*)native.Handle;
 			}
 		}
 
 		public DisplayPlanePropertiesKhr ()
 		{
-			m = (Interop.DisplayPlanePropertiesKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayPlanePropertiesKhr));
+			native = Interop.Structure.Allocate (typeof (Interop.DisplayPlanePropertiesKhr));
 			Initialize ();
 		}
 
-		internal DisplayPlanePropertiesKhr (Interop.DisplayPlanePropertiesKhr* ptr)
+		internal DisplayPlanePropertiesKhr (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -6042,7 +5975,7 @@ namespace Vulkan
 		public UInt32 RefreshRate;
 	}
 
-	unsafe public partial class DisplayModePropertiesKhr : IMarshalling
+	unsafe public partial class DisplayModePropertiesKhr : MarshalledObject
 	{
 		DisplayModeKhr lDisplayMode;
 		public DisplayModeKhr DisplayMode {
@@ -6054,23 +5987,22 @@ namespace Vulkan
 			get { return m->Parameters; }
 			set { m->Parameters = value; }
 		}
-		internal Interop.DisplayModePropertiesKhr* m;
+		internal Interop.DisplayModePropertiesKhr* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.DisplayModePropertiesKhr*)native.Handle;
 			}
 		}
 
 		public DisplayModePropertiesKhr ()
 		{
-			m = (Interop.DisplayModePropertiesKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayModePropertiesKhr));
+			native = Interop.Structure.Allocate (typeof (Interop.DisplayModePropertiesKhr));
 			Initialize ();
 		}
 
-		internal DisplayModePropertiesKhr (Interop.DisplayModePropertiesKhr* ptr)
+		internal DisplayModePropertiesKhr (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -6081,7 +6013,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DisplayModeCreateInfoKhr : IMarshalling
+	unsafe public partial class DisplayModeCreateInfoKhr : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -6092,23 +6024,22 @@ namespace Vulkan
 			get { return m->Parameters; }
 			set { m->Parameters = value; }
 		}
-		internal Interop.DisplayModeCreateInfoKhr* m;
+		internal Interop.DisplayModeCreateInfoKhr* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.DisplayModeCreateInfoKhr*)native.Handle;
 			}
 		}
 
 		public DisplayModeCreateInfoKhr ()
 		{
-			m = (Interop.DisplayModeCreateInfoKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayModeCreateInfoKhr));
+			native = Interop.Structure.Allocate (typeof (Interop.DisplayModeCreateInfoKhr));
 			Initialize ();
 		}
 
-		internal DisplayModeCreateInfoKhr (Interop.DisplayModeCreateInfoKhr* ptr)
+		internal DisplayModeCreateInfoKhr (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -6133,7 +6064,7 @@ namespace Vulkan
 		public Extent2D MaxDstExtent;
 	}
 
-	unsafe public partial class DisplaySurfaceCreateInfoKhr : IMarshalling
+	unsafe public partial class DisplaySurfaceCreateInfoKhr : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -6175,23 +6106,22 @@ namespace Vulkan
 			get { return m->ImageExtent; }
 			set { m->ImageExtent = value; }
 		}
-		internal Interop.DisplaySurfaceCreateInfoKhr* m;
+		internal Interop.DisplaySurfaceCreateInfoKhr* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.DisplaySurfaceCreateInfoKhr*)native.Handle;
 			}
 		}
 
 		public DisplaySurfaceCreateInfoKhr ()
 		{
-			m = (Interop.DisplaySurfaceCreateInfoKhr*) Interop.Structure.Allocate (typeof (Interop.DisplaySurfaceCreateInfoKhr));
+			native = Interop.Structure.Allocate (typeof (Interop.DisplaySurfaceCreateInfoKhr));
 			Initialize ();
 		}
 
-		internal DisplaySurfaceCreateInfoKhr (Interop.DisplaySurfaceCreateInfoKhr* ptr)
+		internal DisplaySurfaceCreateInfoKhr (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -6203,7 +6133,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DisplayPresentInfoKhr : IMarshalling
+	unsafe public partial class DisplayPresentInfoKhr : MarshalledObject
 	{
 		public Rect2D SrcRect {
 			get { return m->SrcRect; }
@@ -6219,23 +6149,22 @@ namespace Vulkan
 			get { return m->Persistent; }
 			set { m->Persistent = value; }
 		}
-		internal Interop.DisplayPresentInfoKhr* m;
+		internal Interop.DisplayPresentInfoKhr* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.DisplayPresentInfoKhr*)native.Handle;
 			}
 		}
 
 		public DisplayPresentInfoKhr ()
 		{
-			m = (Interop.DisplayPresentInfoKhr*) Interop.Structure.Allocate (typeof (Interop.DisplayPresentInfoKhr));
+			native = Interop.Structure.Allocate (typeof (Interop.DisplayPresentInfoKhr));
 			Initialize ();
 		}
 
-		internal DisplayPresentInfoKhr (Interop.DisplayPresentInfoKhr* ptr)
+		internal DisplayPresentInfoKhr (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -6267,7 +6196,7 @@ namespace Vulkan
 		public ColorSpaceKhr ColorSpace;
 	}
 
-	unsafe public partial class SwapchainCreateInfoKhr : IMarshalling
+	unsafe public partial class SwapchainCreateInfoKhr : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -6376,23 +6305,22 @@ namespace Vulkan
 			get { return lOldSwapchain; }
 			set { lOldSwapchain = value; m->OldSwapchain = value != null ? (UInt64)value.m : default(UInt64); }
 		}
-		internal Interop.SwapchainCreateInfoKhr* m;
+		internal Interop.SwapchainCreateInfoKhr* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.SwapchainCreateInfoKhr*)native.Handle;
 			}
 		}
 
 		public SwapchainCreateInfoKhr ()
 		{
-			m = (Interop.SwapchainCreateInfoKhr*) Interop.Structure.Allocate (typeof (Interop.SwapchainCreateInfoKhr));
+			native = Interop.Structure.Allocate (typeof (Interop.SwapchainCreateInfoKhr));
 			Initialize ();
 		}
 
-		internal SwapchainCreateInfoKhr (Interop.SwapchainCreateInfoKhr* ptr)
+		internal SwapchainCreateInfoKhr (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -6404,7 +6332,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class PresentInfoKhr : IMarshalling
+	unsafe public partial class PresentInfoKhr : MarshalledObject
 	{
 		public UInt32 WaitSemaphoreCount {
 			get { return m->WaitSemaphoreCount; }
@@ -6543,23 +6471,22 @@ namespace Vulkan
 				}
 			}
 		}
-		internal Interop.PresentInfoKhr* m;
+		internal Interop.PresentInfoKhr* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.PresentInfoKhr*)native.Handle;
 			}
 		}
 
 		public PresentInfoKhr ()
 		{
-			m = (Interop.PresentInfoKhr*) Interop.Structure.Allocate (typeof (Interop.PresentInfoKhr));
+			native = Interop.Structure.Allocate (typeof (Interop.PresentInfoKhr));
 			Initialize ();
 		}
 
-		internal PresentInfoKhr (Interop.PresentInfoKhr* ptr)
+		internal PresentInfoKhr (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -6571,7 +6498,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DebugReportCallbackCreateInfoExt : IMarshalling
+	unsafe public partial class DebugReportCallbackCreateInfoExt : MarshalledObject
 	{
 		public DebugReportFlagsExt Flags {
 			get { return m->Flags; }
@@ -6587,23 +6514,22 @@ namespace Vulkan
 			get { return m->UserData; }
 			set { m->UserData = value; }
 		}
-		internal Interop.DebugReportCallbackCreateInfoExt* m;
+		internal Interop.DebugReportCallbackCreateInfoExt* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.DebugReportCallbackCreateInfoExt*)native.Handle;
 			}
 		}
 
 		public DebugReportCallbackCreateInfoExt ()
 		{
-			m = (Interop.DebugReportCallbackCreateInfoExt*) Interop.Structure.Allocate (typeof (Interop.DebugReportCallbackCreateInfoExt));
+			native = Interop.Structure.Allocate (typeof (Interop.DebugReportCallbackCreateInfoExt));
 			Initialize ();
 		}
 
-		internal DebugReportCallbackCreateInfoExt (Interop.DebugReportCallbackCreateInfoExt* ptr)
+		internal DebugReportCallbackCreateInfoExt (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -6615,29 +6541,28 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DebugReportLayerFlagsExt : IMarshalling
+	unsafe public partial class DebugReportLayerFlagsExt : MarshalledObject
 	{
 		public UInt64 EnabledValidationFlags {
 			get { return m->EnabledValidationFlags; }
 			set { m->EnabledValidationFlags = value; }
 		}
-		internal Interop.DebugReportLayerFlagsExt* m;
+		internal Interop.DebugReportLayerFlagsExt* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.DebugReportLayerFlagsExt*)native.Handle;
 			}
 		}
 
 		public DebugReportLayerFlagsExt ()
 		{
-			m = (Interop.DebugReportLayerFlagsExt*) Interop.Structure.Allocate (typeof (Interop.DebugReportLayerFlagsExt));
+			native = Interop.Structure.Allocate (typeof (Interop.DebugReportLayerFlagsExt));
 			Initialize ();
 		}
 
-		internal DebugReportLayerFlagsExt (Interop.DebugReportLayerFlagsExt* ptr)
+		internal DebugReportLayerFlagsExt (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -6649,29 +6574,28 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class PipelineRasterizationStateRasterizationOrderAmd : IMarshalling
+	unsafe public partial class PipelineRasterizationStateRasterizationOrderAmd : MarshalledObject
 	{
 		public RasterizationOrderAmd RasterizationOrder {
 			get { return m->RasterizationOrder; }
 			set { m->RasterizationOrder = value; }
 		}
-		internal Interop.PipelineRasterizationStateRasterizationOrderAmd* m;
+		internal Interop.PipelineRasterizationStateRasterizationOrderAmd* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.PipelineRasterizationStateRasterizationOrderAmd*)native.Handle;
 			}
 		}
 
 		public PipelineRasterizationStateRasterizationOrderAmd ()
 		{
-			m = (Interop.PipelineRasterizationStateRasterizationOrderAmd*) Interop.Structure.Allocate (typeof (Interop.PipelineRasterizationStateRasterizationOrderAmd));
+			native = Interop.Structure.Allocate (typeof (Interop.PipelineRasterizationStateRasterizationOrderAmd));
 			Initialize ();
 		}
 
-		internal PipelineRasterizationStateRasterizationOrderAmd (Interop.PipelineRasterizationStateRasterizationOrderAmd* ptr)
+		internal PipelineRasterizationStateRasterizationOrderAmd (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -6683,7 +6607,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DebugMarkerObjectNameInfoExt : IMarshalling
+	unsafe public partial class DebugMarkerObjectNameInfoExt : MarshalledObject
 	{
 		public DebugReportObjectTypeExt ObjectType {
 			get { return m->ObjectType; }
@@ -6699,23 +6623,22 @@ namespace Vulkan
 			get { return Marshal.PtrToStringAnsi (m->ObjectName); }
 			set { m->ObjectName = Marshal.StringToHGlobalAnsi (value); }
 		}
-		internal Interop.DebugMarkerObjectNameInfoExt* m;
+		internal Interop.DebugMarkerObjectNameInfoExt* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.DebugMarkerObjectNameInfoExt*)native.Handle;
 			}
 		}
 
 		public DebugMarkerObjectNameInfoExt ()
 		{
-			m = (Interop.DebugMarkerObjectNameInfoExt*) Interop.Structure.Allocate (typeof (Interop.DebugMarkerObjectNameInfoExt));
+			native = Interop.Structure.Allocate (typeof (Interop.DebugMarkerObjectNameInfoExt));
 			Initialize ();
 		}
 
-		internal DebugMarkerObjectNameInfoExt (Interop.DebugMarkerObjectNameInfoExt* ptr)
+		internal DebugMarkerObjectNameInfoExt (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -6727,7 +6650,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DebugMarkerObjectTagInfoExt : IMarshalling
+	unsafe public partial class DebugMarkerObjectTagInfoExt : MarshalledObject
 	{
 		public DebugReportObjectTypeExt ObjectType {
 			get { return m->ObjectType; }
@@ -6753,23 +6676,22 @@ namespace Vulkan
 			get { return m->Tag; }
 			set { m->Tag = value; }
 		}
-		internal Interop.DebugMarkerObjectTagInfoExt* m;
+		internal Interop.DebugMarkerObjectTagInfoExt* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.DebugMarkerObjectTagInfoExt*)native.Handle;
 			}
 		}
 
 		public DebugMarkerObjectTagInfoExt ()
 		{
-			m = (Interop.DebugMarkerObjectTagInfoExt*) Interop.Structure.Allocate (typeof (Interop.DebugMarkerObjectTagInfoExt));
+			native = Interop.Structure.Allocate (typeof (Interop.DebugMarkerObjectTagInfoExt));
 			Initialize ();
 		}
 
-		internal DebugMarkerObjectTagInfoExt (Interop.DebugMarkerObjectTagInfoExt* ptr)
+		internal DebugMarkerObjectTagInfoExt (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -6781,7 +6703,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DebugMarkerMarkerInfoExt : IMarshalling
+	unsafe public partial class DebugMarkerMarkerInfoExt : MarshalledObject
 	{
 		public string MarkerName {
 			get { return Marshal.PtrToStringAnsi (m->MarkerName); }
@@ -6805,23 +6727,22 @@ namespace Vulkan
 					m->Color [i] = 0;
 			}
 		}
-		internal Interop.DebugMarkerMarkerInfoExt* m;
+		internal Interop.DebugMarkerMarkerInfoExt* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.DebugMarkerMarkerInfoExt*)native.Handle;
 			}
 		}
 
 		public DebugMarkerMarkerInfoExt ()
 		{
-			m = (Interop.DebugMarkerMarkerInfoExt*) Interop.Structure.Allocate (typeof (Interop.DebugMarkerMarkerInfoExt));
+			native = Interop.Structure.Allocate (typeof (Interop.DebugMarkerMarkerInfoExt));
 			Initialize ();
 		}
 
-		internal DebugMarkerMarkerInfoExt (Interop.DebugMarkerMarkerInfoExt* ptr)
+		internal DebugMarkerMarkerInfoExt (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -6833,29 +6754,28 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DedicatedAllocationImageCreateInfoNv : IMarshalling
+	unsafe public partial class DedicatedAllocationImageCreateInfoNv : MarshalledObject
 	{
 		public bool DedicatedAllocation {
 			get { return m->DedicatedAllocation; }
 			set { m->DedicatedAllocation = value; }
 		}
-		internal Interop.DedicatedAllocationImageCreateInfoNv* m;
+		internal Interop.DedicatedAllocationImageCreateInfoNv* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.DedicatedAllocationImageCreateInfoNv*)native.Handle;
 			}
 		}
 
 		public DedicatedAllocationImageCreateInfoNv ()
 		{
-			m = (Interop.DedicatedAllocationImageCreateInfoNv*) Interop.Structure.Allocate (typeof (Interop.DedicatedAllocationImageCreateInfoNv));
+			native = Interop.Structure.Allocate (typeof (Interop.DedicatedAllocationImageCreateInfoNv));
 			Initialize ();
 		}
 
-		internal DedicatedAllocationImageCreateInfoNv (Interop.DedicatedAllocationImageCreateInfoNv* ptr)
+		internal DedicatedAllocationImageCreateInfoNv (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -6867,29 +6787,28 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DedicatedAllocationBufferCreateInfoNv : IMarshalling
+	unsafe public partial class DedicatedAllocationBufferCreateInfoNv : MarshalledObject
 	{
 		public bool DedicatedAllocation {
 			get { return m->DedicatedAllocation; }
 			set { m->DedicatedAllocation = value; }
 		}
-		internal Interop.DedicatedAllocationBufferCreateInfoNv* m;
+		internal Interop.DedicatedAllocationBufferCreateInfoNv* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.DedicatedAllocationBufferCreateInfoNv*)native.Handle;
 			}
 		}
 
 		public DedicatedAllocationBufferCreateInfoNv ()
 		{
-			m = (Interop.DedicatedAllocationBufferCreateInfoNv*) Interop.Structure.Allocate (typeof (Interop.DedicatedAllocationBufferCreateInfoNv));
+			native = Interop.Structure.Allocate (typeof (Interop.DedicatedAllocationBufferCreateInfoNv));
 			Initialize ();
 		}
 
-		internal DedicatedAllocationBufferCreateInfoNv (Interop.DedicatedAllocationBufferCreateInfoNv* ptr)
+		internal DedicatedAllocationBufferCreateInfoNv (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -6901,7 +6820,7 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DedicatedAllocationMemoryAllocateInfoNv : IMarshalling
+	unsafe public partial class DedicatedAllocationMemoryAllocateInfoNv : MarshalledObject
 	{
 		Image lImage;
 		public Image Image {
@@ -6914,23 +6833,22 @@ namespace Vulkan
 			get { return lBuffer; }
 			set { lBuffer = value; m->Buffer = value != null ? (UInt64)value.m : default(UInt64); }
 		}
-		internal Interop.DedicatedAllocationMemoryAllocateInfoNv* m;
+		internal Interop.DedicatedAllocationMemoryAllocateInfoNv* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.DedicatedAllocationMemoryAllocateInfoNv*)native.Handle;
 			}
 		}
 
 		public DedicatedAllocationMemoryAllocateInfoNv ()
 		{
-			m = (Interop.DedicatedAllocationMemoryAllocateInfoNv*) Interop.Structure.Allocate (typeof (Interop.DedicatedAllocationMemoryAllocateInfoNv));
+			native = Interop.Structure.Allocate (typeof (Interop.DedicatedAllocationMemoryAllocateInfoNv));
 			Initialize ();
 		}
 
-		internal DedicatedAllocationMemoryAllocateInfoNv (Interop.DedicatedAllocationMemoryAllocateInfoNv* ptr)
+		internal DedicatedAllocationMemoryAllocateInfoNv (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -6950,29 +6868,28 @@ namespace Vulkan
 		public ExternalMemoryHandleTypeFlagsNv CompatibleHandleTypes;
 	}
 
-	unsafe public partial class ExternalMemoryImageCreateInfoNv : IMarshalling
+	unsafe public partial class ExternalMemoryImageCreateInfoNv : MarshalledObject
 	{
 		public ExternalMemoryHandleTypeFlagsNv HandleTypes {
 			get { return m->HandleTypes; }
 			set { m->HandleTypes = value; }
 		}
-		internal Interop.ExternalMemoryImageCreateInfoNv* m;
+		internal Interop.ExternalMemoryImageCreateInfoNv* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.ExternalMemoryImageCreateInfoNv*)native.Handle;
 			}
 		}
 
 		public ExternalMemoryImageCreateInfoNv ()
 		{
-			m = (Interop.ExternalMemoryImageCreateInfoNv*) Interop.Structure.Allocate (typeof (Interop.ExternalMemoryImageCreateInfoNv));
+			native = Interop.Structure.Allocate (typeof (Interop.ExternalMemoryImageCreateInfoNv));
 			Initialize ();
 		}
 
-		internal ExternalMemoryImageCreateInfoNv (Interop.ExternalMemoryImageCreateInfoNv* ptr)
+		internal ExternalMemoryImageCreateInfoNv (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
@@ -6984,29 +6901,28 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class ExportMemoryAllocateInfoNv : IMarshalling
+	unsafe public partial class ExportMemoryAllocateInfoNv : MarshalledObject
 	{
 		public ExternalMemoryHandleTypeFlagsNv HandleTypes {
 			get { return m->HandleTypes; }
 			set { m->HandleTypes = value; }
 		}
-		internal Interop.ExportMemoryAllocateInfoNv* m;
+		internal Interop.ExportMemoryAllocateInfoNv* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.ExportMemoryAllocateInfoNv*)native.Handle;
 			}
 		}
 
 		public ExportMemoryAllocateInfoNv ()
 		{
-			m = (Interop.ExportMemoryAllocateInfoNv*) Interop.Structure.Allocate (typeof (Interop.ExportMemoryAllocateInfoNv));
+			native = Interop.Structure.Allocate (typeof (Interop.ExportMemoryAllocateInfoNv));
 			Initialize ();
 		}
 
-		internal ExportMemoryAllocateInfoNv (Interop.ExportMemoryAllocateInfoNv* ptr)
+		internal ExportMemoryAllocateInfoNv (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 

@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 
 namespace Vulkan
 {
-	unsafe public partial class AndroidSurfaceCreateInfoKhr : IMarshalling
+	unsafe public partial class AndroidSurfaceCreateInfoKhr : MarshalledObject
 	{
 		public UInt32 Flags {
 			get { return m->Flags; }
@@ -24,23 +24,22 @@ namespace Vulkan
 			get { return m->Window; }
 			set { m->Window = value; }
 		}
-		internal Android.Interop.AndroidSurfaceCreateInfoKhr* m;
+		internal Android.Interop.AndroidSurfaceCreateInfoKhr* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Android.Interop.AndroidSurfaceCreateInfoKhr*)native.Handle;
 			}
 		}
 
 		public AndroidSurfaceCreateInfoKhr ()
 		{
-			m = (Android.Interop.AndroidSurfaceCreateInfoKhr*) Interop.Structure.Allocate (typeof (Android.Interop.AndroidSurfaceCreateInfoKhr));
+			native = Interop.Structure.Allocate (typeof (Android.Interop.AndroidSurfaceCreateInfoKhr));
 			Initialize ();
 		}
 
-		internal AndroidSurfaceCreateInfoKhr (Android.Interop.AndroidSurfaceCreateInfoKhr* ptr)
+		internal AndroidSurfaceCreateInfoKhr (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 

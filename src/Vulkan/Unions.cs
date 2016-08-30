@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 
 namespace Vulkan
 {
-	unsafe public partial class ClearColorValue : IMarshalling
+	unsafe public partial class ClearColorValue : MarshalledObject
 	{
 		public float[] Float32 {
 			get {
@@ -68,27 +68,26 @@ namespace Vulkan
 					m->Uint32 [i] = 0;
 			}
 		}
-		internal Interop.ClearColorValue* m;
+		internal Interop.ClearColorValue* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.ClearColorValue*)native.Handle;
 			}
 		}
 
 		public ClearColorValue ()
 		{
-			m = (Interop.ClearColorValue*) Interop.Structure.Allocate (typeof (Interop.ClearColorValue));
+			native = Interop.Structure.Allocate (typeof (Interop.ClearColorValue));
 		}
 
-		internal ClearColorValue (Interop.ClearColorValue* ptr)
+		internal ClearColorValue (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 		}
 
 	}
 
-	unsafe public partial class ClearValue : IMarshalling
+	unsafe public partial class ClearValue : MarshalledObject
 	{
 		ClearColorValue lColor;
 		public ClearColorValue Color {
@@ -100,30 +99,29 @@ namespace Vulkan
 			get { return m->DepthStencil; }
 			set { m->DepthStencil = value; }
 		}
-		internal Interop.ClearValue* m;
+		internal Interop.ClearValue* m {
 
-		IntPtr IMarshalling.Handle {
 			get {
-				return (IntPtr)m;
+				return (Interop.ClearValue*)native.Handle;
 			}
 		}
 
 		public ClearValue ()
 		{
-			m = (Interop.ClearValue*) Interop.Structure.Allocate (typeof (Interop.ClearValue));
+			native = Interop.Structure.Allocate (typeof (Interop.ClearValue));
 			Initialize ();
 		}
 
-		internal ClearValue (Interop.ClearValue* ptr)
+		internal ClearValue (NativePointer pointer)
 		{
-			m = ptr;
+			native = pointer;
 			Initialize ();
 		}
 
 
 		internal void Initialize ()
 		{
-			lColor = new ClearColorValue (&m->Color);
+			lColor = new ClearColorValue (new NativePointer (native.Reference, (IntPtr)(&m->Color)));
 		}
 
 	}
