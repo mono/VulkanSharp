@@ -81,7 +81,7 @@ namespace Vulkan
 
 	unsafe public partial class ShaderModuleCreateInfo
 	{
-		public byte[] CodeBytes {
+		public byte [] CodeBytes {
 			set {
 				/* todo free allocated memory when already set */
 				if (value == null) {
@@ -98,7 +98,7 @@ namespace Vulkan
 
 	public partial class Device
 	{
-		public ShaderModule CreateShaderModule (byte[] shaderCode, uint flags = 0, AllocationCallbacks allocator = null)
+		public ShaderModule CreateShaderModule (byte [] shaderCode, uint flags = 0, AllocationCallbacks allocator = null)
 		{
 			ShaderModuleCreateInfo createInfo = new ShaderModuleCreateInfo {
 				CodeBytes = shaderCode,
@@ -110,17 +110,17 @@ namespace Vulkan
 
 	unsafe public partial class ClearColorValue
 	{
-		public ClearColorValue (float[] floatArray) : this ()
+		public ClearColorValue (float [] floatArray) : this ()
 		{
 			Float32 = floatArray;
 		}
 
-		public ClearColorValue (int[] intArray) : this ()
+		public ClearColorValue (int [] intArray) : this ()
 		{
 			Int32 = intArray;
 		}
 
-		public ClearColorValue (uint[] uintArray) : this ()
+		public ClearColorValue (uint [] uintArray) : this ()
 		{
 			Uint32 = uintArray;
 		}
@@ -134,5 +134,103 @@ namespace Vulkan
 	public interface INonDispatchableHandleMarshalling
 	{
 		UInt64 Handle { get; }
+	}
+
+	internal struct NativeReference
+	{
+		internal static NativeReference Empty;
+
+		internal IntPtr Handle { get; private set; }
+		int refCount;
+
+		internal NativeReference (int size)
+		{
+			Handle = Marshal.AllocHGlobal (size);
+			refCount = 1;
+		}
+
+		internal NativeReference (IntPtr ptr)
+		{
+			Handle = ptr;
+			refCount = 1;
+		}
+
+		internal void AddRef ()
+		{
+			if (Handle == IntPtr.Zero)
+				return;
+
+			refCount++;
+		}
+
+		internal void Release ()
+		{
+			if (Handle == IntPtr.Zero)
+				return;
+
+			refCount--;
+			if (refCount <= 0) {
+				Marshal.FreeHGlobal (Handle);
+				Handle = IntPtr.Zero;
+				refCount = 0;
+			}
+		}
+	}
+
+	internal struct NativePointer
+	{
+		internal static NativePointer Null;
+
+		internal NativeReference Reference { get; private set; }
+		internal IntPtr Handle { get; private set; }
+
+		internal NativePointer (NativeReference reference, IntPtr pointer)
+		{
+			reference.AddRef ();
+			Reference = reference;
+			Handle = pointer;
+		}
+
+		internal NativePointer (NativeReference reference)
+		{
+			reference.AddRef ();
+			Reference = reference;
+			Handle = reference.Handle;
+		}
+
+		internal NativePointer (IntPtr handle)
+		{
+			Reference = new NativeReference (handle);
+			Handle = Reference.Handle;
+		}
+
+		internal void Release ()
+		{
+			Reference.Release ();
+			Reference = NativeReference.Empty;
+			Handle = IntPtr.Zero;
+		}
+	}
+
+	public class MarshalledObject : IDisposable, IMarshalling
+	{
+		internal NativePointer native;
+
+		IntPtr IMarshalling.Handle {
+			get {
+				return native.Handle;
+			}
+		}
+
+		public void Dispose ()
+		{
+			VirtualDispose ();
+			native.Release ();
+			native = NativePointer.Null;
+		}
+
+		public virtual void VirtualDispose ()
+		{
+		}
 	}
 }
