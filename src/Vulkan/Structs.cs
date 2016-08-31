@@ -353,6 +353,7 @@ namespace Vulkan
 			set { m->QueueCount = value; }
 		}
 
+		NativeReference refQueuePriorities;
 		public float[] QueuePriorities {
 			get {
 				if (m->QueueCount == 0)
@@ -374,7 +375,8 @@ namespace Vulkan
 					return;
 				}
 				m->QueueCount = (uint)value.Length;
-				m->QueuePriorities = Marshal.AllocHGlobal ((int)(sizeof(float)*value.Length));
+				refQueuePriorities = new NativeReference ((int)(sizeof(float)*value.Length));
+				m->QueuePriorities = refQueuePriorities.Handle;
 				unsafe
 				{
 					float* ptr = (float*)m->QueuePriorities;
@@ -402,6 +404,11 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refQueuePriorities.Release ();
+			refQueuePriorities = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -422,6 +429,7 @@ namespace Vulkan
 			set { m->QueueCreateInfoCount = value; }
 		}
 
+		NativeReference refQueueCreateInfos;
 		public DeviceQueueCreateInfo[] QueueCreateInfos {
 			get {
 				if (m->QueueCreateInfoCount == 0)
@@ -445,7 +453,8 @@ namespace Vulkan
 					return;
 				}
 				m->QueueCreateInfoCount = (uint)value.Length;
-				m->QueueCreateInfos = Marshal.AllocHGlobal ((int)(sizeof(Interop.DeviceQueueCreateInfo)*value.Length));
+				refQueueCreateInfos = new NativeReference ((int)(sizeof(Interop.DeviceQueueCreateInfo)*value.Length));
+				m->QueueCreateInfos = refQueueCreateInfos.Handle;
 				unsafe
 				{
 					Interop.DeviceQueueCreateInfo* ptr = (Interop.DeviceQueueCreateInfo*)m->QueueCreateInfos;
@@ -460,6 +469,7 @@ namespace Vulkan
 			set { m->EnabledLayerCount = value; }
 		}
 
+		NativeReference refEnabledLayerNames;
 		public string[] EnabledLayerNames {
 			get {
 				if (m->EnabledLayerCount == 0)
@@ -481,7 +491,8 @@ namespace Vulkan
 					return;
 				}
 				m->EnabledLayerCount = (uint)value.Length;
-				m->EnabledLayerNames = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*m->EnabledLayerCount));
+				refEnabledLayerNames = new NativeReference ((int)(sizeof(IntPtr)*m->EnabledLayerCount));
+				m->EnabledLayerNames = refEnabledLayerNames.Handle;
 				unsafe
 				{
 					void** ptr = (void**)m->EnabledLayerNames;
@@ -496,6 +507,7 @@ namespace Vulkan
 			set { m->EnabledExtensionCount = value; }
 		}
 
+		NativeReference refEnabledExtensionNames;
 		public string[] EnabledExtensionNames {
 			get {
 				if (m->EnabledExtensionCount == 0)
@@ -517,7 +529,8 @@ namespace Vulkan
 					return;
 				}
 				m->EnabledExtensionCount = (uint)value.Length;
-				m->EnabledExtensionNames = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*m->EnabledExtensionCount));
+				refEnabledExtensionNames = new NativeReference ((int)(sizeof(IntPtr)*m->EnabledExtensionCount));
+				m->EnabledExtensionNames = refEnabledExtensionNames.Handle;
 				unsafe
 				{
 					void** ptr = (void**)m->EnabledExtensionNames;
@@ -550,6 +563,15 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refQueueCreateInfos.Release ();
+			refQueueCreateInfos = NativeReference.Empty;
+			refEnabledLayerNames.Release ();
+			refEnabledLayerNames = NativeReference.Empty;
+			refEnabledExtensionNames.Release ();
+			refEnabledExtensionNames = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -576,6 +598,7 @@ namespace Vulkan
 			set { m->EnabledLayerCount = value; }
 		}
 
+		NativeReference refEnabledLayerNames;
 		public string[] EnabledLayerNames {
 			get {
 				if (m->EnabledLayerCount == 0)
@@ -597,7 +620,8 @@ namespace Vulkan
 					return;
 				}
 				m->EnabledLayerCount = (uint)value.Length;
-				m->EnabledLayerNames = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*m->EnabledLayerCount));
+				refEnabledLayerNames = new NativeReference ((int)(sizeof(IntPtr)*m->EnabledLayerCount));
+				m->EnabledLayerNames = refEnabledLayerNames.Handle;
 				unsafe
 				{
 					void** ptr = (void**)m->EnabledLayerNames;
@@ -612,6 +636,7 @@ namespace Vulkan
 			set { m->EnabledExtensionCount = value; }
 		}
 
+		NativeReference refEnabledExtensionNames;
 		public string[] EnabledExtensionNames {
 			get {
 				if (m->EnabledExtensionCount == 0)
@@ -633,7 +658,8 @@ namespace Vulkan
 					return;
 				}
 				m->EnabledExtensionCount = (uint)value.Length;
-				m->EnabledExtensionNames = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*m->EnabledExtensionCount));
+				refEnabledExtensionNames = new NativeReference ((int)(sizeof(IntPtr)*m->EnabledExtensionCount));
+				m->EnabledExtensionNames = refEnabledExtensionNames.Handle;
 				unsafe
 				{
 					void** ptr = (void**)m->EnabledExtensionNames;
@@ -661,6 +687,13 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refEnabledLayerNames.Release ();
+			refEnabledLayerNames = NativeReference.Empty;
+			refEnabledExtensionNames.Release ();
+			refEnabledExtensionNames = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -1001,6 +1034,7 @@ namespace Vulkan
 			set { m->DescriptorType = value; }
 		}
 
+		NativeReference refImageInfo;
 		public DescriptorImageInfo[] ImageInfo {
 			get {
 				if (m->DescriptorCount == 0)
@@ -1024,7 +1058,8 @@ namespace Vulkan
 					return;
 				}
 				m->DescriptorCount = (uint)value.Length;
-				m->ImageInfo = Marshal.AllocHGlobal ((int)(sizeof(Interop.DescriptorImageInfo)*value.Length));
+				refImageInfo = new NativeReference ((int)(sizeof(Interop.DescriptorImageInfo)*value.Length));
+				m->ImageInfo = refImageInfo.Handle;
 				unsafe
 				{
 					Interop.DescriptorImageInfo* ptr = (Interop.DescriptorImageInfo*)m->ImageInfo;
@@ -1034,6 +1069,7 @@ namespace Vulkan
 			}
 		}
 
+		NativeReference refBufferInfo;
 		public DescriptorBufferInfo[] BufferInfo {
 			get {
 				if (m->DescriptorCount == 0)
@@ -1057,7 +1093,8 @@ namespace Vulkan
 					return;
 				}
 				m->DescriptorCount = (uint)value.Length;
-				m->BufferInfo = Marshal.AllocHGlobal ((int)(sizeof(Interop.DescriptorBufferInfo)*value.Length));
+				refBufferInfo = new NativeReference ((int)(sizeof(Interop.DescriptorBufferInfo)*value.Length));
+				m->BufferInfo = refBufferInfo.Handle;
 				unsafe
 				{
 					Interop.DescriptorBufferInfo* ptr = (Interop.DescriptorBufferInfo*)m->BufferInfo;
@@ -1067,6 +1104,7 @@ namespace Vulkan
 			}
 		}
 
+		NativeReference refTexelBufferView;
 		public BufferView[] TexelBufferView {
 			get {
 				if (m->DescriptorCount == 0)
@@ -1090,7 +1128,8 @@ namespace Vulkan
 					return;
 				}
 				m->DescriptorCount = (uint)value.Length;
-				m->TexelBufferView = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*value.Length));
+				refTexelBufferView = new NativeReference ((int)(sizeof(UInt64)*value.Length));
+				m->TexelBufferView = refTexelBufferView.Handle;
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->TexelBufferView;
@@ -1118,6 +1157,15 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refImageInfo.Release ();
+			refImageInfo = NativeReference.Empty;
+			refBufferInfo.Release ();
+			refBufferInfo = NativeReference.Empty;
+			refTexelBufferView.Release ();
+			refTexelBufferView = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -1218,6 +1266,7 @@ namespace Vulkan
 			set { m->QueueFamilyIndexCount = value; }
 		}
 
+		NativeReference refQueueFamilyIndices;
 		public UInt32[] QueueFamilyIndices {
 			get {
 				if (m->QueueFamilyIndexCount == 0)
@@ -1239,7 +1288,8 @@ namespace Vulkan
 					return;
 				}
 				m->QueueFamilyIndexCount = (uint)value.Length;
-				m->QueueFamilyIndices = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*value.Length));
+				refQueueFamilyIndices = new NativeReference ((int)(sizeof(UInt32)*value.Length));
+				m->QueueFamilyIndices = refQueueFamilyIndices.Handle;
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->QueueFamilyIndices;
@@ -1267,6 +1317,11 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refQueueFamilyIndices.Release ();
+			refQueueFamilyIndices = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -1581,6 +1636,7 @@ namespace Vulkan
 			set { m->QueueFamilyIndexCount = value; }
 		}
 
+		NativeReference refQueueFamilyIndices;
 		public UInt32[] QueueFamilyIndices {
 			get {
 				if (m->QueueFamilyIndexCount == 0)
@@ -1602,7 +1658,8 @@ namespace Vulkan
 					return;
 				}
 				m->QueueFamilyIndexCount = (uint)value.Length;
-				m->QueueFamilyIndices = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*value.Length));
+				refQueueFamilyIndices = new NativeReference ((int)(sizeof(UInt32)*value.Length));
+				m->QueueFamilyIndices = refQueueFamilyIndices.Handle;
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->QueueFamilyIndices;
@@ -1635,6 +1692,11 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refQueueFamilyIndices.Release ();
+			refQueueFamilyIndices = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -1842,6 +1904,7 @@ namespace Vulkan
 			set { m->BindCount = value; }
 		}
 
+		NativeReference refBinds;
 		public SparseMemoryBind[] Binds {
 			get {
 				if (m->BindCount == 0)
@@ -1865,7 +1928,8 @@ namespace Vulkan
 					return;
 				}
 				m->BindCount = (uint)value.Length;
-				m->Binds = Marshal.AllocHGlobal ((int)(sizeof(Interop.SparseMemoryBind)*value.Length));
+				refBinds = new NativeReference ((int)(sizeof(Interop.SparseMemoryBind)*value.Length));
+				m->Binds = refBinds.Handle;
 				unsafe
 				{
 					Interop.SparseMemoryBind* ptr = (Interop.SparseMemoryBind*)m->Binds;
@@ -1893,6 +1957,11 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refBinds.Release ();
+			refBinds = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -1913,6 +1982,7 @@ namespace Vulkan
 			set { m->BindCount = value; }
 		}
 
+		NativeReference refBinds;
 		public SparseMemoryBind[] Binds {
 			get {
 				if (m->BindCount == 0)
@@ -1936,7 +2006,8 @@ namespace Vulkan
 					return;
 				}
 				m->BindCount = (uint)value.Length;
-				m->Binds = Marshal.AllocHGlobal ((int)(sizeof(Interop.SparseMemoryBind)*value.Length));
+				refBinds = new NativeReference ((int)(sizeof(Interop.SparseMemoryBind)*value.Length));
+				m->Binds = refBinds.Handle;
 				unsafe
 				{
 					Interop.SparseMemoryBind* ptr = (Interop.SparseMemoryBind*)m->Binds;
@@ -1964,6 +2035,11 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refBinds.Release ();
+			refBinds = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -1984,6 +2060,7 @@ namespace Vulkan
 			set { m->BindCount = value; }
 		}
 
+		NativeReference refBinds;
 		public SparseImageMemoryBind[] Binds {
 			get {
 				if (m->BindCount == 0)
@@ -2007,7 +2084,8 @@ namespace Vulkan
 					return;
 				}
 				m->BindCount = (uint)value.Length;
-				m->Binds = Marshal.AllocHGlobal ((int)(sizeof(Interop.SparseImageMemoryBind)*value.Length));
+				refBinds = new NativeReference ((int)(sizeof(Interop.SparseImageMemoryBind)*value.Length));
+				m->Binds = refBinds.Handle;
 				unsafe
 				{
 					Interop.SparseImageMemoryBind* ptr = (Interop.SparseImageMemoryBind*)m->Binds;
@@ -2035,6 +2113,11 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refBinds.Release ();
+			refBinds = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -2049,6 +2132,7 @@ namespace Vulkan
 			set { m->WaitSemaphoreCount = value; }
 		}
 
+		NativeReference refWaitSemaphores;
 		public Semaphore[] WaitSemaphores {
 			get {
 				if (m->WaitSemaphoreCount == 0)
@@ -2072,7 +2156,8 @@ namespace Vulkan
 					return;
 				}
 				m->WaitSemaphoreCount = (uint)value.Length;
-				m->WaitSemaphores = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*value.Length));
+				refWaitSemaphores = new NativeReference ((int)(sizeof(UInt64)*value.Length));
+				m->WaitSemaphores = refWaitSemaphores.Handle;
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->WaitSemaphores;
@@ -2087,6 +2172,7 @@ namespace Vulkan
 			set { m->BufferBindCount = value; }
 		}
 
+		NativeReference refBufferBinds;
 		public SparseBufferMemoryBindInfo[] BufferBinds {
 			get {
 				if (m->BufferBindCount == 0)
@@ -2110,7 +2196,8 @@ namespace Vulkan
 					return;
 				}
 				m->BufferBindCount = (uint)value.Length;
-				m->BufferBinds = Marshal.AllocHGlobal ((int)(sizeof(Interop.SparseBufferMemoryBindInfo)*value.Length));
+				refBufferBinds = new NativeReference ((int)(sizeof(Interop.SparseBufferMemoryBindInfo)*value.Length));
+				m->BufferBinds = refBufferBinds.Handle;
 				unsafe
 				{
 					Interop.SparseBufferMemoryBindInfo* ptr = (Interop.SparseBufferMemoryBindInfo*)m->BufferBinds;
@@ -2125,6 +2212,7 @@ namespace Vulkan
 			set { m->ImageOpaqueBindCount = value; }
 		}
 
+		NativeReference refImageOpaqueBinds;
 		public SparseImageOpaqueMemoryBindInfo[] ImageOpaqueBinds {
 			get {
 				if (m->ImageOpaqueBindCount == 0)
@@ -2148,7 +2236,8 @@ namespace Vulkan
 					return;
 				}
 				m->ImageOpaqueBindCount = (uint)value.Length;
-				m->ImageOpaqueBinds = Marshal.AllocHGlobal ((int)(sizeof(Interop.SparseImageOpaqueMemoryBindInfo)*value.Length));
+				refImageOpaqueBinds = new NativeReference ((int)(sizeof(Interop.SparseImageOpaqueMemoryBindInfo)*value.Length));
+				m->ImageOpaqueBinds = refImageOpaqueBinds.Handle;
 				unsafe
 				{
 					Interop.SparseImageOpaqueMemoryBindInfo* ptr = (Interop.SparseImageOpaqueMemoryBindInfo*)m->ImageOpaqueBinds;
@@ -2163,6 +2252,7 @@ namespace Vulkan
 			set { m->ImageBindCount = value; }
 		}
 
+		NativeReference refImageBinds;
 		public SparseImageMemoryBindInfo[] ImageBinds {
 			get {
 				if (m->ImageBindCount == 0)
@@ -2186,7 +2276,8 @@ namespace Vulkan
 					return;
 				}
 				m->ImageBindCount = (uint)value.Length;
-				m->ImageBinds = Marshal.AllocHGlobal ((int)(sizeof(Interop.SparseImageMemoryBindInfo)*value.Length));
+				refImageBinds = new NativeReference ((int)(sizeof(Interop.SparseImageMemoryBindInfo)*value.Length));
+				m->ImageBinds = refImageBinds.Handle;
 				unsafe
 				{
 					Interop.SparseImageMemoryBindInfo* ptr = (Interop.SparseImageMemoryBindInfo*)m->ImageBinds;
@@ -2201,6 +2292,7 @@ namespace Vulkan
 			set { m->SignalSemaphoreCount = value; }
 		}
 
+		NativeReference refSignalSemaphores;
 		public Semaphore[] SignalSemaphores {
 			get {
 				if (m->SignalSemaphoreCount == 0)
@@ -2224,7 +2316,8 @@ namespace Vulkan
 					return;
 				}
 				m->SignalSemaphoreCount = (uint)value.Length;
-				m->SignalSemaphores = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*value.Length));
+				refSignalSemaphores = new NativeReference ((int)(sizeof(UInt64)*value.Length));
+				m->SignalSemaphores = refSignalSemaphores.Handle;
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->SignalSemaphores;
@@ -2252,6 +2345,19 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refWaitSemaphores.Release ();
+			refWaitSemaphores = NativeReference.Empty;
+			refBufferBinds.Release ();
+			refBufferBinds = NativeReference.Empty;
+			refImageOpaqueBinds.Release ();
+			refImageOpaqueBinds = NativeReference.Empty;
+			refImageBinds.Release ();
+			refImageBinds = NativeReference.Empty;
+			refSignalSemaphores.Release ();
+			refSignalSemaphores = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -2374,6 +2480,7 @@ namespace Vulkan
 			set { m->CodeSize = value; }
 		}
 
+		NativeReference refCode;
 		public UInt32[] Code {
 			get {
 				if (m->CodeSize == UIntPtr.Zero)
@@ -2395,7 +2502,8 @@ namespace Vulkan
 					return;
 				}
 				m->CodeSize = (UIntPtr)(value.Length << 2);
-				m->Code = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*value.Length));
+				refCode = new NativeReference ((int)(sizeof(UInt32)*value.Length));
+				m->Code = refCode.Handle;
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->Code;
@@ -2423,6 +2531,11 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refCode.Release ();
+			refCode = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -2453,6 +2566,7 @@ namespace Vulkan
 			set { m->StageFlags = value; }
 		}
 
+		NativeReference refImmutableSamplers;
 		public Sampler[] ImmutableSamplers {
 			get {
 				if (m->DescriptorCount == 0)
@@ -2476,7 +2590,8 @@ namespace Vulkan
 					return;
 				}
 				m->DescriptorCount = (uint)value.Length;
-				m->ImmutableSamplers = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*value.Length));
+				refImmutableSamplers = new NativeReference ((int)(sizeof(UInt64)*value.Length));
+				m->ImmutableSamplers = refImmutableSamplers.Handle;
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->ImmutableSamplers;
@@ -2502,6 +2617,11 @@ namespace Vulkan
 			native = pointer;
 		}
 
+		override public void VirtualDispose ()
+		{
+			refImmutableSamplers.Release ();
+			refImmutableSamplers = NativeReference.Empty;
+		}
 	}
 
 	unsafe public partial class DescriptorSetLayoutCreateInfo : MarshalledObject
@@ -2516,6 +2636,7 @@ namespace Vulkan
 			set { m->BindingCount = value; }
 		}
 
+		NativeReference refBindings;
 		public DescriptorSetLayoutBinding[] Bindings {
 			get {
 				if (m->BindingCount == 0)
@@ -2539,7 +2660,8 @@ namespace Vulkan
 					return;
 				}
 				m->BindingCount = (uint)value.Length;
-				m->Bindings = Marshal.AllocHGlobal ((int)(sizeof(Interop.DescriptorSetLayoutBinding)*value.Length));
+				refBindings = new NativeReference ((int)(sizeof(Interop.DescriptorSetLayoutBinding)*value.Length));
+				m->Bindings = refBindings.Handle;
 				unsafe
 				{
 					Interop.DescriptorSetLayoutBinding* ptr = (Interop.DescriptorSetLayoutBinding*)m->Bindings;
@@ -2567,6 +2689,11 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refBindings.Release ();
+			refBindings = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -2598,6 +2725,7 @@ namespace Vulkan
 			set { m->PoolSizeCount = value; }
 		}
 
+		NativeReference refPoolSizes;
 		public DescriptorPoolSize[] PoolSizes {
 			get {
 				if (m->PoolSizeCount == 0)
@@ -2619,7 +2747,8 @@ namespace Vulkan
 					return;
 				}
 				m->PoolSizeCount = (uint)value.Length;
-				m->PoolSizes = Marshal.AllocHGlobal ((int)(sizeof(DescriptorPoolSize)*value.Length));
+				refPoolSizes = new NativeReference ((int)(sizeof(DescriptorPoolSize)*value.Length));
+				m->PoolSizes = refPoolSizes.Handle;
 				unsafe
 				{
 					DescriptorPoolSize* ptr = (DescriptorPoolSize*)m->PoolSizes;
@@ -2647,6 +2776,11 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refPoolSizes.Release ();
+			refPoolSizes = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -2668,6 +2802,7 @@ namespace Vulkan
 			set { m->DescriptorSetCount = value; }
 		}
 
+		NativeReference refSetLayouts;
 		public DescriptorSetLayout[] SetLayouts {
 			get {
 				if (m->DescriptorSetCount == 0)
@@ -2691,7 +2826,8 @@ namespace Vulkan
 					return;
 				}
 				m->DescriptorSetCount = (uint)value.Length;
-				m->SetLayouts = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*value.Length));
+				refSetLayouts = new NativeReference ((int)(sizeof(UInt64)*value.Length));
+				m->SetLayouts = refSetLayouts.Handle;
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->SetLayouts;
@@ -2719,6 +2855,11 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refSetLayouts.Release ();
+			refSetLayouts = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -2741,6 +2882,7 @@ namespace Vulkan
 			set { m->MapEntryCount = value; }
 		}
 
+		NativeReference refMapEntries;
 		public SpecializationMapEntry[] MapEntries {
 			get {
 				if (m->MapEntryCount == 0)
@@ -2762,7 +2904,8 @@ namespace Vulkan
 					return;
 				}
 				m->MapEntryCount = (uint)value.Length;
-				m->MapEntries = Marshal.AllocHGlobal ((int)(sizeof(SpecializationMapEntry)*value.Length));
+				refMapEntries = new NativeReference ((int)(sizeof(SpecializationMapEntry)*value.Length));
+				m->MapEntries = refMapEntries.Handle;
 				unsafe
 				{
 					SpecializationMapEntry* ptr = (SpecializationMapEntry*)m->MapEntries;
@@ -2798,6 +2941,11 @@ namespace Vulkan
 			native = pointer;
 		}
 
+		override public void VirtualDispose ()
+		{
+			refMapEntries.Release ();
+			refMapEntries = NativeReference.Empty;
+		}
 	}
 
 	unsafe public partial class PipelineShaderStageCreateInfo : MarshalledObject
@@ -2939,6 +3087,7 @@ namespace Vulkan
 			set { m->VertexBindingDescriptionCount = value; }
 		}
 
+		NativeReference refVertexBindingDescriptions;
 		public VertexInputBindingDescription[] VertexBindingDescriptions {
 			get {
 				if (m->VertexBindingDescriptionCount == 0)
@@ -2960,7 +3109,8 @@ namespace Vulkan
 					return;
 				}
 				m->VertexBindingDescriptionCount = (uint)value.Length;
-				m->VertexBindingDescriptions = Marshal.AllocHGlobal ((int)(sizeof(VertexInputBindingDescription)*value.Length));
+				refVertexBindingDescriptions = new NativeReference ((int)(sizeof(VertexInputBindingDescription)*value.Length));
+				m->VertexBindingDescriptions = refVertexBindingDescriptions.Handle;
 				unsafe
 				{
 					VertexInputBindingDescription* ptr = (VertexInputBindingDescription*)m->VertexBindingDescriptions;
@@ -2975,6 +3125,7 @@ namespace Vulkan
 			set { m->VertexAttributeDescriptionCount = value; }
 		}
 
+		NativeReference refVertexAttributeDescriptions;
 		public VertexInputAttributeDescription[] VertexAttributeDescriptions {
 			get {
 				if (m->VertexAttributeDescriptionCount == 0)
@@ -2996,7 +3147,8 @@ namespace Vulkan
 					return;
 				}
 				m->VertexAttributeDescriptionCount = (uint)value.Length;
-				m->VertexAttributeDescriptions = Marshal.AllocHGlobal ((int)(sizeof(VertexInputAttributeDescription)*value.Length));
+				refVertexAttributeDescriptions = new NativeReference ((int)(sizeof(VertexInputAttributeDescription)*value.Length));
+				m->VertexAttributeDescriptions = refVertexAttributeDescriptions.Handle;
 				unsafe
 				{
 					VertexInputAttributeDescription* ptr = (VertexInputAttributeDescription*)m->VertexAttributeDescriptions;
@@ -3024,6 +3176,13 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refVertexBindingDescriptions.Release ();
+			refVertexBindingDescriptions = NativeReference.Empty;
+			refVertexAttributeDescriptions.Release ();
+			refVertexAttributeDescriptions = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -3125,6 +3284,7 @@ namespace Vulkan
 			set { m->ViewportCount = value; }
 		}
 
+		NativeReference refViewports;
 		public Viewport[] Viewports {
 			get {
 				if (m->ViewportCount == 0)
@@ -3146,7 +3306,8 @@ namespace Vulkan
 					return;
 				}
 				m->ViewportCount = (uint)value.Length;
-				m->Viewports = Marshal.AllocHGlobal ((int)(sizeof(Viewport)*value.Length));
+				refViewports = new NativeReference ((int)(sizeof(Viewport)*value.Length));
+				m->Viewports = refViewports.Handle;
 				unsafe
 				{
 					Viewport* ptr = (Viewport*)m->Viewports;
@@ -3161,6 +3322,7 @@ namespace Vulkan
 			set { m->ScissorCount = value; }
 		}
 
+		NativeReference refScissors;
 		public Rect2D[] Scissors {
 			get {
 				if (m->ScissorCount == 0)
@@ -3182,7 +3344,8 @@ namespace Vulkan
 					return;
 				}
 				m->ScissorCount = (uint)value.Length;
-				m->Scissors = Marshal.AllocHGlobal ((int)(sizeof(Rect2D)*value.Length));
+				refScissors = new NativeReference ((int)(sizeof(Rect2D)*value.Length));
+				m->Scissors = refScissors.Handle;
 				unsafe
 				{
 					Rect2D* ptr = (Rect2D*)m->Scissors;
@@ -3210,6 +3373,13 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refViewports.Release ();
+			refViewports = NativeReference.Empty;
+			refScissors.Release ();
+			refScissors = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -3323,6 +3493,7 @@ namespace Vulkan
 			set { m->MinSampleShading = value; }
 		}
 
+		NativeReference refSampleMask;
 		public UInt32[] SampleMask {
 			get {
 				if (m->RasterizationSamples == 0)
@@ -3344,7 +3515,8 @@ namespace Vulkan
 					return;
 				}
 				m->RasterizationSamples = (SampleCountFlags)(value.Length << 5);
-				m->SampleMask = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*value.Length));
+				refSampleMask = new NativeReference ((int)(sizeof(UInt32)*value.Length));
+				m->SampleMask = refSampleMask.Handle;
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->SampleMask;
@@ -3382,6 +3554,11 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refSampleMask.Release ();
+			refSampleMask = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -3424,6 +3601,7 @@ namespace Vulkan
 			set { m->AttachmentCount = value; }
 		}
 
+		NativeReference refAttachments;
 		public PipelineColorBlendAttachmentState[] Attachments {
 			get {
 				if (m->AttachmentCount == 0)
@@ -3445,7 +3623,8 @@ namespace Vulkan
 					return;
 				}
 				m->AttachmentCount = (uint)value.Length;
-				m->Attachments = Marshal.AllocHGlobal ((int)(sizeof(PipelineColorBlendAttachmentState)*value.Length));
+				refAttachments = new NativeReference ((int)(sizeof(PipelineColorBlendAttachmentState)*value.Length));
+				m->Attachments = refAttachments.Handle;
 				unsafe
 				{
 					PipelineColorBlendAttachmentState* ptr = (PipelineColorBlendAttachmentState*)m->Attachments;
@@ -3491,6 +3670,11 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refAttachments.Release ();
+			refAttachments = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -3511,6 +3695,7 @@ namespace Vulkan
 			set { m->DynamicStateCount = value; }
 		}
 
+		NativeReference refDynamicStates;
 		public DynamicState[] DynamicStates {
 			get {
 				if (m->DynamicStateCount == 0)
@@ -3532,7 +3717,8 @@ namespace Vulkan
 					return;
 				}
 				m->DynamicStateCount = (uint)value.Length;
-				m->DynamicStates = Marshal.AllocHGlobal ((int)(sizeof(DynamicState)*value.Length));
+				refDynamicStates = new NativeReference ((int)(sizeof(DynamicState)*value.Length));
+				m->DynamicStates = refDynamicStates.Handle;
 				unsafe
 				{
 					DynamicState* ptr = (DynamicState*)m->DynamicStates;
@@ -3560,6 +3746,11 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refDynamicStates.Release ();
+			refDynamicStates = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -3669,6 +3860,7 @@ namespace Vulkan
 			set { m->StageCount = value; }
 		}
 
+		NativeReference refStages;
 		public PipelineShaderStageCreateInfo[] Stages {
 			get {
 				if (m->StageCount == 0)
@@ -3692,7 +3884,8 @@ namespace Vulkan
 					return;
 				}
 				m->StageCount = (uint)value.Length;
-				m->Stages = Marshal.AllocHGlobal ((int)(sizeof(Interop.PipelineShaderStageCreateInfo)*value.Length));
+				refStages = new NativeReference ((int)(sizeof(Interop.PipelineShaderStageCreateInfo)*value.Length));
+				m->Stages = refStages.Handle;
 				unsafe
 				{
 					Interop.PipelineShaderStageCreateInfo* ptr = (Interop.PipelineShaderStageCreateInfo*)m->Stages;
@@ -3802,6 +3995,11 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refStages.Release ();
+			refStages = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -3872,6 +4070,7 @@ namespace Vulkan
 			set { m->SetLayoutCount = value; }
 		}
 
+		NativeReference refSetLayouts;
 		public DescriptorSetLayout[] SetLayouts {
 			get {
 				if (m->SetLayoutCount == 0)
@@ -3895,7 +4094,8 @@ namespace Vulkan
 					return;
 				}
 				m->SetLayoutCount = (uint)value.Length;
-				m->SetLayouts = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*value.Length));
+				refSetLayouts = new NativeReference ((int)(sizeof(UInt64)*value.Length));
+				m->SetLayouts = refSetLayouts.Handle;
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->SetLayouts;
@@ -3910,6 +4110,7 @@ namespace Vulkan
 			set { m->PushConstantRangeCount = value; }
 		}
 
+		NativeReference refPushConstantRanges;
 		public PushConstantRange[] PushConstantRanges {
 			get {
 				if (m->PushConstantRangeCount == 0)
@@ -3931,7 +4132,8 @@ namespace Vulkan
 					return;
 				}
 				m->PushConstantRangeCount = (uint)value.Length;
-				m->PushConstantRanges = Marshal.AllocHGlobal ((int)(sizeof(PushConstantRange)*value.Length));
+				refPushConstantRanges = new NativeReference ((int)(sizeof(PushConstantRange)*value.Length));
+				m->PushConstantRanges = refPushConstantRanges.Handle;
 				unsafe
 				{
 					PushConstantRange* ptr = (PushConstantRange*)m->PushConstantRanges;
@@ -3959,6 +4161,13 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refSetLayouts.Release ();
+			refSetLayouts = NativeReference.Empty;
+			refPushConstantRanges.Release ();
+			refPushConstantRanges = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -4280,6 +4489,7 @@ namespace Vulkan
 			set { m->ClearValueCount = value; }
 		}
 
+		NativeReference refClearValues;
 		public ClearValue[] ClearValues {
 			get {
 				if (m->ClearValueCount == 0)
@@ -4303,7 +4513,8 @@ namespace Vulkan
 					return;
 				}
 				m->ClearValueCount = (uint)value.Length;
-				m->ClearValues = Marshal.AllocHGlobal ((int)(sizeof(Interop.ClearValue)*value.Length));
+				refClearValues = new NativeReference ((int)(sizeof(Interop.ClearValue)*value.Length));
+				m->ClearValues = refClearValues.Handle;
 				unsafe
 				{
 					Interop.ClearValue* ptr = (Interop.ClearValue*)m->ClearValues;
@@ -4331,6 +4542,11 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refClearValues.Release ();
+			refClearValues = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -4425,6 +4641,7 @@ namespace Vulkan
 			set { m->InputAttachmentCount = value; }
 		}
 
+		NativeReference refInputAttachments;
 		public AttachmentReference[] InputAttachments {
 			get {
 				if (m->InputAttachmentCount == 0)
@@ -4446,7 +4663,8 @@ namespace Vulkan
 					return;
 				}
 				m->InputAttachmentCount = (uint)value.Length;
-				m->InputAttachments = Marshal.AllocHGlobal ((int)(sizeof(AttachmentReference)*value.Length));
+				refInputAttachments = new NativeReference ((int)(sizeof(AttachmentReference)*value.Length));
+				m->InputAttachments = refInputAttachments.Handle;
 				unsafe
 				{
 					AttachmentReference* ptr = (AttachmentReference*)m->InputAttachments;
@@ -4461,6 +4679,7 @@ namespace Vulkan
 			set { m->ColorAttachmentCount = value; }
 		}
 
+		NativeReference refColorAttachments;
 		public AttachmentReference[] ColorAttachments {
 			get {
 				if (m->ColorAttachmentCount == 0)
@@ -4482,7 +4701,8 @@ namespace Vulkan
 					return;
 				}
 				m->ColorAttachmentCount = (uint)value.Length;
-				m->ColorAttachments = Marshal.AllocHGlobal ((int)(sizeof(AttachmentReference)*value.Length));
+				refColorAttachments = new NativeReference ((int)(sizeof(AttachmentReference)*value.Length));
+				m->ColorAttachments = refColorAttachments.Handle;
 				unsafe
 				{
 					AttachmentReference* ptr = (AttachmentReference*)m->ColorAttachments;
@@ -4492,6 +4712,7 @@ namespace Vulkan
 			}
 		}
 
+		NativeReference refResolveAttachments;
 		public AttachmentReference[] ResolveAttachments {
 			get {
 				if (m->ColorAttachmentCount == 0)
@@ -4513,7 +4734,8 @@ namespace Vulkan
 					return;
 				}
 				m->ColorAttachmentCount = (uint)value.Length;
-				m->ResolveAttachments = Marshal.AllocHGlobal ((int)(sizeof(AttachmentReference)*value.Length));
+				refResolveAttachments = new NativeReference ((int)(sizeof(AttachmentReference)*value.Length));
+				m->ResolveAttachments = refResolveAttachments.Handle;
 				unsafe
 				{
 					AttachmentReference* ptr = (AttachmentReference*)m->ResolveAttachments;
@@ -4533,6 +4755,7 @@ namespace Vulkan
 			set { m->PreserveAttachmentCount = value; }
 		}
 
+		NativeReference refPreserveAttachments;
 		public UInt32[] PreserveAttachments {
 			get {
 				if (m->PreserveAttachmentCount == 0)
@@ -4554,7 +4777,8 @@ namespace Vulkan
 					return;
 				}
 				m->PreserveAttachmentCount = (uint)value.Length;
-				m->PreserveAttachments = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*value.Length));
+				refPreserveAttachments = new NativeReference ((int)(sizeof(UInt32)*value.Length));
+				m->PreserveAttachments = refPreserveAttachments.Handle;
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->PreserveAttachments;
@@ -4580,6 +4804,17 @@ namespace Vulkan
 			native = pointer;
 		}
 
+		override public void VirtualDispose ()
+		{
+			refInputAttachments.Release ();
+			refInputAttachments = NativeReference.Empty;
+			refColorAttachments.Release ();
+			refColorAttachments = NativeReference.Empty;
+			refResolveAttachments.Release ();
+			refResolveAttachments = NativeReference.Empty;
+			refPreserveAttachments.Release ();
+			refPreserveAttachments = NativeReference.Empty;
+		}
 	}
 
 	unsafe public partial struct SubpassDependency
@@ -4605,6 +4840,7 @@ namespace Vulkan
 			set { m->AttachmentCount = value; }
 		}
 
+		NativeReference refAttachments;
 		public AttachmentDescription[] Attachments {
 			get {
 				if (m->AttachmentCount == 0)
@@ -4626,7 +4862,8 @@ namespace Vulkan
 					return;
 				}
 				m->AttachmentCount = (uint)value.Length;
-				m->Attachments = Marshal.AllocHGlobal ((int)(sizeof(AttachmentDescription)*value.Length));
+				refAttachments = new NativeReference ((int)(sizeof(AttachmentDescription)*value.Length));
+				m->Attachments = refAttachments.Handle;
 				unsafe
 				{
 					AttachmentDescription* ptr = (AttachmentDescription*)m->Attachments;
@@ -4641,6 +4878,7 @@ namespace Vulkan
 			set { m->SubpassCount = value; }
 		}
 
+		NativeReference refSubpasses;
 		public SubpassDescription[] Subpasses {
 			get {
 				if (m->SubpassCount == 0)
@@ -4664,7 +4902,8 @@ namespace Vulkan
 					return;
 				}
 				m->SubpassCount = (uint)value.Length;
-				m->Subpasses = Marshal.AllocHGlobal ((int)(sizeof(Interop.SubpassDescription)*value.Length));
+				refSubpasses = new NativeReference ((int)(sizeof(Interop.SubpassDescription)*value.Length));
+				m->Subpasses = refSubpasses.Handle;
 				unsafe
 				{
 					Interop.SubpassDescription* ptr = (Interop.SubpassDescription*)m->Subpasses;
@@ -4679,6 +4918,7 @@ namespace Vulkan
 			set { m->DependencyCount = value; }
 		}
 
+		NativeReference refDependencies;
 		public SubpassDependency[] Dependencies {
 			get {
 				if (m->DependencyCount == 0)
@@ -4700,7 +4940,8 @@ namespace Vulkan
 					return;
 				}
 				m->DependencyCount = (uint)value.Length;
-				m->Dependencies = Marshal.AllocHGlobal ((int)(sizeof(SubpassDependency)*value.Length));
+				refDependencies = new NativeReference ((int)(sizeof(SubpassDependency)*value.Length));
+				m->Dependencies = refDependencies.Handle;
 				unsafe
 				{
 					SubpassDependency* ptr = (SubpassDependency*)m->Dependencies;
@@ -4728,6 +4969,15 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refAttachments.Release ();
+			refAttachments = NativeReference.Empty;
+			refSubpasses.Release ();
+			refSubpasses = NativeReference.Empty;
+			refDependencies.Release ();
+			refDependencies = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -5597,6 +5847,7 @@ namespace Vulkan
 			set { m->AttachmentCount = value; }
 		}
 
+		NativeReference refAttachments;
 		public ImageView[] Attachments {
 			get {
 				if (m->AttachmentCount == 0)
@@ -5620,7 +5871,8 @@ namespace Vulkan
 					return;
 				}
 				m->AttachmentCount = (uint)value.Length;
-				m->Attachments = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*value.Length));
+				refAttachments = new NativeReference ((int)(sizeof(UInt64)*value.Length));
+				m->Attachments = refAttachments.Handle;
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->Attachments;
@@ -5663,6 +5915,11 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refAttachments.Release ();
+			refAttachments = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -5702,6 +5959,7 @@ namespace Vulkan
 			set { m->WaitSemaphoreCount = value; }
 		}
 
+		NativeReference refWaitSemaphores;
 		public Semaphore[] WaitSemaphores {
 			get {
 				if (m->WaitSemaphoreCount == 0)
@@ -5725,7 +5983,8 @@ namespace Vulkan
 					return;
 				}
 				m->WaitSemaphoreCount = (uint)value.Length;
-				m->WaitSemaphores = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*value.Length));
+				refWaitSemaphores = new NativeReference ((int)(sizeof(UInt64)*value.Length));
+				m->WaitSemaphores = refWaitSemaphores.Handle;
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->WaitSemaphores;
@@ -5735,6 +5994,7 @@ namespace Vulkan
 			}
 		}
 
+		NativeReference refWaitDstStageMask;
 		public PipelineStageFlags[] WaitDstStageMask {
 			get {
 				if (m->WaitSemaphoreCount == 0)
@@ -5756,7 +6016,8 @@ namespace Vulkan
 					return;
 				}
 				m->WaitSemaphoreCount = (uint)value.Length;
-				m->WaitDstStageMask = Marshal.AllocHGlobal ((int)(sizeof(PipelineStageFlags)*value.Length));
+				refWaitDstStageMask = new NativeReference ((int)(sizeof(PipelineStageFlags)*value.Length));
+				m->WaitDstStageMask = refWaitDstStageMask.Handle;
 				unsafe
 				{
 					PipelineStageFlags* ptr = (PipelineStageFlags*)m->WaitDstStageMask;
@@ -5771,6 +6032,7 @@ namespace Vulkan
 			set { m->CommandBufferCount = value; }
 		}
 
+		NativeReference refCommandBuffers;
 		public CommandBuffer[] CommandBuffers {
 			get {
 				if (m->CommandBufferCount == 0)
@@ -5794,7 +6056,8 @@ namespace Vulkan
 					return;
 				}
 				m->CommandBufferCount = (uint)value.Length;
-				m->CommandBuffers = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*value.Length));
+				refCommandBuffers = new NativeReference ((int)(sizeof(IntPtr)*value.Length));
+				m->CommandBuffers = refCommandBuffers.Handle;
 				unsafe
 				{
 					IntPtr* ptr = (IntPtr*)m->CommandBuffers;
@@ -5809,6 +6072,7 @@ namespace Vulkan
 			set { m->SignalSemaphoreCount = value; }
 		}
 
+		NativeReference refSignalSemaphores;
 		public Semaphore[] SignalSemaphores {
 			get {
 				if (m->SignalSemaphoreCount == 0)
@@ -5832,7 +6096,8 @@ namespace Vulkan
 					return;
 				}
 				m->SignalSemaphoreCount = (uint)value.Length;
-				m->SignalSemaphores = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*value.Length));
+				refSignalSemaphores = new NativeReference ((int)(sizeof(UInt64)*value.Length));
+				m->SignalSemaphores = refSignalSemaphores.Handle;
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->SignalSemaphores;
@@ -5860,6 +6125,17 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refWaitSemaphores.Release ();
+			refWaitSemaphores = NativeReference.Empty;
+			refWaitDstStageMask.Release ();
+			refWaitDstStageMask = NativeReference.Empty;
+			refCommandBuffers.Release ();
+			refCommandBuffers = NativeReference.Empty;
+			refSignalSemaphores.Release ();
+			refSignalSemaphores = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -6249,6 +6525,7 @@ namespace Vulkan
 			set { m->QueueFamilyIndexCount = value; }
 		}
 
+		NativeReference refQueueFamilyIndices;
 		public UInt32[] QueueFamilyIndices {
 			get {
 				if (m->QueueFamilyIndexCount == 0)
@@ -6270,7 +6547,8 @@ namespace Vulkan
 					return;
 				}
 				m->QueueFamilyIndexCount = (uint)value.Length;
-				m->QueueFamilyIndices = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*value.Length));
+				refQueueFamilyIndices = new NativeReference ((int)(sizeof(UInt32)*value.Length));
+				m->QueueFamilyIndices = refQueueFamilyIndices.Handle;
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->QueueFamilyIndices;
@@ -6324,6 +6602,11 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refQueueFamilyIndices.Release ();
+			refQueueFamilyIndices = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
@@ -6339,6 +6622,7 @@ namespace Vulkan
 			set { m->WaitSemaphoreCount = value; }
 		}
 
+		NativeReference refWaitSemaphores;
 		public Semaphore[] WaitSemaphores {
 			get {
 				if (m->WaitSemaphoreCount == 0)
@@ -6362,7 +6646,8 @@ namespace Vulkan
 					return;
 				}
 				m->WaitSemaphoreCount = (uint)value.Length;
-				m->WaitSemaphores = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*value.Length));
+				refWaitSemaphores = new NativeReference ((int)(sizeof(UInt64)*value.Length));
+				m->WaitSemaphores = refWaitSemaphores.Handle;
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->WaitSemaphores;
@@ -6377,6 +6662,7 @@ namespace Vulkan
 			set { m->SwapchainCount = value; }
 		}
 
+		NativeReference refSwapchains;
 		public SwapchainKhr[] Swapchains {
 			get {
 				if (m->SwapchainCount == 0)
@@ -6400,7 +6686,8 @@ namespace Vulkan
 					return;
 				}
 				m->SwapchainCount = (uint)value.Length;
-				m->Swapchains = Marshal.AllocHGlobal ((int)(sizeof(UInt64)*value.Length));
+				refSwapchains = new NativeReference ((int)(sizeof(UInt64)*value.Length));
+				m->Swapchains = refSwapchains.Handle;
 				unsafe
 				{
 					UInt64* ptr = (UInt64*)m->Swapchains;
@@ -6410,6 +6697,7 @@ namespace Vulkan
 			}
 		}
 
+		NativeReference refImageIndices;
 		public UInt32[] ImageIndices {
 			get {
 				if (m->SwapchainCount == 0)
@@ -6431,7 +6719,8 @@ namespace Vulkan
 					return;
 				}
 				m->SwapchainCount = (uint)value.Length;
-				m->ImageIndices = Marshal.AllocHGlobal ((int)(sizeof(UInt32)*value.Length));
+				refImageIndices = new NativeReference ((int)(sizeof(UInt32)*value.Length));
+				m->ImageIndices = refImageIndices.Handle;
 				unsafe
 				{
 					UInt32* ptr = (UInt32*)m->ImageIndices;
@@ -6441,6 +6730,7 @@ namespace Vulkan
 			}
 		}
 
+		NativeReference refResults;
 		public Result[] Results {
 			get {
 				if (m->SwapchainCount == 0)
@@ -6462,7 +6752,8 @@ namespace Vulkan
 					return;
 				}
 				m->SwapchainCount = (uint)value.Length;
-				m->Results = Marshal.AllocHGlobal ((int)(sizeof(Result)*value.Length));
+				refResults = new NativeReference ((int)(sizeof(Result)*value.Length));
+				m->Results = refResults.Handle;
 				unsafe
 				{
 					Result* ptr = (Result*)m->Results;
@@ -6490,6 +6781,17 @@ namespace Vulkan
 			Initialize ();
 		}
 
+		override public void VirtualDispose ()
+		{
+			refWaitSemaphores.Release ();
+			refWaitSemaphores = NativeReference.Empty;
+			refSwapchains.Release ();
+			refSwapchains = NativeReference.Empty;
+			refImageIndices.Release ();
+			refImageIndices = NativeReference.Empty;
+			refResults.Release ();
+			refResults = NativeReference.Empty;
+		}
 
 		internal void Initialize ()
 		{
