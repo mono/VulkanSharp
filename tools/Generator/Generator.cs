@@ -577,6 +577,7 @@ namespace VulkanSharp.Generator
 				len = string.Format ("m->{0}", countName);
 				lenFromValue = "value.Length";
 			}
+			IndentWriteLine ("NativeReference ref{0};", csMemberName);
 			IndentWriteLine ("{0} {1}[] {2} {{", sec, csMemberType, csMemberName);
 			IndentLevel++;
 			IndentWriteLine ("get {");
@@ -620,7 +621,8 @@ namespace VulkanSharp.Generator
 			IndentLevel--;
 			IndentWriteLine ("}");
 			IndentWriteLine ("m->{0} = {1}{2};", countName, cast, lenFromValue);
-			IndentWriteLine ("m->{0} = Marshal.AllocHGlobal ((int)(sizeof({1}{2})*value.Length));", csMemberName, structNeedsMarshalling ? (InteropNamespace + ".") : "", ptrType);
+			IndentWriteLine ("ref{0} = new NativeReference ((int)(sizeof({1}{2})*value.Length));", csMemberName, structNeedsMarshalling ? (InteropNamespace + ".") : "", ptrType);
+			IndentWriteLine ("m->{0} = ref{0}.Handle;", csMemberName);
 			IndentWriteLine ("unsafe");
 			IndentWriteLine ("{");
 			IndentLevel++;
@@ -682,6 +684,7 @@ namespace VulkanSharp.Generator
 
 		void WriteMemberStringArray (string csMemberType, string csMemberName, string sec)
 		{
+			IndentWriteLine ("NativeReference ref{0};", csMemberName);
 			IndentWriteLine ("{0} {1} {2} {{", sec, csMemberType, csMemberName);
 			IndentLevel++;
 			IndentWriteLine ("get {");
@@ -719,7 +722,8 @@ namespace VulkanSharp.Generator
 			IndentLevel--;
 			IndentWriteLine ("}");
 			IndentWriteLine ("m->{0} = (uint)value.Length;", countName);
-			IndentWriteLine ("m->{0} = Marshal.AllocHGlobal ((int)(sizeof(IntPtr)*m->{1}));", csMemberName, countName);
+			IndentWriteLine ("ref{0} = new NativeReference ((int)(sizeof(IntPtr)*m->{1}));", csMemberName, countName);
+			IndentWriteLine ("m->{0} = ref{0}.Handle;", csMemberName, countName);
 			IndentWriteLine ("unsafe");
 			IndentWriteLine ("{");
 			IndentLevel++;
@@ -743,6 +747,7 @@ namespace VulkanSharp.Generator
 			public bool isHandle;
 		}
 		List<StructMemberInfo> initializeMembers;
+		List<string> arrayMembers;
 
 		bool WriteMember (XElement memberElement)
 		{
@@ -866,15 +871,17 @@ namespace VulkanSharp.Generator
 					WriteMemberCharArray (csMemberName, sec);
 				else if (isFixedArray)
 					WriteMemberFixedArray (csMemberType, csMemberName, memberElement, memberIsStructure);
-				else if (isArray)
+				else if (isArray) {
 					WriteMemberArray (csMemberType, csMemberName, sec, memberElement);
-				else if (memberIsStructure || handles.ContainsKey (csMemberType))
+					arrayMembers.Add (csMemberName);
+				} else if (memberIsStructure || handles.ContainsKey (csMemberType))
 					WriteMemberStructOrHandle (csMemberType, csMemberName, sec, isPointer);
 				else if (csMemberType == "string")
 					WriteMemberString (csMemberType, csMemberName, sec);
-				else if (csMemberType == "string[]")
+				else if (csMemberType == "string[]") {
 					WriteMemberStringArray (csMemberType, csMemberName, sec);
-				else {
+					arrayMembers.Add (csMemberName);
+				} else {
 					IndentWriteLine ("public {0} {1} {{", csMemberType, csMemberName);
 					IndentLevel++;
 					IndentWriteLine ("get {{ return m->{0}; }}", csMemberName);
@@ -941,6 +948,7 @@ namespace VulkanSharp.Generator
 			IndentLevel++;
 
 			initializeMembers = new List<StructMemberInfo> ();
+			arrayMembers = new List<string> ();
 			GenerateMembers (structElement, WriteMember);
 
 			if (!isInterop) {
@@ -982,6 +990,18 @@ namespace VulkanSharp.Generator
 						IndentWriteLine ("Initialize ();");
 					IndentLevel--;
 					IndentWriteLine ("}\n");
+
+					if (arrayMembers.Count () > 0) {
+						IndentWriteLine ("override public void VirtualDispose ()");
+						IndentWriteLine ("{");
+						IndentLevel++;
+						foreach (var refName in arrayMembers) {
+							IndentWriteLine ("ref{0}.Release ();", refName);
+							IndentWriteLine ("ref{0} = NativeReference.Empty;", refName);
+						}
+						IndentLevel--;
+						IndentWriteLine ("}");
+					}
 
 					if (needsInitialize)
 						WriteStructureInitializeMethod (initializeMembers, csName, hasSType);

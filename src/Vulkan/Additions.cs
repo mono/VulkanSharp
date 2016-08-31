@@ -172,7 +172,6 @@ namespace Vulkan
 			if (refCount <= 0) {
 				Marshal.FreeHGlobal (Handle);
 				Handle = IntPtr.Zero;
-				refCount = 0;
 			}
 		}
 	}
