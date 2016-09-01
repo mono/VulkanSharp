@@ -3,7 +3,7 @@
 This project provides a .NET binding for the
 [Vulkan](https://www.khronos.org/vulkan/) API.
 
-Nuget [package](https://www.nuget.org/packages/VulkanSharp.Preview/)
+Nuget [package](https://www.nuget.org/packages/VulkanSharp/)
 
 Check our [samples](https://github.com/mono/VulkanSharp/tree/master/samples) to see examples of using VulkanSharp
 
