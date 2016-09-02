@@ -22,8 +22,9 @@ namespace VulkanSharp.Generator
 			{ "HINSTANCE", "IntPtr" },
 			{ "HANDLE", "IntPtr" },
 			{ "DWORD", "UInt32" },
+			{ "SECURITY_ATTRIBUTES", "SecurityAttributes" },
 		};
-		Dictionary<string, StructInfo> structures = new Dictionary<string, StructInfo> ();
+		Dictionary<string, StructInfo> structures = new Dictionary<string, StructInfo> () { { "SecurityAttributes", new StructInfo { name = "SecurityAttributes", needsMarshalling = false } } };
 		Dictionary<string, HandleInfo> handles = new Dictionary<string,HandleInfo> ();
 		Dictionary<string, List<EnumExtensionInfo>> enumExtensions = new Dictionary<string, List<EnumExtensionInfo>> ();
 		HashSet<string> enums = new HashSet<string> ();
@@ -474,7 +475,11 @@ namespace VulkanSharp.Generator
 			{ "SampleMask", "RasterizationSamples" },
 			{ "MemoryTypes", "MemoryTypeCount" },
 			{ "MemoryHeaps", "MemoryHeapCount" },
-			{ "AcquireTimeoutMilliseconds", "acquireCount" },
+			{ "AcquireSyncs", "AcquireCount" },
+			{ "AcquireKeys", "AcquireCount" },
+			{ "AcquireTimeoutMilliseconds", "AcquireCount" },
+			{ "ReleaseSyncs", "ReleaseCount" },
+			{ "ReleaseKeys", "ReleaseCount" },
 		};
 
 		void WriteMemberFixedArray (string csMemberType, string csMemberName, XElement memberElement, bool isStruct)
@@ -662,8 +667,9 @@ namespace VulkanSharp.Generator
 				else
 					IndentWriteLine ("set {{ l{0} = value; m->{0} = value != null ? *value.m : default({1}.{2}); }}", csMemberName, InteropNamespace, csMemberType);
 			} else if (isPointer) {
-				IndentWriteLine ("get {{ return ({0})Interop.Structure.MarshalPointerToObject (m->{1}, typeof ({0})); }}", csMemberType ,csMemberName);
-				IndentWriteLine ("set {{ m->{0} = Interop.Structure.MarshalObjectToPointer (m->{0}, value); }}", csMemberName);
+				var vulkanInteropPrefix = InteropNamespace == "Interop" ? "" : "Vulkan.";
+				IndentWriteLine ("get {{ return ({0}){1}Interop.Structure.MarshalPointerToObject (m->{2}, typeof ({0})); }}", csMemberType, vulkanInteropPrefix, csMemberName);
+				IndentWriteLine ("set {{ m->{0} = {1}Interop.Structure.MarshalObjectToPointer (m->{0}, value); }}", csMemberName, vulkanInteropPrefix);
 			} else {
 				IndentWriteLine ("get {{ return m->{0}; }}", csMemberName);
 				IndentWriteLine ("set {{ m->{0} = value; }}", csMemberName);
@@ -976,7 +982,7 @@ namespace VulkanSharp.Generator
 					IndentWriteLine ("public {0} ()", csName);
 					IndentWriteLine ("{");
 					IndentLevel++;
-					IndentWriteLine ("native = Interop.Structure.Allocate (typeof ({0}.{1}));", InteropNamespace, csName);
+					IndentWriteLine ("native = {0}Interop.Structure.Allocate (typeof ({1}.{2}));", InteropNamespace == "Interop" ? "" : "Vulkan.", InteropNamespace, csName);
 					if (needsInitialize)
 						IndentWriteLine ("Initialize ();");
 					IndentLevel--;
@@ -1072,6 +1078,8 @@ namespace VulkanSharp.Generator
 				changed = false;
 				foreach (var pair in structures) {
 					var info = pair.Value;
+					if (info.element == null)
+						continue;
 					var structNeedsMarshalling = LearnStructureMembers (info.element);
 					if (structNeedsMarshalling != info.needsMarshalling) {
 						info.needsMarshalling = structNeedsMarshalling;
@@ -1090,7 +1098,7 @@ namespace VulkanSharp.Generator
 
 		void GenerateStructs ()
 		{
-			CreateFile ("Structs", UsingNamespaceFlags.Interop);
+			CreateFile ("Structs", UsingNamespaceFlags.Interop, Namespace);
 			isUnion = false;
 			GenerateType ("struct", WriteStructOrUnion);
 			FinalizeFile ();
@@ -1105,7 +1113,7 @@ namespace VulkanSharp.Generator
 
 		void GenerateUnions ()
 		{
-			CreateFile ("Unions", UsingNamespaceFlags.Interop);
+			CreateFile ("Unions", UsingNamespaceFlags.Interop, Namespace);
 			isUnion = true;
 			GenerateType ("union", WriteStructOrUnion);
 			FinalizeFile ();
@@ -1329,7 +1337,7 @@ namespace VulkanSharp.Generator
 				var optional = param.Attribute ("optional");
 				bool isOptionalParam = (optional != null && optional.Value == "true");
 				bool isDoublePointer = param.Value.Contains (type + "**");
-				if (!isDoublePointer && info.isPointer && info.csType == "IntPtr") {
+				if (!isDoublePointer && info.isPointer && info.len != null && info.csType == "IntPtr") {
 					info.isPointer = false;
 					info.isOut = false;
 				}
@@ -2085,7 +2093,11 @@ namespace VulkanSharp.Generator
 				"VK_KHR_xcb_surface",
 				"VK_KHR_wayland_surface",
 				"VK_KHR_mir_surface" } );
-			GeneratePlatformExtension ("Windows", "VK_KHR_win32_surface");
+			GeneratePlatformExtension ("Windows", new string [] {
+				"VK_KHR_win32_surface",
+				"VK_NV_external_memory_win32",
+				"VK_NV_win32_keyed_mutex",
+			} );
 		}
 	}
 }
