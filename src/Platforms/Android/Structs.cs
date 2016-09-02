@@ -11,7 +11,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Vulkan
+namespace Vulkan.Android
 {
 	unsafe public partial class AndroidSurfaceCreateInfoKhr : MarshalledObject
 	{
@@ -33,7 +33,7 @@ namespace Vulkan
 
 		public AndroidSurfaceCreateInfoKhr ()
 		{
-			native = Interop.Structure.Allocate (typeof (Android.Interop.AndroidSurfaceCreateInfoKhr));
+			native = Vulkan.Interop.Structure.Allocate (typeof (Android.Interop.AndroidSurfaceCreateInfoKhr));
 			Initialize ();
 		}
 
