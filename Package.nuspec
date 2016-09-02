@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>VulkanSharp</id>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
     <authors>Xamarin Inc</authors>
     <owners>rodo</owners>
     <licenseUrl>https://github.com/mono/VulkanSharp/blob/master/LICENSE</licenseUrl>
@@ -10,8 +10,10 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Open source .NET binding for the Vulkan API</description>
     <releaseNotes>
-This is preview release and this package replaces the Vulkan.Preview nuget package.
-New in this release: improved memory handling.
+This is the preview release of the VulkanSharp project.
+New in this release:
+* new NV extensions in Windows platform
+* fixed platform structures namespaces
     </releaseNotes>
     <copyright>Copyright 2016 Xamarin Inc</copyright>
     <tags>Vulkan C# Bindings 3D VulkanSharp Graphics OpenSource MultiPlatform Android Windows</tags>
