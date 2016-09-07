@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>VulkanSharp</id>
-    <version>0.1.1</version>
+    <version>0.1.3</version>
     <authors>Xamarin Inc</authors>
     <owners>rodo</owners>
     <licenseUrl>https://github.com/mono/VulkanSharp/blob/master/LICENSE</licenseUrl>
@@ -12,8 +12,7 @@
     <releaseNotes>
 This is the preview release of the VulkanSharp project.
 New in this release:
-* new NV extensions in Windows platform
-* fixed platform structures namespaces
+* fixed net452 target framework for windows
     </releaseNotes>
     <copyright>Copyright 2016 Xamarin Inc</copyright>
     <tags>Vulkan C# Bindings 3D VulkanSharp Graphics OpenSource MultiPlatform Android Windows</tags>
@@ -26,6 +25,10 @@ New in this release:
 	<reference file="Vulkan.Android.dll" />
       </group>
       <group targetFramework="win8">
+	<reference file="Vulkan.dll" />
+	<reference file="Vulkan.Windows.dll" />
+      </group>
+      <group targetFramework="net452">
 	<reference file="Vulkan.dll" />
 	<reference file="Vulkan.Windows.dll" />
       </group>
@@ -44,5 +47,8 @@ New in this release:
 
     <file src="bin/Debug/Vulkan.dll*" target="lib/win8" />
     <file src="src/Platforms/Windows/bin/Debug/Vulkan.Windows.dll*" target="lib/win8" />
+
+    <file src="bin/Debug/Vulkan.dll*" target="lib/net452" />
+    <file src="src/Platforms/Windows/bin/Debug/Vulkan.Windows.dll*" target="lib/net452" />
   </files>
 </package>
