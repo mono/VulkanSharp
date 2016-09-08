@@ -6843,39 +6843,6 @@ namespace Vulkan
 
 	}
 
-	unsafe public partial class DebugReportLayerFlagsExt : MarshalledObject
-	{
-		public UInt64 EnabledValidationFlags {
-			get { return m->EnabledValidationFlags; }
-			set { m->EnabledValidationFlags = value; }
-		}
-		internal Interop.DebugReportLayerFlagsExt* m {
-
-			get {
-				return (Interop.DebugReportLayerFlagsExt*)native.Handle;
-			}
-		}
-
-		public DebugReportLayerFlagsExt ()
-		{
-			native = Interop.Structure.Allocate (typeof (Interop.DebugReportLayerFlagsExt));
-			Initialize ();
-		}
-
-		internal DebugReportLayerFlagsExt (NativePointer pointer)
-		{
-			native = pointer;
-			Initialize ();
-		}
-
-
-		internal void Initialize ()
-		{
-			m->SType = StructureType.DebugReportValidationFlagsExt;
-		}
-
-	}
-
 	unsafe public partial class PipelineRasterizationStateRasterizationOrderAmd : MarshalledObject
 	{
 		public RasterizationOrderAmd RasterizationOrder {

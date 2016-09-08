@@ -956,13 +956,6 @@ namespace Vulkan.Interop
 		internal IntPtr UserData;
 	}
 
-	internal partial struct DebugReportLayerFlagsExt
-	{
-		internal StructureType SType;
-		internal IntPtr Next;
-		internal UInt64 EnabledValidationFlags;
-	}
-
 	internal partial struct PipelineRasterizationStateRasterizationOrderAmd
 	{
 		internal StructureType SType;

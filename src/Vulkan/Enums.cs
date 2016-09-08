@@ -793,7 +793,6 @@ namespace Vulkan
 		AndroidSurfaceCreateInfoKhr = 1000008000,
 		Win32SurfaceCreateInfoKhr = 1000009000,
 		DebugReportCallbackCreateInfoExt = 1000011000,
-		DebugReportValidationFlagsExt = 1000011002,
 		PipelineRasterizationStateRasterizationOrderAmd = 1000018000,
 		DebugMarkerObjectNameInfoExt = 1000022000,
 		DebugMarkerObjectTagInfoExt = 1000022001,
@@ -1013,17 +1012,17 @@ namespace Vulkan
 	[Flags]
 	public enum ExternalMemoryHandleTypeFlagsNv : int
 	{
-		OpaqueWin32 = 0x00000001,
-		OpaqueWin32Kmt = 0x00000002,
-		D3d11Image = 0x00000004,
-		D3d11ImageKmt = 0x00000008,
+		OpaqueWin32 = 0x1,
+		OpaqueWin32Kmt = 0x2,
+		D3d11Image = 0x4,
+		D3d11ImageKmt = 0x8,
 	}
 
 	[Flags]
 	public enum ExternalMemoryFeatureFlagsNv : int
 	{
-		DedicatedOnly = 0x00000001,
-		Exportable = 0x00000002,
-		Importable = 0x00000004,
+		DedicatedOnly = 0x1,
+		Exportable = 0x2,
+		Importable = 0x4,
 	}
 }
