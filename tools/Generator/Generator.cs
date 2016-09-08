@@ -129,8 +129,6 @@ namespace VulkanSharp.Generator
 					first = false;
 					if (name.StartsWith ("VK", StringComparison.OrdinalIgnoreCase))
 						continue;
-					else
-						Console.WriteLine ("warning: name '{0}' doesn't start with VK prefix", name);
 				}
 
 				if (specialParts.ContainsKey (part))
@@ -146,6 +144,12 @@ namespace VulkanSharp.Generator
 
 			return sw.ToString ();
 		}
+
+		HashSet<string> knownTypes = new HashSet<string> {
+			"void",
+			"char",
+			"float",
+		};
 
 		string GetTypeCsName (string name, string typeName = "type")
 		{
@@ -165,7 +169,8 @@ namespace VulkanSharp.Generator
 			}
 			else
 			{
-				Console.WriteLine ("warning: {0} name '{1}' doesn't start with Vk prefix or end with _t suffix", typeName, name);
+				if (typeName == "type" && !knownTypes.Contains (name) && !name.StartsWith ("PFN_", StringComparison.Ordinal))
+					Console.WriteLine ("warning: {0} name '{1}' doesn't start with Vk prefix or end with _t suffix", typeName, name);
 				csName = name;
 			}
 
