@@ -135,10 +135,24 @@ namespace VulkanSharp.Generator
 					sw.Write (specialParts [part]);
 				else if (part.Length > 0)
 				{
-					if (part.ToCharArray ().All (c => char.IsUpper (c) || char.IsDigit (c)))
-						sw.Write (part[0] + part.Substring (1).ToLower ());
-					else
-						sw.Write (char.ToUpper (part[0]) + part.Substring (1));
+					var chars = part.ToCharArray ();
+					if (chars.All (c => char.IsUpper (c)))
+						sw.Write (part [0] + part.Substring (1).ToLower ());
+					else {
+						string formatted = "";
+						bool upIt = true;
+						bool wasLower = false;
+						bool wasDigit = false;
+						foreach (var ch in chars) {
+							formatted += upIt ? char.ToUpper (ch) : (wasLower ? ch : char.ToLower (ch));
+							upIt = char.IsDigit (ch);
+							wasLower = char.IsLower (ch);
+							if (wasDigit && char.ToLower (ch) == 'd')
+								upIt = true;
+							wasDigit = char.IsDigit (ch);
+						}
+						sw.Write (formatted);
+					}
 				}
 			}
 
