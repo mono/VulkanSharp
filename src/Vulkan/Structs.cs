@@ -88,14 +88,14 @@ namespace Vulkan
 			set { m->DriverVersion = value; }
 		}
 
-		public UInt32 VendorID {
-			get { return m->VendorID; }
-			set { m->VendorID = value; }
+		public UInt32 VendorId {
+			get { return m->VendorId; }
+			set { m->VendorId = value; }
 		}
 
-		public UInt32 DeviceID {
-			get { return m->DeviceID; }
-			set { m->DeviceID = value; }
+		public UInt32 DeviceId {
+			get { return m->DeviceId; }
+			set { m->DeviceId = value; }
 		}
 
 		public PhysicalDeviceType DeviceType {
@@ -108,11 +108,11 @@ namespace Vulkan
 			set { Interop.Structure.MarshalFixedSizeString (m->DeviceName, value, 256); }
 		}
 
-		public byte[] PipelineCacheUUID {
+		public byte[] PipelineCacheUuid {
 			get {
 				var arr = new byte [16];
 				for (int i = 0; i < 16; i++)
-					arr [i] = m->PipelineCacheUUID [i];
+					arr [i] = m->PipelineCacheUuid [i];
 				return arr;
 			}
 
@@ -120,9 +120,9 @@ namespace Vulkan
 				if (value.Length > 16)
 					throw new Exception ("array too long");
 				for (int i = 0; i < value.Length; i++)
-					m->PipelineCacheUUID [i] = value [i];
+					m->PipelineCacheUuid [i] = value [i];
 				for (int i = value.Length; i < 16; i++)
-					m->PipelineCacheUUID [i] = 0;
+					m->PipelineCacheUuid [i] = 0;
 			}
 		}
 
@@ -2870,7 +2870,7 @@ namespace Vulkan
 
 	unsafe public partial struct SpecializationMapEntry
 	{
-		public UInt32 ConstantID;
+		public UInt32 ConstantId;
 		public UInt32 Offset;
 		public UIntPtr Size;
 	}
@@ -5074,9 +5074,9 @@ namespace Vulkan
 		public Bool32 AlphaToOne;
 		public Bool32 MultiViewport;
 		public Bool32 SamplerAnisotropy;
-		public Bool32 TextureCompressionETC2;
-		public Bool32 TextureCompressionASTCLdr;
-		public Bool32 TextureCompressionBC;
+		public Bool32 TextureCompressionEtc2;
+		public Bool32 TextureCompressionAstcLdr;
+		public Bool32 TextureCompressionBc;
 		public Bool32 OcclusionQueryPrecise;
 		public Bool32 PipelineStatisticsQuery;
 		public Bool32 VertexPipelineStoresAndAtomics;
