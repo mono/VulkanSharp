@@ -45,7 +45,7 @@ namespace Inspector
 			foreach (var device in Instance.EnumeratePhysicalDevices ()) {
 				var props = device.GetProperties ();
 				textView.Append (string.Format ("Physical device #{0}\n", i++));
-				textView.Append (string.Format ("\tID: {0}\n\tName: {1}\n\tType: {2}\n\tAPI version: {3}\n\tDriver version: {4}\n\tVendor ID: 0x{5:x}\n", props.DeviceID, props.DeviceName, props.DeviceType, Version.ToString (props.ApiVersion), props.DriverVersion, props.VendorID));
+				textView.Append (string.Format ("\tID: {0}\n\tName: {1}\n\tType: {2}\n\tAPI version: {3}\n\tDriver version: {4}\n\tVendor ID: 0x{5:x}\n", props.DeviceId, props.DeviceName, props.DeviceType, Version.ToString (props.ApiVersion), props.DriverVersion, props.VendorId));
 
 				var surfaceCaps = device.GetSurfaceCapabilitiesKHR (surface);
 				textView.Append (string.Format ("\n\tSurface capabilities\n"));

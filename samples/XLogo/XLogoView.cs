@@ -48,10 +48,10 @@ namespace XLogo
 		SurfaceFormatKhr SelectFormat (PhysicalDevice physicalDevice, SurfaceKhr surface)
 		{
 			foreach (var f in physicalDevice.GetSurfaceFormatsKHR (surface))
-				if (f.Format == Format.R8g8b8a8Unorm)
+				if (f.Format == Format.R8G8B8A8Unorm)
 					return f;
 
-			throw new System.Exception ("didn't find the R8g8b8a8Unorm format");
+			throw new System.Exception ("didn't find the R8G8B8A8Unorm format");
 		}
 
 		SwapchainKhr CreateSwapchain (SurfaceKhr surface, SurfaceFormatKhr surfaceFormat)
@@ -302,7 +302,7 @@ namespace XLogo
 				InputRate = VertexInputRate.Vertex
 			};
 			var vertexInputAttributeDescription = new VertexInputAttributeDescription {
-				Format = Format.R32g32b32Sfloat
+				Format = Format.R32G32B32Sfloat
 			};
 			var vertexInputStateCreateInfo = new PipelineVertexInputStateCreateInfo {
 				VertexBindingDescriptions = new VertexInputBindingDescription [] { vertexInputBindingDescription },

@@ -26,10 +26,10 @@ namespace ClearView
 		SurfaceFormatKhr SelectFormat (PhysicalDevice physicalDevice, SurfaceKhr surface)
 		{
 			foreach (var f in physicalDevice.GetSurfaceFormatsKHR (surface))
-				if (f.Format == Format.R8g8b8a8Unorm)
+				if (f.Format == Format.R8G8B8A8Unorm)
 					return f;
 
-			throw new Exception ("didn't find the R8g8b8a8Unorm format");
+			throw new Exception ("didn't find the R8G8B8A8Unorm format");
 		}
 
 		SwapchainKhr CreateSwapchain (SurfaceKhr surface, SurfaceCapabilitiesKhr surfaceCapabilities, SurfaceFormatKhr surfaceFormat)
