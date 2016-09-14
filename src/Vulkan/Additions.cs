@@ -231,5 +231,10 @@ namespace Vulkan
 		public virtual void VirtualDispose ()
 		{
 		}
+
+		~MarshalledObject ()
+		{
+			Dispose ();
+		}
 	}
 }
