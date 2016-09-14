@@ -46,3 +46,6 @@ run-android-samples:
 
 nuget: all
 	nuget pack
+
+run-tests:
+	$(MAKE) -C tests/NativeMemory clean deploy run
