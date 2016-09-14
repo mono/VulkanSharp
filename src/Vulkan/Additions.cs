@@ -147,12 +147,16 @@ namespace Vulkan
 		{
 			Handle = Marshal.AllocHGlobal (size);
 			refCount = 1;
+			if (NativeMemoryDebug.Enabled)
+				NativeMemoryDebug.GlobalRefCount++;
 		}
 
 		internal NativeReference (IntPtr ptr)
 		{
 			Handle = ptr;
 			refCount = 1;
+			if (NativeMemoryDebug.Enabled)
+				NativeMemoryDebug.GlobalRefCount++;
 		}
 
 		internal void AddRef ()
@@ -161,6 +165,8 @@ namespace Vulkan
 				return;
 
 			refCount++;
+			if (NativeMemoryDebug.Enabled)
+				NativeMemoryDebug.GlobalRefCount++;
 		}
 
 		internal void Release ()
@@ -169,6 +175,8 @@ namespace Vulkan
 				return;
 
 			refCount--;
+			if (NativeMemoryDebug.Enabled)
+				NativeMemoryDebug.GlobalRefCount--;
 			if (refCount <= 0) {
 				Marshal.FreeHGlobal (Handle);
 				Handle = IntPtr.Zero;

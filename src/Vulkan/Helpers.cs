@@ -73,5 +73,36 @@ namespace Vulkan
 			return string.Format ("{0}.{1}.{2}", version >> 22, (version >> 12) & 0x3ff, version & 0xfff);
 		}
 	}
+
+	public static class NativeMemoryDebug
+	{
+		public static bool Enabled = false;
+		public static int AllocatedSize = 0;
+		static int globalRefCount = 0;
+
+		public delegate void ReportCallbackDelegate (string format, params object [] args);
+		public delegate string StackTraceDelegate ();
+
+		public static ReportCallbackDelegate ReportCallback = null;
+		public static StackTraceDelegate StackTrace = null;
+
+		static void Report (string format, params object [] args)
+		{
+			if (ReportCallback != null)
+				ReportCallback (format, args);
+		}
+
+		public static int GlobalRefCount {
+			set {
+				Report ("ref count change: {0} --> {1} delta: {2}", globalRefCount, value, value - globalRefCount);
+				if (StackTrace != null)
+					Report (StackTrace ());
+				globalRefCount = value;
+			}
+			get {
+				return globalRefCount;
+			}
+		}
+	}
 }
 

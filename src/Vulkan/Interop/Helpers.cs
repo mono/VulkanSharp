@@ -9,6 +9,8 @@ namespace Vulkan.Interop
 		{
 			int size = Marshal.SizeOf (type);
 			IntPtr ptr = Marshal.AllocHGlobal (size);
+			if (NativeMemoryDebug.Enabled && ptr != IntPtr.Zero)
+				NativeMemoryDebug.AllocatedSize += size;
 			unsafe
 			{
 				byte* bptr = (byte*)ptr.ToPointer ();
