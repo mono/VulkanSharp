@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>VulkanSharp</id>
-    <version>0.1.5</version>
+    <version>0.1.6</version>
     <authors>Xamarin Inc</authors>
     <owners>rodo</owners>
     <licenseUrl>https://github.com/mono/VulkanSharp/blob/master/LICENSE</licenseUrl>
@@ -12,9 +12,7 @@
     <releaseNotes>
 This is the preview release of the VulkanSharp project.
 New in this release:
-* improved native memory handling
-* added native memory debugging
-* API changes: few names changed capitalization, like R8g8b8a8Unorm --> R8G8B8A8Unorm, UUID --> Uuid
+ * updated to Vulkan specs 1.0.27
     </releaseNotes>
     <copyright>Copyright 2016 Xamarin Inc</copyright>
     <tags>Vulkan C# Bindings 3D VulkanSharp Graphics OpenSource MultiPlatform Android Windows</tags>
