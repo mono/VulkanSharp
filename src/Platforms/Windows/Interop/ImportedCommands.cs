@@ -24,5 +24,8 @@ namespace Vulkan.Windows.Interop
 		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
 		internal static unsafe extern Bool32 vkGetPhysicalDeviceWin32PresentationSupportKHR (IntPtr physicalDevice, UInt32 queueFamilyIndex);
 
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkGetMemoryWin32HandleNV (IntPtr device, UInt64 memory, ExternalMemoryHandleTypeFlagsNv handleType, IntPtr* pHandle);
+
 	}
 }

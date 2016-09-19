@@ -21,4 +21,32 @@ namespace Vulkan.Windows.Interop
 		internal IntPtr Hwnd;
 	}
 
+	internal partial struct ImportMemoryWin32HandleInfoNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalMemoryHandleTypeFlagsNv HandleType;
+		internal IntPtr Handle;
+	}
+
+	internal partial struct ExportMemoryWin32HandleInfoNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal IntPtr Attributes;
+		internal UInt32 DwAccess;
+	}
+
+	internal partial struct Win32KeyedMutexAcquireReleaseInfoNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 AcquireCount;
+		internal IntPtr AcquireSyncs;
+		internal IntPtr AcquireKeys;
+		internal IntPtr AcquireTimeoutMilliseconds;
+		internal UInt32 ReleaseCount;
+		internal IntPtr ReleaseSyncs;
+		internal IntPtr ReleaseKeys;
+	}
 }
