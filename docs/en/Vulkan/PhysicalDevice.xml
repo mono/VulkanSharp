@@ -5,6 +5,7 @@
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
     <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+    <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -39,6 +40,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Device</ReturnType>
@@ -62,6 +64,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DisplayModeKhr</ReturnType>
@@ -106,6 +109,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.ExtensionProperties[]</ReturnType>
@@ -143,6 +147,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.LayerProperties[]</ReturnType>
@@ -180,6 +185,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DisplayModePropertiesKhr[]</ReturnType>
@@ -201,6 +207,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DisplayPlaneCapabilitiesKhr</ReturnType>
@@ -240,6 +247,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DisplayPlanePropertiesKhr[]</ReturnType>
@@ -277,6 +285,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DisplayKhr[]</ReturnType>
@@ -314,12 +323,43 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DisplayPropertiesKhr[]</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetExternalImageFormatPropertiesNV">
+      <MemberSignature Language="C#" Value="public Vulkan.ExternalImageFormatPropertiesNv GetExternalImageFormatPropertiesNV (Vulkan.Format format, Vulkan.ImageType type, Vulkan.ImageTiling tiling, Vulkan.ImageUsageFlags usage, Vulkan.ImageCreateFlags flags, Vulkan.ExternalMemoryHandleTypeFlagsNv externalHandleType);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Vulkan.ExternalImageFormatPropertiesNv GetExternalImageFormatPropertiesNV(valuetype Vulkan.Format format, valuetype Vulkan.ImageType type, valuetype Vulkan.ImageTiling tiling, valuetype Vulkan.ImageUsageFlags usage, valuetype Vulkan.ImageCreateFlags flags, valuetype Vulkan.ExternalMemoryHandleTypeFlagsNv externalHandleType) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ExternalImageFormatPropertiesNv</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="format" Type="Vulkan.Format" />
+        <Parameter Name="type" Type="Vulkan.ImageType" />
+        <Parameter Name="tiling" Type="Vulkan.ImageTiling" />
+        <Parameter Name="usage" Type="Vulkan.ImageUsageFlags" />
+        <Parameter Name="flags" Type="Vulkan.ImageCreateFlags" />
+        <Parameter Name="externalHandleType" Type="Vulkan.ExternalMemoryHandleTypeFlagsNv" />
+      </Parameters>
+      <Docs>
+        <param name="format">To be added.</param>
+        <param name="type">To be added.</param>
+        <param name="tiling">To be added.</param>
+        <param name="usage">To be added.</param>
+        <param name="flags">To be added.</param>
+        <param name="externalHandleType">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -332,6 +372,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.PhysicalDeviceFeatures</ReturnType>
@@ -350,6 +391,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.FormatProperties</ReturnType>
@@ -371,6 +413,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.ImageFormatProperties</ReturnType>
@@ -400,6 +443,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.PhysicalDeviceMemoryProperties</ReturnType>
@@ -418,6 +462,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.PhysicalDeviceProperties</ReturnType>
@@ -452,6 +497,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.QueueFamilyProperties[]</ReturnType>
@@ -497,6 +543,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.SparseImageFormatProperties[]</ReturnType>
@@ -526,6 +573,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.SurfaceCapabilitiesKhr</ReturnType>
@@ -566,6 +614,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.SurfaceFormatKhr[]</ReturnType>
@@ -606,6 +655,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.PresentModeKhr[]</ReturnType>
@@ -627,6 +677,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Bool32</ReturnType>
@@ -669,6 +720,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.IntPtr</ReturnType>

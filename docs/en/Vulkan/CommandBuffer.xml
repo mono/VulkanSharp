@@ -5,6 +5,7 @@
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
     <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+    <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -39,6 +40,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -59,6 +61,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -83,6 +86,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -104,6 +108,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -131,6 +136,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -190,6 +196,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -214,6 +221,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -235,6 +243,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -258,6 +267,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -306,6 +316,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -335,6 +346,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -395,6 +407,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -416,6 +429,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -462,6 +476,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -487,6 +502,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -539,6 +555,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -564,6 +581,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -616,6 +634,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -639,6 +658,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -687,6 +707,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -712,6 +733,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -764,6 +786,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -791,6 +814,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -847,6 +871,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -872,6 +897,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -925,6 +951,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -950,6 +977,56 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="CmdDebugMarkerBeginEXT">
+      <MemberSignature Language="C#" Value="public Vulkan.DebugMarkerMarkerInfoExt CmdDebugMarkerBeginEXT ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.DebugMarkerMarkerInfoExt CmdDebugMarkerBeginEXT() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugMarkerMarkerInfoExt</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdDebugMarkerEndEXT">
+      <MemberSignature Language="C#" Value="public void CmdDebugMarkerEndEXT ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdDebugMarkerEndEXT() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdDebugMarkerInsertEXT">
+      <MemberSignature Language="C#" Value="public Vulkan.DebugMarkerMarkerInfoExt CmdDebugMarkerInsertEXT ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Vulkan.DebugMarkerMarkerInfoExt CmdDebugMarkerInsertEXT() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DebugMarkerMarkerInfoExt</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="CmdDispatch">
       <MemberSignature Language="C#" Value="public void CmdDispatch (uint x, uint y, uint z);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdDispatch(unsigned int32 x, unsigned int32 y, unsigned int32 z) cil managed" />
@@ -957,6 +1034,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -981,6 +1059,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1003,6 +1082,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1029,6 +1109,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1057,6 +1138,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1071,6 +1153,35 @@
         <param name="buffer">To be added.</param>
         <param name="offset">To be added.</param>
         <param name="drawCount">To be added.</param>
+        <param name="stride">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdDrawIndexedIndirectCountAMD">
+      <MemberSignature Language="C#" Value="public void CmdDrawIndexedIndirectCountAMD (Vulkan.Buffer buffer, Vulkan.DeviceSize offset, Vulkan.Buffer countBuffer, Vulkan.DeviceSize countBufferOffset, uint maxDrawCount, uint stride);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdDrawIndexedIndirectCountAMD(class Vulkan.Buffer buffer, valuetype Vulkan.DeviceSize offset, class Vulkan.Buffer countBuffer, valuetype Vulkan.DeviceSize countBufferOffset, unsigned int32 maxDrawCount, unsigned int32 stride) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="buffer" Type="Vulkan.Buffer" />
+        <Parameter Name="offset" Type="Vulkan.DeviceSize" />
+        <Parameter Name="countBuffer" Type="Vulkan.Buffer" />
+        <Parameter Name="countBufferOffset" Type="Vulkan.DeviceSize" />
+        <Parameter Name="maxDrawCount" Type="System.UInt32" />
+        <Parameter Name="stride" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="buffer">To be added.</param>
+        <param name="offset">To be added.</param>
+        <param name="countBuffer">To be added.</param>
+        <param name="countBufferOffset">To be added.</param>
+        <param name="maxDrawCount">To be added.</param>
         <param name="stride">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -1083,6 +1194,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1102,6 +1214,35 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="CmdDrawIndirectCountAMD">
+      <MemberSignature Language="C#" Value="public void CmdDrawIndirectCountAMD (Vulkan.Buffer buffer, Vulkan.DeviceSize offset, Vulkan.Buffer countBuffer, Vulkan.DeviceSize countBufferOffset, uint maxDrawCount, uint stride);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdDrawIndirectCountAMD(class Vulkan.Buffer buffer, valuetype Vulkan.DeviceSize offset, class Vulkan.Buffer countBuffer, valuetype Vulkan.DeviceSize countBufferOffset, unsigned int32 maxDrawCount, unsigned int32 stride) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="buffer" Type="Vulkan.Buffer" />
+        <Parameter Name="offset" Type="Vulkan.DeviceSize" />
+        <Parameter Name="countBuffer" Type="Vulkan.Buffer" />
+        <Parameter Name="countBufferOffset" Type="Vulkan.DeviceSize" />
+        <Parameter Name="maxDrawCount" Type="System.UInt32" />
+        <Parameter Name="stride" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="buffer">To be added.</param>
+        <param name="offset">To be added.</param>
+        <param name="countBuffer">To be added.</param>
+        <param name="countBufferOffset">To be added.</param>
+        <param name="maxDrawCount">To be added.</param>
+        <param name="stride">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="CmdEndQuery">
       <MemberSignature Language="C#" Value="public void CmdEndQuery (Vulkan.QueryPool queryPool, uint query);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdEndQuery(class Vulkan.QueryPool queryPool, unsigned int32 query) cil managed" />
@@ -1109,6 +1250,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1131,6 +1273,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1147,6 +1290,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1166,6 +1310,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1207,6 +1352,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1233,6 +1379,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1252,6 +1399,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1281,6 +1429,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1346,6 +1495,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1374,6 +1524,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1396,6 +1547,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1419,6 +1571,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1446,6 +1599,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1503,6 +1657,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1523,6 +1678,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1547,6 +1703,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1569,6 +1726,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1591,6 +1749,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1610,6 +1769,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1631,6 +1791,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1676,6 +1837,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1698,6 +1860,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1720,6 +1883,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1741,6 +1905,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1762,6 +1927,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1801,6 +1967,31 @@
       </Docs>
     </Member>
     <Member MemberName="CmdUpdateBuffer">
+      <MemberSignature Language="C#" Value="public void CmdUpdateBuffer (Vulkan.Buffer dstBuffer, Vulkan.DeviceSize dstOffset, Vulkan.DeviceSize dataSize, IntPtr pData);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdUpdateBuffer(class Vulkan.Buffer dstBuffer, valuetype Vulkan.DeviceSize dstOffset, valuetype Vulkan.DeviceSize dataSize, native int pData) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="dstBuffer" Type="Vulkan.Buffer" />
+        <Parameter Name="dstOffset" Type="Vulkan.DeviceSize" />
+        <Parameter Name="dataSize" Type="Vulkan.DeviceSize" />
+        <Parameter Name="pData" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="dstBuffer">To be added.</param>
+        <param name="dstOffset">To be added.</param>
+        <param name="dataSize">To be added.</param>
+        <param name="pData">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmdUpdateBuffer">
       <MemberSignature Language="C#" Value="public void CmdUpdateBuffer (Vulkan.Buffer dstBuffer, Vulkan.DeviceSize dstOffset, Vulkan.DeviceSize dataSize, uint pData);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CmdUpdateBuffer(class Vulkan.Buffer dstBuffer, valuetype Vulkan.DeviceSize dstOffset, valuetype Vulkan.DeviceSize dataSize, unsigned int32 pData) cil managed" />
       <MemberType>Method</MemberType>
@@ -1832,6 +2023,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1861,6 +2053,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1928,6 +2121,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1952,6 +2146,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1969,6 +2164,7 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1988,6 +2184,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+        <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.IntPtr</ReturnType>

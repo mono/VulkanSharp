@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="Vulkan" Version="0.0.6105.39043">
+    <Assembly Name="Vulkan" Version="0.0.6106.39464">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations | System.Diagnostics.DebuggableAttribute+DebuggingModes.IgnoreSymbolStoreSequencePoints)</AttributeName>
@@ -34,9 +34,6 @@
         </Attribute>
         <Attribute>
           <AttributeName>System.Runtime.CompilerServices.RuntimeCompatibility(WrapNonExceptionThrows=true)</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>System.Runtime.Versioning.TargetFramework(".NETPortable,Version=v4.5,Profile=Profile7", FrameworkDisplayName=".NET Portable Subset")</AttributeName>
         </Attribute>
       </Attributes>
     </Assembly>
@@ -93,11 +90,17 @@
       <Type Name="ComputePipelineCreateInfo" Kind="Class" />
       <Type Name="CopyDescriptorSet" Kind="Class" />
       <Type Name="CullModeFlags" Kind="Enumeration" />
+      <Type Name="DebugMarkerMarkerInfoExt" Kind="Class" />
+      <Type Name="DebugMarkerObjectNameInfoExt" Kind="Class" />
+      <Type Name="DebugMarkerObjectTagInfoExt" Kind="Class" />
       <Type Name="DebugReportCallbackCreateInfoExt" Kind="Class" />
       <Type Name="DebugReportCallbackExt" Kind="Class" />
       <Type Name="DebugReportErrorExt" Kind="Enumeration" />
       <Type Name="DebugReportFlagsExt" Kind="Enumeration" />
       <Type Name="DebugReportObjectTypeExt" Kind="Enumeration" />
+      <Type Name="DedicatedAllocationBufferCreateInfoNv" Kind="Class" />
+      <Type Name="DedicatedAllocationImageCreateInfoNv" Kind="Class" />
+      <Type Name="DedicatedAllocationMemoryAllocateInfoNv" Kind="Class" />
       <Type Name="DependencyFlags" Kind="Enumeration" />
       <Type Name="DescriptorBufferInfo" Kind="Class" />
       <Type Name="DescriptorImageInfo" Kind="Class" />
@@ -133,9 +136,14 @@
       <Type Name="DynamicState" Kind="Enumeration" />
       <Type Name="Event" Kind="Class" />
       <Type Name="EventCreateInfo" Kind="Class" />
+      <Type Name="ExportMemoryAllocateInfoNv" Kind="Class" />
       <Type Name="ExtensionProperties" Kind="Class" />
       <Type Name="Extent2D" Kind="Structure" />
       <Type Name="Extent3D" Kind="Structure" />
+      <Type Name="ExternalImageFormatPropertiesNv" Kind="Structure" />
+      <Type Name="ExternalMemoryFeatureFlagsNv" Kind="Enumeration" />
+      <Type Name="ExternalMemoryHandleTypeFlagsNv" Kind="Enumeration" />
+      <Type Name="ExternalMemoryImageCreateInfoNv" Kind="Class" />
       <Type Name="Fence" Kind="Class" />
       <Type Name="FenceCreateFlags" Kind="Enumeration" />
       <Type Name="FenceCreateInfo" Kind="Class" />
@@ -211,6 +219,7 @@
       <Type Name="PipelineLayoutCreateInfo" Kind="Class" />
       <Type Name="PipelineMultisampleStateCreateInfo" Kind="Class" />
       <Type Name="PipelineRasterizationStateCreateInfo" Kind="Class" />
+      <Type Name="PipelineRasterizationStateRasterizationOrderAmd" Kind="Class" />
       <Type Name="PipelineShaderStageCreateInfo" Kind="Class" />
       <Type Name="PipelineStageFlags" Kind="Enumeration" />
       <Type Name="PipelineTessellationStateCreateInfo" Kind="Class" />
@@ -230,6 +239,7 @@
       <Type Name="Queue" Kind="Class" />
       <Type Name="QueueFamilyProperties" Kind="Structure" />
       <Type Name="QueueFlags" Kind="Enumeration" />
+      <Type Name="RasterizationOrderAmd" Kind="Enumeration" />
       <Type Name="Rect2D" Kind="Structure" />
       <Type Name="Rect3D" Kind="Structure" />
       <Type Name="RenderPass" Kind="Class" />
@@ -275,6 +285,8 @@
       <Type Name="SwapchainCreateInfoKhr" Kind="Class" />
       <Type Name="SwapchainKhr" Kind="Class" />
       <Type Name="SystemAllocationScope" Kind="Enumeration" />
+      <Type Name="ValidationCheckExt" Kind="Enumeration" />
+      <Type Name="ValidationFlagsExt" Kind="Class" />
       <Type Name="Version" Kind="Class" />
       <Type Name="VertexInputAttributeDescription" Kind="Structure" />
       <Type Name="VertexInputBindingDescription" Kind="Structure" />
