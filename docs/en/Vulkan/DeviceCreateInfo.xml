@@ -1,12 +1,13 @@
 <Type Name="DeviceCreateInfo" FullName="Vulkan.DeviceCreateInfo">
-  <TypeSignature Language="C#" Value="public class DeviceCreateInfo" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit DeviceCreateInfo extends System.Object" />
+  <TypeSignature Language="C#" Value="public class DeviceCreateInfo : Vulkan.MarshalledObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit DeviceCreateInfo extends Vulkan.MarshalledObject" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>Vulkan.MarshalledObject</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -20,6 +21,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -33,6 +35,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
@@ -43,12 +46,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="EnabledExtensionNames">
+      <MemberSignature Language="C#" Value="public string[] EnabledExtensionNames { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string[] EnabledExtensionNames" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="EnabledFeatures">
       <MemberSignature Language="C#" Value="public Vulkan.PhysicalDeviceFeatures EnabledFeatures { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.PhysicalDeviceFeatures EnabledFeatures" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.PhysicalDeviceFeatures EnabledFeatures" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.PhysicalDeviceFeatures</ReturnType>
@@ -65,9 +85,26 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EnabledLayerNames">
+      <MemberSignature Language="C#" Value="public string[] EnabledLayerNames { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string[] EnabledLayerNames" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -81,6 +118,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
@@ -129,6 +167,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
@@ -140,18 +179,35 @@
       </Docs>
     </Member>
     <Member MemberName="QueueCreateInfos">
-      <MemberSignature Language="C#" Value="public Vulkan.DeviceQueueCreateInfo QueueCreateInfos { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.DeviceQueueCreateInfo QueueCreateInfos" />
+      <MemberSignature Language="C#" Value="public Vulkan.DeviceQueueCreateInfo[] QueueCreateInfos { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.DeviceQueueCreateInfo[] QueueCreateInfos" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Vulkan.DeviceQueueCreateInfo</ReturnType>
+        <ReturnType>Vulkan.DeviceQueueCreateInfo[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VirtualDispose">
+      <MemberSignature Language="C#" Value="public override void VirtualDispose ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void VirtualDispose() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

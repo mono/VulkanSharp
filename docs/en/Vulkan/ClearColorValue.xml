@@ -1,12 +1,13 @@
 <Type Name="ClearColorValue" FullName="Vulkan.ClearColorValue">
-  <TypeSignature Language="C#" Value="public class ClearColorValue" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ClearColorValue extends System.Object" />
+  <TypeSignature Language="C#" Value="public class ClearColorValue : Vulkan.MarshalledObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ClearColorValue extends Vulkan.MarshalledObject" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>Vulkan.MarshalledObject</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -20,6 +21,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -27,15 +29,64 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ClearColorValue (int[] intArray);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32[] intArray) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="intArray" Type="System.Int32[]" />
+      </Parameters>
+      <Docs>
+        <param name="intArray">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ClearColorValue (float[] floatArray);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32[] floatArray) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="floatArray" Type="System.Single[]" />
+      </Parameters>
+      <Docs>
+        <param name="floatArray">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ClearColorValue (uint[] uintArray);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(unsigned int32[] uintArray) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="uintArray" Type="System.UInt32[]" />
+      </Parameters>
+      <Docs>
+        <param name="uintArray">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Float32">
-      <MemberSignature Language="C#" Value="public float Float32 { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 Float32" />
+      <MemberSignature Language="C#" Value="public float[] Float32 { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32[] Float32" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
+        <ReturnType>System.Single[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -44,14 +95,15 @@
       </Docs>
     </Member>
     <Member MemberName="Int32">
-      <MemberSignature Language="C#" Value="public int Int32 { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 Int32" />
+      <MemberSignature Language="C#" Value="public int[] Int32 { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32[] Int32" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
+        <ReturnType>System.Int32[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -60,14 +112,15 @@
       </Docs>
     </Member>
     <Member MemberName="Uint32">
-      <MemberSignature Language="C#" Value="public uint Uint32 { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Uint32" />
+      <MemberSignature Language="C#" Value="public uint[] Uint32 { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32[] Uint32" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.UInt32</ReturnType>
+        <ReturnType>System.UInt32[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

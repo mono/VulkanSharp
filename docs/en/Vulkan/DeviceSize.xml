@@ -4,6 +4,7 @@
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.ValueType</BaseTypeName>
@@ -15,11 +16,52 @@
   </Docs>
   <Members>
     <Member MemberName="op_Implicit">
+      <MemberSignature Language="C#" Value="public static Vulkan.DeviceSize op_Implicit (int iValue);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Vulkan.DeviceSize op_Implicit(int32 iValue) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DeviceSize</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iValue" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="iValue">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Implicit">
+      <MemberSignature Language="C#" Value="public static Vulkan.DeviceSize op_Implicit (uint iValue);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Vulkan.DeviceSize op_Implicit(unsigned int32 iValue) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DeviceSize</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iValue" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="iValue">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Implicit">
       <MemberSignature Language="C#" Value="public static Vulkan.DeviceSize op_Implicit (ulong iValue);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Vulkan.DeviceSize op_Implicit(unsigned int64 iValue) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DeviceSize</ReturnType>
@@ -40,6 +82,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt64</ReturnType>

@@ -1,12 +1,13 @@
 <Type Name="ComponentMapping" FullName="Vulkan.ComponentMapping">
-  <TypeSignature Language="C#" Value="public class ComponentMapping" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ComponentMapping extends System.Object" />
+  <TypeSignature Language="C#" Value="public struct ComponentMapping" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit ComponentMapping extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>System.ValueType</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -22,6 +23,21 @@
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="A">
+      <MemberSignature Language="C#" Value="public Vulkan.ComponentSwizzle A;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.ComponentSwizzle A" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ComponentSwizzle</ReturnType>
+      </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -44,6 +60,21 @@
       </Docs>
     </Member>
     <Member MemberName="B">
+      <MemberSignature Language="C#" Value="public Vulkan.ComponentSwizzle B;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.ComponentSwizzle B" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ComponentSwizzle</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="B">
       <MemberSignature Language="C#" Value="public Vulkan.ComponentSwizzle B { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.ComponentSwizzle B" />
       <MemberType>Property</MemberType>
@@ -60,6 +91,21 @@
       </Docs>
     </Member>
     <Member MemberName="G">
+      <MemberSignature Language="C#" Value="public Vulkan.ComponentSwizzle G;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.ComponentSwizzle G" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ComponentSwizzle</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="G">
       <MemberSignature Language="C#" Value="public Vulkan.ComponentSwizzle G { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.ComponentSwizzle G" />
       <MemberType>Property</MemberType>
@@ -72,6 +118,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="R">
+      <MemberSignature Language="C#" Value="public Vulkan.ComponentSwizzle R;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.ComponentSwizzle R" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ComponentSwizzle</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

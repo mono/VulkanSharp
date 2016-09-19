@@ -1,12 +1,13 @@
 <Type Name="Rect3D" FullName="Vulkan.Rect3D">
-  <TypeSignature Language="C#" Value="public class Rect3D" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Rect3D extends System.Object" />
+  <TypeSignature Language="C#" Value="public struct Rect3D" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit Rect3D extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>System.ValueType</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -28,6 +29,21 @@
       </Docs>
     </Member>
     <Member MemberName="Extent">
+      <MemberSignature Language="C#" Value="public Vulkan.Extent3D Extent;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Extent3D Extent" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Extent3D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Extent">
       <MemberSignature Language="C#" Value="public Vulkan.Extent3D Extent { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Extent3D Extent" />
       <MemberType>Property</MemberType>
@@ -40,6 +56,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Offset">
+      <MemberSignature Language="C#" Value="public Vulkan.Offset3D Offset;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Offset3D Offset" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Offset3D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

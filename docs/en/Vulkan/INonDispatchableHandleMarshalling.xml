@@ -1,0 +1,31 @@
+<Type Name="INonDispatchableHandleMarshalling" FullName="Vulkan.INonDispatchableHandleMarshalling">
+  <TypeSignature Language="C#" Value="public interface INonDispatchableHandleMarshalling" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract INonDispatchableHandleMarshalling" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+  </AssemblyInfo>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Handle">
+      <MemberSignature Language="C#" Value="public ulong Handle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int64 Handle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt64</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

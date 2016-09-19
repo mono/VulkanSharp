@@ -1,0 +1,30 @@
+<Type Name="NativeMemoryDebug+ReportCallbackDelegate" FullName="Vulkan.NativeMemoryDebug+ReportCallbackDelegate">
+  <TypeSignature Language="C#" Value="public delegate void NativeMemoryDebug.ReportCallbackDelegate(string format, object[] args);" />
+  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi sealed NativeMemoryDebug/ReportCallbackDelegate extends System.MulticastDelegate" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Delegate</BaseTypeName>
+  </Base>
+  <Parameters>
+    <Parameter Name="format" Type="System.String" />
+    <Parameter Name="args" Type="System.Object[]">
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ParamArray</AttributeName>
+        </Attribute>
+      </Attributes>
+    </Parameter>
+  </Parameters>
+  <ReturnValue>
+    <ReturnType>System.Void</ReturnType>
+  </ReturnValue>
+  <Docs>
+    <param name="format">To be added.</param>
+    <param name="args">To be added.</param>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+</Type>

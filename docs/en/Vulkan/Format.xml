@@ -4,6 +4,7 @@
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -27,12 +28,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="A1R5G5B5UnormPack16">
+      <MemberSignature Language="C#" Value="A1R5G5B5UnormPack16" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A1R5G5B5UnormPack16 = int32(8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="A2b10g10r10SintPack32">
       <MemberSignature Language="C#" Value="A2b10g10r10SintPack32" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A2b10g10r10SintPack32 = int32(69)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="A2B10G10R10SintPack32">
+      <MemberSignature Language="C#" Value="A2B10G10R10SintPack32" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A2B10G10R10SintPack32 = int32(69)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -55,12 +84,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="A2B10G10R10SnormPack32">
+      <MemberSignature Language="C#" Value="A2B10G10R10SnormPack32" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A2B10G10R10SnormPack32 = int32(65)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="A2b10g10r10SscaledPack32">
       <MemberSignature Language="C#" Value="A2b10g10r10SscaledPack32" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A2b10g10r10SscaledPack32 = int32(67)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="A2B10G10R10SscaledPack32">
+      <MemberSignature Language="C#" Value="A2B10G10R10SscaledPack32" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A2B10G10R10SscaledPack32 = int32(67)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -83,12 +140,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="A2B10G10R10UintPack32">
+      <MemberSignature Language="C#" Value="A2B10G10R10UintPack32" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A2B10G10R10UintPack32 = int32(68)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="A2b10g10r10UnormPack32">
       <MemberSignature Language="C#" Value="A2b10g10r10UnormPack32" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A2b10g10r10UnormPack32 = int32(64)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="A2B10G10R10UnormPack32">
+      <MemberSignature Language="C#" Value="A2B10G10R10UnormPack32" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A2B10G10R10UnormPack32 = int32(64)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -111,12 +196,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="A2B10G10R10UscaledPack32">
+      <MemberSignature Language="C#" Value="A2B10G10R10UscaledPack32" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A2B10G10R10UscaledPack32 = int32(66)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="A2r10g10b10SintPack32">
       <MemberSignature Language="C#" Value="A2r10g10b10SintPack32" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A2r10g10b10SintPack32 = int32(63)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="A2R10G10B10SintPack32">
+      <MemberSignature Language="C#" Value="A2R10G10B10SintPack32" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A2R10G10B10SintPack32 = int32(63)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -139,12 +252,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="A2R10G10B10SnormPack32">
+      <MemberSignature Language="C#" Value="A2R10G10B10SnormPack32" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A2R10G10B10SnormPack32 = int32(59)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="A2r10g10b10SscaledPack32">
       <MemberSignature Language="C#" Value="A2r10g10b10SscaledPack32" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A2r10g10b10SscaledPack32 = int32(61)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="A2R10G10B10SscaledPack32">
+      <MemberSignature Language="C#" Value="A2R10G10B10SscaledPack32" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A2R10G10B10SscaledPack32 = int32(61)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -167,12 +308,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="A2R10G10B10UintPack32">
+      <MemberSignature Language="C#" Value="A2R10G10B10UintPack32" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A2R10G10B10UintPack32 = int32(62)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="A2r10g10b10UnormPack32">
       <MemberSignature Language="C#" Value="A2r10g10b10UnormPack32" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A2r10g10b10UnormPack32 = int32(58)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="A2R10G10B10UnormPack32">
+      <MemberSignature Language="C#" Value="A2R10G10B10UnormPack32" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A2R10G10B10UnormPack32 = int32(58)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -195,12 +364,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="A2R10G10B10UscaledPack32">
+      <MemberSignature Language="C#" Value="A2R10G10B10UscaledPack32" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A2R10G10B10UscaledPack32 = int32(60)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="A8b8g8r8SintPack32">
       <MemberSignature Language="C#" Value="A8b8g8r8SintPack32" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A8b8g8r8SintPack32 = int32(56)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="A8B8G8R8SintPack32">
+      <MemberSignature Language="C#" Value="A8B8G8R8SintPack32" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A8B8G8R8SintPack32 = int32(56)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -223,12 +420,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="A8B8G8R8SnormPack32">
+      <MemberSignature Language="C#" Value="A8B8G8R8SnormPack32" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A8B8G8R8SnormPack32 = int32(52)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="A8b8g8r8SrgbPack32">
       <MemberSignature Language="C#" Value="A8b8g8r8SrgbPack32" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A8b8g8r8SrgbPack32 = int32(57)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="A8B8G8R8SrgbPack32">
+      <MemberSignature Language="C#" Value="A8B8G8R8SrgbPack32" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A8B8G8R8SrgbPack32 = int32(57)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -251,12 +476,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="A8B8G8R8SscaledPack32">
+      <MemberSignature Language="C#" Value="A8B8G8R8SscaledPack32" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A8B8G8R8SscaledPack32 = int32(54)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="A8b8g8r8UintPack32">
       <MemberSignature Language="C#" Value="A8b8g8r8UintPack32" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A8b8g8r8UintPack32 = int32(55)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="A8B8G8R8UintPack32">
+      <MemberSignature Language="C#" Value="A8B8G8R8UintPack32" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A8B8G8R8UintPack32 = int32(55)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -279,12 +532,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="A8B8G8R8UnormPack32">
+      <MemberSignature Language="C#" Value="A8B8G8R8UnormPack32" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A8B8G8R8UnormPack32 = int32(51)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="A8b8g8r8UscaledPack32">
       <MemberSignature Language="C#" Value="A8b8g8r8UscaledPack32" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A8b8g8r8UscaledPack32 = int32(53)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="A8B8G8R8UscaledPack32">
+      <MemberSignature Language="C#" Value="A8B8G8R8UscaledPack32" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format A8B8G8R8UscaledPack32 = int32(53)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -307,12 +588,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="Astc10X10SrgbBlock">
+      <MemberSignature Language="C#" Value="Astc10X10SrgbBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc10X10SrgbBlock = int32(180)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="Astc10x10UnormBlock">
       <MemberSignature Language="C#" Value="Astc10x10UnormBlock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc10x10UnormBlock = int32(179)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Astc10X10UnormBlock">
+      <MemberSignature Language="C#" Value="Astc10X10UnormBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc10X10UnormBlock = int32(179)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -335,12 +644,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="Astc10X5SrgbBlock">
+      <MemberSignature Language="C#" Value="Astc10X5SrgbBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc10X5SrgbBlock = int32(174)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="Astc10x5UnormBlock">
       <MemberSignature Language="C#" Value="Astc10x5UnormBlock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc10x5UnormBlock = int32(173)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Astc10X5UnormBlock">
+      <MemberSignature Language="C#" Value="Astc10X5UnormBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc10X5UnormBlock = int32(173)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -363,12 +700,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="Astc10X6SrgbBlock">
+      <MemberSignature Language="C#" Value="Astc10X6SrgbBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc10X6SrgbBlock = int32(176)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="Astc10x6UnormBlock">
       <MemberSignature Language="C#" Value="Astc10x6UnormBlock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc10x6UnormBlock = int32(175)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Astc10X6UnormBlock">
+      <MemberSignature Language="C#" Value="Astc10X6UnormBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc10X6UnormBlock = int32(175)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -391,12 +756,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="Astc10X8SrgbBlock">
+      <MemberSignature Language="C#" Value="Astc10X8SrgbBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc10X8SrgbBlock = int32(178)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="Astc10x8UnormBlock">
       <MemberSignature Language="C#" Value="Astc10x8UnormBlock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc10x8UnormBlock = int32(177)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Astc10X8UnormBlock">
+      <MemberSignature Language="C#" Value="Astc10X8UnormBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc10X8UnormBlock = int32(177)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -419,12 +812,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="Astc12X10SrgbBlock">
+      <MemberSignature Language="C#" Value="Astc12X10SrgbBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc12X10SrgbBlock = int32(182)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="Astc12x10UnormBlock">
       <MemberSignature Language="C#" Value="Astc12x10UnormBlock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc12x10UnormBlock = int32(181)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Astc12X10UnormBlock">
+      <MemberSignature Language="C#" Value="Astc12X10UnormBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc12X10UnormBlock = int32(181)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -447,12 +868,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="Astc12X12SrgbBlock">
+      <MemberSignature Language="C#" Value="Astc12X12SrgbBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc12X12SrgbBlock = int32(184)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="Astc12x12UnormBlock">
       <MemberSignature Language="C#" Value="Astc12x12UnormBlock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc12x12UnormBlock = int32(183)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Astc12X12UnormBlock">
+      <MemberSignature Language="C#" Value="Astc12X12UnormBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc12X12UnormBlock = int32(183)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -475,12 +924,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="Astc4X4SrgbBlock">
+      <MemberSignature Language="C#" Value="Astc4X4SrgbBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc4X4SrgbBlock = int32(158)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="Astc4x4UnormBlock">
       <MemberSignature Language="C#" Value="Astc4x4UnormBlock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc4x4UnormBlock = int32(157)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Astc4X4UnormBlock">
+      <MemberSignature Language="C#" Value="Astc4X4UnormBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc4X4UnormBlock = int32(157)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -503,12 +980,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="Astc5X4SrgbBlock">
+      <MemberSignature Language="C#" Value="Astc5X4SrgbBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc5X4SrgbBlock = int32(160)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="Astc5x4UnormBlock">
       <MemberSignature Language="C#" Value="Astc5x4UnormBlock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc5x4UnormBlock = int32(159)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Astc5X4UnormBlock">
+      <MemberSignature Language="C#" Value="Astc5X4UnormBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc5X4UnormBlock = int32(159)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -531,12 +1036,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="Astc5X5SrgbBlock">
+      <MemberSignature Language="C#" Value="Astc5X5SrgbBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc5X5SrgbBlock = int32(162)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="Astc5x5UnormBlock">
       <MemberSignature Language="C#" Value="Astc5x5UnormBlock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc5x5UnormBlock = int32(161)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Astc5X5UnormBlock">
+      <MemberSignature Language="C#" Value="Astc5X5UnormBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc5X5UnormBlock = int32(161)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -559,12 +1092,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="Astc6X5SrgbBlock">
+      <MemberSignature Language="C#" Value="Astc6X5SrgbBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc6X5SrgbBlock = int32(164)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="Astc6x5UnormBlock">
       <MemberSignature Language="C#" Value="Astc6x5UnormBlock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc6x5UnormBlock = int32(163)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Astc6X5UnormBlock">
+      <MemberSignature Language="C#" Value="Astc6X5UnormBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc6X5UnormBlock = int32(163)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -587,12 +1148,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="Astc6X6SrgbBlock">
+      <MemberSignature Language="C#" Value="Astc6X6SrgbBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc6X6SrgbBlock = int32(166)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="Astc6x6UnormBlock">
       <MemberSignature Language="C#" Value="Astc6x6UnormBlock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc6x6UnormBlock = int32(165)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Astc6X6UnormBlock">
+      <MemberSignature Language="C#" Value="Astc6X6UnormBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc6X6UnormBlock = int32(165)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -615,12 +1204,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="Astc8X5SrgbBlock">
+      <MemberSignature Language="C#" Value="Astc8X5SrgbBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc8X5SrgbBlock = int32(168)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="Astc8x5UnormBlock">
       <MemberSignature Language="C#" Value="Astc8x5UnormBlock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc8x5UnormBlock = int32(167)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Astc8X5UnormBlock">
+      <MemberSignature Language="C#" Value="Astc8X5UnormBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc8X5UnormBlock = int32(167)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -643,12 +1260,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="Astc8X6SrgbBlock">
+      <MemberSignature Language="C#" Value="Astc8X6SrgbBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc8X6SrgbBlock = int32(170)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="Astc8x6UnormBlock">
       <MemberSignature Language="C#" Value="Astc8x6UnormBlock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc8x6UnormBlock = int32(169)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Astc8X6UnormBlock">
+      <MemberSignature Language="C#" Value="Astc8X6UnormBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc8X6UnormBlock = int32(169)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -671,12 +1316,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="Astc8X8SrgbBlock">
+      <MemberSignature Language="C#" Value="Astc8X8SrgbBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc8X8SrgbBlock = int32(172)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="Astc8x8UnormBlock">
       <MemberSignature Language="C#" Value="Astc8x8UnormBlock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc8x8UnormBlock = int32(171)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Astc8X8UnormBlock">
+      <MemberSignature Language="C#" Value="Astc8X8UnormBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Astc8X8UnormBlock = int32(171)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -699,12 +1372,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="B10G11R11UfloatPack32">
+      <MemberSignature Language="C#" Value="B10G11R11UfloatPack32" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B10G11R11UfloatPack32 = int32(122)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="B4g4r4a4UnormPack16">
       <MemberSignature Language="C#" Value="B4g4r4a4UnormPack16" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B4g4r4a4UnormPack16 = int32(3)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="B4G4R4A4UnormPack16">
+      <MemberSignature Language="C#" Value="B4G4R4A4UnormPack16" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B4G4R4A4UnormPack16 = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -727,12 +1428,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="B5G5R5A1UnormPack16">
+      <MemberSignature Language="C#" Value="B5G5R5A1UnormPack16" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B5G5R5A1UnormPack16 = int32(7)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="B5g6r5UnormPack16">
       <MemberSignature Language="C#" Value="B5g6r5UnormPack16" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B5g6r5UnormPack16 = int32(5)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="B5G6R5UnormPack16">
+      <MemberSignature Language="C#" Value="B5G6R5UnormPack16" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B5G6R5UnormPack16 = int32(5)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -755,12 +1484,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="B8G8R8A8Sint">
+      <MemberSignature Language="C#" Value="B8G8R8A8Sint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B8G8R8A8Sint = int32(49)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="B8g8r8a8Snorm">
       <MemberSignature Language="C#" Value="B8g8r8a8Snorm" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B8g8r8a8Snorm = int32(45)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="B8G8R8A8Snorm">
+      <MemberSignature Language="C#" Value="B8G8R8A8Snorm" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B8G8R8A8Snorm = int32(45)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -783,12 +1540,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="B8G8R8A8Srgb">
+      <MemberSignature Language="C#" Value="B8G8R8A8Srgb" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B8G8R8A8Srgb = int32(50)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="B8g8r8a8Sscaled">
       <MemberSignature Language="C#" Value="B8g8r8a8Sscaled" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B8g8r8a8Sscaled = int32(47)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="B8G8R8A8Sscaled">
+      <MemberSignature Language="C#" Value="B8G8R8A8Sscaled" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B8G8R8A8Sscaled = int32(47)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -811,12 +1596,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="B8G8R8A8Uint">
+      <MemberSignature Language="C#" Value="B8G8R8A8Uint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B8G8R8A8Uint = int32(48)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="B8g8r8a8Unorm">
       <MemberSignature Language="C#" Value="B8g8r8a8Unorm" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B8g8r8a8Unorm = int32(44)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="B8G8R8A8Unorm">
+      <MemberSignature Language="C#" Value="B8G8R8A8Unorm" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B8G8R8A8Unorm = int32(44)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -839,12 +1652,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="B8G8R8A8Uscaled">
+      <MemberSignature Language="C#" Value="B8G8R8A8Uscaled" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B8G8R8A8Uscaled = int32(46)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="B8g8r8Sint">
       <MemberSignature Language="C#" Value="B8g8r8Sint" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B8g8r8Sint = int32(35)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="B8G8R8Sint">
+      <MemberSignature Language="C#" Value="B8G8R8Sint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B8G8R8Sint = int32(35)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -867,12 +1708,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="B8G8R8Snorm">
+      <MemberSignature Language="C#" Value="B8G8R8Snorm" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B8G8R8Snorm = int32(31)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="B8g8r8Srgb">
       <MemberSignature Language="C#" Value="B8g8r8Srgb" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B8g8r8Srgb = int32(36)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="B8G8R8Srgb">
+      <MemberSignature Language="C#" Value="B8G8R8Srgb" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B8G8R8Srgb = int32(36)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -895,12 +1764,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="B8G8R8Sscaled">
+      <MemberSignature Language="C#" Value="B8G8R8Sscaled" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B8G8R8Sscaled = int32(33)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="B8g8r8Uint">
       <MemberSignature Language="C#" Value="B8g8r8Uint" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B8g8r8Uint = int32(34)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="B8G8R8Uint">
+      <MemberSignature Language="C#" Value="B8G8R8Uint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B8G8R8Uint = int32(34)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -923,6 +1820,20 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="B8G8R8Unorm">
+      <MemberSignature Language="C#" Value="B8G8R8Unorm" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B8G8R8Unorm = int32(30)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="B8g8r8Uscaled">
       <MemberSignature Language="C#" Value="B8g8r8Uscaled" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B8g8r8Uscaled = int32(32)" />
@@ -937,12 +1848,27 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="B8G8R8Uscaled">
+      <MemberSignature Language="C#" Value="B8G8R8Uscaled" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format B8G8R8Uscaled = int32(32)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="Bc1RgbaSrgbBlock">
       <MemberSignature Language="C#" Value="Bc1RgbaSrgbBlock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Bc1RgbaSrgbBlock = int32(134)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -957,6 +1883,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -971,6 +1898,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -985,6 +1913,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -999,6 +1928,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1013,6 +1943,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1027,6 +1958,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1041,6 +1973,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1055,6 +1988,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1069,6 +2003,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1083,6 +2018,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1097,6 +2033,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1119,6 +2056,20 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="Bc6HSfloatBlock">
+      <MemberSignature Language="C#" Value="Bc6HSfloatBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Bc6HSfloatBlock = int32(144)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="Bc6hUfloatBlock">
       <MemberSignature Language="C#" Value="Bc6hUfloatBlock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Bc6hUfloatBlock = int32(143)" />
@@ -1133,12 +2084,27 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="Bc6HUfloatBlock">
+      <MemberSignature Language="C#" Value="Bc6HUfloatBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Bc6HUfloatBlock = int32(143)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="Bc7SrgbBlock">
       <MemberSignature Language="C#" Value="Bc7SrgbBlock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Bc7SrgbBlock = int32(146)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1153,6 +2119,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1167,6 +2134,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1181,6 +2149,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1195,6 +2164,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1209,6 +2179,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1223,6 +2194,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1245,12 +2217,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="E5B9G9R9UfloatPack32">
+      <MemberSignature Language="C#" Value="E5B9G9R9UfloatPack32" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format E5B9G9R9UfloatPack32 = int32(123)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="EacR11g11SnormBlock">
       <MemberSignature Language="C#" Value="EacR11g11SnormBlock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format EacR11g11SnormBlock = int32(156)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="EacR11G11SnormBlock">
+      <MemberSignature Language="C#" Value="EacR11G11SnormBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format EacR11G11SnormBlock = int32(156)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1273,12 +2273,27 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="EacR11G11UnormBlock">
+      <MemberSignature Language="C#" Value="EacR11G11UnormBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format EacR11G11UnormBlock = int32(155)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="EacR11SnormBlock">
       <MemberSignature Language="C#" Value="EacR11SnormBlock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format EacR11SnormBlock = int32(154)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1293,6 +2308,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1315,12 +2331,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="Etc2R8G8B8A1SrgbBlock">
+      <MemberSignature Language="C#" Value="Etc2R8G8B8A1SrgbBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Etc2R8G8B8A1SrgbBlock = int32(150)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="Etc2R8g8b8a1UnormBlock">
       <MemberSignature Language="C#" Value="Etc2R8g8b8a1UnormBlock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Etc2R8g8b8a1UnormBlock = int32(149)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Etc2R8G8B8A1UnormBlock">
+      <MemberSignature Language="C#" Value="Etc2R8G8B8A1UnormBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Etc2R8G8B8A1UnormBlock = int32(149)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1343,12 +2387,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="Etc2R8G8B8A8SrgbBlock">
+      <MemberSignature Language="C#" Value="Etc2R8G8B8A8SrgbBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Etc2R8G8B8A8SrgbBlock = int32(152)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="Etc2R8g8b8a8UnormBlock">
       <MemberSignature Language="C#" Value="Etc2R8g8b8a8UnormBlock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Etc2R8g8b8a8UnormBlock = int32(151)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Etc2R8G8B8A8UnormBlock">
+      <MemberSignature Language="C#" Value="Etc2R8G8B8A8UnormBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Etc2R8G8B8A8UnormBlock = int32(151)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1371,12 +2443,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="Etc2R8G8B8SrgbBlock">
+      <MemberSignature Language="C#" Value="Etc2R8G8B8SrgbBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Etc2R8G8B8SrgbBlock = int32(148)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="Etc2R8g8b8UnormBlock">
       <MemberSignature Language="C#" Value="Etc2R8g8b8UnormBlock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Etc2R8g8b8UnormBlock = int32(147)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Etc2R8G8B8UnormBlock">
+      <MemberSignature Language="C#" Value="Etc2R8G8B8UnormBlock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format Etc2R8G8B8UnormBlock = int32(147)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1399,12 +2499,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R16G16B16A16Sfloat">
+      <MemberSignature Language="C#" Value="R16G16B16A16Sfloat" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16G16B16A16Sfloat = int32(97)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R16g16b16a16Sint">
       <MemberSignature Language="C#" Value="R16g16b16a16Sint" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16g16b16a16Sint = int32(96)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R16G16B16A16Sint">
+      <MemberSignature Language="C#" Value="R16G16B16A16Sint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16G16B16A16Sint = int32(96)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1427,12 +2555,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R16G16B16A16Snorm">
+      <MemberSignature Language="C#" Value="R16G16B16A16Snorm" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16G16B16A16Snorm = int32(92)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R16g16b16a16Sscaled">
       <MemberSignature Language="C#" Value="R16g16b16a16Sscaled" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16g16b16a16Sscaled = int32(94)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R16G16B16A16Sscaled">
+      <MemberSignature Language="C#" Value="R16G16B16A16Sscaled" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16G16B16A16Sscaled = int32(94)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1455,12 +2611,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R16G16B16A16Uint">
+      <MemberSignature Language="C#" Value="R16G16B16A16Uint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16G16B16A16Uint = int32(95)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R16g16b16a16Unorm">
       <MemberSignature Language="C#" Value="R16g16b16a16Unorm" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16g16b16a16Unorm = int32(91)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R16G16B16A16Unorm">
+      <MemberSignature Language="C#" Value="R16G16B16A16Unorm" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16G16B16A16Unorm = int32(91)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1483,12 +2667,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R16G16B16A16Uscaled">
+      <MemberSignature Language="C#" Value="R16G16B16A16Uscaled" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16G16B16A16Uscaled = int32(93)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R16g16b16Sfloat">
       <MemberSignature Language="C#" Value="R16g16b16Sfloat" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16g16b16Sfloat = int32(90)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R16G16B16Sfloat">
+      <MemberSignature Language="C#" Value="R16G16B16Sfloat" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16G16B16Sfloat = int32(90)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1511,12 +2723,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R16G16B16Sint">
+      <MemberSignature Language="C#" Value="R16G16B16Sint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16G16B16Sint = int32(89)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R16g16b16Snorm">
       <MemberSignature Language="C#" Value="R16g16b16Snorm" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16g16b16Snorm = int32(85)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R16G16B16Snorm">
+      <MemberSignature Language="C#" Value="R16G16B16Snorm" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16G16B16Snorm = int32(85)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1539,12 +2779,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R16G16B16Sscaled">
+      <MemberSignature Language="C#" Value="R16G16B16Sscaled" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16G16B16Sscaled = int32(87)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R16g16b16Uint">
       <MemberSignature Language="C#" Value="R16g16b16Uint" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16g16b16Uint = int32(88)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R16G16B16Uint">
+      <MemberSignature Language="C#" Value="R16G16B16Uint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16G16B16Uint = int32(88)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1567,12 +2835,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R16G16B16Unorm">
+      <MemberSignature Language="C#" Value="R16G16B16Unorm" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16G16B16Unorm = int32(84)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R16g16b16Uscaled">
       <MemberSignature Language="C#" Value="R16g16b16Uscaled" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16g16b16Uscaled = int32(86)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R16G16B16Uscaled">
+      <MemberSignature Language="C#" Value="R16G16B16Uscaled" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16G16B16Uscaled = int32(86)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1595,12 +2891,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R16G16Sfloat">
+      <MemberSignature Language="C#" Value="R16G16Sfloat" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16G16Sfloat = int32(83)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R16g16Sint">
       <MemberSignature Language="C#" Value="R16g16Sint" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16g16Sint = int32(82)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R16G16Sint">
+      <MemberSignature Language="C#" Value="R16G16Sint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16G16Sint = int32(82)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1623,12 +2947,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R16G16Snorm">
+      <MemberSignature Language="C#" Value="R16G16Snorm" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16G16Snorm = int32(78)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R16g16Sscaled">
       <MemberSignature Language="C#" Value="R16g16Sscaled" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16g16Sscaled = int32(80)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R16G16Sscaled">
+      <MemberSignature Language="C#" Value="R16G16Sscaled" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16G16Sscaled = int32(80)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1651,12 +3003,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R16G16Uint">
+      <MemberSignature Language="C#" Value="R16G16Uint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16G16Uint = int32(81)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R16g16Unorm">
       <MemberSignature Language="C#" Value="R16g16Unorm" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16g16Unorm = int32(77)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R16G16Unorm">
+      <MemberSignature Language="C#" Value="R16G16Unorm" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16G16Unorm = int32(77)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1679,12 +3059,27 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R16G16Uscaled">
+      <MemberSignature Language="C#" Value="R16G16Uscaled" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16G16Uscaled = int32(79)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R16Sfloat">
       <MemberSignature Language="C#" Value="R16Sfloat" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R16Sfloat = int32(76)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1699,6 +3094,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1713,6 +3109,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1727,6 +3124,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1741,6 +3139,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1755,6 +3154,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1769,6 +3169,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1791,12 +3192,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R32G32B32A32Sfloat">
+      <MemberSignature Language="C#" Value="R32G32B32A32Sfloat" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R32G32B32A32Sfloat = int32(109)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R32g32b32a32Sint">
       <MemberSignature Language="C#" Value="R32g32b32a32Sint" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R32g32b32a32Sint = int32(108)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R32G32B32A32Sint">
+      <MemberSignature Language="C#" Value="R32G32B32A32Sint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R32G32B32A32Sint = int32(108)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1819,12 +3248,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R32G32B32A32Uint">
+      <MemberSignature Language="C#" Value="R32G32B32A32Uint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R32G32B32A32Uint = int32(107)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R32g32b32Sfloat">
       <MemberSignature Language="C#" Value="R32g32b32Sfloat" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R32g32b32Sfloat = int32(106)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R32G32B32Sfloat">
+      <MemberSignature Language="C#" Value="R32G32B32Sfloat" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R32G32B32Sfloat = int32(106)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1847,12 +3304,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R32G32B32Sint">
+      <MemberSignature Language="C#" Value="R32G32B32Sint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R32G32B32Sint = int32(105)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R32g32b32Uint">
       <MemberSignature Language="C#" Value="R32g32b32Uint" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R32g32b32Uint = int32(104)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R32G32B32Uint">
+      <MemberSignature Language="C#" Value="R32G32B32Uint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R32G32B32Uint = int32(104)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1875,12 +3360,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R32G32Sfloat">
+      <MemberSignature Language="C#" Value="R32G32Sfloat" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R32G32Sfloat = int32(103)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R32g32Sint">
       <MemberSignature Language="C#" Value="R32g32Sint" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R32g32Sint = int32(102)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R32G32Sint">
+      <MemberSignature Language="C#" Value="R32G32Sint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R32G32Sint = int32(102)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1903,12 +3416,27 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R32G32Uint">
+      <MemberSignature Language="C#" Value="R32G32Uint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R32G32Uint = int32(101)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R32Sfloat">
       <MemberSignature Language="C#" Value="R32Sfloat" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R32Sfloat = int32(100)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1923,6 +3451,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1937,6 +3466,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1959,12 +3489,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R4G4B4A4UnormPack16">
+      <MemberSignature Language="C#" Value="R4G4B4A4UnormPack16" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R4G4B4A4UnormPack16 = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R4g4UnormPack8">
       <MemberSignature Language="C#" Value="R4g4UnormPack8" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R4g4UnormPack8 = int32(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R4G4UnormPack8">
+      <MemberSignature Language="C#" Value="R4G4UnormPack8" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R4G4UnormPack8 = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -1987,12 +3545,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R5G5B5A1UnormPack16">
+      <MemberSignature Language="C#" Value="R5G5B5A1UnormPack16" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R5G5B5A1UnormPack16 = int32(6)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R5g6b5UnormPack16">
       <MemberSignature Language="C#" Value="R5g6b5UnormPack16" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R5g6b5UnormPack16 = int32(4)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R5G6B5UnormPack16">
+      <MemberSignature Language="C#" Value="R5G6B5UnormPack16" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R5G6B5UnormPack16 = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2015,12 +3601,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R64G64B64A64Sfloat">
+      <MemberSignature Language="C#" Value="R64G64B64A64Sfloat" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R64G64B64A64Sfloat = int32(121)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R64g64b64a64Sint">
       <MemberSignature Language="C#" Value="R64g64b64a64Sint" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R64g64b64a64Sint = int32(120)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R64G64B64A64Sint">
+      <MemberSignature Language="C#" Value="R64G64B64A64Sint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R64G64B64A64Sint = int32(120)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2043,12 +3657,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R64G64B64A64Uint">
+      <MemberSignature Language="C#" Value="R64G64B64A64Uint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R64G64B64A64Uint = int32(119)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R64g64b64Sfloat">
       <MemberSignature Language="C#" Value="R64g64b64Sfloat" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R64g64b64Sfloat = int32(118)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R64G64B64Sfloat">
+      <MemberSignature Language="C#" Value="R64G64B64Sfloat" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R64G64B64Sfloat = int32(118)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2071,12 +3713,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R64G64B64Sint">
+      <MemberSignature Language="C#" Value="R64G64B64Sint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R64G64B64Sint = int32(117)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R64g64b64Uint">
       <MemberSignature Language="C#" Value="R64g64b64Uint" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R64g64b64Uint = int32(116)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R64G64B64Uint">
+      <MemberSignature Language="C#" Value="R64G64B64Uint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R64G64B64Uint = int32(116)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2099,12 +3769,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R64G64Sfloat">
+      <MemberSignature Language="C#" Value="R64G64Sfloat" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R64G64Sfloat = int32(115)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R64g64Sint">
       <MemberSignature Language="C#" Value="R64g64Sint" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R64g64Sint = int32(114)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R64G64Sint">
+      <MemberSignature Language="C#" Value="R64G64Sint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R64G64Sint = int32(114)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2127,12 +3825,27 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R64G64Uint">
+      <MemberSignature Language="C#" Value="R64G64Uint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R64G64Uint = int32(113)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R64Sfloat">
       <MemberSignature Language="C#" Value="R64Sfloat" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R64Sfloat = int32(112)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2147,6 +3860,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2161,6 +3875,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2183,12 +3898,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R8G8B8A8Sint">
+      <MemberSignature Language="C#" Value="R8G8B8A8Sint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8G8B8A8Sint = int32(42)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R8g8b8a8Snorm">
       <MemberSignature Language="C#" Value="R8g8b8a8Snorm" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8g8b8a8Snorm = int32(38)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R8G8B8A8Snorm">
+      <MemberSignature Language="C#" Value="R8G8B8A8Snorm" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8G8B8A8Snorm = int32(38)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2211,12 +3954,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R8G8B8A8Srgb">
+      <MemberSignature Language="C#" Value="R8G8B8A8Srgb" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8G8B8A8Srgb = int32(43)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R8g8b8a8Sscaled">
       <MemberSignature Language="C#" Value="R8g8b8a8Sscaled" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8g8b8a8Sscaled = int32(40)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R8G8B8A8Sscaled">
+      <MemberSignature Language="C#" Value="R8G8B8A8Sscaled" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8G8B8A8Sscaled = int32(40)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2239,12 +4010,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R8G8B8A8Uint">
+      <MemberSignature Language="C#" Value="R8G8B8A8Uint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8G8B8A8Uint = int32(41)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R8g8b8a8Unorm">
       <MemberSignature Language="C#" Value="R8g8b8a8Unorm" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8g8b8a8Unorm = int32(37)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R8G8B8A8Unorm">
+      <MemberSignature Language="C#" Value="R8G8B8A8Unorm" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8G8B8A8Unorm = int32(37)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2267,12 +4066,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R8G8B8A8Uscaled">
+      <MemberSignature Language="C#" Value="R8G8B8A8Uscaled" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8G8B8A8Uscaled = int32(39)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R8g8b8Sint">
       <MemberSignature Language="C#" Value="R8g8b8Sint" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8g8b8Sint = int32(28)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R8G8B8Sint">
+      <MemberSignature Language="C#" Value="R8G8B8Sint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8G8B8Sint = int32(28)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2295,12 +4122,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R8G8B8Snorm">
+      <MemberSignature Language="C#" Value="R8G8B8Snorm" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8G8B8Snorm = int32(24)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R8g8b8Srgb">
       <MemberSignature Language="C#" Value="R8g8b8Srgb" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8g8b8Srgb = int32(29)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R8G8B8Srgb">
+      <MemberSignature Language="C#" Value="R8G8B8Srgb" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8G8B8Srgb = int32(29)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2323,12 +4178,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R8G8B8Sscaled">
+      <MemberSignature Language="C#" Value="R8G8B8Sscaled" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8G8B8Sscaled = int32(26)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R8g8b8Uint">
       <MemberSignature Language="C#" Value="R8g8b8Uint" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8g8b8Uint = int32(27)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R8G8B8Uint">
+      <MemberSignature Language="C#" Value="R8G8B8Uint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8G8B8Uint = int32(27)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2351,12 +4234,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R8G8B8Unorm">
+      <MemberSignature Language="C#" Value="R8G8B8Unorm" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8G8B8Unorm = int32(23)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R8g8b8Uscaled">
       <MemberSignature Language="C#" Value="R8g8b8Uscaled" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8g8b8Uscaled = int32(25)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R8G8B8Uscaled">
+      <MemberSignature Language="C#" Value="R8G8B8Uscaled" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8G8B8Uscaled = int32(25)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2379,12 +4290,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R8G8Sint">
+      <MemberSignature Language="C#" Value="R8G8Sint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8G8Sint = int32(21)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R8g8Snorm">
       <MemberSignature Language="C#" Value="R8g8Snorm" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8g8Snorm = int32(17)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R8G8Snorm">
+      <MemberSignature Language="C#" Value="R8G8Snorm" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8G8Snorm = int32(17)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2407,12 +4346,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R8G8Srgb">
+      <MemberSignature Language="C#" Value="R8G8Srgb" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8G8Srgb = int32(22)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R8g8Sscaled">
       <MemberSignature Language="C#" Value="R8g8Sscaled" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8g8Sscaled = int32(19)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R8G8Sscaled">
+      <MemberSignature Language="C#" Value="R8G8Sscaled" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8G8Sscaled = int32(19)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2435,12 +4402,40 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R8G8Uint">
+      <MemberSignature Language="C#" Value="R8G8Uint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8G8Uint = int32(20)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R8g8Unorm">
       <MemberSignature Language="C#" Value="R8g8Unorm" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8g8Unorm = int32(16)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="R8G8Unorm">
+      <MemberSignature Language="C#" Value="R8G8Unorm" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8G8Unorm = int32(16)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2463,12 +4458,27 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="R8G8Uscaled">
+      <MemberSignature Language="C#" Value="R8G8Uscaled" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8G8Uscaled = int32(18)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="R8Sint">
       <MemberSignature Language="C#" Value="R8Sint" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vulkan.Format R8Sint = int32(14)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2483,6 +4493,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2497,6 +4508,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2511,6 +4523,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2525,6 +4538,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2539,6 +4553,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2553,6 +4568,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2567,6 +4583,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2581,6 +4598,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>
@@ -2595,6 +4613,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Format</ReturnType>

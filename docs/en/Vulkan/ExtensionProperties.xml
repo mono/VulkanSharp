@@ -1,12 +1,13 @@
 <Type Name="ExtensionProperties" FullName="Vulkan.ExtensionProperties">
-  <TypeSignature Language="C#" Value="public class ExtensionProperties" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ExtensionProperties extends System.Object" />
+  <TypeSignature Language="C#" Value="public class ExtensionProperties : Vulkan.MarshalledObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ExtensionProperties extends Vulkan.MarshalledObject" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>Vulkan.MarshalledObject</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -20,6 +21,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -28,14 +30,15 @@
       </Docs>
     </Member>
     <Member MemberName="ExtensionName">
-      <MemberSignature Language="C#" Value="public char ExtensionName { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance char ExtensionName" />
+      <MemberSignature Language="C#" Value="public string ExtensionName { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string ExtensionName" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Char</ReturnType>
+        <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -49,6 +52,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>

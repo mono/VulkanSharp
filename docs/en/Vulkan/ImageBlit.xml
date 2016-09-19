@@ -1,12 +1,13 @@
 <Type Name="ImageBlit" FullName="Vulkan.ImageBlit">
-  <TypeSignature Language="C#" Value="public class ImageBlit" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ImageBlit extends System.Object" />
+  <TypeSignature Language="C#" Value="public class ImageBlit : Vulkan.MarshalledObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ImageBlit extends Vulkan.MarshalledObject" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>Vulkan.MarshalledObject</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -20,6 +21,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -28,14 +30,15 @@
       </Docs>
     </Member>
     <Member MemberName="DstOffsets">
-      <MemberSignature Language="C#" Value="public Vulkan.Offset3D DstOffsets { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Offset3D DstOffsets" />
+      <MemberSignature Language="C#" Value="public Vulkan.Offset3D[] DstOffsets { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.Offset3D[] DstOffsets" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Vulkan.Offset3D</ReturnType>
+        <ReturnType>Vulkan.Offset3D[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -45,10 +48,11 @@
     </Member>
     <Member MemberName="DstSubresource">
       <MemberSignature Language="C#" Value="public Vulkan.ImageSubresourceLayers DstSubresource { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.ImageSubresourceLayers DstSubresource" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.ImageSubresourceLayers DstSubresource" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.ImageSubresourceLayers</ReturnType>
@@ -60,14 +64,15 @@
       </Docs>
     </Member>
     <Member MemberName="SrcOffsets">
-      <MemberSignature Language="C#" Value="public Vulkan.Offset3D SrcOffsets { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Offset3D SrcOffsets" />
+      <MemberSignature Language="C#" Value="public Vulkan.Offset3D[] SrcOffsets { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.Offset3D[] SrcOffsets" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Vulkan.Offset3D</ReturnType>
+        <ReturnType>Vulkan.Offset3D[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -77,10 +82,11 @@
     </Member>
     <Member MemberName="SrcSubresource">
       <MemberSignature Language="C#" Value="public Vulkan.ImageSubresourceLayers SrcSubresource { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.ImageSubresourceLayers SrcSubresource" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.ImageSubresourceLayers SrcSubresource" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.ImageSubresourceLayers</ReturnType>

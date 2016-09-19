@@ -1,12 +1,13 @@
 <Type Name="MemoryHeap" FullName="Vulkan.MemoryHeap">
-  <TypeSignature Language="C#" Value="public class MemoryHeap" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit MemoryHeap extends System.Object" />
+  <TypeSignature Language="C#" Value="public struct MemoryHeap" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit MemoryHeap extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>System.ValueType</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -28,6 +29,21 @@
       </Docs>
     </Member>
     <Member MemberName="Flags">
+      <MemberSignature Language="C#" Value="public Vulkan.MemoryHeapFlags Flags;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.MemoryHeapFlags Flags" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.MemoryHeapFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Flags">
       <MemberSignature Language="C#" Value="public uint Flags { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Flags" />
       <MemberType>Property</MemberType>
@@ -40,6 +56,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Size">
+      <MemberSignature Language="C#" Value="public Vulkan.DeviceSize Size;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.DeviceSize Size" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DeviceSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

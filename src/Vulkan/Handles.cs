@@ -573,20 +573,6 @@ namespace Vulkan
 				return arr;
 			}
 		}
-
-		public ExternalImageFormatPropertiesNv GetExternalImageFormatPropertiesNV (Format format, ImageType type, ImageTiling tiling, ImageUsageFlags usage, ImageCreateFlags flags, ExternalMemoryHandleTypeFlagsNv externalHandleType)
-		{
-			Result result;
-			ExternalImageFormatPropertiesNv pExternalImageFormatProperties;
-			unsafe {
-				pExternalImageFormatProperties = new ExternalImageFormatPropertiesNv ();
-				result = Interop.NativeMethods.vkGetPhysicalDeviceExternalImageFormatPropertiesNV (this.m, format, type, tiling, usage, flags, externalHandleType, &pExternalImageFormatProperties);
-				if (result != Result.Success)
-					throw new ResultException (result);
-
-				return pExternalImageFormatProperties;
-			}
-		}
 	}
 
 	public partial class Device : IMarshalling
@@ -1725,34 +1711,6 @@ namespace Vulkan
 				return pImageIndex;
 			}
 		}
-
-		public DebugMarkerObjectNameInfoExt DebugMarkerSetObjectNameEXT ()
-		{
-			Result result;
-			DebugMarkerObjectNameInfoExt pNameInfo;
-			unsafe {
-				pNameInfo = new DebugMarkerObjectNameInfoExt ();
-				result = Interop.NativeMethods.vkDebugMarkerSetObjectNameEXT (this.m, pNameInfo != null ? pNameInfo.m : (Interop.DebugMarkerObjectNameInfoExt*)default(IntPtr));
-				if (result != Result.Success)
-					throw new ResultException (result);
-
-				return pNameInfo;
-			}
-		}
-
-		public DebugMarkerObjectTagInfoExt DebugMarkerSetObjectTagEXT ()
-		{
-			Result result;
-			DebugMarkerObjectTagInfoExt pTagInfo;
-			unsafe {
-				pTagInfo = new DebugMarkerObjectTagInfoExt ();
-				result = Interop.NativeMethods.vkDebugMarkerSetObjectTagEXT (this.m, pTagInfo != null ? pTagInfo.m : (Interop.DebugMarkerObjectTagInfoExt*)default(IntPtr));
-				if (result != Result.Success)
-					throw new ResultException (result);
-
-				return pTagInfo;
-			}
-		}
 	}
 
 	public partial class Queue : IMarshalling
@@ -2197,10 +2155,10 @@ namespace Vulkan
 			}
 		}
 
-		public void CmdUpdateBuffer (Buffer dstBuffer, DeviceSize dstOffset, DeviceSize dataSize, IntPtr pData)
+		public void CmdUpdateBuffer (Buffer dstBuffer, DeviceSize dstOffset, DeviceSize dataSize, UInt32 pData)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdUpdateBuffer (this.m, dstBuffer != null ? dstBuffer.m : default(UInt64), dstOffset, dataSize, pData);
+				Interop.NativeMethods.vkCmdUpdateBuffer (this.m, dstBuffer != null ? dstBuffer.m : default(UInt64), dstOffset, dataSize, &pData);
 			}
 		}
 
@@ -2473,49 +2431,6 @@ namespace Vulkan
 				fixed (IntPtr* ptrpCommandBuffer = &pCommandBuffer.m) {
 					Interop.NativeMethods.vkCmdExecuteCommands (this.m, (UInt32)(pCommandBuffer != null ? 1 : 0), ptrpCommandBuffer);
 				}
-			}
-		}
-
-		public DebugMarkerMarkerInfoExt CmdDebugMarkerBeginEXT ()
-		{
-			DebugMarkerMarkerInfoExt pMarkerInfo;
-			unsafe {
-				pMarkerInfo = new DebugMarkerMarkerInfoExt ();
-				Interop.NativeMethods.vkCmdDebugMarkerBeginEXT (this.m, pMarkerInfo != null ? pMarkerInfo.m : (Interop.DebugMarkerMarkerInfoExt*)default(IntPtr));
-
-				return pMarkerInfo;
-			}
-		}
-
-		public void CmdDebugMarkerEndEXT ()
-		{
-			unsafe {
-				Interop.NativeMethods.vkCmdDebugMarkerEndEXT (this.m);
-			}
-		}
-
-		public DebugMarkerMarkerInfoExt CmdDebugMarkerInsertEXT ()
-		{
-			DebugMarkerMarkerInfoExt pMarkerInfo;
-			unsafe {
-				pMarkerInfo = new DebugMarkerMarkerInfoExt ();
-				Interop.NativeMethods.vkCmdDebugMarkerInsertEXT (this.m, pMarkerInfo != null ? pMarkerInfo.m : (Interop.DebugMarkerMarkerInfoExt*)default(IntPtr));
-
-				return pMarkerInfo;
-			}
-		}
-
-		public void CmdDrawIndirectCountAMD (Buffer buffer, DeviceSize offset, Buffer countBuffer, DeviceSize countBufferOffset, UInt32 maxDrawCount, UInt32 stride)
-		{
-			unsafe {
-				Interop.NativeMethods.vkCmdDrawIndirectCountAMD (this.m, buffer != null ? buffer.m : default(UInt64), offset, countBuffer != null ? countBuffer.m : default(UInt64), countBufferOffset, maxDrawCount, stride);
-			}
-		}
-
-		public void CmdDrawIndexedIndirectCountAMD (Buffer buffer, DeviceSize offset, Buffer countBuffer, DeviceSize countBufferOffset, UInt32 maxDrawCount, UInt32 stride)
-		{
-			unsafe {
-				Interop.NativeMethods.vkCmdDrawIndexedIndirectCountAMD (this.m, buffer != null ? buffer.m : default(UInt64), offset, countBuffer != null ? countBuffer.m : default(UInt64), countBufferOffset, maxDrawCount, stride);
 			}
 		}
 	}

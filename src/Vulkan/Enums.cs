@@ -396,14 +396,6 @@ namespace Vulkan
 		Astc12X10SrgbBlock = 182,
 		Astc12X12UnormBlock = 183,
 		Astc12X12SrgbBlock = 184,
-		Pvrtc12BppUnormBlockImg = 1000054000,
-		Pvrtc14BppUnormBlockImg = 1000054001,
-		Pvrtc22BppUnormBlockImg = 1000054002,
-		Pvrtc24BppUnormBlockImg = 1000054003,
-		Pvrtc12BppSrgbBlockImg = 1000054004,
-		Pvrtc14BppSrgbBlockImg = 1000054005,
-		Pvrtc22BppSrgbBlockImg = 1000054006,
-		Pvrtc24BppSrgbBlockImg = 1000054007,
 	}
 
 	[Flags]
@@ -681,7 +673,6 @@ namespace Vulkan
 		ErrorIncompatibleDriver = -9,
 		ErrorTooManyObjects = -10,
 		ErrorFormatNotSupported = -11,
-		ErrorFragmentedPool = -12,
 		ErrorSurfaceLostKhr = -1000000000,
 		ErrorNativeWindowInUseKhr = -1000000001,
 		SuboptimalKhr = 1000001003,
@@ -793,18 +784,6 @@ namespace Vulkan
 		AndroidSurfaceCreateInfoKhr = 1000008000,
 		Win32SurfaceCreateInfoKhr = 1000009000,
 		DebugReportCallbackCreateInfoExt = 1000011000,
-		PipelineRasterizationStateRasterizationOrderAmd = 1000018000,
-		DebugMarkerObjectNameInfoExt = 1000022000,
-		DebugMarkerObjectTagInfoExt = 1000022001,
-		DebugMarkerMarkerInfoExt = 1000022002,
-		DedicatedAllocationImageCreateInfoNv = 1000026000,
-		DedicatedAllocationBufferCreateInfoNv = 1000026001,
-		DedicatedAllocationMemoryAllocateInfoNv = 1000026002,
-		ExternalMemoryImageCreateInfoNv = 1000056000,
-		ExportMemoryAllocateInfoNv = 1000056001,
-		ImportMemoryWin32HandleInfoNv = 1000057000,
-		ExportMemoryWin32HandleInfoNv = 1000057001,
-		Win32KeyedMutexAcquireReleaseInfoNv = 1000058000,
 	}
 
 	public enum SystemAllocationScope : int
@@ -1001,28 +980,5 @@ namespace Vulkan
 	{
 		None = 0,
 		CallbackRef = 1,
-	}
-
-	public enum RasterizationOrderAmd : int
-	{
-		Strict = 0,
-		Relaxed = 1,
-	}
-
-	[Flags]
-	public enum ExternalMemoryHandleTypeFlagsNv : int
-	{
-		OpaqueWin32 = 0x1,
-		OpaqueWin32Kmt = 0x2,
-		D3D11Image = 0x4,
-		D3D11ImageKmt = 0x8,
-	}
-
-	[Flags]
-	public enum ExternalMemoryFeatureFlagsNv : int
-	{
-		DedicatedOnly = 0x1,
-		Exportable = 0x2,
-		Importable = 0x4,
 	}
 }

@@ -1,12 +1,13 @@
 <Type Name="ClearRect" FullName="Vulkan.ClearRect">
-  <TypeSignature Language="C#" Value="public class ClearRect" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ClearRect extends System.Object" />
+  <TypeSignature Language="C#" Value="public struct ClearRect" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit ClearRect extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>System.ValueType</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -22,6 +23,21 @@
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BaseArrayLayer">
+      <MemberSignature Language="C#" Value="public uint BaseArrayLayer;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 BaseArrayLayer" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -44,6 +60,21 @@
       </Docs>
     </Member>
     <Member MemberName="LayerCount">
+      <MemberSignature Language="C#" Value="public uint LayerCount;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 LayerCount" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LayerCount">
       <MemberSignature Language="C#" Value="public uint LayerCount { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 LayerCount" />
       <MemberType>Property</MemberType>
@@ -56,6 +87,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Rect">
+      <MemberSignature Language="C#" Value="public Vulkan.Rect2D Rect;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Rect2D Rect" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Rect2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -44,21 +44,4 @@ namespace Vulkan.Windows
 		}
 	}
 
-	public static class DeviceExtension
-	{
-		public static IntPtr GetMemoryWin32HandleNV (this Device device, DeviceMemory memory, ExternalMemoryHandleTypeFlagsNv handleType)
-		{
-			Result result;
-			IntPtr pHandle;
-			unsafe {
-				pHandle = new IntPtr ();
-				result = Windows.Interop.NativeMethods.vkGetMemoryWin32HandleNV (device.m, memory != null ? memory.m : default(UInt64), handleType, &pHandle);
-				if (result != Result.Success)
-					throw new ResultException (result);
-
-				return pHandle;
-			}
-		}
-	}
-
 }

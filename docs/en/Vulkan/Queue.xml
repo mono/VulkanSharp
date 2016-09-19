@@ -1,14 +1,19 @@
 <Type Name="Queue" FullName="Vulkan.Queue">
-  <TypeSignature Language="C#" Value="public class Queue" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Queue extends System.Object" />
+  <TypeSignature Language="C#" Value="public class Queue : Vulkan.IMarshalling" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Queue extends System.Object implements class Vulkan.IMarshalling" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Vulkan.IMarshalling</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Docs>
     <summary>To be added.</summary>
     <remarks>To be added.</remarks>
@@ -23,6 +28,48 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BindSparse">
+      <MemberSignature Language="C#" Value="public void BindSparse (Vulkan.BindSparseInfo pBindInfo, Vulkan.Fence fence = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void BindSparse(class Vulkan.BindSparseInfo pBindInfo, class Vulkan.Fence fence) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pBindInfo" Type="Vulkan.BindSparseInfo" />
+        <Parameter Name="fence" Type="Vulkan.Fence" />
+      </Parameters>
+      <Docs>
+        <param name="pBindInfo">To be added.</param>
+        <param name="fence">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BindSparse">
+      <MemberSignature Language="C#" Value="public void BindSparse (Vulkan.BindSparseInfo[] pBindInfo, Vulkan.Fence fence = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void BindSparse(class Vulkan.BindSparseInfo[] pBindInfo, class Vulkan.Fence fence) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pBindInfo" Type="Vulkan.BindSparseInfo[]" />
+        <Parameter Name="fence" Type="Vulkan.Fence" />
+      </Parameters>
+      <Docs>
+        <param name="pBindInfo">To be added.</param>
+        <param name="fence">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -56,6 +103,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -65,6 +113,48 @@
       </Parameters>
       <Docs>
         <param name="pPresentInfo">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Submit">
+      <MemberSignature Language="C#" Value="public void Submit (Vulkan.SubmitInfo pSubmit, Vulkan.Fence fence = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Submit(class Vulkan.SubmitInfo pSubmit, class Vulkan.Fence fence) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pSubmit" Type="Vulkan.SubmitInfo" />
+        <Parameter Name="fence" Type="Vulkan.Fence" />
+      </Parameters>
+      <Docs>
+        <param name="pSubmit">To be added.</param>
+        <param name="fence">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Submit">
+      <MemberSignature Language="C#" Value="public void Submit (Vulkan.SubmitInfo[] pSubmits, Vulkan.Fence fence = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Submit(class Vulkan.SubmitInfo[] pSubmits, class Vulkan.Fence fence) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pSubmits" Type="Vulkan.SubmitInfo[]" />
+        <Parameter Name="fence" Type="Vulkan.Fence" />
+      </Parameters>
+      <Docs>
+        <param name="pSubmits">To be added.</param>
+        <param name="fence">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -92,12 +182,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Vulkan.IMarshalling.Handle">
+      <MemberSignature Language="C#" Value="IntPtr Vulkan.IMarshalling.Handle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int Vulkan.IMarshalling.Handle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="WaitIdle">
       <MemberSignature Language="C#" Value="public void WaitIdle ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void WaitIdle() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>

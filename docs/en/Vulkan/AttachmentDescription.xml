@@ -1,12 +1,13 @@
 <Type Name="AttachmentDescription" FullName="Vulkan.AttachmentDescription">
-  <TypeSignature Language="C#" Value="public class AttachmentDescription" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit AttachmentDescription extends System.Object" />
+  <TypeSignature Language="C#" Value="public struct AttachmentDescription" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit AttachmentDescription extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>System.ValueType</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -22,6 +23,21 @@
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FinalLayout">
+      <MemberSignature Language="C#" Value="public Vulkan.ImageLayout FinalLayout;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.ImageLayout FinalLayout" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageLayout</ReturnType>
+      </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -44,6 +60,21 @@
       </Docs>
     </Member>
     <Member MemberName="Flags">
+      <MemberSignature Language="C#" Value="public Vulkan.AttachmentDescriptionFlags Flags;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.AttachmentDescriptionFlags Flags" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AttachmentDescriptionFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Flags">
       <MemberSignature Language="C#" Value="public uint Flags { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Flags" />
       <MemberType>Property</MemberType>
@@ -56,6 +87,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Format">
+      <MemberSignature Language="C#" Value="public Vulkan.Format Format;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Format Format" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Format</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -76,6 +122,21 @@
       </Docs>
     </Member>
     <Member MemberName="InitialLayout">
+      <MemberSignature Language="C#" Value="public Vulkan.ImageLayout InitialLayout;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.ImageLayout InitialLayout" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ImageLayout</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitialLayout">
       <MemberSignature Language="C#" Value="public Vulkan.ImageLayout InitialLayout { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.ImageLayout InitialLayout" />
       <MemberType>Property</MemberType>
@@ -88,6 +149,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadOp">
+      <MemberSignature Language="C#" Value="public Vulkan.AttachmentLoadOp LoadOp;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.AttachmentLoadOp LoadOp" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AttachmentLoadOp</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -108,6 +184,21 @@
       </Docs>
     </Member>
     <Member MemberName="Samples">
+      <MemberSignature Language="C#" Value="public Vulkan.SampleCountFlags Samples;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.SampleCountFlags Samples" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.SampleCountFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Samples">
       <MemberSignature Language="C#" Value="public uint Samples { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Samples" />
       <MemberType>Property</MemberType>
@@ -120,6 +211,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StencilLoadOp">
+      <MemberSignature Language="C#" Value="public Vulkan.AttachmentLoadOp StencilLoadOp;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.AttachmentLoadOp StencilLoadOp" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AttachmentLoadOp</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -140,6 +246,21 @@
       </Docs>
     </Member>
     <Member MemberName="StencilStoreOp">
+      <MemberSignature Language="C#" Value="public Vulkan.AttachmentStoreOp StencilStoreOp;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.AttachmentStoreOp StencilStoreOp" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AttachmentStoreOp</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StencilStoreOp">
       <MemberSignature Language="C#" Value="public Vulkan.AttachmentStoreOp StencilStoreOp { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.AttachmentStoreOp StencilStoreOp" />
       <MemberType>Property</MemberType>
@@ -152,6 +273,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StoreOp">
+      <MemberSignature Language="C#" Value="public Vulkan.AttachmentStoreOp StoreOp;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.AttachmentStoreOp StoreOp" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AttachmentStoreOp</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

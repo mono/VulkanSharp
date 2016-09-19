@@ -1,12 +1,13 @@
 <Type Name="DescriptorPoolSize" FullName="Vulkan.DescriptorPoolSize">
-  <TypeSignature Language="C#" Value="public class DescriptorPoolSize" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit DescriptorPoolSize extends System.Object" />
+  <TypeSignature Language="C#" Value="public struct DescriptorPoolSize" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit DescriptorPoolSize extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>System.ValueType</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -28,6 +29,21 @@
       </Docs>
     </Member>
     <Member MemberName="DescriptorCount">
+      <MemberSignature Language="C#" Value="public uint DescriptorCount;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 DescriptorCount" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DescriptorCount">
       <MemberSignature Language="C#" Value="public uint DescriptorCount { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 DescriptorCount" />
       <MemberType>Property</MemberType>
@@ -40,6 +56,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Type">
+      <MemberSignature Language="C#" Value="public Vulkan.DescriptorType Type;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.DescriptorType Type" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DescriptorType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

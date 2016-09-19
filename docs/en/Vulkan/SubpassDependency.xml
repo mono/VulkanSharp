@@ -1,12 +1,13 @@
 <Type Name="SubpassDependency" FullName="Vulkan.SubpassDependency">
-  <TypeSignature Language="C#" Value="public class SubpassDependency" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit SubpassDependency extends System.Object" />
+  <TypeSignature Language="C#" Value="public struct SubpassDependency" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit SubpassDependency extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>System.ValueType</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -22,6 +23,21 @@
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DependencyFlags">
+      <MemberSignature Language="C#" Value="public Vulkan.DependencyFlags DependencyFlags;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.DependencyFlags DependencyFlags" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DependencyFlags</ReturnType>
+      </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -44,6 +60,21 @@
       </Docs>
     </Member>
     <Member MemberName="DstAccessMask">
+      <MemberSignature Language="C#" Value="public Vulkan.AccessFlags DstAccessMask;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.AccessFlags DstAccessMask" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AccessFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DstAccessMask">
       <MemberSignature Language="C#" Value="public uint DstAccessMask { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 DstAccessMask" />
       <MemberType>Property</MemberType>
@@ -56,6 +87,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DstStageMask">
+      <MemberSignature Language="C#" Value="public Vulkan.PipelineStageFlags DstStageMask;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.PipelineStageFlags DstStageMask" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PipelineStageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -76,6 +122,21 @@
       </Docs>
     </Member>
     <Member MemberName="DstSubpass">
+      <MemberSignature Language="C#" Value="public uint DstSubpass;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 DstSubpass" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DstSubpass">
       <MemberSignature Language="C#" Value="public uint DstSubpass { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 DstSubpass" />
       <MemberType>Property</MemberType>
@@ -88,6 +149,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SrcAccessMask">
+      <MemberSignature Language="C#" Value="public Vulkan.AccessFlags SrcAccessMask;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.AccessFlags SrcAccessMask" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.AccessFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -108,6 +184,21 @@
       </Docs>
     </Member>
     <Member MemberName="SrcStageMask">
+      <MemberSignature Language="C#" Value="public Vulkan.PipelineStageFlags SrcStageMask;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.PipelineStageFlags SrcStageMask" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.PipelineStageFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SrcStageMask">
       <MemberSignature Language="C#" Value="public uint SrcStageMask { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 SrcStageMask" />
       <MemberType>Property</MemberType>
@@ -120,6 +211,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SrcSubpass">
+      <MemberSignature Language="C#" Value="public uint SrcSubpass;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 SrcSubpass" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

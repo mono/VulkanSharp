@@ -1,14 +1,19 @@
 <Type Name="ShaderModule" FullName="Vulkan.ShaderModule">
-  <TypeSignature Language="C#" Value="public class ShaderModule" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ShaderModule extends System.Object" />
+  <TypeSignature Language="C#" Value="public class ShaderModule : Vulkan.INonDispatchableHandleMarshalling" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ShaderModule extends System.Object implements class Vulkan.INonDispatchableHandleMarshalling" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Vulkan.INonDispatchableHandleMarshalling</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Docs>
     <summary>To be added.</summary>
     <remarks>To be added.</remarks>
@@ -24,6 +29,22 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Vulkan.INonDispatchableHandleMarshalling.Handle">
+      <MemberSignature Language="C#" Value="ulong Vulkan.INonDispatchableHandleMarshalling.Handle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int64 Vulkan.INonDispatchableHandleMarshalling.Handle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt64</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

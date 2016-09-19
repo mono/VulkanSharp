@@ -1,12 +1,13 @@
 <Type Name="RenderPassCreateInfo" FullName="Vulkan.RenderPassCreateInfo">
-  <TypeSignature Language="C#" Value="public class RenderPassCreateInfo" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit RenderPassCreateInfo extends System.Object" />
+  <TypeSignature Language="C#" Value="public class RenderPassCreateInfo : Vulkan.MarshalledObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit RenderPassCreateInfo extends Vulkan.MarshalledObject" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>Vulkan.MarshalledObject</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -20,6 +21,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -33,6 +35,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
@@ -44,14 +47,15 @@
       </Docs>
     </Member>
     <Member MemberName="Attachments">
-      <MemberSignature Language="C#" Value="public Vulkan.AttachmentDescription Attachments { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.AttachmentDescription Attachments" />
+      <MemberSignature Language="C#" Value="public Vulkan.AttachmentDescription[] Attachments { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.AttachmentDescription[] Attachments" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Vulkan.AttachmentDescription</ReturnType>
+        <ReturnType>Vulkan.AttachmentDescription[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -60,14 +64,15 @@
       </Docs>
     </Member>
     <Member MemberName="Dependencies">
-      <MemberSignature Language="C#" Value="public Vulkan.SubpassDependency Dependencies { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.SubpassDependency Dependencies" />
+      <MemberSignature Language="C#" Value="public Vulkan.SubpassDependency[] Dependencies { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.SubpassDependency[] Dependencies" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Vulkan.SubpassDependency</ReturnType>
+        <ReturnType>Vulkan.SubpassDependency[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -81,6 +86,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
@@ -97,6 +103,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
@@ -113,6 +120,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
@@ -124,18 +132,35 @@
       </Docs>
     </Member>
     <Member MemberName="Subpasses">
-      <MemberSignature Language="C#" Value="public Vulkan.SubpassDescription Subpasses { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.SubpassDescription Subpasses" />
+      <MemberSignature Language="C#" Value="public Vulkan.SubpassDescription[] Subpasses { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.SubpassDescription[] Subpasses" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Vulkan.SubpassDescription</ReturnType>
+        <ReturnType>Vulkan.SubpassDescription[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VirtualDispose">
+      <MemberSignature Language="C#" Value="public override void VirtualDispose ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void VirtualDispose() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

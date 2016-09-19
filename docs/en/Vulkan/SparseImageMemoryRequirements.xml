@@ -1,12 +1,13 @@
 <Type Name="SparseImageMemoryRequirements" FullName="Vulkan.SparseImageMemoryRequirements">
-  <TypeSignature Language="C#" Value="public class SparseImageMemoryRequirements" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit SparseImageMemoryRequirements extends System.Object" />
+  <TypeSignature Language="C#" Value="public struct SparseImageMemoryRequirements" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit SparseImageMemoryRequirements extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>System.ValueType</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -22,6 +23,21 @@
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FormatProperties">
+      <MemberSignature Language="C#" Value="public Vulkan.SparseImageFormatProperties FormatProperties;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.SparseImageFormatProperties FormatProperties" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.SparseImageFormatProperties</ReturnType>
+      </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -44,6 +60,21 @@
       </Docs>
     </Member>
     <Member MemberName="ImageMipTailFirstLod">
+      <MemberSignature Language="C#" Value="public uint ImageMipTailFirstLod;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 ImageMipTailFirstLod" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ImageMipTailFirstLod">
       <MemberSignature Language="C#" Value="public uint ImageMipTailFirstLod { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 ImageMipTailFirstLod" />
       <MemberType>Property</MemberType>
@@ -56,6 +87,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ImageMipTailOffset">
+      <MemberSignature Language="C#" Value="public Vulkan.DeviceSize ImageMipTailOffset;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.DeviceSize ImageMipTailOffset" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DeviceSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -76,6 +122,21 @@
       </Docs>
     </Member>
     <Member MemberName="ImageMipTailSize">
+      <MemberSignature Language="C#" Value="public Vulkan.DeviceSize ImageMipTailSize;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.DeviceSize ImageMipTailSize" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DeviceSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ImageMipTailSize">
       <MemberSignature Language="C#" Value="public Vulkan.DeviceSize ImageMipTailSize { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.DeviceSize ImageMipTailSize" />
       <MemberType>Property</MemberType>
@@ -88,6 +149,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ImageMipTailStride">
+      <MemberSignature Language="C#" Value="public Vulkan.DeviceSize ImageMipTailStride;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.DeviceSize ImageMipTailStride" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DeviceSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -1,12 +1,13 @@
 <Type Name="PipelineColorBlendAttachmentState" FullName="Vulkan.PipelineColorBlendAttachmentState">
-  <TypeSignature Language="C#" Value="public class PipelineColorBlendAttachmentState" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PipelineColorBlendAttachmentState extends System.Object" />
+  <TypeSignature Language="C#" Value="public struct PipelineColorBlendAttachmentState" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit PipelineColorBlendAttachmentState extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>System.ValueType</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -22,6 +23,21 @@
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AlphaBlendOp">
+      <MemberSignature Language="C#" Value="public Vulkan.BlendOp AlphaBlendOp;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.BlendOp AlphaBlendOp" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.BlendOp</ReturnType>
+      </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -44,6 +60,21 @@
       </Docs>
     </Member>
     <Member MemberName="BlendEnable">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 BlendEnable;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 BlendEnable" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BlendEnable">
       <MemberSignature Language="C#" Value="public bool BlendEnable { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool BlendEnable" />
       <MemberType>Property</MemberType>
@@ -56,6 +87,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ColorBlendOp">
+      <MemberSignature Language="C#" Value="public Vulkan.BlendOp ColorBlendOp;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.BlendOp ColorBlendOp" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.BlendOp</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -76,6 +122,21 @@
       </Docs>
     </Member>
     <Member MemberName="ColorWriteMask">
+      <MemberSignature Language="C#" Value="public Vulkan.ColorComponentFlags ColorWriteMask;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.ColorComponentFlags ColorWriteMask" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.ColorComponentFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ColorWriteMask">
       <MemberSignature Language="C#" Value="public uint ColorWriteMask { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 ColorWriteMask" />
       <MemberType>Property</MemberType>
@@ -88,6 +149,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DstAlphaBlendFactor">
+      <MemberSignature Language="C#" Value="public Vulkan.BlendFactor DstAlphaBlendFactor;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.BlendFactor DstAlphaBlendFactor" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.BlendFactor</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -108,6 +184,21 @@
       </Docs>
     </Member>
     <Member MemberName="DstColorBlendFactor">
+      <MemberSignature Language="C#" Value="public Vulkan.BlendFactor DstColorBlendFactor;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.BlendFactor DstColorBlendFactor" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.BlendFactor</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DstColorBlendFactor">
       <MemberSignature Language="C#" Value="public Vulkan.BlendFactor DstColorBlendFactor { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.BlendFactor DstColorBlendFactor" />
       <MemberType>Property</MemberType>
@@ -124,6 +215,21 @@
       </Docs>
     </Member>
     <Member MemberName="SrcAlphaBlendFactor">
+      <MemberSignature Language="C#" Value="public Vulkan.BlendFactor SrcAlphaBlendFactor;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.BlendFactor SrcAlphaBlendFactor" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.BlendFactor</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SrcAlphaBlendFactor">
       <MemberSignature Language="C#" Value="public Vulkan.BlendFactor SrcAlphaBlendFactor { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.BlendFactor SrcAlphaBlendFactor" />
       <MemberType>Property</MemberType>
@@ -136,6 +242,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SrcColorBlendFactor">
+      <MemberSignature Language="C#" Value="public Vulkan.BlendFactor SrcColorBlendFactor;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.BlendFactor SrcColorBlendFactor" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.BlendFactor</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

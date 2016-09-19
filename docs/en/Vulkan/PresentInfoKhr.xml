@@ -1,12 +1,13 @@
 <Type Name="PresentInfoKhr" FullName="Vulkan.PresentInfoKhr">
-  <TypeSignature Language="C#" Value="public class PresentInfoKhr" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PresentInfoKhr extends System.Object" />
+  <TypeSignature Language="C#" Value="public class PresentInfoKhr : Vulkan.MarshalledObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PresentInfoKhr extends Vulkan.MarshalledObject" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>Vulkan.MarshalledObject</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -20,6 +21,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -28,14 +30,15 @@
       </Docs>
     </Member>
     <Member MemberName="ImageIndices">
-      <MemberSignature Language="C#" Value="public uint ImageIndices { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 ImageIndices" />
+      <MemberSignature Language="C#" Value="public uint[] ImageIndices { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32[] ImageIndices" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.UInt32</ReturnType>
+        <ReturnType>System.UInt32[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -44,14 +47,15 @@
       </Docs>
     </Member>
     <Member MemberName="Results">
-      <MemberSignature Language="C#" Value="public Vulkan.Result Results { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.Result Results" />
+      <MemberSignature Language="C#" Value="public Vulkan.Result[] Results { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.Result[] Results" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Vulkan.Result</ReturnType>
+        <ReturnType>Vulkan.Result[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -65,6 +69,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
@@ -76,18 +81,35 @@
       </Docs>
     </Member>
     <Member MemberName="Swapchains">
-      <MemberSignature Language="C#" Value="public Vulkan.SwapchainKhr Swapchains { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.SwapchainKhr Swapchains" />
+      <MemberSignature Language="C#" Value="public Vulkan.SwapchainKhr[] Swapchains { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.SwapchainKhr[] Swapchains" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Vulkan.SwapchainKhr</ReturnType>
+        <ReturnType>Vulkan.SwapchainKhr[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VirtualDispose">
+      <MemberSignature Language="C#" Value="public override void VirtualDispose ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void VirtualDispose() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -97,6 +119,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
@@ -108,14 +131,15 @@
       </Docs>
     </Member>
     <Member MemberName="WaitSemaphores">
-      <MemberSignature Language="C#" Value="public Vulkan.Semaphore WaitSemaphores { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Semaphore WaitSemaphores" />
+      <MemberSignature Language="C#" Value="public Vulkan.Semaphore[] WaitSemaphores { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Semaphore[] WaitSemaphores" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Vulkan.Semaphore</ReturnType>
+        <ReturnType>Vulkan.Semaphore[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

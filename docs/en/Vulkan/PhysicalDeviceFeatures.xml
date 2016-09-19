@@ -1,12 +1,13 @@
 <Type Name="PhysicalDeviceFeatures" FullName="Vulkan.PhysicalDeviceFeatures">
-  <TypeSignature Language="C#" Value="public class PhysicalDeviceFeatures" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PhysicalDeviceFeatures extends System.Object" />
+  <TypeSignature Language="C#" Value="public struct PhysicalDeviceFeatures" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit PhysicalDeviceFeatures extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>System.ValueType</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -22,6 +23,21 @@
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AlphaToOne">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 AlphaToOne;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 AlphaToOne" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -44,6 +60,21 @@
       </Docs>
     </Member>
     <Member MemberName="DepthBiasClamp">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 DepthBiasClamp;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 DepthBiasClamp" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DepthBiasClamp">
       <MemberSignature Language="C#" Value="public bool DepthBiasClamp { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool DepthBiasClamp" />
       <MemberType>Property</MemberType>
@@ -56,6 +87,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DepthBounds">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 DepthBounds;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 DepthBounds" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -76,6 +122,21 @@
       </Docs>
     </Member>
     <Member MemberName="DepthClamp">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 DepthClamp;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 DepthClamp" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DepthClamp">
       <MemberSignature Language="C#" Value="public bool DepthClamp { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool DepthClamp" />
       <MemberType>Property</MemberType>
@@ -88,6 +149,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawIndirectFirstInstance">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 DrawIndirectFirstInstance;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 DrawIndirectFirstInstance" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -108,6 +184,21 @@
       </Docs>
     </Member>
     <Member MemberName="DualSrcBlend">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 DualSrcBlend;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 DualSrcBlend" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DualSrcBlend">
       <MemberSignature Language="C#" Value="public bool DualSrcBlend { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool DualSrcBlend" />
       <MemberType>Property</MemberType>
@@ -120,6 +211,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FillModeNonSolid">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 FillModeNonSolid;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 FillModeNonSolid" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -140,6 +246,21 @@
       </Docs>
     </Member>
     <Member MemberName="FragmentStoresAndAtomics">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 FragmentStoresAndAtomics;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 FragmentStoresAndAtomics" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FragmentStoresAndAtomics">
       <MemberSignature Language="C#" Value="public bool FragmentStoresAndAtomics { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool FragmentStoresAndAtomics" />
       <MemberType>Property</MemberType>
@@ -152,6 +273,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FullDrawIndexUint32">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 FullDrawIndexUint32;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 FullDrawIndexUint32" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -172,6 +308,21 @@
       </Docs>
     </Member>
     <Member MemberName="GeometryShader">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 GeometryShader;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 GeometryShader" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GeometryShader">
       <MemberSignature Language="C#" Value="public bool GeometryShader { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool GeometryShader" />
       <MemberType>Property</MemberType>
@@ -184,6 +335,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ImageCubeArray">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 ImageCubeArray;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 ImageCubeArray" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -204,6 +370,21 @@
       </Docs>
     </Member>
     <Member MemberName="IndependentBlend">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 IndependentBlend;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 IndependentBlend" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IndependentBlend">
       <MemberSignature Language="C#" Value="public bool IndependentBlend { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IndependentBlend" />
       <MemberType>Property</MemberType>
@@ -216,6 +397,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InheritedQueries">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 InheritedQueries;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 InheritedQueries" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -236,6 +432,21 @@
       </Docs>
     </Member>
     <Member MemberName="LargePoints">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 LargePoints;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 LargePoints" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LargePoints">
       <MemberSignature Language="C#" Value="public bool LargePoints { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool LargePoints" />
       <MemberType>Property</MemberType>
@@ -248,6 +459,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LogicOp">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 LogicOp;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 LogicOp" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -268,6 +494,21 @@
       </Docs>
     </Member>
     <Member MemberName="MultiDrawIndirect">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 MultiDrawIndirect;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 MultiDrawIndirect" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MultiDrawIndirect">
       <MemberSignature Language="C#" Value="public bool MultiDrawIndirect { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool MultiDrawIndirect" />
       <MemberType>Property</MemberType>
@@ -280,6 +521,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MultiViewport">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 MultiViewport;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 MultiViewport" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -300,6 +556,21 @@
       </Docs>
     </Member>
     <Member MemberName="OcclusionQueryPrecise">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 OcclusionQueryPrecise;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 OcclusionQueryPrecise" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OcclusionQueryPrecise">
       <MemberSignature Language="C#" Value="public bool OcclusionQueryPrecise { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool OcclusionQueryPrecise" />
       <MemberType>Property</MemberType>
@@ -312,6 +583,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PipelineStatisticsQuery">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 PipelineStatisticsQuery;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 PipelineStatisticsQuery" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -332,6 +618,21 @@
       </Docs>
     </Member>
     <Member MemberName="RobustBufferAccess">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 RobustBufferAccess;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 RobustBufferAccess" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RobustBufferAccess">
       <MemberSignature Language="C#" Value="public bool RobustBufferAccess { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool RobustBufferAccess" />
       <MemberType>Property</MemberType>
@@ -344,6 +645,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SamplerAnisotropy">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 SamplerAnisotropy;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 SamplerAnisotropy" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -364,6 +680,21 @@
       </Docs>
     </Member>
     <Member MemberName="SampleRateShading">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 SampleRateShading;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 SampleRateShading" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SampleRateShading">
       <MemberSignature Language="C#" Value="public bool SampleRateShading { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool SampleRateShading" />
       <MemberType>Property</MemberType>
@@ -376,6 +707,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShaderClipDistance">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 ShaderClipDistance;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 ShaderClipDistance" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -396,6 +742,21 @@
       </Docs>
     </Member>
     <Member MemberName="ShaderCullDistance">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 ShaderCullDistance;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 ShaderCullDistance" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShaderCullDistance">
       <MemberSignature Language="C#" Value="public bool ShaderCullDistance { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool ShaderCullDistance" />
       <MemberType>Property</MemberType>
@@ -408,6 +769,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShaderFloat64">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 ShaderFloat64;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 ShaderFloat64" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -428,6 +804,21 @@
       </Docs>
     </Member>
     <Member MemberName="ShaderImageGatherExtended">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 ShaderImageGatherExtended;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 ShaderImageGatherExtended" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShaderImageGatherExtended">
       <MemberSignature Language="C#" Value="public bool ShaderImageGatherExtended { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool ShaderImageGatherExtended" />
       <MemberType>Property</MemberType>
@@ -440,6 +831,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShaderInt16">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 ShaderInt16;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 ShaderInt16" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -460,6 +866,21 @@
       </Docs>
     </Member>
     <Member MemberName="ShaderInt64">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 ShaderInt64;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 ShaderInt64" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShaderInt64">
       <MemberSignature Language="C#" Value="public bool ShaderInt64 { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool ShaderInt64" />
       <MemberType>Property</MemberType>
@@ -472,6 +893,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShaderResourceMinLod">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 ShaderResourceMinLod;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 ShaderResourceMinLod" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -492,6 +928,21 @@
       </Docs>
     </Member>
     <Member MemberName="ShaderResourceResidency">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 ShaderResourceResidency;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 ShaderResourceResidency" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShaderResourceResidency">
       <MemberSignature Language="C#" Value="public bool ShaderResourceResidency { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool ShaderResourceResidency" />
       <MemberType>Property</MemberType>
@@ -504,6 +955,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShaderSampledImageArrayDynamicIndexing">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 ShaderSampledImageArrayDynamicIndexing;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 ShaderSampledImageArrayDynamicIndexing" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -524,6 +990,21 @@
       </Docs>
     </Member>
     <Member MemberName="ShaderStorageBufferArrayDynamicIndexing">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 ShaderStorageBufferArrayDynamicIndexing;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 ShaderStorageBufferArrayDynamicIndexing" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShaderStorageBufferArrayDynamicIndexing">
       <MemberSignature Language="C#" Value="public bool ShaderStorageBufferArrayDynamicIndexing { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool ShaderStorageBufferArrayDynamicIndexing" />
       <MemberType>Property</MemberType>
@@ -536,6 +1017,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShaderStorageImageArrayDynamicIndexing">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 ShaderStorageImageArrayDynamicIndexing;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 ShaderStorageImageArrayDynamicIndexing" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -556,6 +1052,21 @@
       </Docs>
     </Member>
     <Member MemberName="ShaderStorageImageExtendedFormats">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 ShaderStorageImageExtendedFormats;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 ShaderStorageImageExtendedFormats" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShaderStorageImageExtendedFormats">
       <MemberSignature Language="C#" Value="public bool ShaderStorageImageExtendedFormats { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool ShaderStorageImageExtendedFormats" />
       <MemberType>Property</MemberType>
@@ -568,6 +1079,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShaderStorageImageMultisample">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 ShaderStorageImageMultisample;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 ShaderStorageImageMultisample" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -588,6 +1114,21 @@
       </Docs>
     </Member>
     <Member MemberName="ShaderStorageImageReadWithoutFormat">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 ShaderStorageImageReadWithoutFormat;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 ShaderStorageImageReadWithoutFormat" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShaderStorageImageReadWithoutFormat">
       <MemberSignature Language="C#" Value="public bool ShaderStorageImageReadWithoutFormat { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool ShaderStorageImageReadWithoutFormat" />
       <MemberType>Property</MemberType>
@@ -600,6 +1141,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShaderStorageImageWriteWithoutFormat">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 ShaderStorageImageWriteWithoutFormat;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 ShaderStorageImageWriteWithoutFormat" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -620,6 +1176,21 @@
       </Docs>
     </Member>
     <Member MemberName="ShaderTessellationAndGeometryPointSize">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 ShaderTessellationAndGeometryPointSize;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 ShaderTessellationAndGeometryPointSize" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShaderTessellationAndGeometryPointSize">
       <MemberSignature Language="C#" Value="public bool ShaderTessellationAndGeometryPointSize { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool ShaderTessellationAndGeometryPointSize" />
       <MemberType>Property</MemberType>
@@ -632,6 +1203,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShaderUniformBufferArrayDynamicIndexing">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 ShaderUniformBufferArrayDynamicIndexing;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 ShaderUniformBufferArrayDynamicIndexing" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -652,6 +1238,21 @@
       </Docs>
     </Member>
     <Member MemberName="SparseBinding">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 SparseBinding;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 SparseBinding" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SparseBinding">
       <MemberSignature Language="C#" Value="public bool SparseBinding { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool SparseBinding" />
       <MemberType>Property</MemberType>
@@ -664,6 +1265,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SparseResidency16Samples">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 SparseResidency16Samples;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 SparseResidency16Samples" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -684,6 +1300,21 @@
       </Docs>
     </Member>
     <Member MemberName="SparseResidency2Samples">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 SparseResidency2Samples;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 SparseResidency2Samples" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SparseResidency2Samples">
       <MemberSignature Language="C#" Value="public bool SparseResidency2Samples { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool SparseResidency2Samples" />
       <MemberType>Property</MemberType>
@@ -696,6 +1327,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SparseResidency4Samples">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 SparseResidency4Samples;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 SparseResidency4Samples" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -716,6 +1362,21 @@
       </Docs>
     </Member>
     <Member MemberName="SparseResidency8Samples">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 SparseResidency8Samples;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 SparseResidency8Samples" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SparseResidency8Samples">
       <MemberSignature Language="C#" Value="public bool SparseResidency8Samples { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool SparseResidency8Samples" />
       <MemberType>Property</MemberType>
@@ -728,6 +1389,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SparseResidencyAliased">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 SparseResidencyAliased;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 SparseResidencyAliased" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -748,6 +1424,21 @@
       </Docs>
     </Member>
     <Member MemberName="SparseResidencyBuffer">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 SparseResidencyBuffer;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 SparseResidencyBuffer" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SparseResidencyBuffer">
       <MemberSignature Language="C#" Value="public bool SparseResidencyBuffer { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool SparseResidencyBuffer" />
       <MemberType>Property</MemberType>
@@ -760,6 +1451,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SparseResidencyImage2D">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 SparseResidencyImage2D;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 SparseResidencyImage2D" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -780,6 +1486,21 @@
       </Docs>
     </Member>
     <Member MemberName="SparseResidencyImage3D">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 SparseResidencyImage3D;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 SparseResidencyImage3D" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SparseResidencyImage3D">
       <MemberSignature Language="C#" Value="public bool SparseResidencyImage3D { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool SparseResidencyImage3D" />
       <MemberType>Property</MemberType>
@@ -792,6 +1513,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TessellationShader">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 TessellationShader;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 TessellationShader" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -811,6 +1547,21 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="TextureCompressionAstcLdr">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 TextureCompressionAstcLdr;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 TextureCompressionAstcLdr" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="TextureCompressionASTCLdr">
       <MemberSignature Language="C#" Value="public bool TextureCompressionASTCLdr { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool TextureCompressionASTCLdr" />
@@ -827,6 +1578,21 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="TextureCompressionBc">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 TextureCompressionBc;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 TextureCompressionBc" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="TextureCompressionBC">
       <MemberSignature Language="C#" Value="public bool TextureCompressionBC { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool TextureCompressionBC" />
@@ -840,6 +1606,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TextureCompressionEtc2">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 TextureCompressionEtc2;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 TextureCompressionEtc2" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -860,6 +1641,21 @@
       </Docs>
     </Member>
     <Member MemberName="VariableMultisampleRate">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 VariableMultisampleRate;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 VariableMultisampleRate" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VariableMultisampleRate">
       <MemberSignature Language="C#" Value="public bool VariableMultisampleRate { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool VariableMultisampleRate" />
       <MemberType>Property</MemberType>
@@ -876,6 +1672,21 @@
       </Docs>
     </Member>
     <Member MemberName="VertexPipelineStoresAndAtomics">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 VertexPipelineStoresAndAtomics;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 VertexPipelineStoresAndAtomics" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VertexPipelineStoresAndAtomics">
       <MemberSignature Language="C#" Value="public bool VertexPipelineStoresAndAtomics { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool VertexPipelineStoresAndAtomics" />
       <MemberType>Property</MemberType>
@@ -888,6 +1699,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WideLines">
+      <MemberSignature Language="C#" Value="public Vulkan.Bool32 WideLines;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.Bool32 WideLines" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.Bool32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

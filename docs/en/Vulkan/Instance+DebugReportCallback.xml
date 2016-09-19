@@ -1,0 +1,37 @@
+<Type Name="Instance+DebugReportCallback" FullName="Vulkan.Instance+DebugReportCallback">
+  <TypeSignature Language="C#" Value="public delegate Vulkan.Bool32 Instance.DebugReportCallback(DebugReportFlagsExt flags, DebugReportObjectTypeExt objectType, ulong objectHandle, IntPtr location, int messageCode, IntPtr layerPrefix, IntPtr message, IntPtr userData);" />
+  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi sealed Instance/DebugReportCallback extends System.MulticastDelegate" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Delegate</BaseTypeName>
+  </Base>
+  <Parameters>
+    <Parameter Name="flags" Type="Vulkan.DebugReportFlagsExt" />
+    <Parameter Name="objectType" Type="Vulkan.DebugReportObjectTypeExt" />
+    <Parameter Name="objectHandle" Type="System.UInt64" />
+    <Parameter Name="location" Type="System.IntPtr" />
+    <Parameter Name="messageCode" Type="System.Int32" />
+    <Parameter Name="layerPrefix" Type="System.IntPtr" />
+    <Parameter Name="message" Type="System.IntPtr" />
+    <Parameter Name="userData" Type="System.IntPtr" />
+  </Parameters>
+  <ReturnValue>
+    <ReturnType>Vulkan.Bool32</ReturnType>
+  </ReturnValue>
+  <Docs>
+    <param name="flags">To be added.</param>
+    <param name="objectType">To be added.</param>
+    <param name="objectHandle">To be added.</param>
+    <param name="location">To be added.</param>
+    <param name="messageCode">To be added.</param>
+    <param name="layerPrefix">To be added.</param>
+    <param name="message">To be added.</param>
+    <param name="userData">To be added.</param>
+    <summary>To be added.</summary>
+    <returns>To be added.</returns>
+    <remarks>To be added.</remarks>
+  </Docs>
+</Type>

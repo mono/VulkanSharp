@@ -1,0 +1,20 @@
+<Type Name="NativeMemoryDebug+StackTraceDelegate" FullName="Vulkan.NativeMemoryDebug+StackTraceDelegate">
+  <TypeSignature Language="C#" Value="public delegate string NativeMemoryDebug.StackTraceDelegate();" />
+  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi sealed NativeMemoryDebug/StackTraceDelegate extends System.MulticastDelegate" />
+  <AssemblyInfo>
+    <AssemblyName>Vulkan</AssemblyName>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Delegate</BaseTypeName>
+  </Base>
+  <Parameters />
+  <ReturnValue>
+    <ReturnType>System.String</ReturnType>
+  </ReturnValue>
+  <Docs>
+    <summary>To be added.</summary>
+    <returns>To be added.</returns>
+    <remarks>To be added.</remarks>
+  </Docs>
+</Type>

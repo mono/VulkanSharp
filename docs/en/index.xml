@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="Vulkan" Version="0.0.5950.20892">
+    <Assembly Name="Vulkan" Version="0.0.6105.39043">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations | System.Diagnostics.DebuggableAttribute+DebuggingModes.IgnoreSymbolStoreSequencePoints)</AttributeName>
@@ -30,6 +30,9 @@
           <AttributeName>System.Runtime.CompilerServices.InternalsVisibleTo("Vulkan.Android")</AttributeName>
         </Attribute>
         <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.InternalsVisibleTo("Vulkan.Windows")</AttributeName>
+        </Attribute>
+        <Attribute>
           <AttributeName>System.Runtime.CompilerServices.RuntimeCompatibility(WrapNonExceptionThrows=true)</AttributeName>
         </Attribute>
         <Attribute>
@@ -45,10 +48,10 @@
       <Type Name="AccessFlags" Kind="Enumeration" />
       <Type Name="AllocationCallbacks" Kind="Class" />
       <Type Name="ApplicationInfo" Kind="Class" />
-      <Type Name="AttachmentDescription" Kind="Class" />
+      <Type Name="AttachmentDescription" Kind="Structure" />
       <Type Name="AttachmentDescriptionFlags" Kind="Enumeration" />
       <Type Name="AttachmentLoadOp" Kind="Enumeration" />
-      <Type Name="AttachmentReference" Kind="Class" />
+      <Type Name="AttachmentReference" Kind="Structure" />
       <Type Name="AttachmentStoreOp" Kind="Enumeration" />
       <Type Name="BindSparseInfo" Kind="Class" />
       <Type Name="BlendFactor" Kind="Enumeration" />
@@ -56,18 +59,18 @@
       <Type Name="Bool32" Kind="Structure" />
       <Type Name="BorderColor" Kind="Enumeration" />
       <Type Name="Buffer" Kind="Class" />
-      <Type Name="BufferCopy" Kind="Class" />
+      <Type Name="BufferCopy" Kind="Structure" />
       <Type Name="BufferCreateFlags" Kind="Enumeration" />
       <Type Name="BufferCreateInfo" Kind="Class" />
-      <Type Name="BufferImageCopy" Kind="Class" />
+      <Type Name="BufferImageCopy" Kind="Structure" />
       <Type Name="BufferMemoryBarrier" Kind="Class" />
       <Type Name="BufferUsageFlags" Kind="Enumeration" />
       <Type Name="BufferView" Kind="Class" />
       <Type Name="BufferViewCreateInfo" Kind="Class" />
       <Type Name="ClearAttachment" Kind="Class" />
       <Type Name="ClearColorValue" Kind="Class" />
-      <Type Name="ClearDepthStencilValue" Kind="Class" />
-      <Type Name="ClearRect" Kind="Class" />
+      <Type Name="ClearDepthStencilValue" Kind="Structure" />
+      <Type Name="ClearRect" Kind="Structure" />
       <Type Name="ClearValue" Kind="Class" />
       <Type Name="ColorComponentFlags" Kind="Enumeration" />
       <Type Name="ColorSpaceKhr" Kind="Enumeration" />
@@ -82,8 +85,9 @@
       <Type Name="CommandPoolCreateFlags" Kind="Enumeration" />
       <Type Name="CommandPoolCreateInfo" Kind="Class" />
       <Type Name="CommandPoolResetFlags" Kind="Enumeration" />
+      <Type Name="Commands" Kind="Class" />
       <Type Name="CompareOp" Kind="Enumeration" />
-      <Type Name="ComponentMapping" Kind="Class" />
+      <Type Name="ComponentMapping" Kind="Structure" />
       <Type Name="ComponentSwizzle" Kind="Enumeration" />
       <Type Name="CompositeAlphaFlagsKhr" Kind="Enumeration" />
       <Type Name="ComputePipelineCreateInfo" Kind="Class" />
@@ -100,7 +104,7 @@
       <Type Name="DescriptorPool" Kind="Class" />
       <Type Name="DescriptorPoolCreateFlags" Kind="Enumeration" />
       <Type Name="DescriptorPoolCreateInfo" Kind="Class" />
-      <Type Name="DescriptorPoolSize" Kind="Class" />
+      <Type Name="DescriptorPoolSize" Kind="Structure" />
       <Type Name="DescriptorSet" Kind="Class" />
       <Type Name="DescriptorSetAllocateInfo" Kind="Class" />
       <Type Name="DescriptorSetLayout" Kind="Class" />
@@ -112,33 +116,33 @@
       <Type Name="DeviceMemory" Kind="Class" />
       <Type Name="DeviceQueueCreateInfo" Kind="Class" />
       <Type Name="DeviceSize" Kind="Structure" />
-      <Type Name="DispatchIndirectCommand" Kind="Class" />
+      <Type Name="DispatchIndirectCommand" Kind="Structure" />
       <Type Name="DisplayKhr" Kind="Class" />
       <Type Name="DisplayModeCreateInfoKhr" Kind="Class" />
       <Type Name="DisplayModeKhr" Kind="Class" />
-      <Type Name="DisplayModeParametersKhr" Kind="Class" />
+      <Type Name="DisplayModeParametersKhr" Kind="Structure" />
       <Type Name="DisplayModePropertiesKhr" Kind="Class" />
       <Type Name="DisplayPlaneAlphaFlagsKhr" Kind="Enumeration" />
-      <Type Name="DisplayPlaneCapabilitiesKhr" Kind="Class" />
+      <Type Name="DisplayPlaneCapabilitiesKhr" Kind="Structure" />
       <Type Name="DisplayPlanePropertiesKhr" Kind="Class" />
       <Type Name="DisplayPresentInfoKhr" Kind="Class" />
       <Type Name="DisplayPropertiesKhr" Kind="Class" />
       <Type Name="DisplaySurfaceCreateInfoKhr" Kind="Class" />
-      <Type Name="DrawIndexedIndirectCommand" Kind="Class" />
-      <Type Name="DrawIndirectCommand" Kind="Class" />
+      <Type Name="DrawIndexedIndirectCommand" Kind="Structure" />
+      <Type Name="DrawIndirectCommand" Kind="Structure" />
       <Type Name="DynamicState" Kind="Enumeration" />
       <Type Name="Event" Kind="Class" />
       <Type Name="EventCreateInfo" Kind="Class" />
       <Type Name="ExtensionProperties" Kind="Class" />
-      <Type Name="Extent2D" Kind="Class" />
-      <Type Name="Extent3D" Kind="Class" />
+      <Type Name="Extent2D" Kind="Structure" />
+      <Type Name="Extent3D" Kind="Structure" />
       <Type Name="Fence" Kind="Class" />
       <Type Name="FenceCreateFlags" Kind="Enumeration" />
       <Type Name="FenceCreateInfo" Kind="Class" />
       <Type Name="Filter" Kind="Enumeration" />
       <Type Name="Format" Kind="Enumeration" />
       <Type Name="FormatFeatureFlags" Kind="Enumeration" />
-      <Type Name="FormatProperties" Kind="Class" />
+      <Type Name="FormatProperties" Kind="Structure" />
       <Type Name="Framebuffer" Kind="Class" />
       <Type Name="FramebufferCreateInfo" Kind="Class" />
       <Type Name="FrontFace" Kind="Enumeration" />
@@ -146,51 +150,58 @@
       <Type Name="Image" Kind="Class" />
       <Type Name="ImageAspectFlags" Kind="Enumeration" />
       <Type Name="ImageBlit" Kind="Class" />
-      <Type Name="ImageCopy" Kind="Class" />
+      <Type Name="ImageCopy" Kind="Structure" />
       <Type Name="ImageCreateFlags" Kind="Enumeration" />
       <Type Name="ImageCreateInfo" Kind="Class" />
-      <Type Name="ImageFormatProperties" Kind="Class" />
+      <Type Name="ImageFormatProperties" Kind="Structure" />
       <Type Name="ImageLayout" Kind="Enumeration" />
       <Type Name="ImageMemoryBarrier" Kind="Class" />
-      <Type Name="ImageResolve" Kind="Class" />
-      <Type Name="ImageSubresource" Kind="Class" />
-      <Type Name="ImageSubresourceLayers" Kind="Class" />
-      <Type Name="ImageSubresourceRange" Kind="Class" />
+      <Type Name="ImageResolve" Kind="Structure" />
+      <Type Name="ImageSubresource" Kind="Structure" />
+      <Type Name="ImageSubresourceLayers" Kind="Structure" />
+      <Type Name="ImageSubresourceRange" Kind="Structure" />
       <Type Name="ImageTiling" Kind="Enumeration" />
       <Type Name="ImageType" Kind="Enumeration" />
       <Type Name="ImageUsageFlags" Kind="Enumeration" />
       <Type Name="ImageView" Kind="Class" />
       <Type Name="ImageViewCreateInfo" Kind="Class" />
       <Type Name="ImageViewType" Kind="Enumeration" />
+      <Type Name="IMarshalling" Kind="Interface" />
       <Type Name="IndexType" Kind="Enumeration" />
+      <Type Name="INonDispatchableHandleMarshalling" Kind="Interface" />
       <Type Name="Instance" Kind="Class" />
+      <Type Name="Instance+DebugReportCallback" Kind="Delegate" />
       <Type Name="InstanceCreateInfo" Kind="Class" />
       <Type Name="InternalAllocationType" Kind="Enumeration" />
       <Type Name="LayerProperties" Kind="Class" />
       <Type Name="LogicOp" Kind="Enumeration" />
       <Type Name="MappedMemoryRange" Kind="Class" />
+      <Type Name="MarshalledObject" Kind="Class" />
       <Type Name="MemoryAllocateInfo" Kind="Class" />
       <Type Name="MemoryBarrier" Kind="Class" />
-      <Type Name="MemoryHeap" Kind="Class" />
+      <Type Name="MemoryHeap" Kind="Structure" />
       <Type Name="MemoryHeapFlags" Kind="Enumeration" />
       <Type Name="MemoryPropertyFlags" Kind="Enumeration" />
-      <Type Name="MemoryRequirements" Kind="Class" />
-      <Type Name="MemoryType" Kind="Class" />
-      <Type Name="Offset2D" Kind="Class" />
-      <Type Name="Offset3D" Kind="Class" />
+      <Type Name="MemoryRequirements" Kind="Structure" />
+      <Type Name="MemoryType" Kind="Structure" />
+      <Type Name="NativeMemoryDebug" Kind="Class" />
+      <Type Name="NativeMemoryDebug+ReportCallbackDelegate" Kind="Delegate" />
+      <Type Name="NativeMemoryDebug+StackTraceDelegate" Kind="Delegate" />
+      <Type Name="Offset2D" Kind="Structure" />
+      <Type Name="Offset3D" Kind="Structure" />
       <Type Name="PhysicalDevice" Kind="Class" />
-      <Type Name="PhysicalDeviceFeatures" Kind="Class" />
+      <Type Name="PhysicalDeviceFeatures" Kind="Structure" />
       <Type Name="PhysicalDeviceLimits" Kind="Class" />
       <Type Name="PhysicalDeviceMemoryProperties" Kind="Class" />
       <Type Name="PhysicalDeviceProperties" Kind="Class" />
-      <Type Name="PhysicalDeviceSparseProperties" Kind="Class" />
+      <Type Name="PhysicalDeviceSparseProperties" Kind="Structure" />
       <Type Name="PhysicalDeviceType" Kind="Enumeration" />
       <Type Name="Pipeline" Kind="Class" />
       <Type Name="PipelineBindPoint" Kind="Enumeration" />
       <Type Name="PipelineCache" Kind="Class" />
       <Type Name="PipelineCacheCreateInfo" Kind="Class" />
       <Type Name="PipelineCacheHeaderVersion" Kind="Enumeration" />
-      <Type Name="PipelineColorBlendAttachmentState" Kind="Class" />
+      <Type Name="PipelineColorBlendAttachmentState" Kind="Structure" />
       <Type Name="PipelineColorBlendStateCreateInfo" Kind="Class" />
       <Type Name="PipelineCreateFlags" Kind="Enumeration" />
       <Type Name="PipelineDepthStencilStateCreateInfo" Kind="Class" />
@@ -209,7 +220,7 @@
       <Type Name="PresentInfoKhr" Kind="Class" />
       <Type Name="PresentModeKhr" Kind="Enumeration" />
       <Type Name="PrimitiveTopology" Kind="Enumeration" />
-      <Type Name="PushConstantRange" Kind="Class" />
+      <Type Name="PushConstantRange" Kind="Structure" />
       <Type Name="QueryControlFlags" Kind="Enumeration" />
       <Type Name="QueryPipelineStatisticFlags" Kind="Enumeration" />
       <Type Name="QueryPool" Kind="Class" />
@@ -217,10 +228,10 @@
       <Type Name="QueryResultFlags" Kind="Enumeration" />
       <Type Name="QueryType" Kind="Enumeration" />
       <Type Name="Queue" Kind="Class" />
-      <Type Name="QueueFamilyProperties" Kind="Class" />
+      <Type Name="QueueFamilyProperties" Kind="Structure" />
       <Type Name="QueueFlags" Kind="Enumeration" />
-      <Type Name="Rect2D" Kind="Class" />
-      <Type Name="Rect3D" Kind="Class" />
+      <Type Name="Rect2D" Kind="Structure" />
+      <Type Name="Rect3D" Kind="Structure" />
       <Type Name="RenderPass" Kind="Class" />
       <Type Name="RenderPassBeginInfo" Kind="Class" />
       <Type Name="RenderPassCreateInfo" Kind="Class" />
@@ -239,35 +250,36 @@
       <Type Name="SharingMode" Kind="Enumeration" />
       <Type Name="SparseBufferMemoryBindInfo" Kind="Class" />
       <Type Name="SparseImageFormatFlags" Kind="Enumeration" />
-      <Type Name="SparseImageFormatProperties" Kind="Class" />
+      <Type Name="SparseImageFormatProperties" Kind="Structure" />
       <Type Name="SparseImageMemoryBind" Kind="Class" />
       <Type Name="SparseImageMemoryBindInfo" Kind="Class" />
-      <Type Name="SparseImageMemoryRequirements" Kind="Class" />
+      <Type Name="SparseImageMemoryRequirements" Kind="Structure" />
       <Type Name="SparseImageOpaqueMemoryBindInfo" Kind="Class" />
       <Type Name="SparseMemoryBind" Kind="Class" />
       <Type Name="SparseMemoryBindFlags" Kind="Enumeration" />
       <Type Name="SpecializationInfo" Kind="Class" />
-      <Type Name="SpecializationMapEntry" Kind="Class" />
+      <Type Name="SpecializationMapEntry" Kind="Structure" />
       <Type Name="StencilFaceFlags" Kind="Enumeration" />
       <Type Name="StencilOp" Kind="Enumeration" />
-      <Type Name="StencilOpState" Kind="Class" />
+      <Type Name="StencilOpState" Kind="Structure" />
       <Type Name="StructureType" Kind="Enumeration" />
       <Type Name="SubmitInfo" Kind="Class" />
       <Type Name="SubpassContents" Kind="Enumeration" />
-      <Type Name="SubpassDependency" Kind="Class" />
+      <Type Name="SubpassDependency" Kind="Structure" />
       <Type Name="SubpassDescription" Kind="Class" />
-      <Type Name="SubresourceLayout" Kind="Class" />
-      <Type Name="SurfaceCapabilitiesKhr" Kind="Class" />
-      <Type Name="SurfaceFormatKhr" Kind="Class" />
+      <Type Name="SubresourceLayout" Kind="Structure" />
+      <Type Name="SurfaceCapabilitiesKhr" Kind="Structure" />
+      <Type Name="SurfaceFormatKhr" Kind="Structure" />
       <Type Name="SurfaceKhr" Kind="Class" />
       <Type Name="SurfaceTransformFlagsKhr" Kind="Enumeration" />
       <Type Name="SwapchainCreateInfoKhr" Kind="Class" />
       <Type Name="SwapchainKhr" Kind="Class" />
       <Type Name="SystemAllocationScope" Kind="Enumeration" />
-      <Type Name="VertexInputAttributeDescription" Kind="Class" />
-      <Type Name="VertexInputBindingDescription" Kind="Class" />
+      <Type Name="Version" Kind="Class" />
+      <Type Name="VertexInputAttributeDescription" Kind="Structure" />
+      <Type Name="VertexInputBindingDescription" Kind="Structure" />
       <Type Name="VertexInputRate" Kind="Enumeration" />
-      <Type Name="Viewport" Kind="Class" />
+      <Type Name="Viewport" Kind="Structure" />
       <Type Name="WriteDescriptorSet" Kind="Class" />
     </Namespace>
   </Types>

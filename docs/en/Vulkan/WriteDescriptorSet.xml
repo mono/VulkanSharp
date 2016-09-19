@@ -1,12 +1,13 @@
 <Type Name="WriteDescriptorSet" FullName="Vulkan.WriteDescriptorSet">
-  <TypeSignature Language="C#" Value="public class WriteDescriptorSet" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit WriteDescriptorSet extends System.Object" />
+  <TypeSignature Language="C#" Value="public class WriteDescriptorSet : Vulkan.MarshalledObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit WriteDescriptorSet extends Vulkan.MarshalledObject" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>Vulkan.MarshalledObject</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -20,6 +21,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -28,14 +30,15 @@
       </Docs>
     </Member>
     <Member MemberName="BufferInfo">
-      <MemberSignature Language="C#" Value="public Vulkan.DescriptorBufferInfo BufferInfo { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.DescriptorBufferInfo BufferInfo" />
+      <MemberSignature Language="C#" Value="public Vulkan.DescriptorBufferInfo[] BufferInfo { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.DescriptorBufferInfo[] BufferInfo" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Vulkan.DescriptorBufferInfo</ReturnType>
+        <ReturnType>Vulkan.DescriptorBufferInfo[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -49,6 +52,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
@@ -65,6 +69,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DescriptorType</ReturnType>
@@ -81,6 +86,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
@@ -97,6 +103,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
@@ -113,6 +120,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DescriptorSet</ReturnType>
@@ -124,14 +132,15 @@
       </Docs>
     </Member>
     <Member MemberName="ImageInfo">
-      <MemberSignature Language="C#" Value="public Vulkan.DescriptorImageInfo ImageInfo { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.DescriptorImageInfo ImageInfo" />
+      <MemberSignature Language="C#" Value="public Vulkan.DescriptorImageInfo[] ImageInfo { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.DescriptorImageInfo[] ImageInfo" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Vulkan.DescriptorImageInfo</ReturnType>
+        <ReturnType>Vulkan.DescriptorImageInfo[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -140,18 +149,35 @@
       </Docs>
     </Member>
     <Member MemberName="TexelBufferView">
-      <MemberSignature Language="C#" Value="public Vulkan.BufferView TexelBufferView { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.BufferView TexelBufferView" />
+      <MemberSignature Language="C#" Value="public Vulkan.BufferView[] TexelBufferView { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.BufferView[] TexelBufferView" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Vulkan.BufferView</ReturnType>
+        <ReturnType>Vulkan.BufferView[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VirtualDispose">
+      <MemberSignature Language="C#" Value="public override void VirtualDispose ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void VirtualDispose() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

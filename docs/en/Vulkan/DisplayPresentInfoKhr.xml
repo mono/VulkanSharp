@@ -1,12 +1,13 @@
 <Type Name="DisplayPresentInfoKhr" FullName="Vulkan.DisplayPresentInfoKhr">
-  <TypeSignature Language="C#" Value="public class DisplayPresentInfoKhr" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit DisplayPresentInfoKhr extends System.Object" />
+  <TypeSignature Language="C#" Value="public class DisplayPresentInfoKhr : Vulkan.MarshalledObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit DisplayPresentInfoKhr extends Vulkan.MarshalledObject" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>Vulkan.MarshalledObject</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -20,6 +21,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -29,10 +31,11 @@
     </Member>
     <Member MemberName="DstRect">
       <MemberSignature Language="C#" Value="public Vulkan.Rect2D DstRect { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Rect2D DstRect" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.Rect2D DstRect" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Rect2D</ReturnType>
@@ -49,6 +52,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -61,10 +65,11 @@
     </Member>
     <Member MemberName="SrcRect">
       <MemberSignature Language="C#" Value="public Vulkan.Rect2D SrcRect { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Vulkan.Rect2D SrcRect" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.Rect2D SrcRect" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Rect2D</ReturnType>

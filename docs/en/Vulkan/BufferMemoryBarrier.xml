@@ -1,12 +1,13 @@
 <Type Name="BufferMemoryBarrier" FullName="Vulkan.BufferMemoryBarrier">
-  <TypeSignature Language="C#" Value="public class BufferMemoryBarrier" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit BufferMemoryBarrier extends System.Object" />
+  <TypeSignature Language="C#" Value="public class BufferMemoryBarrier : Vulkan.MarshalledObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit BufferMemoryBarrier extends Vulkan.MarshalledObject" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>Vulkan.MarshalledObject</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -20,6 +21,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -33,6 +35,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Buffer</ReturnType>
@@ -44,14 +47,15 @@
       </Docs>
     </Member>
     <Member MemberName="DstAccessMask">
-      <MemberSignature Language="C#" Value="public uint DstAccessMask { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 DstAccessMask" />
+      <MemberSignature Language="C#" Value="public Vulkan.AccessFlags DstAccessMask { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.AccessFlags DstAccessMask" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.UInt32</ReturnType>
+        <ReturnType>Vulkan.AccessFlags</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -65,6 +69,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
@@ -81,6 +86,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DeviceSize</ReturnType>
@@ -97,6 +103,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DeviceSize</ReturnType>
@@ -108,14 +115,15 @@
       </Docs>
     </Member>
     <Member MemberName="SrcAccessMask">
-      <MemberSignature Language="C#" Value="public uint SrcAccessMask { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 SrcAccessMask" />
+      <MemberSignature Language="C#" Value="public Vulkan.AccessFlags SrcAccessMask { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vulkan.AccessFlags SrcAccessMask" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.UInt32</ReturnType>
+        <ReturnType>Vulkan.AccessFlags</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -129,6 +137,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>

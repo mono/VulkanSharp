@@ -1,12 +1,13 @@
 <Type Name="MemoryRequirements" FullName="Vulkan.MemoryRequirements">
-  <TypeSignature Language="C#" Value="public class MemoryRequirements" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit MemoryRequirements extends System.Object" />
+  <TypeSignature Language="C#" Value="public struct MemoryRequirements" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit MemoryRequirements extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>Vulkan</AssemblyName>
     <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
+    <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>System.ValueType</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -22,6 +23,21 @@
         <AssemblyVersion>0.0.5950.20892</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Alignment">
+      <MemberSignature Language="C#" Value="public Vulkan.DeviceSize Alignment;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.DeviceSize Alignment" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DeviceSize</ReturnType>
+      </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -44,6 +60,21 @@
       </Docs>
     </Member>
     <Member MemberName="MemoryTypeBits">
+      <MemberSignature Language="C#" Value="public uint MemoryTypeBits;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 MemoryTypeBits" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MemoryTypeBits">
       <MemberSignature Language="C#" Value="public uint MemoryTypeBits { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MemoryTypeBits" />
       <MemberType>Property</MemberType>
@@ -56,6 +87,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Size">
+      <MemberSignature Language="C#" Value="public Vulkan.DeviceSize Size;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Vulkan.DeviceSize Size" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vulkan.DeviceSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
