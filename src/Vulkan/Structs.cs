@@ -404,8 +404,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refQueuePriorities.Release ();
 			refQueuePriorities = NativeReference.Empty;
 		}
@@ -563,8 +564,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refQueueCreateInfos.Release ();
 			refQueueCreateInfos = NativeReference.Empty;
 			refEnabledLayerNames.Release ();
@@ -687,8 +689,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refEnabledLayerNames.Release ();
 			refEnabledLayerNames = NativeReference.Empty;
 			refEnabledExtensionNames.Release ();
@@ -1157,8 +1160,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refImageInfo.Release ();
 			refImageInfo = NativeReference.Empty;
 			refBufferInfo.Release ();
@@ -1317,8 +1321,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refQueueFamilyIndices.Release ();
 			refQueueFamilyIndices = NativeReference.Empty;
 		}
@@ -1692,8 +1697,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refQueueFamilyIndices.Release ();
 			refQueueFamilyIndices = NativeReference.Empty;
 		}
@@ -1957,8 +1963,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refBinds.Release ();
 			refBinds = NativeReference.Empty;
 		}
@@ -2035,8 +2042,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refBinds.Release ();
 			refBinds = NativeReference.Empty;
 		}
@@ -2113,8 +2121,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refBinds.Release ();
 			refBinds = NativeReference.Empty;
 		}
@@ -2345,8 +2354,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refWaitSemaphores.Release ();
 			refWaitSemaphores = NativeReference.Empty;
 			refBufferBinds.Release ();
@@ -2531,8 +2541,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refCode.Release ();
 			refCode = NativeReference.Empty;
 		}
@@ -2617,8 +2628,9 @@ namespace Vulkan
 			native = pointer;
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refImmutableSamplers.Release ();
 			refImmutableSamplers = NativeReference.Empty;
 		}
@@ -2689,8 +2701,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refBindings.Release ();
 			refBindings = NativeReference.Empty;
 		}
@@ -2776,8 +2789,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refPoolSizes.Release ();
 			refPoolSizes = NativeReference.Empty;
 		}
@@ -2855,8 +2869,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refSetLayouts.Release ();
 			refSetLayouts = NativeReference.Empty;
 		}
@@ -2941,8 +2956,9 @@ namespace Vulkan
 			native = pointer;
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refMapEntries.Release ();
 			refMapEntries = NativeReference.Empty;
 		}
@@ -3176,8 +3192,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refVertexBindingDescriptions.Release ();
 			refVertexBindingDescriptions = NativeReference.Empty;
 			refVertexAttributeDescriptions.Release ();
@@ -3373,8 +3390,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refViewports.Release ();
 			refViewports = NativeReference.Empty;
 			refScissors.Release ();
@@ -3554,8 +3572,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refSampleMask.Release ();
 			refSampleMask = NativeReference.Empty;
 		}
@@ -3670,8 +3689,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refAttachments.Release ();
 			refAttachments = NativeReference.Empty;
 		}
@@ -3746,8 +3766,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refDynamicStates.Release ();
 			refDynamicStates = NativeReference.Empty;
 		}
@@ -3995,8 +4016,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refStages.Release ();
 			refStages = NativeReference.Empty;
 		}
@@ -4161,8 +4183,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refSetLayouts.Release ();
 			refSetLayouts = NativeReference.Empty;
 			refPushConstantRanges.Release ();
@@ -4542,8 +4565,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refClearValues.Release ();
 			refClearValues = NativeReference.Empty;
 		}
@@ -4804,8 +4828,9 @@ namespace Vulkan
 			native = pointer;
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refInputAttachments.Release ();
 			refInputAttachments = NativeReference.Empty;
 			refColorAttachments.Release ();
@@ -4969,8 +4994,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refAttachments.Release ();
 			refAttachments = NativeReference.Empty;
 			refSubpasses.Release ();
@@ -5915,8 +5941,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refAttachments.Release ();
 			refAttachments = NativeReference.Empty;
 		}
@@ -6125,8 +6152,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refWaitSemaphores.Release ();
 			refWaitSemaphores = NativeReference.Empty;
 			refWaitDstStageMask.Release ();
@@ -6602,8 +6630,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refQueueFamilyIndices.Release ();
 			refQueueFamilyIndices = NativeReference.Empty;
 		}
@@ -6781,8 +6810,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refWaitSemaphores.Release ();
 			refWaitSemaphores = NativeReference.Empty;
 			refSwapchains.Release ();
@@ -6901,8 +6931,9 @@ namespace Vulkan
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refDisabledValidationChecks.Release ();
 			refDisabledValidationChecks = NativeReference.Empty;
 		}

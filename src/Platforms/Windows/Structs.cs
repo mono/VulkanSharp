@@ -331,8 +331,9 @@ namespace Vulkan.Windows
 			Initialize ();
 		}
 
-		override public void VirtualDispose ()
+		override public void Dispose (bool disposing)
 		{
+			base.Dispose (disposing);
 			refAcquireSyncs.Release ();
 			refAcquireSyncs = NativeReference.Empty;
 			refAcquireKeys.Release ();
