@@ -231,18 +231,19 @@ namespace Vulkan
 
 		public void Dispose ()
 		{
-			VirtualDispose ();
+			Dispose (true);
+			GC.SuppressFinalize (this);
+		}
+
+		public virtual void Dispose (bool disposing)
+		{
 			native.Release ();
 			native = NativePointer.Null;
 		}
 
-		public virtual void VirtualDispose ()
-		{
-		}
-
 		~MarshalledObject ()
 		{
-			Dispose ();
+			Dispose (false);
 		}
 	}
 }

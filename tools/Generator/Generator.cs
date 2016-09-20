@@ -1017,9 +1017,10 @@ namespace VulkanSharp.Generator
 					IndentWriteLine ("}\n");
 
 					if (arrayMembers.Count () > 0) {
-						IndentWriteLine ("override public void VirtualDispose ()");
+						IndentWriteLine ("override public void Dispose (bool disposing)");
 						IndentWriteLine ("{");
 						IndentLevel++;
+						IndentWriteLine ("base.Dispose (disposing);");
 						foreach (var refName in arrayMembers) {
 							IndentWriteLine ("ref{0}.Release ();", refName);
 							IndentWriteLine ("ref{0} = NativeReference.Empty;", refName);
