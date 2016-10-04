@@ -1483,6 +1483,8 @@ namespace VulkanSharp.Generator
 		ParamInfo GetLenParamInfo (string len)
 		{
 			int index = len.IndexOf ("->");
+			if (index < 0)
+				index = len.IndexOf ("::");
 			if (index > 0)
 				len = string.Format ("{0}.{1}", len.Substring (0, index), TranslateCName (len.Substring (index + 2)));
 
