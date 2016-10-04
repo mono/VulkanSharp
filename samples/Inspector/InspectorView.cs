@@ -66,6 +66,22 @@ namespace Inspector
 					textView.Append (string.Format ("\t\tType HeapIndex: {0} Flags: 0x{1:X}\n", memType.HeapIndex, memType.PropertyFlags));
 				foreach (var memHeap in memProperties.MemoryHeaps)
 					textView.Append (string.Format ("\t\tHeap Size: {0} Flags: 0x{1:X}\n", (ulong)memHeap.Size, memHeap.Flags));
+
+				var layerProps = Commands.EnumerateInstanceLayerProperties ();
+				if (layerProps != null) {
+					textView.Append ("\nGlobal layer properties\n");
+					foreach (var prop in layerProps)
+						textView.Append (string.Format ("\tLayer {0} description: {1}\n", prop.LayerName, prop.Description));
+				} else
+					textView.Append ("\nNo instance layer properties reported\n");
+
+				var extProps = Commands.EnumerateInstanceExtensionProperties ();
+				if (extProps != null) {
+					textView.Append ("\nGlobal extension properties\n");
+					foreach (var prop in extProps)
+						textView.Append (string.Format ("\tExtension {0} version: {1}\n", prop.ExtensionName, prop.SpecVersion));
+				} else
+					textView.Append ("\nNo instance extension properties reported\n");
 			}
 
 			inspectionDone = true;
