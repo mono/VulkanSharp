@@ -6,6 +6,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vulkan", "src\Vulkan\Vulkan.csproj", "{15253E36-DDDE-4C0A-9A6E-7632BACC8F7C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{102C7085-1193-4401-84A7-C0A7EBD93082}"
+	ProjectSection(SolutionItems) = preProject
+		samples\Inspector.Windows\Inspector.Windows.csproj = samples\Inspector.Windows\Inspector.Windows.csproj
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearView", "samples\ClearView\ClearView.csproj", "{D70FCB4E-05DC-46C6-B08C-86ECC1FD98CA}"
 EndProject
