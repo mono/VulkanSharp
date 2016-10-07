@@ -39,50 +39,8 @@ namespace Inspector
 				Window = aNativeWindow
 			});
 
-			textView.Append ("Vulkan Android surface created\n\n");
-
-			int i = 0;
-			foreach (var device in Instance.EnumeratePhysicalDevices ()) {
-				var props = device.GetProperties ();
-				textView.Append (string.Format ("Physical device #{0}\n", i++));
-				textView.Append (string.Format ("\tID: {0}\n\tName: {1}\n\tType: {2}\n\tAPI version: {3}\n\tDriver version: {4}\n\tVendor ID: 0x{5:x}\n", props.DeviceId, props.DeviceName, props.DeviceType, Version.ToString (props.ApiVersion), props.DriverVersion, props.VendorId));
-
-				var surfaceCaps = device.GetSurfaceCapabilitiesKHR (surface);
-				textView.Append (string.Format ("\n\tSurface capabilities\n"));
-				textView.Append (string.Format ("\t\tImage count (min - max): {0} - {1}\n\t\tImage extent (min - max): {2}x{3} - {4}x{5}\n\t\tUsage flags: 0x{6:x}\n\t\tSupported transforms: 0x{7:x}\n\t\tSupported composite alpha flags: 0x{8:x}\n",
-				                                surfaceCaps.MinImageCount, surfaceCaps.MaxImageCount,
-				                                surfaceCaps.MinImageExtent.Width, surfaceCaps.MinImageExtent.Height,
-				                                surfaceCaps.MaxImageExtent.Width, surfaceCaps.MaxImageExtent.Height,
-				                                surfaceCaps.SupportedUsageFlags,
-				                                surfaceCaps.SupportedTransforms,
-				                                surfaceCaps.SupportedCompositeAlpha));
-				textView.Append (string.Format ("\n\tSurface Present modes\n"));
-				var modes = device.GetSurfacePresentModesKHR (surface);
-				foreach (var mode in modes)
-					textView.Append (string.Format ("\t\tMode: {0}\n", mode));
-				textView.Append (string.Format ("\n\tMemory properties\n"));
-				var memProperties = device.GetMemoryProperties ();
-				foreach (var memType in memProperties.MemoryTypes)
-					textView.Append (string.Format ("\t\tType HeapIndex: {0} Flags: 0x{1:X}\n", memType.HeapIndex, memType.PropertyFlags));
-				foreach (var memHeap in memProperties.MemoryHeaps)
-					textView.Append (string.Format ("\t\tHeap Size: {0} Flags: 0x{1:X}\n", (ulong)memHeap.Size, memHeap.Flags));
-
-				var layerProps = Commands.EnumerateInstanceLayerProperties ();
-				if (layerProps != null) {
-					textView.Append ("\nGlobal layer properties\n");
-					foreach (var prop in layerProps)
-						textView.Append (string.Format ("\tLayer {0} description: {1}\n", prop.LayerName, prop.Description));
-				} else
-					textView.Append ("\nNo instance layer properties reported\n");
-
-				var extProps = Commands.EnumerateInstanceExtensionProperties ();
-				if (extProps != null) {
-					textView.Append ("\nGlobal extension properties\n");
-					foreach (var prop in extProps)
-						textView.Append (string.Format ("\tExtension {0} version: {1}\n", prop.ExtensionName, prop.SpecVersion));
-				} else
-					textView.Append ("\nNo instance extension properties reported\n");
-			}
+			var inspector = new Inspector { Surface = surface, AppendText = (string s) => textView.Append (s) };
+			inspector.Inspect ();
 
 			inspectionDone = true;
 		}
