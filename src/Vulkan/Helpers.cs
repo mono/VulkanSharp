@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Vulkan
 {
@@ -76,32 +77,40 @@ namespace Vulkan
 
 	public static class NativeMemoryDebug
 	{
-		public static bool Enabled = false;
-		public static int AllocatedSize = 0;
-		static int globalRefCount = 0;
+		static bool enabled;
+		public static bool Enabled {
+			get {
+				return enabled;
+			}
+			set {
+				if (value && value != enabled) {
+					lock (Allocations) {
+						Allocations = new Dictionary<IntPtr, int> ();
+						AllocatedSize = 0;
+					}
+				}
+				enabled = value;
+			}
+		}
+
+		public static int AllocatedSize { get; internal set; }
 
 		public delegate void ReportCallbackDelegate (string format, params object [] args);
 		public delegate string StackTraceDelegate ();
 
 		public static ReportCallbackDelegate ReportCallback = null;
-		public static StackTraceDelegate StackTrace = null;
+		public static StackTraceDelegate StackTraceCallback = null;
 
-		static void Report (string format, params object [] args)
+		internal static Dictionary<IntPtr, int> Allocations = new Dictionary<IntPtr, int> ();
+
+		static public void Report (string format, params object [] args)
 		{
 			if (ReportCallback != null)
 				ReportCallback (format, args);
 		}
 
-		public static int GlobalRefCount {
-			set {
-				Report ("ref count change: {0} --> {1} delta: {2}", globalRefCount, value, value - globalRefCount);
-				if (StackTrace != null)
-					Report (StackTrace ());
-				globalRefCount = value;
-			}
-			get {
-				return globalRefCount;
-			}
+		static public string StackTrace () {
+			return (StackTraceCallback == null) ? "" : StackTraceCallback ();
 		}
 	}
 }

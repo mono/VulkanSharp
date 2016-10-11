@@ -1021,9 +1021,13 @@ namespace VulkanSharp.Generator
 						IndentWriteLine ("{");
 						IndentLevel++;
 						IndentWriteLine ("base.Dispose (disposing);");
+						IndentWriteLine ("if (!disposing)");
+						IndentLevel++;
+						IndentWriteLine ("return;");
+						IndentLevel--;
 						foreach (var refName in arrayMembers) {
-							IndentWriteLine ("ref{0}.Release ();", refName);
-							IndentWriteLine ("ref{0} = NativeReference.Empty;", refName);
+							IndentWriteLine ("ref{0}.Dispose ();", refName);
+							IndentWriteLine ("ref{0} = null;", refName);
 						}
 						IndentLevel--;
 						IndentWriteLine ("}");
@@ -1754,8 +1758,6 @@ namespace VulkanSharp.Generator
 					IndentWriteLine ("arr [i] = ((({0}*)ptr{1}) [i]);", dataParam.csType, dataParam.csName);
 				IndentLevel--;
 				IndentWriteLine ("}");
-				WriteLine ();
-				IndentWriteLine ("ref{0}.Release ();", dataParam.csName);
 				WriteLine ();
 				IndentWriteLine ("return arr;");
 			}

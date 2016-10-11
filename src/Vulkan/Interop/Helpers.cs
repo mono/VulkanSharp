@@ -7,18 +7,7 @@ namespace Vulkan.Interop
 	{
 		internal static Vulkan.NativePointer Allocate (Type type)
 		{
-			int size = Marshal.SizeOf (type);
-			IntPtr ptr = Marshal.AllocHGlobal (size);
-			if (NativeMemoryDebug.Enabled && ptr != IntPtr.Zero)
-				NativeMemoryDebug.AllocatedSize += size;
-			unsafe
-			{
-				byte* bptr = (byte*)ptr.ToPointer ();
-				for (int i = 0; i < size; i++)
-					bptr [i] = 0;
-			}
-
-			return new NativePointer (ptr);
+			return new NativePointer (new NativeReference (Marshal.SizeOf (type), true));
 		}
 
 		unsafe internal static void MarshalFixedSizeString (byte* dst, string src, int size)

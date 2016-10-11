@@ -136,85 +136,72 @@ namespace Vulkan
 		UInt64 Handle { get; }
 	}
 
-	internal struct NativeReference
+	internal class NativeReference : IDisposable
 	{
-		internal static NativeReference Empty;
-
 		internal IntPtr Handle { get; private set; }
-		int refCount;
 
-		internal NativeReference (int size)
+		internal NativeReference (int size, bool zero = false)
 		{
 			Handle = Marshal.AllocHGlobal (size);
-			refCount = 1;
-			if (NativeMemoryDebug.Enabled)
-				NativeMemoryDebug.GlobalRefCount++;
-		}
-
-		internal NativeReference (IntPtr ptr)
-		{
-			Handle = ptr;
-			refCount = 1;
-			if (NativeMemoryDebug.Enabled)
-				NativeMemoryDebug.GlobalRefCount++;
-		}
-
-		internal void AddRef ()
-		{
-			if (Handle == IntPtr.Zero)
-				return;
-
-			refCount++;
-			if (NativeMemoryDebug.Enabled)
-				NativeMemoryDebug.GlobalRefCount++;
-		}
-
-		internal void Release ()
-		{
-			if (Handle == IntPtr.Zero)
-				return;
-
-			refCount--;
-			if (NativeMemoryDebug.Enabled)
-				NativeMemoryDebug.GlobalRefCount--;
-			if (refCount <= 0) {
-				Marshal.FreeHGlobal (Handle);
-				Handle = IntPtr.Zero;
+			if (NativeMemoryDebug.Enabled) {
+				lock (NativeMemoryDebug.Allocations) {
+					NativeMemoryDebug.Allocations [Handle] = size;
+					NativeMemoryDebug.AllocatedSize += size;
+				}
 			}
+			if (!zero)
+				return;
+			unsafe
+			{
+				byte* bptr = (byte*)Handle;
+				for (int i = 0; i < size; i++)
+					bptr [i] = 0;
+			}
+		}
+
+		public void Dispose ()
+		{
+			if (Handle != IntPtr.Zero) {
+				if (NativeMemoryDebug.Enabled) {
+					lock (NativeMemoryDebug.Allocations) {
+						NativeMemoryDebug.AllocatedSize -= NativeMemoryDebug.Allocations [Handle];
+						if (NativeMemoryDebug.Allocations.ContainsKey (Handle))
+							NativeMemoryDebug.Allocations.Remove (Handle);
+						else
+							NativeMemoryDebug.Report ("unknown handle found: {0}", Handle);
+					}
+				}
+				Marshal.FreeHGlobal (Handle);
+			}
+			Handle = IntPtr.Zero;
+		}
+
+		~NativeReference ()
+		{
+			Dispose ();
 		}
 	}
 
-	internal struct NativePointer
+	internal class NativePointer
 	{
-		internal static NativePointer Null;
-
 		internal NativeReference Reference { get; private set; }
 		internal IntPtr Handle { get; private set; }
 
 		internal NativePointer (NativeReference reference, IntPtr pointer)
 		{
-			reference.AddRef ();
 			Reference = reference;
 			Handle = pointer;
 		}
 
 		internal NativePointer (NativeReference reference)
 		{
-			reference.AddRef ();
 			Reference = reference;
 			Handle = reference.Handle;
 		}
 
-		internal NativePointer (IntPtr handle)
-		{
-			Reference = new NativeReference (handle);
-			Handle = Reference.Handle;
-		}
-
 		internal void Release ()
 		{
-			Reference.Release ();
-			Reference = NativeReference.Empty;
+			Reference = null;
 			Handle = IntPtr.Zero;
 		}
 	}
@@ -237,8 +224,10 @@ namespace Vulkan
 
 		public virtual void Dispose (bool disposing)
 		{
+			if (!disposing)
+				return;
 			native.Release ();
-			native = NativePointer.Null;
+			native = null;
 		}
 
 		~MarshalledObject ()
