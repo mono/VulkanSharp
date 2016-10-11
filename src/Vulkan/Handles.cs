@@ -57,8 +57,6 @@ namespace Vulkan
 					arr [i].m = ((IntPtr*)ptrpPhysicalDevices) [i];
 				}
 
-				refpPhysicalDevices.Release ();
-
 				return arr;
 			}
 		}
@@ -169,8 +167,6 @@ namespace Vulkan
 					arr [i] = (((QueueFamilyProperties*)ptrpQueueFamilyProperties) [i]);
 				}
 
-				refpQueueFamilyProperties.Release ();
-
 				return arr;
 			}
 		}
@@ -264,8 +260,6 @@ namespace Vulkan
 					arr [i] = new LayerProperties (new NativePointer (refpProperties, (IntPtr)(&((Interop.LayerProperties*)ptrpProperties) [i])));
 				}
 
-				refpProperties.Release ();
-
 				return arr;
 			}
 		}
@@ -295,8 +289,6 @@ namespace Vulkan
 					arr [i] = new ExtensionProperties (new NativePointer (refpProperties, (IntPtr)(&((Interop.ExtensionProperties*)ptrpProperties) [i])));
 				}
 
-				refpProperties.Release ();
-
 				return arr;
 			}
 		}
@@ -320,8 +312,6 @@ namespace Vulkan
 				for (int i = 0; i < pPropertyCount; i++) {
 					arr [i] = (((SparseImageFormatProperties*)ptrpProperties) [i]);
 				}
-
-				refpProperties.Release ();
 
 				return arr;
 			}
@@ -352,8 +342,6 @@ namespace Vulkan
 					arr [i] = new DisplayPropertiesKhr (new NativePointer (refpProperties, (IntPtr)(&((Interop.DisplayPropertiesKhr*)ptrpProperties) [i])));
 				}
 
-				refpProperties.Release ();
-
 				return arr;
 			}
 		}
@@ -382,8 +370,6 @@ namespace Vulkan
 				for (int i = 0; i < pPropertyCount; i++) {
 					arr [i] = new DisplayPlanePropertiesKhr (new NativePointer (refpProperties, (IntPtr)(&((Interop.DisplayPlanePropertiesKhr*)ptrpProperties) [i])));
 				}
-
-				refpProperties.Release ();
 
 				return arr;
 			}
@@ -415,8 +401,6 @@ namespace Vulkan
 					arr [i].m = ((UInt64*)ptrpDisplays) [i];
 				}
 
-				refpDisplays.Release ();
-
 				return arr;
 			}
 		}
@@ -445,8 +429,6 @@ namespace Vulkan
 				for (int i = 0; i < pPropertyCount; i++) {
 					arr [i] = new DisplayModePropertiesKhr (new NativePointer (refpProperties, (IntPtr)(&((Interop.DisplayModePropertiesKhr*)ptrpProperties) [i])));
 				}
-
-				refpProperties.Release ();
 
 				return arr;
 			}
@@ -536,8 +518,6 @@ namespace Vulkan
 					arr [i] = (((SurfaceFormatKhr*)ptrpSurfaceFormats) [i]);
 				}
 
-				refpSurfaceFormats.Release ();
-
 				return arr;
 			}
 		}
@@ -567,8 +547,6 @@ namespace Vulkan
 					arr [i] = new PresentModeKhr ();
 					arr [i] = ((PresentModeKhr*)ptrpPresentModes) [i];
 				}
-
-				refpPresentModes.Release ();
 
 				return arr;
 			}
@@ -808,8 +786,6 @@ namespace Vulkan
 				for (int i = 0; i < pSparseMemoryRequirementCount; i++) {
 					arr [i] = (((SparseImageMemoryRequirements*)ptrpSparseMemoryRequirements) [i]);
 				}
-
-				refpSparseMemoryRequirements.Release ();
 
 				return arr;
 			}
@@ -1244,8 +1220,6 @@ namespace Vulkan
 					arr [i].m = ((UInt64*)ptrpPipelines) [i];
 				}
 
-				refpPipelines.Release ();
-
 				return arr;
 			}
 		}
@@ -1277,8 +1251,6 @@ namespace Vulkan
 					arr [i] = new Pipeline ();
 					arr [i].m = ((UInt64*)ptrpPipelines) [i];
 				}
-
-				refpPipelines.Release ();
 
 				return arr;
 			}
@@ -1418,8 +1390,6 @@ namespace Vulkan
 					arr [i] = new DescriptorSet ();
 					arr [i].m = ((UInt64*)ptrpDescriptorSets) [i];
 				}
-
-				refpDescriptorSets.Release ();
 
 				return arr;
 			}
@@ -1594,8 +1564,6 @@ namespace Vulkan
 					arr [i].m = ((IntPtr*)ptrpCommandBuffers) [i];
 				}
 
-				refpCommandBuffers.Release ();
-
 				return arr;
 			}
 		}
@@ -1650,8 +1618,6 @@ namespace Vulkan
 					arr [i].m = ((UInt64*)ptrpSwapchains) [i];
 				}
 
-				refpSwapchains.Release ();
-
 				return arr;
 			}
 		}
@@ -1705,8 +1671,6 @@ namespace Vulkan
 					arr [i] = new Image ();
 					arr [i].m = ((UInt64*)ptrpSwapchainImages) [i];
 				}
-
-				refpSwapchainImages.Release ();
 
 				return arr;
 			}

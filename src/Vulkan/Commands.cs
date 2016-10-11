@@ -41,8 +41,6 @@ namespace Vulkan
 					arr [i] = new LayerProperties (new NativePointer (refpProperties, (IntPtr)(&((Interop.LayerProperties*)ptrpProperties) [i])));
 				}
 
-				refpProperties.Release ();
-
 				return arr;
 			}
 		}
@@ -71,8 +69,6 @@ namespace Vulkan
 				for (int i = 0; i < pPropertyCount; i++) {
 					arr [i] = new ExtensionProperties (new NativePointer (refpProperties, (IntPtr)(&((Interop.ExtensionProperties*)ptrpProperties) [i])));
 				}
-
-				refpProperties.Release ();
 
 				return arr;
 			}

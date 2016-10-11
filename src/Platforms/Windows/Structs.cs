@@ -334,16 +334,18 @@ namespace Vulkan.Windows
 		override public void Dispose (bool disposing)
 		{
 			base.Dispose (disposing);
-			refAcquireSyncs.Release ();
-			refAcquireSyncs = NativeReference.Empty;
-			refAcquireKeys.Release ();
-			refAcquireKeys = NativeReference.Empty;
-			refAcquireTimeoutMilliseconds.Release ();
-			refAcquireTimeoutMilliseconds = NativeReference.Empty;
-			refReleaseSyncs.Release ();
-			refReleaseSyncs = NativeReference.Empty;
-			refReleaseKeys.Release ();
-			refReleaseKeys = NativeReference.Empty;
+			if (!disposing)
+				return;
+			refAcquireSyncs.Dispose ();
+			refAcquireSyncs = null;
+			refAcquireKeys.Dispose ();
+			refAcquireKeys = null;
+			refAcquireTimeoutMilliseconds.Dispose ();
+			refAcquireTimeoutMilliseconds = null;
+			refReleaseSyncs.Dispose ();
+			refReleaseSyncs = null;
+			refReleaseKeys.Dispose ();
+			refReleaseKeys = null;
 		}
 
 		internal void Initialize ()
