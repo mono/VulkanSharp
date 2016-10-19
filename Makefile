@@ -35,6 +35,8 @@ update-docs: $(BIN_PATH)/Vulkan.dll
 	cp /Library/Frameworks/Mono.framework/Versions/Current/lib/mono/4.5/Facades/System.Runtime.dll .
 	cp /Library/Frameworks/Mono.framework/Versions/Current/lib/mono/4.5/Facades/System.Collections.dll .
 	mdoc update --out=docs/en $(BIN_PATH)/Vulkan.dll
+	mdoc export-msxdoc docs/en/ --out docs/Vulkan.xml
+	mdoc export-html docs/en/ --out docs/html
 
 assemble-docs:
 	mdoc assemble --out=docs/Vulkan docs/en
