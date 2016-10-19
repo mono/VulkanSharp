@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="Vulkan" Version="0.0.6106.39464">
+    <Assembly Name="Vulkan" Version="0.0.6134.41045">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations | System.Diagnostics.DebuggableAttribute+DebuggingModes.IgnoreSymbolStoreSequencePoints)</AttributeName>
