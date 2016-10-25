@@ -8,6 +8,7 @@
     <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
     <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
     <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.ValueType</BaseTypeName>
@@ -15,7 +16,7 @@
   <Interfaces />
   <Docs>
     <summary>Structure specifying vertex input binding description</summary>
-    <remarks>To be added.</remarks>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -39,13 +40,14 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>is the binding number that this structure describes.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Binding">
@@ -59,9 +61,9 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the binding number that this structure describes.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="InputRate">
@@ -72,6 +74,7 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.VertexInputRate</ReturnType>
@@ -105,13 +108,14 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>is the distance in bytes between two consecutive elements within the buffer.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Stride">
@@ -125,9 +129,9 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the distance in bytes between two consecutive elements within the buffer.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

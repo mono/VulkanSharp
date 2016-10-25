@@ -8,6 +8,7 @@
     <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
     <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
     <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.ValueType</BaseTypeName>
@@ -15,7 +16,7 @@
   <Interfaces />
   <Docs>
     <summary>Structure specifying physical device sparse memory properties</summary>
-    <remarks>To be added.</remarks>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -39,13 +40,14 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Bool32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>is ename:VK_TRUE if images with mip level dimensions that are not integer multiples of the corresponding dimensions of the sparse image block may: be placed in the mip tail. If this property is not reported, only mip levels with dimensions smaller than the pname:imageGranularity member of the sname:VkSparseImageFormatProperties structure will be placed in the mip tail. If this property is reported the implementation is allowed to return ename:VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT in the pname:flags member of sname:VkSparseImageFormatProperties, indicating that mip level dimensions that are not integer multiples of the corresponding dimensions of the sparse image block will be placed in the mip tail.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ResidencyAlignedMipSize">
@@ -59,9 +61,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is ename:VK_TRUE if images with mip level dimensions that are not integer multiples of the corresponding dimensions of the sparse image block may: be placed in the mip tail. If this property is not reported, only mip levels with dimensions smaller than the pname:imageGranularity member of the sname:VkSparseImageFormatProperties structure will be placed in the mip tail. If this property is reported the implementation is allowed to return ename:VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT in the pname:flags member of sname:VkSparseImageFormatProperties, indicating that mip level dimensions that are not integer multiples of the corresponding dimensions of the sparse image block will be placed in the mip tail.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ResidencyNonResidentStrict">
@@ -72,13 +74,14 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Bool32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>specifies whether the physical device can: consistently access non-resident regions of a resource. If this property is ename:VK_TRUE, access to non-resident regions of resources will be guaranteed to return values as if the resource were populated with 0; writes to non-resident regions will be discarded.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ResidencyNonResidentStrict">
@@ -92,9 +95,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>specifies whether the physical device can: consistently access non-resident regions of a resource. If this property is ename:VK_TRUE, access to non-resident regions of resources will be guaranteed to return values as if the resource were populated with 0; writes to non-resident regions will be discarded.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ResidencyStandard2DBlockShape">
@@ -105,13 +108,14 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Bool32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>is ename:VK_TRUE if the physical device will access all single-sample 2D sparse resources using the standard sparse image block shapes (based on image format), as described in the &lt;&lt;sparsememory-sparseblockshapessingle,Standard Sparse Image Block Shapes (Single Sample)&gt;&gt; table. If this property is not supported the value returned in the pname:imageGranularity member of the sname:VkSparseImageFormatProperties structure for single-sample 2D images is not required: to match the standard sparse image block dimensions listed in the table.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ResidencyStandard2DBlockShape">
@@ -125,9 +129,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is ename:VK_TRUE if the physical device will access all single-sample 2D sparse resources using the standard sparse image block shapes (based on image format), as described in the &lt;&lt;sparsememory-sparseblockshapessingle,Standard Sparse Image Block Shapes (Single Sample)&gt;&gt; table. If this property is not supported the value returned in the pname:imageGranularity member of the sname:VkSparseImageFormatProperties structure for single-sample 2D images is not required: to match the standard sparse image block dimensions listed in the table.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ResidencyStandard2DMultisampleBlockShape">
@@ -138,13 +142,14 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Bool32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>is ename:VK_TRUE if the physical device will access all multisample 2D sparse resources using the standard sparse image block shapes (based on image format), as described in the &lt;&lt;sparsememory-sparseblockshapesmsaa,Standard Sparse Image Block Shapes (MSAA)&gt;&gt; table. If this property is not supported, the value returned in the pname:imageGranularity member of the sname:VkSparseImageFormatProperties structure for multisample 2D images is not required: to match the standard sparse image block dimensions listed in the table.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ResidencyStandard2DMultisampleBlockShape">
@@ -158,9 +163,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is ename:VK_TRUE if the physical device will access all multisample 2D sparse resources using the standard sparse image block shapes (based on image format), as described in the &lt;&lt;sparsememory-sparseblockshapesmsaa,Standard Sparse Image Block Shapes (MSAA)&gt;&gt; table. If this property is not supported, the value returned in the pname:imageGranularity member of the sname:VkSparseImageFormatProperties structure for multisample 2D images is not required: to match the standard sparse image block dimensions listed in the table.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ResidencyStandard3DBlockShape">
@@ -171,13 +176,14 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Bool32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>is ename:VK_TRUE if the physical device will access all 3D sparse resources using the standard sparse image block shapes (based on image format), as described in the &lt;&lt;sparsememory-sparseblockshapessingle,Standard Sparse Image Block Shapes (Single Sample)&gt;&gt; table. If this property is not supported, the value returned in the pname:imageGranularity member of the sname:VkSparseImageFormatProperties structure for 3D images is not required: to match the standard sparse image block dimensions listed in the table.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ResidencyStandard3DBlockShape">
@@ -191,9 +197,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is ename:VK_TRUE if the physical device will access all 3D sparse resources using the standard sparse image block shapes (based on image format), as described in the &lt;&lt;sparsememory-sparseblockshapessingle,Standard Sparse Image Block Shapes (Single Sample)&gt;&gt; table. If this property is not supported, the value returned in the pname:imageGranularity member of the sname:VkSparseImageFormatProperties structure for 3D images is not required: to match the standard sparse image block dimensions listed in the table.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

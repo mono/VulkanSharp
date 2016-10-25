@@ -8,6 +8,7 @@
     <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
     <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
     <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.ValueType</BaseTypeName>
@@ -15,7 +16,7 @@
   <Interfaces />
   <Docs>
     <summary>Structure specifying a color component mapping</summary>
-    <remarks>To be added.</remarks>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -39,13 +40,14 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.ComponentSwizzle</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>determines the component value placed in the A component of the output vector.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="A">
@@ -59,9 +61,9 @@
         <ReturnType>Vulkan.ComponentSwizzle</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>determines the component value placed in the A component of the output vector.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="B">
@@ -72,13 +74,14 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.ComponentSwizzle</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>determines the component value placed in the B component of the output vector.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="B">
@@ -92,9 +95,9 @@
         <ReturnType>Vulkan.ComponentSwizzle</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>determines the component value placed in the B component of the output vector.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="G">
@@ -105,13 +108,14 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.ComponentSwizzle</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>determines the component value placed in the G component of the output vector.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="G">
@@ -125,9 +129,9 @@
         <ReturnType>Vulkan.ComponentSwizzle</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>determines the component value placed in the G component of the output vector.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="R">
@@ -138,13 +142,14 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.ComponentSwizzle</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>determines the component value placed in the R component of the output vector.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="R">
@@ -158,9 +163,9 @@
         <ReturnType>Vulkan.ComponentSwizzle</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>determines the component value placed in the R component of the output vector.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

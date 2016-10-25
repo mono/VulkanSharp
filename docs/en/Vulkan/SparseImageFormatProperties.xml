@@ -8,6 +8,7 @@
     <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
     <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
     <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.ValueType</BaseTypeName>
@@ -15,7 +16,7 @@
   <Interfaces />
   <Docs>
     <summary>Structure specifying sparse image format properties</summary>
-    <remarks>To be added.</remarks>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -39,13 +40,14 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.ImageAspectFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>is a bitmask of elink:VkImageAspectFlagBits specifying which aspects of the image the properties apply to.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AspectMask">
@@ -59,9 +61,9 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is a bitmask of elink:VkImageAspectFlagBits specifying which aspects of the image the properties apply to.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Flags">
@@ -72,6 +74,7 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.SparseImageFormatFlags</ReturnType>
@@ -105,13 +108,14 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.Extent3D</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>is the width, height, and depth of the sparse image block in texels or compressed texel blocks.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ImageGranularity">
@@ -125,9 +129,9 @@
         <ReturnType>Vulkan.Extent3D</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the width, height, and depth of the sparse image block in texels or compressed texel blocks.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

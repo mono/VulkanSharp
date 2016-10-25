@@ -8,6 +8,7 @@
     <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
     <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
     <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>Vulkan.MarshalledObject</BaseTypeName>
@@ -15,7 +16,7 @@
   <Interfaces />
   <Docs>
     <summary>Structure specifying a copy descriptor set operation</summary>
-    <remarks>To be added.</remarks>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -27,6 +28,7 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -43,14 +45,15 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>is the number of descriptors to copy from the source to destination. If pname:descriptorCount is greater than the number of remaining array elements in the source or destination binding, those affect consecutive bindings in a manner similar to slink:VkWriteDescriptorSet above.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="DstArrayElement">
@@ -62,6 +65,7 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
@@ -81,14 +85,15 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>must: be a valid binding within pname:dstSet * The sum of pname:dstArrayElement and pname:descriptorCount must: be less than or equal to the number of array elements in the descriptor set binding specified by pname:dstBinding, and all applicable consecutive bindings, as described by &lt;&lt;descriptorsets-updates-consecutive&gt;&gt; * If pname:srcSet is equal to pname:dstSet, then the source and destination ranges of descriptors must: not overlap, where the ranges may: include array elements from consecutive bindings as described by &lt;&lt;descriptorsets-updates-consecutive&gt;&gt; ****</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="DstSet">
@@ -100,6 +105,7 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DescriptorSet</ReturnType>
@@ -119,6 +125,7 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
@@ -138,14 +145,15 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>must: be a valid binding within pname:srcSet * The sum of pname:srcArrayElement and pname:descriptorCount must: be less than or equal to the number of array elements in the descriptor set binding specified by pname:srcBinding, and all applicable consecutive bindings, as described by &lt;&lt;descriptorsets-updates-consecutive&gt;&gt;</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="SrcSet">
@@ -157,6 +165,7 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DescriptorSet</ReturnType>

@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="AttachmentStoreOp" FullName="Vulkan.AttachmentStoreOp">
   <TypeSignature Language="C#" Value="public enum AttachmentStoreOp" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed AttachmentStoreOp extends System.Enum" />
@@ -7,13 +8,14 @@
     <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
     <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
     <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Specify how contents of an attachment are treated at the end of a subpass</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName="DontCare">
@@ -25,12 +27,13 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.AttachmentStoreOp</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>means the contents within the render area are not needed after rendering, and may: be discarded; the contents of the attachment will be undefined inside the render area. * pname:stencilLoadOp specifies how the contents of stencil components of the attachment are treated at the beginning of the subpass where it is first used, and must: be one of the same values allowed for pname:loadOp above. * pname:stencilStoreOp specifies how the contents of stencil components of the attachment are treated at the end of the last subpass where it is used, and must: be one of the same values allowed for pname:storeOp above. * pname:initialLayout is the layout the attachment image subresource will be in when a render pass instance begins. * pname:finalLayout is the layout the attachment image subresource will be transitioned to when a render pass instance ends. During a render pass instance, an attachment can: use a different layout in each subpass, if desired.</summary>
       </Docs>
     </Member>
     <Member MemberName="Store">
@@ -42,12 +45,13 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.AttachmentStoreOp</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>means the contents within the render area are written to memory and will be available for reading after the render pass instance completes once the writes have been synchronized with ename:VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT (for color attachments) or ename:VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT (for depth/stencil attachments).</summary>
       </Docs>
     </Member>
   </Members>

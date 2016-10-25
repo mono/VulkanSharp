@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="Vulkan" Version="0.0.6134.41045">
+    <Assembly Name="Vulkan" Version="0.0.6142.19338">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations | System.Diagnostics.DebuggableAttribute+DebuggingModes.IgnoreSymbolStoreSequencePoints)</AttributeName>
@@ -34,6 +34,9 @@
         </Attribute>
         <Attribute>
           <AttributeName>System.Runtime.CompilerServices.RuntimeCompatibility(WrapNonExceptionThrows=true)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.Versioning.TargetFramework(".NETPortable,Version=v4.5,Profile=Profile7", FrameworkDisplayName=".NET Portable Subset")</AttributeName>
         </Attribute>
       </Attributes>
     </Assembly>

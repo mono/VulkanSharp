@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="AttachmentLoadOp" FullName="Vulkan.AttachmentLoadOp">
   <TypeSignature Language="C#" Value="public enum AttachmentLoadOp" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed AttachmentLoadOp extends System.Enum" />
@@ -7,13 +8,14 @@
     <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
     <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
     <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Specify how contents of an attachment are treated at the beginning of a subpass</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName="Clear">
@@ -25,12 +27,13 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.AttachmentLoadOp</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>means the contents within the render area will be cleared to a uniform value, which is specified when a render pass instance is begun.</summary>
       </Docs>
     </Member>
     <Member MemberName="DontCare">
@@ -42,12 +45,13 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.AttachmentLoadOp</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>means the contents within the area need not be preserved; the contents of the attachment will be undefined inside the render area.</summary>
       </Docs>
     </Member>
     <Member MemberName="Load">
@@ -59,12 +63,13 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.AttachmentLoadOp</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>means the contents within the render area will be preserved.</summary>
       </Docs>
     </Member>
   </Members>

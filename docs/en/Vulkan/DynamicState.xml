@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="DynamicState" FullName="Vulkan.DynamicState">
   <TypeSignature Language="C#" Value="public enum DynamicState" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed DynamicState extends System.Enum" />
@@ -7,13 +8,14 @@
     <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
     <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
     <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Indicate which dynamic state is taken from dynamic state commands</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName="BlendConstants">
@@ -25,12 +27,13 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DynamicState</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>indicates that the pname:blendConstants state in sname:VkPipelineColorBlendStateCreateInfo will be ignored and must: be set dynamically with flink:vkCmdSetBlendConstants before any draws are performed with a pipeline state with sname:VkPipelineColorBlendAttachmentState member pname:blendEnable set to ename:VK_TRUE and any of the blend functions using a constant blend color.</summary>
       </Docs>
     </Member>
     <Member MemberName="DepthBias">
@@ -42,12 +45,13 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DynamicState</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>indicates that the pname:depthBiasConstantFactor, pname:depthBiasClamp and pname:depthBiasSlopeFactor states in sname:VkPipelineRasterizationStateCreateInfo will be ignored and must: be set dynamically with flink:vkCmdSetDepthBias before any draws are performed with pname:depthBiasEnable in sname:VkPipelineRasterizationStateCreateInfo set to ename:VK_TRUE.</summary>
       </Docs>
     </Member>
     <Member MemberName="DepthBounds">
@@ -59,12 +63,13 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DynamicState</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>indicates that the pname:minDepthBounds and pname:maxDepthBounds states of slink:VkPipelineDepthStencilStateCreateInfo will be ignored and must: be set dynamically with flink:vkCmdSetDepthBounds before any draws are performed with a pipeline state with sname:VkPipelineDepthStencilStateCreateInfo member pname:depthBoundsTestEnable set to ename:VK_TRUE.</summary>
       </Docs>
     </Member>
     <Member MemberName="LineWidth">
@@ -76,12 +81,13 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DynamicState</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>indicates that the pname:lineWidth state in sname:VkPipelineRasterizationStateCreateInfo will be ignored and must: be set dynamically with flink:vkCmdSetLineWidth before any draw commands that generate line primitives for the rasterizer.</summary>
       </Docs>
     </Member>
     <Member MemberName="Scissor">
@@ -93,12 +99,13 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DynamicState</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>indicates that the pname:pScissors state in sname:VkPipelineViewportStateCreateInfo will be ignored and must: be set dynamically with flink:vkCmdSetScissor before any draw commands. The number of scissor rectangles used by a pipeline is still specified by the pname:scissorCount member of sname:VkPipelineViewportStateCreateInfo.</summary>
       </Docs>
     </Member>
     <Member MemberName="StencilCompareMask">
@@ -110,12 +117,13 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DynamicState</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>indicates that the pname:compareMask state in sname:VkPipelineDepthStencilStateCreateInfo for both pname:front and pname:back will be ignored and must: be set dynamically with flink:vkCmdSetStencilCompareMask before any draws are performed with a pipeline state with sname:VkPipelineDepthStencilStateCreateInfo member pname:stencilTestEnable set to ename:VK_TRUE</summary>
       </Docs>
     </Member>
     <Member MemberName="StencilReference">
@@ -127,12 +135,13 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DynamicState</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>indicates that the pname:reference state in sname:VkPipelineDepthStencilStateCreateInfo for both pname:front and pname:back will be ignored and must: be set dynamically with flink:vkCmdSetStencilReference before any draws are performed with a pipeline state with sname:VkPipelineDepthStencilStateCreateInfo member pname:stencilTestEnable set to ename:VK_TRUE</summary>
       </Docs>
     </Member>
     <Member MemberName="StencilWriteMask">
@@ -144,12 +153,13 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DynamicState</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>indicates that the pname:writeMask state in sname:VkPipelineDepthStencilStateCreateInfo for both pname:front and pname:back will be ignored and must: be set dynamically with flink:vkCmdSetStencilWriteMask before any draws are performed with a pipeline state with sname:VkPipelineDepthStencilStateCreateInfo member pname:stencilTestEnable set to ename:VK_TRUE</summary>
       </Docs>
     </Member>
     <Member MemberName="Viewport">
@@ -161,12 +171,13 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.DynamicState</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>indicates that the pname:pViewports state in sname:VkPipelineViewportStateCreateInfo will be ignored and must: be set dynamically with flink:vkCmdSetViewport before any draw commands. The number of viewports used by a pipeline is still specified by the pname:viewportCount member of sname:VkPipelineViewportStateCreateInfo.</summary>
       </Docs>
     </Member>
   </Members>

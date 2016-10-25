@@ -8,6 +8,7 @@
     <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
     <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
     <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+    <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -19,7 +20,7 @@
   </Attributes>
   <Docs>
     <summary>Bitmask specifying usage behavior for a command pool</summary>
-    <remarks>To be added.</remarks>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName="ResetCommandBuffer">
@@ -31,12 +32,13 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.CommandPoolCreateFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>controls whether command buffers allocated from the pool can: be individually reset. If this flag is set, individual command buffers allocated from the pool can: be reset either explicitly, by calling fname:vkResetCommandBuffer, or implicitly, by calling fname:vkBeginCommandBuffer on an executable command buffer. If this flag is not set, then fname:vkResetCommandBuffer and fname:vkBeginCommandBuffer (on an executable command buffer) must: not be called on the command buffers allocated from the pool, and they can: only be reset in bulk by calling fname:vkResetCommandPool. * pname:queueFamilyIndex designates a queue family as described in section &lt;&lt;devsandqueues-queueprops,Queue Family Properties&gt;&gt;. All command buffers allocated from this command pool must: be submitted on queues from the same queue family.</summary>
       </Docs>
     </Member>
     <Member MemberName="Transient">
@@ -48,12 +50,13 @@
         <AssemblyVersion>0.0.6105.39043</AssemblyVersion>
         <AssemblyVersion>0.0.6106.39464</AssemblyVersion>
         <AssemblyVersion>0.0.6134.41045</AssemblyVersion>
+        <AssemblyVersion>0.0.6142.19338</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vulkan.CommandPoolCreateFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>indicates that command buffers allocated from the pool will be short-lived, meaning that they will be reset or freed in a relatively short timeframe. This flag may: be used by the implementation to control memory allocation behavior within the pool.</summary>
       </Docs>
     </Member>
   </Members>
