@@ -552,7 +552,7 @@ namespace Vulkan
 			}
 		}
 
-		public ExternalImageFormatPropertiesNv GetExternalImageFormatPropertiesNV (Format format, ImageType type, ImageTiling tiling, ImageUsageFlags usage, ImageCreateFlags flags, ExternalMemoryHandleTypeFlagsNv externalHandleType)
+		public ExternalImageFormatPropertiesNv GetExternalImageFormatPropertiesNV (Format format, ImageType type, ImageTiling tiling, ImageUsageFlags usage, ImageCreateFlags flags = (ImageCreateFlags)0, ExternalMemoryHandleTypeFlagsNv externalHandleType = (ExternalMemoryHandleTypeFlagsNv)0)
 		{
 			Result result;
 			ExternalImageFormatPropertiesNv pExternalImageFormatProperties;
@@ -563,6 +563,15 @@ namespace Vulkan
 					throw new ResultException (result);
 
 				return pExternalImageFormatProperties;
+			}
+		}
+
+		public void GetGeneratedCommandsPropertiesNVX (out DeviceGeneratedCommandsFeaturesNvx pFeatures, out DeviceGeneratedCommandsLimitsNvx pLimits)
+		{
+			unsafe {
+				pFeatures = new DeviceGeneratedCommandsFeaturesNvx ();
+				pLimits = new DeviceGeneratedCommandsLimitsNvx ();
+				Interop.NativeMethods.vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX (this.m, pFeatures != null ? pFeatures.m : (Interop.DeviceGeneratedCommandsFeaturesNvx*)default(IntPtr), pLimits != null ? pLimits.m : (Interop.DeviceGeneratedCommandsLimitsNvx*)default(IntPtr));
 			}
 		}
 	}
@@ -1717,6 +1726,124 @@ namespace Vulkan
 				return pTagInfo;
 			}
 		}
+
+		public IndirectCommandsLayoutNvx CreateIndirectCommandsLayoutNVX (IndirectCommandsLayoutCreateInfoNvx pCreateInfo, AllocationCallbacks pAllocator = null)
+		{
+			Result result;
+			IndirectCommandsLayoutNvx pIndirectCommandsLayout;
+			unsafe {
+				pIndirectCommandsLayout = new IndirectCommandsLayoutNvx ();
+
+				fixed (UInt64* ptrpIndirectCommandsLayout = &pIndirectCommandsLayout.m) {
+					result = Interop.NativeMethods.vkCreateIndirectCommandsLayoutNVX (this.m, pCreateInfo != null ? pCreateInfo.m : (Interop.IndirectCommandsLayoutCreateInfoNvx*)default(IntPtr), pAllocator != null ? pAllocator.m : null, ptrpIndirectCommandsLayout);
+				}
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pIndirectCommandsLayout;
+			}
+		}
+
+		public void DestroyIndirectCommandsLayoutNVX (IndirectCommandsLayoutNvx indirectCommandsLayout, AllocationCallbacks pAllocator = null)
+		{
+			unsafe {
+				Interop.NativeMethods.vkDestroyIndirectCommandsLayoutNVX (this.m, indirectCommandsLayout != null ? indirectCommandsLayout.m : default(UInt64), pAllocator != null ? pAllocator.m : null);
+			}
+		}
+
+		public ObjectTableNvx CreateObjectTableNVX (ObjectTableCreateInfoNvx pCreateInfo, AllocationCallbacks pAllocator = null)
+		{
+			Result result;
+			ObjectTableNvx pObjectTable;
+			unsafe {
+				pObjectTable = new ObjectTableNvx ();
+
+				fixed (UInt64* ptrpObjectTable = &pObjectTable.m) {
+					result = Interop.NativeMethods.vkCreateObjectTableNVX (this.m, pCreateInfo != null ? pCreateInfo.m : (Interop.ObjectTableCreateInfoNvx*)default(IntPtr), pAllocator != null ? pAllocator.m : null, ptrpObjectTable);
+				}
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pObjectTable;
+			}
+		}
+
+		public void DestroyObjectTableNVX (ObjectTableNvx objectTable, AllocationCallbacks pAllocator = null)
+		{
+			unsafe {
+				Interop.NativeMethods.vkDestroyObjectTableNVX (this.m, objectTable != null ? objectTable.m : default(UInt64), pAllocator != null ? pAllocator.m : null);
+			}
+		}
+
+		public void RegisterObjectsNVX (ObjectTableNvx objectTable, ObjectTableEntryNvx[] ppObjectTableEntries, UInt32[] pObjectIndices)
+		{
+			Result result;
+			unsafe {
+				var arrayppObjectTableEntries = ppObjectTableEntries == null ? IntPtr.Zero : Marshal.AllocHGlobal (ppObjectTableEntries.Length*sizeof (ObjectTableEntryNvx));
+				var lenppObjectTableEntries = ppObjectTableEntries == null ? 0 : ppObjectTableEntries.Length;
+				if (ppObjectTableEntries != null)
+					for (int i = 0; i < ppObjectTableEntries.Length; i++)
+						((ObjectTableEntryNvx*)arrayppObjectTableEntries) [i] = (ppObjectTableEntries [i]);
+				var arraypObjectIndices = pObjectIndices == null ? IntPtr.Zero : Marshal.AllocHGlobal (pObjectIndices.Length*sizeof (UInt32));
+				var lenpObjectIndices = pObjectIndices == null ? 0 : pObjectIndices.Length;
+				if (pObjectIndices != null)
+					for (int i = 0; i < pObjectIndices.Length; i++)
+						((UInt32*)arraypObjectIndices) [i] = (pObjectIndices [i]);
+				result = Interop.NativeMethods.vkRegisterObjectsNVX (this.m, objectTable != null ? objectTable.m : default(UInt64), (uint)lenpObjectIndices, (ObjectTableEntryNvx*)arrayppObjectTableEntries, (UInt32*)arraypObjectIndices);
+				Marshal.FreeHGlobal (arrayppObjectTableEntries);
+				Marshal.FreeHGlobal (arraypObjectIndices);
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		public void RegisterObjectsNVX (ObjectTableNvx objectTable, ObjectTableEntryNvx? ppObjectTableEntrie, UInt32? pObjectIndice)
+		{
+			Result result;
+			unsafe {
+				ObjectTableEntryNvx valppObjectTableEntrie = ppObjectTableEntrie ?? default(ObjectTableEntryNvx);
+				ObjectTableEntryNvx* ptrppObjectTableEntrie = ppObjectTableEntrie != null ? &valppObjectTableEntrie : (ObjectTableEntryNvx*)IntPtr.Zero;
+				UInt32 valpObjectIndice = pObjectIndice ?? default(UInt32);
+				UInt32* ptrpObjectIndice = pObjectIndice != null ? &valpObjectIndice : (UInt32*)IntPtr.Zero;
+				result = Interop.NativeMethods.vkRegisterObjectsNVX (this.m, objectTable != null ? objectTable.m : default(UInt64), (UInt32)(pObjectIndice != null ? 1 : 0), ptrppObjectTableEntrie, ptrpObjectIndice);
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		public void UnregisterObjectsNVX (ObjectTableNvx objectTable, ObjectEntryTypeNvx[] pObjectEntryTypes, UInt32[] pObjectIndices)
+		{
+			Result result;
+			unsafe {
+				var arraypObjectEntryTypes = pObjectEntryTypes == null ? IntPtr.Zero : Marshal.AllocHGlobal (pObjectEntryTypes.Length*sizeof (ObjectEntryTypeNvx));
+				var lenpObjectEntryTypes = pObjectEntryTypes == null ? 0 : pObjectEntryTypes.Length;
+				if (pObjectEntryTypes != null)
+					for (int i = 0; i < pObjectEntryTypes.Length; i++)
+						((ObjectEntryTypeNvx*)arraypObjectEntryTypes) [i] = (pObjectEntryTypes [i]);
+				var arraypObjectIndices = pObjectIndices == null ? IntPtr.Zero : Marshal.AllocHGlobal (pObjectIndices.Length*sizeof (UInt32));
+				var lenpObjectIndices = pObjectIndices == null ? 0 : pObjectIndices.Length;
+				if (pObjectIndices != null)
+					for (int i = 0; i < pObjectIndices.Length; i++)
+						((UInt32*)arraypObjectIndices) [i] = (pObjectIndices [i]);
+				result = Interop.NativeMethods.vkUnregisterObjectsNVX (this.m, objectTable != null ? objectTable.m : default(UInt64), (uint)lenpObjectIndices, (ObjectEntryTypeNvx*)arraypObjectEntryTypes, (UInt32*)arraypObjectIndices);
+				Marshal.FreeHGlobal (arraypObjectEntryTypes);
+				Marshal.FreeHGlobal (arraypObjectIndices);
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		public void UnregisterObjectsNVX (ObjectTableNvx objectTable, ObjectEntryTypeNvx pObjectEntryType, UInt32? pObjectIndice)
+		{
+			Result result;
+			unsafe {
+				UInt32 valpObjectIndice = pObjectIndice ?? default(UInt32);
+				UInt32* ptrpObjectIndice = pObjectIndice != null ? &valpObjectIndice : (UInt32*)IntPtr.Zero;
+				result = Interop.NativeMethods.vkUnregisterObjectsNVX (this.m, objectTable != null ? objectTable.m : default(UInt64), (UInt32)(pObjectIndice != null ? 1 : 0), &pObjectEntryType, ptrpObjectIndice);
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
 	}
 
 	public partial class Queue : IMarshalling
@@ -2482,6 +2609,20 @@ namespace Vulkan
 				Interop.NativeMethods.vkCmdDrawIndexedIndirectCountAMD (this.m, buffer != null ? buffer.m : default(UInt64), offset, countBuffer != null ? countBuffer.m : default(UInt64), countBufferOffset, maxDrawCount, stride);
 			}
 		}
+
+		public void CmdProcessCommandsNVX (CmdProcessCommandsInfoNvx pProcessCommandsInfo)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdProcessCommandsNVX (this.m, pProcessCommandsInfo != null ? pProcessCommandsInfo.m : (Interop.CmdProcessCommandsInfoNvx*)default(IntPtr));
+			}
+		}
+
+		public void CmdReserveSpaceForCommandsNVX (CmdReserveSpaceForCommandsInfoNvx pReserveSpaceInfo)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdReserveSpaceForCommandsNVX (this.m, pReserveSpaceInfo != null ? pReserveSpaceInfo.m : (Interop.CmdReserveSpaceForCommandsInfoNvx*)default(IntPtr));
+			}
+		}
 	}
 
 	public partial class DeviceMemory : INonDispatchableHandleMarshalling
@@ -2734,6 +2875,32 @@ namespace Vulkan
 	public partial class PipelineCache : INonDispatchableHandleMarshalling
 	{
 		internal PipelineCache() {}
+
+		internal UInt64 m;
+
+		UInt64 INonDispatchableHandleMarshalling.Handle {
+			get {
+				return m;
+			}
+		}
+	}
+
+	public partial class ObjectTableNvx : INonDispatchableHandleMarshalling
+	{
+		internal ObjectTableNvx() {}
+
+		internal UInt64 m;
+
+		UInt64 INonDispatchableHandleMarshalling.Handle {
+			get {
+				return m;
+			}
+		}
+	}
+
+	public partial class IndirectCommandsLayoutNvx : INonDispatchableHandleMarshalling
+	{
+		internal IndirectCommandsLayoutNvx() {}
 
 		internal UInt64 m;
 
