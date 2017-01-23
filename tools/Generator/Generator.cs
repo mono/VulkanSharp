@@ -201,7 +201,7 @@ namespace VulkanSharp.Generator
 
 			var enumsElement = values.First ();
 			var bitmask = enumsElement.Attribute ("type") != null && enumsElement.Attribute ("type").Value == "bitmask";
-			if (bitmask || knownBitmaps.Contains (name))
+			if (bitmask)
 				IndentWriteLine ("[Flags]");
 
 			string csName = GetEnumCsName (name, bitmask);
@@ -746,8 +746,8 @@ namespace VulkanSharp.Generator
 			if (csMemberName.EndsWith ("]"))
 				mod = "unsafe fixed ";
 
-			if (csMemberType.EndsWith ("FlagBits"))
-				csMemberType = csMemberType.Substring (0, csMemberType.Length - 4) + "s";
+			if (csMemberType.Contains("FlagBits"))
+				csMemberType = csMemberType.Replace("FlagBits", "Flags");
 
 			if (csMemberType.StartsWith ("PFN_"))
 				csMemberType = "IntPtr";
@@ -1170,9 +1170,22 @@ namespace VulkanSharp.Generator
 
 		string GetDefaultValue (string csType)
 		{
-			if (csType.EndsWith ("Flags"))
-				return string.Format ("({0})0", csType);
+			//Check for any known extensions and remove them
+			String internalCopy = csType;
+			string suffix = null;
+			foreach (var ext in extensions)
+			{
+				if (internalCopy.EndsWith(ext.Value))
+				{
+					suffix = ext.Value + suffix;
+					internalCopy = internalCopy.Substring(0, csType.Length - ext.Value.Length);
+				}
+			}
 
+			if (internalCopy.EndsWith("Flags"))
+				return string.Format("({0})0", csType);
+
+			//other known types
 			switch (csType) {
 			case "IntPtr":
 				return "default(IntPtr)";
@@ -1930,8 +1943,8 @@ namespace VulkanSharp.Generator
 
 			var bitposAttribute = element.Attribute ("bitpos");
 			if (bitposAttribute != null) {
-				if (csEnumName.EndsWith ("FlagBits"))
-					csEnumName = csEnumName.Substring (0, csEnumName.Length - 4) + "s";
+				if (csEnumName.Contains("FlagBits"))
+					csEnumName = csEnumName.Replace("FlagBits", "Flags");
 
 				return FormatFlagValue (Int32.Parse (bitposAttribute.Value));
 			}

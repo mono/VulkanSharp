@@ -15,7 +15,8 @@ namespace VulkanSharp.Generator
 			{ "1D", "1D" },
 			{ "2D", "2D" },
 			{ "3D", "3D" },
-			{ "NV", "Nv" }
+			{ "NV", "Nv" },
+			{ "NVX", "Nvx" },
 		};
 
 		protected string TranslateCName (string name)
@@ -88,7 +89,8 @@ namespace VulkanSharp.Generator
 			{ "EXT", "Ext" },
 			{ "IMG", "Img" },
 			{ "KHR", "Khr" },
-			{ "NV", "Nv" }
+			{ "NV", "Nv" },
+			{ "NVX", "Nvx" },
 		};
 
 		protected string GetTypeCsName (string name, string typeName = "type")
@@ -118,26 +120,14 @@ namespace VulkanSharp.Generator
 			return csName;
 		}
 
-		protected HashSet<string> knownBitmaps = new HashSet<string> {
-			"VkExternalMemoryHandleTypeFlagBitsNV",
-			"VkExternalMemoryFeatureFlagBitsNV",
-		};
-
 		protected string GetEnumCsName (string name, bool bitmask)
 		{
 			string csName = GetTypeCsName (name, "enum");
 
-			if (bitmask || knownBitmaps.Contains (name)) {
-				string suffix = null;
-				foreach (var ext in extensions)
-					if (csName.EndsWith (ext.Value)) {
-						suffix = ext.Value + suffix;
-						csName = csName.Substring (0, csName.Length - ext.Value.Length);
-					}
-				if (csName.EndsWith ("FlagBits"))
-					csName = csName.Substring (0, csName.Length - 4) + "s";
-				if (suffix != null)
-					csName += suffix;
+			if(bitmask)
+			{
+				if (csName.Contains("FlagBits"))
+					csName = csName.Replace("FlagBits", "Flags");
 			}
 
 			return csName;
