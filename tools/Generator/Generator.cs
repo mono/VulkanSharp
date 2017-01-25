@@ -145,6 +145,9 @@ namespace VulkanSharp.Generator
 				case "SampleCountFlags":
 					fName = "Count" + fName;
 					break;
+				case "ImageCreateFlags":
+					fName = "Create" + fName;
+					break;
 				}
 			}
 			if (suffix != null) {
@@ -746,9 +749,8 @@ namespace VulkanSharp.Generator
 			if (csMemberName.EndsWith ("]"))
 				mod = "unsafe fixed ";
 
-			if (csMemberType.Contains("FlagBits"))
-				csMemberType = csMemberType.Replace("FlagBits", "Flags");
-
+			csMemberType = CheckFlagBitsName(csMemberType);
+		
 			if (csMemberType.StartsWith ("PFN_"))
 				csMemberType = "IntPtr";
 
@@ -1477,6 +1479,7 @@ namespace VulkanSharp.Generator
 							case "Bool32":
 							case "IntPtr":
 							case "UInt32":
+							case "UInt64":
 							case "DeviceSize":
 								firstOutParam.isFixed = false;
 								break;
