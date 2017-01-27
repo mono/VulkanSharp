@@ -7367,4 +7367,791 @@ namespace Vulkan
 
 	}
 
+	unsafe public partial class DeviceGeneratedCommandsFeaturesNvx : MarshalledObject
+	{
+		public bool ComputeBindingPointSupport {
+			get { return m->ComputeBindingPointSupport; }
+			set { m->ComputeBindingPointSupport = value; }
+		}
+		internal Interop.DeviceGeneratedCommandsFeaturesNvx* m {
+
+			get {
+				return (Interop.DeviceGeneratedCommandsFeaturesNvx*)native.Handle;
+			}
+		}
+
+		public DeviceGeneratedCommandsFeaturesNvx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.DeviceGeneratedCommandsFeaturesNvx));
+			Initialize ();
+		}
+
+		internal DeviceGeneratedCommandsFeaturesNvx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DeviceGeneratedCommandsFeaturesNvx;
+		}
+
+	}
+
+	unsafe public partial class DeviceGeneratedCommandsLimitsNvx : MarshalledObject
+	{
+		public UInt32 MaxIndirectCommandsLayoutTokenCount {
+			get { return m->MaxIndirectCommandsLayoutTokenCount; }
+			set { m->MaxIndirectCommandsLayoutTokenCount = value; }
+		}
+
+		public UInt32 MaxObjectEntryCounts {
+			get { return m->MaxObjectEntryCounts; }
+			set { m->MaxObjectEntryCounts = value; }
+		}
+
+		public UInt32 MinSequenceCountBufferOffsetAlignment {
+			get { return m->MinSequenceCountBufferOffsetAlignment; }
+			set { m->MinSequenceCountBufferOffsetAlignment = value; }
+		}
+
+		public UInt32 MinSequenceIndexBufferOffsetAlignment {
+			get { return m->MinSequenceIndexBufferOffsetAlignment; }
+			set { m->MinSequenceIndexBufferOffsetAlignment = value; }
+		}
+
+		public UInt32 MinCommandsTokenBufferOffsetAlignment {
+			get { return m->MinCommandsTokenBufferOffsetAlignment; }
+			set { m->MinCommandsTokenBufferOffsetAlignment = value; }
+		}
+		internal Interop.DeviceGeneratedCommandsLimitsNvx* m {
+
+			get {
+				return (Interop.DeviceGeneratedCommandsLimitsNvx*)native.Handle;
+			}
+		}
+
+		public DeviceGeneratedCommandsLimitsNvx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.DeviceGeneratedCommandsLimitsNvx));
+			Initialize ();
+		}
+
+		internal DeviceGeneratedCommandsLimitsNvx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DeviceGeneratedCommandsLimitsNvx;
+		}
+
+	}
+
+	unsafe public partial class IndirectCommandsTokenNvx : MarshalledObject
+	{
+		public IndirectCommandsTokenTypeNvx TokenType {
+			get { return m->TokenType; }
+			set { m->TokenType = value; }
+		}
+
+		Buffer lBuffer;
+		public Buffer Buffer {
+			get { return lBuffer; }
+			set { lBuffer = value; m->Buffer = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		public DeviceSize Offset {
+			get { return m->Offset; }
+			set { m->Offset = value; }
+		}
+		internal Interop.IndirectCommandsTokenNvx* m {
+
+			get {
+				return (Interop.IndirectCommandsTokenNvx*)native.Handle;
+			}
+		}
+
+		public IndirectCommandsTokenNvx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.IndirectCommandsTokenNvx));
+			Initialize ();
+		}
+
+		internal IndirectCommandsTokenNvx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+		}
+
+	}
+
+	unsafe public partial struct IndirectCommandsLayoutTokenNvx
+	{
+		public IndirectCommandsTokenTypeNvx TokenType;
+		public UInt32 BindingUnit;
+		public UInt32 DynamicCount;
+		public UInt32 Divisor;
+	}
+
+	unsafe public partial class IndirectCommandsLayoutCreateInfoNvx : MarshalledObject
+	{
+		public PipelineBindPoint PipelineBindPoint {
+			get { return m->PipelineBindPoint; }
+			set { m->PipelineBindPoint = value; }
+		}
+
+		public IndirectCommandsLayoutUsageFlagsNvx Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
+
+		public UInt32 TokenCount {
+			get { return m->TokenCount; }
+			set { m->TokenCount = value; }
+		}
+
+		NativeReference refTokens;
+		public IndirectCommandsLayoutTokenNvx[] Tokens {
+			get {
+				if (m->TokenCount == 0)
+					return null;
+				var values = new IndirectCommandsLayoutTokenNvx [m->TokenCount];
+				unsafe
+				{
+					IndirectCommandsLayoutTokenNvx* ptr = (IndirectCommandsLayoutTokenNvx*)m->Tokens;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->TokenCount = 0;
+					m->Tokens = IntPtr.Zero;
+					return;
+				}
+				m->TokenCount = (uint)value.Length;
+				refTokens = new NativeReference ((int)(sizeof(IndirectCommandsLayoutTokenNvx)*value.Length));
+				m->Tokens = refTokens.Handle;
+				unsafe
+				{
+					IndirectCommandsLayoutTokenNvx* ptr = (IndirectCommandsLayoutTokenNvx*)m->Tokens;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+		internal Interop.IndirectCommandsLayoutCreateInfoNvx* m {
+
+			get {
+				return (Interop.IndirectCommandsLayoutCreateInfoNvx*)native.Handle;
+			}
+		}
+
+		public IndirectCommandsLayoutCreateInfoNvx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.IndirectCommandsLayoutCreateInfoNvx));
+			Initialize ();
+		}
+
+		internal IndirectCommandsLayoutCreateInfoNvx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+		override public void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (!disposing)
+				return;
+			refTokens.Dispose ();
+			refTokens = null;
+		}
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.IndirectCommandsLayoutCreateInfoNvx;
+		}
+
+	}
+
+	unsafe public partial class CmdProcessCommandsInfoNvx : MarshalledObject
+	{
+		ObjectTableNvx lObjectTable;
+		public ObjectTableNvx ObjectTable {
+			get { return lObjectTable; }
+			set { lObjectTable = value; m->ObjectTable = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		IndirectCommandsLayoutNvx lIndirectCommandsLayout;
+		public IndirectCommandsLayoutNvx IndirectCommandsLayout {
+			get { return lIndirectCommandsLayout; }
+			set { lIndirectCommandsLayout = value; m->IndirectCommandsLayout = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		public UInt32 IndirectCommandsTokenCount {
+			get { return m->IndirectCommandsTokenCount; }
+			set { m->IndirectCommandsTokenCount = value; }
+		}
+
+		NativeReference refIndirectCommandsTokens;
+		public IndirectCommandsTokenNvx[] IndirectCommandsTokens {
+			get {
+				if (m->IndirectCommandsTokenCount == 0)
+					return null;
+				var values = new IndirectCommandsTokenNvx [m->IndirectCommandsTokenCount];
+				unsafe
+				{
+					Interop.IndirectCommandsTokenNvx* ptr = (Interop.IndirectCommandsTokenNvx*)m->IndirectCommandsTokens;
+					for (int i = 0; i < values.Length; i++) {
+						values [i] = new IndirectCommandsTokenNvx ();
+						*values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->IndirectCommandsTokenCount = 0;
+					m->IndirectCommandsTokens = IntPtr.Zero;
+					return;
+				}
+				m->IndirectCommandsTokenCount = (uint)value.Length;
+				refIndirectCommandsTokens = new NativeReference ((int)(sizeof(Interop.IndirectCommandsTokenNvx)*value.Length));
+				m->IndirectCommandsTokens = refIndirectCommandsTokens.Handle;
+				unsafe
+				{
+					Interop.IndirectCommandsTokenNvx* ptr = (Interop.IndirectCommandsTokenNvx*)m->IndirectCommandsTokens;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = *value [i].m;
+				}
+			}
+		}
+
+		public UInt32 MaxSequencesCount {
+			get { return m->MaxSequencesCount; }
+			set { m->MaxSequencesCount = value; }
+		}
+
+		CommandBuffer lTargetCommandBuffer;
+		public CommandBuffer TargetCommandBuffer {
+			get { return lTargetCommandBuffer; }
+			set { lTargetCommandBuffer = value; m->TargetCommandBuffer = value != null ? (IntPtr)value.m : default(IntPtr); }
+		}
+
+		Buffer lSequencesCountBuffer;
+		public Buffer SequencesCountBuffer {
+			get { return lSequencesCountBuffer; }
+			set { lSequencesCountBuffer = value; m->SequencesCountBuffer = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		public DeviceSize SequencesCountOffset {
+			get { return m->SequencesCountOffset; }
+			set { m->SequencesCountOffset = value; }
+		}
+
+		Buffer lSequencesIndexBuffer;
+		public Buffer SequencesIndexBuffer {
+			get { return lSequencesIndexBuffer; }
+			set { lSequencesIndexBuffer = value; m->SequencesIndexBuffer = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		public DeviceSize SequencesIndexOffset {
+			get { return m->SequencesIndexOffset; }
+			set { m->SequencesIndexOffset = value; }
+		}
+		internal Interop.CmdProcessCommandsInfoNvx* m {
+
+			get {
+				return (Interop.CmdProcessCommandsInfoNvx*)native.Handle;
+			}
+		}
+
+		public CmdProcessCommandsInfoNvx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.CmdProcessCommandsInfoNvx));
+			Initialize ();
+		}
+
+		internal CmdProcessCommandsInfoNvx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+		override public void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (!disposing)
+				return;
+			refIndirectCommandsTokens.Dispose ();
+			refIndirectCommandsTokens = null;
+		}
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.CmdProcessCommandsInfoNvx;
+		}
+
+	}
+
+	unsafe public partial class CmdReserveSpaceForCommandsInfoNvx : MarshalledObject
+	{
+		ObjectTableNvx lObjectTable;
+		public ObjectTableNvx ObjectTable {
+			get { return lObjectTable; }
+			set { lObjectTable = value; m->ObjectTable = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		IndirectCommandsLayoutNvx lIndirectCommandsLayout;
+		public IndirectCommandsLayoutNvx IndirectCommandsLayout {
+			get { return lIndirectCommandsLayout; }
+			set { lIndirectCommandsLayout = value; m->IndirectCommandsLayout = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		public UInt32 MaxSequencesCount {
+			get { return m->MaxSequencesCount; }
+			set { m->MaxSequencesCount = value; }
+		}
+		internal Interop.CmdReserveSpaceForCommandsInfoNvx* m {
+
+			get {
+				return (Interop.CmdReserveSpaceForCommandsInfoNvx*)native.Handle;
+			}
+		}
+
+		public CmdReserveSpaceForCommandsInfoNvx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.CmdReserveSpaceForCommandsInfoNvx));
+			Initialize ();
+		}
+
+		internal CmdReserveSpaceForCommandsInfoNvx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.CmdReserveSpaceForCommandsInfoNvx;
+		}
+
+	}
+
+	unsafe public partial class ObjectTableCreateInfoNvx : MarshalledObject
+	{
+		public UInt32 ObjectCount {
+			get { return m->ObjectCount; }
+			set { m->ObjectCount = value; }
+		}
+
+		NativeReference refObjectEntryTypes;
+		public ObjectEntryTypeNvx[] ObjectEntryTypes {
+			get {
+				if (m->ObjectCount == 0)
+					return null;
+				var values = new ObjectEntryTypeNvx [m->ObjectCount];
+				unsafe
+				{
+					ObjectEntryTypeNvx* ptr = (ObjectEntryTypeNvx*)m->ObjectEntryTypes;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->ObjectCount = 0;
+					m->ObjectEntryTypes = IntPtr.Zero;
+					return;
+				}
+				m->ObjectCount = (uint)value.Length;
+				refObjectEntryTypes = new NativeReference ((int)(sizeof(ObjectEntryTypeNvx)*value.Length));
+				m->ObjectEntryTypes = refObjectEntryTypes.Handle;
+				unsafe
+				{
+					ObjectEntryTypeNvx* ptr = (ObjectEntryTypeNvx*)m->ObjectEntryTypes;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+
+		NativeReference refObjectEntryCounts;
+		public UInt32[] ObjectEntryCounts {
+			get {
+				if (m->ObjectCount == 0)
+					return null;
+				var values = new UInt32 [m->ObjectCount];
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->ObjectEntryCounts;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->ObjectCount = 0;
+					m->ObjectEntryCounts = IntPtr.Zero;
+					return;
+				}
+				m->ObjectCount = (uint)value.Length;
+				refObjectEntryCounts = new NativeReference ((int)(sizeof(UInt32)*value.Length));
+				m->ObjectEntryCounts = refObjectEntryCounts.Handle;
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->ObjectEntryCounts;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+
+		NativeReference refObjectEntryUsageFlags;
+		public ObjectEntryUsageFlagsNvx[] ObjectEntryUsageFlags {
+			get {
+				if (m->ObjectCount == 0)
+					return null;
+				var values = new ObjectEntryUsageFlagsNvx [m->ObjectCount];
+				unsafe
+				{
+					ObjectEntryUsageFlagsNvx* ptr = (ObjectEntryUsageFlagsNvx*)m->ObjectEntryUsageFlags;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->ObjectCount = 0;
+					m->ObjectEntryUsageFlags = IntPtr.Zero;
+					return;
+				}
+				m->ObjectCount = (uint)value.Length;
+				refObjectEntryUsageFlags = new NativeReference ((int)(sizeof(ObjectEntryUsageFlagsNvx)*value.Length));
+				m->ObjectEntryUsageFlags = refObjectEntryUsageFlags.Handle;
+				unsafe
+				{
+					ObjectEntryUsageFlagsNvx* ptr = (ObjectEntryUsageFlagsNvx*)m->ObjectEntryUsageFlags;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+
+		public UInt32 MaxUniformBuffersPerDescriptor {
+			get { return m->MaxUniformBuffersPerDescriptor; }
+			set { m->MaxUniformBuffersPerDescriptor = value; }
+		}
+
+		public UInt32 MaxStorageBuffersPerDescriptor {
+			get { return m->MaxStorageBuffersPerDescriptor; }
+			set { m->MaxStorageBuffersPerDescriptor = value; }
+		}
+
+		public UInt32 MaxStorageImagesPerDescriptor {
+			get { return m->MaxStorageImagesPerDescriptor; }
+			set { m->MaxStorageImagesPerDescriptor = value; }
+		}
+
+		public UInt32 MaxSampledImagesPerDescriptor {
+			get { return m->MaxSampledImagesPerDescriptor; }
+			set { m->MaxSampledImagesPerDescriptor = value; }
+		}
+
+		public UInt32 MaxPipelineLayouts {
+			get { return m->MaxPipelineLayouts; }
+			set { m->MaxPipelineLayouts = value; }
+		}
+		internal Interop.ObjectTableCreateInfoNvx* m {
+
+			get {
+				return (Interop.ObjectTableCreateInfoNvx*)native.Handle;
+			}
+		}
+
+		public ObjectTableCreateInfoNvx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ObjectTableCreateInfoNvx));
+			Initialize ();
+		}
+
+		internal ObjectTableCreateInfoNvx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+		override public void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (!disposing)
+				return;
+			refObjectEntryTypes.Dispose ();
+			refObjectEntryTypes = null;
+			refObjectEntryCounts.Dispose ();
+			refObjectEntryCounts = null;
+			refObjectEntryUsageFlags.Dispose ();
+			refObjectEntryUsageFlags = null;
+		}
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ObjectTableCreateInfoNvx;
+		}
+
+	}
+
+	unsafe public partial struct ObjectTableEntryNvx
+	{
+		public ObjectEntryTypeNvx Type;
+		public ObjectEntryUsageFlagsNvx Flags;
+	}
+
+	unsafe public partial class ObjectTablePipelineEntryNvx : MarshalledObject
+	{
+		public ObjectEntryTypeNvx Type {
+			get { return m->Type; }
+			set { m->Type = value; }
+		}
+
+		public ObjectEntryUsageFlagsNvx Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
+
+		Pipeline lPipeline;
+		public Pipeline Pipeline {
+			get { return lPipeline; }
+			set { lPipeline = value; m->Pipeline = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+		internal Interop.ObjectTablePipelineEntryNvx* m {
+
+			get {
+				return (Interop.ObjectTablePipelineEntryNvx*)native.Handle;
+			}
+		}
+
+		public ObjectTablePipelineEntryNvx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ObjectTablePipelineEntryNvx));
+			Initialize ();
+		}
+
+		internal ObjectTablePipelineEntryNvx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+		}
+
+	}
+
+	unsafe public partial class ObjectTableDescriptorSetEntryNvx : MarshalledObject
+	{
+		public ObjectEntryTypeNvx Type {
+			get { return m->Type; }
+			set { m->Type = value; }
+		}
+
+		public ObjectEntryUsageFlagsNvx Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
+
+		PipelineLayout lPipelineLayout;
+		public PipelineLayout PipelineLayout {
+			get { return lPipelineLayout; }
+			set { lPipelineLayout = value; m->PipelineLayout = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		DescriptorSet lDescriptorSet;
+		public DescriptorSet DescriptorSet {
+			get { return lDescriptorSet; }
+			set { lDescriptorSet = value; m->DescriptorSet = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+		internal Interop.ObjectTableDescriptorSetEntryNvx* m {
+
+			get {
+				return (Interop.ObjectTableDescriptorSetEntryNvx*)native.Handle;
+			}
+		}
+
+		public ObjectTableDescriptorSetEntryNvx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ObjectTableDescriptorSetEntryNvx));
+			Initialize ();
+		}
+
+		internal ObjectTableDescriptorSetEntryNvx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+		}
+
+	}
+
+	unsafe public partial class ObjectTableVertexBufferEntryNvx : MarshalledObject
+	{
+		public ObjectEntryTypeNvx Type {
+			get { return m->Type; }
+			set { m->Type = value; }
+		}
+
+		public ObjectEntryUsageFlagsNvx Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
+
+		Buffer lBuffer;
+		public Buffer Buffer {
+			get { return lBuffer; }
+			set { lBuffer = value; m->Buffer = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+		internal Interop.ObjectTableVertexBufferEntryNvx* m {
+
+			get {
+				return (Interop.ObjectTableVertexBufferEntryNvx*)native.Handle;
+			}
+		}
+
+		public ObjectTableVertexBufferEntryNvx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ObjectTableVertexBufferEntryNvx));
+			Initialize ();
+		}
+
+		internal ObjectTableVertexBufferEntryNvx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+		}
+
+	}
+
+	unsafe public partial class ObjectTableIndexBufferEntryNvx : MarshalledObject
+	{
+		public ObjectEntryTypeNvx Type {
+			get { return m->Type; }
+			set { m->Type = value; }
+		}
+
+		public ObjectEntryUsageFlagsNvx Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
+
+		Buffer lBuffer;
+		public Buffer Buffer {
+			get { return lBuffer; }
+			set { lBuffer = value; m->Buffer = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+		internal Interop.ObjectTableIndexBufferEntryNvx* m {
+
+			get {
+				return (Interop.ObjectTableIndexBufferEntryNvx*)native.Handle;
+			}
+		}
+
+		public ObjectTableIndexBufferEntryNvx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ObjectTableIndexBufferEntryNvx));
+			Initialize ();
+		}
+
+		internal ObjectTableIndexBufferEntryNvx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+		}
+
+	}
+
+	unsafe public partial class ObjectTablePushConstantEntryNvx : MarshalledObject
+	{
+		public ObjectEntryTypeNvx Type {
+			get { return m->Type; }
+			set { m->Type = value; }
+		}
+
+		public ObjectEntryUsageFlagsNvx Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
+
+		PipelineLayout lPipelineLayout;
+		public PipelineLayout PipelineLayout {
+			get { return lPipelineLayout; }
+			set { lPipelineLayout = value; m->PipelineLayout = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		public ShaderStageFlags StageFlags {
+			get { return m->StageFlags; }
+			set { m->StageFlags = value; }
+		}
+		internal Interop.ObjectTablePushConstantEntryNvx* m {
+
+			get {
+				return (Interop.ObjectTablePushConstantEntryNvx*)native.Handle;
+			}
+		}
+
+		public ObjectTablePushConstantEntryNvx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ObjectTablePushConstantEntryNvx));
+			Initialize ();
+		}
+
+		internal ObjectTablePushConstantEntryNvx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+		}
+
+	}
 }

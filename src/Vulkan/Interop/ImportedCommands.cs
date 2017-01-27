@@ -511,5 +511,32 @@ namespace Vulkan.Interop
 
 		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
 		internal static unsafe extern void vkCmdDrawIndexedIndirectCountAMD (IntPtr commandBuffer, UInt64 buffer, DeviceSize offset, UInt64 countBuffer, DeviceSize countBufferOffset, UInt32 maxDrawCount, UInt32 stride);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkCmdProcessCommandsNVX (IntPtr commandBuffer, CmdProcessCommandsInfoNvx* pProcessCommandsInfo);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkCmdReserveSpaceForCommandsNVX (IntPtr commandBuffer, CmdReserveSpaceForCommandsInfoNvx* pReserveSpaceInfo);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkCreateIndirectCommandsLayoutNVX (IntPtr device, IndirectCommandsLayoutCreateInfoNvx* pCreateInfo, AllocationCallbacks* pAllocator, UInt64* pIndirectCommandsLayout);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkDestroyIndirectCommandsLayoutNVX (IntPtr device, UInt64 indirectCommandsLayout, AllocationCallbacks* pAllocator);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkCreateObjectTableNVX (IntPtr device, ObjectTableCreateInfoNvx* pCreateInfo, AllocationCallbacks* pAllocator, UInt64* pObjectTable);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkDestroyObjectTableNVX (IntPtr device, UInt64 objectTable, AllocationCallbacks* pAllocator);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkRegisterObjectsNVX (IntPtr device, UInt64 objectTable, UInt32 objectCount, ObjectTableEntryNvx* ppObjectTableEntries, UInt32* pObjectIndices);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkUnregisterObjectsNVX (IntPtr device, UInt64 objectTable, UInt32 objectCount, ObjectEntryTypeNvx* pObjectEntryTypes, UInt32* pObjectIndices);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX (IntPtr physicalDevice, DeviceGeneratedCommandsFeaturesNvx* pFeatures, DeviceGeneratedCommandsLimitsNvx* pLimits);
 	}
 }

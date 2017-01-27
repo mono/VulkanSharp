@@ -1035,4 +1035,115 @@ namespace Vulkan.Interop
 		internal ExternalMemoryHandleTypeFlagsNv HandleTypes;
 	}
 
+	internal partial struct DeviceGeneratedCommandsFeaturesNvx
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 ComputeBindingPointSupport;
+	}
+
+	internal partial struct DeviceGeneratedCommandsLimitsNvx
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 MaxIndirectCommandsLayoutTokenCount;
+		internal UInt32 MaxObjectEntryCounts;
+		internal UInt32 MinSequenceCountBufferOffsetAlignment;
+		internal UInt32 MinSequenceIndexBufferOffsetAlignment;
+		internal UInt32 MinCommandsTokenBufferOffsetAlignment;
+	}
+
+	internal partial struct IndirectCommandsTokenNvx
+	{
+		internal IndirectCommandsTokenTypeNvx TokenType;
+		internal UInt64 Buffer;
+		internal DeviceSize Offset;
+	}
+
+	internal partial struct IndirectCommandsLayoutCreateInfoNvx
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal PipelineBindPoint PipelineBindPoint;
+		internal IndirectCommandsLayoutUsageFlagsNvx Flags;
+		internal UInt32 TokenCount;
+		internal IntPtr Tokens;
+	}
+
+	internal partial struct CmdProcessCommandsInfoNvx
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 ObjectTable;
+		internal UInt64 IndirectCommandsLayout;
+		internal UInt32 IndirectCommandsTokenCount;
+		internal IntPtr IndirectCommandsTokens;
+		internal UInt32 MaxSequencesCount;
+		internal IntPtr TargetCommandBuffer;
+		internal UInt64 SequencesCountBuffer;
+		internal DeviceSize SequencesCountOffset;
+		internal UInt64 SequencesIndexBuffer;
+		internal DeviceSize SequencesIndexOffset;
+	}
+
+	internal partial struct CmdReserveSpaceForCommandsInfoNvx
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 ObjectTable;
+		internal UInt64 IndirectCommandsLayout;
+		internal UInt32 MaxSequencesCount;
+	}
+
+	internal partial struct ObjectTableCreateInfoNvx
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 ObjectCount;
+		internal IntPtr ObjectEntryTypes;
+		internal IntPtr ObjectEntryCounts;
+		internal IntPtr ObjectEntryUsageFlags;
+		internal UInt32 MaxUniformBuffersPerDescriptor;
+		internal UInt32 MaxStorageBuffersPerDescriptor;
+		internal UInt32 MaxStorageImagesPerDescriptor;
+		internal UInt32 MaxSampledImagesPerDescriptor;
+		internal UInt32 MaxPipelineLayouts;
+	}
+
+	internal partial struct ObjectTablePipelineEntryNvx
+	{
+		internal ObjectEntryTypeNvx Type;
+		internal ObjectEntryUsageFlagsNvx Flags;
+		internal UInt64 Pipeline;
+	}
+
+	internal partial struct ObjectTableDescriptorSetEntryNvx
+	{
+		internal ObjectEntryTypeNvx Type;
+		internal ObjectEntryUsageFlagsNvx Flags;
+		internal UInt64 PipelineLayout;
+		internal UInt64 DescriptorSet;
+	}
+
+	internal partial struct ObjectTableVertexBufferEntryNvx
+	{
+		internal ObjectEntryTypeNvx Type;
+		internal ObjectEntryUsageFlagsNvx Flags;
+		internal UInt64 Buffer;
+	}
+
+	internal partial struct ObjectTableIndexBufferEntryNvx
+	{
+		internal ObjectEntryTypeNvx Type;
+		internal ObjectEntryUsageFlagsNvx Flags;
+		internal UInt64 Buffer;
+	}
+
+	internal partial struct ObjectTablePushConstantEntryNvx
+	{
+		internal ObjectEntryTypeNvx Type;
+		internal ObjectEntryUsageFlagsNvx Flags;
+		internal UInt64 PipelineLayout;
+		internal ShaderStageFlags StageFlags;
+	}
 }

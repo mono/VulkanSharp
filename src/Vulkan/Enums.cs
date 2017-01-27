@@ -559,6 +559,8 @@ namespace Vulkan
 		HostWrite = 0x4000,
 		MemoryRead = 0x8000,
 		MemoryWrite = 0x10000,
+		CommandProcessReadNvx = 0x20000,
+		CommandProcessWriteNvx = 0x40000,
 	}
 
 	[Flags]
@@ -806,6 +808,12 @@ namespace Vulkan
 		ExportMemoryWin32HandleInfoNv = 1000057001,
 		Win32KeyedMutexAcquireReleaseInfoNv = 1000058000,
 		ValidationFlagsExt = 1000061000,
+		ObjectTableCreateInfoNvx = 1000086000,
+		IndirectCommandsLayoutCreateInfoNvx = 1000086001,
+		CmdProcessCommandsInfoNvx = 1000086002,
+		CmdReserveSpaceForCommandsInfoNvx = 1000086003,
+		DeviceGeneratedCommandsLimitsNvx = 1000086004,
+		DeviceGeneratedCommandsFeaturesNvx = 1000086005,
 	}
 
 	public enum SystemAllocationScope : int
@@ -870,6 +878,7 @@ namespace Vulkan
 		Host = 0x4000,
 		AllGraphics = 0x8000,
 		AllCommands = 0x10000,
+		CommandProcessNvx = 0x20000,
 	}
 
 	[Flags]
@@ -908,6 +917,43 @@ namespace Vulkan
 	public enum DependencyFlags : int
 	{
 		ByRegion = 0x1,
+	}
+
+	[Flags]
+	public enum IndirectCommandsLayoutUsageFlagsNvx : int
+	{
+		UnorderedSequences = 0x1,
+		SparseSequences = 0x2,
+		EmptyExecutions = 0x4,
+		IndexedSequences = 0x8,
+	}
+
+	public enum IndirectCommandsTokenTypeNvx : int
+	{
+		IndirectCommandsTokenPipeline = 0,
+		IndirectCommandsTokenDescriptorSet = 1,
+		IndirectCommandsTokenIndexBuffer = 2,
+		IndirectCommandsTokenVertexBuffer = 3,
+		IndirectCommandsTokenPushConstant = 4,
+		IndirectCommandsTokenDrawIndexed = 5,
+		IndirectCommandsTokenDraw = 6,
+		IndirectCommandsTokenDispatch = 7,
+	}
+
+	[Flags]
+	public enum ObjectEntryUsageFlagsNvx : int
+	{
+		Graphics = 0x1,
+		Compute = 0x2,
+	}
+
+	public enum ObjectEntryTypeNvx : int
+	{
+		ObjectEntryDescriptorSet = 0,
+		ObjectEntryPipeline = 1,
+		ObjectEntryIndexBuffer = 2,
+		ObjectEntryVertexBuffer = 3,
+		ObjectEntryPushConstant = 4,
 	}
 
 	public enum ColorSpaceKhr : int
@@ -996,6 +1042,10 @@ namespace Vulkan
 		SurfaceKhr = 26,
 		SwapchainKhr = 27,
 		DebugReport = 28,
+		DisplayKhr = 29,
+		DisplayModeKhr = 30,
+		ObjectTableNvx = 31,
+		IndirectCommandsLayoutNvx = 32,
 	}
 
 	public enum DebugReportErrorExt : int
