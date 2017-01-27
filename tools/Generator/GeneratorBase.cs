@@ -15,7 +15,9 @@ namespace VulkanSharp.Generator
 			{ "1D", "1D" },
 			{ "2D", "2D" },
 			{ "3D", "3D" },
-			{ "NV", "Nv" }
+			{ "NV", "Nv" },
+			{ "NVX", "Nvx" },
+			{ "NN", "Nn" },
 		};
 
 		protected string TranslateCName (string name)
@@ -65,7 +67,7 @@ namespace VulkanSharp.Generator
 			{ "size_t", "UIntPtr" },
 			{ "xcb_connection_t", "IntPtr" },
 			{ "xcb_window_t", "IntPtr" },
-			{ "xcb_visualid_t", "Int32" }
+			{ "xcb_visualid_t", "Int32" },
 		};
 
 		HashSet<string> knownTypes = new HashSet<string> {
@@ -81,6 +83,8 @@ namespace VulkanSharp.Generator
 			{ "HANDLE", "IntPtr" },
 			{ "DWORD", "UInt32" },
 			{ "SECURITY_ATTRIBUTES", "SecurityAttributes" },
+			{ "Display", "IntPtr" },
+			{ "RROutput", "IntPtr" },
 		};
 
 		protected static Dictionary<string, string> extensions = new Dictionary<string, string> {
@@ -88,7 +92,9 @@ namespace VulkanSharp.Generator
 			{ "EXT", "Ext" },
 			{ "IMG", "Img" },
 			{ "KHR", "Khr" },
-			{ "NV", "Nv" }
+			{ "NV", "Nv" },
+			{ "NVX", "Nvx" },
+			{ "NN", "Nn" },
 		};
 
 		protected string GetTypeCsName (string name, string typeName = "type")
@@ -118,29 +124,36 @@ namespace VulkanSharp.Generator
 			return csName;
 		}
 
-		protected HashSet<string> knownBitmaps = new HashSet<string> {
-			"VkExternalMemoryHandleTypeFlagBitsNV",
-			"VkExternalMemoryFeatureFlagBitsNV",
-		};
-
 		protected string GetEnumCsName (string name, bool bitmask)
 		{
 			string csName = GetTypeCsName (name, "enum");
 
-			if (bitmask || knownBitmaps.Contains (name)) {
-				string suffix = null;
-				foreach (var ext in extensions)
-					if (csName.EndsWith (ext.Value)) {
-						suffix = ext.Value + suffix;
-						csName = csName.Substring (0, csName.Length - ext.Value.Length);
-					}
-				if (csName.EndsWith ("FlagBits"))
-					csName = csName.Substring (0, csName.Length - 4) + "s";
-				if (suffix != null)
-					csName += suffix;
-			}
+			if(bitmask)
+				csName = GetFlagBitsName (csName);
+
 
 			return csName;
+		}
+
+		protected string GetFlagBitsName (string name)
+		{
+			string ret = name;
+			string extStr = null;
+			foreach (var ext in extensions) { 
+				if (name.EndsWith(ext.Value))	{
+					extStr = ext.Value;
+					ret = name.Substring(0, name.Length - ext.Value.Length);
+					break;
+				}
+			}
+
+			if (ret.EndsWith("FlagBits"))
+				ret = ret.Substring(0, ret.Length - 4) + "s";
+
+			if (extStr != null)
+				ret += extStr;
+
+			return ret;
 		}
 	}
 }
