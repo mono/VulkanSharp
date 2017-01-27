@@ -49,4 +49,5 @@ namespace Vulkan.Windows.Interop
 		internal IntPtr ReleaseSyncs;
 		internal IntPtr ReleaseKeys;
 	}
+
 }
