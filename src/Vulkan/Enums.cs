@@ -423,6 +423,8 @@ namespace Vulkan
 		BlitDst = 0x800,
 		SampledImageFilterLinear = 0x1000,
 		SampledImageFilterCubicImg = 0x2000,
+		TransferSrcKhr = 0x4000,
+		TransferDstKhr = 0x8000,
 	}
 
 	public enum FrontFace : int
@@ -448,6 +450,7 @@ namespace Vulkan
 		SparseAliased = 0x4,
 		MutableFormat = 0x8,
 		CubeCompatible = 0x10,
+		Create2DArrayCompatibleKhr = 0x20,
 	}
 
 	public enum ImageLayout : int
@@ -691,6 +694,7 @@ namespace Vulkan
 		ErrorIncompatibleDisplayKhr = -1000003001,
 		ErrorValidationFailedExt = -1000011001,
 		ErrorInvalidShaderNv = -1000012000,
+		ErrorOutOfPoolMemoryKhr = -1000069000,
 	}
 
 	[Flags]
@@ -807,13 +811,28 @@ namespace Vulkan
 		ImportMemoryWin32HandleInfoNv = 1000057000,
 		ExportMemoryWin32HandleInfoNv = 1000057001,
 		Win32KeyedMutexAcquireReleaseInfoNv = 1000058000,
+		PhysicalDeviceFeatures2Khr = 1000059000,
+		PhysicalDeviceProperties2Khr = 1000059001,
+		FormatProperties2Khr = 1000059002,
+		ImageFormatProperties2Khr = 1000059003,
+		PhysicalDeviceImageFormatInfo2Khr = 1000059004,
+		QueueFamilyProperties2Khr = 1000059005,
+		PhysicalDeviceMemoryProperties2Khr = 1000059006,
+		SparseImageFormatProperties2Khr = 1000059007,
+		PhysicalDeviceSparseImageFormatInfo2Khr = 1000059008,
 		ValidationFlagsExt = 1000061000,
+		ViSurfaceCreateInfoNn = 1000062000,
 		ObjectTableCreateInfoNvx = 1000086000,
 		IndirectCommandsLayoutCreateInfoNvx = 1000086001,
 		CmdProcessCommandsInfoNvx = 1000086002,
 		CmdReserveSpaceForCommandsInfoNvx = 1000086003,
 		DeviceGeneratedCommandsLimitsNvx = 1000086004,
 		DeviceGeneratedCommandsFeaturesNvx = 1000086005,
+		SurfaceCapabilities2Ext = 1000090000,
+		DisplayPowerInfoExt = 1000091000,
+		DeviceEventInfoExt = 1000091001,
+		DisplayEventInfoExt = 1000091002,
+		SwapchainCounterCreateInfoExt = 1000091003,
 	}
 
 	public enum SystemAllocationScope : int
@@ -959,6 +978,18 @@ namespace Vulkan
 	public enum ColorSpaceKhr : int
 	{
 		SrgbNonlinear = 0,
+		DisplayP3LinearExt = 1000104001,
+		DisplayP3NonlinearExt = 1000104002,
+		ScrgbLinearExt = 1000104003,
+		ScrgbNonlinearExt = 1000104004,
+		DciP3LinearExt = 1000104005,
+		DciP3NonlinearExt = 1000104006,
+		Bt709LinearExt = 1000104007,
+		Bt709NonlinearExt = 1000104008,
+		Bt2020LinearExt = 1000104009,
+		Bt2020NonlinearExt = 1000104010,
+		AdobergbLinearExt = 1000104011,
+		AdobergbNonlinearExt = 1000104012,
 	}
 
 	[Flags]
@@ -1080,5 +1111,28 @@ namespace Vulkan
 	public enum ValidationCheckExt : int
 	{
 		All = 0,
+	}
+
+	[Flags]
+	public enum SurfaceCounterFlagsExt : int
+	{
+		VblankExt = 0x1,
+	}
+
+	public enum DisplayPowerStateExt : int
+	{
+		Off = 0,
+		Suspend = 1,
+		On = 2,
+	}
+
+	public enum DeviceEventTypeExt : int
+	{
+		DisplayHotplug = 0,
+	}
+
+	public enum DisplayEventTypeExt : int
+	{
+		FirstPixelOut = 0,
 	}
 }

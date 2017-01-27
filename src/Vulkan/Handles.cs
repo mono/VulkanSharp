@@ -92,6 +92,23 @@ namespace Vulkan
 			}
 		}
 
+		public SurfaceKhr CreateViSurfaceNN (ViSurfaceCreateInfoNn pCreateInfo, AllocationCallbacks pAllocator = null)
+		{
+			Result result;
+			SurfaceKhr pSurface;
+			unsafe {
+				pSurface = new SurfaceKhr ();
+
+				fixed (UInt64* ptrpSurface = &pSurface.m) {
+					result = Interop.NativeMethods.vkCreateViSurfaceNN (this.m, pCreateInfo != null ? pCreateInfo.m : (Interop.ViSurfaceCreateInfoNn*)default(IntPtr), pAllocator != null ? pAllocator.m : null, ptrpSurface);
+				}
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pSurface;
+			}
+		}
+
 		public DebugReportCallbackExt CreateDebugReportCallbackEXT (DebugReportCallbackCreateInfoExt pCreateInfo, AllocationCallbacks pAllocator = null)
 		{
 			Result result;
@@ -572,6 +589,166 @@ namespace Vulkan
 				pFeatures = new DeviceGeneratedCommandsFeaturesNvx ();
 				pLimits = new DeviceGeneratedCommandsLimitsNvx ();
 				Interop.NativeMethods.vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX (this.m, pFeatures != null ? pFeatures.m : (Interop.DeviceGeneratedCommandsFeaturesNvx*)default(IntPtr), pLimits != null ? pLimits.m : (Interop.DeviceGeneratedCommandsLimitsNvx*)default(IntPtr));
+			}
+		}
+
+		public PhysicalDeviceFeatures2Khr GetFeatures2KHR ()
+		{
+			PhysicalDeviceFeatures2Khr pFeatures;
+			unsafe {
+				pFeatures = new PhysicalDeviceFeatures2Khr ();
+				Interop.NativeMethods.vkGetPhysicalDeviceFeatures2KHR (this.m, pFeatures != null ? pFeatures.m : (Interop.PhysicalDeviceFeatures2Khr*)default(IntPtr));
+
+				return pFeatures;
+			}
+		}
+
+		public PhysicalDeviceProperties2Khr GetProperties2KHR ()
+		{
+			PhysicalDeviceProperties2Khr pProperties;
+			unsafe {
+				pProperties = new PhysicalDeviceProperties2Khr ();
+				Interop.NativeMethods.vkGetPhysicalDeviceProperties2KHR (this.m, pProperties != null ? pProperties.m : (Interop.PhysicalDeviceProperties2Khr*)default(IntPtr));
+
+				return pProperties;
+			}
+		}
+
+		public FormatProperties2Khr GetFormatProperties2KHR (Format format)
+		{
+			FormatProperties2Khr pFormatProperties;
+			unsafe {
+				pFormatProperties = new FormatProperties2Khr ();
+				Interop.NativeMethods.vkGetPhysicalDeviceFormatProperties2KHR (this.m, format, pFormatProperties != null ? pFormatProperties.m : (Interop.FormatProperties2Khr*)default(IntPtr));
+
+				return pFormatProperties;
+			}
+		}
+
+		public ImageFormatProperties2Khr GetImageFormatProperties2KHR (PhysicalDeviceImageFormatInfo2Khr pImageFormatInfo)
+		{
+			Result result;
+			ImageFormatProperties2Khr pImageFormatProperties;
+			unsafe {
+				pImageFormatProperties = new ImageFormatProperties2Khr ();
+				result = Interop.NativeMethods.vkGetPhysicalDeviceImageFormatProperties2KHR (this.m, pImageFormatInfo != null ? pImageFormatInfo.m : (Interop.PhysicalDeviceImageFormatInfo2Khr*)default(IntPtr), pImageFormatProperties != null ? pImageFormatProperties.m : (Interop.ImageFormatProperties2Khr*)default(IntPtr));
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pImageFormatProperties;
+			}
+		}
+
+		public QueueFamilyProperties2Khr[] GetQueueFamilyProperties2KHR ()
+		{
+			unsafe {
+				UInt32 pQueueFamilyPropertyCount;
+				Interop.NativeMethods.vkGetPhysicalDeviceQueueFamilyProperties2KHR (this.m, &pQueueFamilyPropertyCount, null);
+				if (pQueueFamilyPropertyCount <= 0)
+					return null;
+
+				int size = Marshal.SizeOf (typeof (Interop.QueueFamilyProperties2Khr));
+				var refpQueueFamilyProperties = new NativeReference ((int)(size * pQueueFamilyPropertyCount));
+				var ptrpQueueFamilyProperties = refpQueueFamilyProperties.Handle;
+				Interop.NativeMethods.vkGetPhysicalDeviceQueueFamilyProperties2KHR (this.m, &pQueueFamilyPropertyCount, (Interop.QueueFamilyProperties2Khr*)ptrpQueueFamilyProperties);
+
+				if (pQueueFamilyPropertyCount <= 0)
+					return null;
+				var arr = new QueueFamilyProperties2Khr [pQueueFamilyPropertyCount];
+				for (int i = 0; i < pQueueFamilyPropertyCount; i++) {
+					arr [i] = new QueueFamilyProperties2Khr (new NativePointer (refpQueueFamilyProperties, (IntPtr)(&((Interop.QueueFamilyProperties2Khr*)ptrpQueueFamilyProperties) [i])));
+				}
+
+				return arr;
+			}
+		}
+
+		public PhysicalDeviceMemoryProperties2Khr GetMemoryProperties2KHR ()
+		{
+			PhysicalDeviceMemoryProperties2Khr pMemoryProperties;
+			unsafe {
+				pMemoryProperties = new PhysicalDeviceMemoryProperties2Khr ();
+				Interop.NativeMethods.vkGetPhysicalDeviceMemoryProperties2KHR (this.m, pMemoryProperties != null ? pMemoryProperties.m : (Interop.PhysicalDeviceMemoryProperties2Khr*)default(IntPtr));
+
+				return pMemoryProperties;
+			}
+		}
+
+		public SparseImageFormatProperties2Khr[] GetSparseImageFormatProperties2KHR (PhysicalDeviceSparseImageFormatInfo2Khr pFormatInfo)
+		{
+			unsafe {
+				UInt32 pPropertyCount;
+				Interop.NativeMethods.vkGetPhysicalDeviceSparseImageFormatProperties2KHR (this.m, pFormatInfo != null ? pFormatInfo.m : (Interop.PhysicalDeviceSparseImageFormatInfo2Khr*)default(IntPtr), &pPropertyCount, null);
+				if (pPropertyCount <= 0)
+					return null;
+
+				int size = Marshal.SizeOf (typeof (Interop.SparseImageFormatProperties2Khr));
+				var refpProperties = new NativeReference ((int)(size * pPropertyCount));
+				var ptrpProperties = refpProperties.Handle;
+				Interop.NativeMethods.vkGetPhysicalDeviceSparseImageFormatProperties2KHR (this.m, pFormatInfo != null ? pFormatInfo.m : (Interop.PhysicalDeviceSparseImageFormatInfo2Khr*)default(IntPtr), &pPropertyCount, (Interop.SparseImageFormatProperties2Khr*)ptrpProperties);
+
+				if (pPropertyCount <= 0)
+					return null;
+				var arr = new SparseImageFormatProperties2Khr [pPropertyCount];
+				for (int i = 0; i < pPropertyCount; i++) {
+					arr [i] = new SparseImageFormatProperties2Khr (new NativePointer (refpProperties, (IntPtr)(&((Interop.SparseImageFormatProperties2Khr*)ptrpProperties) [i])));
+				}
+
+				return arr;
+			}
+		}
+
+		public void ReleaseDisplayEXT (DisplayKhr display)
+		{
+			Result result;
+			unsafe {
+				result = Interop.NativeMethods.vkReleaseDisplayEXT (this.m, display != null ? display.m : default(UInt64));
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		public IntPtr AcquireXlibDisplayEXT (DisplayKhr display)
+		{
+			Result result;
+			IntPtr dpy;
+			unsafe {
+				dpy = new IntPtr ();
+				result = Interop.NativeMethods.vkAcquireXlibDisplayEXT (this.m, &dpy, display != null ? display.m : default(UInt64));
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return dpy;
+			}
+		}
+
+		public void GetRandROutputDisplayEXT (out IntPtr dpy, IntPtr rrOutput, out DisplayKhr pDisplay)
+		{
+			Result result;
+			unsafe {
+				pDisplay = new DisplayKhr ();
+
+				fixed (IntPtr* ptrdpy = &dpy) {
+					fixed (UInt64* ptrpDisplay = &pDisplay.m) {
+						result = Interop.NativeMethods.vkGetRandROutputDisplayEXT (this.m, ptrdpy, rrOutput, ptrpDisplay);
+					}
+				}
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		public SurfaceCapabilities2Ext GetSurfaceCapabilities2EXT (SurfaceKhr surface)
+		{
+			Result result;
+			SurfaceCapabilities2Ext pSurfaceCapabilities;
+			unsafe {
+				pSurfaceCapabilities = new SurfaceCapabilities2Ext ();
+				result = Interop.NativeMethods.vkGetPhysicalDeviceSurfaceCapabilities2EXT (this.m, surface != null ? surface.m : default(UInt64), pSurfaceCapabilities != null ? pSurfaceCapabilities.m : (Interop.SurfaceCapabilities2Ext*)default(IntPtr));
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pSurfaceCapabilities;
 			}
 		}
 	}
@@ -1842,6 +2019,71 @@ namespace Vulkan
 				result = Interop.NativeMethods.vkUnregisterObjectsNVX (this.m, objectTable != null ? objectTable.m : default(UInt64), (UInt32)(pObjectIndice != null ? 1 : 0), &pObjectEntryType, ptrpObjectIndice);
 				if (result != Result.Success)
 					throw new ResultException (result);
+			}
+		}
+
+		public void TrimCommandPoolKHR (CommandPool commandPool, UInt32 flags = 0)
+		{
+			unsafe {
+				Interop.NativeMethods.vkTrimCommandPoolKHR (this.m, commandPool != null ? commandPool.m : default(UInt64), flags);
+			}
+		}
+
+		public void DisplayPowerControlEXT (DisplayKhr display, DisplayPowerInfoExt pDisplayPowerInfo)
+		{
+			Result result;
+			unsafe {
+				result = Interop.NativeMethods.vkDisplayPowerControlEXT (this.m, display != null ? display.m : default(UInt64), pDisplayPowerInfo != null ? pDisplayPowerInfo.m : (Interop.DisplayPowerInfoExt*)default(IntPtr));
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		public Fence RegisterDeviceEventEXT (DeviceEventInfoExt pDeviceEventInfo, AllocationCallbacks pAllocator)
+		{
+			Result result;
+			Fence pFence;
+			unsafe {
+				pFence = new Fence ();
+
+				fixed (UInt64* ptrpFence = &pFence.m) {
+					result = Interop.NativeMethods.vkRegisterDeviceEventEXT (this.m, pDeviceEventInfo != null ? pDeviceEventInfo.m : (Interop.DeviceEventInfoExt*)default(IntPtr), pAllocator != null ? pAllocator.m : (Interop.AllocationCallbacks*)default(IntPtr), ptrpFence);
+				}
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pFence;
+			}
+		}
+
+		public Fence RegisterDisplayEventEXT (DisplayKhr display, DisplayEventInfoExt pDisplayEventInfo, AllocationCallbacks pAllocator)
+		{
+			Result result;
+			Fence pFence;
+			unsafe {
+				pFence = new Fence ();
+
+				fixed (UInt64* ptrpFence = &pFence.m) {
+					result = Interop.NativeMethods.vkRegisterDisplayEventEXT (this.m, display != null ? display.m : default(UInt64), pDisplayEventInfo != null ? pDisplayEventInfo.m : (Interop.DisplayEventInfoExt*)default(IntPtr), pAllocator != null ? pAllocator.m : (Interop.AllocationCallbacks*)default(IntPtr), ptrpFence);
+				}
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pFence;
+			}
+		}
+
+		public UInt64 GetSwapchainCounterEXT (SwapchainKhr swapchain, SurfaceCounterFlagsExt counter)
+		{
+			Result result;
+			UInt64 pCounterValue;
+			unsafe {
+				pCounterValue = new UInt64 ();
+				result = Interop.NativeMethods.vkGetSwapchainCounterEXT (this.m, swapchain != null ? swapchain.m : default(UInt64), counter, &pCounterValue);
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pCounterValue;
 			}
 		}
 	}

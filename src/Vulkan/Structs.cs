@@ -6550,6 +6550,44 @@ namespace Vulkan
 		public ImageUsageFlags SupportedUsageFlags;
 	}
 
+	unsafe public partial class ViSurfaceCreateInfoNn : MarshalledObject
+	{
+		public UInt32 Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
+
+		public IntPtr Window {
+			get { return m->Window; }
+			set { m->Window = value; }
+		}
+		internal Interop.ViSurfaceCreateInfoNn* m {
+
+			get {
+				return (Interop.ViSurfaceCreateInfoNn*)native.Handle;
+			}
+		}
+
+		public ViSurfaceCreateInfoNn ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ViSurfaceCreateInfoNn));
+			Initialize ();
+		}
+
+		internal ViSurfaceCreateInfoNn (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ViSurfaceCreateInfoNn;
+		}
+
+	}
+
 	unsafe public partial struct SurfaceFormatKhr
 	{
 		public Format Format;
@@ -8081,6 +8119,11 @@ namespace Vulkan
 			get { return lBuffer; }
 			set { lBuffer = value; m->Buffer = value != null ? (UInt64)value.m : default(UInt64); }
 		}
+
+		public IndexType IndexType {
+			get { return m->IndexType; }
+			set { m->IndexType = value; }
+		}
 		internal Interop.ObjectTableIndexBufferEntryNvx* m {
 
 			get {
@@ -8151,6 +8194,562 @@ namespace Vulkan
 
 		internal void Initialize ()
 		{
+		}
+
+	}
+
+	unsafe public partial class PhysicalDeviceFeatures2Khr : MarshalledObject
+	{
+		public PhysicalDeviceFeatures Features {
+			get { return m->Features; }
+			set { m->Features = value; }
+		}
+		internal Interop.PhysicalDeviceFeatures2Khr* m {
+
+			get {
+				return (Interop.PhysicalDeviceFeatures2Khr*)native.Handle;
+			}
+		}
+
+		public PhysicalDeviceFeatures2Khr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceFeatures2Khr));
+			Initialize ();
+		}
+
+		internal PhysicalDeviceFeatures2Khr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDeviceFeatures2Khr;
+		}
+
+	}
+
+	unsafe public partial class PhysicalDeviceProperties2Khr : MarshalledObject
+	{
+		PhysicalDeviceProperties lProperties;
+		public PhysicalDeviceProperties Properties {
+			get { return lProperties; }
+			set { lProperties = value; m->Properties = value != null ? *value.m : default(Interop.PhysicalDeviceProperties); }
+		}
+		internal Interop.PhysicalDeviceProperties2Khr* m {
+
+			get {
+				return (Interop.PhysicalDeviceProperties2Khr*)native.Handle;
+			}
+		}
+
+		public PhysicalDeviceProperties2Khr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceProperties2Khr));
+			Initialize ();
+		}
+
+		internal PhysicalDeviceProperties2Khr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDeviceProperties2Khr;
+			lProperties = new PhysicalDeviceProperties (new NativePointer (native.Reference, (IntPtr)(&m->Properties)));
+		}
+
+	}
+
+	unsafe public partial class FormatProperties2Khr : MarshalledObject
+	{
+		public FormatProperties FormatProperties {
+			get { return m->FormatProperties; }
+			set { m->FormatProperties = value; }
+		}
+		internal Interop.FormatProperties2Khr* m {
+
+			get {
+				return (Interop.FormatProperties2Khr*)native.Handle;
+			}
+		}
+
+		public FormatProperties2Khr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.FormatProperties2Khr));
+			Initialize ();
+		}
+
+		internal FormatProperties2Khr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.FormatProperties2Khr;
+		}
+
+	}
+
+	unsafe public partial class ImageFormatProperties2Khr : MarshalledObject
+	{
+		public ImageFormatProperties ImageFormatProperties {
+			get { return m->ImageFormatProperties; }
+			set { m->ImageFormatProperties = value; }
+		}
+		internal Interop.ImageFormatProperties2Khr* m {
+
+			get {
+				return (Interop.ImageFormatProperties2Khr*)native.Handle;
+			}
+		}
+
+		public ImageFormatProperties2Khr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ImageFormatProperties2Khr));
+			Initialize ();
+		}
+
+		internal ImageFormatProperties2Khr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ImageFormatProperties2Khr;
+		}
+
+	}
+
+	unsafe public partial class PhysicalDeviceImageFormatInfo2Khr : MarshalledObject
+	{
+		public Format Format {
+			get { return m->Format; }
+			set { m->Format = value; }
+		}
+
+		public ImageType Type {
+			get { return m->Type; }
+			set { m->Type = value; }
+		}
+
+		public ImageTiling Tiling {
+			get { return m->Tiling; }
+			set { m->Tiling = value; }
+		}
+
+		public ImageUsageFlags Usage {
+			get { return m->Usage; }
+			set { m->Usage = value; }
+		}
+
+		public ImageCreateFlags Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
+		internal Interop.PhysicalDeviceImageFormatInfo2Khr* m {
+
+			get {
+				return (Interop.PhysicalDeviceImageFormatInfo2Khr*)native.Handle;
+			}
+		}
+
+		public PhysicalDeviceImageFormatInfo2Khr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceImageFormatInfo2Khr));
+			Initialize ();
+		}
+
+		internal PhysicalDeviceImageFormatInfo2Khr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDeviceImageFormatInfo2Khr;
+		}
+
+	}
+
+	unsafe public partial class QueueFamilyProperties2Khr : MarshalledObject
+	{
+		public QueueFamilyProperties QueueFamilyProperties {
+			get { return m->QueueFamilyProperties; }
+			set { m->QueueFamilyProperties = value; }
+		}
+		internal Interop.QueueFamilyProperties2Khr* m {
+
+			get {
+				return (Interop.QueueFamilyProperties2Khr*)native.Handle;
+			}
+		}
+
+		public QueueFamilyProperties2Khr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.QueueFamilyProperties2Khr));
+			Initialize ();
+		}
+
+		internal QueueFamilyProperties2Khr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.QueueFamilyProperties2Khr;
+		}
+
+	}
+
+	unsafe public partial class PhysicalDeviceMemoryProperties2Khr : MarshalledObject
+	{
+		PhysicalDeviceMemoryProperties lMemoryProperties;
+		public PhysicalDeviceMemoryProperties MemoryProperties {
+			get { return lMemoryProperties; }
+			set { lMemoryProperties = value; m->MemoryProperties = value != null ? *value.m : default(Interop.PhysicalDeviceMemoryProperties); }
+		}
+		internal Interop.PhysicalDeviceMemoryProperties2Khr* m {
+
+			get {
+				return (Interop.PhysicalDeviceMemoryProperties2Khr*)native.Handle;
+			}
+		}
+
+		public PhysicalDeviceMemoryProperties2Khr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceMemoryProperties2Khr));
+			Initialize ();
+		}
+
+		internal PhysicalDeviceMemoryProperties2Khr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDeviceMemoryProperties2Khr;
+			lMemoryProperties = new PhysicalDeviceMemoryProperties (new NativePointer (native.Reference, (IntPtr)(&m->MemoryProperties)));
+		}
+
+	}
+
+	unsafe public partial class SparseImageFormatProperties2Khr : MarshalledObject
+	{
+		public SparseImageFormatProperties Properties {
+			get { return m->Properties; }
+			set { m->Properties = value; }
+		}
+		internal Interop.SparseImageFormatProperties2Khr* m {
+
+			get {
+				return (Interop.SparseImageFormatProperties2Khr*)native.Handle;
+			}
+		}
+
+		public SparseImageFormatProperties2Khr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.SparseImageFormatProperties2Khr));
+			Initialize ();
+		}
+
+		internal SparseImageFormatProperties2Khr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.SparseImageFormatProperties2Khr;
+		}
+
+	}
+
+	unsafe public partial class PhysicalDeviceSparseImageFormatInfo2Khr : MarshalledObject
+	{
+		public Format Format {
+			get { return m->Format; }
+			set { m->Format = value; }
+		}
+
+		public ImageType Type {
+			get { return m->Type; }
+			set { m->Type = value; }
+		}
+
+		public SampleCountFlags Samples {
+			get { return m->Samples; }
+			set { m->Samples = value; }
+		}
+
+		public ImageUsageFlags Usage {
+			get { return m->Usage; }
+			set { m->Usage = value; }
+		}
+
+		public ImageTiling Tiling {
+			get { return m->Tiling; }
+			set { m->Tiling = value; }
+		}
+		internal Interop.PhysicalDeviceSparseImageFormatInfo2Khr* m {
+
+			get {
+				return (Interop.PhysicalDeviceSparseImageFormatInfo2Khr*)native.Handle;
+			}
+		}
+
+		public PhysicalDeviceSparseImageFormatInfo2Khr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceSparseImageFormatInfo2Khr));
+			Initialize ();
+		}
+
+		internal PhysicalDeviceSparseImageFormatInfo2Khr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDeviceSparseImageFormatInfo2Khr;
+		}
+
+	}
+
+	unsafe public partial class SurfaceCapabilities2Ext : MarshalledObject
+	{
+		public UInt32 MinImageCount {
+			get { return m->MinImageCount; }
+			set { m->MinImageCount = value; }
+		}
+
+		public UInt32 MaxImageCount {
+			get { return m->MaxImageCount; }
+			set { m->MaxImageCount = value; }
+		}
+
+		public Extent2D CurrentExtent {
+			get { return m->CurrentExtent; }
+			set { m->CurrentExtent = value; }
+		}
+
+		public Extent2D MinImageExtent {
+			get { return m->MinImageExtent; }
+			set { m->MinImageExtent = value; }
+		}
+
+		public Extent2D MaxImageExtent {
+			get { return m->MaxImageExtent; }
+			set { m->MaxImageExtent = value; }
+		}
+
+		public UInt32 MaxImageArrayLayers {
+			get { return m->MaxImageArrayLayers; }
+			set { m->MaxImageArrayLayers = value; }
+		}
+
+		public SurfaceTransformFlagsKhr SupportedTransforms {
+			get { return m->SupportedTransforms; }
+			set { m->SupportedTransforms = value; }
+		}
+
+		public SurfaceTransformFlagsKhr CurrentTransform {
+			get { return m->CurrentTransform; }
+			set { m->CurrentTransform = value; }
+		}
+
+		public CompositeAlphaFlagsKhr SupportedCompositeAlpha {
+			get { return m->SupportedCompositeAlpha; }
+			set { m->SupportedCompositeAlpha = value; }
+		}
+
+		public ImageUsageFlags SupportedUsageFlags {
+			get { return m->SupportedUsageFlags; }
+			set { m->SupportedUsageFlags = value; }
+		}
+
+		public SurfaceCounterFlagsExt SupportedSurfaceCounters {
+			get { return m->SupportedSurfaceCounters; }
+			set { m->SupportedSurfaceCounters = value; }
+		}
+		internal Interop.SurfaceCapabilities2Ext* m {
+
+			get {
+				return (Interop.SurfaceCapabilities2Ext*)native.Handle;
+			}
+		}
+
+		public SurfaceCapabilities2Ext ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.SurfaceCapabilities2Ext));
+			Initialize ();
+		}
+
+		internal SurfaceCapabilities2Ext (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.SurfaceCapabilities2Ext;
+		}
+
+	}
+
+	unsafe public partial class DisplayPowerInfoExt : MarshalledObject
+	{
+		public DisplayPowerStateExt PowerState {
+			get { return m->PowerState; }
+			set { m->PowerState = value; }
+		}
+		internal Interop.DisplayPowerInfoExt* m {
+
+			get {
+				return (Interop.DisplayPowerInfoExt*)native.Handle;
+			}
+		}
+
+		public DisplayPowerInfoExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.DisplayPowerInfoExt));
+			Initialize ();
+		}
+
+		internal DisplayPowerInfoExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DisplayPowerInfoExt;
+		}
+
+	}
+
+	unsafe public partial class DeviceEventInfoExt : MarshalledObject
+	{
+		public DeviceEventTypeExt DeviceEvent {
+			get { return m->DeviceEvent; }
+			set { m->DeviceEvent = value; }
+		}
+		internal Interop.DeviceEventInfoExt* m {
+
+			get {
+				return (Interop.DeviceEventInfoExt*)native.Handle;
+			}
+		}
+
+		public DeviceEventInfoExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.DeviceEventInfoExt));
+			Initialize ();
+		}
+
+		internal DeviceEventInfoExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DeviceEventInfoExt;
+		}
+
+	}
+
+	unsafe public partial class DisplayEventInfoExt : MarshalledObject
+	{
+		public DisplayEventTypeExt DisplayEvent {
+			get { return m->DisplayEvent; }
+			set { m->DisplayEvent = value; }
+		}
+		internal Interop.DisplayEventInfoExt* m {
+
+			get {
+				return (Interop.DisplayEventInfoExt*)native.Handle;
+			}
+		}
+
+		public DisplayEventInfoExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.DisplayEventInfoExt));
+			Initialize ();
+		}
+
+		internal DisplayEventInfoExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DisplayEventInfoExt;
+		}
+
+	}
+
+	unsafe public partial class SwapchainCounterCreateInfoExt : MarshalledObject
+	{
+		public SurfaceCounterFlagsExt SurfaceCounters {
+			get { return m->SurfaceCounters; }
+			set { m->SurfaceCounters = value; }
+		}
+		internal Interop.SwapchainCounterCreateInfoExt* m {
+
+			get {
+				return (Interop.SwapchainCounterCreateInfoExt*)native.Handle;
+			}
+		}
+
+		public SwapchainCounterCreateInfoExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.SwapchainCounterCreateInfoExt));
+			Initialize ();
+		}
+
+		internal SwapchainCounterCreateInfoExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.SwapchainCounterCreateInfoExt;
 		}
 
 	}

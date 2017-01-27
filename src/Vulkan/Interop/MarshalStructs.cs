@@ -913,6 +913,14 @@ namespace Vulkan.Interop
 		internal Bool32 Persistent;
 	}
 
+	internal partial struct ViSurfaceCreateInfoNn
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 Flags;
+		internal IntPtr Window;
+	}
+
 	internal partial struct SwapchainCreateInfoKhr
 	{
 		internal StructureType SType;
@@ -1137,6 +1145,7 @@ namespace Vulkan.Interop
 		internal ObjectEntryTypeNvx Type;
 		internal ObjectEntryUsageFlagsNvx Flags;
 		internal UInt64 Buffer;
+		internal IndexType IndexType;
 	}
 
 	internal partial struct ObjectTablePushConstantEntryNvx
@@ -1145,5 +1154,121 @@ namespace Vulkan.Interop
 		internal ObjectEntryUsageFlagsNvx Flags;
 		internal UInt64 PipelineLayout;
 		internal ShaderStageFlags StageFlags;
+	}
+
+	internal partial struct PhysicalDeviceFeatures2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal PhysicalDeviceFeatures Features;
+	}
+
+	internal partial struct PhysicalDeviceProperties2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal PhysicalDeviceProperties Properties;
+	}
+
+	internal partial struct FormatProperties2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal FormatProperties FormatProperties;
+	}
+
+	internal partial struct ImageFormatProperties2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ImageFormatProperties ImageFormatProperties;
+	}
+
+	internal partial struct PhysicalDeviceImageFormatInfo2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Format Format;
+		internal ImageType Type;
+		internal ImageTiling Tiling;
+		internal ImageUsageFlags Usage;
+		internal ImageCreateFlags Flags;
+	}
+
+	internal partial struct QueueFamilyProperties2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal QueueFamilyProperties QueueFamilyProperties;
+	}
+
+	internal partial struct PhysicalDeviceMemoryProperties2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal PhysicalDeviceMemoryProperties MemoryProperties;
+	}
+
+	internal partial struct SparseImageFormatProperties2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal SparseImageFormatProperties Properties;
+	}
+
+	internal partial struct PhysicalDeviceSparseImageFormatInfo2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Format Format;
+		internal ImageType Type;
+		internal SampleCountFlags Samples;
+		internal ImageUsageFlags Usage;
+		internal ImageTiling Tiling;
+	}
+
+	internal partial struct SurfaceCapabilities2Ext
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 MinImageCount;
+		internal UInt32 MaxImageCount;
+		internal Extent2D CurrentExtent;
+		internal Extent2D MinImageExtent;
+		internal Extent2D MaxImageExtent;
+		internal UInt32 MaxImageArrayLayers;
+		internal SurfaceTransformFlagsKhr SupportedTransforms;
+		internal SurfaceTransformFlagsKhr CurrentTransform;
+		internal CompositeAlphaFlagsKhr SupportedCompositeAlpha;
+		internal ImageUsageFlags SupportedUsageFlags;
+		internal SurfaceCounterFlagsExt SupportedSurfaceCounters;
+	}
+
+	internal partial struct DisplayPowerInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal DisplayPowerStateExt PowerState;
+	}
+
+	internal partial struct DeviceEventInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal DeviceEventTypeExt DeviceEvent;
+	}
+
+	internal partial struct DisplayEventInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal DisplayEventTypeExt DisplayEvent;
+	}
+
+	internal partial struct SwapchainCounterCreateInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal SurfaceCounterFlagsExt SurfaceCounters;
 	}
 }
