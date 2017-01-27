@@ -749,7 +749,7 @@ namespace VulkanSharp.Generator
 			if (csMemberName.EndsWith ("]"))
 				mod = "unsafe fixed ";
 
-			csMemberType = CheckFlagBitsName(csMemberType);
+			csMemberType = GetFlagBitsName (csMemberType);
 		
 			if (csMemberType.StartsWith ("PFN_"))
 				csMemberType = "IntPtr";

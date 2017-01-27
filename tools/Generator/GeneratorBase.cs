@@ -129,21 +129,18 @@ namespace VulkanSharp.Generator
 			string csName = GetTypeCsName (name, "enum");
 
 			if(bitmask)
-			{
-				csName = CheckFlagBitsName(csName);
-			}
+				csName = GetFlagBitsName (csName);
+
 
 			return csName;
 		}
 
-		protected string CheckFlagBitsName(string name)
+		protected string GetFlagBitsName (string name)
 		{
 			string ret = name;
 			string extStr = null;
-			foreach (var ext in extensions)
-			{
-				if (name.EndsWith(ext.Value))
-				{
+			foreach (var ext in extensions) { 
+				if (name.EndsWith(ext.Value))	{
 					extStr = ext.Value;
 					ret = name.Substring(0, name.Length - ext.Value.Length);
 					break;
