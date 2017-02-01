@@ -1946,8 +1946,7 @@ namespace VulkanSharp.Generator
 
 			var bitposAttribute = element.Attribute ("bitpos");
 			if (bitposAttribute != null) {
-				if (csEnumName.Contains("FlagBits"))
-					csEnumName = csEnumName.Replace("FlagBits", "Flags");
+				csEnumName = GetFlagBitsName(csEnumName);
 
 				return FormatFlagValue (Int32.Parse (bitposAttribute.Value));
 			}
