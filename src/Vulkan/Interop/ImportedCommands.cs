@@ -573,7 +573,7 @@ namespace Vulkan.Interop
 		internal static unsafe extern Result vkAcquireXlibDisplayEXT (IntPtr physicalDevice, IntPtr* dpy, UInt64 display);
 
 		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
-		internal static unsafe extern Result vkGetRandROutputDisplayEXT (IntPtr physicalDevice, IntPtr* dpy, IntPtr rrOutput, UInt64* pDisplay);
+		internal static unsafe extern Result vkGetRandROutputDisplayEXT (IntPtr physicalDevice, IntPtr* dpy, UInt32 rrOutput, UInt64* pDisplay);
 
 		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
 		internal static unsafe extern Result vkDisplayPowerControlEXT (IntPtr device, UInt64 display, DisplayPowerInfoExt* pDisplayPowerInfo);

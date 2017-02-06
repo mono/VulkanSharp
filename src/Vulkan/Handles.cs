@@ -722,7 +722,7 @@ namespace Vulkan
 			}
 		}
 
-		public void GetRandROutputDisplayEXT (out IntPtr dpy, IntPtr rrOutput, out DisplayKhr pDisplay)
+		public void GetRandROutputDisplayEXT (out IntPtr dpy, UInt32 rrOutput, out DisplayKhr pDisplay)
 		{
 			Result result;
 			unsafe {
