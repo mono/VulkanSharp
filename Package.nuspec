@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>VulkanSharp</id>
-    <version>0.1.7</version>
+    <version>0.1.8</version>
     <authors>Xamarin Inc</authors>
     <owners>rodo</owners>
     <licenseUrl>https://github.com/mono/VulkanSharp/blob/master/LICENSE</licenseUrl>
@@ -12,8 +12,7 @@
     <releaseNotes>
 This is the preview release of the VulkanSharp project.
 New in this release:
- * updated to Vulkan specs 1.0.30
- * fixed native memory issue #47
+ * updated to Vulkan specs 1.0.39
     </releaseNotes>
     <copyright>Copyright 2016 Xamarin Inc</copyright>
     <tags>Vulkan C# Bindings 3D VulkanSharp Graphics OpenSource MultiPlatform Android Windows</tags>
