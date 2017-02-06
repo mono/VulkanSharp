@@ -83,8 +83,8 @@ namespace VulkanSharp.Generator
 			{ "HANDLE", "IntPtr" },
 			{ "DWORD", "UInt32" },
 			{ "SECURITY_ATTRIBUTES", "SecurityAttributes" },
-			{ "Display", "IntPtr" },
-			{ "RROutput", "IntPtr" },
+			{ "Display", "IntPtr" },  // this is now broken, as Handles use DisplayKHR instead of it
+			{ "RROutput", "UInt32" },
 		};
 
 		protected static Dictionary<string, string> extensions = new Dictionary<string, string> {

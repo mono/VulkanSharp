@@ -1079,6 +1079,7 @@ namespace VulkanSharp.Generator
 		{
 			public string csName;
 			public string csType;
+			public string type;
 			public string len;
 			public bool isOut;
 			public bool isStruct;
@@ -1146,6 +1147,7 @@ namespace VulkanSharp.Generator
 				string type = param.Element ("type").Value;
 				bool isPointer = param.Value.Contains (type + "*");
 				info.csType = GetParamCsType (type, ref isPointer, out info.isHandle);
+				info.type = type;
 				paramsDict.Add (csName, info);
 				info.isPointer = isPointer;
 				info.isConst = info.isPointer && param.Value.Contains ("const ");
@@ -1361,6 +1363,9 @@ namespace VulkanSharp.Generator
 			"CreateComputePipelines",
 			"CreateSharedSwapchainsKHR",
 		};
+		HashSet<string> notLengthTypes = new HashSet<string> {
+			"RROutput",
+		};
 
 		bool CommandShouldCreateArray (XElement commandElement, Dictionary<string, ParamInfo> paramsDict, ref ParamInfo intParam, ref ParamInfo dataParam)
 		{
@@ -1371,7 +1376,7 @@ namespace VulkanSharp.Generator
 					continue;
 
 				var info = paramsDict [name];
-				if (info.csType == "UInt32")
+				if (info.csType == "UInt32" && !notLengthTypes.Contains (info.type))
 					outUInt = info;
 				else {
 					if (outUInt != null && info.isOut && (info.isStruct || info.isHandle || info.isPointer)) {
