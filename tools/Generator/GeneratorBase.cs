@@ -11,6 +11,7 @@ namespace VulkanSharp.Generator
 			{ "AMD", "Amd" },
 			{ "API", "Api" },
 			{ "EXT", "Ext" },
+			{ "ID", "ID" },
 			{ "KHR", "Khr" },
 			{ "KHX", "Khx" },
 			{ "1D", "1D" },
