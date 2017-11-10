@@ -852,6 +852,8 @@ namespace VulkanSharp.Generator
 			"ExportFenceWin32HandleInfoKhr",
 			// TODO: support fixed array of Handles
 			"PhysicalDeviceGroupPropertiesKhx",
+			// NativeBufferAndroid uses disabled extension
+			"NativeBufferAndroid",
 		};
 
 		void WriteStructureInitializeMethod (List<StructMemberInfo> members, string csName, bool hasSType)
