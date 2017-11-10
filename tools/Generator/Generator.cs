@@ -671,6 +671,12 @@ namespace VulkanSharp.Generator
 		List<StructMemberInfo> initializeMembers;
 		List<string> arrayMembers;
 
+		bool ArrayInComment (XElement memberElement)
+		{
+			var commentElement = memberElement.Element ("comment");
+			return commentElement != null && commentElement.Value.Contains ('[');
+		}
+
 		bool WriteMember (XElement memberElement)
 		{
 			var parentName = memberElement.Parent.Attribute ("name").Value;
@@ -729,7 +735,11 @@ namespace VulkanSharp.Generator
 						isArray = true;
 					break;
 				}
-			} else if (memberElement.Value.Contains ('[') && GetArrayLength (memberElement) != null && !(structures.ContainsKey (csMemberType) && structures [csMemberType].needsMarshalling))
+			} else if (memberElement.Value.Contains ('[')
+			           && GetArrayLength (memberElement) != null
+			           && !(structures.ContainsKey (csMemberType)
+			                && structures [csMemberType].needsMarshalling)
+			           && !ArrayInComment (memberElement))
 				isFixedArray = true;
 			var csMemberName = TranslateCName (name);
 
@@ -778,7 +788,10 @@ namespace VulkanSharp.Generator
 				string arrayPart = "";
 				string fixedPart = "";
 				int count = 1;
-				if (member.Contains ('[') && !(memberIsStructure && structures [csMemberType].needsMarshalling)) {
+				if (member.Contains ('[')
+				    && !(memberIsStructure
+				         && structures [csMemberType].needsMarshalling)
+				    && !ArrayInComment (memberElement)) {
 					string len = GetArrayLength (memberElement);
 					if (memberIsStructure)
 						count = Convert.ToInt32 (len);
