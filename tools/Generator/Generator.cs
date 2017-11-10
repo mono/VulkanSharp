@@ -1977,14 +1977,13 @@ namespace VulkanSharp.Generator
 
 		void LearnExtension (XElement extensionElement)
 		{
-			var extensions = from e in extensionElement.Element ("require").Elements ("enum") where e.Attribute ("extends") != null select e;
+			var extensions = from e in extensionElement.Elements ("require").Elements ("enum") where e.Attribute ("extends") != null select e;
 			int number = Int32.Parse (extensionElement.Attribute ("number").Value);
 			foreach (var element in extensions) {
 				string enumName = GetTypeCsName (element.Attribute ("extends").Value, "enum");
 				var info = new EnumExtensionInfo { name = element.Attribute ("name").Value, value = EnumExtensionValue (element, number, ref enumName) };
 				if (!enumExtensions.ContainsKey (enumName))
 					enumExtensions [enumName] = new List<EnumExtensionInfo> ();
-
 				enumExtensions [enumName].Add (info);
 			}
 		}
