@@ -398,7 +398,7 @@ namespace VulkanSharp.Generator
 			{ "ReleaseKeys", "ReleaseCount" },
 		};
 
-		void WriteMemberFixedArray (string csMemberType, string csMemberName, XElement memberElement, bool isStruct)
+		void WriteMemberFixedArray (string csMemberType, string csMemberName, XElement memberElement, bool isStruct, bool needsCharCast)
 		{
 			string counter = fieldCounterMap.ContainsKey (csMemberName) ? fieldCounterMap [csMemberName] : null;
 			string len = GetArrayLength (memberElement);
@@ -419,7 +419,7 @@ namespace VulkanSharp.Generator
 				IndentLevel--;
 				IndentWriteLine ("}");
 			} else
-				IndentWriteLine ("arr [i] = m->{0} [i];", csMemberName);
+				IndentWriteLine ("arr [i] = {1}m->{0} [i];", csMemberName, needsCharCast ? "(char)" : "");
 			IndentLevel--;
 			IndentWriteLine ("return arr;");
 			IndentLevel--;
@@ -444,7 +444,7 @@ namespace VulkanSharp.Generator
 				IndentLevel--;
 				IndentWriteLine ("}");
 			} else
-				IndentWriteLine ("m->{0} [i] = value [i];", csMemberName);
+				IndentWriteLine ("m->{0} [i] = {1}value [i];", csMemberName, needsCharCast ? "(byte)" : "");
 			IndentLevel--;
 			if (counter == null && !isStruct) {
 				IndentWriteLine ("for (int i = value.Length; i < {0}; i++)", len);
@@ -760,8 +760,12 @@ namespace VulkanSharp.Generator
 			if (csMemberType == "Bool32" && !isInterop && needsMarshalling)
 				csMemberType = "bool";
 
-			if (csMemberType == "char" && (isInterop || !needsMarshalling))
-				csMemberType = "byte";
+			bool needsCharCast = false;
+			if (csMemberType == "char") {
+				if (isInterop || !needsMarshalling)
+					csMemberType = "byte";
+				needsCharCast = true;
+			}
 
 			string attr = "";
 			string sec = isInterop ? "internal" : "public";
@@ -793,7 +797,7 @@ namespace VulkanSharp.Generator
 				if (isCharArray)
 					WriteMemberCharArray (csMemberName, sec);
 				else if (isFixedArray)
-					WriteMemberFixedArray (csMemberType, csMemberName, memberElement, memberIsStructure);
+					WriteMemberFixedArray (csMemberType, csMemberName, memberElement, memberIsStructure, needsCharCast);
 				else if (isArray) {
 					WriteMemberArray (csMemberType, csMemberName, sec, memberElement);
 					arrayMembers.Add (csMemberName);
