@@ -827,6 +827,12 @@ namespace VulkanSharp.Generator
 			"ImportMemoryWin32HandleInfoNv",
 			"ExportMemoryWin32HandleInfoNv",
 			"Win32KeyedMutexAcquireReleaseInfoNv",
+			"ImportMemoryWin32HandleInfoKhr",
+			"ExportMemoryWin32HandleInfoKhr",
+			"ImportSemaphoreWin32HandleInfoKhr",
+			"ExportSemaphoreWin32HandleInfoKhr",
+			"ImportFenceWin32HandleInfoKhr",
+			"ExportFenceWin32HandleInfoKhr",
 		};
 
 		void WriteStructureInitializeMethod (List<StructMemberInfo> members, string csName, bool hasSType)
@@ -1835,6 +1841,8 @@ namespace VulkanSharp.Generator
 			"vkCreateXcbSurfaceKHR",
 			"vkCreateAndroidSurfaceKHR",
 			"vkGetMemoryWin32HandleNV",
+			"vkImportSemaphoreWin32HandleKHR",
+			"vkImportFenceWin32HandleKHR",
 		};
 
 		HashSet<string> delegateUnmanagedCommands = new HashSet<string> {
