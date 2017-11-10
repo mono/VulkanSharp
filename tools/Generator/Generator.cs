@@ -837,6 +837,8 @@ namespace VulkanSharp.Generator
 			"ExportSemaphoreWin32HandleInfoKhr",
 			"ImportFenceWin32HandleInfoKhr",
 			"ExportFenceWin32HandleInfoKhr",
+			// TODO: support fixed array of Handles
+			"PhysicalDeviceGroupPropertiesKhx",
 		};
 
 		void WriteStructureInitializeMethod (List<StructMemberInfo> members, string csName, bool hasSType)
@@ -1847,6 +1849,8 @@ namespace VulkanSharp.Generator
 			"vkGetMemoryWin32HandleNV",
 			"vkImportSemaphoreWin32HandleKHR",
 			"vkImportFenceWin32HandleKHR",
+			// TODO: support fixed array of Handles
+			"vkEnumeratePhysicalDeviceGroupsKHX",
 		};
 
 		HashSet<string> delegateUnmanagedCommands = new HashSet<string> {
