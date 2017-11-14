@@ -1510,7 +1510,10 @@ namespace VulkanSharp.Generator
 							switch (firstOutParam.csType) {
 							case "Bool32":
 							case "IntPtr":
+							case "int":
+							case "Int32":
 							case "UInt32":
+							case "Int64":
 							case "UInt64":
 							case "DeviceSize":
 								firstOutParam.isFixed = false;
