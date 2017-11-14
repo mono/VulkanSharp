@@ -1334,7 +1334,7 @@ namespace VulkanSharp.Generator
 							Write ("({0})({1} != null ? {2} : 0)", info.csType, GetParamName (info.lenArray.csName, useArrayParameters), info.constValue);
 					} else {
 						var safeParamName = GetSafeParameterName (paramName);
-						var needsAddress = (info.isPointer && (!info.isStruct || !info.needsMarshalling) && !info.isFixed);
+						var needsAddress = (info.isPointer && (!info.isStruct || !info.needsMarshalling) && !(info.isConst && info.csType =="IntPtr") && !info.isFixed);
 						var nativeValue = GetDefaultNativeValue (info.csType);
 						if (useHandlePtr) {
 							if (!needsAddress && nativeValue == "null")
