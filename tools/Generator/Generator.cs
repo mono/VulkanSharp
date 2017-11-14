@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
+using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -671,13 +672,17 @@ namespace VulkanSharp.Generator
 		List<StructMemberInfo> initializeMembers;
 		List<string> arrayMembers;
 
+		string InnerValue (XElement element)
+		{
+			var sb = new StringBuilder ();
+			foreach (var node in element.Nodes ().OfType<XText> ())
+				sb.Append (node.Value);
+			return sb.ToString ();
+		}
+
 		bool IsArray (XElement memberElement)
 		{
-			if (!memberElement.Value.Contains ('['))
-				return false;
-
-			var commentElement = memberElement.Element ("comment");
-			return commentElement == null || !commentElement.Value.Contains ('[');
+			return InnerValue (memberElement).Contains ('[');
 		}
 
 		bool WriteMember (XElement memberElement)
@@ -755,7 +760,7 @@ namespace VulkanSharp.Generator
 			currentStructInfo.members [csMemberName] = nameElement.Value;
 
 			var isCharArray = false;
-			if (csMemberType == "char" && memberElement.Value.EndsWith ("]"))
+			if (csMemberType == "char" && InnerValue (memberElement).EndsWith ("]"))
 				isCharArray = true;
 			string mod = "";
 			if (csMemberName.EndsWith ("]"))
