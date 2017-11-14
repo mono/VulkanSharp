@@ -671,10 +671,13 @@ namespace VulkanSharp.Generator
 		List<StructMemberInfo> initializeMembers;
 		List<string> arrayMembers;
 
-		bool ArrayInComment (XElement memberElement)
+		bool IsArray (XElement memberElement)
 		{
+			if (!memberElement.Value.Contains ('['))
+				return false;
+
 			var commentElement = memberElement.Element ("comment");
-			return commentElement != null && commentElement.Value.Contains ('[');
+			return commentElement == null || !commentElement.Value.Contains ('[');
 		}
 
 		bool WriteMember (XElement memberElement)
@@ -735,11 +738,10 @@ namespace VulkanSharp.Generator
 						isArray = true;
 					break;
 				}
-			} else if (memberElement.Value.Contains ('[')
+			} else if (IsArray (memberElement)
 			           && GetArrayLength (memberElement) != null
 			           && !(structures.ContainsKey (csMemberType)
-			                && structures [csMemberType].needsMarshalling)
-			           && !ArrayInComment (memberElement))
+			                && structures [csMemberType].needsMarshalling))
 				isFixedArray = true;
 			var csMemberName = TranslateCName (name);
 
@@ -788,10 +790,9 @@ namespace VulkanSharp.Generator
 				string arrayPart = "";
 				string fixedPart = "";
 				int count = 1;
-				if (member.Contains ('[')
+				if (IsArray (memberElement)
 				    && !(memberIsStructure
-				         && structures [csMemberType].needsMarshalling)
-				    && !ArrayInComment (memberElement)) {
+				         && structures [csMemberType].needsMarshalling)) {
 					string len = GetArrayLength (memberElement);
 					if (memberIsStructure)
 						count = Convert.ToInt32 (len);
@@ -998,7 +999,10 @@ namespace VulkanSharp.Generator
 				var typeElement = memberElement.Element ("type");
 				var csMemberType = GetTypeCsName (typeElement.Value, "member");
 
-				if (member.Contains ("*") || member.Contains ("[") || (structures.ContainsKey (csMemberType) && structures [csMemberType].needsMarshalling) || handles.ContainsKey (csMemberType))
+				if (member.Contains ("*")
+				    || IsArray (memberElement)
+				    || (structures.ContainsKey (csMemberType) && structures [csMemberType].needsMarshalling)
+				    || handles.ContainsKey (csMemberType))
 					return true;
 			}
 
