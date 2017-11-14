@@ -385,7 +385,7 @@ namespace Vulkan.Interop
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal UInt32 Flags;
+		internal DescriptorSetLayoutCreateFlags Flags;
 		internal UInt32 BindingCount;
 		internal IntPtr Bindings;
 	}
@@ -667,7 +667,7 @@ namespace Vulkan.Interop
 
 	internal partial struct SubpassDescription
 	{
-		internal UInt32 Flags;
+		internal SubpassDescriptionFlags Flags;
 		internal PipelineBindPoint PipelineBindPoint;
 		internal UInt32 InputAttachmentCount;
 		internal IntPtr InputAttachments;
@@ -925,7 +925,7 @@ namespace Vulkan.Interop
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal UInt32 Flags;
+		internal SwapchainCreateFlagsKhr Flags;
 		internal UInt64 Surface;
 		internal UInt32 MinImageCount;
 		internal Format ImageFormat;
@@ -1227,6 +1227,285 @@ namespace Vulkan.Interop
 		internal ImageTiling Tiling;
 	}
 
+	internal partial struct PhysicalDevicePushDescriptorPropertiesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 MaxPushDescriptors;
+	}
+
+	internal partial struct PresentRegionsKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 SwapchainCount;
+		internal IntPtr Regions;
+	}
+
+	internal partial struct PresentRegionKhr
+	{
+		internal UInt32 RectangleCount;
+		internal IntPtr Rectangles;
+	}
+
+	internal partial struct PhysicalDeviceVariablePointerFeaturesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 VariablePointersStorageBuffer;
+		internal Bool32 VariablePointers;
+	}
+
+	internal partial struct PhysicalDeviceExternalImageFormatInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalMemoryHandleTypeFlagsKhr HandleType;
+	}
+
+	internal partial struct ExternalImageFormatPropertiesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalMemoryPropertiesKhr ExternalMemoryProperties;
+	}
+
+	internal partial struct PhysicalDeviceExternalBufferInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal BufferCreateFlags Flags;
+		internal BufferUsageFlags Usage;
+		internal ExternalMemoryHandleTypeFlagsKhr HandleType;
+	}
+
+	internal partial struct ExternalBufferPropertiesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalMemoryPropertiesKhr ExternalMemoryProperties;
+	}
+
+	internal partial struct PhysicalDeviceIDPropertiesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal unsafe fixed byte DeviceUuid[16];
+		internal unsafe fixed byte DriverUuid[16];
+		internal unsafe fixed byte DeviceLuid[8];
+		internal UInt32 DeviceNodeMask;
+		internal Bool32 DeviceLuidvalid;
+	}
+
+	internal partial struct ExternalMemoryImageCreateInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalMemoryHandleTypeFlagsKhr HandleTypes;
+	}
+
+	internal partial struct ExternalMemoryBufferCreateInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalMemoryHandleTypeFlagsKhr HandleTypes;
+	}
+
+	internal partial struct ExportMemoryAllocateInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalMemoryHandleTypeFlagsKhr HandleTypes;
+	}
+
+	internal partial struct MemoryWin32HandlePropertiesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 MemoryTypeBits;
+	}
+
+	internal partial struct MemoryGetWin32HandleInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Memory;
+		internal ExternalMemoryHandleTypeFlagsKhr HandleType;
+	}
+
+	internal partial struct ImportMemoryFdInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalMemoryHandleTypeFlagsKhr HandleType;
+		internal int Fd;
+	}
+
+	internal partial struct MemoryFdPropertiesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 MemoryTypeBits;
+	}
+
+	internal partial struct MemoryGetFdInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Memory;
+		internal ExternalMemoryHandleTypeFlagsKhr HandleType;
+	}
+
+	internal partial struct Win32KeyedMutexAcquireReleaseInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 AcquireCount;
+		internal IntPtr AcquireSyncs;
+		internal IntPtr AcquireKeys;
+		internal IntPtr AcquireTimeouts;
+		internal UInt32 ReleaseCount;
+		internal IntPtr ReleaseSyncs;
+		internal IntPtr ReleaseKeys;
+	}
+
+	internal partial struct PhysicalDeviceExternalSemaphoreInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalSemaphoreHandleTypeFlagsKhr HandleType;
+	}
+
+	internal partial struct ExternalSemaphorePropertiesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalSemaphoreHandleTypeFlagsKhr ExportFromImportedHandleTypes;
+		internal ExternalSemaphoreHandleTypeFlagsKhr CompatibleHandleTypes;
+		internal ExternalSemaphoreFeatureFlagsKhr ExternalSemaphoreFeatures;
+	}
+
+	internal partial struct ExportSemaphoreCreateInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalSemaphoreHandleTypeFlagsKhr HandleTypes;
+	}
+
+	internal partial struct D3D12FenceSubmitInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 WaitSemaphoreValuesCount;
+		internal IntPtr WaitSemaphoreValues;
+		internal UInt32 SignalSemaphoreValuesCount;
+		internal IntPtr SignalSemaphoreValues;
+	}
+
+	internal partial struct SemaphoreGetWin32HandleInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Semaphore;
+		internal ExternalSemaphoreHandleTypeFlagsKhr HandleType;
+	}
+
+	internal partial struct ImportSemaphoreFdInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Semaphore;
+		internal SemaphoreImportFlagsKhr Flags;
+		internal ExternalSemaphoreHandleTypeFlagsKhr HandleType;
+		internal int Fd;
+	}
+
+	internal partial struct SemaphoreGetFdInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Semaphore;
+		internal ExternalSemaphoreHandleTypeFlagsKhr HandleType;
+	}
+
+	internal partial struct PhysicalDeviceExternalFenceInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalFenceHandleTypeFlagsKhr HandleType;
+	}
+
+	internal partial struct ExternalFencePropertiesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalFenceHandleTypeFlagsKhr ExportFromImportedHandleTypes;
+		internal ExternalFenceHandleTypeFlagsKhr CompatibleHandleTypes;
+		internal ExternalFenceFeatureFlagsKhr ExternalFenceFeatures;
+	}
+
+	internal partial struct ExportFenceCreateInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalFenceHandleTypeFlagsKhr HandleTypes;
+	}
+
+	internal partial struct FenceGetWin32HandleInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Fence;
+		internal ExternalFenceHandleTypeFlagsKhr HandleType;
+	}
+
+	internal partial struct ImportFenceFdInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Fence;
+		internal FenceImportFlagsKhr Flags;
+		internal ExternalFenceHandleTypeFlagsKhr HandleType;
+		internal int Fd;
+	}
+
+	internal partial struct FenceGetFdInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Fence;
+		internal ExternalFenceHandleTypeFlagsKhr HandleType;
+	}
+
+	internal partial struct PhysicalDeviceMultiviewFeaturesKhx
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 Multiview;
+		internal Bool32 MultiviewGeometryShader;
+		internal Bool32 MultiviewTessellationShader;
+	}
+
+	internal partial struct PhysicalDeviceMultiviewPropertiesKhx
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 MaxMultiviewViewCount;
+		internal UInt32 MaxMultiviewInstanceIndex;
+	}
+
+	internal partial struct RenderPassMultiviewCreateInfoKhx
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 SubpassCount;
+		internal IntPtr ViewMasks;
+		internal UInt32 DependencyCount;
+		internal IntPtr ViewOffsets;
+		internal UInt32 CorrelationMaskCount;
+		internal IntPtr CorrelationMasks;
+	}
+
 	internal partial struct SurfaceCapabilities2Ext
 	{
 		internal StructureType SType;
@@ -1270,5 +1549,574 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal SurfaceCounterFlagsExt SurfaceCounters;
+	}
+
+	internal partial struct MemoryAllocateFlagsInfoKhx
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal MemoryAllocateFlagsKhx Flags;
+		internal UInt32 DeviceMask;
+	}
+
+	internal partial struct BindBufferMemoryInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Buffer;
+		internal UInt64 Memory;
+		internal DeviceSize MemoryOffset;
+	}
+
+	internal partial struct BindBufferMemoryDeviceGroupInfoKhx
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 DeviceIndexCount;
+		internal IntPtr DeviceIndices;
+	}
+
+	internal partial struct BindImageMemoryInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Image;
+		internal UInt64 Memory;
+		internal DeviceSize MemoryOffset;
+	}
+
+	internal partial struct BindImageMemoryDeviceGroupInfoKhx
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 DeviceIndexCount;
+		internal IntPtr DeviceIndices;
+		internal UInt32 SfrrectCount;
+		internal IntPtr Sfrrects;
+	}
+
+	internal partial struct DeviceGroupRenderPassBeginInfoKhx
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 DeviceMask;
+		internal UInt32 DeviceRenderAreaCount;
+		internal IntPtr DeviceRenderAreas;
+	}
+
+	internal partial struct DeviceGroupCommandBufferBeginInfoKhx
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 DeviceMask;
+	}
+
+	internal partial struct DeviceGroupSubmitInfoKhx
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 WaitSemaphoreCount;
+		internal IntPtr WaitSemaphoreDeviceIndices;
+		internal UInt32 CommandBufferCount;
+		internal IntPtr CommandBufferDeviceMasks;
+		internal UInt32 SignalSemaphoreCount;
+		internal IntPtr SignalSemaphoreDeviceIndices;
+	}
+
+	internal partial struct DeviceGroupBindSparseInfoKhx
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 ResourceDeviceIndex;
+		internal UInt32 MemoryDeviceIndex;
+	}
+
+	internal partial struct DeviceGroupPresentCapabilitiesKhx
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal unsafe fixed UInt32 PresentMask[32];
+		internal DeviceGroupPresentModeFlagsKhx Modes;
+	}
+
+	internal partial struct ImageSwapchainCreateInfoKhx
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Swapchain;
+	}
+
+	internal partial struct BindImageMemorySwapchainInfoKhx
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Swapchain;
+		internal UInt32 ImageIndex;
+	}
+
+	internal partial struct AcquireNextImageInfoKhx
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Swapchain;
+		internal UInt64 Timeout;
+		internal UInt64 Semaphore;
+		internal UInt64 Fence;
+		internal UInt32 DeviceMask;
+	}
+
+	internal partial struct DeviceGroupPresentInfoKhx
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 SwapchainCount;
+		internal IntPtr DeviceMasks;
+		internal DeviceGroupPresentModeFlagsKhx Mode;
+	}
+
+	internal partial struct DeviceGroupDeviceCreateInfoKhx
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 PhysicalDeviceCount;
+		internal IntPtr PhysicalDevices;
+	}
+
+	internal partial struct DeviceGroupSwapchainCreateInfoKhx
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal DeviceGroupPresentModeFlagsKhx Modes;
+	}
+
+	internal partial struct DescriptorUpdateTemplateCreateInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 Flags;
+		internal UInt32 DescriptorUpdateEntryCount;
+		internal IntPtr DescriptorUpdateEntries;
+		internal DescriptorUpdateTemplateTypeKhr TemplateType;
+		internal UInt64 DescriptorSetLayout;
+		internal PipelineBindPoint PipelineBindPoint;
+		internal UInt64 PipelineLayout;
+		internal UInt32 Set;
+	}
+
+	internal partial struct HdrMetadataExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal XYColorExt DisplayPrimaryRed;
+		internal XYColorExt DisplayPrimaryGreen;
+		internal XYColorExt DisplayPrimaryBlue;
+		internal XYColorExt WhitePoint;
+		internal float MaxLuminance;
+		internal float MinLuminance;
+		internal float MaxContentLightLevel;
+		internal float MaxFrameAverageLightLevel;
+	}
+
+	internal partial struct PresentTimesInfoGoogle
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 SwapchainCount;
+		internal IntPtr Times;
+	}
+
+	internal partial struct IOSSurfaceCreateInfoMvk
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 Flags;
+		internal IntPtr View;
+	}
+
+	internal partial struct MacOSSurfaceCreateInfoMvk
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 Flags;
+		internal IntPtr View;
+	}
+
+	internal partial struct PipelineViewportWScalingStateCreateInfoNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 ViewportWscalingEnable;
+		internal UInt32 ViewportCount;
+		internal IntPtr ViewportWscalings;
+	}
+
+	internal partial struct PipelineViewportSwizzleStateCreateInfoNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 Flags;
+		internal UInt32 ViewportCount;
+		internal IntPtr ViewportSwizzles;
+	}
+
+	internal partial struct PhysicalDeviceDiscardRectanglePropertiesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 MaxDiscardRectangles;
+	}
+
+	internal partial struct PipelineDiscardRectangleStateCreateInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 Flags;
+		internal DiscardRectangleModeExt DiscardRectangleMode;
+		internal UInt32 DiscardRectangleCount;
+		internal IntPtr DiscardRectangles;
+	}
+
+	internal partial struct PhysicalDeviceMultiviewPerViewAttributesPropertiesNvx
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 PerViewPositionAllComponents;
+	}
+
+	internal partial struct RenderPassInputAttachmentAspectCreateInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 AspectReferenceCount;
+		internal IntPtr AspectReferences;
+	}
+
+	internal partial struct PhysicalDeviceSurfaceInfo2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Surface;
+	}
+
+	internal partial struct SurfaceCapabilities2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal SurfaceCapabilitiesKhr SurfaceCapabilities;
+	}
+
+	internal partial struct SurfaceFormat2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal SurfaceFormatKhr SurfaceFormat;
+	}
+
+	internal partial struct SharedPresentSurfaceCapabilitiesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ImageUsageFlags SharedPresentSupportedUsageFlags;
+	}
+
+	internal partial struct PhysicalDevice16BitStorageFeaturesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 StorageBuffer16BitAccess;
+		internal Bool32 UniformAndStorageBuffer16BitAccess;
+		internal Bool32 StoragePushConstant16;
+		internal Bool32 StorageInputOutput16;
+	}
+
+	internal partial struct BufferMemoryRequirementsInfo2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Buffer;
+	}
+
+	internal partial struct ImageMemoryRequirementsInfo2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Image;
+	}
+
+	internal partial struct ImageSparseMemoryRequirementsInfo2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Image;
+	}
+
+	internal partial struct MemoryRequirements2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal MemoryRequirements MemoryRequirements;
+	}
+
+	internal partial struct SparseImageMemoryRequirements2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal SparseImageMemoryRequirements MemoryRequirements;
+	}
+
+	internal partial struct PhysicalDevicePointClippingPropertiesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal PointClippingBehaviorKhr PointClippingBehavior;
+	}
+
+	internal partial struct MemoryDedicatedRequirementsKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 PrefersDedicatedAllocation;
+		internal Bool32 RequiresDedicatedAllocation;
+	}
+
+	internal partial struct MemoryDedicatedAllocateInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Image;
+		internal UInt64 Buffer;
+	}
+
+	internal partial struct ImageViewUsageCreateInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ImageUsageFlags Usage;
+	}
+
+	internal partial struct PipelineTessellationDomainOriginStateCreateInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal TessellationDomainOriginKhr DomainOrigin;
+	}
+
+	internal partial struct SamplerYcbcrConversionInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Conversion;
+	}
+
+	internal partial struct SamplerYcbcrConversionCreateInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Format Format;
+		internal SamplerYcbcrModelConversionKhr YcbcrModel;
+		internal SamplerYcbcrRangeKhr YcbcrRange;
+		internal ComponentMapping Components;
+		internal ChromaLocationKhr XChromaOffset;
+		internal ChromaLocationKhr YChromaOffset;
+		internal Filter ChromaFilter;
+		internal Bool32 ForceExplicitReconstruction;
+	}
+
+	internal partial struct BindImagePlaneMemoryInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ImageAspectFlags PlaneAspect;
+	}
+
+	internal partial struct ImagePlaneMemoryRequirementsInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ImageAspectFlags PlaneAspect;
+	}
+
+	internal partial struct PhysicalDeviceSamplerYcbcrConversionFeaturesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 SamplerYcbcrConversion;
+	}
+
+	internal partial struct SamplerYcbcrConversionImageFormatPropertiesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 CombinedImageSamplerDescriptorCount;
+	}
+
+	internal partial struct TextureLODGatherFormatPropertiesAmd
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 SupportsTextureGatherLodbiasAmd;
+	}
+
+	internal partial struct PipelineCoverageToColorStateCreateInfoNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 Flags;
+		internal Bool32 CoverageToColorEnable;
+		internal UInt32 CoverageToColorLocation;
+	}
+
+	internal partial struct PhysicalDeviceSamplerFilterMinmaxPropertiesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 FilterMinmaxSingleComponentFormats;
+		internal Bool32 FilterMinmaxImageComponentMapping;
+	}
+
+	internal partial struct SampleLocationsInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal SampleCountFlags SampleLocationsPerPixel;
+		internal Extent2D SampleLocationGridSize;
+		internal UInt32 SampleLocationsCount;
+		internal IntPtr SampleLocations;
+	}
+
+	internal partial struct AttachmentSampleLocationsExt
+	{
+		internal UInt32 AttachmentIndex;
+		internal SampleLocationsInfoExt SampleLocationsInfo;
+	}
+
+	internal partial struct SubpassSampleLocationsExt
+	{
+		internal UInt32 SubpassIndex;
+		internal SampleLocationsInfoExt SampleLocationsInfo;
+	}
+
+	internal partial struct RenderPassSampleLocationsBeginInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 AttachmentInitialSampleLocationsCount;
+		internal IntPtr AttachmentInitialSampleLocations;
+		internal UInt32 PostSubpassSampleLocationsCount;
+		internal IntPtr PostSubpassSampleLocations;
+	}
+
+	internal partial struct PipelineSampleLocationsStateCreateInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 SampleLocationsEnable;
+		internal SampleLocationsInfoExt SampleLocationsInfo;
+	}
+
+	internal partial struct PhysicalDeviceSampleLocationsPropertiesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal SampleCountFlags SampleLocationSampleCounts;
+		internal Extent2D MaxSampleLocationGridSize;
+		internal unsafe fixed float SampleLocationCoordinateRange[2];
+		internal UInt32 SampleLocationSubPixelBits;
+		internal Bool32 VariableSampleLocations;
+	}
+
+	internal partial struct MultisamplePropertiesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Extent2D MaxSampleLocationGridSize;
+	}
+
+	internal partial struct SamplerReductionModeCreateInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal SamplerReductionModeExt ReductionMode;
+	}
+
+	internal partial struct PhysicalDeviceBlendOperationAdvancedFeaturesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 AdvancedBlendCoherentOperations;
+	}
+
+	internal partial struct PhysicalDeviceBlendOperationAdvancedPropertiesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 AdvancedBlendMaxColorAttachments;
+		internal Bool32 AdvancedBlendIndependentBlend;
+		internal Bool32 AdvancedBlendNonPremultipliedSrcColor;
+		internal Bool32 AdvancedBlendNonPremultipliedDstColor;
+		internal Bool32 AdvancedBlendCorrelatedOverlap;
+		internal Bool32 AdvancedBlendAllOperations;
+	}
+
+	internal partial struct PipelineColorBlendAdvancedStateCreateInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 SrcPremultiplied;
+		internal Bool32 DstPremultiplied;
+		internal BlendOverlapExt BlendOverlap;
+	}
+
+	internal partial struct PipelineCoverageModulationStateCreateInfoNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 Flags;
+		internal CoverageModulationModeNv CoverageModulationMode;
+		internal Bool32 CoverageModulationTableEnable;
+		internal UInt32 CoverageModulationTableCount;
+		internal IntPtr CoverageModulationTable;
+	}
+
+	internal partial struct ImageFormatListCreateInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 ViewFormatCount;
+		internal IntPtr ViewFormats;
+	}
+
+	internal partial struct ValidationCacheCreateInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 Flags;
+		internal UIntPtr InitialDataSize;
+		internal IntPtr InitialData;
+	}
+
+	internal partial struct ShaderModuleValidationCacheCreateInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 ValidationCache;
+	}
+
+	internal partial struct ShaderStatisticsInfoAmd
+	{
+		internal ShaderStageFlags ShaderStageMask;
+		internal ShaderResourceUsageAmd ResourceUsage;
+		internal UInt32 NumPhysicalVgprs;
+		internal UInt32 NumPhysicalSgprs;
+		internal UInt32 NumAvailableVgprs;
+		internal UInt32 NumAvailableSgprs;
+		internal unsafe fixed UInt32 ComputeWorkGroupSize[3];
+	}
+
+	internal partial struct DeviceQueueGlobalPriorityCreateInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal QueueGlobalPriorityExt GlobalPriority;
 	}
 }

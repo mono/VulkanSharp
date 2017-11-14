@@ -55,12 +55,6 @@ namespace Vulkan
 		public Extent2D Extent;
 	}
 
-	unsafe public partial struct Rect3D
-	{
-		public Offset3D Offset;
-		public Extent3D Extent;
-	}
-
 	unsafe public partial struct ClearRect
 	{
 		public Rect2D Rect;
@@ -2662,7 +2656,7 @@ namespace Vulkan
 
 	unsafe public partial class DescriptorSetLayoutCreateInfo : MarshalledObject
 	{
-		public UInt32 Flags {
+		public DescriptorSetLayoutCreateFlags Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
 		}
@@ -4698,7 +4692,7 @@ namespace Vulkan
 
 	unsafe public partial class SubpassDescription : MarshalledObject
 	{
-		public UInt32 Flags {
+		public SubpassDescriptionFlags Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
 		}
@@ -6596,7 +6590,7 @@ namespace Vulkan
 
 	unsafe public partial class SwapchainCreateInfoKhr : MarshalledObject
 	{
-		public UInt32 Flags {
+		public SwapchainCreateFlagsKhr Flags {
 			get { return m->Flags; }
 			set { m->Flags = value; }
 		}
@@ -8539,6 +8533,1792 @@ namespace Vulkan
 
 	}
 
+	unsafe public partial class PhysicalDevicePushDescriptorPropertiesKhr : MarshalledObject
+	{
+		public UInt32 MaxPushDescriptors {
+			get { return m->MaxPushDescriptors; }
+			set { m->MaxPushDescriptors = value; }
+		}
+		internal Interop.PhysicalDevicePushDescriptorPropertiesKhr* m {
+
+			get {
+				return (Interop.PhysicalDevicePushDescriptorPropertiesKhr*)native.Handle;
+			}
+		}
+
+		public PhysicalDevicePushDescriptorPropertiesKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDevicePushDescriptorPropertiesKhr));
+			Initialize ();
+		}
+
+		internal PhysicalDevicePushDescriptorPropertiesKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDevicePushDescriptorPropertiesKhr;
+		}
+
+	}
+
+	unsafe public partial class PresentRegionsKhr : MarshalledObject
+	{
+		public UInt32 SwapchainCount {
+			get { return m->SwapchainCount; }
+			set { m->SwapchainCount = value; }
+		}
+
+		NativeReference refRegions;
+		public PresentRegionKhr[] Regions {
+			get {
+				if (m->SwapchainCount == 0)
+					return null;
+				var values = new PresentRegionKhr [m->SwapchainCount];
+				unsafe
+				{
+					Interop.PresentRegionKhr* ptr = (Interop.PresentRegionKhr*)m->Regions;
+					for (int i = 0; i < values.Length; i++) {
+						values [i] = new PresentRegionKhr ();
+						*values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->SwapchainCount = 0;
+					m->Regions = IntPtr.Zero;
+					return;
+				}
+				m->SwapchainCount = (uint)value.Length;
+				refRegions = new NativeReference ((int)(sizeof(Interop.PresentRegionKhr)*value.Length));
+				m->Regions = refRegions.Handle;
+				unsafe
+				{
+					Interop.PresentRegionKhr* ptr = (Interop.PresentRegionKhr*)m->Regions;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = *value [i].m;
+				}
+			}
+		}
+		internal Interop.PresentRegionsKhr* m {
+
+			get {
+				return (Interop.PresentRegionsKhr*)native.Handle;
+			}
+		}
+
+		public PresentRegionsKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PresentRegionsKhr));
+			Initialize ();
+		}
+
+		internal PresentRegionsKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+		override public void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (!disposing)
+				return;
+			refRegions.Dispose ();
+			refRegions = null;
+		}
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PresentRegionsKhr;
+		}
+
+	}
+
+	unsafe public partial class PresentRegionKhr : MarshalledObject
+	{
+		public UInt32 RectangleCount {
+			get { return m->RectangleCount; }
+			set { m->RectangleCount = value; }
+		}
+
+		NativeReference refRectangles;
+		public RectLayerKhr[] Rectangles {
+			get {
+				if (m->RectangleCount == 0)
+					return null;
+				var values = new RectLayerKhr [m->RectangleCount];
+				unsafe
+				{
+					RectLayerKhr* ptr = (RectLayerKhr*)m->Rectangles;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->RectangleCount = 0;
+					m->Rectangles = IntPtr.Zero;
+					return;
+				}
+				m->RectangleCount = (uint)value.Length;
+				refRectangles = new NativeReference ((int)(sizeof(RectLayerKhr)*value.Length));
+				m->Rectangles = refRectangles.Handle;
+				unsafe
+				{
+					RectLayerKhr* ptr = (RectLayerKhr*)m->Rectangles;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+		internal Interop.PresentRegionKhr* m {
+
+			get {
+				return (Interop.PresentRegionKhr*)native.Handle;
+			}
+		}
+
+		public PresentRegionKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PresentRegionKhr));
+		}
+
+		internal PresentRegionKhr (NativePointer pointer)
+		{
+			native = pointer;
+		}
+
+		override public void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (!disposing)
+				return;
+			refRectangles.Dispose ();
+			refRectangles = null;
+		}
+	}
+
+	unsafe public partial struct RectLayerKhr
+	{
+		public Offset2D Offset;
+		public Extent2D Extent;
+		public UInt32 Layer;
+	}
+
+	unsafe public partial class PhysicalDeviceVariablePointerFeaturesKhr : MarshalledObject
+	{
+		public bool VariablePointersStorageBuffer {
+			get { return m->VariablePointersStorageBuffer; }
+			set { m->VariablePointersStorageBuffer = value; }
+		}
+
+		public bool VariablePointers {
+			get { return m->VariablePointers; }
+			set { m->VariablePointers = value; }
+		}
+		internal Interop.PhysicalDeviceVariablePointerFeaturesKhr* m {
+
+			get {
+				return (Interop.PhysicalDeviceVariablePointerFeaturesKhr*)native.Handle;
+			}
+		}
+
+		public PhysicalDeviceVariablePointerFeaturesKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceVariablePointerFeaturesKhr));
+			Initialize ();
+		}
+
+		internal PhysicalDeviceVariablePointerFeaturesKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDeviceVariablePointerFeaturesKhr;
+		}
+
+	}
+
+	unsafe public partial struct ExternalMemoryPropertiesKhr
+	{
+		public ExternalMemoryFeatureFlagsKhr ExternalMemoryFeatures;
+		public ExternalMemoryHandleTypeFlagsKhr ExportFromImportedHandleTypes;
+		public ExternalMemoryHandleTypeFlagsKhr CompatibleHandleTypes;
+	}
+
+	unsafe public partial class PhysicalDeviceExternalImageFormatInfoKhr : MarshalledObject
+	{
+		public ExternalMemoryHandleTypeFlagsKhr HandleType {
+			get { return m->HandleType; }
+			set { m->HandleType = value; }
+		}
+		internal Interop.PhysicalDeviceExternalImageFormatInfoKhr* m {
+
+			get {
+				return (Interop.PhysicalDeviceExternalImageFormatInfoKhr*)native.Handle;
+			}
+		}
+
+		public PhysicalDeviceExternalImageFormatInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceExternalImageFormatInfoKhr));
+			Initialize ();
+		}
+
+		internal PhysicalDeviceExternalImageFormatInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDeviceExternalImageFormatInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class ExternalImageFormatPropertiesKhr : MarshalledObject
+	{
+		public ExternalMemoryPropertiesKhr ExternalMemoryProperties {
+			get { return m->ExternalMemoryProperties; }
+			set { m->ExternalMemoryProperties = value; }
+		}
+		internal Interop.ExternalImageFormatPropertiesKhr* m {
+
+			get {
+				return (Interop.ExternalImageFormatPropertiesKhr*)native.Handle;
+			}
+		}
+
+		public ExternalImageFormatPropertiesKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ExternalImageFormatPropertiesKhr));
+			Initialize ();
+		}
+
+		internal ExternalImageFormatPropertiesKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ExternalImageFormatPropertiesKhr;
+		}
+
+	}
+
+	unsafe public partial class PhysicalDeviceExternalBufferInfoKhr : MarshalledObject
+	{
+		public BufferCreateFlags Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
+
+		public BufferUsageFlags Usage {
+			get { return m->Usage; }
+			set { m->Usage = value; }
+		}
+
+		public ExternalMemoryHandleTypeFlagsKhr HandleType {
+			get { return m->HandleType; }
+			set { m->HandleType = value; }
+		}
+		internal Interop.PhysicalDeviceExternalBufferInfoKhr* m {
+
+			get {
+				return (Interop.PhysicalDeviceExternalBufferInfoKhr*)native.Handle;
+			}
+		}
+
+		public PhysicalDeviceExternalBufferInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceExternalBufferInfoKhr));
+			Initialize ();
+		}
+
+		internal PhysicalDeviceExternalBufferInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDeviceExternalBufferInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class ExternalBufferPropertiesKhr : MarshalledObject
+	{
+		public ExternalMemoryPropertiesKhr ExternalMemoryProperties {
+			get { return m->ExternalMemoryProperties; }
+			set { m->ExternalMemoryProperties = value; }
+		}
+		internal Interop.ExternalBufferPropertiesKhr* m {
+
+			get {
+				return (Interop.ExternalBufferPropertiesKhr*)native.Handle;
+			}
+		}
+
+		public ExternalBufferPropertiesKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ExternalBufferPropertiesKhr));
+			Initialize ();
+		}
+
+		internal ExternalBufferPropertiesKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ExternalBufferPropertiesKhr;
+		}
+
+	}
+
+	unsafe public partial class PhysicalDeviceIDPropertiesKhr : MarshalledObject
+	{
+		public byte[] DeviceUuid {
+			get {
+				var arr = new byte [16];
+				for (int i = 0; i < 16; i++)
+					arr [i] = m->DeviceUuid [i];
+				return arr;
+			}
+
+			set {
+				if (value.Length > 16)
+					throw new Exception ("array too long");
+				for (int i = 0; i < value.Length; i++)
+					m->DeviceUuid [i] = value [i];
+				for (int i = value.Length; i < 16; i++)
+					m->DeviceUuid [i] = 0;
+			}
+		}
+
+		public byte[] DriverUuid {
+			get {
+				var arr = new byte [16];
+				for (int i = 0; i < 16; i++)
+					arr [i] = m->DriverUuid [i];
+				return arr;
+			}
+
+			set {
+				if (value.Length > 16)
+					throw new Exception ("array too long");
+				for (int i = 0; i < value.Length; i++)
+					m->DriverUuid [i] = value [i];
+				for (int i = value.Length; i < 16; i++)
+					m->DriverUuid [i] = 0;
+			}
+		}
+
+		public byte[] DeviceLuid {
+			get {
+				var arr = new byte [8];
+				for (int i = 0; i < 8; i++)
+					arr [i] = m->DeviceLuid [i];
+				return arr;
+			}
+
+			set {
+				if (value.Length > 8)
+					throw new Exception ("array too long");
+				for (int i = 0; i < value.Length; i++)
+					m->DeviceLuid [i] = value [i];
+				for (int i = value.Length; i < 8; i++)
+					m->DeviceLuid [i] = 0;
+			}
+		}
+
+		public UInt32 DeviceNodeMask {
+			get { return m->DeviceNodeMask; }
+			set { m->DeviceNodeMask = value; }
+		}
+
+		public bool DeviceLuidvalid {
+			get { return m->DeviceLuidvalid; }
+			set { m->DeviceLuidvalid = value; }
+		}
+		internal Interop.PhysicalDeviceIDPropertiesKhr* m {
+
+			get {
+				return (Interop.PhysicalDeviceIDPropertiesKhr*)native.Handle;
+			}
+		}
+
+		public PhysicalDeviceIDPropertiesKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceIDPropertiesKhr));
+			Initialize ();
+		}
+
+		internal PhysicalDeviceIDPropertiesKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDeviceIDPropertiesKhr;
+		}
+
+	}
+
+	unsafe public partial class ExternalMemoryImageCreateInfoKhr : MarshalledObject
+	{
+		public ExternalMemoryHandleTypeFlagsKhr HandleTypes {
+			get { return m->HandleTypes; }
+			set { m->HandleTypes = value; }
+		}
+		internal Interop.ExternalMemoryImageCreateInfoKhr* m {
+
+			get {
+				return (Interop.ExternalMemoryImageCreateInfoKhr*)native.Handle;
+			}
+		}
+
+		public ExternalMemoryImageCreateInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ExternalMemoryImageCreateInfoKhr));
+			Initialize ();
+		}
+
+		internal ExternalMemoryImageCreateInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ExternalMemoryImageCreateInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class ExternalMemoryBufferCreateInfoKhr : MarshalledObject
+	{
+		public ExternalMemoryHandleTypeFlagsKhr HandleTypes {
+			get { return m->HandleTypes; }
+			set { m->HandleTypes = value; }
+		}
+		internal Interop.ExternalMemoryBufferCreateInfoKhr* m {
+
+			get {
+				return (Interop.ExternalMemoryBufferCreateInfoKhr*)native.Handle;
+			}
+		}
+
+		public ExternalMemoryBufferCreateInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ExternalMemoryBufferCreateInfoKhr));
+			Initialize ();
+		}
+
+		internal ExternalMemoryBufferCreateInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ExternalMemoryBufferCreateInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class ExportMemoryAllocateInfoKhr : MarshalledObject
+	{
+		public ExternalMemoryHandleTypeFlagsKhr HandleTypes {
+			get { return m->HandleTypes; }
+			set { m->HandleTypes = value; }
+		}
+		internal Interop.ExportMemoryAllocateInfoKhr* m {
+
+			get {
+				return (Interop.ExportMemoryAllocateInfoKhr*)native.Handle;
+			}
+		}
+
+		public ExportMemoryAllocateInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ExportMemoryAllocateInfoKhr));
+			Initialize ();
+		}
+
+		internal ExportMemoryAllocateInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ExportMemoryAllocateInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class MemoryWin32HandlePropertiesKhr : MarshalledObject
+	{
+		public UInt32 MemoryTypeBits {
+			get { return m->MemoryTypeBits; }
+			set { m->MemoryTypeBits = value; }
+		}
+		internal Interop.MemoryWin32HandlePropertiesKhr* m {
+
+			get {
+				return (Interop.MemoryWin32HandlePropertiesKhr*)native.Handle;
+			}
+		}
+
+		public MemoryWin32HandlePropertiesKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.MemoryWin32HandlePropertiesKhr));
+			Initialize ();
+		}
+
+		internal MemoryWin32HandlePropertiesKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.MemoryWin32HandlePropertiesKhr;
+		}
+
+	}
+
+	unsafe public partial class MemoryGetWin32HandleInfoKhr : MarshalledObject
+	{
+		DeviceMemory lMemory;
+		public DeviceMemory Memory {
+			get { return lMemory; }
+			set { lMemory = value; m->Memory = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		public ExternalMemoryHandleTypeFlagsKhr HandleType {
+			get { return m->HandleType; }
+			set { m->HandleType = value; }
+		}
+		internal Interop.MemoryGetWin32HandleInfoKhr* m {
+
+			get {
+				return (Interop.MemoryGetWin32HandleInfoKhr*)native.Handle;
+			}
+		}
+
+		public MemoryGetWin32HandleInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.MemoryGetWin32HandleInfoKhr));
+			Initialize ();
+		}
+
+		internal MemoryGetWin32HandleInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.MemoryGetWin32HandleInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class ImportMemoryFdInfoKhr : MarshalledObject
+	{
+		public ExternalMemoryHandleTypeFlagsKhr HandleType {
+			get { return m->HandleType; }
+			set { m->HandleType = value; }
+		}
+
+		public int Fd {
+			get { return m->Fd; }
+			set { m->Fd = value; }
+		}
+		internal Interop.ImportMemoryFdInfoKhr* m {
+
+			get {
+				return (Interop.ImportMemoryFdInfoKhr*)native.Handle;
+			}
+		}
+
+		public ImportMemoryFdInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ImportMemoryFdInfoKhr));
+			Initialize ();
+		}
+
+		internal ImportMemoryFdInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ImportMemoryFdInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class MemoryFdPropertiesKhr : MarshalledObject
+	{
+		public UInt32 MemoryTypeBits {
+			get { return m->MemoryTypeBits; }
+			set { m->MemoryTypeBits = value; }
+		}
+		internal Interop.MemoryFdPropertiesKhr* m {
+
+			get {
+				return (Interop.MemoryFdPropertiesKhr*)native.Handle;
+			}
+		}
+
+		public MemoryFdPropertiesKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.MemoryFdPropertiesKhr));
+			Initialize ();
+		}
+
+		internal MemoryFdPropertiesKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.MemoryFdPropertiesKhr;
+		}
+
+	}
+
+	unsafe public partial class MemoryGetFdInfoKhr : MarshalledObject
+	{
+		DeviceMemory lMemory;
+		public DeviceMemory Memory {
+			get { return lMemory; }
+			set { lMemory = value; m->Memory = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		public ExternalMemoryHandleTypeFlagsKhr HandleType {
+			get { return m->HandleType; }
+			set { m->HandleType = value; }
+		}
+		internal Interop.MemoryGetFdInfoKhr* m {
+
+			get {
+				return (Interop.MemoryGetFdInfoKhr*)native.Handle;
+			}
+		}
+
+		public MemoryGetFdInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.MemoryGetFdInfoKhr));
+			Initialize ();
+		}
+
+		internal MemoryGetFdInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.MemoryGetFdInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class Win32KeyedMutexAcquireReleaseInfoKhr : MarshalledObject
+	{
+		public UInt32 AcquireCount {
+			get { return m->AcquireCount; }
+			set { m->AcquireCount = value; }
+		}
+
+		NativeReference refAcquireSyncs;
+		public DeviceMemory[] AcquireSyncs {
+			get {
+				if (m->AcquireCount == 0)
+					return null;
+				var values = new DeviceMemory [m->AcquireCount];
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->AcquireSyncs;
+					for (int i = 0; i < values.Length; i++) {
+						values [i] = new DeviceMemory ();
+						values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->AcquireCount = 0;
+					m->AcquireSyncs = IntPtr.Zero;
+					return;
+				}
+				m->AcquireCount = (uint)value.Length;
+				refAcquireSyncs = new NativeReference ((int)(sizeof(UInt64)*value.Length));
+				m->AcquireSyncs = refAcquireSyncs.Handle;
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->AcquireSyncs;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i].m;
+				}
+			}
+		}
+
+		NativeReference refAcquireKeys;
+		public UInt64[] AcquireKeys {
+			get {
+				if (m->AcquireCount == 0)
+					return null;
+				var values = new UInt64 [m->AcquireCount];
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->AcquireKeys;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->AcquireCount = 0;
+					m->AcquireKeys = IntPtr.Zero;
+					return;
+				}
+				m->AcquireCount = (uint)value.Length;
+				refAcquireKeys = new NativeReference ((int)(sizeof(UInt64)*value.Length));
+				m->AcquireKeys = refAcquireKeys.Handle;
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->AcquireKeys;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+
+		NativeReference refAcquireTimeouts;
+		public UInt32[] AcquireTimeouts {
+			get {
+				if (m->AcquireCount == 0)
+					return null;
+				var values = new UInt32 [m->AcquireCount];
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->AcquireTimeouts;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->AcquireCount = 0;
+					m->AcquireTimeouts = IntPtr.Zero;
+					return;
+				}
+				m->AcquireCount = (uint)value.Length;
+				refAcquireTimeouts = new NativeReference ((int)(sizeof(UInt32)*value.Length));
+				m->AcquireTimeouts = refAcquireTimeouts.Handle;
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->AcquireTimeouts;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+
+		public UInt32 ReleaseCount {
+			get { return m->ReleaseCount; }
+			set { m->ReleaseCount = value; }
+		}
+
+		NativeReference refReleaseSyncs;
+		public DeviceMemory[] ReleaseSyncs {
+			get {
+				if (m->ReleaseCount == 0)
+					return null;
+				var values = new DeviceMemory [m->ReleaseCount];
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->ReleaseSyncs;
+					for (int i = 0; i < values.Length; i++) {
+						values [i] = new DeviceMemory ();
+						values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->ReleaseCount = 0;
+					m->ReleaseSyncs = IntPtr.Zero;
+					return;
+				}
+				m->ReleaseCount = (uint)value.Length;
+				refReleaseSyncs = new NativeReference ((int)(sizeof(UInt64)*value.Length));
+				m->ReleaseSyncs = refReleaseSyncs.Handle;
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->ReleaseSyncs;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i].m;
+				}
+			}
+		}
+
+		NativeReference refReleaseKeys;
+		public UInt64[] ReleaseKeys {
+			get {
+				if (m->ReleaseCount == 0)
+					return null;
+				var values = new UInt64 [m->ReleaseCount];
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->ReleaseKeys;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->ReleaseCount = 0;
+					m->ReleaseKeys = IntPtr.Zero;
+					return;
+				}
+				m->ReleaseCount = (uint)value.Length;
+				refReleaseKeys = new NativeReference ((int)(sizeof(UInt64)*value.Length));
+				m->ReleaseKeys = refReleaseKeys.Handle;
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->ReleaseKeys;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+		internal Interop.Win32KeyedMutexAcquireReleaseInfoKhr* m {
+
+			get {
+				return (Interop.Win32KeyedMutexAcquireReleaseInfoKhr*)native.Handle;
+			}
+		}
+
+		public Win32KeyedMutexAcquireReleaseInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.Win32KeyedMutexAcquireReleaseInfoKhr));
+			Initialize ();
+		}
+
+		internal Win32KeyedMutexAcquireReleaseInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+		override public void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (!disposing)
+				return;
+			refAcquireSyncs.Dispose ();
+			refAcquireSyncs = null;
+			refAcquireKeys.Dispose ();
+			refAcquireKeys = null;
+			refAcquireTimeouts.Dispose ();
+			refAcquireTimeouts = null;
+			refReleaseSyncs.Dispose ();
+			refReleaseSyncs = null;
+			refReleaseKeys.Dispose ();
+			refReleaseKeys = null;
+		}
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.Win32KeyedMutexAcquireReleaseInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class PhysicalDeviceExternalSemaphoreInfoKhr : MarshalledObject
+	{
+		public ExternalSemaphoreHandleTypeFlagsKhr HandleType {
+			get { return m->HandleType; }
+			set { m->HandleType = value; }
+		}
+		internal Interop.PhysicalDeviceExternalSemaphoreInfoKhr* m {
+
+			get {
+				return (Interop.PhysicalDeviceExternalSemaphoreInfoKhr*)native.Handle;
+			}
+		}
+
+		public PhysicalDeviceExternalSemaphoreInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceExternalSemaphoreInfoKhr));
+			Initialize ();
+		}
+
+		internal PhysicalDeviceExternalSemaphoreInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDeviceExternalSemaphoreInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class ExternalSemaphorePropertiesKhr : MarshalledObject
+	{
+		public ExternalSemaphoreHandleTypeFlagsKhr ExportFromImportedHandleTypes {
+			get { return m->ExportFromImportedHandleTypes; }
+			set { m->ExportFromImportedHandleTypes = value; }
+		}
+
+		public ExternalSemaphoreHandleTypeFlagsKhr CompatibleHandleTypes {
+			get { return m->CompatibleHandleTypes; }
+			set { m->CompatibleHandleTypes = value; }
+		}
+
+		public ExternalSemaphoreFeatureFlagsKhr ExternalSemaphoreFeatures {
+			get { return m->ExternalSemaphoreFeatures; }
+			set { m->ExternalSemaphoreFeatures = value; }
+		}
+		internal Interop.ExternalSemaphorePropertiesKhr* m {
+
+			get {
+				return (Interop.ExternalSemaphorePropertiesKhr*)native.Handle;
+			}
+		}
+
+		public ExternalSemaphorePropertiesKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ExternalSemaphorePropertiesKhr));
+			Initialize ();
+		}
+
+		internal ExternalSemaphorePropertiesKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ExternalSemaphorePropertiesKhr;
+		}
+
+	}
+
+	unsafe public partial class ExportSemaphoreCreateInfoKhr : MarshalledObject
+	{
+		public ExternalSemaphoreHandleTypeFlagsKhr HandleTypes {
+			get { return m->HandleTypes; }
+			set { m->HandleTypes = value; }
+		}
+		internal Interop.ExportSemaphoreCreateInfoKhr* m {
+
+			get {
+				return (Interop.ExportSemaphoreCreateInfoKhr*)native.Handle;
+			}
+		}
+
+		public ExportSemaphoreCreateInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ExportSemaphoreCreateInfoKhr));
+			Initialize ();
+		}
+
+		internal ExportSemaphoreCreateInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ExportSemaphoreCreateInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class D3D12FenceSubmitInfoKhr : MarshalledObject
+	{
+		public UInt32 WaitSemaphoreValuesCount {
+			get { return m->WaitSemaphoreValuesCount; }
+			set { m->WaitSemaphoreValuesCount = value; }
+		}
+
+		NativeReference refWaitSemaphoreValues;
+		public UInt64[] WaitSemaphoreValues {
+			get {
+				if (m->WaitSemaphoreValuesCount == 0)
+					return null;
+				var values = new UInt64 [m->WaitSemaphoreValuesCount];
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->WaitSemaphoreValues;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->WaitSemaphoreValuesCount = 0;
+					m->WaitSemaphoreValues = IntPtr.Zero;
+					return;
+				}
+				m->WaitSemaphoreValuesCount = (uint)value.Length;
+				refWaitSemaphoreValues = new NativeReference ((int)(sizeof(UInt64)*value.Length));
+				m->WaitSemaphoreValues = refWaitSemaphoreValues.Handle;
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->WaitSemaphoreValues;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+
+		public UInt32 SignalSemaphoreValuesCount {
+			get { return m->SignalSemaphoreValuesCount; }
+			set { m->SignalSemaphoreValuesCount = value; }
+		}
+
+		NativeReference refSignalSemaphoreValues;
+		public UInt64[] SignalSemaphoreValues {
+			get {
+				if (m->SignalSemaphoreValuesCount == 0)
+					return null;
+				var values = new UInt64 [m->SignalSemaphoreValuesCount];
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->SignalSemaphoreValues;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->SignalSemaphoreValuesCount = 0;
+					m->SignalSemaphoreValues = IntPtr.Zero;
+					return;
+				}
+				m->SignalSemaphoreValuesCount = (uint)value.Length;
+				refSignalSemaphoreValues = new NativeReference ((int)(sizeof(UInt64)*value.Length));
+				m->SignalSemaphoreValues = refSignalSemaphoreValues.Handle;
+				unsafe
+				{
+					UInt64* ptr = (UInt64*)m->SignalSemaphoreValues;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+		internal Interop.D3D12FenceSubmitInfoKhr* m {
+
+			get {
+				return (Interop.D3D12FenceSubmitInfoKhr*)native.Handle;
+			}
+		}
+
+		public D3D12FenceSubmitInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.D3D12FenceSubmitInfoKhr));
+			Initialize ();
+		}
+
+		internal D3D12FenceSubmitInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+		override public void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (!disposing)
+				return;
+			refWaitSemaphoreValues.Dispose ();
+			refWaitSemaphoreValues = null;
+			refSignalSemaphoreValues.Dispose ();
+			refSignalSemaphoreValues = null;
+		}
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.D3D12FenceSubmitInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class SemaphoreGetWin32HandleInfoKhr : MarshalledObject
+	{
+		Semaphore lSemaphore;
+		public Semaphore Semaphore {
+			get { return lSemaphore; }
+			set { lSemaphore = value; m->Semaphore = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		public ExternalSemaphoreHandleTypeFlagsKhr HandleType {
+			get { return m->HandleType; }
+			set { m->HandleType = value; }
+		}
+		internal Interop.SemaphoreGetWin32HandleInfoKhr* m {
+
+			get {
+				return (Interop.SemaphoreGetWin32HandleInfoKhr*)native.Handle;
+			}
+		}
+
+		public SemaphoreGetWin32HandleInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.SemaphoreGetWin32HandleInfoKhr));
+			Initialize ();
+		}
+
+		internal SemaphoreGetWin32HandleInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.SemaphoreGetWin32HandleInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class ImportSemaphoreFdInfoKhr : MarshalledObject
+	{
+		Semaphore lSemaphore;
+		public Semaphore Semaphore {
+			get { return lSemaphore; }
+			set { lSemaphore = value; m->Semaphore = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		public SemaphoreImportFlagsKhr Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
+
+		public ExternalSemaphoreHandleTypeFlagsKhr HandleType {
+			get { return m->HandleType; }
+			set { m->HandleType = value; }
+		}
+
+		public int Fd {
+			get { return m->Fd; }
+			set { m->Fd = value; }
+		}
+		internal Interop.ImportSemaphoreFdInfoKhr* m {
+
+			get {
+				return (Interop.ImportSemaphoreFdInfoKhr*)native.Handle;
+			}
+		}
+
+		public ImportSemaphoreFdInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ImportSemaphoreFdInfoKhr));
+			Initialize ();
+		}
+
+		internal ImportSemaphoreFdInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ImportSemaphoreFdInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class SemaphoreGetFdInfoKhr : MarshalledObject
+	{
+		Semaphore lSemaphore;
+		public Semaphore Semaphore {
+			get { return lSemaphore; }
+			set { lSemaphore = value; m->Semaphore = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		public ExternalSemaphoreHandleTypeFlagsKhr HandleType {
+			get { return m->HandleType; }
+			set { m->HandleType = value; }
+		}
+		internal Interop.SemaphoreGetFdInfoKhr* m {
+
+			get {
+				return (Interop.SemaphoreGetFdInfoKhr*)native.Handle;
+			}
+		}
+
+		public SemaphoreGetFdInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.SemaphoreGetFdInfoKhr));
+			Initialize ();
+		}
+
+		internal SemaphoreGetFdInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.SemaphoreGetFdInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class PhysicalDeviceExternalFenceInfoKhr : MarshalledObject
+	{
+		public ExternalFenceHandleTypeFlagsKhr HandleType {
+			get { return m->HandleType; }
+			set { m->HandleType = value; }
+		}
+		internal Interop.PhysicalDeviceExternalFenceInfoKhr* m {
+
+			get {
+				return (Interop.PhysicalDeviceExternalFenceInfoKhr*)native.Handle;
+			}
+		}
+
+		public PhysicalDeviceExternalFenceInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceExternalFenceInfoKhr));
+			Initialize ();
+		}
+
+		internal PhysicalDeviceExternalFenceInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDeviceExternalFenceInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class ExternalFencePropertiesKhr : MarshalledObject
+	{
+		public ExternalFenceHandleTypeFlagsKhr ExportFromImportedHandleTypes {
+			get { return m->ExportFromImportedHandleTypes; }
+			set { m->ExportFromImportedHandleTypes = value; }
+		}
+
+		public ExternalFenceHandleTypeFlagsKhr CompatibleHandleTypes {
+			get { return m->CompatibleHandleTypes; }
+			set { m->CompatibleHandleTypes = value; }
+		}
+
+		public ExternalFenceFeatureFlagsKhr ExternalFenceFeatures {
+			get { return m->ExternalFenceFeatures; }
+			set { m->ExternalFenceFeatures = value; }
+		}
+		internal Interop.ExternalFencePropertiesKhr* m {
+
+			get {
+				return (Interop.ExternalFencePropertiesKhr*)native.Handle;
+			}
+		}
+
+		public ExternalFencePropertiesKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ExternalFencePropertiesKhr));
+			Initialize ();
+		}
+
+		internal ExternalFencePropertiesKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ExternalFencePropertiesKhr;
+		}
+
+	}
+
+	unsafe public partial class ExportFenceCreateInfoKhr : MarshalledObject
+	{
+		public ExternalFenceHandleTypeFlagsKhr HandleTypes {
+			get { return m->HandleTypes; }
+			set { m->HandleTypes = value; }
+		}
+		internal Interop.ExportFenceCreateInfoKhr* m {
+
+			get {
+				return (Interop.ExportFenceCreateInfoKhr*)native.Handle;
+			}
+		}
+
+		public ExportFenceCreateInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ExportFenceCreateInfoKhr));
+			Initialize ();
+		}
+
+		internal ExportFenceCreateInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ExportFenceCreateInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class FenceGetWin32HandleInfoKhr : MarshalledObject
+	{
+		Fence lFence;
+		public Fence Fence {
+			get { return lFence; }
+			set { lFence = value; m->Fence = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		public ExternalFenceHandleTypeFlagsKhr HandleType {
+			get { return m->HandleType; }
+			set { m->HandleType = value; }
+		}
+		internal Interop.FenceGetWin32HandleInfoKhr* m {
+
+			get {
+				return (Interop.FenceGetWin32HandleInfoKhr*)native.Handle;
+			}
+		}
+
+		public FenceGetWin32HandleInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.FenceGetWin32HandleInfoKhr));
+			Initialize ();
+		}
+
+		internal FenceGetWin32HandleInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.FenceGetWin32HandleInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class ImportFenceFdInfoKhr : MarshalledObject
+	{
+		Fence lFence;
+		public Fence Fence {
+			get { return lFence; }
+			set { lFence = value; m->Fence = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		public FenceImportFlagsKhr Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
+
+		public ExternalFenceHandleTypeFlagsKhr HandleType {
+			get { return m->HandleType; }
+			set { m->HandleType = value; }
+		}
+
+		public int Fd {
+			get { return m->Fd; }
+			set { m->Fd = value; }
+		}
+		internal Interop.ImportFenceFdInfoKhr* m {
+
+			get {
+				return (Interop.ImportFenceFdInfoKhr*)native.Handle;
+			}
+		}
+
+		public ImportFenceFdInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ImportFenceFdInfoKhr));
+			Initialize ();
+		}
+
+		internal ImportFenceFdInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ImportFenceFdInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class FenceGetFdInfoKhr : MarshalledObject
+	{
+		Fence lFence;
+		public Fence Fence {
+			get { return lFence; }
+			set { lFence = value; m->Fence = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		public ExternalFenceHandleTypeFlagsKhr HandleType {
+			get { return m->HandleType; }
+			set { m->HandleType = value; }
+		}
+		internal Interop.FenceGetFdInfoKhr* m {
+
+			get {
+				return (Interop.FenceGetFdInfoKhr*)native.Handle;
+			}
+		}
+
+		public FenceGetFdInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.FenceGetFdInfoKhr));
+			Initialize ();
+		}
+
+		internal FenceGetFdInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.FenceGetFdInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class PhysicalDeviceMultiviewFeaturesKhx : MarshalledObject
+	{
+		public bool Multiview {
+			get { return m->Multiview; }
+			set { m->Multiview = value; }
+		}
+
+		public bool MultiviewGeometryShader {
+			get { return m->MultiviewGeometryShader; }
+			set { m->MultiviewGeometryShader = value; }
+		}
+
+		public bool MultiviewTessellationShader {
+			get { return m->MultiviewTessellationShader; }
+			set { m->MultiviewTessellationShader = value; }
+		}
+		internal Interop.PhysicalDeviceMultiviewFeaturesKhx* m {
+
+			get {
+				return (Interop.PhysicalDeviceMultiviewFeaturesKhx*)native.Handle;
+			}
+		}
+
+		public PhysicalDeviceMultiviewFeaturesKhx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceMultiviewFeaturesKhx));
+			Initialize ();
+		}
+
+		internal PhysicalDeviceMultiviewFeaturesKhx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDeviceMultiviewFeaturesKhx;
+		}
+
+	}
+
+	unsafe public partial class PhysicalDeviceMultiviewPropertiesKhx : MarshalledObject
+	{
+		public UInt32 MaxMultiviewViewCount {
+			get { return m->MaxMultiviewViewCount; }
+			set { m->MaxMultiviewViewCount = value; }
+		}
+
+		public UInt32 MaxMultiviewInstanceIndex {
+			get { return m->MaxMultiviewInstanceIndex; }
+			set { m->MaxMultiviewInstanceIndex = value; }
+		}
+		internal Interop.PhysicalDeviceMultiviewPropertiesKhx* m {
+
+			get {
+				return (Interop.PhysicalDeviceMultiviewPropertiesKhx*)native.Handle;
+			}
+		}
+
+		public PhysicalDeviceMultiviewPropertiesKhx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceMultiviewPropertiesKhx));
+			Initialize ();
+		}
+
+		internal PhysicalDeviceMultiviewPropertiesKhx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDeviceMultiviewPropertiesKhx;
+		}
+
+	}
+
+	unsafe public partial class RenderPassMultiviewCreateInfoKhx : MarshalledObject
+	{
+		public UInt32 SubpassCount {
+			get { return m->SubpassCount; }
+			set { m->SubpassCount = value; }
+		}
+
+		NativeReference refViewMasks;
+		public UInt32[] ViewMasks {
+			get {
+				if (m->SubpassCount == 0)
+					return null;
+				var values = new UInt32 [m->SubpassCount];
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->ViewMasks;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->SubpassCount = 0;
+					m->ViewMasks = IntPtr.Zero;
+					return;
+				}
+				m->SubpassCount = (uint)value.Length;
+				refViewMasks = new NativeReference ((int)(sizeof(UInt32)*value.Length));
+				m->ViewMasks = refViewMasks.Handle;
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->ViewMasks;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+
+		public UInt32 DependencyCount {
+			get { return m->DependencyCount; }
+			set { m->DependencyCount = value; }
+		}
+
+		NativeReference refViewOffsets;
+		public Int32[] ViewOffsets {
+			get {
+				if (m->DependencyCount == 0)
+					return null;
+				var values = new Int32 [m->DependencyCount];
+				unsafe
+				{
+					Int32* ptr = (Int32*)m->ViewOffsets;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->DependencyCount = 0;
+					m->ViewOffsets = IntPtr.Zero;
+					return;
+				}
+				m->DependencyCount = (uint)value.Length;
+				refViewOffsets = new NativeReference ((int)(sizeof(Int32)*value.Length));
+				m->ViewOffsets = refViewOffsets.Handle;
+				unsafe
+				{
+					Int32* ptr = (Int32*)m->ViewOffsets;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+
+		public UInt32 CorrelationMaskCount {
+			get { return m->CorrelationMaskCount; }
+			set { m->CorrelationMaskCount = value; }
+		}
+
+		NativeReference refCorrelationMasks;
+		public UInt32[] CorrelationMasks {
+			get {
+				if (m->CorrelationMaskCount == 0)
+					return null;
+				var values = new UInt32 [m->CorrelationMaskCount];
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->CorrelationMasks;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->CorrelationMaskCount = 0;
+					m->CorrelationMasks = IntPtr.Zero;
+					return;
+				}
+				m->CorrelationMaskCount = (uint)value.Length;
+				refCorrelationMasks = new NativeReference ((int)(sizeof(UInt32)*value.Length));
+				m->CorrelationMasks = refCorrelationMasks.Handle;
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->CorrelationMasks;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+		internal Interop.RenderPassMultiviewCreateInfoKhx* m {
+
+			get {
+				return (Interop.RenderPassMultiviewCreateInfoKhx*)native.Handle;
+			}
+		}
+
+		public RenderPassMultiviewCreateInfoKhx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.RenderPassMultiviewCreateInfoKhx));
+			Initialize ();
+		}
+
+		internal RenderPassMultiviewCreateInfoKhx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+		override public void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (!disposing)
+				return;
+			refViewMasks.Dispose ();
+			refViewMasks = null;
+			refViewOffsets.Dispose ();
+			refViewOffsets = null;
+			refCorrelationMasks.Dispose ();
+			refCorrelationMasks = null;
+		}
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.RenderPassMultiviewCreateInfoKhx;
+		}
+
+	}
+
 	unsafe public partial class SurfaceCapabilities2Ext : MarshalledObject
 	{
 		public UInt32 MinImageCount {
@@ -8750,6 +10530,3573 @@ namespace Vulkan
 		internal void Initialize ()
 		{
 			m->SType = StructureType.SwapchainCounterCreateInfoExt;
+		}
+
+	}
+
+	unsafe public partial class MemoryAllocateFlagsInfoKhx : MarshalledObject
+	{
+		public MemoryAllocateFlagsKhx Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
+
+		public UInt32 DeviceMask {
+			get { return m->DeviceMask; }
+			set { m->DeviceMask = value; }
+		}
+		internal Interop.MemoryAllocateFlagsInfoKhx* m {
+
+			get {
+				return (Interop.MemoryAllocateFlagsInfoKhx*)native.Handle;
+			}
+		}
+
+		public MemoryAllocateFlagsInfoKhx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.MemoryAllocateFlagsInfoKhx));
+			Initialize ();
+		}
+
+		internal MemoryAllocateFlagsInfoKhx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.MemoryAllocateFlagsInfoKhx;
+		}
+
+	}
+
+	unsafe public partial class BindBufferMemoryInfoKhr : MarshalledObject
+	{
+		Buffer lBuffer;
+		public Buffer Buffer {
+			get { return lBuffer; }
+			set { lBuffer = value; m->Buffer = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		DeviceMemory lMemory;
+		public DeviceMemory Memory {
+			get { return lMemory; }
+			set { lMemory = value; m->Memory = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		public DeviceSize MemoryOffset {
+			get { return m->MemoryOffset; }
+			set { m->MemoryOffset = value; }
+		}
+		internal Interop.BindBufferMemoryInfoKhr* m {
+
+			get {
+				return (Interop.BindBufferMemoryInfoKhr*)native.Handle;
+			}
+		}
+
+		public BindBufferMemoryInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.BindBufferMemoryInfoKhr));
+			Initialize ();
+		}
+
+		internal BindBufferMemoryInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.BindBufferMemoryInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class BindBufferMemoryDeviceGroupInfoKhx : MarshalledObject
+	{
+		public UInt32 DeviceIndexCount {
+			get { return m->DeviceIndexCount; }
+			set { m->DeviceIndexCount = value; }
+		}
+
+		NativeReference refDeviceIndices;
+		public UInt32[] DeviceIndices {
+			get {
+				if (m->DeviceIndexCount == 0)
+					return null;
+				var values = new UInt32 [m->DeviceIndexCount];
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->DeviceIndices;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->DeviceIndexCount = 0;
+					m->DeviceIndices = IntPtr.Zero;
+					return;
+				}
+				m->DeviceIndexCount = (uint)value.Length;
+				refDeviceIndices = new NativeReference ((int)(sizeof(UInt32)*value.Length));
+				m->DeviceIndices = refDeviceIndices.Handle;
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->DeviceIndices;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+		internal Interop.BindBufferMemoryDeviceGroupInfoKhx* m {
+
+			get {
+				return (Interop.BindBufferMemoryDeviceGroupInfoKhx*)native.Handle;
+			}
+		}
+
+		public BindBufferMemoryDeviceGroupInfoKhx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.BindBufferMemoryDeviceGroupInfoKhx));
+			Initialize ();
+		}
+
+		internal BindBufferMemoryDeviceGroupInfoKhx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+		override public void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (!disposing)
+				return;
+			refDeviceIndices.Dispose ();
+			refDeviceIndices = null;
+		}
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.BindBufferMemoryDeviceGroupInfoKhx;
+		}
+
+	}
+
+	unsafe public partial class BindImageMemoryInfoKhr : MarshalledObject
+	{
+		Image lImage;
+		public Image Image {
+			get { return lImage; }
+			set { lImage = value; m->Image = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		DeviceMemory lMemory;
+		public DeviceMemory Memory {
+			get { return lMemory; }
+			set { lMemory = value; m->Memory = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		public DeviceSize MemoryOffset {
+			get { return m->MemoryOffset; }
+			set { m->MemoryOffset = value; }
+		}
+		internal Interop.BindImageMemoryInfoKhr* m {
+
+			get {
+				return (Interop.BindImageMemoryInfoKhr*)native.Handle;
+			}
+		}
+
+		public BindImageMemoryInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.BindImageMemoryInfoKhr));
+			Initialize ();
+		}
+
+		internal BindImageMemoryInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.BindImageMemoryInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class BindImageMemoryDeviceGroupInfoKhx : MarshalledObject
+	{
+		public UInt32 DeviceIndexCount {
+			get { return m->DeviceIndexCount; }
+			set { m->DeviceIndexCount = value; }
+		}
+
+		NativeReference refDeviceIndices;
+		public UInt32[] DeviceIndices {
+			get {
+				if (m->DeviceIndexCount == 0)
+					return null;
+				var values = new UInt32 [m->DeviceIndexCount];
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->DeviceIndices;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->DeviceIndexCount = 0;
+					m->DeviceIndices = IntPtr.Zero;
+					return;
+				}
+				m->DeviceIndexCount = (uint)value.Length;
+				refDeviceIndices = new NativeReference ((int)(sizeof(UInt32)*value.Length));
+				m->DeviceIndices = refDeviceIndices.Handle;
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->DeviceIndices;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+
+		public UInt32 SfrrectCount {
+			get { return m->SfrrectCount; }
+			set { m->SfrrectCount = value; }
+		}
+
+		NativeReference refSfrrects;
+		public Rect2D[] Sfrrects {
+			get {
+				if (m->SfrrectCount == 0)
+					return null;
+				var values = new Rect2D [m->SfrrectCount];
+				unsafe
+				{
+					Rect2D* ptr = (Rect2D*)m->Sfrrects;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->SfrrectCount = 0;
+					m->Sfrrects = IntPtr.Zero;
+					return;
+				}
+				m->SfrrectCount = (uint)value.Length;
+				refSfrrects = new NativeReference ((int)(sizeof(Rect2D)*value.Length));
+				m->Sfrrects = refSfrrects.Handle;
+				unsafe
+				{
+					Rect2D* ptr = (Rect2D*)m->Sfrrects;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+		internal Interop.BindImageMemoryDeviceGroupInfoKhx* m {
+
+			get {
+				return (Interop.BindImageMemoryDeviceGroupInfoKhx*)native.Handle;
+			}
+		}
+
+		public BindImageMemoryDeviceGroupInfoKhx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.BindImageMemoryDeviceGroupInfoKhx));
+			Initialize ();
+		}
+
+		internal BindImageMemoryDeviceGroupInfoKhx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+		override public void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (!disposing)
+				return;
+			refDeviceIndices.Dispose ();
+			refDeviceIndices = null;
+			refSfrrects.Dispose ();
+			refSfrrects = null;
+		}
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.BindImageMemoryDeviceGroupInfoKhx;
+		}
+
+	}
+
+	unsafe public partial class DeviceGroupRenderPassBeginInfoKhx : MarshalledObject
+	{
+		public UInt32 DeviceMask {
+			get { return m->DeviceMask; }
+			set { m->DeviceMask = value; }
+		}
+
+		public UInt32 DeviceRenderAreaCount {
+			get { return m->DeviceRenderAreaCount; }
+			set { m->DeviceRenderAreaCount = value; }
+		}
+
+		NativeReference refDeviceRenderAreas;
+		public Rect2D[] DeviceRenderAreas {
+			get {
+				if (m->DeviceRenderAreaCount == 0)
+					return null;
+				var values = new Rect2D [m->DeviceRenderAreaCount];
+				unsafe
+				{
+					Rect2D* ptr = (Rect2D*)m->DeviceRenderAreas;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->DeviceRenderAreaCount = 0;
+					m->DeviceRenderAreas = IntPtr.Zero;
+					return;
+				}
+				m->DeviceRenderAreaCount = (uint)value.Length;
+				refDeviceRenderAreas = new NativeReference ((int)(sizeof(Rect2D)*value.Length));
+				m->DeviceRenderAreas = refDeviceRenderAreas.Handle;
+				unsafe
+				{
+					Rect2D* ptr = (Rect2D*)m->DeviceRenderAreas;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+		internal Interop.DeviceGroupRenderPassBeginInfoKhx* m {
+
+			get {
+				return (Interop.DeviceGroupRenderPassBeginInfoKhx*)native.Handle;
+			}
+		}
+
+		public DeviceGroupRenderPassBeginInfoKhx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.DeviceGroupRenderPassBeginInfoKhx));
+			Initialize ();
+		}
+
+		internal DeviceGroupRenderPassBeginInfoKhx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+		override public void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (!disposing)
+				return;
+			refDeviceRenderAreas.Dispose ();
+			refDeviceRenderAreas = null;
+		}
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DeviceGroupRenderPassBeginInfoKhx;
+		}
+
+	}
+
+	unsafe public partial class DeviceGroupCommandBufferBeginInfoKhx : MarshalledObject
+	{
+		public UInt32 DeviceMask {
+			get { return m->DeviceMask; }
+			set { m->DeviceMask = value; }
+		}
+		internal Interop.DeviceGroupCommandBufferBeginInfoKhx* m {
+
+			get {
+				return (Interop.DeviceGroupCommandBufferBeginInfoKhx*)native.Handle;
+			}
+		}
+
+		public DeviceGroupCommandBufferBeginInfoKhx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.DeviceGroupCommandBufferBeginInfoKhx));
+			Initialize ();
+		}
+
+		internal DeviceGroupCommandBufferBeginInfoKhx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DeviceGroupCommandBufferBeginInfoKhx;
+		}
+
+	}
+
+	unsafe public partial class DeviceGroupSubmitInfoKhx : MarshalledObject
+	{
+		public UInt32 WaitSemaphoreCount {
+			get { return m->WaitSemaphoreCount; }
+			set { m->WaitSemaphoreCount = value; }
+		}
+
+		NativeReference refWaitSemaphoreDeviceIndices;
+		public UInt32[] WaitSemaphoreDeviceIndices {
+			get {
+				if (m->WaitSemaphoreCount == 0)
+					return null;
+				var values = new UInt32 [m->WaitSemaphoreCount];
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->WaitSemaphoreDeviceIndices;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->WaitSemaphoreCount = 0;
+					m->WaitSemaphoreDeviceIndices = IntPtr.Zero;
+					return;
+				}
+				m->WaitSemaphoreCount = (uint)value.Length;
+				refWaitSemaphoreDeviceIndices = new NativeReference ((int)(sizeof(UInt32)*value.Length));
+				m->WaitSemaphoreDeviceIndices = refWaitSemaphoreDeviceIndices.Handle;
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->WaitSemaphoreDeviceIndices;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+
+		public UInt32 CommandBufferCount {
+			get { return m->CommandBufferCount; }
+			set { m->CommandBufferCount = value; }
+		}
+
+		NativeReference refCommandBufferDeviceMasks;
+		public UInt32[] CommandBufferDeviceMasks {
+			get {
+				if (m->CommandBufferCount == 0)
+					return null;
+				var values = new UInt32 [m->CommandBufferCount];
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->CommandBufferDeviceMasks;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->CommandBufferCount = 0;
+					m->CommandBufferDeviceMasks = IntPtr.Zero;
+					return;
+				}
+				m->CommandBufferCount = (uint)value.Length;
+				refCommandBufferDeviceMasks = new NativeReference ((int)(sizeof(UInt32)*value.Length));
+				m->CommandBufferDeviceMasks = refCommandBufferDeviceMasks.Handle;
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->CommandBufferDeviceMasks;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+
+		public UInt32 SignalSemaphoreCount {
+			get { return m->SignalSemaphoreCount; }
+			set { m->SignalSemaphoreCount = value; }
+		}
+
+		NativeReference refSignalSemaphoreDeviceIndices;
+		public UInt32[] SignalSemaphoreDeviceIndices {
+			get {
+				if (m->SignalSemaphoreCount == 0)
+					return null;
+				var values = new UInt32 [m->SignalSemaphoreCount];
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->SignalSemaphoreDeviceIndices;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->SignalSemaphoreCount = 0;
+					m->SignalSemaphoreDeviceIndices = IntPtr.Zero;
+					return;
+				}
+				m->SignalSemaphoreCount = (uint)value.Length;
+				refSignalSemaphoreDeviceIndices = new NativeReference ((int)(sizeof(UInt32)*value.Length));
+				m->SignalSemaphoreDeviceIndices = refSignalSemaphoreDeviceIndices.Handle;
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->SignalSemaphoreDeviceIndices;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+		internal Interop.DeviceGroupSubmitInfoKhx* m {
+
+			get {
+				return (Interop.DeviceGroupSubmitInfoKhx*)native.Handle;
+			}
+		}
+
+		public DeviceGroupSubmitInfoKhx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.DeviceGroupSubmitInfoKhx));
+			Initialize ();
+		}
+
+		internal DeviceGroupSubmitInfoKhx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+		override public void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (!disposing)
+				return;
+			refWaitSemaphoreDeviceIndices.Dispose ();
+			refWaitSemaphoreDeviceIndices = null;
+			refCommandBufferDeviceMasks.Dispose ();
+			refCommandBufferDeviceMasks = null;
+			refSignalSemaphoreDeviceIndices.Dispose ();
+			refSignalSemaphoreDeviceIndices = null;
+		}
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DeviceGroupSubmitInfoKhx;
+		}
+
+	}
+
+	unsafe public partial class DeviceGroupBindSparseInfoKhx : MarshalledObject
+	{
+		public UInt32 ResourceDeviceIndex {
+			get { return m->ResourceDeviceIndex; }
+			set { m->ResourceDeviceIndex = value; }
+		}
+
+		public UInt32 MemoryDeviceIndex {
+			get { return m->MemoryDeviceIndex; }
+			set { m->MemoryDeviceIndex = value; }
+		}
+		internal Interop.DeviceGroupBindSparseInfoKhx* m {
+
+			get {
+				return (Interop.DeviceGroupBindSparseInfoKhx*)native.Handle;
+			}
+		}
+
+		public DeviceGroupBindSparseInfoKhx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.DeviceGroupBindSparseInfoKhx));
+			Initialize ();
+		}
+
+		internal DeviceGroupBindSparseInfoKhx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DeviceGroupBindSparseInfoKhx;
+		}
+
+	}
+
+	unsafe public partial class DeviceGroupPresentCapabilitiesKhx : MarshalledObject
+	{
+		public UInt32[] PresentMask {
+			get {
+				var arr = new UInt32 [32];
+				for (int i = 0; i < 32; i++)
+					arr [i] = m->PresentMask [i];
+				return arr;
+			}
+
+			set {
+				if (value.Length > 32)
+					throw new Exception ("array too long");
+				for (int i = 0; i < value.Length; i++)
+					m->PresentMask [i] = value [i];
+				for (int i = value.Length; i < 32; i++)
+					m->PresentMask [i] = 0;
+			}
+		}
+
+		public DeviceGroupPresentModeFlagsKhx Modes {
+			get { return m->Modes; }
+			set { m->Modes = value; }
+		}
+		internal Interop.DeviceGroupPresentCapabilitiesKhx* m {
+
+			get {
+				return (Interop.DeviceGroupPresentCapabilitiesKhx*)native.Handle;
+			}
+		}
+
+		public DeviceGroupPresentCapabilitiesKhx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.DeviceGroupPresentCapabilitiesKhx));
+			Initialize ();
+		}
+
+		internal DeviceGroupPresentCapabilitiesKhx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DeviceGroupPresentCapabilitiesKhx;
+		}
+
+	}
+
+	unsafe public partial class ImageSwapchainCreateInfoKhx : MarshalledObject
+	{
+		SwapchainKhr lSwapchain;
+		public SwapchainKhr Swapchain {
+			get { return lSwapchain; }
+			set { lSwapchain = value; m->Swapchain = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+		internal Interop.ImageSwapchainCreateInfoKhx* m {
+
+			get {
+				return (Interop.ImageSwapchainCreateInfoKhx*)native.Handle;
+			}
+		}
+
+		public ImageSwapchainCreateInfoKhx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ImageSwapchainCreateInfoKhx));
+			Initialize ();
+		}
+
+		internal ImageSwapchainCreateInfoKhx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ImageSwapchainCreateInfoKhx;
+		}
+
+	}
+
+	unsafe public partial class BindImageMemorySwapchainInfoKhx : MarshalledObject
+	{
+		SwapchainKhr lSwapchain;
+		public SwapchainKhr Swapchain {
+			get { return lSwapchain; }
+			set { lSwapchain = value; m->Swapchain = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		public UInt32 ImageIndex {
+			get { return m->ImageIndex; }
+			set { m->ImageIndex = value; }
+		}
+		internal Interop.BindImageMemorySwapchainInfoKhx* m {
+
+			get {
+				return (Interop.BindImageMemorySwapchainInfoKhx*)native.Handle;
+			}
+		}
+
+		public BindImageMemorySwapchainInfoKhx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.BindImageMemorySwapchainInfoKhx));
+			Initialize ();
+		}
+
+		internal BindImageMemorySwapchainInfoKhx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.BindImageMemorySwapchainInfoKhx;
+		}
+
+	}
+
+	unsafe public partial class AcquireNextImageInfoKhx : MarshalledObject
+	{
+		SwapchainKhr lSwapchain;
+		public SwapchainKhr Swapchain {
+			get { return lSwapchain; }
+			set { lSwapchain = value; m->Swapchain = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		public UInt64 Timeout {
+			get { return m->Timeout; }
+			set { m->Timeout = value; }
+		}
+
+		Semaphore lSemaphore;
+		public Semaphore Semaphore {
+			get { return lSemaphore; }
+			set { lSemaphore = value; m->Semaphore = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		Fence lFence;
+		public Fence Fence {
+			get { return lFence; }
+			set { lFence = value; m->Fence = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		public UInt32 DeviceMask {
+			get { return m->DeviceMask; }
+			set { m->DeviceMask = value; }
+		}
+		internal Interop.AcquireNextImageInfoKhx* m {
+
+			get {
+				return (Interop.AcquireNextImageInfoKhx*)native.Handle;
+			}
+		}
+
+		public AcquireNextImageInfoKhx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.AcquireNextImageInfoKhx));
+			Initialize ();
+		}
+
+		internal AcquireNextImageInfoKhx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.AcquireNextImageInfoKhx;
+		}
+
+	}
+
+	unsafe public partial class DeviceGroupPresentInfoKhx : MarshalledObject
+	{
+		public UInt32 SwapchainCount {
+			get { return m->SwapchainCount; }
+			set { m->SwapchainCount = value; }
+		}
+
+		NativeReference refDeviceMasks;
+		public UInt32[] DeviceMasks {
+			get {
+				if (m->SwapchainCount == 0)
+					return null;
+				var values = new UInt32 [m->SwapchainCount];
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->DeviceMasks;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->SwapchainCount = 0;
+					m->DeviceMasks = IntPtr.Zero;
+					return;
+				}
+				m->SwapchainCount = (uint)value.Length;
+				refDeviceMasks = new NativeReference ((int)(sizeof(UInt32)*value.Length));
+				m->DeviceMasks = refDeviceMasks.Handle;
+				unsafe
+				{
+					UInt32* ptr = (UInt32*)m->DeviceMasks;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+
+		public DeviceGroupPresentModeFlagsKhx Mode {
+			get { return m->Mode; }
+			set { m->Mode = value; }
+		}
+		internal Interop.DeviceGroupPresentInfoKhx* m {
+
+			get {
+				return (Interop.DeviceGroupPresentInfoKhx*)native.Handle;
+			}
+		}
+
+		public DeviceGroupPresentInfoKhx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.DeviceGroupPresentInfoKhx));
+			Initialize ();
+		}
+
+		internal DeviceGroupPresentInfoKhx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+		override public void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (!disposing)
+				return;
+			refDeviceMasks.Dispose ();
+			refDeviceMasks = null;
+		}
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DeviceGroupPresentInfoKhx;
+		}
+
+	}
+
+	unsafe public partial class DeviceGroupDeviceCreateInfoKhx : MarshalledObject
+	{
+		public UInt32 PhysicalDeviceCount {
+			get { return m->PhysicalDeviceCount; }
+			set { m->PhysicalDeviceCount = value; }
+		}
+
+		NativeReference refPhysicalDevices;
+		public PhysicalDevice[] PhysicalDevices {
+			get {
+				if (m->PhysicalDeviceCount == 0)
+					return null;
+				var values = new PhysicalDevice [m->PhysicalDeviceCount];
+				unsafe
+				{
+					IntPtr* ptr = (IntPtr*)m->PhysicalDevices;
+					for (int i = 0; i < values.Length; i++) {
+						values [i] = new PhysicalDevice ();
+						values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->PhysicalDeviceCount = 0;
+					m->PhysicalDevices = IntPtr.Zero;
+					return;
+				}
+				m->PhysicalDeviceCount = (uint)value.Length;
+				refPhysicalDevices = new NativeReference ((int)(sizeof(IntPtr)*value.Length));
+				m->PhysicalDevices = refPhysicalDevices.Handle;
+				unsafe
+				{
+					IntPtr* ptr = (IntPtr*)m->PhysicalDevices;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i].m;
+				}
+			}
+		}
+		internal Interop.DeviceGroupDeviceCreateInfoKhx* m {
+
+			get {
+				return (Interop.DeviceGroupDeviceCreateInfoKhx*)native.Handle;
+			}
+		}
+
+		public DeviceGroupDeviceCreateInfoKhx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.DeviceGroupDeviceCreateInfoKhx));
+			Initialize ();
+		}
+
+		internal DeviceGroupDeviceCreateInfoKhx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+		override public void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (!disposing)
+				return;
+			refPhysicalDevices.Dispose ();
+			refPhysicalDevices = null;
+		}
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DeviceGroupDeviceCreateInfoKhx;
+		}
+
+	}
+
+	unsafe public partial class DeviceGroupSwapchainCreateInfoKhx : MarshalledObject
+	{
+		public DeviceGroupPresentModeFlagsKhx Modes {
+			get { return m->Modes; }
+			set { m->Modes = value; }
+		}
+		internal Interop.DeviceGroupSwapchainCreateInfoKhx* m {
+
+			get {
+				return (Interop.DeviceGroupSwapchainCreateInfoKhx*)native.Handle;
+			}
+		}
+
+		public DeviceGroupSwapchainCreateInfoKhx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.DeviceGroupSwapchainCreateInfoKhx));
+			Initialize ();
+		}
+
+		internal DeviceGroupSwapchainCreateInfoKhx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DeviceGroupSwapchainCreateInfoKhx;
+		}
+
+	}
+
+	unsafe public partial struct DescriptorUpdateTemplateEntryKhr
+	{
+		public UInt32 DstBinding;
+		public UInt32 DstArrayElement;
+		public UInt32 DescriptorCount;
+		public DescriptorType DescriptorType;
+		public UIntPtr Offset;
+		public UIntPtr Stride;
+	}
+
+	unsafe public partial class DescriptorUpdateTemplateCreateInfoKhr : MarshalledObject
+	{
+		public UInt32 Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
+
+		public UInt32 DescriptorUpdateEntryCount {
+			get { return m->DescriptorUpdateEntryCount; }
+			set { m->DescriptorUpdateEntryCount = value; }
+		}
+
+		NativeReference refDescriptorUpdateEntries;
+		public DescriptorUpdateTemplateEntryKhr[] DescriptorUpdateEntries {
+			get {
+				if (m->DescriptorUpdateEntryCount == 0)
+					return null;
+				var values = new DescriptorUpdateTemplateEntryKhr [m->DescriptorUpdateEntryCount];
+				unsafe
+				{
+					DescriptorUpdateTemplateEntryKhr* ptr = (DescriptorUpdateTemplateEntryKhr*)m->DescriptorUpdateEntries;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->DescriptorUpdateEntryCount = 0;
+					m->DescriptorUpdateEntries = IntPtr.Zero;
+					return;
+				}
+				m->DescriptorUpdateEntryCount = (uint)value.Length;
+				refDescriptorUpdateEntries = new NativeReference ((int)(sizeof(DescriptorUpdateTemplateEntryKhr)*value.Length));
+				m->DescriptorUpdateEntries = refDescriptorUpdateEntries.Handle;
+				unsafe
+				{
+					DescriptorUpdateTemplateEntryKhr* ptr = (DescriptorUpdateTemplateEntryKhr*)m->DescriptorUpdateEntries;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+
+		public DescriptorUpdateTemplateTypeKhr TemplateType {
+			get { return m->TemplateType; }
+			set { m->TemplateType = value; }
+		}
+
+		DescriptorSetLayout lDescriptorSetLayout;
+		public DescriptorSetLayout DescriptorSetLayout {
+			get { return lDescriptorSetLayout; }
+			set { lDescriptorSetLayout = value; m->DescriptorSetLayout = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		public PipelineBindPoint PipelineBindPoint {
+			get { return m->PipelineBindPoint; }
+			set { m->PipelineBindPoint = value; }
+		}
+
+		PipelineLayout lPipelineLayout;
+		public PipelineLayout PipelineLayout {
+			get { return lPipelineLayout; }
+			set { lPipelineLayout = value; m->PipelineLayout = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		public UInt32 Set {
+			get { return m->Set; }
+			set { m->Set = value; }
+		}
+		internal Interop.DescriptorUpdateTemplateCreateInfoKhr* m {
+
+			get {
+				return (Interop.DescriptorUpdateTemplateCreateInfoKhr*)native.Handle;
+			}
+		}
+
+		public DescriptorUpdateTemplateCreateInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.DescriptorUpdateTemplateCreateInfoKhr));
+			Initialize ();
+		}
+
+		internal DescriptorUpdateTemplateCreateInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+		override public void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (!disposing)
+				return;
+			refDescriptorUpdateEntries.Dispose ();
+			refDescriptorUpdateEntries = null;
+		}
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DescriptorUpdateTemplateCreateInfoKhr;
+		}
+
+	}
+
+	unsafe public partial struct XYColorExt
+	{
+		public float X;
+		public float Y;
+	}
+
+	unsafe public partial class HdrMetadataExt : MarshalledObject
+	{
+		public XYColorExt DisplayPrimaryRed {
+			get { return m->DisplayPrimaryRed; }
+			set { m->DisplayPrimaryRed = value; }
+		}
+
+		public XYColorExt DisplayPrimaryGreen {
+			get { return m->DisplayPrimaryGreen; }
+			set { m->DisplayPrimaryGreen = value; }
+		}
+
+		public XYColorExt DisplayPrimaryBlue {
+			get { return m->DisplayPrimaryBlue; }
+			set { m->DisplayPrimaryBlue = value; }
+		}
+
+		public XYColorExt WhitePoint {
+			get { return m->WhitePoint; }
+			set { m->WhitePoint = value; }
+		}
+
+		public float MaxLuminance {
+			get { return m->MaxLuminance; }
+			set { m->MaxLuminance = value; }
+		}
+
+		public float MinLuminance {
+			get { return m->MinLuminance; }
+			set { m->MinLuminance = value; }
+		}
+
+		public float MaxContentLightLevel {
+			get { return m->MaxContentLightLevel; }
+			set { m->MaxContentLightLevel = value; }
+		}
+
+		public float MaxFrameAverageLightLevel {
+			get { return m->MaxFrameAverageLightLevel; }
+			set { m->MaxFrameAverageLightLevel = value; }
+		}
+		internal Interop.HdrMetadataExt* m {
+
+			get {
+				return (Interop.HdrMetadataExt*)native.Handle;
+			}
+		}
+
+		public HdrMetadataExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.HdrMetadataExt));
+			Initialize ();
+		}
+
+		internal HdrMetadataExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.HdrMetadataExt;
+		}
+
+	}
+
+	unsafe public partial struct RefreshCycleDurationGoogle
+	{
+		public UInt64 RefreshDuration;
+	}
+
+	unsafe public partial struct PastPresentationTimingGoogle
+	{
+		public UInt32 PresentId;
+		public UInt64 DesiredPresentTime;
+		public UInt64 ActualPresentTime;
+		public UInt64 EarliestPresentTime;
+		public UInt64 PresentMargin;
+	}
+
+	unsafe public partial class PresentTimesInfoGoogle : MarshalledObject
+	{
+		public UInt32 SwapchainCount {
+			get { return m->SwapchainCount; }
+			set { m->SwapchainCount = value; }
+		}
+
+		NativeReference refTimes;
+		public PresentTimeGoogle[] Times {
+			get {
+				if (m->SwapchainCount == 0)
+					return null;
+				var values = new PresentTimeGoogle [m->SwapchainCount];
+				unsafe
+				{
+					PresentTimeGoogle* ptr = (PresentTimeGoogle*)m->Times;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->SwapchainCount = 0;
+					m->Times = IntPtr.Zero;
+					return;
+				}
+				m->SwapchainCount = (uint)value.Length;
+				refTimes = new NativeReference ((int)(sizeof(PresentTimeGoogle)*value.Length));
+				m->Times = refTimes.Handle;
+				unsafe
+				{
+					PresentTimeGoogle* ptr = (PresentTimeGoogle*)m->Times;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+		internal Interop.PresentTimesInfoGoogle* m {
+
+			get {
+				return (Interop.PresentTimesInfoGoogle*)native.Handle;
+			}
+		}
+
+		public PresentTimesInfoGoogle ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PresentTimesInfoGoogle));
+			Initialize ();
+		}
+
+		internal PresentTimesInfoGoogle (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+		override public void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (!disposing)
+				return;
+			refTimes.Dispose ();
+			refTimes = null;
+		}
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PresentTimesInfoGoogle;
+		}
+
+	}
+
+	unsafe public partial struct PresentTimeGoogle
+	{
+		public UInt32 PresentId;
+		public UInt64 DesiredPresentTime;
+	}
+
+	unsafe public partial class IOSSurfaceCreateInfoMvk : MarshalledObject
+	{
+		public UInt32 Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
+
+		public IntPtr View {
+			get { return m->View; }
+			set { m->View = value; }
+		}
+		internal Interop.IOSSurfaceCreateInfoMvk* m {
+
+			get {
+				return (Interop.IOSSurfaceCreateInfoMvk*)native.Handle;
+			}
+		}
+
+		public IOSSurfaceCreateInfoMvk ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.IOSSurfaceCreateInfoMvk));
+			Initialize ();
+		}
+
+		internal IOSSurfaceCreateInfoMvk (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.IOSSurfaceCreateInfoMvk;
+		}
+
+	}
+
+	unsafe public partial class MacOSSurfaceCreateInfoMvk : MarshalledObject
+	{
+		public UInt32 Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
+
+		public IntPtr View {
+			get { return m->View; }
+			set { m->View = value; }
+		}
+		internal Interop.MacOSSurfaceCreateInfoMvk* m {
+
+			get {
+				return (Interop.MacOSSurfaceCreateInfoMvk*)native.Handle;
+			}
+		}
+
+		public MacOSSurfaceCreateInfoMvk ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.MacOSSurfaceCreateInfoMvk));
+			Initialize ();
+		}
+
+		internal MacOSSurfaceCreateInfoMvk (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.MacOSSurfaceCreateInfoMvk;
+		}
+
+	}
+
+	unsafe public partial struct ViewportWScalingNv
+	{
+		public float Xcoeff;
+		public float Ycoeff;
+	}
+
+	unsafe public partial class PipelineViewportWScalingStateCreateInfoNv : MarshalledObject
+	{
+		public bool ViewportWscalingEnable {
+			get { return m->ViewportWscalingEnable; }
+			set { m->ViewportWscalingEnable = value; }
+		}
+
+		public UInt32 ViewportCount {
+			get { return m->ViewportCount; }
+			set { m->ViewportCount = value; }
+		}
+
+		NativeReference refViewportWscalings;
+		public ViewportWScalingNv[] ViewportWscalings {
+			get {
+				if (m->ViewportCount == 0)
+					return null;
+				var values = new ViewportWScalingNv [m->ViewportCount];
+				unsafe
+				{
+					ViewportWScalingNv* ptr = (ViewportWScalingNv*)m->ViewportWscalings;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->ViewportCount = 0;
+					m->ViewportWscalings = IntPtr.Zero;
+					return;
+				}
+				m->ViewportCount = (uint)value.Length;
+				refViewportWscalings = new NativeReference ((int)(sizeof(ViewportWScalingNv)*value.Length));
+				m->ViewportWscalings = refViewportWscalings.Handle;
+				unsafe
+				{
+					ViewportWScalingNv* ptr = (ViewportWScalingNv*)m->ViewportWscalings;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+		internal Interop.PipelineViewportWScalingStateCreateInfoNv* m {
+
+			get {
+				return (Interop.PipelineViewportWScalingStateCreateInfoNv*)native.Handle;
+			}
+		}
+
+		public PipelineViewportWScalingStateCreateInfoNv ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PipelineViewportWScalingStateCreateInfoNv));
+			Initialize ();
+		}
+
+		internal PipelineViewportWScalingStateCreateInfoNv (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+		override public void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (!disposing)
+				return;
+			refViewportWscalings.Dispose ();
+			refViewportWscalings = null;
+		}
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PipelineViewportWScalingStateCreateInfoNv;
+		}
+
+	}
+
+	unsafe public partial struct ViewportSwizzleNv
+	{
+		public ViewportCoordinateSwizzleNv X;
+		public ViewportCoordinateSwizzleNv Y;
+		public ViewportCoordinateSwizzleNv Z;
+		public ViewportCoordinateSwizzleNv W;
+	}
+
+	unsafe public partial class PipelineViewportSwizzleStateCreateInfoNv : MarshalledObject
+	{
+		public UInt32 Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
+
+		public UInt32 ViewportCount {
+			get { return m->ViewportCount; }
+			set { m->ViewportCount = value; }
+		}
+
+		NativeReference refViewportSwizzles;
+		public ViewportSwizzleNv[] ViewportSwizzles {
+			get {
+				if (m->ViewportCount == 0)
+					return null;
+				var values = new ViewportSwizzleNv [m->ViewportCount];
+				unsafe
+				{
+					ViewportSwizzleNv* ptr = (ViewportSwizzleNv*)m->ViewportSwizzles;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->ViewportCount = 0;
+					m->ViewportSwizzles = IntPtr.Zero;
+					return;
+				}
+				m->ViewportCount = (uint)value.Length;
+				refViewportSwizzles = new NativeReference ((int)(sizeof(ViewportSwizzleNv)*value.Length));
+				m->ViewportSwizzles = refViewportSwizzles.Handle;
+				unsafe
+				{
+					ViewportSwizzleNv* ptr = (ViewportSwizzleNv*)m->ViewportSwizzles;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+		internal Interop.PipelineViewportSwizzleStateCreateInfoNv* m {
+
+			get {
+				return (Interop.PipelineViewportSwizzleStateCreateInfoNv*)native.Handle;
+			}
+		}
+
+		public PipelineViewportSwizzleStateCreateInfoNv ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PipelineViewportSwizzleStateCreateInfoNv));
+			Initialize ();
+		}
+
+		internal PipelineViewportSwizzleStateCreateInfoNv (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+		override public void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (!disposing)
+				return;
+			refViewportSwizzles.Dispose ();
+			refViewportSwizzles = null;
+		}
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PipelineViewportSwizzleStateCreateInfoNv;
+		}
+
+	}
+
+	unsafe public partial class PhysicalDeviceDiscardRectanglePropertiesExt : MarshalledObject
+	{
+		public UInt32 MaxDiscardRectangles {
+			get { return m->MaxDiscardRectangles; }
+			set { m->MaxDiscardRectangles = value; }
+		}
+		internal Interop.PhysicalDeviceDiscardRectanglePropertiesExt* m {
+
+			get {
+				return (Interop.PhysicalDeviceDiscardRectanglePropertiesExt*)native.Handle;
+			}
+		}
+
+		public PhysicalDeviceDiscardRectanglePropertiesExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceDiscardRectanglePropertiesExt));
+			Initialize ();
+		}
+
+		internal PhysicalDeviceDiscardRectanglePropertiesExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDeviceDiscardRectanglePropertiesExt;
+		}
+
+	}
+
+	unsafe public partial class PipelineDiscardRectangleStateCreateInfoExt : MarshalledObject
+	{
+		public UInt32 Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
+
+		public DiscardRectangleModeExt DiscardRectangleMode {
+			get { return m->DiscardRectangleMode; }
+			set { m->DiscardRectangleMode = value; }
+		}
+
+		public UInt32 DiscardRectangleCount {
+			get { return m->DiscardRectangleCount; }
+			set { m->DiscardRectangleCount = value; }
+		}
+
+		NativeReference refDiscardRectangles;
+		public Rect2D[] DiscardRectangles {
+			get {
+				if (m->DiscardRectangleCount == 0)
+					return null;
+				var values = new Rect2D [m->DiscardRectangleCount];
+				unsafe
+				{
+					Rect2D* ptr = (Rect2D*)m->DiscardRectangles;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->DiscardRectangleCount = 0;
+					m->DiscardRectangles = IntPtr.Zero;
+					return;
+				}
+				m->DiscardRectangleCount = (uint)value.Length;
+				refDiscardRectangles = new NativeReference ((int)(sizeof(Rect2D)*value.Length));
+				m->DiscardRectangles = refDiscardRectangles.Handle;
+				unsafe
+				{
+					Rect2D* ptr = (Rect2D*)m->DiscardRectangles;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+		internal Interop.PipelineDiscardRectangleStateCreateInfoExt* m {
+
+			get {
+				return (Interop.PipelineDiscardRectangleStateCreateInfoExt*)native.Handle;
+			}
+		}
+
+		public PipelineDiscardRectangleStateCreateInfoExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PipelineDiscardRectangleStateCreateInfoExt));
+			Initialize ();
+		}
+
+		internal PipelineDiscardRectangleStateCreateInfoExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+		override public void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (!disposing)
+				return;
+			refDiscardRectangles.Dispose ();
+			refDiscardRectangles = null;
+		}
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PipelineDiscardRectangleStateCreateInfoExt;
+		}
+
+	}
+
+	unsafe public partial class PhysicalDeviceMultiviewPerViewAttributesPropertiesNvx : MarshalledObject
+	{
+		public bool PerViewPositionAllComponents {
+			get { return m->PerViewPositionAllComponents; }
+			set { m->PerViewPositionAllComponents = value; }
+		}
+		internal Interop.PhysicalDeviceMultiviewPerViewAttributesPropertiesNvx* m {
+
+			get {
+				return (Interop.PhysicalDeviceMultiviewPerViewAttributesPropertiesNvx*)native.Handle;
+			}
+		}
+
+		public PhysicalDeviceMultiviewPerViewAttributesPropertiesNvx ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceMultiviewPerViewAttributesPropertiesNvx));
+			Initialize ();
+		}
+
+		internal PhysicalDeviceMultiviewPerViewAttributesPropertiesNvx (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDeviceMultiviewPerViewAttributesPropertiesNvx;
+		}
+
+	}
+
+	unsafe public partial struct InputAttachmentAspectReferenceKhr
+	{
+		public UInt32 Subpass;
+		public UInt32 InputAttachmentIndex;
+		public ImageAspectFlags AspectMask;
+	}
+
+	unsafe public partial class RenderPassInputAttachmentAspectCreateInfoKhr : MarshalledObject
+	{
+		public UInt32 AspectReferenceCount {
+			get { return m->AspectReferenceCount; }
+			set { m->AspectReferenceCount = value; }
+		}
+
+		NativeReference refAspectReferences;
+		public InputAttachmentAspectReferenceKhr[] AspectReferences {
+			get {
+				if (m->AspectReferenceCount == 0)
+					return null;
+				var values = new InputAttachmentAspectReferenceKhr [m->AspectReferenceCount];
+				unsafe
+				{
+					InputAttachmentAspectReferenceKhr* ptr = (InputAttachmentAspectReferenceKhr*)m->AspectReferences;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->AspectReferenceCount = 0;
+					m->AspectReferences = IntPtr.Zero;
+					return;
+				}
+				m->AspectReferenceCount = (uint)value.Length;
+				refAspectReferences = new NativeReference ((int)(sizeof(InputAttachmentAspectReferenceKhr)*value.Length));
+				m->AspectReferences = refAspectReferences.Handle;
+				unsafe
+				{
+					InputAttachmentAspectReferenceKhr* ptr = (InputAttachmentAspectReferenceKhr*)m->AspectReferences;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+		internal Interop.RenderPassInputAttachmentAspectCreateInfoKhr* m {
+
+			get {
+				return (Interop.RenderPassInputAttachmentAspectCreateInfoKhr*)native.Handle;
+			}
+		}
+
+		public RenderPassInputAttachmentAspectCreateInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.RenderPassInputAttachmentAspectCreateInfoKhr));
+			Initialize ();
+		}
+
+		internal RenderPassInputAttachmentAspectCreateInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+		override public void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (!disposing)
+				return;
+			refAspectReferences.Dispose ();
+			refAspectReferences = null;
+		}
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.RenderPassInputAttachmentAspectCreateInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class PhysicalDeviceSurfaceInfo2Khr : MarshalledObject
+	{
+		SurfaceKhr lSurface;
+		public SurfaceKhr Surface {
+			get { return lSurface; }
+			set { lSurface = value; m->Surface = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+		internal Interop.PhysicalDeviceSurfaceInfo2Khr* m {
+
+			get {
+				return (Interop.PhysicalDeviceSurfaceInfo2Khr*)native.Handle;
+			}
+		}
+
+		public PhysicalDeviceSurfaceInfo2Khr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceSurfaceInfo2Khr));
+			Initialize ();
+		}
+
+		internal PhysicalDeviceSurfaceInfo2Khr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDeviceSurfaceInfo2Khr;
+		}
+
+	}
+
+	unsafe public partial class SurfaceCapabilities2Khr : MarshalledObject
+	{
+		public SurfaceCapabilitiesKhr SurfaceCapabilities {
+			get { return m->SurfaceCapabilities; }
+			set { m->SurfaceCapabilities = value; }
+		}
+		internal Interop.SurfaceCapabilities2Khr* m {
+
+			get {
+				return (Interop.SurfaceCapabilities2Khr*)native.Handle;
+			}
+		}
+
+		public SurfaceCapabilities2Khr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.SurfaceCapabilities2Khr));
+			Initialize ();
+		}
+
+		internal SurfaceCapabilities2Khr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.SurfaceCapabilities2Khr;
+		}
+
+	}
+
+	unsafe public partial class SurfaceFormat2Khr : MarshalledObject
+	{
+		public SurfaceFormatKhr SurfaceFormat {
+			get { return m->SurfaceFormat; }
+			set { m->SurfaceFormat = value; }
+		}
+		internal Interop.SurfaceFormat2Khr* m {
+
+			get {
+				return (Interop.SurfaceFormat2Khr*)native.Handle;
+			}
+		}
+
+		public SurfaceFormat2Khr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.SurfaceFormat2Khr));
+			Initialize ();
+		}
+
+		internal SurfaceFormat2Khr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.SurfaceFormat2Khr;
+		}
+
+	}
+
+	unsafe public partial class SharedPresentSurfaceCapabilitiesKhr : MarshalledObject
+	{
+		public ImageUsageFlags SharedPresentSupportedUsageFlags {
+			get { return m->SharedPresentSupportedUsageFlags; }
+			set { m->SharedPresentSupportedUsageFlags = value; }
+		}
+		internal Interop.SharedPresentSurfaceCapabilitiesKhr* m {
+
+			get {
+				return (Interop.SharedPresentSurfaceCapabilitiesKhr*)native.Handle;
+			}
+		}
+
+		public SharedPresentSurfaceCapabilitiesKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.SharedPresentSurfaceCapabilitiesKhr));
+			Initialize ();
+		}
+
+		internal SharedPresentSurfaceCapabilitiesKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.SharedPresentSurfaceCapabilitiesKhr;
+		}
+
+	}
+
+	unsafe public partial class PhysicalDevice16BitStorageFeaturesKhr : MarshalledObject
+	{
+		public bool StorageBuffer16BitAccess {
+			get { return m->StorageBuffer16BitAccess; }
+			set { m->StorageBuffer16BitAccess = value; }
+		}
+
+		public bool UniformAndStorageBuffer16BitAccess {
+			get { return m->UniformAndStorageBuffer16BitAccess; }
+			set { m->UniformAndStorageBuffer16BitAccess = value; }
+		}
+
+		public bool StoragePushConstant16 {
+			get { return m->StoragePushConstant16; }
+			set { m->StoragePushConstant16 = value; }
+		}
+
+		public bool StorageInputOutput16 {
+			get { return m->StorageInputOutput16; }
+			set { m->StorageInputOutput16 = value; }
+		}
+		internal Interop.PhysicalDevice16BitStorageFeaturesKhr* m {
+
+			get {
+				return (Interop.PhysicalDevice16BitStorageFeaturesKhr*)native.Handle;
+			}
+		}
+
+		public PhysicalDevice16BitStorageFeaturesKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDevice16BitStorageFeaturesKhr));
+			Initialize ();
+		}
+
+		internal PhysicalDevice16BitStorageFeaturesKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDevice16BitStorageFeaturesKhr;
+		}
+
+	}
+
+	unsafe public partial class BufferMemoryRequirementsInfo2Khr : MarshalledObject
+	{
+		Buffer lBuffer;
+		public Buffer Buffer {
+			get { return lBuffer; }
+			set { lBuffer = value; m->Buffer = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+		internal Interop.BufferMemoryRequirementsInfo2Khr* m {
+
+			get {
+				return (Interop.BufferMemoryRequirementsInfo2Khr*)native.Handle;
+			}
+		}
+
+		public BufferMemoryRequirementsInfo2Khr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.BufferMemoryRequirementsInfo2Khr));
+			Initialize ();
+		}
+
+		internal BufferMemoryRequirementsInfo2Khr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.BufferMemoryRequirementsInfo2Khr;
+		}
+
+	}
+
+	unsafe public partial class ImageMemoryRequirementsInfo2Khr : MarshalledObject
+	{
+		Image lImage;
+		public Image Image {
+			get { return lImage; }
+			set { lImage = value; m->Image = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+		internal Interop.ImageMemoryRequirementsInfo2Khr* m {
+
+			get {
+				return (Interop.ImageMemoryRequirementsInfo2Khr*)native.Handle;
+			}
+		}
+
+		public ImageMemoryRequirementsInfo2Khr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ImageMemoryRequirementsInfo2Khr));
+			Initialize ();
+		}
+
+		internal ImageMemoryRequirementsInfo2Khr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ImageMemoryRequirementsInfo2Khr;
+		}
+
+	}
+
+	unsafe public partial class ImageSparseMemoryRequirementsInfo2Khr : MarshalledObject
+	{
+		Image lImage;
+		public Image Image {
+			get { return lImage; }
+			set { lImage = value; m->Image = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+		internal Interop.ImageSparseMemoryRequirementsInfo2Khr* m {
+
+			get {
+				return (Interop.ImageSparseMemoryRequirementsInfo2Khr*)native.Handle;
+			}
+		}
+
+		public ImageSparseMemoryRequirementsInfo2Khr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ImageSparseMemoryRequirementsInfo2Khr));
+			Initialize ();
+		}
+
+		internal ImageSparseMemoryRequirementsInfo2Khr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ImageSparseMemoryRequirementsInfo2Khr;
+		}
+
+	}
+
+	unsafe public partial class MemoryRequirements2Khr : MarshalledObject
+	{
+		public MemoryRequirements MemoryRequirements {
+			get { return m->MemoryRequirements; }
+			set { m->MemoryRequirements = value; }
+		}
+		internal Interop.MemoryRequirements2Khr* m {
+
+			get {
+				return (Interop.MemoryRequirements2Khr*)native.Handle;
+			}
+		}
+
+		public MemoryRequirements2Khr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.MemoryRequirements2Khr));
+			Initialize ();
+		}
+
+		internal MemoryRequirements2Khr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.MemoryRequirements2Khr;
+		}
+
+	}
+
+	unsafe public partial class SparseImageMemoryRequirements2Khr : MarshalledObject
+	{
+		public SparseImageMemoryRequirements MemoryRequirements {
+			get { return m->MemoryRequirements; }
+			set { m->MemoryRequirements = value; }
+		}
+		internal Interop.SparseImageMemoryRequirements2Khr* m {
+
+			get {
+				return (Interop.SparseImageMemoryRequirements2Khr*)native.Handle;
+			}
+		}
+
+		public SparseImageMemoryRequirements2Khr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.SparseImageMemoryRequirements2Khr));
+			Initialize ();
+		}
+
+		internal SparseImageMemoryRequirements2Khr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.SparseImageMemoryRequirements2Khr;
+		}
+
+	}
+
+	unsafe public partial class PhysicalDevicePointClippingPropertiesKhr : MarshalledObject
+	{
+		public PointClippingBehaviorKhr PointClippingBehavior {
+			get { return m->PointClippingBehavior; }
+			set { m->PointClippingBehavior = value; }
+		}
+		internal Interop.PhysicalDevicePointClippingPropertiesKhr* m {
+
+			get {
+				return (Interop.PhysicalDevicePointClippingPropertiesKhr*)native.Handle;
+			}
+		}
+
+		public PhysicalDevicePointClippingPropertiesKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDevicePointClippingPropertiesKhr));
+			Initialize ();
+		}
+
+		internal PhysicalDevicePointClippingPropertiesKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDevicePointClippingPropertiesKhr;
+		}
+
+	}
+
+	unsafe public partial class MemoryDedicatedRequirementsKhr : MarshalledObject
+	{
+		public bool PrefersDedicatedAllocation {
+			get { return m->PrefersDedicatedAllocation; }
+			set { m->PrefersDedicatedAllocation = value; }
+		}
+
+		public bool RequiresDedicatedAllocation {
+			get { return m->RequiresDedicatedAllocation; }
+			set { m->RequiresDedicatedAllocation = value; }
+		}
+		internal Interop.MemoryDedicatedRequirementsKhr* m {
+
+			get {
+				return (Interop.MemoryDedicatedRequirementsKhr*)native.Handle;
+			}
+		}
+
+		public MemoryDedicatedRequirementsKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.MemoryDedicatedRequirementsKhr));
+			Initialize ();
+		}
+
+		internal MemoryDedicatedRequirementsKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.MemoryDedicatedRequirementsKhr;
+		}
+
+	}
+
+	unsafe public partial class MemoryDedicatedAllocateInfoKhr : MarshalledObject
+	{
+		Image lImage;
+		public Image Image {
+			get { return lImage; }
+			set { lImage = value; m->Image = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+
+		Buffer lBuffer;
+		public Buffer Buffer {
+			get { return lBuffer; }
+			set { lBuffer = value; m->Buffer = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+		internal Interop.MemoryDedicatedAllocateInfoKhr* m {
+
+			get {
+				return (Interop.MemoryDedicatedAllocateInfoKhr*)native.Handle;
+			}
+		}
+
+		public MemoryDedicatedAllocateInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.MemoryDedicatedAllocateInfoKhr));
+			Initialize ();
+		}
+
+		internal MemoryDedicatedAllocateInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.MemoryDedicatedAllocateInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class ImageViewUsageCreateInfoKhr : MarshalledObject
+	{
+		public ImageUsageFlags Usage {
+			get { return m->Usage; }
+			set { m->Usage = value; }
+		}
+		internal Interop.ImageViewUsageCreateInfoKhr* m {
+
+			get {
+				return (Interop.ImageViewUsageCreateInfoKhr*)native.Handle;
+			}
+		}
+
+		public ImageViewUsageCreateInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ImageViewUsageCreateInfoKhr));
+			Initialize ();
+		}
+
+		internal ImageViewUsageCreateInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ImageViewUsageCreateInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class PipelineTessellationDomainOriginStateCreateInfoKhr : MarshalledObject
+	{
+		public TessellationDomainOriginKhr DomainOrigin {
+			get { return m->DomainOrigin; }
+			set { m->DomainOrigin = value; }
+		}
+		internal Interop.PipelineTessellationDomainOriginStateCreateInfoKhr* m {
+
+			get {
+				return (Interop.PipelineTessellationDomainOriginStateCreateInfoKhr*)native.Handle;
+			}
+		}
+
+		public PipelineTessellationDomainOriginStateCreateInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PipelineTessellationDomainOriginStateCreateInfoKhr));
+			Initialize ();
+		}
+
+		internal PipelineTessellationDomainOriginStateCreateInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PipelineTessellationDomainOriginStateCreateInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class SamplerYcbcrConversionInfoKhr : MarshalledObject
+	{
+		SamplerYcbcrConversionKhr lConversion;
+		public SamplerYcbcrConversionKhr Conversion {
+			get { return lConversion; }
+			set { lConversion = value; m->Conversion = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+		internal Interop.SamplerYcbcrConversionInfoKhr* m {
+
+			get {
+				return (Interop.SamplerYcbcrConversionInfoKhr*)native.Handle;
+			}
+		}
+
+		public SamplerYcbcrConversionInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.SamplerYcbcrConversionInfoKhr));
+			Initialize ();
+		}
+
+		internal SamplerYcbcrConversionInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.SamplerYcbcrConversionInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class SamplerYcbcrConversionCreateInfoKhr : MarshalledObject
+	{
+		public Format Format {
+			get { return m->Format; }
+			set { m->Format = value; }
+		}
+
+		public SamplerYcbcrModelConversionKhr YcbcrModel {
+			get { return m->YcbcrModel; }
+			set { m->YcbcrModel = value; }
+		}
+
+		public SamplerYcbcrRangeKhr YcbcrRange {
+			get { return m->YcbcrRange; }
+			set { m->YcbcrRange = value; }
+		}
+
+		public ComponentMapping Components {
+			get { return m->Components; }
+			set { m->Components = value; }
+		}
+
+		public ChromaLocationKhr XChromaOffset {
+			get { return m->XChromaOffset; }
+			set { m->XChromaOffset = value; }
+		}
+
+		public ChromaLocationKhr YChromaOffset {
+			get { return m->YChromaOffset; }
+			set { m->YChromaOffset = value; }
+		}
+
+		public Filter ChromaFilter {
+			get { return m->ChromaFilter; }
+			set { m->ChromaFilter = value; }
+		}
+
+		public bool ForceExplicitReconstruction {
+			get { return m->ForceExplicitReconstruction; }
+			set { m->ForceExplicitReconstruction = value; }
+		}
+		internal Interop.SamplerYcbcrConversionCreateInfoKhr* m {
+
+			get {
+				return (Interop.SamplerYcbcrConversionCreateInfoKhr*)native.Handle;
+			}
+		}
+
+		public SamplerYcbcrConversionCreateInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.SamplerYcbcrConversionCreateInfoKhr));
+			Initialize ();
+		}
+
+		internal SamplerYcbcrConversionCreateInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.SamplerYcbcrConversionCreateInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class BindImagePlaneMemoryInfoKhr : MarshalledObject
+	{
+		public ImageAspectFlags PlaneAspect {
+			get { return m->PlaneAspect; }
+			set { m->PlaneAspect = value; }
+		}
+		internal Interop.BindImagePlaneMemoryInfoKhr* m {
+
+			get {
+				return (Interop.BindImagePlaneMemoryInfoKhr*)native.Handle;
+			}
+		}
+
+		public BindImagePlaneMemoryInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.BindImagePlaneMemoryInfoKhr));
+			Initialize ();
+		}
+
+		internal BindImagePlaneMemoryInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.BindImagePlaneMemoryInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class ImagePlaneMemoryRequirementsInfoKhr : MarshalledObject
+	{
+		public ImageAspectFlags PlaneAspect {
+			get { return m->PlaneAspect; }
+			set { m->PlaneAspect = value; }
+		}
+		internal Interop.ImagePlaneMemoryRequirementsInfoKhr* m {
+
+			get {
+				return (Interop.ImagePlaneMemoryRequirementsInfoKhr*)native.Handle;
+			}
+		}
+
+		public ImagePlaneMemoryRequirementsInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ImagePlaneMemoryRequirementsInfoKhr));
+			Initialize ();
+		}
+
+		internal ImagePlaneMemoryRequirementsInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ImagePlaneMemoryRequirementsInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class PhysicalDeviceSamplerYcbcrConversionFeaturesKhr : MarshalledObject
+	{
+		public bool SamplerYcbcrConversion {
+			get { return m->SamplerYcbcrConversion; }
+			set { m->SamplerYcbcrConversion = value; }
+		}
+		internal Interop.PhysicalDeviceSamplerYcbcrConversionFeaturesKhr* m {
+
+			get {
+				return (Interop.PhysicalDeviceSamplerYcbcrConversionFeaturesKhr*)native.Handle;
+			}
+		}
+
+		public PhysicalDeviceSamplerYcbcrConversionFeaturesKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceSamplerYcbcrConversionFeaturesKhr));
+			Initialize ();
+		}
+
+		internal PhysicalDeviceSamplerYcbcrConversionFeaturesKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDeviceSamplerYcbcrConversionFeaturesKhr;
+		}
+
+	}
+
+	unsafe public partial class SamplerYcbcrConversionImageFormatPropertiesKhr : MarshalledObject
+	{
+		public UInt32 CombinedImageSamplerDescriptorCount {
+			get { return m->CombinedImageSamplerDescriptorCount; }
+			set { m->CombinedImageSamplerDescriptorCount = value; }
+		}
+		internal Interop.SamplerYcbcrConversionImageFormatPropertiesKhr* m {
+
+			get {
+				return (Interop.SamplerYcbcrConversionImageFormatPropertiesKhr*)native.Handle;
+			}
+		}
+
+		public SamplerYcbcrConversionImageFormatPropertiesKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.SamplerYcbcrConversionImageFormatPropertiesKhr));
+			Initialize ();
+		}
+
+		internal SamplerYcbcrConversionImageFormatPropertiesKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.SamplerYcbcrConversionImageFormatPropertiesKhr;
+		}
+
+	}
+
+	unsafe public partial class TextureLODGatherFormatPropertiesAmd : MarshalledObject
+	{
+		public bool SupportsTextureGatherLodbiasAmd {
+			get { return m->SupportsTextureGatherLodbiasAmd; }
+			set { m->SupportsTextureGatherLodbiasAmd = value; }
+		}
+		internal Interop.TextureLODGatherFormatPropertiesAmd* m {
+
+			get {
+				return (Interop.TextureLODGatherFormatPropertiesAmd*)native.Handle;
+			}
+		}
+
+		public TextureLODGatherFormatPropertiesAmd ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.TextureLODGatherFormatPropertiesAmd));
+			Initialize ();
+		}
+
+		internal TextureLODGatherFormatPropertiesAmd (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.TextureLODGatherFormatPropertiesAmd;
+		}
+
+	}
+
+	unsafe public partial class PipelineCoverageToColorStateCreateInfoNv : MarshalledObject
+	{
+		public UInt32 Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
+
+		public bool CoverageToColorEnable {
+			get { return m->CoverageToColorEnable; }
+			set { m->CoverageToColorEnable = value; }
+		}
+
+		public UInt32 CoverageToColorLocation {
+			get { return m->CoverageToColorLocation; }
+			set { m->CoverageToColorLocation = value; }
+		}
+		internal Interop.PipelineCoverageToColorStateCreateInfoNv* m {
+
+			get {
+				return (Interop.PipelineCoverageToColorStateCreateInfoNv*)native.Handle;
+			}
+		}
+
+		public PipelineCoverageToColorStateCreateInfoNv ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PipelineCoverageToColorStateCreateInfoNv));
+			Initialize ();
+		}
+
+		internal PipelineCoverageToColorStateCreateInfoNv (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PipelineCoverageToColorStateCreateInfoNv;
+		}
+
+	}
+
+	unsafe public partial class PhysicalDeviceSamplerFilterMinmaxPropertiesExt : MarshalledObject
+	{
+		public bool FilterMinmaxSingleComponentFormats {
+			get { return m->FilterMinmaxSingleComponentFormats; }
+			set { m->FilterMinmaxSingleComponentFormats = value; }
+		}
+
+		public bool FilterMinmaxImageComponentMapping {
+			get { return m->FilterMinmaxImageComponentMapping; }
+			set { m->FilterMinmaxImageComponentMapping = value; }
+		}
+		internal Interop.PhysicalDeviceSamplerFilterMinmaxPropertiesExt* m {
+
+			get {
+				return (Interop.PhysicalDeviceSamplerFilterMinmaxPropertiesExt*)native.Handle;
+			}
+		}
+
+		public PhysicalDeviceSamplerFilterMinmaxPropertiesExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceSamplerFilterMinmaxPropertiesExt));
+			Initialize ();
+		}
+
+		internal PhysicalDeviceSamplerFilterMinmaxPropertiesExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDeviceSamplerFilterMinmaxPropertiesExt;
+		}
+
+	}
+
+	unsafe public partial struct SampleLocationExt
+	{
+		public float X;
+		public float Y;
+	}
+
+	unsafe public partial class SampleLocationsInfoExt : MarshalledObject
+	{
+		public SampleCountFlags SampleLocationsPerPixel {
+			get { return m->SampleLocationsPerPixel; }
+			set { m->SampleLocationsPerPixel = value; }
+		}
+
+		public Extent2D SampleLocationGridSize {
+			get { return m->SampleLocationGridSize; }
+			set { m->SampleLocationGridSize = value; }
+		}
+
+		public UInt32 SampleLocationsCount {
+			get { return m->SampleLocationsCount; }
+			set { m->SampleLocationsCount = value; }
+		}
+
+		NativeReference refSampleLocations;
+		public SampleLocationExt[] SampleLocations {
+			get {
+				if (m->SampleLocationsCount == 0)
+					return null;
+				var values = new SampleLocationExt [m->SampleLocationsCount];
+				unsafe
+				{
+					SampleLocationExt* ptr = (SampleLocationExt*)m->SampleLocations;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->SampleLocationsCount = 0;
+					m->SampleLocations = IntPtr.Zero;
+					return;
+				}
+				m->SampleLocationsCount = (uint)value.Length;
+				refSampleLocations = new NativeReference ((int)(sizeof(SampleLocationExt)*value.Length));
+				m->SampleLocations = refSampleLocations.Handle;
+				unsafe
+				{
+					SampleLocationExt* ptr = (SampleLocationExt*)m->SampleLocations;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+		internal Interop.SampleLocationsInfoExt* m {
+
+			get {
+				return (Interop.SampleLocationsInfoExt*)native.Handle;
+			}
+		}
+
+		public SampleLocationsInfoExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.SampleLocationsInfoExt));
+			Initialize ();
+		}
+
+		internal SampleLocationsInfoExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+		override public void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (!disposing)
+				return;
+			refSampleLocations.Dispose ();
+			refSampleLocations = null;
+		}
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.SampleLocationsInfoExt;
+		}
+
+	}
+
+	unsafe public partial class AttachmentSampleLocationsExt : MarshalledObject
+	{
+		public UInt32 AttachmentIndex {
+			get { return m->AttachmentIndex; }
+			set { m->AttachmentIndex = value; }
+		}
+
+		SampleLocationsInfoExt lSampleLocationsInfo;
+		public SampleLocationsInfoExt SampleLocationsInfo {
+			get { return lSampleLocationsInfo; }
+			set { lSampleLocationsInfo = value; m->SampleLocationsInfo = value != null ? *value.m : default(Interop.SampleLocationsInfoExt); }
+		}
+		internal Interop.AttachmentSampleLocationsExt* m {
+
+			get {
+				return (Interop.AttachmentSampleLocationsExt*)native.Handle;
+			}
+		}
+
+		public AttachmentSampleLocationsExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.AttachmentSampleLocationsExt));
+			Initialize ();
+		}
+
+		internal AttachmentSampleLocationsExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			lSampleLocationsInfo = new SampleLocationsInfoExt (new NativePointer (native.Reference, (IntPtr)(&m->SampleLocationsInfo)));
+		}
+
+	}
+
+	unsafe public partial class SubpassSampleLocationsExt : MarshalledObject
+	{
+		public UInt32 SubpassIndex {
+			get { return m->SubpassIndex; }
+			set { m->SubpassIndex = value; }
+		}
+
+		SampleLocationsInfoExt lSampleLocationsInfo;
+		public SampleLocationsInfoExt SampleLocationsInfo {
+			get { return lSampleLocationsInfo; }
+			set { lSampleLocationsInfo = value; m->SampleLocationsInfo = value != null ? *value.m : default(Interop.SampleLocationsInfoExt); }
+		}
+		internal Interop.SubpassSampleLocationsExt* m {
+
+			get {
+				return (Interop.SubpassSampleLocationsExt*)native.Handle;
+			}
+		}
+
+		public SubpassSampleLocationsExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.SubpassSampleLocationsExt));
+			Initialize ();
+		}
+
+		internal SubpassSampleLocationsExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			lSampleLocationsInfo = new SampleLocationsInfoExt (new NativePointer (native.Reference, (IntPtr)(&m->SampleLocationsInfo)));
+		}
+
+	}
+
+	unsafe public partial class RenderPassSampleLocationsBeginInfoExt : MarshalledObject
+	{
+		public UInt32 AttachmentInitialSampleLocationsCount {
+			get { return m->AttachmentInitialSampleLocationsCount; }
+			set { m->AttachmentInitialSampleLocationsCount = value; }
+		}
+
+		NativeReference refAttachmentInitialSampleLocations;
+		public AttachmentSampleLocationsExt[] AttachmentInitialSampleLocations {
+			get {
+				if (m->AttachmentInitialSampleLocationsCount == 0)
+					return null;
+				var values = new AttachmentSampleLocationsExt [m->AttachmentInitialSampleLocationsCount];
+				unsafe
+				{
+					Interop.AttachmentSampleLocationsExt* ptr = (Interop.AttachmentSampleLocationsExt*)m->AttachmentInitialSampleLocations;
+					for (int i = 0; i < values.Length; i++) {
+						values [i] = new AttachmentSampleLocationsExt ();
+						*values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->AttachmentInitialSampleLocationsCount = 0;
+					m->AttachmentInitialSampleLocations = IntPtr.Zero;
+					return;
+				}
+				m->AttachmentInitialSampleLocationsCount = (uint)value.Length;
+				refAttachmentInitialSampleLocations = new NativeReference ((int)(sizeof(Interop.AttachmentSampleLocationsExt)*value.Length));
+				m->AttachmentInitialSampleLocations = refAttachmentInitialSampleLocations.Handle;
+				unsafe
+				{
+					Interop.AttachmentSampleLocationsExt* ptr = (Interop.AttachmentSampleLocationsExt*)m->AttachmentInitialSampleLocations;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = *value [i].m;
+				}
+			}
+		}
+
+		public UInt32 PostSubpassSampleLocationsCount {
+			get { return m->PostSubpassSampleLocationsCount; }
+			set { m->PostSubpassSampleLocationsCount = value; }
+		}
+
+		NativeReference refPostSubpassSampleLocations;
+		public SubpassSampleLocationsExt[] PostSubpassSampleLocations {
+			get {
+				if (m->PostSubpassSampleLocationsCount == 0)
+					return null;
+				var values = new SubpassSampleLocationsExt [m->PostSubpassSampleLocationsCount];
+				unsafe
+				{
+					Interop.SubpassSampleLocationsExt* ptr = (Interop.SubpassSampleLocationsExt*)m->PostSubpassSampleLocations;
+					for (int i = 0; i < values.Length; i++) {
+						values [i] = new SubpassSampleLocationsExt ();
+						*values [i].m = ptr [i];
+					}
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->PostSubpassSampleLocationsCount = 0;
+					m->PostSubpassSampleLocations = IntPtr.Zero;
+					return;
+				}
+				m->PostSubpassSampleLocationsCount = (uint)value.Length;
+				refPostSubpassSampleLocations = new NativeReference ((int)(sizeof(Interop.SubpassSampleLocationsExt)*value.Length));
+				m->PostSubpassSampleLocations = refPostSubpassSampleLocations.Handle;
+				unsafe
+				{
+					Interop.SubpassSampleLocationsExt* ptr = (Interop.SubpassSampleLocationsExt*)m->PostSubpassSampleLocations;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = *value [i].m;
+				}
+			}
+		}
+		internal Interop.RenderPassSampleLocationsBeginInfoExt* m {
+
+			get {
+				return (Interop.RenderPassSampleLocationsBeginInfoExt*)native.Handle;
+			}
+		}
+
+		public RenderPassSampleLocationsBeginInfoExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.RenderPassSampleLocationsBeginInfoExt));
+			Initialize ();
+		}
+
+		internal RenderPassSampleLocationsBeginInfoExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+		override public void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (!disposing)
+				return;
+			refAttachmentInitialSampleLocations.Dispose ();
+			refAttachmentInitialSampleLocations = null;
+			refPostSubpassSampleLocations.Dispose ();
+			refPostSubpassSampleLocations = null;
+		}
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.RenderPassSampleLocationsBeginInfoExt;
+		}
+
+	}
+
+	unsafe public partial class PipelineSampleLocationsStateCreateInfoExt : MarshalledObject
+	{
+		public bool SampleLocationsEnable {
+			get { return m->SampleLocationsEnable; }
+			set { m->SampleLocationsEnable = value; }
+		}
+
+		SampleLocationsInfoExt lSampleLocationsInfo;
+		public SampleLocationsInfoExt SampleLocationsInfo {
+			get { return lSampleLocationsInfo; }
+			set { lSampleLocationsInfo = value; m->SampleLocationsInfo = value != null ? *value.m : default(Interop.SampleLocationsInfoExt); }
+		}
+		internal Interop.PipelineSampleLocationsStateCreateInfoExt* m {
+
+			get {
+				return (Interop.PipelineSampleLocationsStateCreateInfoExt*)native.Handle;
+			}
+		}
+
+		public PipelineSampleLocationsStateCreateInfoExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PipelineSampleLocationsStateCreateInfoExt));
+			Initialize ();
+		}
+
+		internal PipelineSampleLocationsStateCreateInfoExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PipelineSampleLocationsStateCreateInfoExt;
+			lSampleLocationsInfo = new SampleLocationsInfoExt (new NativePointer (native.Reference, (IntPtr)(&m->SampleLocationsInfo)));
+		}
+
+	}
+
+	unsafe public partial class PhysicalDeviceSampleLocationsPropertiesExt : MarshalledObject
+	{
+		public SampleCountFlags SampleLocationSampleCounts {
+			get { return m->SampleLocationSampleCounts; }
+			set { m->SampleLocationSampleCounts = value; }
+		}
+
+		public Extent2D MaxSampleLocationGridSize {
+			get { return m->MaxSampleLocationGridSize; }
+			set { m->MaxSampleLocationGridSize = value; }
+		}
+
+		public float[] SampleLocationCoordinateRange {
+			get {
+				var arr = new float [2];
+				for (int i = 0; i < 2; i++)
+					arr [i] = m->SampleLocationCoordinateRange [i];
+				return arr;
+			}
+
+			set {
+				if (value.Length > 2)
+					throw new Exception ("array too long");
+				for (int i = 0; i < value.Length; i++)
+					m->SampleLocationCoordinateRange [i] = value [i];
+				for (int i = value.Length; i < 2; i++)
+					m->SampleLocationCoordinateRange [i] = 0;
+			}
+		}
+
+		public UInt32 SampleLocationSubPixelBits {
+			get { return m->SampleLocationSubPixelBits; }
+			set { m->SampleLocationSubPixelBits = value; }
+		}
+
+		public bool VariableSampleLocations {
+			get { return m->VariableSampleLocations; }
+			set { m->VariableSampleLocations = value; }
+		}
+		internal Interop.PhysicalDeviceSampleLocationsPropertiesExt* m {
+
+			get {
+				return (Interop.PhysicalDeviceSampleLocationsPropertiesExt*)native.Handle;
+			}
+		}
+
+		public PhysicalDeviceSampleLocationsPropertiesExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceSampleLocationsPropertiesExt));
+			Initialize ();
+		}
+
+		internal PhysicalDeviceSampleLocationsPropertiesExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDeviceSampleLocationsPropertiesExt;
+		}
+
+	}
+
+	unsafe public partial class MultisamplePropertiesExt : MarshalledObject
+	{
+		public Extent2D MaxSampleLocationGridSize {
+			get { return m->MaxSampleLocationGridSize; }
+			set { m->MaxSampleLocationGridSize = value; }
+		}
+		internal Interop.MultisamplePropertiesExt* m {
+
+			get {
+				return (Interop.MultisamplePropertiesExt*)native.Handle;
+			}
+		}
+
+		public MultisamplePropertiesExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.MultisamplePropertiesExt));
+			Initialize ();
+		}
+
+		internal MultisamplePropertiesExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.MultisamplePropertiesExt;
+		}
+
+	}
+
+	unsafe public partial class SamplerReductionModeCreateInfoExt : MarshalledObject
+	{
+		public SamplerReductionModeExt ReductionMode {
+			get { return m->ReductionMode; }
+			set { m->ReductionMode = value; }
+		}
+		internal Interop.SamplerReductionModeCreateInfoExt* m {
+
+			get {
+				return (Interop.SamplerReductionModeCreateInfoExt*)native.Handle;
+			}
+		}
+
+		public SamplerReductionModeCreateInfoExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.SamplerReductionModeCreateInfoExt));
+			Initialize ();
+		}
+
+		internal SamplerReductionModeCreateInfoExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.SamplerReductionModeCreateInfoExt;
+		}
+
+	}
+
+	unsafe public partial class PhysicalDeviceBlendOperationAdvancedFeaturesExt : MarshalledObject
+	{
+		public bool AdvancedBlendCoherentOperations {
+			get { return m->AdvancedBlendCoherentOperations; }
+			set { m->AdvancedBlendCoherentOperations = value; }
+		}
+		internal Interop.PhysicalDeviceBlendOperationAdvancedFeaturesExt* m {
+
+			get {
+				return (Interop.PhysicalDeviceBlendOperationAdvancedFeaturesExt*)native.Handle;
+			}
+		}
+
+		public PhysicalDeviceBlendOperationAdvancedFeaturesExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceBlendOperationAdvancedFeaturesExt));
+			Initialize ();
+		}
+
+		internal PhysicalDeviceBlendOperationAdvancedFeaturesExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDeviceBlendOperationAdvancedFeaturesExt;
+		}
+
+	}
+
+	unsafe public partial class PhysicalDeviceBlendOperationAdvancedPropertiesExt : MarshalledObject
+	{
+		public UInt32 AdvancedBlendMaxColorAttachments {
+			get { return m->AdvancedBlendMaxColorAttachments; }
+			set { m->AdvancedBlendMaxColorAttachments = value; }
+		}
+
+		public bool AdvancedBlendIndependentBlend {
+			get { return m->AdvancedBlendIndependentBlend; }
+			set { m->AdvancedBlendIndependentBlend = value; }
+		}
+
+		public bool AdvancedBlendNonPremultipliedSrcColor {
+			get { return m->AdvancedBlendNonPremultipliedSrcColor; }
+			set { m->AdvancedBlendNonPremultipliedSrcColor = value; }
+		}
+
+		public bool AdvancedBlendNonPremultipliedDstColor {
+			get { return m->AdvancedBlendNonPremultipliedDstColor; }
+			set { m->AdvancedBlendNonPremultipliedDstColor = value; }
+		}
+
+		public bool AdvancedBlendCorrelatedOverlap {
+			get { return m->AdvancedBlendCorrelatedOverlap; }
+			set { m->AdvancedBlendCorrelatedOverlap = value; }
+		}
+
+		public bool AdvancedBlendAllOperations {
+			get { return m->AdvancedBlendAllOperations; }
+			set { m->AdvancedBlendAllOperations = value; }
+		}
+		internal Interop.PhysicalDeviceBlendOperationAdvancedPropertiesExt* m {
+
+			get {
+				return (Interop.PhysicalDeviceBlendOperationAdvancedPropertiesExt*)native.Handle;
+			}
+		}
+
+		public PhysicalDeviceBlendOperationAdvancedPropertiesExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceBlendOperationAdvancedPropertiesExt));
+			Initialize ();
+		}
+
+		internal PhysicalDeviceBlendOperationAdvancedPropertiesExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDeviceBlendOperationAdvancedPropertiesExt;
+		}
+
+	}
+
+	unsafe public partial class PipelineColorBlendAdvancedStateCreateInfoExt : MarshalledObject
+	{
+		public bool SrcPremultiplied {
+			get { return m->SrcPremultiplied; }
+			set { m->SrcPremultiplied = value; }
+		}
+
+		public bool DstPremultiplied {
+			get { return m->DstPremultiplied; }
+			set { m->DstPremultiplied = value; }
+		}
+
+		public BlendOverlapExt BlendOverlap {
+			get { return m->BlendOverlap; }
+			set { m->BlendOverlap = value; }
+		}
+		internal Interop.PipelineColorBlendAdvancedStateCreateInfoExt* m {
+
+			get {
+				return (Interop.PipelineColorBlendAdvancedStateCreateInfoExt*)native.Handle;
+			}
+		}
+
+		public PipelineColorBlendAdvancedStateCreateInfoExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PipelineColorBlendAdvancedStateCreateInfoExt));
+			Initialize ();
+		}
+
+		internal PipelineColorBlendAdvancedStateCreateInfoExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PipelineColorBlendAdvancedStateCreateInfoExt;
+		}
+
+	}
+
+	unsafe public partial class PipelineCoverageModulationStateCreateInfoNv : MarshalledObject
+	{
+		public UInt32 Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
+
+		public CoverageModulationModeNv CoverageModulationMode {
+			get { return m->CoverageModulationMode; }
+			set { m->CoverageModulationMode = value; }
+		}
+
+		public bool CoverageModulationTableEnable {
+			get { return m->CoverageModulationTableEnable; }
+			set { m->CoverageModulationTableEnable = value; }
+		}
+
+		public UInt32 CoverageModulationTableCount {
+			get { return m->CoverageModulationTableCount; }
+			set { m->CoverageModulationTableCount = value; }
+		}
+
+		NativeReference refCoverageModulationTable;
+		public float[] CoverageModulationTable {
+			get {
+				if (m->CoverageModulationTableCount == 0)
+					return null;
+				var values = new float [m->CoverageModulationTableCount];
+				unsafe
+				{
+					float* ptr = (float*)m->CoverageModulationTable;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->CoverageModulationTableCount = 0;
+					m->CoverageModulationTable = IntPtr.Zero;
+					return;
+				}
+				m->CoverageModulationTableCount = (uint)value.Length;
+				refCoverageModulationTable = new NativeReference ((int)(sizeof(float)*value.Length));
+				m->CoverageModulationTable = refCoverageModulationTable.Handle;
+				unsafe
+				{
+					float* ptr = (float*)m->CoverageModulationTable;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+		internal Interop.PipelineCoverageModulationStateCreateInfoNv* m {
+
+			get {
+				return (Interop.PipelineCoverageModulationStateCreateInfoNv*)native.Handle;
+			}
+		}
+
+		public PipelineCoverageModulationStateCreateInfoNv ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PipelineCoverageModulationStateCreateInfoNv));
+			Initialize ();
+		}
+
+		internal PipelineCoverageModulationStateCreateInfoNv (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+		override public void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (!disposing)
+				return;
+			refCoverageModulationTable.Dispose ();
+			refCoverageModulationTable = null;
+		}
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PipelineCoverageModulationStateCreateInfoNv;
+		}
+
+	}
+
+	unsafe public partial class ImageFormatListCreateInfoKhr : MarshalledObject
+	{
+		public UInt32 ViewFormatCount {
+			get { return m->ViewFormatCount; }
+			set { m->ViewFormatCount = value; }
+		}
+
+		NativeReference refViewFormats;
+		public Format[] ViewFormats {
+			get {
+				if (m->ViewFormatCount == 0)
+					return null;
+				var values = new Format [m->ViewFormatCount];
+				unsafe
+				{
+					Format* ptr = (Format*)m->ViewFormats;
+					for (int i = 0; i < values.Length; i++) 
+						values [i] = ptr [i];
+				}
+				return values;
+			}
+
+			set {
+				if (value == null) {
+					m->ViewFormatCount = 0;
+					m->ViewFormats = IntPtr.Zero;
+					return;
+				}
+				m->ViewFormatCount = (uint)value.Length;
+				refViewFormats = new NativeReference ((int)(sizeof(Format)*value.Length));
+				m->ViewFormats = refViewFormats.Handle;
+				unsafe
+				{
+					Format* ptr = (Format*)m->ViewFormats;
+					for (int i = 0; i < value.Length; i++)
+						ptr [i] = value [i];
+				}
+			}
+		}
+		internal Interop.ImageFormatListCreateInfoKhr* m {
+
+			get {
+				return (Interop.ImageFormatListCreateInfoKhr*)native.Handle;
+			}
+		}
+
+		public ImageFormatListCreateInfoKhr ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ImageFormatListCreateInfoKhr));
+			Initialize ();
+		}
+
+		internal ImageFormatListCreateInfoKhr (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+		override public void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (!disposing)
+				return;
+			refViewFormats.Dispose ();
+			refViewFormats = null;
+		}
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ImageFormatListCreateInfoKhr;
+		}
+
+	}
+
+	unsafe public partial class ValidationCacheCreateInfoExt : MarshalledObject
+	{
+		public UInt32 Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
+
+		public UIntPtr InitialDataSize {
+			get { return m->InitialDataSize; }
+			set { m->InitialDataSize = value; }
+		}
+
+		public IntPtr InitialData {
+			get { return m->InitialData; }
+			set { m->InitialData = value; }
+		}
+		internal Interop.ValidationCacheCreateInfoExt* m {
+
+			get {
+				return (Interop.ValidationCacheCreateInfoExt*)native.Handle;
+			}
+		}
+
+		public ValidationCacheCreateInfoExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ValidationCacheCreateInfoExt));
+			Initialize ();
+		}
+
+		internal ValidationCacheCreateInfoExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ValidationCacheCreateInfoExt;
+		}
+
+	}
+
+	unsafe public partial class ShaderModuleValidationCacheCreateInfoExt : MarshalledObject
+	{
+		ValidationCacheExt lValidationCache;
+		public ValidationCacheExt ValidationCache {
+			get { return lValidationCache; }
+			set { lValidationCache = value; m->ValidationCache = value != null ? (UInt64)value.m : default(UInt64); }
+		}
+		internal Interop.ShaderModuleValidationCacheCreateInfoExt* m {
+
+			get {
+				return (Interop.ShaderModuleValidationCacheCreateInfoExt*)native.Handle;
+			}
+		}
+
+		public ShaderModuleValidationCacheCreateInfoExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ShaderModuleValidationCacheCreateInfoExt));
+			Initialize ();
+		}
+
+		internal ShaderModuleValidationCacheCreateInfoExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ShaderModuleValidationCacheCreateInfoExt;
+		}
+
+	}
+
+	unsafe public partial struct ShaderResourceUsageAmd
+	{
+		public UInt32 NumUsedVgprs;
+		public UInt32 NumUsedSgprs;
+		public UInt32 LdsSizePerLocalWorkGroup;
+		public UIntPtr LdsUsageSizeInBytes;
+		public UIntPtr ScratchMemUsageInBytes;
+	}
+
+	unsafe public partial class ShaderStatisticsInfoAmd : MarshalledObject
+	{
+		public ShaderStageFlags ShaderStageMask {
+			get { return m->ShaderStageMask; }
+			set { m->ShaderStageMask = value; }
+		}
+
+		public ShaderResourceUsageAmd ResourceUsage {
+			get { return m->ResourceUsage; }
+			set { m->ResourceUsage = value; }
+		}
+
+		public UInt32 NumPhysicalVgprs {
+			get { return m->NumPhysicalVgprs; }
+			set { m->NumPhysicalVgprs = value; }
+		}
+
+		public UInt32 NumPhysicalSgprs {
+			get { return m->NumPhysicalSgprs; }
+			set { m->NumPhysicalSgprs = value; }
+		}
+
+		public UInt32 NumAvailableVgprs {
+			get { return m->NumAvailableVgprs; }
+			set { m->NumAvailableVgprs = value; }
+		}
+
+		public UInt32 NumAvailableSgprs {
+			get { return m->NumAvailableSgprs; }
+			set { m->NumAvailableSgprs = value; }
+		}
+
+		public UInt32[] ComputeWorkGroupSize {
+			get {
+				var arr = new UInt32 [3];
+				for (int i = 0; i < 3; i++)
+					arr [i] = m->ComputeWorkGroupSize [i];
+				return arr;
+			}
+
+			set {
+				if (value.Length > 3)
+					throw new Exception ("array too long");
+				for (int i = 0; i < value.Length; i++)
+					m->ComputeWorkGroupSize [i] = value [i];
+				for (int i = value.Length; i < 3; i++)
+					m->ComputeWorkGroupSize [i] = 0;
+			}
+		}
+		internal Interop.ShaderStatisticsInfoAmd* m {
+
+			get {
+				return (Interop.ShaderStatisticsInfoAmd*)native.Handle;
+			}
+		}
+
+		public ShaderStatisticsInfoAmd ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ShaderStatisticsInfoAmd));
+		}
+
+		internal ShaderStatisticsInfoAmd (NativePointer pointer)
+		{
+			native = pointer;
+		}
+
+	}
+
+	unsafe public partial class DeviceQueueGlobalPriorityCreateInfoExt : MarshalledObject
+	{
+		public QueueGlobalPriorityExt GlobalPriority {
+			get { return m->GlobalPriority; }
+			set { m->GlobalPriority = value; }
+		}
+		internal Interop.DeviceQueueGlobalPriorityCreateInfoExt* m {
+
+			get {
+				return (Interop.DeviceQueueGlobalPriorityCreateInfoExt*)native.Handle;
+			}
+		}
+
+		public DeviceQueueGlobalPriorityCreateInfoExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.DeviceQueueGlobalPriorityCreateInfoExt));
+			Initialize ();
+		}
+
+		internal DeviceQueueGlobalPriorityCreateInfoExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.DeviceQueueGlobalPriorityCreateInfoExt;
 		}
 
 	}

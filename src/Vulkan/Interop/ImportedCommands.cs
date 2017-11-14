@@ -348,7 +348,7 @@ namespace Vulkan.Interop
 		internal static unsafe extern void vkCmdDrawIndexedIndirect (IntPtr commandBuffer, UInt64 buffer, DeviceSize offset, UInt32 drawCount, UInt32 stride);
 
 		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
-		internal static unsafe extern void vkCmdDispatch (IntPtr commandBuffer, UInt32 x, UInt32 y, UInt32 z);
+		internal static unsafe extern void vkCmdDispatch (IntPtr commandBuffer, UInt32 groupCountX, UInt32 groupCountY, UInt32 groupCountZ);
 
 		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
 		internal static unsafe extern void vkCmdDispatchIndirect (IntPtr commandBuffer, UInt64 buffer, DeviceSize offset);
@@ -564,7 +564,49 @@ namespace Vulkan.Interop
 		internal static unsafe extern void vkGetPhysicalDeviceSparseImageFormatProperties2KHR (IntPtr physicalDevice, PhysicalDeviceSparseImageFormatInfo2Khr* pFormatInfo, UInt32* pPropertyCount, SparseImageFormatProperties2Khr* pProperties);
 
 		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkCmdPushDescriptorSetKHR (IntPtr commandBuffer, PipelineBindPoint pipelineBindPoint, UInt64 layout, UInt32 set, UInt32 descriptorWriteCount, WriteDescriptorSet* pDescriptorWrites);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
 		internal static unsafe extern void vkTrimCommandPoolKHR (IntPtr device, UInt64 commandPool, UInt32 flags);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkGetPhysicalDeviceExternalBufferPropertiesKHR (IntPtr physicalDevice, PhysicalDeviceExternalBufferInfoKhr* pExternalBufferInfo, ExternalBufferPropertiesKhr* pExternalBufferProperties);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkGetMemoryWin32HandleKHR (IntPtr device, MemoryGetWin32HandleInfoKhr* pGetWin32HandleInfo, IntPtr* pHandle);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkGetMemoryWin32HandlePropertiesKHR (IntPtr device, ExternalMemoryHandleTypeFlagsKhr handleType, IntPtr handle, MemoryWin32HandlePropertiesKhr* pMemoryWin32HandleProperties);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkGetMemoryFdKHR (IntPtr device, MemoryGetFdInfoKhr* pGetFdInfo, int* pFd);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkGetMemoryFdPropertiesKHR (IntPtr device, ExternalMemoryHandleTypeFlagsKhr handleType, int fd, MemoryFdPropertiesKhr* pMemoryFdProperties);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkGetPhysicalDeviceExternalSemaphorePropertiesKHR (IntPtr physicalDevice, PhysicalDeviceExternalSemaphoreInfoKhr* pExternalSemaphoreInfo, ExternalSemaphorePropertiesKhr* pExternalSemaphoreProperties);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkGetSemaphoreWin32HandleKHR (IntPtr device, SemaphoreGetWin32HandleInfoKhr* pGetWin32HandleInfo, IntPtr* pHandle);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkGetSemaphoreFdKHR (IntPtr device, SemaphoreGetFdInfoKhr* pGetFdInfo, int* pFd);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkImportSemaphoreFdKHR (IntPtr device, ImportSemaphoreFdInfoKhr* pImportSemaphoreFdInfo);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkGetPhysicalDeviceExternalFencePropertiesKHR (IntPtr physicalDevice, PhysicalDeviceExternalFenceInfoKhr* pExternalFenceInfo, ExternalFencePropertiesKhr* pExternalFenceProperties);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkGetFenceWin32HandleKHR (IntPtr device, FenceGetWin32HandleInfoKhr* pGetWin32HandleInfo, IntPtr* pHandle);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkGetFenceFdKHR (IntPtr device, FenceGetFdInfoKhr* pGetFdInfo, int* pFd);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkImportFenceFdKHR (IntPtr device, ImportFenceFdInfoKhr* pImportFenceFdInfo);
 
 		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
 		internal static unsafe extern Result vkReleaseDisplayEXT (IntPtr physicalDevice, UInt64 display);
@@ -589,5 +631,119 @@ namespace Vulkan.Interop
 
 		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
 		internal static unsafe extern Result vkGetPhysicalDeviceSurfaceCapabilities2EXT (IntPtr physicalDevice, UInt64 surface, SurfaceCapabilities2Ext* pSurfaceCapabilities);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkGetDeviceGroupPeerMemoryFeaturesKHX (IntPtr device, UInt32 heapIndex, UInt32 localDeviceIndex, UInt32 remoteDeviceIndex, PeerMemoryFeatureFlagsKhx* pPeerMemoryFeatures);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkBindBufferMemory2KHR (IntPtr device, UInt32 bindInfoCount, BindBufferMemoryInfoKhr* pBindInfos);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkBindImageMemory2KHR (IntPtr device, UInt32 bindInfoCount, BindImageMemoryInfoKhr* pBindInfos);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkCmdSetDeviceMaskKHX (IntPtr commandBuffer, UInt32 deviceMask);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkGetDeviceGroupPresentCapabilitiesKHX (IntPtr device, DeviceGroupPresentCapabilitiesKhx* pDeviceGroupPresentCapabilities);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkGetDeviceGroupSurfacePresentModesKHX (IntPtr device, UInt64 surface, DeviceGroupPresentModeFlagsKhx* pModes);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkAcquireNextImage2KHX (IntPtr device, AcquireNextImageInfoKhx* pAcquireInfo, UInt32* pImageIndex);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkCmdDispatchBaseKHX (IntPtr commandBuffer, UInt32 baseGroupX, UInt32 baseGroupY, UInt32 baseGroupZ, UInt32 groupCountX, UInt32 groupCountY, UInt32 groupCountZ);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkGetPhysicalDevicePresentRectanglesKHX (IntPtr physicalDevice, UInt64 surface, UInt32* pRectCount, Rect2D* pRects);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkCreateDescriptorUpdateTemplateKHR (IntPtr device, DescriptorUpdateTemplateCreateInfoKhr* pCreateInfo, AllocationCallbacks* pAllocator, UInt64* pDescriptorUpdateTemplate);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkDestroyDescriptorUpdateTemplateKHR (IntPtr device, UInt64 descriptorUpdateTemplate, AllocationCallbacks* pAllocator);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkUpdateDescriptorSetWithTemplateKHR (IntPtr device, UInt64 descriptorSet, UInt64 descriptorUpdateTemplate, IntPtr pData);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkCmdPushDescriptorSetWithTemplateKHR (IntPtr commandBuffer, UInt64 descriptorUpdateTemplate, UInt64 layout, UInt32 set, IntPtr pData);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkSetHdrMetadataEXT (IntPtr device, UInt32 swapchainCount, UInt64* pSwapchains, HdrMetadataExt* pMetadata);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkGetSwapchainStatusKHR (IntPtr device, UInt64 swapchain);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkGetRefreshCycleDurationGOOGLE (IntPtr device, UInt64 swapchain, RefreshCycleDurationGoogle* pDisplayTimingProperties);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkGetPastPresentationTimingGOOGLE (IntPtr device, UInt64 swapchain, UInt32* pPresentationTimingCount, PastPresentationTimingGoogle* pPresentationTimings);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkCreateIOSSurfaceMVK (IntPtr instance, IOSSurfaceCreateInfoMvk* pCreateInfo, AllocationCallbacks* pAllocator, UInt64* pSurface);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkCreateMacOSSurfaceMVK (IntPtr instance, MacOSSurfaceCreateInfoMvk* pCreateInfo, AllocationCallbacks* pAllocator, UInt64* pSurface);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkCmdSetViewportWScalingNV (IntPtr commandBuffer, UInt32 firstViewport, UInt32 viewportCount, ViewportWScalingNv* pViewportWScalings);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkCmdSetDiscardRectangleEXT (IntPtr commandBuffer, UInt32 firstDiscardRectangle, UInt32 discardRectangleCount, Rect2D* pDiscardRectangles);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkCmdSetSampleLocationsEXT (IntPtr commandBuffer, SampleLocationsInfoExt* pSampleLocationsInfo);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkGetPhysicalDeviceMultisamplePropertiesEXT (IntPtr physicalDevice, SampleCountFlags samples, MultisamplePropertiesExt* pMultisampleProperties);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkGetPhysicalDeviceSurfaceCapabilities2KHR (IntPtr physicalDevice, PhysicalDeviceSurfaceInfo2Khr* pSurfaceInfo, SurfaceCapabilities2Khr* pSurfaceCapabilities);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkGetPhysicalDeviceSurfaceFormats2KHR (IntPtr physicalDevice, PhysicalDeviceSurfaceInfo2Khr* pSurfaceInfo, UInt32* pSurfaceFormatCount, SurfaceFormat2Khr* pSurfaceFormats);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkGetBufferMemoryRequirements2KHR (IntPtr device, BufferMemoryRequirementsInfo2Khr* pInfo, MemoryRequirements2Khr* pMemoryRequirements);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkGetImageMemoryRequirements2KHR (IntPtr device, ImageMemoryRequirementsInfo2Khr* pInfo, MemoryRequirements2Khr* pMemoryRequirements);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkGetImageSparseMemoryRequirements2KHR (IntPtr device, ImageSparseMemoryRequirementsInfo2Khr* pInfo, UInt32* pSparseMemoryRequirementCount, SparseImageMemoryRequirements2Khr* pSparseMemoryRequirements);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkCreateSamplerYcbcrConversionKHR (IntPtr device, SamplerYcbcrConversionCreateInfoKhr* pCreateInfo, AllocationCallbacks* pAllocator, UInt64* pYcbcrConversion);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkDestroySamplerYcbcrConversionKHR (IntPtr device, UInt64 ycbcrConversion, AllocationCallbacks* pAllocator);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkCreateValidationCacheEXT (IntPtr device, ValidationCacheCreateInfoExt* pCreateInfo, AllocationCallbacks* pAllocator, UInt64* pValidationCache);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkDestroyValidationCacheEXT (IntPtr device, UInt64 validationCache, AllocationCallbacks* pAllocator);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkGetValidationCacheDataEXT (IntPtr device, UInt64 validationCache, UIntPtr* pDataSize, IntPtr pData);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkMergeValidationCachesEXT (IntPtr device, UInt64 dstCache, UInt32 srcCacheCount, UInt64* pSrcCaches);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkGetSwapchainGrallocUsageANDROID (IntPtr device, Format format, ImageUsageFlags imageUsage, int* grallocUsage);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkAcquireImageANDROID (IntPtr device, UInt64 image, int nativeFenceFd, UInt64 semaphore, UInt64 fence);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkQueueSignalReleaseImageANDROID (IntPtr queue, UInt32 waitSemaphoreCount, UInt64* pWaitSemaphores, UInt64 image, int* pNativeFenceFd);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkGetShaderInfoAMD (IntPtr device, UInt64 pipeline, ShaderStageFlags shaderStage, ShaderInfoTypeAmd infoType, UIntPtr* pInfoSize, IntPtr pInfo);
 	}
 }

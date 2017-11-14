@@ -55,6 +55,52 @@ namespace Vulkan
 		ReverseSubtract = 2,
 		Min = 3,
 		Max = 4,
+		ZeroExt = 1000148000,
+		SrcExt = 1000148001,
+		DstExt = 1000148002,
+		SrcOverExt = 1000148003,
+		DstOverExt = 1000148004,
+		SrcInExt = 1000148005,
+		DstInExt = 1000148006,
+		SrcOutExt = 1000148007,
+		DstOutExt = 1000148008,
+		SrcAtopExt = 1000148009,
+		DstAtopExt = 1000148010,
+		XorExt = 1000148011,
+		MultiplyExt = 1000148012,
+		ScreenExt = 1000148013,
+		OverlayExt = 1000148014,
+		DarkenExt = 1000148015,
+		LightenExt = 1000148016,
+		ColordodgeExt = 1000148017,
+		ColorburnExt = 1000148018,
+		HardlightExt = 1000148019,
+		SoftlightExt = 1000148020,
+		DifferenceExt = 1000148021,
+		ExclusionExt = 1000148022,
+		InvertExt = 1000148023,
+		InvertRgbExt = 1000148024,
+		LineardodgeExt = 1000148025,
+		LinearburnExt = 1000148026,
+		VividlightExt = 1000148027,
+		LinearlightExt = 1000148028,
+		PinlightExt = 1000148029,
+		HardmixExt = 1000148030,
+		HslHueExt = 1000148031,
+		HslSaturationExt = 1000148032,
+		HslColorExt = 1000148033,
+		HslLuminosityExt = 1000148034,
+		PlusExt = 1000148035,
+		PlusClampedExt = 1000148036,
+		PlusClampedAlphaExt = 1000148037,
+		PlusDarkerExt = 1000148038,
+		MinusExt = 1000148039,
+		MinusClampedExt = 1000148040,
+		ContrastExt = 1000148041,
+		InvertOvgExt = 1000148042,
+		RedExt = 1000148043,
+		GreenExt = 1000148044,
+		BlueExt = 1000148045,
 	}
 
 	public enum BorderColor : int
@@ -70,6 +116,12 @@ namespace Vulkan
 	public enum PipelineCacheHeaderVersion : int
 	{
 		One = 1,
+	}
+
+	[Flags]
+	public enum DescriptorSetLayoutCreateFlags : int
+	{
+		PushDescriptorKhr = 0x1,
 	}
 
 	[Flags]
@@ -194,6 +246,9 @@ namespace Vulkan
 		StencilCompareMask = 6,
 		StencilWriteMask = 7,
 		StencilReference = 8,
+		ViewportWScalingNv = 1000087000,
+		DiscardRectangleExt = 1000099000,
+		SampleLocationsExt = 1000143000,
 	}
 
 	[Flags]
@@ -207,6 +262,7 @@ namespace Vulkan
 		Fill = 0,
 		Line = 1,
 		Point = 2,
+		FillRectangleNv = 1000153000,
 	}
 
 	public enum Format : int
@@ -404,6 +460,40 @@ namespace Vulkan
 		Pvrtc14BppSrgbBlockImg = 1000054005,
 		Pvrtc22BppSrgbBlockImg = 1000054006,
 		Pvrtc24BppSrgbBlockImg = 1000054007,
+		G8B8G8R8422UnormKhr = 1000156000,
+		B8G8R8G8422UnormKhr = 1000156001,
+		G8B8R83Plane420UnormKhr = 1000156002,
+		G8B8R82Plane420UnormKhr = 1000156003,
+		G8B8R83Plane422UnormKhr = 1000156004,
+		G8B8R82Plane422UnormKhr = 1000156005,
+		G8B8R83Plane444UnormKhr = 1000156006,
+		R10X6UnormPack16Khr = 1000156007,
+		R10X6G10X6Unorm2Pack16Khr = 1000156008,
+		R10X6G10X6B10X6A10X6Unorm4Pack16Khr = 1000156009,
+		G10X6B10X6G10X6R10X6422Unorm4Pack16Khr = 1000156010,
+		B10X6G10X6R10X6G10X6422Unorm4Pack16Khr = 1000156011,
+		G10X6B10X6R10X63Plane420Unorm3Pack16Khr = 1000156012,
+		G10X6B10X6R10X62Plane420Unorm3Pack16Khr = 1000156013,
+		G10X6B10X6R10X63Plane422Unorm3Pack16Khr = 1000156014,
+		G10X6B10X6R10X62Plane422Unorm3Pack16Khr = 1000156015,
+		G10X6B10X6R10X63Plane444Unorm3Pack16Khr = 1000156016,
+		R12X4UnormPack16Khr = 1000156017,
+		R12X4G12X4Unorm2Pack16Khr = 1000156018,
+		R12X4G12X4B12X4A12X4Unorm4Pack16Khr = 1000156019,
+		G12X4B12X4G12X4R12X4422Unorm4Pack16Khr = 1000156020,
+		B12X4G12X4R12X4G12X4422Unorm4Pack16Khr = 1000156021,
+		G12X4B12X4R12X43Plane420Unorm3Pack16Khr = 1000156022,
+		G12X4B12X4R12X42Plane420Unorm3Pack16Khr = 1000156023,
+		G12X4B12X4R12X43Plane422Unorm3Pack16Khr = 1000156024,
+		G12X4B12X4R12X42Plane422Unorm3Pack16Khr = 1000156025,
+		G12X4B12X4R12X43Plane444Unorm3Pack16Khr = 1000156026,
+		G16B16G16R16422UnormKhr = 1000156027,
+		B16G16R16G16422UnormKhr = 1000156028,
+		G16B16R163Plane420UnormKhr = 1000156029,
+		G16B16R162Plane420UnormKhr = 1000156030,
+		G16B16R163Plane422UnormKhr = 1000156031,
+		G16B16R162Plane422UnormKhr = 1000156032,
+		G16B16R163Plane444UnormKhr = 1000156033,
 	}
 
 	[Flags]
@@ -425,6 +515,14 @@ namespace Vulkan
 		SampledImageFilterCubicImg = 0x2000,
 		TransferSrcKhr = 0x4000,
 		TransferDstKhr = 0x8000,
+		SampledImageFilterMinmaxExt = 0x10000,
+		MidpointChromaSamplesKhr = 0x20000,
+		SampledImageYcbcrConversionLinearFilterKhr = 0x40000,
+		SampledImageYcbcrConversionSeparateReconstructionFilterKhr = 0x80000,
+		SampledImageYcbcrConversionChromaReconstructionExplicitKhr = 0x100000,
+		SampledImageYcbcrConversionChromaReconstructionExplicitForceableKhr = 0x200000,
+		DisjointKhr = 0x400000,
+		CositedChromaSamplesKhr = 0x800000,
 	}
 
 	public enum FrontFace : int
@@ -440,6 +538,9 @@ namespace Vulkan
 		Depth = 0x2,
 		Stencil = 0x4,
 		Metadata = 0x8,
+		Plane0Khr = 0x10,
+		Plane1Khr = 0x20,
+		Plane2Khr = 0x40,
 	}
 
 	[Flags]
@@ -450,7 +551,13 @@ namespace Vulkan
 		SparseAliased = 0x4,
 		MutableFormat = 0x8,
 		CubeCompatible = 0x10,
+		BindSfrKhx = 0x40,
 		Create2DArrayCompatibleKhr = 0x20,
+		BlockTexelViewCompatibleKhr = 0x80,
+		ExtendedUsageKhr = 0x100,
+		SampleLocationsCompatibleDepthExt = 0x1000,
+		DisjointKhr = 0x200,
+		AliasKhr = 0x400,
 	}
 
 	public enum ImageLayout : int
@@ -465,6 +572,9 @@ namespace Vulkan
 		TransferDstOptimal = 7,
 		Preinitialized = 8,
 		PresentSrcKhr = 1000001002,
+		SharedPresentKhr = 1000111000,
+		DepthReadOnlyStencilAttachmentOptimalKhr = 1000117000,
+		DepthAttachmentStencilReadOnlyOptimalKhr = 1000117001,
 	}
 
 	public enum ImageTiling : int
@@ -540,6 +650,7 @@ namespace Vulkan
 	public enum MemoryHeapFlags : int
 	{
 		DeviceLocal = 0x1,
+		MultiInstanceKhx = 0x2,
 	}
 
 	[Flags]
@@ -564,6 +675,7 @@ namespace Vulkan
 		MemoryWrite = 0x10000,
 		CommandProcessReadNvx = 0x20000,
 		CommandProcessWriteNvx = 0x40000,
+		ColorAttachmentReadNoncoherentExt = 0x80000,
 	}
 
 	[Flags]
@@ -597,6 +709,8 @@ namespace Vulkan
 		DisableOptimization = 0x1,
 		AllowDerivatives = 0x2,
 		Derivative = 0x4,
+		ViewIndexFromDeviceIndexKhx = 0x8,
+		DispatchBaseKhx = 0x10,
 	}
 
 	public enum PrimitiveTopology : int
@@ -695,6 +809,8 @@ namespace Vulkan
 		ErrorValidationFailedExt = -1000011001,
 		ErrorInvalidShaderNv = -1000012000,
 		ErrorOutOfPoolMemoryKhr = -1000069000,
+		ErrorInvalidExternalHandleKhr = -1000072003,
+		ErrorNotPermittedExt = -1000174001,
 	}
 
 	[Flags]
@@ -806,6 +922,10 @@ namespace Vulkan
 		DedicatedAllocationImageCreateInfoNv = 1000026000,
 		DedicatedAllocationBufferCreateInfoNv = 1000026001,
 		DedicatedAllocationMemoryAllocateInfoNv = 1000026002,
+		TextureLODGatherFormatPropertiesAmd = 1000041000,
+		RenderPassMultiviewCreateInfoKhx = 1000053000,
+		PhysicalDeviceMultiviewFeaturesKhx = 1000053001,
+		PhysicalDeviceMultiviewPropertiesKhx = 1000053002,
 		ExternalMemoryImageCreateInfoNv = 1000056000,
 		ExportMemoryAllocateInfoNv = 1000056001,
 		ImportMemoryWin32HandleInfoNv = 1000057000,
@@ -820,19 +940,120 @@ namespace Vulkan
 		PhysicalDeviceMemoryProperties2Khr = 1000059006,
 		SparseImageFormatProperties2Khr = 1000059007,
 		PhysicalDeviceSparseImageFormatInfo2Khr = 1000059008,
+		MemoryAllocateFlagsInfoKhx = 1000060000,
+		DeviceGroupRenderPassBeginInfoKhx = 1000060003,
+		DeviceGroupCommandBufferBeginInfoKhx = 1000060004,
+		DeviceGroupSubmitInfoKhx = 1000060005,
+		DeviceGroupBindSparseInfoKhx = 1000060006,
+		AcquireNextImageInfoKhx = 1000060010,
+		BindBufferMemoryDeviceGroupInfoKhx = 1000060013,
+		BindImageMemoryDeviceGroupInfoKhx = 1000060014,
+		DeviceGroupPresentCapabilitiesKhx = 1000060007,
+		ImageSwapchainCreateInfoKhx = 1000060008,
+		BindImageMemorySwapchainInfoKhx = 1000060009,
+		DeviceGroupPresentInfoKhx = 1000060011,
+		DeviceGroupSwapchainCreateInfoKhx = 1000060012,
 		ValidationFlagsExt = 1000061000,
 		ViSurfaceCreateInfoNn = 1000062000,
+		PhysicalDeviceGroupPropertiesKhx = 1000070000,
+		DeviceGroupDeviceCreateInfoKhx = 1000070001,
+		PhysicalDeviceExternalImageFormatInfoKhr = 1000071000,
+		ExternalImageFormatPropertiesKhr = 1000071001,
+		PhysicalDeviceExternalBufferInfoKhr = 1000071002,
+		ExternalBufferPropertiesKhr = 1000071003,
+		PhysicalDeviceIDPropertiesKhr = 1000071004,
+		ExternalMemoryBufferCreateInfoKhr = 1000072000,
+		ExternalMemoryImageCreateInfoKhr = 1000072001,
+		ExportMemoryAllocateInfoKhr = 1000072002,
+		ImportMemoryWin32HandleInfoKhr = 1000073000,
+		ExportMemoryWin32HandleInfoKhr = 1000073001,
+		MemoryWin32HandlePropertiesKhr = 1000073002,
+		MemoryGetWin32HandleInfoKhr = 1000073003,
+		ImportMemoryFdInfoKhr = 1000074000,
+		MemoryFdPropertiesKhr = 1000074001,
+		MemoryGetFdInfoKhr = 1000074002,
+		Win32KeyedMutexAcquireReleaseInfoKhr = 1000075000,
+		PhysicalDeviceExternalSemaphoreInfoKhr = 1000076000,
+		ExternalSemaphorePropertiesKhr = 1000076001,
+		ExportSemaphoreCreateInfoKhr = 1000077000,
+		ImportSemaphoreWin32HandleInfoKhr = 1000078000,
+		ExportSemaphoreWin32HandleInfoKhr = 1000078001,
+		D3D12FenceSubmitInfoKhr = 1000078002,
+		SemaphoreGetWin32HandleInfoKhr = 1000078003,
+		ImportSemaphoreFdInfoKhr = 1000079000,
+		SemaphoreGetFdInfoKhr = 1000079001,
+		PhysicalDevicePushDescriptorPropertiesKhr = 1000080000,
+		PhysicalDevice16BitStorageFeaturesKhr = 1000083000,
+		PresentRegionsKhr = 1000084000,
+		DescriptorUpdateTemplateCreateInfoKhr = 1000085000,
 		ObjectTableCreateInfoNvx = 1000086000,
 		IndirectCommandsLayoutCreateInfoNvx = 1000086001,
 		CmdProcessCommandsInfoNvx = 1000086002,
 		CmdReserveSpaceForCommandsInfoNvx = 1000086003,
 		DeviceGeneratedCommandsLimitsNvx = 1000086004,
 		DeviceGeneratedCommandsFeaturesNvx = 1000086005,
+		PipelineViewportWScalingStateCreateInfoNv = 1000087000,
 		SurfaceCapabilities2Ext = 1000090000,
 		DisplayPowerInfoExt = 1000091000,
 		DeviceEventInfoExt = 1000091001,
 		DisplayEventInfoExt = 1000091002,
 		SwapchainCounterCreateInfoExt = 1000091003,
+		PresentTimesInfoGoogle = 1000092000,
+		PhysicalDeviceMultiviewPerViewAttributesPropertiesNvx = 1000097000,
+		PipelineViewportSwizzleStateCreateInfoNv = 1000098000,
+		PhysicalDeviceDiscardRectanglePropertiesExt = 1000099000,
+		PipelineDiscardRectangleStateCreateInfoExt = 1000099001,
+		HdrMetadataExt = 1000105000,
+		SharedPresentSurfaceCapabilitiesKhr = 1000111000,
+		PhysicalDeviceExternalFenceInfoKhr = 1000112000,
+		ExternalFencePropertiesKhr = 1000112001,
+		ExportFenceCreateInfoKhr = 1000113000,
+		ImportFenceWin32HandleInfoKhr = 1000114000,
+		ExportFenceWin32HandleInfoKhr = 1000114001,
+		FenceGetWin32HandleInfoKhr = 1000114002,
+		ImportFenceFdInfoKhr = 1000115000,
+		FenceGetFdInfoKhr = 1000115001,
+		PhysicalDevicePointClippingPropertiesKhr = 1000117000,
+		RenderPassInputAttachmentAspectCreateInfoKhr = 1000117001,
+		ImageViewUsageCreateInfoKhr = 1000117002,
+		PipelineTessellationDomainOriginStateCreateInfoKhr = 1000117003,
+		PhysicalDeviceSurfaceInfo2Khr = 1000119000,
+		SurfaceCapabilities2Khr = 1000119001,
+		SurfaceFormat2Khr = 1000119002,
+		PhysicalDeviceVariablePointerFeaturesKhr = 1000120000,
+		IOSSurfaceCreateInfoMvk = 1000122000,
+		MacOSSurfaceCreateInfoMvk = 1000123000,
+		MemoryDedicatedRequirementsKhr = 1000127000,
+		MemoryDedicatedAllocateInfoKhr = 1000127001,
+		PhysicalDeviceSamplerFilterMinmaxPropertiesExt = 1000130000,
+		SamplerReductionModeCreateInfoExt = 1000130001,
+		SampleLocationsInfoExt = 1000143000,
+		RenderPassSampleLocationsBeginInfoExt = 1000143001,
+		PipelineSampleLocationsStateCreateInfoExt = 1000143002,
+		PhysicalDeviceSampleLocationsPropertiesExt = 1000143003,
+		MultisamplePropertiesExt = 1000143004,
+		BufferMemoryRequirementsInfo2Khr = 1000146000,
+		ImageMemoryRequirementsInfo2Khr = 1000146001,
+		ImageSparseMemoryRequirementsInfo2Khr = 1000146002,
+		MemoryRequirements2Khr = 1000146003,
+		SparseImageMemoryRequirements2Khr = 1000146004,
+		ImageFormatListCreateInfoKhr = 1000147000,
+		PhysicalDeviceBlendOperationAdvancedFeaturesExt = 1000148000,
+		PhysicalDeviceBlendOperationAdvancedPropertiesExt = 1000148001,
+		PipelineColorBlendAdvancedStateCreateInfoExt = 1000148002,
+		PipelineCoverageToColorStateCreateInfoNv = 1000149000,
+		PipelineCoverageModulationStateCreateInfoNv = 1000152000,
+		SamplerYcbcrConversionCreateInfoKhr = 1000156000,
+		SamplerYcbcrConversionInfoKhr = 1000156001,
+		BindImagePlaneMemoryInfoKhr = 1000156002,
+		ImagePlaneMemoryRequirementsInfoKhr = 1000156003,
+		PhysicalDeviceSamplerYcbcrConversionFeaturesKhr = 1000156004,
+		SamplerYcbcrConversionImageFormatPropertiesKhr = 1000156005,
+		BindBufferMemoryInfoKhr = 1000157000,
+		BindImageMemoryInfoKhr = 1000157001,
+		ValidationCacheCreateInfoExt = 1000160000,
+		ShaderModuleValidationCacheCreateInfoExt = 1000160001,
+		DeviceQueueGlobalPriorityCreateInfoExt = 1000174000,
 	}
 
 	public enum SystemAllocationScope : int
@@ -936,6 +1157,48 @@ namespace Vulkan
 	public enum DependencyFlags : int
 	{
 		ByRegion = 0x1,
+		ViewLocalKhx = 0x2,
+		DeviceGroupKhx = 0x4,
+	}
+
+	public enum ObjectType : int
+	{
+		Unknown = 0,
+		Instance = 1,
+		PhysicalDevice = 2,
+		Device = 3,
+		Queue = 4,
+		Semaphore = 5,
+		CommandBuffer = 6,
+		Fence = 7,
+		DeviceMemory = 8,
+		Buffer = 9,
+		Image = 10,
+		Event = 11,
+		QueryPool = 12,
+		BufferView = 13,
+		ImageView = 14,
+		ShaderModule = 15,
+		PipelineCache = 16,
+		PipelineLayout = 17,
+		RenderPass = 18,
+		Pipeline = 19,
+		DescriptorSetLayout = 20,
+		Sampler = 21,
+		DescriptorPool = 22,
+		DescriptorSet = 23,
+		Framebuffer = 24,
+		CommandPool = 25,
+		SurfaceKhr = 1000000000,
+		SwapchainKhr = 1000001000,
+		DisplayKhr = 1000002000,
+		DisplayModeKhr = 1000002001,
+		DebugReportCallbackExt = 1000011000,
+		DescriptorUpdateTemplateKhr = 1000085000,
+		ObjectTableNvx = 1000086000,
+		IndirectCommandsLayoutNvx = 1000086001,
+		SamplerYcbcrConversionKhr = 1000156000,
+		ValidationCacheExt = 1000160000,
 	}
 
 	[Flags]
@@ -949,14 +1212,14 @@ namespace Vulkan
 
 	public enum IndirectCommandsTokenTypeNvx : int
 	{
-		IndirectCommandsTokenPipeline = 0,
-		IndirectCommandsTokenDescriptorSet = 1,
-		IndirectCommandsTokenIndexBuffer = 2,
-		IndirectCommandsTokenVertexBuffer = 3,
-		IndirectCommandsTokenPushConstant = 4,
-		IndirectCommandsTokenDrawIndexed = 5,
-		IndirectCommandsTokenDraw = 6,
-		IndirectCommandsTokenDispatch = 7,
+		Pipeline = 0,
+		DescriptorSet = 1,
+		IndexBuffer = 2,
+		VertexBuffer = 3,
+		PushConstant = 4,
+		DrawIndexed = 5,
+		Draw = 6,
+		Dispatch = 7,
 	}
 
 	[Flags]
@@ -968,28 +1231,95 @@ namespace Vulkan
 
 	public enum ObjectEntryTypeNvx : int
 	{
-		ObjectEntryDescriptorSet = 0,
-		ObjectEntryPipeline = 1,
-		ObjectEntryIndexBuffer = 2,
-		ObjectEntryVertexBuffer = 3,
-		ObjectEntryPushConstant = 4,
+		DescriptorSet = 0,
+		Pipeline = 1,
+		IndexBuffer = 2,
+		VertexBuffer = 3,
+		PushConstant = 4,
+	}
+
+	public enum DescriptorUpdateTemplateTypeKhr : int
+	{
+		DescriptorSet = 0,
+		PushDescriptors = 1,
+	}
+
+	public enum ViewportCoordinateSwizzleNv : int
+	{
+		PositiveX = 0,
+		NegativeX = 1,
+		PositiveY = 2,
+		NegativeY = 3,
+		PositiveZ = 4,
+		NegativeZ = 5,
+		PositiveW = 6,
+		NegativeW = 7,
+	}
+
+	public enum DiscardRectangleModeExt : int
+	{
+		Inclusive = 0,
+		Exclusive = 1,
+	}
+
+	[Flags]
+	public enum SubpassDescriptionFlags : int
+	{
+		PerViewAttributesNvx = 0x1,
+		PerViewPositionXOnlyNvx = 0x2,
+	}
+
+	public enum PointClippingBehaviorKhr : int
+	{
+		AllClipPlanes = 0,
+		UserClipPlanesOnly = 1,
+	}
+
+	public enum CoverageModulationModeNv : int
+	{
+		None = 0,
+		Rgb = 1,
+		Alpha = 2,
+		Rgba = 3,
+	}
+
+	public enum ValidationCacheHeaderVersionExt : int
+	{
+		One = 1,
+	}
+
+	public enum ShaderInfoTypeAmd : int
+	{
+		Statistics = 0,
+		Binary = 1,
+		Disassembly = 2,
+	}
+
+	public enum QueueGlobalPriorityExt : int
+	{
+		Low = 128,
+		Medium = 256,
+		High = 512,
+		Realtime = 1024,
 	}
 
 	public enum ColorSpaceKhr : int
 	{
 		SrgbNonlinear = 0,
-		DisplayP3LinearExt = 1000104001,
-		DisplayP3NonlinearExt = 1000104002,
-		ScrgbLinearExt = 1000104003,
-		ScrgbNonlinearExt = 1000104004,
-		DciP3LinearExt = 1000104005,
-		DciP3NonlinearExt = 1000104006,
-		Bt709LinearExt = 1000104007,
-		Bt709NonlinearExt = 1000104008,
-		Bt2020LinearExt = 1000104009,
-		Bt2020NonlinearExt = 1000104010,
+		DisplayP3NonlinearExt = 1000104001,
+		ExtendedSrgbLinearExt = 1000104002,
+		DciP3LinearExt = 1000104003,
+		DciP3NonlinearExt = 1000104004,
+		Bt709LinearExt = 1000104005,
+		Bt709NonlinearExt = 1000104006,
+		Bt2020LinearExt = 1000104007,
+		Hdr10St2084Ext = 1000104008,
+		DolbyvisionExt = 1000104009,
+		Hdr10HlgExt = 1000104010,
 		AdobergbLinearExt = 1000104011,
 		AdobergbNonlinearExt = 1000104012,
+		PassThroughExt = 1000104013,
+		ExtendedSrgbNonlinearExt = 1000104014,
 	}
 
 	[Flags]
@@ -1016,6 +1346,8 @@ namespace Vulkan
 		Mailbox = 1,
 		Fifo = 2,
 		FifoRelaxed = 3,
+		SharedDemandRefresh = 1000111000,
+		SharedContinuousRefresh = 1000111001,
 	}
 
 	[Flags]
@@ -1072,17 +1404,14 @@ namespace Vulkan
 		CommandPool = 25,
 		SurfaceKhr = 26,
 		SwapchainKhr = 27,
-		DebugReport = 28,
+		DebugReportCallbackExt = 28,
 		DisplayKhr = 29,
 		DisplayModeKhr = 30,
 		ObjectTableNvx = 31,
 		IndirectCommandsLayoutNvx = 32,
-	}
-
-	public enum DebugReportErrorExt : int
-	{
-		None = 0,
-		CallbackRef = 1,
+		ValidationCache = 33,
+		DescriptorUpdateTemplateKhr = 1000085000,
+		SamplerYcbcrConversionKhr = 1000156000,
 	}
 
 	public enum RasterizationOrderAmd : int
@@ -1111,6 +1440,72 @@ namespace Vulkan
 	public enum ValidationCheckExt : int
 	{
 		All = 0,
+		Shaders = 1,
+	}
+
+	[Flags]
+	public enum ExternalMemoryHandleTypeFlagsKhr : int
+	{
+		OpaqueFd = 0x1,
+		OpaqueWin32 = 0x2,
+		OpaqueWin32Kmt = 0x4,
+		D3D11Texture = 0x8,
+		D3D11TextureKmt = 0x10,
+		D3D12Heap = 0x20,
+		D3D12Resource = 0x40,
+	}
+
+	[Flags]
+	public enum ExternalMemoryFeatureFlagsKhr : int
+	{
+		DedicatedOnly = 0x1,
+		Exportable = 0x2,
+		Importable = 0x4,
+	}
+
+	[Flags]
+	public enum ExternalSemaphoreHandleTypeFlagsKhr : int
+	{
+		OpaqueFd = 0x1,
+		OpaqueWin32 = 0x2,
+		OpaqueWin32Kmt = 0x4,
+		D3D12Fence = 0x8,
+		SyncFd = 0x10,
+	}
+
+	[Flags]
+	public enum ExternalSemaphoreFeatureFlagsKhr : int
+	{
+		Exportable = 0x1,
+		Importable = 0x2,
+	}
+
+	[Flags]
+	public enum SemaphoreImportFlagsKhr : int
+	{
+		Temporary = 0x1,
+	}
+
+	[Flags]
+	public enum ExternalFenceHandleTypeFlagsKhr : int
+	{
+		OpaqueFd = 0x1,
+		OpaqueWin32 = 0x2,
+		OpaqueWin32Kmt = 0x4,
+		SyncFd = 0x8,
+	}
+
+	[Flags]
+	public enum ExternalFenceFeatureFlagsKhr : int
+	{
+		Exportable = 0x1,
+		Importable = 0x2,
+	}
+
+	[Flags]
+	public enum FenceImportFlagsKhr : int
+	{
+		Temporary = 0x1,
 	}
 
 	[Flags]
@@ -1134,5 +1529,76 @@ namespace Vulkan
 	public enum DisplayEventTypeExt : int
 	{
 		FirstPixelOut = 0,
+	}
+
+	[Flags]
+	public enum PeerMemoryFeatureFlagsKhx : int
+	{
+		CopySrc = 0x1,
+		CopyDst = 0x2,
+		GenericSrc = 0x4,
+		GenericDst = 0x8,
+	}
+
+	[Flags]
+	public enum MemoryAllocateFlagsKhx : int
+	{
+		DeviceMask = 0x1,
+	}
+
+	[Flags]
+	public enum DeviceGroupPresentModeFlagsKhx : int
+	{
+		Local = 0x1,
+		Remote = 0x2,
+		Sum = 0x4,
+		LocalMultiDevice = 0x8,
+	}
+
+	[Flags]
+	public enum SwapchainCreateFlagsKhr : int
+	{
+		BindSfrBitKhx = 0x1,
+	}
+
+	public enum TessellationDomainOriginKhr : int
+	{
+		UpperLeft = 0,
+		LowerLeft = 1,
+	}
+
+	public enum SamplerYcbcrModelConversionKhr : int
+	{
+		RgbIdentity = 0,
+		YcbcrIdentity = 1,
+		Ycbcr709 = 2,
+		Ycbcr601 = 3,
+		Ycbcr2020 = 4,
+	}
+
+	public enum SamplerYcbcrRangeKhr : int
+	{
+		ItuFull = 0,
+		ItuNarrow = 1,
+	}
+
+	public enum ChromaLocationKhr : int
+	{
+		CositedEven = 0,
+		Midpoint = 1,
+	}
+
+	public enum SamplerReductionModeExt : int
+	{
+		WeightedAverage = 0,
+		Min = 1,
+		Max = 2,
+	}
+
+	public enum BlendOverlapExt : int
+	{
+		Uncorrelated = 0,
+		Disjoint = 1,
+		Conjoint = 2,
 	}
 }
