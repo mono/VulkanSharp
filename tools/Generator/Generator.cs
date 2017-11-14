@@ -1122,7 +1122,7 @@ namespace VulkanSharp.Generator
 
 			public string MarshalSizeSource (Generator generator, bool isInInterop)
 			{
-				if (generator.enums.ContainsKey (csType))
+				if (generator.IsEnum (csType))
 					return "4"; // int enum
 
 				return string.Format ("Marshal.SizeOf (typeof ({0}{1}))",
@@ -1190,7 +1190,7 @@ namespace VulkanSharp.Generator
 					continue;
 				if (!isPointer || info.isStruct)
 					continue;
-				if (info.isHandle || !param.Value.Contains ("const ")) {
+				if (info.isHandle || !param.Value.Contains ("const ") && !IsEnum (info.csType)) {
 					info.isFixed = true;
 					fixedCount++;
 				}
@@ -2103,6 +2103,11 @@ namespace VulkanSharp.Generator
 			WriteTypes (doc, types, "structure", structures.Values.ToArray ());
 
 			doc.Save (outputPath + Path.DirectorySeparatorChar + "types.xml");
+		}
+
+		bool IsEnum (string type)
+		{
+			return enums.ContainsKey (type);
 		}
 	}
 }
