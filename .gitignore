@@ -40,3 +40,5 @@ Thumbs.db
 *.dotCover
 System.Collections.dll
 System.Runtime.dll
+#generated files
+*Resource.designer.cs
