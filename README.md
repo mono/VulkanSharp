@@ -1,4 +1,8 @@
 # VulkanSharp
+[![Build Status][build-icon]][build-status]
+
+[build-icon]:https://jenkins.mono-project.com/view/Urho/job/VulkanSharp/badge/icon
+[build-status]:https://jenkins.mono-project.com/view/Urho/job/VulkanSharp/
 
 This project provides a .NET binding for the
 [Vulkan](https://www.khronos.org/vulkan/) API.
