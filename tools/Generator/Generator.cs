@@ -1775,7 +1775,7 @@ namespace VulkanSharp.Generator
 			if (requiredCommands == null) {
 				var handleType = GetHandleType (info);
 				IndentWriteLine ("internal {0} m;\n", handleType);
-				IndentWriteLine ("{0} {1}.Handle {{", handleType, marshallingInterface);
+				IndentWriteLine ("public {0} {1}.Handle {{", handleType, marshallingInterface);
 				IndentLevel++;
 				IndentWriteLine ("get {");
 				IndentLevel++;
