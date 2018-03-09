@@ -1876,6 +1876,7 @@ namespace VulkanSharp.Generator
 			"vkGetMemoryWin32HandleNV",
 			"vkImportSemaphoreWin32HandleKHR",
 			"vkImportFenceWin32HandleKHR",
+			"vkCreateIOSSurfaceMVK",
 			// TODO: support fixed array of Handles
 			"vkEnumeratePhysicalDeviceGroupsKHX",
 		};
@@ -1934,7 +1935,7 @@ namespace VulkanSharp.Generator
 			IndentWriteLine ("internal static class NativeMethods");
 			IndentWriteLine ("{");
 			IndentLevel++;
-			IndentWriteLine ("const string VulkanLibrary = \"{0}\";\n", (platform == null || platform == "Windows") ? "vulkan-1" : "vulkan");
+			IndentWriteLine ("const string VulkanLibrary = \"{0}\";\n", (platform == null || platform == "Windows") ? "vulkan-1" : (platform == "iOS" ? "__Internal" : "vulkan"));
 
 			bool written = false;
 			foreach (var command in specTree.Elements ("commands").Elements ("command")) {
@@ -2082,6 +2083,7 @@ namespace VulkanSharp.Generator
 				"VK_NV_external_memory_win32",
 				"VK_NV_win32_keyed_mutex",
 			} );
+			GeneratePlatformExtension("iOS", "VK_MVK_ios_surface");
 		}
 
 		void WriteTypes (XmlDocument doc, XmlElement types, string elementName, TypeInfo[] typeInfo)
