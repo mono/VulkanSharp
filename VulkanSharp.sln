@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generator", "tools\Generator\Generator.csproj", "{09F60593-810A-491C-84FB-A9848A182E6D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vulkan", "src\Vulkan\Vulkan.csproj", "{15253E36-DDDE-4C0A-9A6E-7632BACC8F7C}"
@@ -27,6 +29,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BCBE8B1A-BDF9-4303-B113-DB8AEF369E26}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocMerge", "tools\DocMerge\DocMerge.csproj", "{3D13E652-5F08-41E0-ABB6-8802249DCB96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vulkan.iOS", "src\Platforms\iOS\Vulkan.iOS.csproj", "{1D44D14A-8A7A-4DD9-837D-E7F50EF2ADA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,6 +74,13 @@ Global
 		{3D13E652-5F08-41E0-ABB6-8802249DCB96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D13E652-5F08-41E0-ABB6-8802249DCB96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D13E652-5F08-41E0-ABB6-8802249DCB96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D44D14A-8A7A-4DD9-837D-E7F50EF2ADA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D44D14A-8A7A-4DD9-837D-E7F50EF2ADA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D44D14A-8A7A-4DD9-837D-E7F50EF2ADA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D44D14A-8A7A-4DD9-837D-E7F50EF2ADA6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D70FCB4E-05DC-46C6-B08C-86ECC1FD98CA} = {102C7085-1193-4401-84A7-C0A7EBD93082}
@@ -78,5 +89,9 @@ Global
 		{9E914493-2F70-4F34-8BD5-48185663EC03} = {28D51DFD-7CC8-4408-8D62-0AFC048ACE1B}
 		{EF450800-9AE3-488D-802E-C85F226A2C37} = {102C7085-1193-4401-84A7-C0A7EBD93082}
 		{FB79F840-669D-4B00-92C3-F23B6C24C153} = {BCBE8B1A-BDF9-4303-B113-DB8AEF369E26}
+		{1D44D14A-8A7A-4DD9-837D-E7F50EF2ADA6} = {28D51DFD-7CC8-4408-8D62-0AFC048ACE1B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7045423B-7050-4CA9-BD63-22FC708510BF}
 	EndGlobalSection
 EndGlobal
