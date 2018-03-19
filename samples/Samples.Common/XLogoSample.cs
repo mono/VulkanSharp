@@ -152,7 +152,7 @@ namespace Samples.Common
 
 			var multisampleCreateInfo = new PipelineMultisampleStateCreateInfo {
 				RasterizationSamples = SampleCountFlags.Count1,
-				SampleMask = new uint [] { ~0u }
+				//SampleMask = new uint [] { ~0u }
 			};
 			var colorBlendAttachmentState = new PipelineColorBlendAttachmentState {
 				ColorWriteMask = ColorComponentFlags.R | ColorComponentFlags.G | ColorComponentFlags.B | ColorComponentFlags.A
@@ -191,7 +191,7 @@ namespace Samples.Common
 				RasterizationState = rasterizationStateCreateInfo,
 				InputAssemblyState = inputAssemblyStateCreateInfo,
 				VertexInputState = vertexInputStateCreateInfo,
-				DynamicState = new PipelineDynamicStateCreateInfo (),
+				//DynamicState = new PipelineDynamicStateCreateInfo (),
 				RenderPass = renderPass
 			};
 
@@ -261,11 +261,12 @@ namespace Samples.Common
 		public override void DrawFrame ()
 		{
 		    if (!initialized) return;
-
-			uint nextIndex = device.AcquireNextImageKHR (swapchain, ulong.MaxValue, semaphore, fence);
-			device.ResetFence (fence);
+			
+			uint nextIndex = device.AcquireNextImageKHR (swapchain, ulong.MaxValue, semaphore);
+			device.ResetFence(fence);
 			var submitInfo = new SubmitInfo {
 				WaitSemaphores = new Semaphore [] { semaphore },
+				WaitDstStageMask = new PipelineStageFlags[] {PipelineStageFlags.AllGraphics},
 				CommandBuffers = new CommandBuffer [] { commandBuffers [nextIndex] }
 			};
 			queue.Submit (submitInfo, fence);

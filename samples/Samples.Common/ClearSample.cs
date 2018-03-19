@@ -44,10 +44,11 @@ namespace Samples.Common
         {
             if (!initialized) return;
 
-            uint nextIndex = device.AcquireNextImageKHR (swapchain, ulong.MaxValue, semaphore, fence);
+            uint nextIndex = device.AcquireNextImageKHR (swapchain, ulong.MaxValue, semaphore);
             device.ResetFence (fence);
             var submitInfo = new SubmitInfo {
                 WaitSemaphores = new Semaphore [] { semaphore },
+				WaitDstStageMask = new PipelineStageFlags[] {PipelineStageFlags.AllGraphics },
                 CommandBuffers = new CommandBuffer [] { commandBuffers [nextIndex] }
             };
             queue.Submit (submitInfo, fence);

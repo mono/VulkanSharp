@@ -17,22 +17,23 @@ namespace Samples.Common
 
 		protected bool initialized;
 
-		protected SurfaceFormatKhr SelectFormat (PhysicalDevice physicalDevice, SurfaceKhr surface)
+		protected SurfaceFormatKhr SelectFormat(PhysicalDevice physicalDevice, SurfaceKhr surface)
 		{
-			foreach (var f in physicalDevice.GetSurfaceFormatsKHR (surface))
+			foreach (var f in physicalDevice.GetSurfaceFormatsKHR(surface))
 				if (f.Format == Format.R8G8B8A8Unorm || f.Format == Format.B8G8R8A8Unorm)
 					return f;
 
-			throw new System.Exception ("didn't find the R8G8B8A8Unorm or B8G8R8A8Unorm format");
+			throw new System.Exception("didn't find the R8G8B8A8Unorm or B8G8R8A8Unorm format");
 		}
 
-		protected SwapchainKhr CreateSwapchain (SurfaceKhr surface, SurfaceFormatKhr surfaceFormat)
+		protected SwapchainKhr CreateSwapchain(SurfaceKhr surface, SurfaceFormatKhr surfaceFormat)
 		{
 			var compositeAlpha = surfaceCapabilities.SupportedCompositeAlpha.HasFlag(CompositeAlphaFlagsKhr.Inherit)
 				? CompositeAlphaFlagsKhr.Inherit
 				: CompositeAlphaFlagsKhr.Opaque;
 
-			var swapchainInfo = new SwapchainCreateInfoKhr {
+			var swapchainInfo = new SwapchainCreateInfoKhr
+			{
 				Surface = surface,
 				MinImageCount = surfaceCapabilities.MinImageCount,
 				ImageFormat = surfaceFormat.Format,
@@ -42,56 +43,63 @@ namespace Samples.Common
 				PreTransform = SurfaceTransformFlagsKhr.Identity,
 				ImageArrayLayers = 1,
 				ImageSharingMode = SharingMode.Exclusive,
-				QueueFamilyIndices = new uint [] { 0 },
+				QueueFamilyIndices = new uint[] { 0 },
 				PresentMode = PresentModeKhr.Fifo,
 				CompositeAlpha = compositeAlpha
 			};
 
-			return device.CreateSwapchainKHR (swapchainInfo);
+			return device.CreateSwapchainKHR(swapchainInfo);
 		}
 
-		protected Framebuffer [] CreateFramebuffers (Image [] images, SurfaceFormatKhr surfaceFormat)
+		protected Framebuffer[] CreateFramebuffers(Image[] images, SurfaceFormatKhr surfaceFormat)
 		{
-			var displayViews = new ImageView [images.Length];
+			var displayViews = new ImageView[images.Length];
 
-			for (int i = 0; i < images.Length; i++) {
-				var viewCreateInfo = new ImageViewCreateInfo {
-					Image = images [i],
+			for (int i = 0; i < images.Length; i++)
+			{
+				var viewCreateInfo = new ImageViewCreateInfo
+				{
+					Image = images[i],
 					ViewType = ImageViewType.View2D,
 					Format = surfaceFormat.Format,
-					Components = new ComponentMapping {
+					Components = new ComponentMapping
+					{
 						R = ComponentSwizzle.R,
 						G = ComponentSwizzle.G,
 						B = ComponentSwizzle.B,
 						A = ComponentSwizzle.A
 					},
-					SubresourceRange = new ImageSubresourceRange {
+					SubresourceRange = new ImageSubresourceRange
+					{
 						AspectMask = ImageAspectFlags.Color,
 						LevelCount = 1,
 						LayerCount = 1
 					}
 				};
-				displayViews [i] = device.CreateImageView (viewCreateInfo);
+				displayViews[i] = device.CreateImageView(viewCreateInfo);
 			}
-			var framebuffers = new Framebuffer [images.Length];
+			var framebuffers = new Framebuffer[images.Length];
 
-			for (int i = 0; i < images.Length; i++) {
-				var frameBufferCreateInfo = new FramebufferCreateInfo {
+			for (int i = 0; i < images.Length; i++)
+			{
+				var frameBufferCreateInfo = new FramebufferCreateInfo
+				{
 					Layers = 1,
 					RenderPass = renderPass,
-					Attachments = new ImageView [] { displayViews [i] },
+					Attachments = new ImageView[] { displayViews[i] },
 					Width = surfaceCapabilities.CurrentExtent.Width,
 					Height = surfaceCapabilities.CurrentExtent.Height
 				};
-				framebuffers [i] = device.CreateFramebuffer (frameBufferCreateInfo);
+				framebuffers[i] = device.CreateFramebuffer(frameBufferCreateInfo);
 			}
 
 			return framebuffers;
 		}
 
-		protected RenderPass CreateRenderPass (SurfaceFormatKhr surfaceFormat)
+		protected RenderPass CreateRenderPass(SurfaceFormatKhr surfaceFormat)
 		{
-			var attDesc = new AttachmentDescription {
+			var attDesc = new AttachmentDescription
+			{
 				Format = surfaceFormat.Format,
 				Samples = SampleCountFlags.Count1,
 				LoadOp = AttachmentLoadOp.Clear,
@@ -102,16 +110,18 @@ namespace Samples.Common
 				FinalLayout = ImageLayout.PresentSrcKhr
 			};
 			var attRef = new AttachmentReference { Layout = ImageLayout.ColorAttachmentOptimal };
-			var subpassDesc = new SubpassDescription {
+			var subpassDesc = new SubpassDescription
+			{
 				PipelineBindPoint = PipelineBindPoint.Graphics,
-				ColorAttachments = new AttachmentReference [] { attRef }
+				ColorAttachments = new AttachmentReference[] { attRef }
 			};
-			var renderPassCreateInfo = new RenderPassCreateInfo {
-				Attachments = new AttachmentDescription [] { attDesc },
-				Subpasses = new SubpassDescription [] { subpassDesc }
+			var renderPassCreateInfo = new RenderPassCreateInfo
+			{
+				Attachments = new AttachmentDescription[] { attDesc },
+				Subpasses = new SubpassDescription[] { subpassDesc }
 			};
 
-			return device.CreateRenderPass (renderPassCreateInfo);
+			return device.CreateRenderPass(renderPassCreateInfo);
 		}
 
 		public abstract void DrawFrame();
