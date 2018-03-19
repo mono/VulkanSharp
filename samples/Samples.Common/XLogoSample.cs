@@ -3,89 +3,13 @@ using Vulkan;
 
 namespace Samples.Common
 {
-	public class XLogoSample : IVulkanSample
+	public class XLogoSample : SampleBase
 	{
-		Device device;
-		Queue queue;
-		SwapchainKhr swapchain;
-		Semaphore semaphore;
-		Fence fence;
 		CommandBuffer [] commandBuffers;
 		DescriptorSet [] descriptorSets;
-		SurfaceCapabilitiesKhr surfaceCapabilities;
-		RenderPass renderPass;
 		DescriptorSetLayout descriptorSetLayout;
 		PipelineLayout pipelineLayout;
 		Buffer uniformBuffer;
-		bool initialized;
-        
-		SurfaceFormatKhr SelectFormat (PhysicalDevice physicalDevice, SurfaceKhr surface)
-		{
-			foreach (var f in physicalDevice.GetSurfaceFormatsKHR (surface))
-				if (f.Format == Format.R8G8B8A8Unorm)
-					return f;
-
-			throw new System.Exception ("didn't find the R8G8B8A8Unorm format");
-		}
-
-		SwapchainKhr CreateSwapchain (SurfaceKhr surface, SurfaceFormatKhr surfaceFormat)
-		{
-			var swapchainInfo = new SwapchainCreateInfoKhr {
-				Surface = surface,
-				MinImageCount = surfaceCapabilities.MinImageCount,
-				ImageFormat = surfaceFormat.Format,
-				ImageColorSpace = surfaceFormat.ColorSpace,
-				ImageExtent = surfaceCapabilities.CurrentExtent,
-				ImageUsage = ImageUsageFlags.ColorAttachment,
-				PreTransform = SurfaceTransformFlagsKhr.Identity,
-				ImageArrayLayers = 1,
-				ImageSharingMode = SharingMode.Exclusive,
-				QueueFamilyIndices = new uint [] { 0 },
-				PresentMode = PresentModeKhr.Fifo,
-				CompositeAlpha = CompositeAlphaFlagsKhr.Inherit
-			};
-
-			return device.CreateSwapchainKHR (swapchainInfo);
-		}
-
-		Framebuffer [] CreateFramebuffers (Image [] images, SurfaceFormatKhr surfaceFormat)
-		{
-			var displayViews = new ImageView [images.Length];
-
-			for (int i = 0; i < images.Length; i++) {
-				var viewCreateInfo = new ImageViewCreateInfo {
-					Image = images [i],
-					ViewType = ImageViewType.View2D,
-					Format = surfaceFormat.Format,
-					Components = new ComponentMapping {
-						R = ComponentSwizzle.R,
-						G = ComponentSwizzle.G,
-						B = ComponentSwizzle.B,
-						A = ComponentSwizzle.A
-					},
-					SubresourceRange = new ImageSubresourceRange {
-						AspectMask = ImageAspectFlags.Color,
-						LevelCount = 1,
-						LayerCount = 1
-					}
-				};
-				displayViews [i] = device.CreateImageView (viewCreateInfo);
-			}
-			var framebuffers = new Framebuffer [images.Length];
-
-			for (int i = 0; i < images.Length; i++) {
-				var frameBufferCreateInfo = new FramebufferCreateInfo {
-					Layers = 1,
-					RenderPass = renderPass,
-					Attachments = new ImageView [] { displayViews [i] },
-					Width = surfaceCapabilities.CurrentExtent.Width,
-					Height = surfaceCapabilities.CurrentExtent.Height
-				};
-				framebuffers [i] = device.CreateFramebuffer (frameBufferCreateInfo);
-			}
-
-			return framebuffers;
-		}
 
 		CommandBuffer [] CreateCommandBuffers (Image [] images, Framebuffer [] framebuffers, Pipeline pipeline, Buffer vertexBuffer, Buffer indexBuffer, uint indexLength)
 		{
@@ -118,31 +42,6 @@ namespace Samples.Common
 			}
 
 			return buffers;
-		}
-
-		RenderPass CreateRenderPass (SurfaceFormatKhr surfaceFormat)
-		{
-			var attDesc = new AttachmentDescription {
-				Format = surfaceFormat.Format,
-				Samples = SampleCountFlags.Count1,
-				LoadOp = AttachmentLoadOp.Clear,
-				StoreOp = AttachmentStoreOp.Store,
-				StencilLoadOp = AttachmentLoadOp.DontCare,
-				StencilStoreOp = AttachmentStoreOp.DontCare,
-				InitialLayout = ImageLayout.ColorAttachmentOptimal,
-				FinalLayout = ImageLayout.ColorAttachmentOptimal
-			};
-			var attRef = new AttachmentReference { Layout = ImageLayout.ColorAttachmentOptimal };
-			var subpassDesc = new SubpassDescription {
-				PipelineBindPoint = PipelineBindPoint.Graphics,
-				ColorAttachments = new AttachmentReference [] { attRef }
-			};
-			var renderPassCreateInfo = new RenderPassCreateInfo {
-				Attachments = new AttachmentDescription [] { attDesc },
-				Subpasses = new SubpassDescription [] { subpassDesc }
-			};
-
-			return device.CreateRenderPass (renderPassCreateInfo);
 		}
 
 		byte [] LoadResource (string name)
@@ -345,22 +244,9 @@ namespace Samples.Common
 			device.UpdateDescriptorSets (new WriteDescriptorSet [] { writeDescriptorSet }, null);
 		}
 
-		public void Initialize(PhysicalDevice physicalDevice, SurfaceKhr surface)
+		public override void Initialize(PhysicalDevice physicalDevice, SurfaceKhr surface)
 		{
-			var queueInfo = new DeviceQueueCreateInfo { QueuePriorities = new float [] { 1.0f } };
-			var deviceInfo = new DeviceCreateInfo {
-				EnabledExtensionNames = new string [] { "VK_KHR_swapchain" },
-				QueueCreateInfos = new DeviceQueueCreateInfo [] { queueInfo }
-			};
-			device = physicalDevice.CreateDevice (deviceInfo);
-			queue = device.GetQueue (0, 0);
-			surfaceCapabilities = physicalDevice.GetSurfaceCapabilitiesKHR (surface);
-			var surfaceFormat = SelectFormat (physicalDevice, surface);
-			swapchain = CreateSwapchain (surface, surfaceFormat);
-			var images = device.GetSwapchainImagesKHR (swapchain);
-			renderPass = CreateRenderPass (surfaceFormat);
-
-			var framebuffers = CreateFramebuffers (images, surfaceFormat);
+			base.Initialize(physicalDevice, surface);
 			var vertexBuffer = CreateBuffer (physicalDevice, Logo.Vertices, BufferUsageFlags.VertexBuffer, typeof (float));
 			var indexBuffer = CreateBuffer (physicalDevice, Logo.Indexes, BufferUsageFlags.IndexBuffer, typeof (short));
 			uniformBuffer = CreateUniformBuffer (physicalDevice);
@@ -370,14 +256,9 @@ namespace Samples.Common
 			UpdateDescriptorSets ();
 
 			commandBuffers = CreateCommandBuffers (images, framebuffers, pipelines [0], vertexBuffer, indexBuffer, (uint)Logo.Indexes.Length);
-			var fenceInfo = new FenceCreateInfo ();
-			fence = device.CreateFence (fenceInfo);
-			var semaphoreInfo = new SemaphoreCreateInfo ();
-			semaphore = device.CreateSemaphore (semaphoreInfo);
-			initialized = true;
 		}
         
-		public void DrawFrame ()
+		public override void DrawFrame ()
 		{
 		    if (!initialized) return;
 
