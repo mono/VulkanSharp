@@ -1,10 +1,12 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
+using Samples.Android;
+using Samples.Common;
 
-namespace ClearView
+namespace XLogo
 {
-	[Activity (Label = "ClearView", MainLauncher = true, Icon = "@mipmap/icon")]
+	[Activity (Label = "XLogo", MainLauncher = true, Icon = "@mipmap/icon", ScreenOrientation = Android.Content.PM.ScreenOrientation.SensorPortrait)]
 	public class MainActivity : Activity
 	{
 		protected override void OnCreate (Bundle savedInstanceState)
@@ -15,7 +17,7 @@ namespace ClearView
 			SetContentView (Resource.Layout.Main);
 
 			LinearLayout layout = FindViewById<LinearLayout> (Resource.Id.Layout);
-			layout.AddView (new ClearView (ApplicationContext));
+			layout.AddView (new VulkanViewSample(ApplicationContext, new XLogoSample()));
 		}
 	}
 }

@@ -1,4 +1,4 @@
-﻿namespace XLogo
+﻿namespace Samples.Common
 {
 	static public class Logo
 	{

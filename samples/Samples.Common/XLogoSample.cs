@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System.Reflection;
 using Vulkan;
-using Vulkan.Android;
 
-namespace XLogo
+namespace Samples.Common
 {
-	public class XLogoView : VulkanView
+	public class XLogoSample : IVulkanSample
 	{
 		Device device;
 		Queue queue;
@@ -19,32 +18,7 @@ namespace XLogo
 		PipelineLayout pipelineLayout;
 		Buffer uniformBuffer;
 		bool initialized;
-
-		public XLogoView (Android.Content.Context context) : base (context, CreateInstance ())
-		{
-		}
-
-		static Instance CreateInstance ()
-		{
-			var instanceExtensions = new List<string> {
-				"VK_KHR_surface",
-				"VK_KHR_android_surface",
-			};
-
-			return new Instance (new InstanceCreateInfo {
-				ApplicationInfo = new ApplicationInfo {
-					ApplicationName = "Vulkan Android XLogo",
-					ApiVersion = Version.Make (1, 0, 0)
-				},
-				EnabledExtensionNames = instanceExtensions.ToArray ()
-			});
-		}
-
-		protected override void NativeWindowAcquired ()
-		{
-			InitializeVulkan ();
-		}
-
+        
 		SurfaceFormatKhr SelectFormat (PhysicalDevice physicalDevice, SurfaceKhr surface)
 		{
 			foreach (var f in physicalDevice.GetSurfaceFormatsKHR (surface))
@@ -173,7 +147,7 @@ namespace XLogo
 
 		byte [] LoadResource (string name)
 		{
-			System.IO.Stream stream = System.Reflection.Assembly.GetExecutingAssembly ().GetManifestResourceStream (name);
+			System.IO.Stream stream = typeof(XLogoSample).GetTypeInfo().Assembly.GetManifestResourceStream (name);
 			byte [] bytes = new byte [stream.Length];
 			stream.Read (bytes, 0, (int)stream.Length);
 
@@ -251,8 +225,8 @@ namespace XLogo
 				SetLayouts = new DescriptorSetLayout [] { descriptorSetLayout }
 			};
 			pipelineLayout = device.CreatePipelineLayout (pipelineLayoutCreateInfo);
-			var vertexShaderModule = device.CreateShaderModule (LoadResource ("XLogo.Shaders.shader.vert.spv"));
-			var fragmentShaderModule = device.CreateShaderModule (LoadResource ("XLogo.Shaders.shader.frag.spv"));
+			var vertexShaderModule = device.CreateShaderModule (LoadResource ("Samples.Common.Shaders.shader.vert.spv"));
+			var fragmentShaderModule = device.CreateShaderModule (LoadResource ("Samples.Common.Shaders.shader.frag.spv"));
 			PipelineShaderStageCreateInfo [] pipelineShaderStages = {
 				new PipelineShaderStageCreateInfo {
 					Stage = ShaderStageFlags.Vertex,
@@ -371,16 +345,13 @@ namespace XLogo
 			device.UpdateDescriptorSets (new WriteDescriptorSet [] { writeDescriptorSet }, null);
 		}
 
-		public void InitializeVulkan ()
+		public void Initialize(PhysicalDevice physicalDevice, SurfaceKhr surface)
 		{
-			var devices = Instance.EnumeratePhysicalDevices ();
-			var surface = Instance.CreateAndroidSurfaceKHR (new AndroidSurfaceCreateInfoKhr { Window = aNativeWindow });
 			var queueInfo = new DeviceQueueCreateInfo { QueuePriorities = new float [] { 1.0f } };
 			var deviceInfo = new DeviceCreateInfo {
 				EnabledExtensionNames = new string [] { "VK_KHR_swapchain" },
 				QueueCreateInfos = new DeviceQueueCreateInfo [] { queueInfo }
 			};
-			var physicalDevice = devices [0];
 			device = physicalDevice.CreateDevice (deviceInfo);
 			queue = device.GetQueue (0, 0);
 			surfaceCapabilities = physicalDevice.GetSurfaceCapabilitiesKHR (surface);
@@ -405,15 +376,11 @@ namespace XLogo
 			semaphore = device.CreateSemaphore (semaphoreInfo);
 			initialized = true;
 		}
-
-		protected override void OnDraw (Android.Graphics.Canvas canvas)
+        
+		public void DrawFrame ()
 		{
-			if (initialized)
-				DrawFrame ();
-		}
+		    if (!initialized) return;
 
-		void DrawFrame ()
-		{
 			uint nextIndex = device.AcquireNextImageKHR (swapchain, ulong.MaxValue, semaphore, fence);
 			device.ResetFence (fence);
 			var submitInfo = new SubmitInfo {
