@@ -6,71 +6,66 @@ using System.Windows.Forms;
 
 namespace Vulkan.Windows
 {
-    public class VulkanControl : UserControl
-    {
-        public Instance Instance;
-        public SurfaceKhr Surface;
+	public class VulkanControl : UserControl
+	{
+		public Instance Instance;
+		public SurfaceKhr Surface;
 
-        public VulkanControl(Instance instance = null) : base()
-        {
-            if (instance == null)
-                CreateDefaultInstance();
-            else
-                Instance = instance;
-        }
+		public VulkanControl (Instance instance = null) : base ()
+		{
+			if (instance == null)
+				CreateDefaultInstance ();
+			else
+				Instance = instance;
+		}
 
 #if DEBUG
-	    protected void CreateDefaultInstance()
-	    {
-		    var layerProperties = Commands.EnumerateInstanceLayerProperties ();
+		protected void CreateDefaultInstance ()
+		{
+			var layerProperties = Commands.EnumerateInstanceLayerProperties ();
 
-		    var layersToEnable = layerProperties.Any(l => l.LayerName == "VK_LAYER_LUNARG_standard_validation")
-			    ? new [] {"VK_LAYER_LUNARG_standard_validation"}
-			    : new string[0];
+			var layersToEnable = layerProperties.Any (l => l.LayerName == "VK_LAYER_LUNARG_standard_validation")
+				? new [] { "VK_LAYER_LUNARG_standard_validation" }
+				: new string [0];
 
-		    Instance = new Instance (new InstanceCreateInfo 
-		    {
-			    EnabledExtensionNames = new string[] { "VK_KHR_surface", "VK_KHR_win32_surface", "VK_EXT_debug_report" },
+			Instance = new Instance (new InstanceCreateInfo {
+				EnabledExtensionNames = new string [] { "VK_KHR_surface", "VK_KHR_win32_surface", "VK_EXT_debug_report" },
 				EnabledLayerNames = layersToEnable,
-				ApplicationInfo = new ApplicationInfo
-			    {
-				    ApiVersion = Vulkan.Version.Make(1, 0, 0)
-			    }
-		    });
+				ApplicationInfo = new ApplicationInfo {
+					ApiVersion = Vulkan.Version.Make (1, 0, 0)
+				}
+			});
 
-			Instance.EnableDebug(DebugCallback);
-	    }
+			Instance.EnableDebug (DebugCallback);
+		}
 
-	    private Bool32 DebugCallback(DebugReportFlagsExt flags, DebugReportObjectTypeExt objectType, ulong objectHandle, IntPtr location, int messageCode, IntPtr layerPrefix, IntPtr message, IntPtr userData)
-	    {
-		    Debug.WriteLine ($"{flags}: {Marshal.PtrToStringAnsi (message)}");
-		    return true;
-	    }
+		private Bool32 DebugCallback (DebugReportFlagsExt flags, DebugReportObjectTypeExt objectType, ulong objectHandle, IntPtr location, int messageCode, IntPtr layerPrefix, IntPtr message, IntPtr userData)
+		{
+			Debug.WriteLine ($"{flags}: {Marshal.PtrToStringAnsi (message)}");
+			return true;
+		}
 
 #else
-		protected void CreateDefaultInstance()
-        {
-            Instance = new Instance(new InstanceCreateInfo()
-            {
-                EnabledExtensionNames = new string[] { "VK_KHR_surface", "VK_KHR_win32_surface" },
-                ApplicationInfo = new ApplicationInfo()
-                {
-                    ApiVersion = Vulkan.Version.Make(1, 0, 0)
-                }
-            });
-        }
+		protected void CreateDefaultInstance ()
+		{
+			Instance = new Instance (new InstanceCreateInfo () {
+				EnabledExtensionNames = new string [] { "VK_KHR_surface", "VK_KHR_win32_surface" },
+				ApplicationInfo = new ApplicationInfo () {
+					ApiVersion = Vulkan.Version.Make (1, 0, 0)
+				}
+			});
+		}
 #endif
 
-		protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
+		protected override void OnLoad (EventArgs e)
+		{
+			base.OnLoad (e);
 
-            Surface = Instance.CreateWin32SurfaceKHR(
-                new Win32SurfaceCreateInfoKhr
-                {
-                    Hwnd = Handle,
-                    Hinstance = Process.GetCurrentProcess().Handle
-                });
-        }
-    }
+			Surface = Instance.CreateWin32SurfaceKHR (
+			    new Win32SurfaceCreateInfoKhr {
+				    Hwnd = Handle,
+				    Hinstance = Process.GetCurrentProcess ().Handle
+			    });
+		}
+	}
 }
