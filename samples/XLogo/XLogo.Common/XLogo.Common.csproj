@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{3ADF6D1B-F854-42DB-9A46-7AC2A257CB85}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>XLogo.Common</RootNamespace>
+    <AssemblyName>XLogo.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Logo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XLogoSample.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Vulkan\Vulkan.csproj">
+      <Project>{15253e36-ddde-4c0a-9a6e-7632bacc8f7c}</Project>
+      <Name>Vulkan</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VulkanSample\VulkanSample.Common\VulkanSample.Common.csproj">
+      <Project>{5C30400B-37A3-48E7-A10A-15A1CF984A9E}</Project>
+      <Name>VulkanSample.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\Shader.frag" />
+    <EmbeddedResource Include="Shaders\shader.frag.spv" />
+    <None Include="Shaders\Shader.vert" />
+    <EmbeddedResource Include="Shaders\shader.vert.spv" />
+  </ItemGroup>
+</Project>
