@@ -2747,6 +2747,20 @@ namespace Vulkan
 					throw new ResultException (result);
 			}
 		}
+
+		public MemoryHostPointerPropertiesExt GetMemoryHostPointerPropertiesEXT (ExternalMemoryHandleTypeFlagsKhr handleType, IntPtr pHostPointer)
+		{
+			Result result;
+			MemoryHostPointerPropertiesExt pMemoryHostPointerProperties;
+			unsafe {
+				pMemoryHostPointerProperties = new MemoryHostPointerPropertiesExt ();
+				result = Interop.NativeMethods.vkGetMemoryHostPointerPropertiesEXT (this.m, handleType, pHostPointer, pMemoryHostPointerProperties != null ? pMemoryHostPointerProperties.m : (Interop.MemoryHostPointerPropertiesExt*)default(IntPtr));
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pMemoryHostPointerProperties;
+			}
+		}
 	}
 
 	public partial class Queue : IMarshalling
@@ -3624,6 +3638,13 @@ namespace Vulkan
 		{
 			unsafe {
 				Interop.NativeMethods.vkCmdSetSampleLocationsEXT (this.m, pSampleLocationsInfo != null ? pSampleLocationsInfo.m : (Interop.SampleLocationsInfoExt*)default(IntPtr));
+			}
+		}
+
+		public void CmdWriteBufferMarkerAMD (PipelineStageFlags pipelineStage, Buffer dstBuffer, DeviceSize dstOffset, UInt32 marker)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdWriteBufferMarkerAMD (this.m, pipelineStage, dstBuffer != null ? dstBuffer.m : default(UInt64), dstOffset, marker);
 			}
 		}
 	}

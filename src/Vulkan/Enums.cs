@@ -1003,6 +1003,8 @@ namespace Vulkan
 		PipelineViewportSwizzleStateCreateInfoNv = 1000098000,
 		PhysicalDeviceDiscardRectanglePropertiesExt = 1000099000,
 		PipelineDiscardRectangleStateCreateInfoExt = 1000099001,
+		PhysicalDeviceConservativeRasterizationPropertiesExt = 1000101000,
+		PipelineRasterizationConservativeStateCreateInfoExt = 1000101001,
 		HdrMetadataExt = 1000105000,
 		SharedPresentSurfaceCapabilitiesKhr = 1000111000,
 		PhysicalDeviceExternalFenceInfoKhr = 1000112000,
@@ -1054,6 +1056,9 @@ namespace Vulkan
 		ValidationCacheCreateInfoExt = 1000160000,
 		ShaderModuleValidationCacheCreateInfoExt = 1000160001,
 		DeviceQueueGlobalPriorityCreateInfoExt = 1000174000,
+		ImportMemoryHostPointerInfoExt = 1000178000,
+		MemoryHostPointerPropertiesExt = 1000178001,
+		PhysicalDeviceExternalMemoryHostPropertiesExt = 1000178002,
 	}
 
 	public enum SystemAllocationScope : int
@@ -1303,6 +1308,13 @@ namespace Vulkan
 		Realtime = 1024,
 	}
 
+	public enum ConservativeRasterizationModeExt : int
+	{
+		Disabled = 0,
+		Overestimate = 1,
+		Underestimate = 2,
+	}
+
 	public enum ColorSpaceKhr : int
 	{
 		SrgbNonlinear = 0,
@@ -1409,7 +1421,7 @@ namespace Vulkan
 		DisplayModeKhr = 30,
 		ObjectTableNvx = 31,
 		IndirectCommandsLayoutNvx = 32,
-		ValidationCache = 33,
+		ValidationCacheExt = 33,
 		DescriptorUpdateTemplateKhr = 1000085000,
 		SamplerYcbcrConversionKhr = 1000156000,
 	}
@@ -1453,6 +1465,9 @@ namespace Vulkan
 		D3D11TextureKmt = 0x10,
 		D3D12Heap = 0x20,
 		D3D12Resource = 0x40,
+		DmaBufBitExt = 0x200,
+		HostAllocationBitExt = 0x80,
+		HostMappedForeignMemoryBitExt = 0x100,
 	}
 
 	[Flags]

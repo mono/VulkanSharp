@@ -14100,4 +14100,224 @@ namespace Vulkan
 		}
 
 	}
+
+	unsafe public partial class ImportMemoryHostPointerInfoExt : MarshalledObject
+	{
+		public ExternalMemoryHandleTypeFlagsKhr HandleType {
+			get { return m->HandleType; }
+			set { m->HandleType = value; }
+		}
+
+		public IntPtr HostPointer {
+			get { return m->HostPointer; }
+			set { m->HostPointer = value; }
+		}
+		internal Interop.ImportMemoryHostPointerInfoExt* m {
+
+			get {
+				return (Interop.ImportMemoryHostPointerInfoExt*)native.Handle;
+			}
+		}
+
+		public ImportMemoryHostPointerInfoExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.ImportMemoryHostPointerInfoExt));
+			Initialize ();
+		}
+
+		internal ImportMemoryHostPointerInfoExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.ImportMemoryHostPointerInfoExt;
+		}
+
+	}
+
+	unsafe public partial class MemoryHostPointerPropertiesExt : MarshalledObject
+	{
+		public UInt32 MemoryTypeBits {
+			get { return m->MemoryTypeBits; }
+			set { m->MemoryTypeBits = value; }
+		}
+		internal Interop.MemoryHostPointerPropertiesExt* m {
+
+			get {
+				return (Interop.MemoryHostPointerPropertiesExt*)native.Handle;
+			}
+		}
+
+		public MemoryHostPointerPropertiesExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.MemoryHostPointerPropertiesExt));
+			Initialize ();
+		}
+
+		internal MemoryHostPointerPropertiesExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.MemoryHostPointerPropertiesExt;
+		}
+
+	}
+
+	unsafe public partial class PhysicalDeviceExternalMemoryHostPropertiesExt : MarshalledObject
+	{
+		public DeviceSize MinImportedHostPointerAlignment {
+			get { return m->MinImportedHostPointerAlignment; }
+			set { m->MinImportedHostPointerAlignment = value; }
+		}
+		internal Interop.PhysicalDeviceExternalMemoryHostPropertiesExt* m {
+
+			get {
+				return (Interop.PhysicalDeviceExternalMemoryHostPropertiesExt*)native.Handle;
+			}
+		}
+
+		public PhysicalDeviceExternalMemoryHostPropertiesExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceExternalMemoryHostPropertiesExt));
+			Initialize ();
+		}
+
+		internal PhysicalDeviceExternalMemoryHostPropertiesExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDeviceExternalMemoryHostPropertiesExt;
+		}
+
+	}
+
+	unsafe public partial class PhysicalDeviceConservativeRasterizationPropertiesExt : MarshalledObject
+	{
+		public float PrimitiveOverestimationSize {
+			get { return m->PrimitiveOverestimationSize; }
+			set { m->PrimitiveOverestimationSize = value; }
+		}
+
+		public float MaxExtraPrimitiveOverestimationSize {
+			get { return m->MaxExtraPrimitiveOverestimationSize; }
+			set { m->MaxExtraPrimitiveOverestimationSize = value; }
+		}
+
+		public float ExtraPrimitiveOverestimationSizeGranularity {
+			get { return m->ExtraPrimitiveOverestimationSizeGranularity; }
+			set { m->ExtraPrimitiveOverestimationSizeGranularity = value; }
+		}
+
+		public bool PrimitiveUnderestimation {
+			get { return m->PrimitiveUnderestimation; }
+			set { m->PrimitiveUnderestimation = value; }
+		}
+
+		public bool ConservativePointAndLineRasterization {
+			get { return m->ConservativePointAndLineRasterization; }
+			set { m->ConservativePointAndLineRasterization = value; }
+		}
+
+		public bool DegenerateTrianglesRasterized {
+			get { return m->DegenerateTrianglesRasterized; }
+			set { m->DegenerateTrianglesRasterized = value; }
+		}
+
+		public bool DegenerateLinesRasterized {
+			get { return m->DegenerateLinesRasterized; }
+			set { m->DegenerateLinesRasterized = value; }
+		}
+
+		public bool FullyCoveredFragmentShaderInputVariable {
+			get { return m->FullyCoveredFragmentShaderInputVariable; }
+			set { m->FullyCoveredFragmentShaderInputVariable = value; }
+		}
+
+		public bool ConservativeRasterizationPostDepthCoverage {
+			get { return m->ConservativeRasterizationPostDepthCoverage; }
+			set { m->ConservativeRasterizationPostDepthCoverage = value; }
+		}
+		internal Interop.PhysicalDeviceConservativeRasterizationPropertiesExt* m {
+
+			get {
+				return (Interop.PhysicalDeviceConservativeRasterizationPropertiesExt*)native.Handle;
+			}
+		}
+
+		public PhysicalDeviceConservativeRasterizationPropertiesExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PhysicalDeviceConservativeRasterizationPropertiesExt));
+			Initialize ();
+		}
+
+		internal PhysicalDeviceConservativeRasterizationPropertiesExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PhysicalDeviceConservativeRasterizationPropertiesExt;
+		}
+
+	}
+
+	unsafe public partial class PipelineRasterizationConservativeStateCreateInfoExt : MarshalledObject
+	{
+		public UInt32 Flags {
+			get { return m->Flags; }
+			set { m->Flags = value; }
+		}
+
+		public ConservativeRasterizationModeExt ConservativeRasterizationMode {
+			get { return m->ConservativeRasterizationMode; }
+			set { m->ConservativeRasterizationMode = value; }
+		}
+
+		public float ExtraPrimitiveOverestimationSize {
+			get { return m->ExtraPrimitiveOverestimationSize; }
+			set { m->ExtraPrimitiveOverestimationSize = value; }
+		}
+		internal Interop.PipelineRasterizationConservativeStateCreateInfoExt* m {
+
+			get {
+				return (Interop.PipelineRasterizationConservativeStateCreateInfoExt*)native.Handle;
+			}
+		}
+
+		public PipelineRasterizationConservativeStateCreateInfoExt ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PipelineRasterizationConservativeStateCreateInfoExt));
+			Initialize ();
+		}
+
+		internal PipelineRasterizationConservativeStateCreateInfoExt (NativePointer pointer)
+		{
+			native = pointer;
+			Initialize ();
+		}
+
+
+		internal void Initialize ()
+		{
+			m->SType = StructureType.PipelineRasterizationConservativeStateCreateInfoExt;
+		}
+
+	}
 }

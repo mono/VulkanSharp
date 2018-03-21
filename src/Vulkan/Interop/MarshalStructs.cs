@@ -2119,4 +2119,50 @@ namespace Vulkan.Interop
 		internal IntPtr Next;
 		internal QueueGlobalPriorityExt GlobalPriority;
 	}
+
+	internal partial struct ImportMemoryHostPointerInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalMemoryHandleTypeFlagsKhr HandleType;
+		internal IntPtr HostPointer;
+	}
+
+	internal partial struct MemoryHostPointerPropertiesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 MemoryTypeBits;
+	}
+
+	internal partial struct PhysicalDeviceExternalMemoryHostPropertiesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal DeviceSize MinImportedHostPointerAlignment;
+	}
+
+	internal partial struct PhysicalDeviceConservativeRasterizationPropertiesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal float PrimitiveOverestimationSize;
+		internal float MaxExtraPrimitiveOverestimationSize;
+		internal float ExtraPrimitiveOverestimationSizeGranularity;
+		internal Bool32 PrimitiveUnderestimation;
+		internal Bool32 ConservativePointAndLineRasterization;
+		internal Bool32 DegenerateTrianglesRasterized;
+		internal Bool32 DegenerateLinesRasterized;
+		internal Bool32 FullyCoveredFragmentShaderInputVariable;
+		internal Bool32 ConservativeRasterizationPostDepthCoverage;
+	}
+
+	internal partial struct PipelineRasterizationConservativeStateCreateInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 Flags;
+		internal ConservativeRasterizationModeExt ConservativeRasterizationMode;
+		internal float ExtraPrimitiveOverestimationSize;
+	}
 }

@@ -745,5 +745,11 @@ namespace Vulkan.Interop
 
 		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
 		internal static unsafe extern Result vkGetShaderInfoAMD (IntPtr device, UInt64 pipeline, ShaderStageFlags shaderStage, ShaderInfoTypeAmd infoType, UIntPtr* pInfoSize, IntPtr pInfo);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern Result vkGetMemoryHostPointerPropertiesEXT (IntPtr device, ExternalMemoryHandleTypeFlagsKhr handleType, IntPtr pHostPointer, MemoryHostPointerPropertiesExt* pMemoryHostPointerProperties);
+
+		[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]
+		internal static unsafe extern void vkCmdWriteBufferMarkerAMD (IntPtr commandBuffer, PipelineStageFlags pipelineStage, UInt64 dstBuffer, DeviceSize dstOffset, UInt32 marker);
 	}
 }
