@@ -15,7 +15,7 @@ Regular Jenkins [builds](https://jenkins.mono-project.com/view/All/job/VulkanSha
 
 ## Tutorials
 
-How to use [Validation layers](https://github.com/mono/VulkanSharp/blob/master/docs/development/ValidationLayers.md)
+How to use [Validation layers](https://github.com/mono/VulkanSharp/blob/master/docs/development/ValidationLayers.md) and [Debug report](https://github.com/mono/VulkanSharp/blob/master/docs/development/ValidationLayers.md#debug-report-extension) extension
 
 ## Building
 
