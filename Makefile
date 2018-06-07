@@ -14,7 +14,7 @@ $(BIN_PATH)/vk.xml:
 	cp "$@" $(BIN_PATH_RELEASE)
 
 $(BIN_PATH)/Vulkan.dll: $(wildcard src/Vulkan/*.cs src/Vulkan/*/*.cs tools/Generator/*cs)
-	xbuild /p:Configuration=$(CONFIGURATION)
+	msbuild /p:Configuration=$(CONFIGURATION)
 
 clean:
 	rm -Rf $(BIN_PATH)
@@ -42,9 +42,9 @@ assemble-docs:
 	mdoc assemble --out=docs/Vulkan docs/en
 
 run-android-samples:
-	xbuild /t:Install\;_Run samples/Inspector/Inspector.csproj
-	xbuild /t:Install\;_Run samples/ClearView/ClearView.csproj
-	xbuild /t:Install\;_Run samples/XLogo/XLogo.csproj
+	msbuild /t:Install\;_Run samples/Inspector/Inspector.csproj
+	msbuild /t:Install\;_Run samples/ClearView/ClearView.csproj
+	msbuild /t:Install\;_Run samples/XLogo/XLogo.csproj
 
 nuget: all
 	nuget pack
