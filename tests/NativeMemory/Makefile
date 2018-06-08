@@ -1,8 +1,8 @@
-XBUILD=xbuild
+MSBUILD=msbuild
 PACKAGE=NativeMemory
 
-define run-xbuild
-        $(XBUILD) $(PACKAGE).csproj /v:d $(if $(1),/t:$(1))
+define run-msbuild
+        $(MSBUILD) $(PACKAGE).csproj /v:d $(if $(1),/t:$(1))
 endef
 
 APK = bin/Debug/$(PACKAGE)-Signed.apk
@@ -13,13 +13,13 @@ clean::
 	-$(RM) -rf obj bin
 
 $(APK) : Makefile $(PACKAGE).csproj $(wildcard */*.cs *.cs)
-	$(call run-xbuild,,$(INSTALL_EXTRA))
+	$(call run-msbuild,,$(INSTALL_EXTRA))
 
 deploy:: $(APK)
-	$(call run-xbuild,Install,$(INSTALL_EXTRA))
+	$(call run-msbuild,Install,$(INSTALL_EXTRA))
 
 undeploy:: $(APK)
-	$(call run-xbuild,Uninstall,$(UNINSTALL_EXTRA))
+	$(call run-msbuild,Uninstall,$(UNINSTALL_EXTRA))
 
 run::
-	$(call run-xbuild,RunTests,$(RUNTESTS_EXTRA))
+	$(call run-msbuild,RunTests,$(RUNTESTS_EXTRA))
