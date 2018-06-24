@@ -19,6 +19,7 @@ $(BIN_PATH)/Vulkan.dll: $(wildcard src/Vulkan/*.cs src/Vulkan/*/*.cs tools/Gener
 clean:
 	rm -Rf $(BIN_PATH)
 	rm -Rf $(BIN_PATH_RELEASE)
+	rm -rf netstandard/bin netstandard/obj
 
 fxcop: lib/gendarme-2.10/gendarme.exe
 	mono --debug $< --html $(BIN_PATH)/gendarme.html \
@@ -51,3 +52,9 @@ nuget: all
 
 run-tests:
 	$(MAKE) -C tests/NativeMemory clean deploy run
+
+netstandard-vulkansharp: netstandard/VulkanSharp.csproj netstandard/obj/obj/project.assets.json
+	msbuild $<
+
+netstandard/obj/obj/project.assets.json: netstandard/VulkanSharp.csproj
+	nuget restore $<

@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\src\Vulkan\Additions.cs">
+      <Link>Vulkan\Additions.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Vulkan\Commands.cs">
+      <Link>Vulkan\Commands.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Vulkan\Enums.cs">
+      <Link>Vulkan\Enums.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Vulkan\Handles.cs">
+      <Link>Vulkan\Handles.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Vulkan\Helpers.cs">
+      <Link>Vulkan\Helpers.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Vulkan\Structs.cs">
+      <Link>Vulkan\Structs.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Vulkan\Unions.cs">
+      <Link>Vulkan\Unions.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Vulkan\Interop\Helpers.cs">
+      <Link>Vulkan\Interop\Helpers.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Vulkan\Interop\ImportedCommands.cs">
+      <Link>Vulkan\Interop\ImportedCommands.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Vulkan\Interop\MarshalStructs.cs">
+      <Link>Vulkan\Interop\MarshalStructs.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Vulkan\Interop\MarshalUnions.cs">
+      <Link>Vulkan\Interop\MarshalUnions.cs</Link>
+    </Compile>
+  </ItemGroup>
+</Project>
