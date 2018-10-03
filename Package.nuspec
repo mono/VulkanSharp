@@ -17,6 +17,9 @@ New in this release:
     <copyright>Copyright 2016, 2017 Xamarin Inc</copyright>
     <tags>Vulkan C# Bindings 3D VulkanSharp Graphics OpenSource MultiPlatform Android Windows</tags>
     <references>
+      <group targetFramework=".NETStandard1.1">
+	<reference file="Vulkan.dll" />
+      </group>
       <group targetFramework="portable-net45+win8+MonoAndroid10">
 	<reference file="Vulkan.dll" />
       </group>
@@ -33,6 +36,11 @@ New in this release:
 	<reference file="Vulkan.Windows.dll" />
       </group>
     </references>
+    <dependencies>
+      <group targetFramework=".NETStandard1.1">
+        <dependency id="NETStandard.Library" version="1.6.1" />
+      </group>
+    </dependencies>
     <!--
     <dependencies>
       <dependency id="SampleDependency" version="1.0" />
@@ -50,5 +58,7 @@ New in this release:
 
     <file src="bin/Debug/Vulkan.dll*" target="lib/net452" />
     <file src="src/Platforms/Windows/bin/Debug/Vulkan.Windows.dll*" target="lib/net452" />
+
+    <file src="netstandard/bin/Debug/netstandard1.1/Vulkan.dll*" target="lib/netstandard1.1/" />
   </files>
 </package>

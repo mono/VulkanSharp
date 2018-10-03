@@ -47,14 +47,14 @@ run-android-samples:
 	msbuild /t:Install\;_Run samples/ClearView/ClearView.csproj
 	msbuild /t:Install\;_Run samples/XLogo/XLogo.csproj
 
-nuget: all
+nuget: all netstandard-vulkansharp
 	nuget pack
 
 run-tests:
 	$(MAKE) -C tests/NativeMemory clean deploy run
 
-netstandard-vulkansharp: netstandard/VulkanSharp.csproj netstandard/obj/obj/project.assets.json
+netstandard-vulkansharp: netstandard/Vulkan.csproj netstandard/obj/obj/project.assets.json
 	msbuild $<
 
-netstandard/obj/obj/project.assets.json: netstandard/VulkanSharp.csproj
+netstandard/obj/obj/project.assets.json: netstandard/Vulkan.csproj
 	nuget restore $<
