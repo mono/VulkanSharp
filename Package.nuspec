@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>VulkanSharp</id>
-    <version>0.1.9</version>
+    <version>0.1.10</version>
     <authors>Xamarin Inc</authors>
     <owners>rodo</owners>
     <licenseUrl>https://github.com/mono/VulkanSharp/blob/master/LICENSE</licenseUrl>
@@ -12,7 +12,8 @@
     <releaseNotes>
 This is the preview release of the VulkanSharp project.
 New in this release:
- * updated to Vulkan specs 1.0.65
+ * updated to Vulkan specs 1.0.69
+ * added .NETStandard target
     </releaseNotes>
     <copyright>Copyright 2016, 2017 Xamarin Inc</copyright>
     <tags>Vulkan C# Bindings 3D VulkanSharp Graphics OpenSource MultiPlatform Android Windows</tags>
