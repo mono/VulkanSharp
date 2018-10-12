@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\AssemblyVisibility.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Structs.cs" />
     <Compile Include="Helpers.cs" />

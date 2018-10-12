@@ -44,5 +44,8 @@
     <Compile Include="..\src\Vulkan\Interop\MarshalUnions.cs">
       <Link>Vulkan\Interop\MarshalUnions.cs</Link>
     </Compile>
+    <Compile Include="..\src\Vulkan\Properties/AssemblyVisibility.cs">
+      <Link>Vulkan\Properties/AssemblyVisibility.cs</Link>
+    </Compile>
   </ItemGroup>
 </Project>
