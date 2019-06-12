@@ -1948,13 +1948,13 @@ namespace VulkanSharp.Generator
 			    WriteUnmanagedCommandParameters (commandElement);
 			    WriteLine (");");
             } else {
-                IndentWrite("[Obsolete(\"{0} is deprecated, please use {1} instead.\", true)]", function, alias.Value);
-                if (delegateUnmanagedCommands.Contains(function))
-                    IndentWrite("private unsafe delegate void {0} ();", function);
+                IndentWriteLine ("[Obsolete(\"{0} is deprecated, please use {1} instead.\", true)]", function, alias.Value);
+                if (delegateUnmanagedCommands.Contains (function))
+                    IndentWriteLine ("private unsafe delegate void {0} ();", function);
                 else
                 {
-                    IndentWriteLine("[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]");
-                    IndentWrite("private static unsafe extern void {0} ();", function);
+                    IndentWriteLine ("[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]");
+                    IndentWriteLine ("private static unsafe extern void {0} ();", function);
                 }
             }
 
