@@ -1931,32 +1931,44 @@ namespace VulkanSharp.Generator
 			} else if (disabledUnmanagedCommands.Contains (function))
 				return false;
 
-            if (alias == null) {
-			    string type = commandElement.Element ("proto").Element ("type").Value;
-			    string csType = GetTypeCsName (type);
+            if (alias != null) {
+                commandElement = null;
+                // find the alias
+			    foreach (var command in specTree.Elements ("commands").Elements ("command")) {
+                    if (command.Element ("proto") == null)
+                        continue;
 
-			    // todo: function pointers
-			    if (csType.StartsWith ("PFN_"))
-				    csType = "IntPtr";
-
-			    if (delegateUnmanagedCommands.Contains (function))
-				    IndentWrite ("internal unsafe delegate {0} {1} (", csType, function);
-			    else {
-				    IndentWriteLine ("[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]");
-				    IndentWrite ("internal static unsafe extern {0} {1} (", csType, function);
+                    if (ReadName (command.Element ("proto")) == alias.Value) {
+                        commandElement = command;
+                        break;
+                    }
 			    }
-			    WriteUnmanagedCommandParameters (commandElement);
-			    WriteLine (");");
-            } else {
-                IndentWriteLine ("[Obsolete(\"{0} is deprecated, please use {1} instead.\", true)]", function, alias.Value);
-                if (delegateUnmanagedCommands.Contains (function))
-                    IndentWriteLine ("private unsafe delegate void {0} ();", function);
-                else
-                {
-                    IndentWriteLine ("[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]");
-                    IndentWriteLine ("private static unsafe extern void {0} ();", function);
+
+                if (commandElement == null) {
+                    Console.WriteLine("warning: could not find prototype for alias {0}", function);
+
+                    return false;
                 }
+
+                IndentWriteLine("[Obsolete(\"{0} is deprecated, please use {1} instead.\")]", function, alias.Value);
             }
+
+            string type = commandElement.Element("proto").Element("type").Value;
+            string csType = GetTypeCsName(type);
+
+            // todo: function pointers
+            if (csType.StartsWith("PFN_"))
+                csType = "IntPtr";
+
+            if (delegateUnmanagedCommands.Contains(function))
+                IndentWrite("internal unsafe delegate {0} {1} (", csType, function);
+            else
+            {
+                IndentWriteLine("[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]");
+                IndentWrite("internal static unsafe extern {0} {1} (", csType, function);
+            }
+            WriteUnmanagedCommandParameters(commandElement);
+            WriteLine(");");
 
             return true;
 		}
