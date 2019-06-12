@@ -176,8 +176,8 @@ namespace VulkanSharp.Generator
 
 		void WriteEnumField (XElement e, string csEnumName)
 		{
-            var valueAttr = e.Attribute("value");
-            var aliasAttr = e.Attribute("alias");
+            var valueAttr = e.Attribute ("value");
+            var aliasAttr = e.Attribute ("alias");
             string value;
             if (valueAttr != null)
                 value = valueAttr.Value;
@@ -1981,29 +1981,29 @@ namespace VulkanSharp.Generator
 			    }
 
                 if (commandElement == null) {
-                    Console.WriteLine("warning: could not find prototype for alias {0}", function);
+                    Console.WriteLine ("warning: could not find prototype for alias {0}", function);
 
                     return false;
                 }
 
-                IndentWriteLine("[Obsolete(\"{0} is deprecated, please use {1} instead.\")]", function, alias.Value);
+                IndentWriteLine ("[Obsolete (\"{0} is deprecated, please use {1} instead.\")]", function, alias.Value);
             }
 
-            string type = commandElement.Element("proto").Element("type").Value;
-            string csType = GetTypeCsName(type);
+            string type = commandElement.Element ("proto").Element ("type").Value;
+            string csType = GetTypeCsName (type);
 
             // todo: function pointers
-            if (csType.StartsWith("PFN_"))
+            if (csType.StartsWith ("PFN_"))
                 csType = "IntPtr";
 
-            if (delegateUnmanagedCommands.Contains(function))
-                IndentWrite("internal unsafe delegate {0} {1} (", csType, function);
+            if (delegateUnmanagedCommands.Contains (function))
+                IndentWrite ("internal unsafe delegate {0} {1} (", csType, function);
             else
             {
-                IndentWriteLine("[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]");
-                IndentWrite("internal static unsafe extern {0} {1} (", csType, function);
+                IndentWriteLine ("[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]");
+                IndentWrite ("internal static unsafe extern {0} {1} (", csType, function);
             }
-            WriteUnmanagedCommandParameters(commandElement);
+            WriteUnmanagedCommandParameters (commandElement);
             WriteLine(");");
 
             return true;
@@ -2187,7 +2187,7 @@ namespace VulkanSharp.Generator
 				"VK_NV_external_memory_win32",
 				"VK_NV_win32_keyed_mutex",
 			} );
-			GeneratePlatformExtension("iOS", "VK_MVK_ios_surface");
+			GeneratePlatformExtension ("iOS", "VK_MVK_ios_surface");
 		}
 
 		void WriteTypes (XmlDocument doc, XmlElement types, string elementName, TypeInfo[] typeInfo)
