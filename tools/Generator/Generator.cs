@@ -902,13 +902,49 @@ namespace VulkanSharp.Generator
 				return false;
 
 			string csName = typesTranslation [name];
+
+            string mod = "";
+
+            if (structElement.Attribute ("alias") != null) {
+                var aliasName = structElement.Attribute ("alias").Value;
+
+                if (!typesTranslation.ContainsKey (aliasName) || (requiredTypes != null && !requiredTypes.Contains (aliasName)))
+                    return false;
+
+                string acsName = typesTranslation [aliasName];
+                var alias = structures [acsName];
+
+                needsMarshalling = alias.needsMarshalling;
+
+                if (isInterop && !needsMarshalling)
+                    return false;
+
+                if (isUnion && (isInterop || !needsMarshalling))
+                    IndentWriteLine ("[StructLayout (LayoutKind.Explicit)]");
+                if (!isInterop)
+                    mod = "unsafe ";
+                IndentWriteLine ("{0}{1} partial {2} {3} : {4}", mod, isInterop ? "internal" : "public", (isInterop || !needsMarshalling) ? "struct" : "class", csName, acsName);
+                IndentWriteLine ("{");
+                IndentLevel++;
+                IndentWriteLine ("public {0} () : base ()", csName);
+                IndentWriteLine ("{");
+                IndentWriteLine ("}");
+                WriteLine ();
+                IndentWriteLine ("internal {0} (NativePointer pointer) : base (pointer)", csName);
+                IndentWriteLine ("{");
+                IndentWriteLine ("}\n");
+                IndentLevel--;
+                IndentWriteLine ("}");
+
+                return true;
+            }
+
 			var info = structures [csName];
 			needsMarshalling = info.needsMarshalling;
 
 			if (isInterop && !needsMarshalling)
 				return false;
 
-			string mod = "";
 			if (isUnion && (isInterop || !needsMarshalling))
 				IndentWriteLine ("[StructLayout (LayoutKind.Explicit)]");
 			if (!isInterop)
