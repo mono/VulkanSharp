@@ -72,8 +72,9 @@ namespace VulkanSharp.Generator
 			{ "size_t", "UIntPtr" },
 			{ "xcb_connection_t", "IntPtr" },
 			{ "xcb_window_t", "IntPtr" },
-			{ "xcb_visualid_t", "Int32" },
-		};
+            { "xcb_visualid_t", "Int32" },
+            { "zx_handle_t", "UInt32" },
+        };
 
 		HashSet<string> knownTypes = new HashSet<string> {
 			"void",
