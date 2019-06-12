@@ -2011,6 +2011,9 @@ namespace VulkanSharp.Generator
 
 			bool written = false;
 			foreach (var command in specTree.Elements ("commands").Elements ("command")) {
+                if (command.Attribute ("alias") != null)
+                    continue;
+
 				if (handlesCommands.Contains (ReadName (command.Element ("proto"))))
 					continue;
 
