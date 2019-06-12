@@ -62,6 +62,7 @@ namespace VulkanSharp.Generator
 		{
 			public string name;
 			public string type;
+			public string alias;
 			public List<XElement> commands = new List<XElement> ();
 		}
 
@@ -1103,9 +1104,18 @@ namespace VulkanSharp.Generator
 		{
 			string name = ReadName (handleElement);
 			string csName = GetTypeCsName (name, "struct");
-			string type = handleElement.Element ("type").Value;
 
-			handles.Add (csName, new HandleInfo { name = csName, type = type });
+			var alias = handleElement.Attribute ("alias");
+
+            if (alias == null) {
+			    string type = handleElement.Element ("type").Value;
+
+			    handles.Add (csName, new HandleInfo { name = csName, type = type });
+            } else {
+                string aliasName = GetTypeCsName(alias.Value, "struct");
+
+			    handles.Add (csName, new HandleInfo { name = csName, alias = aliasName });
+            }
 
 			return false;
 		}
@@ -1383,9 +1393,11 @@ namespace VulkanSharp.Generator
 			return keywords.Contains (paramName) ? "@" + paramName : paramName;
 		}
 
-		string GetManagedHandleType (string handleType)
-		{
-			return handleType == "VK_DEFINE_HANDLE" ? "IntPtr" : "UInt64";
+		string GetManagedHandleType (HandleInfo info)
+        {
+            string type = GetType (info);
+
+            return type == "VK_DEFINE_HANDLE" ? "IntPtr" : "UInt64";
 		}
 
 		string GetManagedType (string csType)
@@ -1394,7 +1406,7 @@ namespace VulkanSharp.Generator
 				return "IntPtr";
 
 			if (handles.ContainsKey (csType))
-				return GetManagedHandleType (handles [csType].type);
+				return GetManagedHandleType (handles [csType]);
 
 			switch (csType) {
 			case "void":
@@ -1746,14 +1758,21 @@ namespace VulkanSharp.Generator
 
 		string GetHandleType (HandleInfo info)
 		{
-			switch (info.type) {
+            string type = GetType (info);
+
+            switch (type) {
 			case "VK_DEFINE_NON_DISPATCHABLE_HANDLE":
 				return "UInt64";
 			case "VK_DEFINE_HANDLE":
 				return "IntPtr";
 			default:
-				throw new Exception ("unknown handle type: " + info.type);
+				throw new Exception ("unknown handle type: " + type);
 			}
+		}
+        
+		string GetType (HandleInfo info)
+		{
+            return info.alias == null ? info.type : handles [info.alias].type;
 		}
 
 		HashSet<string> handlesWithDefaultConstructors = new HashSet<string> {
@@ -1777,7 +1796,7 @@ namespace VulkanSharp.Generator
 			}
 
 			var className = string.Format ("{0}{1}", csName, isRequired ? "Extension" : "");
-			var marshallingInterface = info.type == "VK_DEFINE_NON_DISPATCHABLE_HANDLE" ? "INonDispatchableHandleMarshalling" : "IMarshalling";
+			var marshallingInterface = GetType (info) == "VK_DEFINE_NON_DISPATCHABLE_HANDLE" ? "INonDispatchableHandleMarshalling" : "IMarshalling";
 			IndentWriteLine ("public {0} class {1}{2}", isRequired ? "static" : "partial", className, isRequired ? "" : string.Format (" : {0}", marshallingInterface));
 			IndentWriteLine ("{");
 			IndentLevel++;
@@ -1839,7 +1858,7 @@ namespace VulkanSharp.Generator
 					var handle = handles [csType];
 					if (first && !isPointer)
 						handle.commands.Add (commandElement);
-					csType = handle.type == "VK_DEFINE_HANDLE" ? "IntPtr" : "UInt64";
+					csType = GetType (handle) == "VK_DEFINE_HANDLE" ? "IntPtr" : "UInt64";
 				}
 				bool isStruct = structures.ContainsKey (csType);
 				bool isRequired = requiredTypes != null && requiredTypes.Contains (type);
