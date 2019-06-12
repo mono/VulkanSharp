@@ -1922,17 +1922,18 @@ namespace VulkanSharp.Generator
 		bool WriteUnmanagedCommand (XElement commandElement)
 		{
             var alias = commandElement.Attribute ("alias");
+			string function = alias == null ? ReadName (commandElement.Element ("proto")) : ReadName (commandElement);
+
+			// todo: extensions support
+			if (requiredCommands != null) {
+				if (!requiredCommands.Contains (function))
+					return false;
+			} else if (disabledUnmanagedCommands.Contains (function))
+				return false;
+
             if (alias == null) {
-			    string function = ReadName (commandElement.Element ("proto"));
 			    string type = commandElement.Element ("proto").Element ("type").Value;
 			    string csType = GetTypeCsName (type);
-
-			    // todo: extensions support
-			    if (requiredCommands != null) {
-				    if (!requiredCommands.Contains (function))
-					    return false;
-			    } else if (disabledUnmanagedCommands.Contains (function))
-				    return false;
 
 			    // todo: function pointers
 			    if (csType.StartsWith ("PFN_"))
@@ -1947,8 +1948,6 @@ namespace VulkanSharp.Generator
 			    WriteUnmanagedCommandParameters (commandElement);
 			    WriteLine (");");
             } else {
-                string function = ReadName(commandElement);
-
                 IndentWrite("[Obsolete(\"{0} is deprecated, please use {1} instead.\", true)]", function, alias.Value);
                 if (delegateUnmanagedCommands.Contains(function))
                     IndentWrite("private unsafe delegate void {0} ();", function);
