@@ -1902,31 +1902,45 @@ namespace VulkanSharp.Generator
 
 		bool WriteUnmanagedCommand (XElement commandElement)
 		{
-			string function = ReadName (commandElement.Element ("proto"));
-			string type = commandElement.Element ("proto").Element ("type").Value;
-			string csType = GetTypeCsName (type);
+            var alias = commandElement.Attribute ("alias");
+            if (alias == null) {
+			    string function = ReadName (commandElement.Element ("proto"));
+			    string type = commandElement.Element ("proto").Element ("type").Value;
+			    string csType = GetTypeCsName (type);
 
-			// todo: extensions support
-			if (requiredCommands != null) {
-				if (!requiredCommands.Contains (function))
-					return false;
-			} else if (disabledUnmanagedCommands.Contains (function))
-				return false;
+			    // todo: extensions support
+			    if (requiredCommands != null) {
+				    if (!requiredCommands.Contains (function))
+					    return false;
+			    } else if (disabledUnmanagedCommands.Contains (function))
+				    return false;
 
-			// todo: function pointers
-			if (csType.StartsWith ("PFN_"))
-				csType = "IntPtr";
+			    // todo: function pointers
+			    if (csType.StartsWith ("PFN_"))
+				    csType = "IntPtr";
 
-			if (delegateUnmanagedCommands.Contains (function))
-				IndentWrite ("internal unsafe delegate {0} {1} (", csType, function);
-			else {
-				IndentWriteLine ("[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]");
-				IndentWrite ("internal static unsafe extern {0} {1} (", csType, function);
-			}
-			WriteUnmanagedCommandParameters (commandElement);
-			WriteLine (");");
+			    if (delegateUnmanagedCommands.Contains (function))
+				    IndentWrite ("internal unsafe delegate {0} {1} (", csType, function);
+			    else {
+				    IndentWriteLine ("[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]");
+				    IndentWrite ("internal static unsafe extern {0} {1} (", csType, function);
+			    }
+			    WriteUnmanagedCommandParameters (commandElement);
+			    WriteLine (");");
+            } else {
+                string function = ReadName(commandElement);
 
-			return true;
+                IndentWrite("[Obsolete(\"{0} is deprecated, please use {1} instead.\", true)]", function, alias.Value);
+                if (delegateUnmanagedCommands.Contains(function))
+                    IndentWrite("private unsafe delegate void {0} ();", function);
+                else
+                {
+                    IndentWriteLine("[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]");
+                    IndentWrite("private static unsafe extern void {0} ();", function);
+                }
+            }
+
+            return true;
 		}
 
 		string InteropNamespace {
