@@ -163,6 +163,11 @@ namespace VulkanSharp.Generator
 			currentEnumInfo.members [fName] = name;
 		}
 
+        string ReadName (XElement element)
+        {
+            return element.Element ("name")?.Value ?? element.Attribute ("name")?.Value;
+        }
+
 		string FormatFlagValue (int pos)
 		{
 			return string.Format ("0x{0:X}", 1 << pos);
@@ -373,7 +378,7 @@ namespace VulkanSharp.Generator
 			if (typeElement.Attribute ("requires") != null)
 				return false;
 
-			string name = typeElement.Element ("name").Value;
+			string name = ReadName (typeElement);
 
 			typesTranslation [name] = "UInt32";
 
@@ -705,14 +710,14 @@ namespace VulkanSharp.Generator
 			}
 			var csMemberType = GetTypeCsName (typeElement.Value, "member");
 
-			var nameElement = memberElement.Element ("name");
+			var nameElement = ReadName (memberElement);
 			if (nameElement == null)
 			{
 				Console.WriteLine ("warning: a member of the struct {0} doesn't have a 'name' node", parentName);
 				return false;
 			}
 
-			string name = nameElement.Value;
+			string name = nameElement;
 
 			if (!isInterop && needsMarshalling && csMemberType == "StructureType" && name == "sType")
 				return false;
@@ -765,7 +770,7 @@ namespace VulkanSharp.Generator
 				// temporarily disable arrays csMemberType += "[]";
 			}
 
-			currentStructInfo.members [csMemberName] = nameElement.Value;
+			currentStructInfo.members [csMemberName] = nameElement;
 
 			var isCharArray = false;
 			if (csMemberType == "char" && InnerValue (memberElement).EndsWith ("]"))
@@ -920,7 +925,7 @@ namespace VulkanSharp.Generator
 			if (!isInterop) {
 				bool hasSType = false;
 				var values = from el in structElement.Elements ("member")
-						where (string)el.Element ("name") == "sType"
+						where (string)ReadName (el) == "sType"
 					select el;
 				foreach (var el in values) {
 					var elType = el.Element ("type");
@@ -1096,7 +1101,7 @@ namespace VulkanSharp.Generator
 
 		bool LearnHandle (XElement handleElement)
 		{
-			string name = handleElement.Element ("name").Value;
+			string name = ReadName (handleElement);
 			string csName = GetTypeCsName (name, "struct");
 			string type = handleElement.Element ("type").Value;
 
@@ -1112,8 +1117,8 @@ namespace VulkanSharp.Generator
 
 		string GetParamName (XElement param)
 		{
-			var name = param.Element ("name").Value;
-			if (param.Value.Contains (param.Element ("name").Value + "*") && name.StartsWith ("p"))
+			var name = ReadName (param);
+			if (param.Value.Contains (name + "*") && name.StartsWith ("p"))
 				name = name.Substring (1);
 
 			return name;
@@ -1470,7 +1475,7 @@ namespace VulkanSharp.Generator
 
 		bool WriteCommand (XElement commandElement, bool prependNewLine, bool useArrayParameters, bool isForHandle = false, string handleName = null, bool isExtension = false)
 		{
-			string function = commandElement.Element ("proto").Element ("name").Value;
+			string function = ReadName (commandElement.Element ("proto"));
 			string type = commandElement.Element ("proto").Element ("type").Value;
 			string csType = GetTypeCsName (type);
 			bool hasArrayParameter = false;
@@ -1756,13 +1761,13 @@ namespace VulkanSharp.Generator
 		};
 		bool WriteHandle (XElement handleElement)
 		{
-			string csName = GetTypeCsName (handleElement.Element ("name").Value, "handle");
+			string csName = GetTypeCsName (ReadName (handleElement), "handle");
 			HandleInfo info = handles [csName];
 			bool isRequired = false;
 
 			if (requiredCommands != null) {
 				foreach (var commandElement in info.commands)
-					if (requiredCommands.Contains (commandElement.Element ("proto").Element ("name").Value)) {
+					if (requiredCommands.Contains (ReadName (commandElement.Element ("proto")))) {
 						isRequired = true;
 						break;
 					}
@@ -1826,7 +1831,7 @@ namespace VulkanSharp.Generator
 			bool previous = false;
 			foreach (var param in commandElement.Elements ("param")) {
 				string type = param.Element ("type").Value;
-				string name = param.Element ("name").Value;
+				string name = ReadName (param);
 				string csType = GetTypeCsName (type);
 
 				bool isPointer = param.Value.Contains (type + "*");
@@ -1897,7 +1902,7 @@ namespace VulkanSharp.Generator
 
 		bool WriteUnmanagedCommand (XElement commandElement)
 		{
-			string function = commandElement.Element ("proto").Element ("name").Value;
+			string function = ReadName (commandElement.Element ("proto"));
 			string type = commandElement.Element ("proto").Element ("type").Value;
 			string csType = GetTypeCsName (type);
 
@@ -1969,11 +1974,11 @@ namespace VulkanSharp.Generator
 			var handlesCommands = new HashSet<string> ();
 			foreach (var handle in handles)
 				foreach (var command in handle.Value.commands)
-					handlesCommands.Add (command.Element ("proto").Element ("name").Value);
+					handlesCommands.Add (ReadName (command.Element ("proto")));
 
 			bool written = false;
 			foreach (var command in specTree.Elements ("commands").Elements ("command")) {
-				if (handlesCommands.Contains (command.Element ("proto").Element ("name").Value))
+				if (handlesCommands.Contains (ReadName (command.Element ("proto"))))
 					continue;
 
 				written = WriteCommand (command, written, true);
