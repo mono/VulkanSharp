@@ -69,6 +69,7 @@ namespace VulkanSharp.Generator
 		{
 			public string name;
 			public string value;
+			public string alias;
 		}
 
 		public Generator (string filename, string outputDir)
@@ -169,12 +170,15 @@ namespace VulkanSharp.Generator
 
 		void WriteEnumField (XElement e, string csEnumName)
 		{
-			var valueAttr = e.Attribute ("value");
-			string value;
-			if (valueAttr == null)
+            var valueAttr = e.Attribute("value");
+            var aliasAttr = e.Attribute("alias");
+            string value;
+            if (valueAttr != null)
+                value = valueAttr.Value;
+            else if (aliasAttr != null)
+				value = aliasAttr.Value;
+            else
 				value = FormatFlagValue (Convert.ToInt32 (e.Attribute ("bitpos").Value));
-			else
-				value = valueAttr.Value;
 
 			WriteEnumField (e.Attribute ("name").Value, value, csEnumName);
 		}
@@ -183,8 +187,12 @@ namespace VulkanSharp.Generator
 		{
 			if (!enumExtensions.ContainsKey (csEnumName))
 				return;
-			foreach (var info in enumExtensions [csEnumName])
-				WriteEnumField (info.name, info.value.ToString (), csEnumName);
+			foreach (var info in enumExtensions [csEnumName]) {
+                if (info.alias == null)
+				    WriteEnumField (info.name, info.value.ToString (), csEnumName);
+                else
+                    WriteEnumField (info.name, info.alias, csEnumName);
+            }
 		}
 
 		bool WriteEnum (XElement enumElement)
@@ -2009,11 +2017,19 @@ namespace VulkanSharp.Generator
 			int number = Int32.Parse (extensionElement.Attribute ("number").Value);
 			foreach (var element in extensions) {
 				string enumName = GetTypeCsName (element.Attribute ("extends").Value, "enum");
-				var info = new EnumExtensionInfo { name = element.Attribute ("name").Value, value = EnumExtensionValue (element, number, ref enumName) };
-				if (!enumExtensions.ContainsKey (enumName))
-					enumExtensions [enumName] = new List<EnumExtensionInfo> ();
-				enumExtensions [enumName].Add (info);
-			}
+                var alias = element.Attribute ("alias");
+                if (alias == null) {
+				    var info = new EnumExtensionInfo { name = element.Attribute ("name").Value, value = EnumExtensionValue (element, number, ref enumName) };
+                    if (!enumExtensions.ContainsKey (enumName))
+                        enumExtensions [enumName] = new List<EnumExtensionInfo> ();
+                    enumExtensions [enumName].Add (info);
+                } else {
+				    var info = new EnumExtensionInfo { name = element.Attribute ("name").Value, alias = alias.Value };
+				    if (!enumExtensions.ContainsKey (enumName))
+					    enumExtensions [enumName] = new List<EnumExtensionInfo> ();
+				    enumExtensions [enumName].Add (info);
+                }
+            }
 		}
 
 		void LearnExtensions ()

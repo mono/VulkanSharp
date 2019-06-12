@@ -74,7 +74,7 @@
     </Task>
   </UsingTask>
   <Target Name="DownloadSpecification" Condition="'$(OS)' == 'Windows_NT'">
-    <DownloadURL URL="https://raw.githubusercontent.com/KhronosGroup/Vulkan-Docs/1.0/src/spec/vk.xml" OutputFile="$(OutputPath)\vk.xml" />
+    <DownloadURL URL="https://raw.githubusercontent.com/KhronosGroup/Vulkan-Headers/master/registry/vk.xml" OutputFile="$(OutputPath)\vk.xml" />
   </Target>
   <Target Name="BuildGeneratedSource" DependsOnTargets="DownloadSpecification" Inputs="$(OutputPath)\vk.xml;$(OutputPath)\Generator.exe" Outputs="Vulkan\Enums.cs">
     <MakeDir Directories="$(OutputPath)" />
