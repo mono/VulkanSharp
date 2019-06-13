@@ -809,7 +809,10 @@ namespace VulkanSharp.Generator
 			if (csMemberType == "Bool32" && !isInterop && needsMarshalling)
 				csMemberType = "bool";
 
-			bool needsCharCast = false;
+            if (csMemberType == "DeviceSize" || csMemberType == "DeviceAddress")
+				csMemberType = "UInt64";
+
+            bool needsCharCast = false;
 			if (csMemberType == "char") {
 				if (isInterop || !needsMarshalling)
 					csMemberType = "byte";
@@ -958,7 +961,7 @@ namespace VulkanSharp.Generator
                     GenerateMembers (originalElement, WriteMember);
                     WriteLine ();
                     // generate the implicit conversions
-                    IndentWriteLine ("{0} static implicit operator {1} ({2} that) {{", isInterop ? "internal" : "public", csName, acsName);
+                    IndentWriteLine ("public static implicit operator {0} ({1} that) {{", csName, acsName);
                     IndentLevel++;
                     IndentWriteLine ("return new {0} {{", csName);
                     IndentLevel++;
@@ -970,7 +973,7 @@ namespace VulkanSharp.Generator
                     IndentLevel--;
                     IndentWriteLine ("}");
                     WriteLine ();
-                    IndentWriteLine ("{0} static implicit operator {1} ({2} that) {{", isInterop ? "internal" : "public", acsName, csName);
+                    IndentWriteLine ("public static implicit operator {0} ({1} that) {{", acsName, csName);
                     IndentLevel++;
                     IndentWriteLine ("return new {0} {{", acsName);
                     IndentLevel++;

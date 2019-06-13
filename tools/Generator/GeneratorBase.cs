@@ -91,6 +91,10 @@ namespace VulkanSharp.Generator
 			{ "SECURITY_ATTRIBUTES", "SecurityAttributes" },
 			{ "Display", "IntPtr" },  // this is now broken, as Handles use DisplayKHR instead of it
 			{ "RROutput", "UInt32" },
+			{ "HMONITOR", "IntPtr" },
+            // according to: https://github.com/KhronosGroup/Vulkan-Docs/blob/ad46c7dc688fe973ac7299b651403be5f562db8e/tests/ggp_c/vulkan_types.h
+            { "GgpStreamDescriptor", "int" },
+            { "GgpFrameToken", "int" },
 		};
 
 		protected static Dictionary<string, string> extensions = new Dictionary<string, string> {
