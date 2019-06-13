@@ -2177,18 +2177,18 @@ namespace VulkanSharp.Generator
 
 			foreach (var element in extensions) {
 				string enumName = GetTypeCsName (element.Attribute ("extends").Value, "enum");
+				string entryName = element.Attribute ("name").Value;
+
                 var alias = element.Attribute ("alias");
-                if (alias == null) {
-				    var info = new EnumExtensionInfo { name = element.Attribute ("name").Value, value = EnumExtensionValue (element, number, ref enumName) };
-                    if (!enumExtensions.ContainsKey (enumName))
-                        enumExtensions [enumName] = new List<EnumExtensionInfo> ();
+                var info = (alias == null)
+                    ? new EnumExtensionInfo { name = entryName, value = EnumExtensionValue (element, number, ref enumName) }
+                    : new EnumExtensionInfo { name = entryName, alias = alias.Value };
+
+                // add this enum only if it is unique
+				if (!enumExtensions.ContainsKey (enumName))
+					enumExtensions [enumName] = new List<EnumExtensionInfo> ();
+                if (enumExtensions [enumName].Find ((e) => e.name == entryName) == null)
                     enumExtensions [enumName].Add (info);
-                } else {
-				    var info = new EnumExtensionInfo { name = element.Attribute ("name").Value, alias = alias.Value };
-				    if (!enumExtensions.ContainsKey (enumName))
-					    enumExtensions [enumName] = new List<EnumExtensionInfo> ();
-				    enumExtensions [enumName].Add (info);
-                }
             }
 		}
 
