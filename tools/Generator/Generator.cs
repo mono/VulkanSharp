@@ -809,9 +809,6 @@ namespace VulkanSharp.Generator
 			if (csMemberType == "Bool32" && !isInterop && needsMarshalling)
 				csMemberType = "bool";
 
-            if (csMemberType == "DeviceSize" || csMemberType == "DeviceAddress")
-				csMemberType = "UInt64";
-
             bool needsCharCast = false;
 			if (csMemberType == "char") {
 				if (isInterop || !needsMarshalling)
@@ -1182,8 +1179,7 @@ namespace VulkanSharp.Generator
 
 				if (info.needsMarshalling) {
 					var needsInitialize = hasSType || initializeMembers.Count > 0;
-					WriteLine ();
-					IndentWriteLine ("internal {0}.{1}* m {{", InteropNamespace, csName);
+					IndentWriteLine ("internal {0}.{1}* m {{\n", InteropNamespace, csName);
 					IndentLevel++;
 					IndentWriteLine ("get {");
 					IndentLevel++;
