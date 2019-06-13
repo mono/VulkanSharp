@@ -163,10 +163,16 @@ namespace VulkanSharp.Generator
 			if (suffix != null) {
 				if (fName.EndsWith (suffix))
 					fName = fName.Substring (0, fName.Length - suffix.Length);
-				else if (isExtensionField && fName.EndsWith (suffix + extension))
-					fName = fName.Substring (0, fName.Length - suffix.Length - extension.Length) + extension;
-			}
-			IndentWriteLine ("{0} = {1},", fName, value);
+				else if (isExtensionField) {
+                    if (fName.EndsWith (suffix + extension))
+					    fName = fName.Substring (0, fName.Length - suffix.Length - extension.Length) + extension;
+                    if (value.EndsWith (suffix + extension))
+                        value = value.Substring (0, value.Length - suffix.Length - extension.Length) + extension;
+                }
+                if (value.EndsWith (suffix))
+                    value = value.Substring (0, value.Length - suffix.Length);
+            }
+            IndentWriteLine ("{0} = {1},", fName, value);
 
 			currentEnumInfo.members [fName] = name;
 		}
