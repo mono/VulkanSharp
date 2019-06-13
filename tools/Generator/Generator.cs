@@ -893,6 +893,8 @@ namespace VulkanSharp.Generator
 			"ExportFenceWin32HandleInfoKhr",
 			// TODO: support fixed array of Handles
 			"PhysicalDeviceGroupPropertiesKhx",
+            "PhysicalDeviceGroupPropertiesKhr",
+            "PhysicalDeviceGroupProperties",
 			// NativeBufferAndroid uses disabled extension
 			"NativeBufferAndroid",
 		};
