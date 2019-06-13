@@ -2130,6 +2130,10 @@ namespace VulkanSharp.Generator
 
 		string EnumExtensionValue (XElement element, int number, ref string csEnumName)
 		{
+			var extnumberAttribute = element.Attribute ("extnumber");
+            if (extnumberAttribute != null)
+                number = Int32.Parse (extnumberAttribute.Value);
+
 			var offsetAttribute = element.Attribute ("offset");
 			if (offsetAttribute != null) {
 				int direction = 1;
@@ -2157,7 +2161,10 @@ namespace VulkanSharp.Generator
 		void LearnExtension (XElement extensionElement)
 		{
 			var extensions = from e in extensionElement.Elements ("require").Elements ("enum") where e.Attribute ("extends") != null select e;
-			int number = Int32.Parse (extensionElement.Attribute ("number").Value);
+
+            int number = 0;
+            Int32.TryParse (extensionElement.Attribute ("number").Value, out number);
+
 			foreach (var element in extensions) {
 				string enumName = GetTypeCsName (element.Attribute ("extends").Value, "enum");
                 var alias = element.Attribute ("alias");
