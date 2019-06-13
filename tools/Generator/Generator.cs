@@ -2184,10 +2184,15 @@ namespace VulkanSharp.Generator
 
 		void LearnExtensions ()
 		{
-			var elements = from e in specTree.Elements ("extensions").Elements ("extension") where e.Attribute ("supported").Value != "disabled" select e;
+			var extensions = from e in specTree.Elements ("extensions").Elements ("extension") where e.Attribute ("supported").Value != "disabled" select e;
 
-			foreach (var element in elements)
-				LearnExtension (element);
+			foreach (var extension in extensions)
+				LearnExtension (extension);
+
+			var features = specTree.Elements ("feature");
+
+			foreach (var feature in features)
+				LearnExtension (feature);
 		}
 
 		void PrepareExtensionSets (string[] extensionNames)
