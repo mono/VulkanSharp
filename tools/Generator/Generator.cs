@@ -130,9 +130,16 @@ namespace VulkanSharp.Generator
 				prefix = prefix.Substring (0, prefix.Length - 5);
 				suffix = "Bit" + suffix;
 			}
-
+            
 			if (fName.StartsWith (prefix, StringComparison.OrdinalIgnoreCase))
-				fName = fName.Substring (prefix.Length);
+                fName = fName.Substring (prefix.Length);
+
+			if (value.StartsWith (prefix, StringComparison.OrdinalIgnoreCase))
+                value = value.Substring (prefix.Length);
+
+            // likely a typo not relevant to C#, e.g. CAPABILITIES_2 <> CAPABILITIES2
+            if (fName == value)
+                return;
 
 			if (!char.IsLetter (fName [0])) {
 				switch (csEnumName) {
@@ -178,11 +185,12 @@ namespace VulkanSharp.Generator
 		{
             var valueAttr = e.Attribute ("value");
             var aliasAttr = e.Attribute ("alias");
+
             string value;
             if (valueAttr != null)
                 value = valueAttr.Value;
             else if (aliasAttr != null)
-				value = aliasAttr.Value;
+				value = TranslateCName (aliasAttr.Value);
             else
 				value = FormatFlagValue (Convert.ToInt32 (e.Attribute ("bitpos").Value));
 
@@ -197,7 +205,7 @@ namespace VulkanSharp.Generator
                 if (info.alias == null)
 				    WriteEnumField (info.name, info.value.ToString (), csEnumName);
                 else
-                    WriteEnumField (info.name, info.alias, csEnumName);
+                    WriteEnumField (info.name, TranslateCName (info.alias), csEnumName);
             }
 		}
 
