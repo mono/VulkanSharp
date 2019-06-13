@@ -923,18 +923,64 @@ namespace VulkanSharp.Generator
                     IndentWriteLine ("[StructLayout (LayoutKind.Explicit)]");
                 if (!isInterop)
                     mod = "unsafe ";
-                IndentWriteLine ("{0}{1} partial {2} {3} : {4}", mod, isInterop ? "internal" : "public", (isInterop || !needsMarshalling) ? "struct" : "class", csName, acsName);
-                IndentWriteLine ("{");
-                IndentLevel++;
-                IndentWriteLine ("public {0} () : base ()", csName);
-                IndentWriteLine ("{");
-                IndentWriteLine ("}");
-                WriteLine ();
-                IndentWriteLine ("internal {0} (NativePointer pointer) : base (pointer)", csName);
-                IndentWriteLine ("{");
-                IndentWriteLine ("}\n");
-                IndentLevel--;
-                IndentWriteLine ("}");
+
+                if (isInterop || !needsMarshalling) {
+                    // make a complete copy of the struct, with implicit conversions
+                    IndentWriteLine ("{0}{1} partial struct {2}", mod, isInterop ? "internal" : "public", csName);
+                    IndentWriteLine ("{");
+                    IndentLevel++;
+
+                    initializeMembers = new List<StructMemberInfo>();
+                    arrayMembers = new List<string>();
+                    currentStructInfo = alias;
+                    currentStructInfo.members = new Dictionary<string, string>();
+
+                    // find the original struct members
+                    var originalElement = specTree.Elements ("types").Elements ("type").FirstOrDefault ((elem) => ReadName (elem) == aliasName);
+                    GenerateMembers (originalElement, WriteMember);
+                    WriteLine ();
+                    // generate the implicit conversions
+                    IndentWriteLine ("{0} static implicit operator {1} ({2} that) {{", isInterop ? "internal" : "public", csName, acsName);
+                    IndentLevel++;
+                    IndentWriteLine ("return new {0} {{", csName);
+                    IndentLevel++;
+                    foreach (var i in currentStructInfo.members) {
+                        IndentWriteLine ("{0} = that.{0},", i.Key);
+                    }
+                    IndentLevel--;
+                    IndentWriteLine ("};");
+                    IndentLevel--;
+                    IndentWriteLine ("}");
+                    WriteLine ();
+                    IndentWriteLine ("{0} static implicit operator {1} ({2} that) {{", isInterop ? "internal" : "public", acsName, csName);
+                    IndentLevel++;
+                    IndentWriteLine ("return new {0} {{", acsName);
+                    IndentLevel++;
+                    foreach (var i in currentStructInfo.members)
+                    {
+                        IndentWriteLine ("{0} = that.{0},", i.Key);
+                    }
+                    IndentLevel--;
+                    IndentWriteLine ("};");
+                    IndentLevel--;
+                    IndentWriteLine ("}");
+
+                    IndentLevel--;
+                    IndentWriteLine ("}");
+                } else {
+                    // inherit the class
+                    IndentWriteLine ("{0}{1} partial class {2} : {3}", mod, isInterop ? "internal" : "public", csName, acsName);
+                    IndentWriteLine ("{");
+                    IndentLevel++;
+                    IndentWriteLine ("public {0} () : base () {{", csName);
+                    IndentWriteLine ("}");
+                    WriteLine ();
+                    IndentWriteLine ("internal {0} (NativePointer pointer) : base (pointer) {{", csName);
+                    IndentWriteLine ("}");
+                    WriteLine ();
+                    IndentLevel--;
+                    IndentWriteLine ("}");
+                }
 
                 return true;
             }
