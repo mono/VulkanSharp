@@ -134,6 +134,10 @@ namespace VulkanSharp.Generator
 			if (fName.StartsWith (prefix, StringComparison.OrdinalIgnoreCase))
                 fName = fName.Substring (prefix.Length);
 
+            // some enum entires now start with numbers, don't let them
+			if (fName[0] >= '0' && fName[0] <= '9')
+                fName = "_" + fName;
+
 			if (value.StartsWith (prefix, StringComparison.OrdinalIgnoreCase))
                 value = value.Substring (prefix.Length);
 
