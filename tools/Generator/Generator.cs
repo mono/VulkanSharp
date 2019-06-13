@@ -875,6 +875,140 @@ namespace VulkanSharp.Generator
 			return !isInterop && needsMarshalling;
 		}
 
+		bool WriteMemberAssign (XElement memberElement)
+		{
+			var parentName = memberElement.Parent.Attribute ("name").Value;
+
+			var typeElement = memberElement.Element ("type");
+			if (typeElement == null)
+			{
+				Console.WriteLine ("warning: a member of the struct {0} doesn't have a 'type' node", parentName);
+				return false;
+			}
+			var csMemberType = GetTypeCsName (typeElement.Value, "member");
+
+			var nameElement = ReadName (memberElement);
+			if (nameElement == null)
+			{
+				Console.WriteLine ("warning: a member of the struct {0} doesn't have a 'name' node", parentName);
+				return false;
+			}
+
+			string name = nameElement;
+
+            bool isPointer = memberElement.Value.Contains(typeElement.Value + "*");
+            if (isPointer)
+            {
+                if (name.StartsWith("p"))
+                    name = name.Substring(1);
+                if (name.StartsWith("p"))
+                    name = name.Substring(1);
+
+                switch (csMemberType)
+                {
+                case "void":
+                    if (!isInterop && name == "Next")
+                        return false;
+                    break;
+                }
+            }
+
+            var csMemberName = TranslateCName (name);
+
+			// TODO: fixed arrays of structs
+			if (csMemberName.EndsWith ("]")) {
+				string array = csMemberName.Substring (csMemberName.IndexOf ('['));
+				csMemberName = csMemberName.Substring (0, csMemberName.Length - array.Length);
+				// temporarily disable arrays csMemberType += "[]";
+			}
+
+			string member = memberElement.Value;
+			int count = 1;
+            bool memberIsStructure = structures.ContainsKey (csMemberType);
+            if (IsArray (memberElement)
+                && !(memberIsStructure
+                        && structures [csMemberType].needsMarshalling)) {
+                string len = GetArrayLength (memberElement);
+                if (memberIsStructure)
+                    count = Convert.ToInt32 (len);
+                else if (len != null) {
+                    // is `fixed`
+                    return false;
+                }
+            }
+			for (int i = 0; i < count; i++)
+				IndentWrite ("{0}{1} = that.{0}{1},", csMemberName, count > 1 ? i.ToString() : "");
+
+			return true;
+		}
+        
+		bool WriteMemberCopy (XElement memberElement)
+		{
+			var parentName = memberElement.Parent.Attribute ("name").Value;
+
+			var typeElement = memberElement.Element ("type");
+			if (typeElement == null)
+			{
+				Console.WriteLine ("warning: a member of the struct {0} doesn't have a 'type' node", parentName);
+				return false;
+			}
+			var csMemberType = GetTypeCsName (typeElement.Value, "member");
+
+			var nameElement = ReadName (memberElement);
+			if (nameElement == null)
+			{
+				Console.WriteLine ("warning: a member of the struct {0} doesn't have a 'name' node", parentName);
+				return false;
+			}
+
+			string name = nameElement;
+
+            bool isPointer = memberElement.Value.Contains(typeElement.Value + "*");
+            if (isPointer)
+            {
+                if (name.StartsWith("p"))
+                    name = name.Substring(1);
+                if (name.StartsWith("p"))
+                    name = name.Substring(1);
+
+                switch (csMemberType)
+                {
+                case "void":
+                    if (!isInterop && name == "Next")
+                        return false;
+                    break;
+                }
+            }
+
+            var csMemberName = TranslateCName (name);
+
+			// TODO: fixed arrays of structs
+			if (csMemberName.EndsWith ("]")) {
+				string array = csMemberName.Substring (csMemberName.IndexOf ('['));
+				csMemberName = csMemberName.Substring (0, csMemberName.Length - array.Length);
+				// temporarily disable arrays csMemberType += "[]";
+			}
+
+			string member = memberElement.Value;
+			int count = 1;
+            bool memberIsStructure = structures.ContainsKey (csMemberType);
+            if (IsArray (memberElement)
+                && !(memberIsStructure
+                        && structures [csMemberType].needsMarshalling)) {
+                string len = GetArrayLength (memberElement);
+                if (len == null) {
+                    // is `fixed`
+                    return false;
+                }
+                count = Convert.ToInt32 (len);
+			    for (int i = 0; i < count; i++)
+				    IndentWriteLine ("ret.{0}[{1}] = that.{0}[{1}];", csMemberName, i);
+			    return true;
+            }
+
+            return false;
+		}
+
 		HashSet<string> disabledStructs = new HashSet<string> {
 			"XlibSurfaceCreateInfoKhr",
 			"XcbSurfaceCreateInfoKhr",
@@ -958,33 +1092,40 @@ namespace VulkanSharp.Generator
                     currentStructInfo = alias;
                     currentStructInfo.members = new Dictionary<string, string>();
 
+
                     // find the original struct members
                     var originalElement = specTree.Elements ("types").Elements ("type").FirstOrDefault ((elem) => ReadName (elem) == aliasName);
+
+                    bool unsafeCopy = originalElement.Elements ("member").FirstOrDefault (IsArray) != null;
+
                     GenerateMembers (originalElement, WriteMember);
                     WriteLine ();
                     // generate the implicit conversions
-                    IndentWriteLine ("public static implicit operator {0} ({1} that) {{", csName, acsName);
+                    IndentWriteLine ("{0}public static implicit operator {1} ({2} that) {{", unsafeCopy ? "unsafe " : "", csName, acsName);
                     IndentLevel++;
-                    IndentWriteLine ("return new {0} {{", csName);
+                    IndentWriteLine ("var ret = new {0} {{", csName);
                     IndentLevel++;
-                    foreach (var i in currentStructInfo.members) {
-                        IndentWriteLine ("{0} = that.{0},", i.Key);
-                    }
+                    GenerateMembers (originalElement, WriteMemberAssign);
+                    WriteLine ();
                     IndentLevel--;
                     IndentWriteLine ("};");
+                    WriteLine ();
+                    GenerateMembers(originalElement, WriteMemberCopy);
+                    IndentWriteLine("return ret;");
                     IndentLevel--;
                     IndentWriteLine ("}");
                     WriteLine ();
-                    IndentWriteLine ("public static implicit operator {0} ({1} that) {{", acsName, csName);
+                    IndentWriteLine("{0}public static implicit operator {1} ({2} that) {{", unsafeCopy ? "unsafe " : "", acsName, csName);
                     IndentLevel++;
-                    IndentWriteLine ("return new {0} {{", acsName);
+                    IndentWriteLine ("var ret = new {0} {{", acsName);
                     IndentLevel++;
-                    foreach (var i in currentStructInfo.members)
-                    {
-                        IndentWriteLine ("{0} = that.{0},", i.Key);
-                    }
+                    GenerateMembers (originalElement, WriteMemberAssign);
+                    WriteLine ();
                     IndentLevel--;
                     IndentWriteLine ("};");
+                    WriteLine ();
+                    GenerateMembers (originalElement, WriteMemberCopy);
+                    IndentWriteLine ("return ret;");
                     IndentLevel--;
                     IndentWriteLine ("}");
 
