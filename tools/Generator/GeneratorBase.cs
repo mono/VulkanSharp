@@ -8,29 +8,34 @@ namespace VulkanSharp.Generator
 	public class GeneratorBase
 	{
 		static Dictionary<string, string> specialParts = new Dictionary<string, string> {
-			{ "AMD", "Amd" },
-			{ "API", "Api" },
-			{ "EXT", "Ext" },
-			{ "ID", "ID" },
-			{ "IOS", "IOS" },
-			{ "KHR", "Khr" },
-			{ "KHX", "Khx" },
-			{ "LOD", "LOD" },
-			{ "1D", "1D" },
-			{ "2D", "2D" },
-			{ "3D", "3D" },
-			{ "MACOS", "MacOS" },
-			{ "NV", "Nv" },
-			{ "NVX", "Nvx" },
-			{ "NN", "Nn" },
-		};
+            { "AMD", "Amd" },
+            { "API", "Api" },
+            { "EXT", "Ext" },
+            { "ID", "ID" },
+            { "IOS", "IOS" },
+            { "KHR", "Khr" },
+            { "KHX", "Khx" },
+            { "LOD", "LOD" },
+            { "1D", "1D" },
+            { "2D", "2D" },
+            { "3D", "3D" },
+            { "MACOS", "MacOS" },
+            { "NV", "Nv" },
+            { "NVX", "Nvx" },
+            { "NN", "Nn" },
+            { "ASTC", "ASTC" },
+            { "PCI", "PCI" },
+            { "AABB", "AABB" },
+            { "GGP", "GGP" },
+            { "SM", "SM" },
+        };
 
 		protected string TranslateCName (string name)
 		{
 			StringWriter sw = new StringWriter ();
 			bool first = true;
 
-			foreach (var part in name.Split ('_')) {
+            foreach (var part in name.Split ('_')) {
 				if (first) {
 					first = false;
 					if (name.StartsWith ("VK", StringComparison.OrdinalIgnoreCase))
@@ -109,9 +114,10 @@ namespace VulkanSharp.Generator
 			{ "NV", "Nv" },
 			{ "NVX", "Nvx" },
 			{ "NN", "Nn" },
+			{ "INTEL", "Intel" },
 		};
 
-		protected string GetTypeCsName (string name, string typeName = "type")
+        protected string GetTypeCsName (string name, string typeName = "type")
 		{
 			if (typesTranslation.ContainsKey (name))
 				return typesTranslation [name];

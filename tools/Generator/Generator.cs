@@ -1030,15 +1030,15 @@ namespace VulkanSharp.Generator
 			"NativeBufferAndroid",
 		};
 
-		void WriteStructureInitializeMethod (List<StructMemberInfo> members, string csName, bool hasSType)
+		void WriteStructureInitializeMethod (List<StructMemberInfo> members, string csName, string hasSType)
 		{
 			WriteLine ();
 			IndentWriteLine ("internal void Initialize ()");
 			IndentWriteLine ("{");
 			IndentLevel++;
-			if (hasSType)
+			if (hasSType != null)
 				// special case DebugReportLayerFlagsExt, remove once fixed in the spec?
-				IndentWriteLine ("m->SType = StructureType.{0};", csName == "DebugReportLayerFlagsExt" ? "DebugReportValidationFlagsExt" : csName);
+				IndentWriteLine ("m->SType = StructureType.{0};", csName == "DebugReportLayerFlagsExt" ? "DebugReportValidationFlagsExt" : TranslateCName (GetEnumCsName (hasSType.Substring (18), false)));
 
 			foreach (var info in members)
 				if (handles.ContainsKey (info.csType) || (structures.ContainsKey (info.csType) && structures [info.csType].needsMarshalling))
@@ -1167,18 +1167,18 @@ namespace VulkanSharp.Generator
 			GenerateMembers (structElement, WriteMember);
 
 			if (!isInterop) {
-				bool hasSType = false;
+				string hasSType = null;
 				var values = from el in structElement.Elements ("member")
 						where (string)ReadName (el) == "sType"
 					select el;
 				foreach (var el in values) {
 					var elType = el.Element ("type");
-					if (elType != null && elType.Value == "VkStructureType")
-						hasSType = true;
+					if (elType != null && elType.Value == "VkStructureType" && el.Attribute ("values") != null)
+                        hasSType = el.Attribute("values").Value;
 				}
 
 				if (info.needsMarshalling) {
-					var needsInitialize = hasSType || initializeMembers.Count > 0;
+					var needsInitialize = hasSType != null || initializeMembers.Count > 0;
 					IndentWriteLine ("internal {0}.{1}* m {{\n", InteropNamespace, csName);
 					IndentLevel++;
 					IndentWriteLine ("get {");
