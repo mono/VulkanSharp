@@ -1925,7 +1925,7 @@ namespace VulkanSharp.Generator
 			if (arrayParamCount > 0)
 				foreach (var param in paramsDict) {
 					var info = param.Value;
-					if (info.len != null && firstOutParam != info) {
+					if (info.len != null && firstOutParam != info && !info.isOut) {
 						IndentWriteLine ("var array{0} = {0} == null ? IntPtr.Zero : Marshal.AllocHGlobal ({0}.Length*sizeof ({1}));", info.csName, GetParamArrayType (info));
 						IndentWriteLine ("var len{0} = {0} == null ? 0 : {0}.Length;", info.csName);
 						IndentWriteLine ("if ({0} != null)", info.csName);
@@ -1963,7 +1963,7 @@ namespace VulkanSharp.Generator
 			if (arrayParamCount > 0)
 				foreach (var param in paramsDict) {
 					var info = param.Value;
-					if (info.len != null && firstOutParam != info)
+					if (info.len != null && firstOutParam != info && !info.isOut)
 						IndentWriteLine ("Marshal.FreeHGlobal (array{0});", info.csName);
 				}
 			CommandHandleResult (hasResult);
@@ -2160,7 +2160,7 @@ namespace VulkanSharp.Generator
 			"vkCreateIOSSurfaceMVK",
 			// TODO: support fixed array of Handles
 			"vkEnumeratePhysicalDeviceGroupsKHX",
-		};
+        };
 
 		HashSet<string> delegateUnmanagedCommands = new HashSet<string> {
 			"vkCreateDebugReportCallbackEXT",
