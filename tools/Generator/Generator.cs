@@ -1026,9 +1026,11 @@ namespace VulkanSharp.Generator
 			"PhysicalDeviceGroupPropertiesKhx",
             "PhysicalDeviceGroupPropertiesKhr",
             "PhysicalDeviceGroupProperties",
+            "PhysicalDeviceMemoryBudgetPropertiesExt",
 			// NativeBufferAndroid uses disabled extension
 			"NativeBufferAndroid",
             "ImportAndroidHardwareBufferInfoAndroid",
+            "MetalSurfaceCreateInfoExt",
         };
 
 		void WriteStructureInitializeMethod (List<StructMemberInfo> members, string csName, string hasSType)
@@ -2166,6 +2168,8 @@ namespace VulkanSharp.Generator
             // also, just disable android extensions
             "vkGetMemoryAndroidHardwareBufferANDROID",
             "vkGetAndroidHardwareBufferPropertiesANDROID",
+            // disable metal surface creation
+            "vkCreateMetalSurfaceEXT",
         };
 
 		HashSet<string> delegateUnmanagedCommands = new HashSet<string> {
