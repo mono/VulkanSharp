@@ -1182,7 +1182,8 @@ namespace VulkanSharp.Generator
 
 				if (info.needsMarshalling) {
 					var needsInitialize = hasSType != null || initializeMembers.Count > 0;
-					IndentWriteLine ("internal {0}.{1}* m {{\n", InteropNamespace, csName);
+					WriteLine ();
+					IndentWriteLine ("internal {0}.{1}* m {{", InteropNamespace, csName);
 					IndentLevel++;
 					IndentWriteLine ("get {");
 					IndentLevel++;
