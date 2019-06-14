@@ -809,9 +809,6 @@ namespace VulkanSharp.Generator
 			if (csMemberType == "Bool32" && !isInterop && needsMarshalling)
 				csMemberType = "bool";
 
-            if (csMemberType == "DeviceSize" || csMemberType == "DeviceAddress")
-				csMemberType = "UInt64";
-
             bool needsCharCast = false;
 			if (csMemberType == "char") {
 				if (isInterop || !needsMarshalling)
@@ -1031,7 +1028,8 @@ namespace VulkanSharp.Generator
             "PhysicalDeviceGroupProperties",
 			// NativeBufferAndroid uses disabled extension
 			"NativeBufferAndroid",
-		};
+            "ImportAndroidHardwareBufferInfoAndroid",
+        };
 
 		void WriteStructureInitializeMethod (List<StructMemberInfo> members, string csName, string hasSType)
 		{
@@ -1669,7 +1667,11 @@ namespace VulkanSharp.Generator
 			"CreateGraphicsPipelines",
 			"CreateComputePipelines",
 			"CreateSharedSwapchainsKHR",
-		};
+            "CreateRayTracingPipelinesNV",
+            "CmdEndTransformFeedbackEXT",
+            "CmdBeginTransformFeedbackEXT",
+            "CmdBindTransformFeedbackBuffersEXT",
+        };
 		HashSet<string> notLengthTypes = new HashSet<string> {
 			"RROutput",
 		};
@@ -2160,7 +2162,10 @@ namespace VulkanSharp.Generator
             "vkEnumeratePhysicalDeviceGroupsKHR",
             // TODO: resolve issues converting to/from `MemoryRequirements2Khr`
             "vkGetAccelerationStructureMemoryRequirementsNV",
-            // TODO: pointer to pointer (`
+            // TODO: pointer to pointer
+            // also, just disable android extensions
+            "vkGetMemoryAndroidHardwareBufferANDROID",
+            "vkGetAndroidHardwareBufferPropertiesANDROID",
         };
 
 		HashSet<string> delegateUnmanagedCommands = new HashSet<string> {

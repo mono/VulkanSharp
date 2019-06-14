@@ -141,9 +141,6 @@ namespace VulkanSharp.Generator
 				if (csName.EndsWith (ext.Key))
 					csName = csName.Substring (0, csName.Length - ext.Value.Length) + ext.Value;
 
-            if (csName == "CAMetalLayer" || csName == "AHardwareBuffer")
-                csName = "IntPtr";
-
             return csName;
 		}
 
