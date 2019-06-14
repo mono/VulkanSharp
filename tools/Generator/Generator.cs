@@ -1738,6 +1738,7 @@ namespace VulkanSharp.Generator
 		bool WriteCommand (XElement commandElement, bool prependNewLine, bool useArrayParameters, bool isForHandle = false, string handleName = null, bool isExtension = false)
 		{
 			string function = ReadName (commandElement.Element ("proto"));
+            string alias = commandElement.Element ("proto").Attribute ("alias")?.Value ?? "";
 			string type = commandElement.Element ("proto").Element ("type").Value;
 			string csType = GetTypeCsName (type);
 			bool hasArrayParameter = false;
@@ -1755,7 +1756,7 @@ namespace VulkanSharp.Generator
 			// todo: function pointers
 			if (csType.StartsWith ("PFN_"))
 				csType = "IntPtr";
-
+            
 			string csFunction = function;
 			if (function.StartsWith ("vk"))
 				csFunction = csFunction.Substring (2);
@@ -1767,6 +1768,19 @@ namespace VulkanSharp.Generator
 					csFunction = "Get" + csFunction.Substring (handleName.Length + 3);
 				else if (csFunction.EndsWith (handleName))
 					csFunction = csFunction.Substring (0, csFunction.Length - handleName.Length);
+			}
+
+			string csAlias = alias;
+			if (alias.StartsWith ("vk"))
+				csAlias = csAlias.Substring (2);
+
+			if (isForHandle) {
+				if (csAlias.StartsWith (handleName))
+					csAlias = csAlias.Substring (handleName.Length);
+				else if (csAlias.StartsWith ("Get" + handleName))
+					csAlias = "Get" + csAlias.Substring (handleName.Length + 3);
+				else if (csAlias.EndsWith (handleName))
+					csAlias = csAlias.Substring (0, csAlias.Length - handleName.Length);
 			}
 
 			if (!useArrayParameters && csFunction.EndsWith ("s"))
@@ -1867,7 +1881,10 @@ namespace VulkanSharp.Generator
 			if (dataParam != null)
 				dataParam.isOut = false;
 
-			IndentWrite ("public {0}{1} {2} (", (!isExtension && isForHandle) ? "" : "static ", csType, csFunction);
+            if (csAlias != "")
+               IndentWriteLine("[Obsolete (\"{0} is deprecated, please use {1} instead.\")]", csFunction, csAlias);
+
+            IndentWrite("public {0}{1} {2} (", (!isExtension && isForHandle) ? "" : "static ", csType, csFunction);
 			hasArrayParameter = WriteCommandParameters (commandElement, useArrayParameters, ignoredParameters, null, null, isForHandle && !isExtension, false, paramsDict, isExtension, true);
 			WriteLine (")");
 			IndentWriteLine ("{");
@@ -2210,9 +2227,8 @@ namespace VulkanSharp.Generator
                 }
             
                 // clone the node in all but name
-                commandElement.Element ("proto").Element ("name").Value = function;
-
-                IndentWriteLine ("[Obsolete (\"{0} is deprecated, please use {1} instead.\")]", function, alias.Value);
+                commandElement.Element ("proto").SetElementValue ("name", function);
+                commandElement.Element ("proto").SetAttributeValue ("alias", alias.Value);
             }
 
             string type = commandElement.Element ("proto").Element ("type").Value;
