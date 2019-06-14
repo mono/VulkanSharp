@@ -2160,6 +2160,8 @@ namespace VulkanSharp.Generator
 			"vkCreateIOSSurfaceMVK",
 			// TODO: support fixed array of Handles
 			"vkEnumeratePhysicalDeviceGroupsKHX",
+            "vkEnumeratePhysicalDeviceGroups",
+            "vkEnumeratePhysicalDeviceGroupsKHR",
         };
 
 		HashSet<string> delegateUnmanagedCommands = new HashSet<string> {
