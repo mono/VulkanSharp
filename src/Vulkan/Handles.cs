@@ -109,6 +109,40 @@ namespace Vulkan
 			}
 		}
 
+		public SurfaceKhr CreateImagePipeSurfaceFUCHSIA (ImagePipeSurfaceCreateInfoFUCHSIA pCreateInfo, AllocationCallbacks pAllocator = null)
+		{
+			Result result;
+			SurfaceKhr pSurface;
+			unsafe {
+				pSurface = new SurfaceKhr ();
+
+				fixed (UInt64* ptrpSurface = &pSurface.m) {
+					result = Interop.NativeMethods.vkCreateImagePipeSurfaceFUCHSIA (this.m, pCreateInfo != null ? pCreateInfo.m : (Interop.ImagePipeSurfaceCreateInfoFUCHSIA*)default(IntPtr), pAllocator != null ? pAllocator.m : null, ptrpSurface);
+				}
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pSurface;
+			}
+		}
+
+		public SurfaceKhr CreateStreamDescriptorSurfaceGGP (StreamDescriptorSurfaceCreateInfoGGP pCreateInfo, AllocationCallbacks pAllocator = null)
+		{
+			Result result;
+			SurfaceKhr pSurface;
+			unsafe {
+				pSurface = new SurfaceKhr ();
+
+				fixed (UInt64* ptrpSurface = &pSurface.m) {
+					result = Interop.NativeMethods.vkCreateStreamDescriptorSurfaceGGP (this.m, pCreateInfo != null ? pCreateInfo.m : (Interop.StreamDescriptorSurfaceCreateInfoGGP*)default(IntPtr), pAllocator != null ? pAllocator.m : null, ptrpSurface);
+				}
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pSurface;
+			}
+		}
+
 		public DebugReportCallbackExt CreateDebugReportCallbackEXT (DebugReportCallbackCreateInfoExt pCreateInfo, AllocationCallbacks pAllocator = null)
 		{
 			Result result;
@@ -140,23 +174,6 @@ namespace Vulkan
 			}
 		}
 
-		public SurfaceKhr CreateIOSSurfaceMVK (IOSSurfaceCreateInfoMvk pCreateInfo, AllocationCallbacks pAllocator = null)
-		{
-			Result result;
-			SurfaceKhr pSurface;
-			unsafe {
-				pSurface = new SurfaceKhr ();
-
-				fixed (UInt64* ptrpSurface = &pSurface.m) {
-					result = Interop.NativeMethods.vkCreateIOSSurfaceMVK (this.m, pCreateInfo != null ? pCreateInfo.m : (Interop.IOSSurfaceCreateInfoMvk*)default(IntPtr), pAllocator != null ? pAllocator.m : null, ptrpSurface);
-				}
-				if (result != Result.Success)
-					throw new ResultException (result);
-
-				return pSurface;
-			}
-		}
-
 		public SurfaceKhr CreateMacOSSurfaceMVK (MacOSSurfaceCreateInfoMvk pCreateInfo, AllocationCallbacks pAllocator = null)
 		{
 			Result result;
@@ -166,6 +183,54 @@ namespace Vulkan
 
 				fixed (UInt64* ptrpSurface = &pSurface.m) {
 					result = Interop.NativeMethods.vkCreateMacOSSurfaceMVK (this.m, pCreateInfo != null ? pCreateInfo.m : (Interop.MacOSSurfaceCreateInfoMvk*)default(IntPtr), pAllocator != null ? pAllocator.m : null, ptrpSurface);
+				}
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pSurface;
+			}
+		}
+
+		public DebugUtilsMessengerExt CreateDebugUtilsMessengerEXT (DebugUtilsMessengerCreateInfoExt pCreateInfo, AllocationCallbacks pAllocator = null)
+		{
+			Result result;
+			DebugUtilsMessengerExt pMessenger;
+			unsafe {
+				pMessenger = new DebugUtilsMessengerExt ();
+
+				fixed (UInt64* ptrpMessenger = &pMessenger.m) {
+					result = Interop.NativeMethods.vkCreateDebugUtilsMessengerEXT (this.m, pCreateInfo != null ? pCreateInfo.m : (Interop.DebugUtilsMessengerCreateInfoExt*)default(IntPtr), pAllocator != null ? pAllocator.m : null, ptrpMessenger);
+				}
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pMessenger;
+			}
+		}
+
+		public void DestroyDebugUtilsMessengerEXT (DebugUtilsMessengerExt messenger, AllocationCallbacks pAllocator = null)
+		{
+			unsafe {
+				Interop.NativeMethods.vkDestroyDebugUtilsMessengerEXT (this.m, messenger != null ? messenger.m : default(UInt64), pAllocator != null ? pAllocator.m : null);
+			}
+		}
+
+		public void SubmitDebugUtilsMessageEXT (DebugUtilsMessageSeverityFlagsExt messageSeverity, DebugUtilsMessageTypeFlagsExt messageTypes, DebugUtilsMessengerCallbackDataExt pCallbackData)
+		{
+			unsafe {
+				Interop.NativeMethods.vkSubmitDebugUtilsMessageEXT (this.m, messageSeverity, messageTypes, pCallbackData != null ? pCallbackData.m : (Interop.DebugUtilsMessengerCallbackDataExt*)default(IntPtr));
+			}
+		}
+
+		public SurfaceKhr CreateHeadlessSurfaceEXT (HeadlessSurfaceCreateInfoExt pCreateInfo, AllocationCallbacks pAllocator = null)
+		{
+			Result result;
+			SurfaceKhr pSurface;
+			unsafe {
+				pSurface = new SurfaceKhr ();
+
+				fixed (UInt64* ptrpSurface = &pSurface.m) {
+					result = Interop.NativeMethods.vkCreateHeadlessSurfaceEXT (this.m, pCreateInfo != null ? pCreateInfo.m : (Interop.HeadlessSurfaceCreateInfoExt*)default(IntPtr), pAllocator != null ? pAllocator.m : null, ptrpSurface);
 				}
 				if (result != Result.Success)
 					throw new ResultException (result);
@@ -626,46 +691,82 @@ namespace Vulkan
 			}
 		}
 
-		public PhysicalDeviceFeatures2Khr GetFeatures2KHR ()
+		public PhysicalDeviceFeatures2 GetFeatures2 ()
 		{
-			PhysicalDeviceFeatures2Khr pFeatures;
+			PhysicalDeviceFeatures2 pFeatures;
 			unsafe {
-				pFeatures = new PhysicalDeviceFeatures2Khr ();
-				Interop.NativeMethods.vkGetPhysicalDeviceFeatures2KHR (this.m, pFeatures != null ? pFeatures.m : (Interop.PhysicalDeviceFeatures2Khr*)default(IntPtr));
+				pFeatures = new PhysicalDeviceFeatures2 ();
+				Interop.NativeMethods.vkGetPhysicalDeviceFeatures2 (this.m, pFeatures != null ? pFeatures.m : (Interop.PhysicalDeviceFeatures2*)default(IntPtr));
 
 				return pFeatures;
 			}
 		}
 
-		public PhysicalDeviceProperties2Khr GetProperties2KHR ()
+		[Obsolete ("GetFeatures2KHR is deprecated, please use GetFeatures2 instead.")]
+		public PhysicalDeviceFeatures2 GetFeatures2KHR ()
 		{
-			PhysicalDeviceProperties2Khr pProperties;
+			PhysicalDeviceFeatures2 pFeatures;
 			unsafe {
-				pProperties = new PhysicalDeviceProperties2Khr ();
-				Interop.NativeMethods.vkGetPhysicalDeviceProperties2KHR (this.m, pProperties != null ? pProperties.m : (Interop.PhysicalDeviceProperties2Khr*)default(IntPtr));
+				pFeatures = new PhysicalDeviceFeatures2 ();
+				Interop.NativeMethods.vkGetPhysicalDeviceFeatures2KHR (this.m, pFeatures != null ? pFeatures.m : (Interop.PhysicalDeviceFeatures2*)default(IntPtr));
+
+				return pFeatures;
+			}
+		}
+
+		public PhysicalDeviceProperties2 GetProperties2 ()
+		{
+			PhysicalDeviceProperties2 pProperties;
+			unsafe {
+				pProperties = new PhysicalDeviceProperties2 ();
+				Interop.NativeMethods.vkGetPhysicalDeviceProperties2 (this.m, pProperties != null ? pProperties.m : (Interop.PhysicalDeviceProperties2*)default(IntPtr));
 
 				return pProperties;
 			}
 		}
 
-		public FormatProperties2Khr GetFormatProperties2KHR (Format format)
+		[Obsolete ("GetProperties2KHR is deprecated, please use GetProperties2 instead.")]
+		public PhysicalDeviceProperties2 GetProperties2KHR ()
 		{
-			FormatProperties2Khr pFormatProperties;
+			PhysicalDeviceProperties2 pProperties;
 			unsafe {
-				pFormatProperties = new FormatProperties2Khr ();
-				Interop.NativeMethods.vkGetPhysicalDeviceFormatProperties2KHR (this.m, format, pFormatProperties != null ? pFormatProperties.m : (Interop.FormatProperties2Khr*)default(IntPtr));
+				pProperties = new PhysicalDeviceProperties2 ();
+				Interop.NativeMethods.vkGetPhysicalDeviceProperties2KHR (this.m, pProperties != null ? pProperties.m : (Interop.PhysicalDeviceProperties2*)default(IntPtr));
+
+				return pProperties;
+			}
+		}
+
+		public FormatProperties2 GetFormatProperties2 (Format format)
+		{
+			FormatProperties2 pFormatProperties;
+			unsafe {
+				pFormatProperties = new FormatProperties2 ();
+				Interop.NativeMethods.vkGetPhysicalDeviceFormatProperties2 (this.m, format, pFormatProperties != null ? pFormatProperties.m : (Interop.FormatProperties2*)default(IntPtr));
 
 				return pFormatProperties;
 			}
 		}
 
-		public ImageFormatProperties2Khr GetImageFormatProperties2KHR (PhysicalDeviceImageFormatInfo2Khr pImageFormatInfo)
+		[Obsolete ("GetFormatProperties2KHR is deprecated, please use GetFormatProperties2 instead.")]
+		public FormatProperties2 GetFormatProperties2KHR (Format format)
+		{
+			FormatProperties2 pFormatProperties;
+			unsafe {
+				pFormatProperties = new FormatProperties2 ();
+				Interop.NativeMethods.vkGetPhysicalDeviceFormatProperties2KHR (this.m, format, pFormatProperties != null ? pFormatProperties.m : (Interop.FormatProperties2*)default(IntPtr));
+
+				return pFormatProperties;
+			}
+		}
+
+		public ImageFormatProperties2 GetImageFormatProperties2 (PhysicalDeviceImageFormatInfo2 pImageFormatInfo)
 		{
 			Result result;
-			ImageFormatProperties2Khr pImageFormatProperties;
+			ImageFormatProperties2 pImageFormatProperties;
 			unsafe {
-				pImageFormatProperties = new ImageFormatProperties2Khr ();
-				result = Interop.NativeMethods.vkGetPhysicalDeviceImageFormatProperties2KHR (this.m, pImageFormatInfo != null ? pImageFormatInfo.m : (Interop.PhysicalDeviceImageFormatInfo2Khr*)default(IntPtr), pImageFormatProperties != null ? pImageFormatProperties.m : (Interop.ImageFormatProperties2Khr*)default(IntPtr));
+				pImageFormatProperties = new ImageFormatProperties2 ();
+				result = Interop.NativeMethods.vkGetPhysicalDeviceImageFormatProperties2 (this.m, pImageFormatInfo != null ? pImageFormatInfo.m : (Interop.PhysicalDeviceImageFormatInfo2*)default(IntPtr), pImageFormatProperties != null ? pImageFormatProperties.m : (Interop.ImageFormatProperties2*)default(IntPtr));
 				if (result != Result.Success)
 					throw new ResultException (result);
 
@@ -673,7 +774,47 @@ namespace Vulkan
 			}
 		}
 
-		public QueueFamilyProperties2Khr[] GetQueueFamilyProperties2KHR ()
+		[Obsolete ("GetImageFormatProperties2KHR is deprecated, please use GetImageFormatProperties2 instead.")]
+		public ImageFormatProperties2 GetImageFormatProperties2KHR (PhysicalDeviceImageFormatInfo2 pImageFormatInfo)
+		{
+			Result result;
+			ImageFormatProperties2 pImageFormatProperties;
+			unsafe {
+				pImageFormatProperties = new ImageFormatProperties2 ();
+				result = Interop.NativeMethods.vkGetPhysicalDeviceImageFormatProperties2KHR (this.m, pImageFormatInfo != null ? pImageFormatInfo.m : (Interop.PhysicalDeviceImageFormatInfo2*)default(IntPtr), pImageFormatProperties != null ? pImageFormatProperties.m : (Interop.ImageFormatProperties2*)default(IntPtr));
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pImageFormatProperties;
+			}
+		}
+
+		public QueueFamilyProperties2[] GetQueueFamilyProperties2 ()
+		{
+			unsafe {
+				UInt32 pQueueFamilyPropertyCount;
+				Interop.NativeMethods.vkGetPhysicalDeviceQueueFamilyProperties2 (this.m, &pQueueFamilyPropertyCount, null);
+				if (pQueueFamilyPropertyCount <= 0)
+					return null;
+
+				int size = Marshal.SizeOf (typeof (Interop.QueueFamilyProperties2));
+				var refpQueueFamilyProperties = new NativeReference ((int)(size * pQueueFamilyPropertyCount));
+				var ptrpQueueFamilyProperties = refpQueueFamilyProperties.Handle;
+				Interop.NativeMethods.vkGetPhysicalDeviceQueueFamilyProperties2 (this.m, &pQueueFamilyPropertyCount, (Interop.QueueFamilyProperties2*)ptrpQueueFamilyProperties);
+
+				if (pQueueFamilyPropertyCount <= 0)
+					return null;
+				var arr = new QueueFamilyProperties2 [pQueueFamilyPropertyCount];
+				for (int i = 0; i < pQueueFamilyPropertyCount; i++) {
+					arr [i] = new QueueFamilyProperties2 (new NativePointer (refpQueueFamilyProperties, (IntPtr)(&((Interop.QueueFamilyProperties2*)ptrpQueueFamilyProperties) [i])));
+				}
+
+				return arr;
+			}
+		}
+
+		[Obsolete ("GetQueueFamilyProperties2KHR is deprecated, please use GetQueueFamilyProperties2 instead.")]
+		public QueueFamilyProperties2[] GetQueueFamilyProperties2KHR ()
 		{
 			unsafe {
 				UInt32 pQueueFamilyPropertyCount;
@@ -681,85 +822,158 @@ namespace Vulkan
 				if (pQueueFamilyPropertyCount <= 0)
 					return null;
 
-				int size = Marshal.SizeOf (typeof (Interop.QueueFamilyProperties2Khr));
+				int size = Marshal.SizeOf (typeof (Interop.QueueFamilyProperties2));
 				var refpQueueFamilyProperties = new NativeReference ((int)(size * pQueueFamilyPropertyCount));
 				var ptrpQueueFamilyProperties = refpQueueFamilyProperties.Handle;
-				Interop.NativeMethods.vkGetPhysicalDeviceQueueFamilyProperties2KHR (this.m, &pQueueFamilyPropertyCount, (Interop.QueueFamilyProperties2Khr*)ptrpQueueFamilyProperties);
+				Interop.NativeMethods.vkGetPhysicalDeviceQueueFamilyProperties2KHR (this.m, &pQueueFamilyPropertyCount, (Interop.QueueFamilyProperties2*)ptrpQueueFamilyProperties);
 
 				if (pQueueFamilyPropertyCount <= 0)
 					return null;
-				var arr = new QueueFamilyProperties2Khr [pQueueFamilyPropertyCount];
+				var arr = new QueueFamilyProperties2 [pQueueFamilyPropertyCount];
 				for (int i = 0; i < pQueueFamilyPropertyCount; i++) {
-					arr [i] = new QueueFamilyProperties2Khr (new NativePointer (refpQueueFamilyProperties, (IntPtr)(&((Interop.QueueFamilyProperties2Khr*)ptrpQueueFamilyProperties) [i])));
+					arr [i] = new QueueFamilyProperties2 (new NativePointer (refpQueueFamilyProperties, (IntPtr)(&((Interop.QueueFamilyProperties2*)ptrpQueueFamilyProperties) [i])));
 				}
 
 				return arr;
 			}
 		}
 
-		public PhysicalDeviceMemoryProperties2Khr GetMemoryProperties2KHR ()
+		public PhysicalDeviceMemoryProperties2 GetMemoryProperties2 ()
 		{
-			PhysicalDeviceMemoryProperties2Khr pMemoryProperties;
+			PhysicalDeviceMemoryProperties2 pMemoryProperties;
 			unsafe {
-				pMemoryProperties = new PhysicalDeviceMemoryProperties2Khr ();
-				Interop.NativeMethods.vkGetPhysicalDeviceMemoryProperties2KHR (this.m, pMemoryProperties != null ? pMemoryProperties.m : (Interop.PhysicalDeviceMemoryProperties2Khr*)default(IntPtr));
+				pMemoryProperties = new PhysicalDeviceMemoryProperties2 ();
+				Interop.NativeMethods.vkGetPhysicalDeviceMemoryProperties2 (this.m, pMemoryProperties != null ? pMemoryProperties.m : (Interop.PhysicalDeviceMemoryProperties2*)default(IntPtr));
 
 				return pMemoryProperties;
 			}
 		}
 
-		public SparseImageFormatProperties2Khr[] GetSparseImageFormatProperties2KHR (PhysicalDeviceSparseImageFormatInfo2Khr pFormatInfo)
+		[Obsolete ("GetMemoryProperties2KHR is deprecated, please use GetMemoryProperties2 instead.")]
+		public PhysicalDeviceMemoryProperties2 GetMemoryProperties2KHR ()
+		{
+			PhysicalDeviceMemoryProperties2 pMemoryProperties;
+			unsafe {
+				pMemoryProperties = new PhysicalDeviceMemoryProperties2 ();
+				Interop.NativeMethods.vkGetPhysicalDeviceMemoryProperties2KHR (this.m, pMemoryProperties != null ? pMemoryProperties.m : (Interop.PhysicalDeviceMemoryProperties2*)default(IntPtr));
+
+				return pMemoryProperties;
+			}
+		}
+
+		public SparseImageFormatProperties2[] GetSparseImageFormatProperties2 (PhysicalDeviceSparseImageFormatInfo2 pFormatInfo)
 		{
 			unsafe {
 				UInt32 pPropertyCount;
-				Interop.NativeMethods.vkGetPhysicalDeviceSparseImageFormatProperties2KHR (this.m, pFormatInfo != null ? pFormatInfo.m : (Interop.PhysicalDeviceSparseImageFormatInfo2Khr*)default(IntPtr), &pPropertyCount, null);
+				Interop.NativeMethods.vkGetPhysicalDeviceSparseImageFormatProperties2 (this.m, pFormatInfo != null ? pFormatInfo.m : (Interop.PhysicalDeviceSparseImageFormatInfo2*)default(IntPtr), &pPropertyCount, null);
 				if (pPropertyCount <= 0)
 					return null;
 
-				int size = Marshal.SizeOf (typeof (Interop.SparseImageFormatProperties2Khr));
+				int size = Marshal.SizeOf (typeof (Interop.SparseImageFormatProperties2));
 				var refpProperties = new NativeReference ((int)(size * pPropertyCount));
 				var ptrpProperties = refpProperties.Handle;
-				Interop.NativeMethods.vkGetPhysicalDeviceSparseImageFormatProperties2KHR (this.m, pFormatInfo != null ? pFormatInfo.m : (Interop.PhysicalDeviceSparseImageFormatInfo2Khr*)default(IntPtr), &pPropertyCount, (Interop.SparseImageFormatProperties2Khr*)ptrpProperties);
+				Interop.NativeMethods.vkGetPhysicalDeviceSparseImageFormatProperties2 (this.m, pFormatInfo != null ? pFormatInfo.m : (Interop.PhysicalDeviceSparseImageFormatInfo2*)default(IntPtr), &pPropertyCount, (Interop.SparseImageFormatProperties2*)ptrpProperties);
 
 				if (pPropertyCount <= 0)
 					return null;
-				var arr = new SparseImageFormatProperties2Khr [pPropertyCount];
+				var arr = new SparseImageFormatProperties2 [pPropertyCount];
 				for (int i = 0; i < pPropertyCount; i++) {
-					arr [i] = new SparseImageFormatProperties2Khr (new NativePointer (refpProperties, (IntPtr)(&((Interop.SparseImageFormatProperties2Khr*)ptrpProperties) [i])));
+					arr [i] = new SparseImageFormatProperties2 (new NativePointer (refpProperties, (IntPtr)(&((Interop.SparseImageFormatProperties2*)ptrpProperties) [i])));
 				}
 
 				return arr;
 			}
 		}
 
-		public ExternalBufferPropertiesKhr GetExternalBufferPropertiesKHR (PhysicalDeviceExternalBufferInfoKhr pExternalBufferInfo)
+		[Obsolete ("GetSparseImageFormatProperties2KHR is deprecated, please use GetSparseImageFormatProperties2 instead.")]
+		public SparseImageFormatProperties2[] GetSparseImageFormatProperties2KHR (PhysicalDeviceSparseImageFormatInfo2 pFormatInfo)
 		{
-			ExternalBufferPropertiesKhr pExternalBufferProperties;
 			unsafe {
-				pExternalBufferProperties = new ExternalBufferPropertiesKhr ();
-				Interop.NativeMethods.vkGetPhysicalDeviceExternalBufferPropertiesKHR (this.m, pExternalBufferInfo != null ? pExternalBufferInfo.m : (Interop.PhysicalDeviceExternalBufferInfoKhr*)default(IntPtr), pExternalBufferProperties != null ? pExternalBufferProperties.m : (Interop.ExternalBufferPropertiesKhr*)default(IntPtr));
+				UInt32 pPropertyCount;
+				Interop.NativeMethods.vkGetPhysicalDeviceSparseImageFormatProperties2KHR (this.m, pFormatInfo != null ? pFormatInfo.m : (Interop.PhysicalDeviceSparseImageFormatInfo2*)default(IntPtr), &pPropertyCount, null);
+				if (pPropertyCount <= 0)
+					return null;
+
+				int size = Marshal.SizeOf (typeof (Interop.SparseImageFormatProperties2));
+				var refpProperties = new NativeReference ((int)(size * pPropertyCount));
+				var ptrpProperties = refpProperties.Handle;
+				Interop.NativeMethods.vkGetPhysicalDeviceSparseImageFormatProperties2KHR (this.m, pFormatInfo != null ? pFormatInfo.m : (Interop.PhysicalDeviceSparseImageFormatInfo2*)default(IntPtr), &pPropertyCount, (Interop.SparseImageFormatProperties2*)ptrpProperties);
+
+				if (pPropertyCount <= 0)
+					return null;
+				var arr = new SparseImageFormatProperties2 [pPropertyCount];
+				for (int i = 0; i < pPropertyCount; i++) {
+					arr [i] = new SparseImageFormatProperties2 (new NativePointer (refpProperties, (IntPtr)(&((Interop.SparseImageFormatProperties2*)ptrpProperties) [i])));
+				}
+
+				return arr;
+			}
+		}
+
+		public ExternalBufferProperties GetExternalBufferProperties (PhysicalDeviceExternalBufferInfo pExternalBufferInfo)
+		{
+			ExternalBufferProperties pExternalBufferProperties;
+			unsafe {
+				pExternalBufferProperties = new ExternalBufferProperties ();
+				Interop.NativeMethods.vkGetPhysicalDeviceExternalBufferProperties (this.m, pExternalBufferInfo != null ? pExternalBufferInfo.m : (Interop.PhysicalDeviceExternalBufferInfo*)default(IntPtr), pExternalBufferProperties != null ? pExternalBufferProperties.m : (Interop.ExternalBufferProperties*)default(IntPtr));
 
 				return pExternalBufferProperties;
 			}
 		}
 
-		public ExternalSemaphorePropertiesKhr GetExternalSemaphorePropertiesKHR (PhysicalDeviceExternalSemaphoreInfoKhr pExternalSemaphoreInfo)
+		[Obsolete ("GetExternalBufferPropertiesKHR is deprecated, please use GetExternalBufferProperties instead.")]
+		public ExternalBufferProperties GetExternalBufferPropertiesKHR (PhysicalDeviceExternalBufferInfo pExternalBufferInfo)
 		{
-			ExternalSemaphorePropertiesKhr pExternalSemaphoreProperties;
+			ExternalBufferProperties pExternalBufferProperties;
 			unsafe {
-				pExternalSemaphoreProperties = new ExternalSemaphorePropertiesKhr ();
-				Interop.NativeMethods.vkGetPhysicalDeviceExternalSemaphorePropertiesKHR (this.m, pExternalSemaphoreInfo != null ? pExternalSemaphoreInfo.m : (Interop.PhysicalDeviceExternalSemaphoreInfoKhr*)default(IntPtr), pExternalSemaphoreProperties != null ? pExternalSemaphoreProperties.m : (Interop.ExternalSemaphorePropertiesKhr*)default(IntPtr));
+				pExternalBufferProperties = new ExternalBufferProperties ();
+				Interop.NativeMethods.vkGetPhysicalDeviceExternalBufferPropertiesKHR (this.m, pExternalBufferInfo != null ? pExternalBufferInfo.m : (Interop.PhysicalDeviceExternalBufferInfo*)default(IntPtr), pExternalBufferProperties != null ? pExternalBufferProperties.m : (Interop.ExternalBufferProperties*)default(IntPtr));
+
+				return pExternalBufferProperties;
+			}
+		}
+
+		public ExternalSemaphoreProperties GetExternalSemaphoreProperties (PhysicalDeviceExternalSemaphoreInfo pExternalSemaphoreInfo)
+		{
+			ExternalSemaphoreProperties pExternalSemaphoreProperties;
+			unsafe {
+				pExternalSemaphoreProperties = new ExternalSemaphoreProperties ();
+				Interop.NativeMethods.vkGetPhysicalDeviceExternalSemaphoreProperties (this.m, pExternalSemaphoreInfo != null ? pExternalSemaphoreInfo.m : (Interop.PhysicalDeviceExternalSemaphoreInfo*)default(IntPtr), pExternalSemaphoreProperties != null ? pExternalSemaphoreProperties.m : (Interop.ExternalSemaphoreProperties*)default(IntPtr));
 
 				return pExternalSemaphoreProperties;
 			}
 		}
 
-		public ExternalFencePropertiesKhr GetExternalFencePropertiesKHR (PhysicalDeviceExternalFenceInfoKhr pExternalFenceInfo)
+		[Obsolete ("GetExternalSemaphorePropertiesKHR is deprecated, please use GetExternalSemaphoreProperties instead.")]
+		public ExternalSemaphoreProperties GetExternalSemaphorePropertiesKHR (PhysicalDeviceExternalSemaphoreInfo pExternalSemaphoreInfo)
 		{
-			ExternalFencePropertiesKhr pExternalFenceProperties;
+			ExternalSemaphoreProperties pExternalSemaphoreProperties;
 			unsafe {
-				pExternalFenceProperties = new ExternalFencePropertiesKhr ();
-				Interop.NativeMethods.vkGetPhysicalDeviceExternalFencePropertiesKHR (this.m, pExternalFenceInfo != null ? pExternalFenceInfo.m : (Interop.PhysicalDeviceExternalFenceInfoKhr*)default(IntPtr), pExternalFenceProperties != null ? pExternalFenceProperties.m : (Interop.ExternalFencePropertiesKhr*)default(IntPtr));
+				pExternalSemaphoreProperties = new ExternalSemaphoreProperties ();
+				Interop.NativeMethods.vkGetPhysicalDeviceExternalSemaphorePropertiesKHR (this.m, pExternalSemaphoreInfo != null ? pExternalSemaphoreInfo.m : (Interop.PhysicalDeviceExternalSemaphoreInfo*)default(IntPtr), pExternalSemaphoreProperties != null ? pExternalSemaphoreProperties.m : (Interop.ExternalSemaphoreProperties*)default(IntPtr));
+
+				return pExternalSemaphoreProperties;
+			}
+		}
+
+		public ExternalFenceProperties GetExternalFenceProperties (PhysicalDeviceExternalFenceInfo pExternalFenceInfo)
+		{
+			ExternalFenceProperties pExternalFenceProperties;
+			unsafe {
+				pExternalFenceProperties = new ExternalFenceProperties ();
+				Interop.NativeMethods.vkGetPhysicalDeviceExternalFenceProperties (this.m, pExternalFenceInfo != null ? pExternalFenceInfo.m : (Interop.PhysicalDeviceExternalFenceInfo*)default(IntPtr), pExternalFenceProperties != null ? pExternalFenceProperties.m : (Interop.ExternalFenceProperties*)default(IntPtr));
+
+				return pExternalFenceProperties;
+			}
+		}
+
+		[Obsolete ("GetExternalFencePropertiesKHR is deprecated, please use GetExternalFenceProperties instead.")]
+		public ExternalFenceProperties GetExternalFencePropertiesKHR (PhysicalDeviceExternalFenceInfo pExternalFenceInfo)
+		{
+			ExternalFenceProperties pExternalFenceProperties;
+			unsafe {
+				pExternalFenceProperties = new ExternalFenceProperties ();
+				Interop.NativeMethods.vkGetPhysicalDeviceExternalFencePropertiesKHR (this.m, pExternalFenceInfo != null ? pExternalFenceInfo.m : (Interop.PhysicalDeviceExternalFenceInfo*)default(IntPtr), pExternalFenceProperties != null ? pExternalFenceProperties.m : (Interop.ExternalFenceProperties*)default(IntPtr));
 
 				return pExternalFenceProperties;
 			}
@@ -819,12 +1033,12 @@ namespace Vulkan
 			}
 		}
 
-		public Rect2D[] GetPresentRectanglesKHX (SurfaceKhr surface)
+		public Rect2D[] GetPresentRectanglesKHR (SurfaceKhr surface)
 		{
 			Result result;
 			unsafe {
 				UInt32 pRectCount;
-				result = Interop.NativeMethods.vkGetPhysicalDevicePresentRectanglesKHX (this.m, surface != null ? surface.m : default(UInt64), &pRectCount, null);
+				result = Interop.NativeMethods.vkGetPhysicalDevicePresentRectanglesKHR (this.m, surface != null ? surface.m : default(UInt64), &pRectCount, null);
 				if (result != Result.Success)
 					throw new ResultException (result);
 				if (pRectCount <= 0)
@@ -833,7 +1047,7 @@ namespace Vulkan
 				int size = Marshal.SizeOf (typeof (Rect2D));
 				var refpRects = new NativeReference ((int)(size * pRectCount));
 				var ptrpRects = refpRects.Handle;
-				result = Interop.NativeMethods.vkGetPhysicalDevicePresentRectanglesKHX (this.m, surface != null ? surface.m : default(UInt64), &pRectCount, (Rect2D*)ptrpRects);
+				result = Interop.NativeMethods.vkGetPhysicalDevicePresentRectanglesKHR (this.m, surface != null ? surface.m : default(UInt64), &pRectCount, (Rect2D*)ptrpRects);
 				if (result != Result.Success)
 					throw new ResultException (result);
 
@@ -896,6 +1110,225 @@ namespace Vulkan
 				var arr = new SurfaceFormat2Khr [pSurfaceFormatCount];
 				for (int i = 0; i < pSurfaceFormatCount; i++) {
 					arr [i] = new SurfaceFormat2Khr (new NativePointer (refpSurfaceFormats, (IntPtr)(&((Interop.SurfaceFormat2Khr*)ptrpSurfaceFormats) [i])));
+				}
+
+				return arr;
+			}
+		}
+
+		public DisplayProperties2Khr[] GetDisplayProperties2KHR ()
+		{
+			Result result;
+			unsafe {
+				UInt32 pPropertyCount;
+				result = Interop.NativeMethods.vkGetPhysicalDeviceDisplayProperties2KHR (this.m, &pPropertyCount, null);
+				if (result != Result.Success)
+					throw new ResultException (result);
+				if (pPropertyCount <= 0)
+					return null;
+
+				int size = Marshal.SizeOf (typeof (Interop.DisplayProperties2Khr));
+				var refpProperties = new NativeReference ((int)(size * pPropertyCount));
+				var ptrpProperties = refpProperties.Handle;
+				result = Interop.NativeMethods.vkGetPhysicalDeviceDisplayProperties2KHR (this.m, &pPropertyCount, (Interop.DisplayProperties2Khr*)ptrpProperties);
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				if (pPropertyCount <= 0)
+					return null;
+				var arr = new DisplayProperties2Khr [pPropertyCount];
+				for (int i = 0; i < pPropertyCount; i++) {
+					arr [i] = new DisplayProperties2Khr (new NativePointer (refpProperties, (IntPtr)(&((Interop.DisplayProperties2Khr*)ptrpProperties) [i])));
+				}
+
+				return arr;
+			}
+		}
+
+		public DisplayPlaneProperties2Khr[] GetDisplayPlaneProperties2KHR ()
+		{
+			Result result;
+			unsafe {
+				UInt32 pPropertyCount;
+				result = Interop.NativeMethods.vkGetPhysicalDeviceDisplayPlaneProperties2KHR (this.m, &pPropertyCount, null);
+				if (result != Result.Success)
+					throw new ResultException (result);
+				if (pPropertyCount <= 0)
+					return null;
+
+				int size = Marshal.SizeOf (typeof (Interop.DisplayPlaneProperties2Khr));
+				var refpProperties = new NativeReference ((int)(size * pPropertyCount));
+				var ptrpProperties = refpProperties.Handle;
+				result = Interop.NativeMethods.vkGetPhysicalDeviceDisplayPlaneProperties2KHR (this.m, &pPropertyCount, (Interop.DisplayPlaneProperties2Khr*)ptrpProperties);
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				if (pPropertyCount <= 0)
+					return null;
+				var arr = new DisplayPlaneProperties2Khr [pPropertyCount];
+				for (int i = 0; i < pPropertyCount; i++) {
+					arr [i] = new DisplayPlaneProperties2Khr (new NativePointer (refpProperties, (IntPtr)(&((Interop.DisplayPlaneProperties2Khr*)ptrpProperties) [i])));
+				}
+
+				return arr;
+			}
+		}
+
+		public DisplayModeProperties2Khr[] GetDisplayModeProperties2KHR (DisplayKhr display)
+		{
+			Result result;
+			unsafe {
+				UInt32 pPropertyCount;
+				result = Interop.NativeMethods.vkGetDisplayModeProperties2KHR (this.m, display != null ? display.m : default(UInt64), &pPropertyCount, null);
+				if (result != Result.Success)
+					throw new ResultException (result);
+				if (pPropertyCount <= 0)
+					return null;
+
+				int size = Marshal.SizeOf (typeof (Interop.DisplayModeProperties2Khr));
+				var refpProperties = new NativeReference ((int)(size * pPropertyCount));
+				var ptrpProperties = refpProperties.Handle;
+				result = Interop.NativeMethods.vkGetDisplayModeProperties2KHR (this.m, display != null ? display.m : default(UInt64), &pPropertyCount, (Interop.DisplayModeProperties2Khr*)ptrpProperties);
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				if (pPropertyCount <= 0)
+					return null;
+				var arr = new DisplayModeProperties2Khr [pPropertyCount];
+				for (int i = 0; i < pPropertyCount; i++) {
+					arr [i] = new DisplayModeProperties2Khr (new NativePointer (refpProperties, (IntPtr)(&((Interop.DisplayModeProperties2Khr*)ptrpProperties) [i])));
+				}
+
+				return arr;
+			}
+		}
+
+		public DisplayPlaneCapabilities2Khr GetDisplayPlaneCapabilities2KHR (DisplayPlaneInfo2Khr pDisplayPlaneInfo)
+		{
+			Result result;
+			DisplayPlaneCapabilities2Khr pCapabilities;
+			unsafe {
+				pCapabilities = new DisplayPlaneCapabilities2Khr ();
+				result = Interop.NativeMethods.vkGetDisplayPlaneCapabilities2KHR (this.m, pDisplayPlaneInfo != null ? pDisplayPlaneInfo.m : (Interop.DisplayPlaneInfo2Khr*)default(IntPtr), pCapabilities != null ? pCapabilities.m : (Interop.DisplayPlaneCapabilities2Khr*)default(IntPtr));
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pCapabilities;
+			}
+		}
+
+		public TimeDomainExt[] GetCalibrateableTimeDomainsEXT ()
+		{
+			Result result;
+			unsafe {
+				UInt32 pTimeDomainCount;
+				result = Interop.NativeMethods.vkGetPhysicalDeviceCalibrateableTimeDomainsEXT (this.m, &pTimeDomainCount, null);
+				if (result != Result.Success)
+					throw new ResultException (result);
+				if (pTimeDomainCount <= 0)
+					return null;
+
+				int size = 4;
+				var refpTimeDomains = new NativeReference ((int)(size * pTimeDomainCount));
+				var ptrpTimeDomains = refpTimeDomains.Handle;
+				result = Interop.NativeMethods.vkGetPhysicalDeviceCalibrateableTimeDomainsEXT (this.m, &pTimeDomainCount, (TimeDomainExt*)ptrpTimeDomains);
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				if (pTimeDomainCount <= 0)
+					return null;
+				var arr = new TimeDomainExt [pTimeDomainCount];
+				for (int i = 0; i < pTimeDomainCount; i++) {
+					arr [i] = new TimeDomainExt ();
+					arr [i] = ((TimeDomainExt*)ptrpTimeDomains) [i];
+				}
+
+				return arr;
+			}
+		}
+
+		public CooperativeMatrixPropertiesNv[] GetCooperativeMatrixPropertiesNV ()
+		{
+			Result result;
+			unsafe {
+				UInt32 pPropertyCount;
+				result = Interop.NativeMethods.vkGetPhysicalDeviceCooperativeMatrixPropertiesNV (this.m, &pPropertyCount, null);
+				if (result != Result.Success)
+					throw new ResultException (result);
+				if (pPropertyCount <= 0)
+					return null;
+
+				int size = Marshal.SizeOf (typeof (Interop.CooperativeMatrixPropertiesNv));
+				var refpProperties = new NativeReference ((int)(size * pPropertyCount));
+				var ptrpProperties = refpProperties.Handle;
+				result = Interop.NativeMethods.vkGetPhysicalDeviceCooperativeMatrixPropertiesNV (this.m, &pPropertyCount, (Interop.CooperativeMatrixPropertiesNv*)ptrpProperties);
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				if (pPropertyCount <= 0)
+					return null;
+				var arr = new CooperativeMatrixPropertiesNv [pPropertyCount];
+				for (int i = 0; i < pPropertyCount; i++) {
+					arr [i] = new CooperativeMatrixPropertiesNv (new NativePointer (refpProperties, (IntPtr)(&((Interop.CooperativeMatrixPropertiesNv*)ptrpProperties) [i])));
+				}
+
+				return arr;
+			}
+		}
+
+		public PresentModeKhr[] GetSurfacePresentModes2EXT (PhysicalDeviceSurfaceInfo2Khr pSurfaceInfo)
+		{
+			Result result;
+			unsafe {
+				UInt32 pPresentModeCount;
+				result = Interop.NativeMethods.vkGetPhysicalDeviceSurfacePresentModes2EXT (this.m, pSurfaceInfo != null ? pSurfaceInfo.m : (Interop.PhysicalDeviceSurfaceInfo2Khr*)default(IntPtr), &pPresentModeCount, null);
+				if (result != Result.Success)
+					throw new ResultException (result);
+				if (pPresentModeCount <= 0)
+					return null;
+
+				int size = 4;
+				var refpPresentModes = new NativeReference ((int)(size * pPresentModeCount));
+				var ptrpPresentModes = refpPresentModes.Handle;
+				result = Interop.NativeMethods.vkGetPhysicalDeviceSurfacePresentModes2EXT (this.m, pSurfaceInfo != null ? pSurfaceInfo.m : (Interop.PhysicalDeviceSurfaceInfo2Khr*)default(IntPtr), &pPresentModeCount, (PresentModeKhr*)ptrpPresentModes);
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				if (pPresentModeCount <= 0)
+					return null;
+				var arr = new PresentModeKhr [pPresentModeCount];
+				for (int i = 0; i < pPresentModeCount; i++) {
+					arr [i] = new PresentModeKhr ();
+					arr [i] = ((PresentModeKhr*)ptrpPresentModes) [i];
+				}
+
+				return arr;
+			}
+		}
+
+		public FramebufferMixedSamplesCombinationNv[] GetSupportedFramebufferMixedSamplesCombinationsNV ()
+		{
+			Result result;
+			unsafe {
+				UInt32 pCombinationCount;
+				result = Interop.NativeMethods.vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV (this.m, &pCombinationCount, null);
+				if (result != Result.Success)
+					throw new ResultException (result);
+				if (pCombinationCount <= 0)
+					return null;
+
+				int size = Marshal.SizeOf (typeof (Interop.FramebufferMixedSamplesCombinationNv));
+				var refpCombinations = new NativeReference ((int)(size * pCombinationCount));
+				var ptrpCombinations = refpCombinations.Handle;
+				result = Interop.NativeMethods.vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV (this.m, &pCombinationCount, (Interop.FramebufferMixedSamplesCombinationNv*)ptrpCombinations);
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				if (pCombinationCount <= 0)
+					return null;
+				var arr = new FramebufferMixedSamplesCombinationNv [pCombinationCount];
+				for (int i = 0; i < pCombinationCount; i++) {
+					arr [i] = new FramebufferMixedSamplesCombinationNv (new NativePointer (refpCombinations, (IntPtr)(&((Interop.FramebufferMixedSamplesCombinationNv*)ptrpCombinations) [i])));
 				}
 
 				return arr;
@@ -1330,6 +1763,13 @@ namespace Vulkan
 					throw new ResultException (result);
 
 				return pData;
+			}
+		}
+
+		public void ResetQueryPoolEXT (QueryPool queryPool, UInt32 firstQuery, UInt32 queryCount)
+		{
+			unsafe {
+				Interop.NativeMethods.vkResetQueryPoolEXT (this.m, queryPool != null ? queryPool.m : default(UInt64), firstQuery, queryCount);
 			}
 		}
 
@@ -2164,6 +2604,14 @@ namespace Vulkan
 			}
 		}
 
+		public void TrimCommandPool (CommandPool commandPool, UInt32 flags = 0)
+		{
+			unsafe {
+				Interop.NativeMethods.vkTrimCommandPool (this.m, commandPool != null ? commandPool.m : default(UInt64), flags);
+			}
+		}
+
+		[Obsolete ("TrimCommandPoolKHR is deprecated, please use TrimCommandPool instead.")]
 		public void TrimCommandPoolKHR (CommandPool commandPool, UInt32 flags = 0)
 		{
 			unsafe {
@@ -2185,7 +2633,7 @@ namespace Vulkan
 			}
 		}
 
-		public MemoryWin32HandlePropertiesKhr GetMemoryWin32HandlePropertiesKHR (ExternalMemoryHandleTypeFlagsKhr handleType, IntPtr handle)
+		public MemoryWin32HandlePropertiesKhr GetMemoryWin32HandlePropertiesKHR (ExternalMemoryHandleTypeFlags handleType, IntPtr handle)
 		{
 			Result result;
 			MemoryWin32HandlePropertiesKhr pMemoryWin32HandleProperties;
@@ -2213,7 +2661,7 @@ namespace Vulkan
 			}
 		}
 
-		public MemoryFdPropertiesKhr GetMemoryFdPropertiesKHR (ExternalMemoryHandleTypeFlagsKhr handleType, int fd)
+		public MemoryFdPropertiesKhr GetMemoryFdPropertiesKHR (ExternalMemoryHandleTypeFlags handleType, int fd)
 		{
 			Result result;
 			MemoryFdPropertiesKhr pMemoryFdProperties;
@@ -2361,76 +2809,144 @@ namespace Vulkan
 			}
 		}
 
-		public PeerMemoryFeatureFlagsKhx GetGroupPeerMemoryFeaturesKHX (UInt32 heapIndex, UInt32 localDeviceIndex, UInt32 remoteDeviceIndex)
+		public PeerMemoryFeatureFlags GetGroupPeerMemoryFeatures (UInt32 heapIndex, UInt32 localDeviceIndex, UInt32 remoteDeviceIndex)
 		{
-			PeerMemoryFeatureFlagsKhx pPeerMemoryFeatures;
+			PeerMemoryFeatureFlags pPeerMemoryFeatures;
 			unsafe {
-				pPeerMemoryFeatures = new PeerMemoryFeatureFlagsKhx ();
-				Interop.NativeMethods.vkGetDeviceGroupPeerMemoryFeaturesKHX (this.m, heapIndex, localDeviceIndex, remoteDeviceIndex, &pPeerMemoryFeatures);
+				pPeerMemoryFeatures = new PeerMemoryFeatureFlags ();
+				Interop.NativeMethods.vkGetDeviceGroupPeerMemoryFeatures (this.m, heapIndex, localDeviceIndex, remoteDeviceIndex, &pPeerMemoryFeatures);
 
 				return pPeerMemoryFeatures;
 			}
 		}
 
-		public void BindBufferMemory2KHR (BindBufferMemoryInfoKhr[] pBindInfos)
+		[Obsolete ("GetGroupPeerMemoryFeaturesKHR is deprecated, please use GetGroupPeerMemoryFeatures instead.")]
+		public PeerMemoryFeatureFlags GetGroupPeerMemoryFeaturesKHR (UInt32 heapIndex, UInt32 localDeviceIndex, UInt32 remoteDeviceIndex)
+		{
+			PeerMemoryFeatureFlags pPeerMemoryFeatures;
+			unsafe {
+				pPeerMemoryFeatures = new PeerMemoryFeatureFlags ();
+				Interop.NativeMethods.vkGetDeviceGroupPeerMemoryFeaturesKHR (this.m, heapIndex, localDeviceIndex, remoteDeviceIndex, &pPeerMemoryFeatures);
+
+				return pPeerMemoryFeatures;
+			}
+		}
+
+		public void BindBufferMemory2 (BindBufferMemoryInfo[] pBindInfos)
 		{
 			Result result;
 			unsafe {
-				var arraypBindInfos = pBindInfos == null ? IntPtr.Zero : Marshal.AllocHGlobal (pBindInfos.Length*sizeof (Interop.BindBufferMemoryInfoKhr));
+				var arraypBindInfos = pBindInfos == null ? IntPtr.Zero : Marshal.AllocHGlobal (pBindInfos.Length*sizeof (Interop.BindBufferMemoryInfo));
 				var lenpBindInfos = pBindInfos == null ? 0 : pBindInfos.Length;
 				if (pBindInfos != null)
 					for (int i = 0; i < pBindInfos.Length; i++)
-						((Interop.BindBufferMemoryInfoKhr*)arraypBindInfos) [i] = *(pBindInfos [i].m);
-				result = Interop.NativeMethods.vkBindBufferMemory2KHR (this.m, (uint)lenpBindInfos, (Interop.BindBufferMemoryInfoKhr*)arraypBindInfos);
+						((Interop.BindBufferMemoryInfo*)arraypBindInfos) [i] = *(pBindInfos [i].m);
+				result = Interop.NativeMethods.vkBindBufferMemory2 (this.m, (uint)lenpBindInfos, (Interop.BindBufferMemoryInfo*)arraypBindInfos);
 				Marshal.FreeHGlobal (arraypBindInfos);
 				if (result != Result.Success)
 					throw new ResultException (result);
 			}
 		}
 
-		public void BindBufferMemory2KHR (BindBufferMemoryInfoKhr pBindInfo)
+		public void BindBufferMemory2 (BindBufferMemoryInfo pBindInfo)
 		{
 			Result result;
 			unsafe {
-				result = Interop.NativeMethods.vkBindBufferMemory2KHR (this.m, (UInt32)(pBindInfo != null ? 1 : 0), pBindInfo != null ? pBindInfo.m : (Interop.BindBufferMemoryInfoKhr*)default(IntPtr));
+				result = Interop.NativeMethods.vkBindBufferMemory2 (this.m, (UInt32)(pBindInfo != null ? 1 : 0), pBindInfo != null ? pBindInfo.m : (Interop.BindBufferMemoryInfo*)default(IntPtr));
 				if (result != Result.Success)
 					throw new ResultException (result);
 			}
 		}
 
-		public void BindImageMemory2KHR (BindImageMemoryInfoKhr[] pBindInfos)
+		[Obsolete ("BindBufferMemory2KHR is deprecated, please use BindBufferMemory2 instead.")]
+		public void BindBufferMemory2KHR (BindBufferMemoryInfo[] pBindInfos)
 		{
 			Result result;
 			unsafe {
-				var arraypBindInfos = pBindInfos == null ? IntPtr.Zero : Marshal.AllocHGlobal (pBindInfos.Length*sizeof (Interop.BindImageMemoryInfoKhr));
+				var arraypBindInfos = pBindInfos == null ? IntPtr.Zero : Marshal.AllocHGlobal (pBindInfos.Length*sizeof (Interop.BindBufferMemoryInfo));
 				var lenpBindInfos = pBindInfos == null ? 0 : pBindInfos.Length;
 				if (pBindInfos != null)
 					for (int i = 0; i < pBindInfos.Length; i++)
-						((Interop.BindImageMemoryInfoKhr*)arraypBindInfos) [i] = *(pBindInfos [i].m);
-				result = Interop.NativeMethods.vkBindImageMemory2KHR (this.m, (uint)lenpBindInfos, (Interop.BindImageMemoryInfoKhr*)arraypBindInfos);
+						((Interop.BindBufferMemoryInfo*)arraypBindInfos) [i] = *(pBindInfos [i].m);
+				result = Interop.NativeMethods.vkBindBufferMemory2KHR (this.m, (uint)lenpBindInfos, (Interop.BindBufferMemoryInfo*)arraypBindInfos);
 				Marshal.FreeHGlobal (arraypBindInfos);
 				if (result != Result.Success)
 					throw new ResultException (result);
 			}
 		}
 
-		public void BindImageMemory2KHR (BindImageMemoryInfoKhr pBindInfo)
+		[Obsolete ("BindBufferMemory2KHR is deprecated, please use BindBufferMemory2 instead.")]
+		public void BindBufferMemory2KHR (BindBufferMemoryInfo pBindInfo)
 		{
 			Result result;
 			unsafe {
-				result = Interop.NativeMethods.vkBindImageMemory2KHR (this.m, (UInt32)(pBindInfo != null ? 1 : 0), pBindInfo != null ? pBindInfo.m : (Interop.BindImageMemoryInfoKhr*)default(IntPtr));
+				result = Interop.NativeMethods.vkBindBufferMemory2KHR (this.m, (UInt32)(pBindInfo != null ? 1 : 0), pBindInfo != null ? pBindInfo.m : (Interop.BindBufferMemoryInfo*)default(IntPtr));
 				if (result != Result.Success)
 					throw new ResultException (result);
 			}
 		}
 
-		public DeviceGroupPresentCapabilitiesKhx GetGroupPresentCapabilitiesKHX ()
+		public void BindImageMemory2 (BindImageMemoryInfo[] pBindInfos)
 		{
 			Result result;
-			DeviceGroupPresentCapabilitiesKhx pDeviceGroupPresentCapabilities;
 			unsafe {
-				pDeviceGroupPresentCapabilities = new DeviceGroupPresentCapabilitiesKhx ();
-				result = Interop.NativeMethods.vkGetDeviceGroupPresentCapabilitiesKHX (this.m, pDeviceGroupPresentCapabilities != null ? pDeviceGroupPresentCapabilities.m : (Interop.DeviceGroupPresentCapabilitiesKhx*)default(IntPtr));
+				var arraypBindInfos = pBindInfos == null ? IntPtr.Zero : Marshal.AllocHGlobal (pBindInfos.Length*sizeof (Interop.BindImageMemoryInfo));
+				var lenpBindInfos = pBindInfos == null ? 0 : pBindInfos.Length;
+				if (pBindInfos != null)
+					for (int i = 0; i < pBindInfos.Length; i++)
+						((Interop.BindImageMemoryInfo*)arraypBindInfos) [i] = *(pBindInfos [i].m);
+				result = Interop.NativeMethods.vkBindImageMemory2 (this.m, (uint)lenpBindInfos, (Interop.BindImageMemoryInfo*)arraypBindInfos);
+				Marshal.FreeHGlobal (arraypBindInfos);
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		public void BindImageMemory2 (BindImageMemoryInfo pBindInfo)
+		{
+			Result result;
+			unsafe {
+				result = Interop.NativeMethods.vkBindImageMemory2 (this.m, (UInt32)(pBindInfo != null ? 1 : 0), pBindInfo != null ? pBindInfo.m : (Interop.BindImageMemoryInfo*)default(IntPtr));
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		[Obsolete ("BindImageMemory2KHR is deprecated, please use BindImageMemory2 instead.")]
+		public void BindImageMemory2KHR (BindImageMemoryInfo[] pBindInfos)
+		{
+			Result result;
+			unsafe {
+				var arraypBindInfos = pBindInfos == null ? IntPtr.Zero : Marshal.AllocHGlobal (pBindInfos.Length*sizeof (Interop.BindImageMemoryInfo));
+				var lenpBindInfos = pBindInfos == null ? 0 : pBindInfos.Length;
+				if (pBindInfos != null)
+					for (int i = 0; i < pBindInfos.Length; i++)
+						((Interop.BindImageMemoryInfo*)arraypBindInfos) [i] = *(pBindInfos [i].m);
+				result = Interop.NativeMethods.vkBindImageMemory2KHR (this.m, (uint)lenpBindInfos, (Interop.BindImageMemoryInfo*)arraypBindInfos);
+				Marshal.FreeHGlobal (arraypBindInfos);
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		[Obsolete ("BindImageMemory2KHR is deprecated, please use BindImageMemory2 instead.")]
+		public void BindImageMemory2KHR (BindImageMemoryInfo pBindInfo)
+		{
+			Result result;
+			unsafe {
+				result = Interop.NativeMethods.vkBindImageMemory2KHR (this.m, (UInt32)(pBindInfo != null ? 1 : 0), pBindInfo != null ? pBindInfo.m : (Interop.BindImageMemoryInfo*)default(IntPtr));
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		public DeviceGroupPresentCapabilitiesKhr GetGroupPresentCapabilitiesKHR ()
+		{
+			Result result;
+			DeviceGroupPresentCapabilitiesKhr pDeviceGroupPresentCapabilities;
+			unsafe {
+				pDeviceGroupPresentCapabilities = new DeviceGroupPresentCapabilitiesKhr ();
+				result = Interop.NativeMethods.vkGetDeviceGroupPresentCapabilitiesKHR (this.m, pDeviceGroupPresentCapabilities != null ? pDeviceGroupPresentCapabilities.m : (Interop.DeviceGroupPresentCapabilitiesKhr*)default(IntPtr));
 				if (result != Result.Success)
 					throw new ResultException (result);
 
@@ -2438,13 +2954,13 @@ namespace Vulkan
 			}
 		}
 
-		public DeviceGroupPresentModeFlagsKhx GetGroupSurfacePresentModesKHX (SurfaceKhr surface)
+		public DeviceGroupPresentModeFlagsKhr GetGroupSurfacePresentModesKHR (SurfaceKhr surface)
 		{
 			Result result;
-			DeviceGroupPresentModeFlagsKhx pModes;
+			DeviceGroupPresentModeFlagsKhr pModes;
 			unsafe {
-				pModes = new DeviceGroupPresentModeFlagsKhx ();
-				result = Interop.NativeMethods.vkGetDeviceGroupSurfacePresentModesKHX (this.m, surface != null ? surface.m : default(UInt64), &pModes);
+				pModes = new DeviceGroupPresentModeFlagsKhr ();
+				result = Interop.NativeMethods.vkGetDeviceGroupSurfacePresentModesKHR (this.m, surface != null ? surface.m : default(UInt64), &pModes);
 				if (result != Result.Success)
 					throw new ResultException (result);
 
@@ -2452,13 +2968,13 @@ namespace Vulkan
 			}
 		}
 
-		public UInt32 AcquireNextImage2KHX (AcquireNextImageInfoKhx pAcquireInfo)
+		public UInt32 AcquireNextImage2KHR (AcquireNextImageInfoKhr pAcquireInfo)
 		{
 			Result result;
 			UInt32 pImageIndex;
 			unsafe {
 				pImageIndex = new UInt32 ();
-				result = Interop.NativeMethods.vkAcquireNextImage2KHX (this.m, pAcquireInfo != null ? pAcquireInfo.m : (Interop.AcquireNextImageInfoKhx*)default(IntPtr), &pImageIndex);
+				result = Interop.NativeMethods.vkAcquireNextImage2KHR (this.m, pAcquireInfo != null ? pAcquireInfo.m : (Interop.AcquireNextImageInfoKhr*)default(IntPtr), &pImageIndex);
 				if (result != Result.Success)
 					throw new ResultException (result);
 
@@ -2466,15 +2982,15 @@ namespace Vulkan
 			}
 		}
 
-		public DescriptorUpdateTemplateKhr CreateDescriptorUpdateTemplateKHR (DescriptorUpdateTemplateCreateInfoKhr pCreateInfo, AllocationCallbacks pAllocator = null)
+		public DescriptorUpdateTemplate CreateDescriptorUpdateTemplate (DescriptorUpdateTemplateCreateInfo pCreateInfo, AllocationCallbacks pAllocator = null)
 		{
 			Result result;
-			DescriptorUpdateTemplateKhr pDescriptorUpdateTemplate;
+			DescriptorUpdateTemplate pDescriptorUpdateTemplate;
 			unsafe {
-				pDescriptorUpdateTemplate = new DescriptorUpdateTemplateKhr ();
+				pDescriptorUpdateTemplate = new DescriptorUpdateTemplate ();
 
 				fixed (UInt64* ptrpDescriptorUpdateTemplate = &pDescriptorUpdateTemplate.m) {
-					result = Interop.NativeMethods.vkCreateDescriptorUpdateTemplateKHR (this.m, pCreateInfo != null ? pCreateInfo.m : (Interop.DescriptorUpdateTemplateCreateInfoKhr*)default(IntPtr), pAllocator != null ? pAllocator.m : null, ptrpDescriptorUpdateTemplate);
+					result = Interop.NativeMethods.vkCreateDescriptorUpdateTemplate (this.m, pCreateInfo != null ? pCreateInfo.m : (Interop.DescriptorUpdateTemplateCreateInfo*)default(IntPtr), pAllocator != null ? pAllocator.m : null, ptrpDescriptorUpdateTemplate);
 				}
 				if (result != Result.Success)
 					throw new ResultException (result);
@@ -2483,14 +2999,48 @@ namespace Vulkan
 			}
 		}
 
-		public void DestroyDescriptorUpdateTemplateKHR (DescriptorUpdateTemplateKhr descriptorUpdateTemplate = null, AllocationCallbacks pAllocator = null)
+		[Obsolete ("CreateDescriptorUpdateTemplateKHR is deprecated, please use CreateDescriptorUpdateTemplate instead.")]
+		public DescriptorUpdateTemplate CreateDescriptorUpdateTemplateKHR (DescriptorUpdateTemplateCreateInfo pCreateInfo, AllocationCallbacks pAllocator = null)
+		{
+			Result result;
+			DescriptorUpdateTemplate pDescriptorUpdateTemplate;
+			unsafe {
+				pDescriptorUpdateTemplate = new DescriptorUpdateTemplate ();
+
+				fixed (UInt64* ptrpDescriptorUpdateTemplate = &pDescriptorUpdateTemplate.m) {
+					result = Interop.NativeMethods.vkCreateDescriptorUpdateTemplateKHR (this.m, pCreateInfo != null ? pCreateInfo.m : (Interop.DescriptorUpdateTemplateCreateInfo*)default(IntPtr), pAllocator != null ? pAllocator.m : null, ptrpDescriptorUpdateTemplate);
+				}
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pDescriptorUpdateTemplate;
+			}
+		}
+
+		public void DestroyDescriptorUpdateTemplate (DescriptorUpdateTemplate descriptorUpdateTemplate = null, AllocationCallbacks pAllocator = null)
+		{
+			unsafe {
+				Interop.NativeMethods.vkDestroyDescriptorUpdateTemplate (this.m, descriptorUpdateTemplate != null ? descriptorUpdateTemplate.m : default(UInt64), pAllocator != null ? pAllocator.m : null);
+			}
+		}
+
+		[Obsolete ("DestroyDescriptorUpdateTemplateKHR is deprecated, please use DestroyDescriptorUpdateTemplate instead.")]
+		public void DestroyDescriptorUpdateTemplateKHR (DescriptorUpdateTemplate descriptorUpdateTemplate = null, AllocationCallbacks pAllocator = null)
 		{
 			unsafe {
 				Interop.NativeMethods.vkDestroyDescriptorUpdateTemplateKHR (this.m, descriptorUpdateTemplate != null ? descriptorUpdateTemplate.m : default(UInt64), pAllocator != null ? pAllocator.m : null);
 			}
 		}
 
-		public void UpdateDescriptorSetWithTemplateKHR (DescriptorSet descriptorSet, DescriptorUpdateTemplateKhr descriptorUpdateTemplate, IntPtr pData)
+		public void UpdateDescriptorSetWithTemplate (DescriptorSet descriptorSet, DescriptorUpdateTemplate descriptorUpdateTemplate, IntPtr pData)
+		{
+			unsafe {
+				Interop.NativeMethods.vkUpdateDescriptorSetWithTemplate (this.m, descriptorSet != null ? descriptorSet.m : default(UInt64), descriptorUpdateTemplate != null ? descriptorUpdateTemplate.m : default(UInt64), pData);
+			}
+		}
+
+		[Obsolete ("UpdateDescriptorSetWithTemplateKHR is deprecated, please use UpdateDescriptorSetWithTemplate instead.")]
+		public void UpdateDescriptorSetWithTemplateKHR (DescriptorSet descriptorSet, DescriptorUpdateTemplate descriptorUpdateTemplate, IntPtr pData)
 		{
 			unsafe {
 				Interop.NativeMethods.vkUpdateDescriptorSetWithTemplateKHR (this.m, descriptorSet != null ? descriptorSet.m : default(UInt64), descriptorUpdateTemplate != null ? descriptorUpdateTemplate.m : default(UInt64), pData);
@@ -2578,61 +3128,110 @@ namespace Vulkan
 			}
 		}
 
-		public MemoryRequirements2Khr GetBufferMemoryRequirements2KHR (BufferMemoryRequirementsInfo2Khr pInfo)
+		public MemoryRequirements2 GetBufferMemoryRequirements2 (BufferMemoryRequirementsInfo2 pInfo)
 		{
-			MemoryRequirements2Khr pMemoryRequirements;
+			MemoryRequirements2 pMemoryRequirements;
 			unsafe {
-				pMemoryRequirements = new MemoryRequirements2Khr ();
-				Interop.NativeMethods.vkGetBufferMemoryRequirements2KHR (this.m, pInfo != null ? pInfo.m : (Interop.BufferMemoryRequirementsInfo2Khr*)default(IntPtr), pMemoryRequirements != null ? pMemoryRequirements.m : (Interop.MemoryRequirements2Khr*)default(IntPtr));
+				pMemoryRequirements = new MemoryRequirements2 ();
+				Interop.NativeMethods.vkGetBufferMemoryRequirements2 (this.m, pInfo != null ? pInfo.m : (Interop.BufferMemoryRequirementsInfo2*)default(IntPtr), pMemoryRequirements != null ? pMemoryRequirements.m : (Interop.MemoryRequirements2*)default(IntPtr));
 
 				return pMemoryRequirements;
 			}
 		}
 
-		public MemoryRequirements2Khr GetImageMemoryRequirements2KHR (ImageMemoryRequirementsInfo2Khr pInfo)
+		[Obsolete ("GetBufferMemoryRequirements2KHR is deprecated, please use GetBufferMemoryRequirements2 instead.")]
+		public MemoryRequirements2 GetBufferMemoryRequirements2KHR (BufferMemoryRequirementsInfo2 pInfo)
 		{
-			MemoryRequirements2Khr pMemoryRequirements;
+			MemoryRequirements2 pMemoryRequirements;
 			unsafe {
-				pMemoryRequirements = new MemoryRequirements2Khr ();
-				Interop.NativeMethods.vkGetImageMemoryRequirements2KHR (this.m, pInfo != null ? pInfo.m : (Interop.ImageMemoryRequirementsInfo2Khr*)default(IntPtr), pMemoryRequirements != null ? pMemoryRequirements.m : (Interop.MemoryRequirements2Khr*)default(IntPtr));
+				pMemoryRequirements = new MemoryRequirements2 ();
+				Interop.NativeMethods.vkGetBufferMemoryRequirements2KHR (this.m, pInfo != null ? pInfo.m : (Interop.BufferMemoryRequirementsInfo2*)default(IntPtr), pMemoryRequirements != null ? pMemoryRequirements.m : (Interop.MemoryRequirements2*)default(IntPtr));
 
 				return pMemoryRequirements;
 			}
 		}
 
-		public SparseImageMemoryRequirements2Khr[] GetImageSparseMemoryRequirements2KHR (ImageSparseMemoryRequirementsInfo2Khr pInfo)
+		public MemoryRequirements2 GetImageMemoryRequirements2 (ImageMemoryRequirementsInfo2 pInfo)
+		{
+			MemoryRequirements2 pMemoryRequirements;
+			unsafe {
+				pMemoryRequirements = new MemoryRequirements2 ();
+				Interop.NativeMethods.vkGetImageMemoryRequirements2 (this.m, pInfo != null ? pInfo.m : (Interop.ImageMemoryRequirementsInfo2*)default(IntPtr), pMemoryRequirements != null ? pMemoryRequirements.m : (Interop.MemoryRequirements2*)default(IntPtr));
+
+				return pMemoryRequirements;
+			}
+		}
+
+		[Obsolete ("GetImageMemoryRequirements2KHR is deprecated, please use GetImageMemoryRequirements2 instead.")]
+		public MemoryRequirements2 GetImageMemoryRequirements2KHR (ImageMemoryRequirementsInfo2 pInfo)
+		{
+			MemoryRequirements2 pMemoryRequirements;
+			unsafe {
+				pMemoryRequirements = new MemoryRequirements2 ();
+				Interop.NativeMethods.vkGetImageMemoryRequirements2KHR (this.m, pInfo != null ? pInfo.m : (Interop.ImageMemoryRequirementsInfo2*)default(IntPtr), pMemoryRequirements != null ? pMemoryRequirements.m : (Interop.MemoryRequirements2*)default(IntPtr));
+
+				return pMemoryRequirements;
+			}
+		}
+
+		public SparseImageMemoryRequirements2[] GetImageSparseMemoryRequirements2 (ImageSparseMemoryRequirementsInfo2 pInfo)
 		{
 			unsafe {
 				UInt32 pSparseMemoryRequirementCount;
-				Interop.NativeMethods.vkGetImageSparseMemoryRequirements2KHR (this.m, pInfo != null ? pInfo.m : (Interop.ImageSparseMemoryRequirementsInfo2Khr*)default(IntPtr), &pSparseMemoryRequirementCount, null);
+				Interop.NativeMethods.vkGetImageSparseMemoryRequirements2 (this.m, pInfo != null ? pInfo.m : (Interop.ImageSparseMemoryRequirementsInfo2*)default(IntPtr), &pSparseMemoryRequirementCount, null);
 				if (pSparseMemoryRequirementCount <= 0)
 					return null;
 
-				int size = Marshal.SizeOf (typeof (Interop.SparseImageMemoryRequirements2Khr));
+				int size = Marshal.SizeOf (typeof (Interop.SparseImageMemoryRequirements2));
 				var refpSparseMemoryRequirements = new NativeReference ((int)(size * pSparseMemoryRequirementCount));
 				var ptrpSparseMemoryRequirements = refpSparseMemoryRequirements.Handle;
-				Interop.NativeMethods.vkGetImageSparseMemoryRequirements2KHR (this.m, pInfo != null ? pInfo.m : (Interop.ImageSparseMemoryRequirementsInfo2Khr*)default(IntPtr), &pSparseMemoryRequirementCount, (Interop.SparseImageMemoryRequirements2Khr*)ptrpSparseMemoryRequirements);
+				Interop.NativeMethods.vkGetImageSparseMemoryRequirements2 (this.m, pInfo != null ? pInfo.m : (Interop.ImageSparseMemoryRequirementsInfo2*)default(IntPtr), &pSparseMemoryRequirementCount, (Interop.SparseImageMemoryRequirements2*)ptrpSparseMemoryRequirements);
 
 				if (pSparseMemoryRequirementCount <= 0)
 					return null;
-				var arr = new SparseImageMemoryRequirements2Khr [pSparseMemoryRequirementCount];
+				var arr = new SparseImageMemoryRequirements2 [pSparseMemoryRequirementCount];
 				for (int i = 0; i < pSparseMemoryRequirementCount; i++) {
-					arr [i] = new SparseImageMemoryRequirements2Khr (new NativePointer (refpSparseMemoryRequirements, (IntPtr)(&((Interop.SparseImageMemoryRequirements2Khr*)ptrpSparseMemoryRequirements) [i])));
+					arr [i] = new SparseImageMemoryRequirements2 (new NativePointer (refpSparseMemoryRequirements, (IntPtr)(&((Interop.SparseImageMemoryRequirements2*)ptrpSparseMemoryRequirements) [i])));
 				}
 
 				return arr;
 			}
 		}
 
-		public SamplerYcbcrConversionKhr CreateSamplerYcbcrConversionKHR (SamplerYcbcrConversionCreateInfoKhr pCreateInfo, AllocationCallbacks pAllocator = null)
+		[Obsolete ("GetImageSparseMemoryRequirements2KHR is deprecated, please use GetImageSparseMemoryRequirements2 instead.")]
+		public SparseImageMemoryRequirements2[] GetImageSparseMemoryRequirements2KHR (ImageSparseMemoryRequirementsInfo2 pInfo)
+		{
+			unsafe {
+				UInt32 pSparseMemoryRequirementCount;
+				Interop.NativeMethods.vkGetImageSparseMemoryRequirements2KHR (this.m, pInfo != null ? pInfo.m : (Interop.ImageSparseMemoryRequirementsInfo2*)default(IntPtr), &pSparseMemoryRequirementCount, null);
+				if (pSparseMemoryRequirementCount <= 0)
+					return null;
+
+				int size = Marshal.SizeOf (typeof (Interop.SparseImageMemoryRequirements2));
+				var refpSparseMemoryRequirements = new NativeReference ((int)(size * pSparseMemoryRequirementCount));
+				var ptrpSparseMemoryRequirements = refpSparseMemoryRequirements.Handle;
+				Interop.NativeMethods.vkGetImageSparseMemoryRequirements2KHR (this.m, pInfo != null ? pInfo.m : (Interop.ImageSparseMemoryRequirementsInfo2*)default(IntPtr), &pSparseMemoryRequirementCount, (Interop.SparseImageMemoryRequirements2*)ptrpSparseMemoryRequirements);
+
+				if (pSparseMemoryRequirementCount <= 0)
+					return null;
+				var arr = new SparseImageMemoryRequirements2 [pSparseMemoryRequirementCount];
+				for (int i = 0; i < pSparseMemoryRequirementCount; i++) {
+					arr [i] = new SparseImageMemoryRequirements2 (new NativePointer (refpSparseMemoryRequirements, (IntPtr)(&((Interop.SparseImageMemoryRequirements2*)ptrpSparseMemoryRequirements) [i])));
+				}
+
+				return arr;
+			}
+		}
+
+		public SamplerYcbcrConversion CreateSamplerYcbcrConversion (SamplerYcbcrConversionCreateInfo pCreateInfo, AllocationCallbacks pAllocator = null)
 		{
 			Result result;
-			SamplerYcbcrConversionKhr pYcbcrConversion;
+			SamplerYcbcrConversion pYcbcrConversion;
 			unsafe {
-				pYcbcrConversion = new SamplerYcbcrConversionKhr ();
+				pYcbcrConversion = new SamplerYcbcrConversion ();
 
 				fixed (UInt64* ptrpYcbcrConversion = &pYcbcrConversion.m) {
-					result = Interop.NativeMethods.vkCreateSamplerYcbcrConversionKHR (this.m, pCreateInfo != null ? pCreateInfo.m : (Interop.SamplerYcbcrConversionCreateInfoKhr*)default(IntPtr), pAllocator != null ? pAllocator.m : null, ptrpYcbcrConversion);
+					result = Interop.NativeMethods.vkCreateSamplerYcbcrConversion (this.m, pCreateInfo != null ? pCreateInfo.m : (Interop.SamplerYcbcrConversionCreateInfo*)default(IntPtr), pAllocator != null ? pAllocator.m : null, ptrpYcbcrConversion);
 				}
 				if (result != Result.Success)
 					throw new ResultException (result);
@@ -2641,10 +3240,50 @@ namespace Vulkan
 			}
 		}
 
-		public void DestroySamplerYcbcrConversionKHR (SamplerYcbcrConversionKhr ycbcrConversion = null, AllocationCallbacks pAllocator = null)
+		[Obsolete ("CreateSamplerYcbcrConversionKHR is deprecated, please use CreateSamplerYcbcrConversion instead.")]
+		public SamplerYcbcrConversion CreateSamplerYcbcrConversionKHR (SamplerYcbcrConversionCreateInfo pCreateInfo, AllocationCallbacks pAllocator = null)
+		{
+			Result result;
+			SamplerYcbcrConversion pYcbcrConversion;
+			unsafe {
+				pYcbcrConversion = new SamplerYcbcrConversion ();
+
+				fixed (UInt64* ptrpYcbcrConversion = &pYcbcrConversion.m) {
+					result = Interop.NativeMethods.vkCreateSamplerYcbcrConversionKHR (this.m, pCreateInfo != null ? pCreateInfo.m : (Interop.SamplerYcbcrConversionCreateInfo*)default(IntPtr), pAllocator != null ? pAllocator.m : null, ptrpYcbcrConversion);
+				}
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pYcbcrConversion;
+			}
+		}
+
+		public void DestroySamplerYcbcrConversion (SamplerYcbcrConversion ycbcrConversion = null, AllocationCallbacks pAllocator = null)
+		{
+			unsafe {
+				Interop.NativeMethods.vkDestroySamplerYcbcrConversion (this.m, ycbcrConversion != null ? ycbcrConversion.m : default(UInt64), pAllocator != null ? pAllocator.m : null);
+			}
+		}
+
+		[Obsolete ("DestroySamplerYcbcrConversionKHR is deprecated, please use DestroySamplerYcbcrConversion instead.")]
+		public void DestroySamplerYcbcrConversionKHR (SamplerYcbcrConversion ycbcrConversion = null, AllocationCallbacks pAllocator = null)
 		{
 			unsafe {
 				Interop.NativeMethods.vkDestroySamplerYcbcrConversionKHR (this.m, ycbcrConversion != null ? ycbcrConversion.m : default(UInt64), pAllocator != null ? pAllocator.m : null);
+			}
+		}
+
+		public Queue GetQueue2 (DeviceQueueInfo2 pQueueInfo)
+		{
+			Queue pQueue;
+			unsafe {
+				pQueue = new Queue ();
+
+				fixed (IntPtr* ptrpQueue = &pQueue.m) {
+					Interop.NativeMethods.vkGetDeviceQueue2 (this.m, pQueueInfo != null ? pQueueInfo.m : (Interop.DeviceQueueInfo2*)default(IntPtr), ptrpQueue);
+				}
+
+				return pQueue;
 			}
 		}
 
@@ -2712,6 +3351,29 @@ namespace Vulkan
 			}
 		}
 
+		public DescriptorSetLayoutSupport GetDescriptorSetLayoutSupport (DescriptorSetLayoutCreateInfo pCreateInfo)
+		{
+			DescriptorSetLayoutSupport pSupport;
+			unsafe {
+				pSupport = new DescriptorSetLayoutSupport ();
+				Interop.NativeMethods.vkGetDescriptorSetLayoutSupport (this.m, pCreateInfo != null ? pCreateInfo.m : (Interop.DescriptorSetLayoutCreateInfo*)default(IntPtr), pSupport != null ? pSupport.m : (Interop.DescriptorSetLayoutSupport*)default(IntPtr));
+
+				return pSupport;
+			}
+		}
+
+		[Obsolete ("GetDescriptorSetLayoutSupportKHR is deprecated, please use GetDescriptorSetLayoutSupport instead.")]
+		public DescriptorSetLayoutSupport GetDescriptorSetLayoutSupportKHR (DescriptorSetLayoutCreateInfo pCreateInfo)
+		{
+			DescriptorSetLayoutSupport pSupport;
+			unsafe {
+				pSupport = new DescriptorSetLayoutSupport ();
+				Interop.NativeMethods.vkGetDescriptorSetLayoutSupportKHR (this.m, pCreateInfo != null ? pCreateInfo.m : (Interop.DescriptorSetLayoutCreateInfo*)default(IntPtr), pSupport != null ? pSupport.m : (Interop.DescriptorSetLayoutSupport*)default(IntPtr));
+
+				return pSupport;
+			}
+		}
+
 		public int GetSwapchainGrallocUsageANDROID (Format format, ImageUsageFlags imageUsage)
 		{
 			Result result;
@@ -2748,7 +3410,68 @@ namespace Vulkan
 			}
 		}
 
-		public MemoryHostPointerPropertiesExt GetMemoryHostPointerPropertiesEXT (ExternalMemoryHandleTypeFlagsKhr handleType, IntPtr pHostPointer)
+		public void SetLocalDimmingAMD (SwapchainKhr swapChain, Bool32 localDimmingEnable)
+		{
+			unsafe {
+				Interop.NativeMethods.vkSetLocalDimmingAMD (this.m, swapChain != null ? swapChain.m : default(UInt64), localDimmingEnable);
+			}
+		}
+
+		public void GetCalibratedTimestampsEXT (CalibratedTimestampInfoExt[] pTimestampInfos, out UInt64 pTimestamps, out UInt64 pMaxDeviation)
+		{
+			Result result;
+			unsafe {
+				fixed (UInt64* ptrpTimestamps = &pTimestamps) {
+					fixed (UInt64* ptrpMaxDeviation = &pMaxDeviation) {
+						var arraypTimestampInfos = pTimestampInfos == null ? IntPtr.Zero : Marshal.AllocHGlobal (pTimestampInfos.Length*sizeof (Interop.CalibratedTimestampInfoExt));
+						var lenpTimestampInfos = pTimestampInfos == null ? 0 : pTimestampInfos.Length;
+						if (pTimestampInfos != null)
+							for (int i = 0; i < pTimestampInfos.Length; i++)
+								((Interop.CalibratedTimestampInfoExt*)arraypTimestampInfos) [i] = *(pTimestampInfos [i].m);
+						result = Interop.NativeMethods.vkGetCalibratedTimestampsEXT (this.m, (uint)lenpTimestampInfos, (Interop.CalibratedTimestampInfoExt*)arraypTimestampInfos, ptrpTimestamps, ptrpMaxDeviation);
+						Marshal.FreeHGlobal (arraypTimestampInfos);
+					}
+				}
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		public void GetCalibratedTimestampsEXT (CalibratedTimestampInfoExt pTimestampInfo, out UInt64 pTimestamp, out UInt64 pMaxDeviation)
+		{
+			Result result;
+			unsafe {
+				fixed (UInt64* ptrpTimestamp = &pTimestamp) {
+					fixed (UInt64* ptrpMaxDeviation = &pMaxDeviation) {
+						result = Interop.NativeMethods.vkGetCalibratedTimestampsEXT (this.m, (UInt32)(pTimestampInfo != null ? 1 : 0), pTimestampInfo != null ? pTimestampInfo.m : (Interop.CalibratedTimestampInfoExt*)default(IntPtr), ptrpTimestamp, ptrpMaxDeviation);
+					}
+				}
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		public void SetDebugUtilsObjectNameEXT (DebugUtilsObjectNameInfoExt pNameInfo)
+		{
+			Result result;
+			unsafe {
+				result = Interop.NativeMethods.vkSetDebugUtilsObjectNameEXT (this.m, pNameInfo != null ? pNameInfo.m : (Interop.DebugUtilsObjectNameInfoExt*)default(IntPtr));
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		public void SetDebugUtilsObjectTagEXT (DebugUtilsObjectTagInfoExt pTagInfo)
+		{
+			Result result;
+			unsafe {
+				result = Interop.NativeMethods.vkSetDebugUtilsObjectTagEXT (this.m, pTagInfo != null ? pTagInfo.m : (Interop.DebugUtilsObjectTagInfoExt*)default(IntPtr));
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		public MemoryHostPointerPropertiesExt GetMemoryHostPointerPropertiesEXT (ExternalMemoryHandleTypeFlags handleType, IntPtr pHostPointer)
 		{
 			Result result;
 			MemoryHostPointerPropertiesExt pMemoryHostPointerProperties;
@@ -2759,6 +3482,263 @@ namespace Vulkan
 					throw new ResultException (result);
 
 				return pMemoryHostPointerProperties;
+			}
+		}
+
+		public RenderPass CreateRenderPass2KHR (RenderPassCreateInfo2Khr pCreateInfo, AllocationCallbacks pAllocator = null)
+		{
+			Result result;
+			RenderPass pRenderPass;
+			unsafe {
+				pRenderPass = new RenderPass ();
+
+				fixed (UInt64* ptrpRenderPass = &pRenderPass.m) {
+					result = Interop.NativeMethods.vkCreateRenderPass2KHR (this.m, pCreateInfo != null ? pCreateInfo.m : (Interop.RenderPassCreateInfo2Khr*)default(IntPtr), pAllocator != null ? pAllocator.m : null, ptrpRenderPass);
+				}
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pRenderPass;
+			}
+		}
+
+		public void CompileDeferredNV (Pipeline pipeline, UInt32 shader)
+		{
+			Result result;
+			unsafe {
+				result = Interop.NativeMethods.vkCompileDeferredNV (this.m, pipeline != null ? pipeline.m : default(UInt64), shader);
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		public AccelerationStructureNv CreateAccelerationStructureNV (AccelerationStructureCreateInfoNv pCreateInfo, AllocationCallbacks pAllocator = null)
+		{
+			Result result;
+			AccelerationStructureNv pAccelerationStructure;
+			unsafe {
+				pAccelerationStructure = new AccelerationStructureNv ();
+
+				fixed (UInt64* ptrpAccelerationStructure = &pAccelerationStructure.m) {
+					result = Interop.NativeMethods.vkCreateAccelerationStructureNV (this.m, pCreateInfo != null ? pCreateInfo.m : (Interop.AccelerationStructureCreateInfoNv*)default(IntPtr), pAllocator != null ? pAllocator.m : null, ptrpAccelerationStructure);
+				}
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pAccelerationStructure;
+			}
+		}
+
+		public void DestroyAccelerationStructureNV (AccelerationStructureNv accelerationStructure, AllocationCallbacks pAllocator = null)
+		{
+			unsafe {
+				Interop.NativeMethods.vkDestroyAccelerationStructureNV (this.m, accelerationStructure != null ? accelerationStructure.m : default(UInt64), pAllocator != null ? pAllocator.m : null);
+			}
+		}
+
+		public void BindAccelerationStructureMemoryNV (BindAccelerationStructureMemoryInfoNv[] pBindInfos)
+		{
+			Result result;
+			unsafe {
+				var arraypBindInfos = pBindInfos == null ? IntPtr.Zero : Marshal.AllocHGlobal (pBindInfos.Length*sizeof (Interop.BindAccelerationStructureMemoryInfoNv));
+				var lenpBindInfos = pBindInfos == null ? 0 : pBindInfos.Length;
+				if (pBindInfos != null)
+					for (int i = 0; i < pBindInfos.Length; i++)
+						((Interop.BindAccelerationStructureMemoryInfoNv*)arraypBindInfos) [i] = *(pBindInfos [i].m);
+				result = Interop.NativeMethods.vkBindAccelerationStructureMemoryNV (this.m, (uint)lenpBindInfos, (Interop.BindAccelerationStructureMemoryInfoNv*)arraypBindInfos);
+				Marshal.FreeHGlobal (arraypBindInfos);
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		public void BindAccelerationStructureMemoryNV (BindAccelerationStructureMemoryInfoNv pBindInfo)
+		{
+			Result result;
+			unsafe {
+				result = Interop.NativeMethods.vkBindAccelerationStructureMemoryNV (this.m, (UInt32)(pBindInfo != null ? 1 : 0), pBindInfo != null ? pBindInfo.m : (Interop.BindAccelerationStructureMemoryInfoNv*)default(IntPtr));
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		public IntPtr GetRayTracingShaderGroupHandlesNV (Pipeline pipeline, UInt32 firstGroup, UInt32 groupCount, UIntPtr dataSize)
+		{
+			Result result;
+			IntPtr pData;
+			unsafe {
+				pData = new IntPtr ();
+				result = Interop.NativeMethods.vkGetRayTracingShaderGroupHandlesNV (this.m, pipeline != null ? pipeline.m : default(UInt64), firstGroup, groupCount, dataSize, pData);
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pData;
+			}
+		}
+
+		public IntPtr GetAccelerationStructureHandleNV (AccelerationStructureNv accelerationStructure, UIntPtr dataSize)
+		{
+			Result result;
+			IntPtr pData;
+			unsafe {
+				pData = new IntPtr ();
+				result = Interop.NativeMethods.vkGetAccelerationStructureHandleNV (this.m, accelerationStructure != null ? accelerationStructure.m : default(UInt64), dataSize, pData);
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pData;
+			}
+		}
+
+		public Pipeline[] CreateRayTracingPipelinesNV (PipelineCache pipelineCache, RayTracingPipelineCreateInfoNv[] pCreateInfos, AllocationCallbacks pAllocator = null)
+		{
+			Result result;
+			unsafe {
+				if (pCreateInfos.Length <= 0)
+					return null;
+
+				int size = Marshal.SizeOf (typeof (UInt64));
+				var refpPipelines = new NativeReference ((int)(size * pCreateInfos.Length));
+				var ptrpPipelines = refpPipelines.Handle;
+				var arraypCreateInfos = pCreateInfos == null ? IntPtr.Zero : Marshal.AllocHGlobal (pCreateInfos.Length*sizeof (Interop.RayTracingPipelineCreateInfoNv));
+				var lenpCreateInfos = pCreateInfos == null ? 0 : pCreateInfos.Length;
+				if (pCreateInfos != null)
+					for (int i = 0; i < pCreateInfos.Length; i++)
+						((Interop.RayTracingPipelineCreateInfoNv*)arraypCreateInfos) [i] = *(pCreateInfos [i].m);
+				result = Interop.NativeMethods.vkCreateRayTracingPipelinesNV (this.m, pipelineCache != null ? pipelineCache.m : default(UInt64), (uint)lenpCreateInfos, (Interop.RayTracingPipelineCreateInfoNv*)arraypCreateInfos, pAllocator != null ? pAllocator.m : null, (UInt64*)ptrpPipelines);
+				Marshal.FreeHGlobal (arraypCreateInfos);
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				if (pCreateInfos.Length <= 0)
+					return null;
+				var arr = new Pipeline [pCreateInfos.Length];
+				for (int i = 0; i < pCreateInfos.Length; i++) {
+					arr [i] = new Pipeline ();
+					arr [i].m = ((UInt64*)ptrpPipelines) [i];
+				}
+
+				return arr;
+			}
+		}
+
+		public ImageDrmFormatModifierPropertiesExt GetImageDrmFormatModifierPropertiesEXT (Image image)
+		{
+			Result result;
+			ImageDrmFormatModifierPropertiesExt pProperties;
+			unsafe {
+				pProperties = new ImageDrmFormatModifierPropertiesExt ();
+				result = Interop.NativeMethods.vkGetImageDrmFormatModifierPropertiesEXT (this.m, image != null ? image.m : default(UInt64), pProperties != null ? pProperties.m : (Interop.ImageDrmFormatModifierPropertiesExt*)default(IntPtr));
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pProperties;
+			}
+		}
+
+		public DeviceAddress GetBufferDeviceAddressEXT (BufferDeviceAddressInfoExt pInfo)
+		{
+			unsafe {
+				return Interop.NativeMethods.vkGetBufferDeviceAddressEXT (this.m, pInfo != null ? pInfo.m : (Interop.BufferDeviceAddressInfoExt*)default(IntPtr));
+			}
+		}
+
+		public UInt32 GetImageViewHandleNVX (ImageViewHandleInfoNvx pInfo)
+		{
+			unsafe {
+				return Interop.NativeMethods.vkGetImageViewHandleNVX (this.m, pInfo != null ? pInfo.m : (Interop.ImageViewHandleInfoNvx*)default(IntPtr));
+			}
+		}
+
+		public DeviceGroupPresentModeFlagsKhr GetGroupSurfacePresentModes2EXT (PhysicalDeviceSurfaceInfo2Khr pSurfaceInfo)
+		{
+			Result result;
+			DeviceGroupPresentModeFlagsKhr pModes;
+			unsafe {
+				pModes = new DeviceGroupPresentModeFlagsKhr ();
+				result = Interop.NativeMethods.vkGetDeviceGroupSurfacePresentModes2EXT (this.m, pSurfaceInfo != null ? pSurfaceInfo.m : (Interop.PhysicalDeviceSurfaceInfo2Khr*)default(IntPtr), &pModes);
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pModes;
+			}
+		}
+
+		public void AcquireFullScreenExclusiveModeEXT (SwapchainKhr swapchain)
+		{
+			Result result;
+			unsafe {
+				result = Interop.NativeMethods.vkAcquireFullScreenExclusiveModeEXT (this.m, swapchain != null ? swapchain.m : default(UInt64));
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		public void ReleaseFullScreenExclusiveModeEXT (SwapchainKhr swapchain)
+		{
+			Result result;
+			unsafe {
+				result = Interop.NativeMethods.vkReleaseFullScreenExclusiveModeEXT (this.m, swapchain != null ? swapchain.m : default(UInt64));
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		public void InitializePerformanceApiINTEL (InitializePerformanceApiInfoIntel pInitializeInfo)
+		{
+			Result result;
+			unsafe {
+				result = Interop.NativeMethods.vkInitializePerformanceApiINTEL (this.m, pInitializeInfo != null ? pInitializeInfo.m : (Interop.InitializePerformanceApiInfoIntel*)default(IntPtr));
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		public void UninitializePerformanceApiINTEL ()
+		{
+			unsafe {
+				Interop.NativeMethods.vkUninitializePerformanceApiINTEL (this.m);
+			}
+		}
+
+		public PerformanceConfigurationIntel AcquirePerformanceConfigurationINTEL (PerformanceConfigurationAcquireInfoIntel pAcquireInfo)
+		{
+			Result result;
+			PerformanceConfigurationIntel pConfiguration;
+			unsafe {
+				pConfiguration = new PerformanceConfigurationIntel ();
+
+				fixed (UInt64* ptrpConfiguration = &pConfiguration.m) {
+					result = Interop.NativeMethods.vkAcquirePerformanceConfigurationINTEL (this.m, pAcquireInfo != null ? pAcquireInfo.m : (Interop.PerformanceConfigurationAcquireInfoIntel*)default(IntPtr), ptrpConfiguration);
+				}
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pConfiguration;
+			}
+		}
+
+		public void ReleasePerformanceConfigurationINTEL (PerformanceConfigurationIntel configuration)
+		{
+			Result result;
+			unsafe {
+				result = Interop.NativeMethods.vkReleasePerformanceConfigurationINTEL (this.m, configuration != null ? configuration.m : default(UInt64));
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		public PerformanceValueIntel GetPerformanceParameterINTEL (PerformanceParameterTypeIntel parameter)
+		{
+			Result result;
+			PerformanceValueIntel pValue;
+			unsafe {
+				pValue = new PerformanceValueIntel ();
+				result = Interop.NativeMethods.vkGetPerformanceParameterINTEL (this.m, parameter, pValue != null ? pValue.m : (Interop.PerformanceValueIntel*)default(IntPtr));
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pValue;
 			}
 		}
 	}
@@ -2860,6 +3840,61 @@ namespace Vulkan
 					throw new ResultException (result);
 
 				return pNativeFenceFd;
+			}
+		}
+
+		public void BeginDebugUtilsLabelEXT (DebugUtilsLabelExt pLabelInfo)
+		{
+			unsafe {
+				Interop.NativeMethods.vkQueueBeginDebugUtilsLabelEXT (this.m, pLabelInfo != null ? pLabelInfo.m : (Interop.DebugUtilsLabelExt*)default(IntPtr));
+			}
+		}
+
+		public void EndDebugUtilsLabelEXT ()
+		{
+			unsafe {
+				Interop.NativeMethods.vkQueueEndDebugUtilsLabelEXT (this.m);
+			}
+		}
+
+		public void InsertDebugUtilsLabelEXT (DebugUtilsLabelExt pLabelInfo)
+		{
+			unsafe {
+				Interop.NativeMethods.vkQueueInsertDebugUtilsLabelEXT (this.m, pLabelInfo != null ? pLabelInfo.m : (Interop.DebugUtilsLabelExt*)default(IntPtr));
+			}
+		}
+
+		public CheckpointDataNv[] GetCheckpointDataNV ()
+		{
+			unsafe {
+				UInt32 pCheckpointDataCount;
+				Interop.NativeMethods.vkGetQueueCheckpointDataNV (this.m, &pCheckpointDataCount, null);
+				if (pCheckpointDataCount <= 0)
+					return null;
+
+				int size = Marshal.SizeOf (typeof (Interop.CheckpointDataNv));
+				var refpCheckpointData = new NativeReference ((int)(size * pCheckpointDataCount));
+				var ptrpCheckpointData = refpCheckpointData.Handle;
+				Interop.NativeMethods.vkGetQueueCheckpointDataNV (this.m, &pCheckpointDataCount, (Interop.CheckpointDataNv*)ptrpCheckpointData);
+
+				if (pCheckpointDataCount <= 0)
+					return null;
+				var arr = new CheckpointDataNv [pCheckpointDataCount];
+				for (int i = 0; i < pCheckpointDataCount; i++) {
+					arr [i] = new CheckpointDataNv (new NativePointer (refpCheckpointData, (IntPtr)(&((Interop.CheckpointDataNv*)ptrpCheckpointData) [i])));
+				}
+
+				return arr;
+			}
+		}
+
+		public void SetPerformanceConfigurationINTEL (PerformanceConfigurationIntel configuration)
+		{
+			Result result;
+			unsafe {
+				result = Interop.NativeMethods.vkQueueSetPerformanceConfigurationINTEL (this.m, configuration != null ? configuration.m : default(UInt64));
+				if (result != Result.Success)
+					throw new ResultException (result);
 			}
 		}
 	}
@@ -3429,6 +4464,20 @@ namespace Vulkan
 			}
 		}
 
+		public void CmdBeginConditionalRenderingEXT (ConditionalRenderingBeginInfoExt pConditionalRenderingBegin)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdBeginConditionalRenderingEXT (this.m, pConditionalRenderingBegin != null ? pConditionalRenderingBegin.m : (Interop.ConditionalRenderingBeginInfoExt*)default(IntPtr));
+			}
+		}
+
+		public void CmdEndConditionalRenderingEXT ()
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdEndConditionalRenderingEXT (this.m);
+			}
+		}
+
 		public void CmdResetQueryPool (QueryPool queryPool, UInt32 firstQuery, UInt32 queryCount)
 		{
 			unsafe {
@@ -3521,20 +4570,6 @@ namespace Vulkan
 			}
 		}
 
-		public void CmdDrawIndirectCountAMD (Buffer buffer, DeviceSize offset, Buffer countBuffer, DeviceSize countBufferOffset, UInt32 maxDrawCount, UInt32 stride)
-		{
-			unsafe {
-				Interop.NativeMethods.vkCmdDrawIndirectCountAMD (this.m, buffer != null ? buffer.m : default(UInt64), offset, countBuffer != null ? countBuffer.m : default(UInt64), countBufferOffset, maxDrawCount, stride);
-			}
-		}
-
-		public void CmdDrawIndexedIndirectCountAMD (Buffer buffer, DeviceSize offset, Buffer countBuffer, DeviceSize countBufferOffset, UInt32 maxDrawCount, UInt32 stride)
-		{
-			unsafe {
-				Interop.NativeMethods.vkCmdDrawIndexedIndirectCountAMD (this.m, buffer != null ? buffer.m : default(UInt64), offset, countBuffer != null ? countBuffer.m : default(UInt64), countBufferOffset, maxDrawCount, stride);
-			}
-		}
-
 		public void CmdProcessCommandsNVX (CmdProcessCommandsInfoNvx pProcessCommandsInfo)
 		{
 			unsafe {
@@ -3569,21 +4604,37 @@ namespace Vulkan
 			}
 		}
 
-		public void CmdSetDeviceMaskKHX (UInt32 deviceMask)
+		public void CmdSetDeviceMask (UInt32 deviceMask)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdSetDeviceMaskKHX (this.m, deviceMask);
+				Interop.NativeMethods.vkCmdSetDeviceMask (this.m, deviceMask);
 			}
 		}
 
-		public void CmdDispatchBaseKHX (UInt32 baseGroupX, UInt32 baseGroupY, UInt32 baseGroupZ, UInt32 groupCountX, UInt32 groupCountY, UInt32 groupCountZ)
+		[Obsolete ("CmdSetDeviceMaskKHR is deprecated, please use CmdSetDeviceMask instead.")]
+		public void CmdSetDeviceMaskKHR (UInt32 deviceMask)
 		{
 			unsafe {
-				Interop.NativeMethods.vkCmdDispatchBaseKHX (this.m, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ);
+				Interop.NativeMethods.vkCmdSetDeviceMaskKHR (this.m, deviceMask);
 			}
 		}
 
-		public void CmdPushDescriptorSetWithTemplateKHR (DescriptorUpdateTemplateKhr descriptorUpdateTemplate, PipelineLayout layout, UInt32 set, IntPtr pData)
+		public void CmdDispatchBase (UInt32 baseGroupX, UInt32 baseGroupY, UInt32 baseGroupZ, UInt32 groupCountX, UInt32 groupCountY, UInt32 groupCountZ)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdDispatchBase (this.m, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ);
+			}
+		}
+
+		[Obsolete ("CmdDispatchBaseKHR is deprecated, please use CmdDispatchBase instead.")]
+		public void CmdDispatchBaseKHR (UInt32 baseGroupX, UInt32 baseGroupY, UInt32 baseGroupZ, UInt32 groupCountX, UInt32 groupCountY, UInt32 groupCountZ)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdDispatchBaseKHR (this.m, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ);
+			}
+		}
+
+		public void CmdPushDescriptorSetWithTemplateKHR (DescriptorUpdateTemplate descriptorUpdateTemplate, PipelineLayout layout, UInt32 set, IntPtr pData)
 		{
 			unsafe {
 				Interop.NativeMethods.vkCmdPushDescriptorSetWithTemplateKHR (this.m, descriptorUpdateTemplate != null ? descriptorUpdateTemplate.m : default(UInt64), layout != null ? layout.m : default(UInt64), set, pData);
@@ -3641,10 +4692,336 @@ namespace Vulkan
 			}
 		}
 
+		public void CmdBeginDebugUtilsLabelEXT (DebugUtilsLabelExt pLabelInfo)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdBeginDebugUtilsLabelEXT (this.m, pLabelInfo != null ? pLabelInfo.m : (Interop.DebugUtilsLabelExt*)default(IntPtr));
+			}
+		}
+
+		public void CmdEndDebugUtilsLabelEXT ()
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdEndDebugUtilsLabelEXT (this.m);
+			}
+		}
+
+		public void CmdInsertDebugUtilsLabelEXT (DebugUtilsLabelExt pLabelInfo)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdInsertDebugUtilsLabelEXT (this.m, pLabelInfo != null ? pLabelInfo.m : (Interop.DebugUtilsLabelExt*)default(IntPtr));
+			}
+		}
+
 		public void CmdWriteBufferMarkerAMD (PipelineStageFlags pipelineStage, Buffer dstBuffer, DeviceSize dstOffset, UInt32 marker)
 		{
 			unsafe {
 				Interop.NativeMethods.vkCmdWriteBufferMarkerAMD (this.m, pipelineStage, dstBuffer != null ? dstBuffer.m : default(UInt64), dstOffset, marker);
+			}
+		}
+
+		public void CmdBeginRenderPass2KHR (RenderPassBeginInfo pRenderPassBegin, SubpassBeginInfoKhr pSubpassBeginInfo)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdBeginRenderPass2KHR (this.m, pRenderPassBegin != null ? pRenderPassBegin.m : (Interop.RenderPassBeginInfo*)default(IntPtr), pSubpassBeginInfo != null ? pSubpassBeginInfo.m : (Interop.SubpassBeginInfoKhr*)default(IntPtr));
+			}
+		}
+
+		public void CmdNextSubpass2KHR (SubpassBeginInfoKhr pSubpassBeginInfo, SubpassEndInfoKhr pSubpassEndInfo)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdNextSubpass2KHR (this.m, pSubpassBeginInfo != null ? pSubpassBeginInfo.m : (Interop.SubpassBeginInfoKhr*)default(IntPtr), pSubpassEndInfo != null ? pSubpassEndInfo.m : (Interop.SubpassEndInfoKhr*)default(IntPtr));
+			}
+		}
+
+		public void CmdEndRenderPass2KHR (SubpassEndInfoKhr pSubpassEndInfo)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdEndRenderPass2KHR (this.m, pSubpassEndInfo != null ? pSubpassEndInfo.m : (Interop.SubpassEndInfoKhr*)default(IntPtr));
+			}
+		}
+
+		public void CmdDrawIndirectCountKHR (Buffer buffer, DeviceSize offset, Buffer countBuffer, DeviceSize countBufferOffset, UInt32 maxDrawCount, UInt32 stride)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdDrawIndirectCountKHR (this.m, buffer != null ? buffer.m : default(UInt64), offset, countBuffer != null ? countBuffer.m : default(UInt64), countBufferOffset, maxDrawCount, stride);
+			}
+		}
+
+		[Obsolete ("CmdDrawIndirectCountAMD is deprecated, please use CmdDrawIndirectCountKHR instead.")]
+		public void CmdDrawIndirectCountAMD (Buffer buffer, DeviceSize offset, Buffer countBuffer, DeviceSize countBufferOffset, UInt32 maxDrawCount, UInt32 stride)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdDrawIndirectCountAMD (this.m, buffer != null ? buffer.m : default(UInt64), offset, countBuffer != null ? countBuffer.m : default(UInt64), countBufferOffset, maxDrawCount, stride);
+			}
+		}
+
+		public void CmdDrawIndexedIndirectCountKHR (Buffer buffer, DeviceSize offset, Buffer countBuffer, DeviceSize countBufferOffset, UInt32 maxDrawCount, UInt32 stride)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdDrawIndexedIndirectCountKHR (this.m, buffer != null ? buffer.m : default(UInt64), offset, countBuffer != null ? countBuffer.m : default(UInt64), countBufferOffset, maxDrawCount, stride);
+			}
+		}
+
+		[Obsolete ("CmdDrawIndexedIndirectCountAMD is deprecated, please use CmdDrawIndexedIndirectCountKHR instead.")]
+		public void CmdDrawIndexedIndirectCountAMD (Buffer buffer, DeviceSize offset, Buffer countBuffer, DeviceSize countBufferOffset, UInt32 maxDrawCount, UInt32 stride)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdDrawIndexedIndirectCountAMD (this.m, buffer != null ? buffer.m : default(UInt64), offset, countBuffer != null ? countBuffer.m : default(UInt64), countBufferOffset, maxDrawCount, stride);
+			}
+		}
+
+		public void CmdSetCheckpointNV (IntPtr pCheckpointMarker)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdSetCheckpointNV (this.m, pCheckpointMarker);
+			}
+		}
+
+		public void CmdBindTransformFeedbackBuffersEXT (UInt32 firstBinding, Buffer[] pBuffers, DeviceSize[] pOffsets, DeviceSize[] pSizes = null)
+		{
+			unsafe {
+				var arraypBuffers = pBuffers == null ? IntPtr.Zero : Marshal.AllocHGlobal (pBuffers.Length*sizeof (UInt64));
+				var lenpBuffers = pBuffers == null ? 0 : pBuffers.Length;
+				if (pBuffers != null)
+					for (int i = 0; i < pBuffers.Length; i++)
+						((UInt64*)arraypBuffers) [i] = (pBuffers [i].m);
+				var arraypOffsets = pOffsets == null ? IntPtr.Zero : Marshal.AllocHGlobal (pOffsets.Length*sizeof (DeviceSize));
+				var lenpOffsets = pOffsets == null ? 0 : pOffsets.Length;
+				if (pOffsets != null)
+					for (int i = 0; i < pOffsets.Length; i++)
+						((DeviceSize*)arraypOffsets) [i] = (pOffsets [i]);
+				var arraypSizes = pSizes == null ? IntPtr.Zero : Marshal.AllocHGlobal (pSizes.Length*sizeof (DeviceSize));
+				var lenpSizes = pSizes == null ? 0 : pSizes.Length;
+				if (pSizes != null)
+					for (int i = 0; i < pSizes.Length; i++)
+						((DeviceSize*)arraypSizes) [i] = (pSizes [i]);
+				Interop.NativeMethods.vkCmdBindTransformFeedbackBuffersEXT (this.m, firstBinding, (uint)lenpSizes, (UInt64*)arraypBuffers, (DeviceSize*)arraypOffsets, (DeviceSize*)arraypSizes);
+				Marshal.FreeHGlobal (arraypBuffers);
+				Marshal.FreeHGlobal (arraypOffsets);
+				Marshal.FreeHGlobal (arraypSizes);
+			}
+		}
+
+		public void CmdBeginTransformFeedbackEXT (UInt32 firstCounterBuffer, Buffer[] pCounterBuffers, DeviceSize[] pCounterBufferOffsets = null)
+		{
+			unsafe {
+				var arraypCounterBuffers = pCounterBuffers == null ? IntPtr.Zero : Marshal.AllocHGlobal (pCounterBuffers.Length*sizeof (UInt64));
+				var lenpCounterBuffers = pCounterBuffers == null ? 0 : pCounterBuffers.Length;
+				if (pCounterBuffers != null)
+					for (int i = 0; i < pCounterBuffers.Length; i++)
+						((UInt64*)arraypCounterBuffers) [i] = (pCounterBuffers [i].m);
+				var arraypCounterBufferOffsets = pCounterBufferOffsets == null ? IntPtr.Zero : Marshal.AllocHGlobal (pCounterBufferOffsets.Length*sizeof (DeviceSize));
+				var lenpCounterBufferOffsets = pCounterBufferOffsets == null ? 0 : pCounterBufferOffsets.Length;
+				if (pCounterBufferOffsets != null)
+					for (int i = 0; i < pCounterBufferOffsets.Length; i++)
+						((DeviceSize*)arraypCounterBufferOffsets) [i] = (pCounterBufferOffsets [i]);
+				Interop.NativeMethods.vkCmdBeginTransformFeedbackEXT (this.m, firstCounterBuffer, (uint)lenpCounterBufferOffsets, (UInt64*)arraypCounterBuffers, (DeviceSize*)arraypCounterBufferOffsets);
+				Marshal.FreeHGlobal (arraypCounterBuffers);
+				Marshal.FreeHGlobal (arraypCounterBufferOffsets);
+			}
+		}
+
+		public void CmdEndTransformFeedbackEXT (UInt32 firstCounterBuffer, Buffer[] pCounterBuffers, DeviceSize[] pCounterBufferOffsets = null)
+		{
+			unsafe {
+				var arraypCounterBuffers = pCounterBuffers == null ? IntPtr.Zero : Marshal.AllocHGlobal (pCounterBuffers.Length*sizeof (UInt64));
+				var lenpCounterBuffers = pCounterBuffers == null ? 0 : pCounterBuffers.Length;
+				if (pCounterBuffers != null)
+					for (int i = 0; i < pCounterBuffers.Length; i++)
+						((UInt64*)arraypCounterBuffers) [i] = (pCounterBuffers [i].m);
+				var arraypCounterBufferOffsets = pCounterBufferOffsets == null ? IntPtr.Zero : Marshal.AllocHGlobal (pCounterBufferOffsets.Length*sizeof (DeviceSize));
+				var lenpCounterBufferOffsets = pCounterBufferOffsets == null ? 0 : pCounterBufferOffsets.Length;
+				if (pCounterBufferOffsets != null)
+					for (int i = 0; i < pCounterBufferOffsets.Length; i++)
+						((DeviceSize*)arraypCounterBufferOffsets) [i] = (pCounterBufferOffsets [i]);
+				Interop.NativeMethods.vkCmdEndTransformFeedbackEXT (this.m, firstCounterBuffer, (uint)lenpCounterBufferOffsets, (UInt64*)arraypCounterBuffers, (DeviceSize*)arraypCounterBufferOffsets);
+				Marshal.FreeHGlobal (arraypCounterBuffers);
+				Marshal.FreeHGlobal (arraypCounterBufferOffsets);
+			}
+		}
+
+		public void CmdBeginQueryIndexedEXT (QueryPool queryPool, UInt32 query, QueryControlFlags flags, UInt32 index)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdBeginQueryIndexedEXT (this.m, queryPool != null ? queryPool.m : default(UInt64), query, flags, index);
+			}
+		}
+
+		public void CmdEndQueryIndexedEXT (QueryPool queryPool, UInt32 query, UInt32 index)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdEndQueryIndexedEXT (this.m, queryPool != null ? queryPool.m : default(UInt64), query, index);
+			}
+		}
+
+		public void CmdDrawIndirectByteCountEXT (UInt32 instanceCount, UInt32 firstInstance, Buffer counterBuffer, DeviceSize counterBufferOffset, UInt32 counterOffset, UInt32 vertexStride)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdDrawIndirectByteCountEXT (this.m, instanceCount, firstInstance, counterBuffer != null ? counterBuffer.m : default(UInt64), counterBufferOffset, counterOffset, vertexStride);
+			}
+		}
+
+		public void CmdSetExclusiveScissorNV (UInt32 firstExclusiveScissor, Rect2D[] pExclusiveScissors)
+		{
+			unsafe {
+				var arraypExclusiveScissors = pExclusiveScissors == null ? IntPtr.Zero : Marshal.AllocHGlobal (pExclusiveScissors.Length*sizeof (Rect2D));
+				var lenpExclusiveScissors = pExclusiveScissors == null ? 0 : pExclusiveScissors.Length;
+				if (pExclusiveScissors != null)
+					for (int i = 0; i < pExclusiveScissors.Length; i++)
+						((Rect2D*)arraypExclusiveScissors) [i] = (pExclusiveScissors [i]);
+				Interop.NativeMethods.vkCmdSetExclusiveScissorNV (this.m, firstExclusiveScissor, (uint)lenpExclusiveScissors, (Rect2D*)arraypExclusiveScissors);
+				Marshal.FreeHGlobal (arraypExclusiveScissors);
+			}
+		}
+
+		public void CmdSetExclusiveScissorNV (UInt32 firstExclusiveScissor, Rect2D? pExclusiveScissor)
+		{
+			unsafe {
+				Rect2D valpExclusiveScissor = pExclusiveScissor ?? default(Rect2D);
+				Rect2D* ptrpExclusiveScissor = pExclusiveScissor != null ? &valpExclusiveScissor : (Rect2D*)IntPtr.Zero;
+				Interop.NativeMethods.vkCmdSetExclusiveScissorNV (this.m, firstExclusiveScissor, (UInt32)(pExclusiveScissor != null ? 1 : 0), ptrpExclusiveScissor);
+			}
+		}
+
+		public void CmdBindShadingRateImageNV (ImageView imageView, ImageLayout imageLayout)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdBindShadingRateImageNV (this.m, imageView != null ? imageView.m : default(UInt64), imageLayout);
+			}
+		}
+
+		public void CmdSetViewportShadingRatePaletteNV (UInt32 firstViewport, ShadingRatePaletteNv[] pShadingRatePalettes)
+		{
+			unsafe {
+				var arraypShadingRatePalettes = pShadingRatePalettes == null ? IntPtr.Zero : Marshal.AllocHGlobal (pShadingRatePalettes.Length*sizeof (Interop.ShadingRatePaletteNv));
+				var lenpShadingRatePalettes = pShadingRatePalettes == null ? 0 : pShadingRatePalettes.Length;
+				if (pShadingRatePalettes != null)
+					for (int i = 0; i < pShadingRatePalettes.Length; i++)
+						((Interop.ShadingRatePaletteNv*)arraypShadingRatePalettes) [i] = *(pShadingRatePalettes [i].m);
+				Interop.NativeMethods.vkCmdSetViewportShadingRatePaletteNV (this.m, firstViewport, (uint)lenpShadingRatePalettes, (Interop.ShadingRatePaletteNv*)arraypShadingRatePalettes);
+				Marshal.FreeHGlobal (arraypShadingRatePalettes);
+			}
+		}
+
+		public void CmdSetViewportShadingRatePaletteNV (UInt32 firstViewport, ShadingRatePaletteNv pShadingRatePalette)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdSetViewportShadingRatePaletteNV (this.m, firstViewport, (UInt32)(pShadingRatePalette != null ? 1 : 0), pShadingRatePalette != null ? pShadingRatePalette.m : (Interop.ShadingRatePaletteNv*)default(IntPtr));
+			}
+		}
+
+		public void CmdSetCoarseSampleOrderNV (CoarseSampleOrderTypeNv sampleOrderType, CoarseSampleOrderCustomNv[] pCustomSampleOrders)
+		{
+			unsafe {
+				var arraypCustomSampleOrders = pCustomSampleOrders == null ? IntPtr.Zero : Marshal.AllocHGlobal (pCustomSampleOrders.Length*sizeof (Interop.CoarseSampleOrderCustomNv));
+				var lenpCustomSampleOrders = pCustomSampleOrders == null ? 0 : pCustomSampleOrders.Length;
+				if (pCustomSampleOrders != null)
+					for (int i = 0; i < pCustomSampleOrders.Length; i++)
+						((Interop.CoarseSampleOrderCustomNv*)arraypCustomSampleOrders) [i] = *(pCustomSampleOrders [i].m);
+				Interop.NativeMethods.vkCmdSetCoarseSampleOrderNV (this.m, sampleOrderType, (uint)lenpCustomSampleOrders, (Interop.CoarseSampleOrderCustomNv*)arraypCustomSampleOrders);
+				Marshal.FreeHGlobal (arraypCustomSampleOrders);
+			}
+		}
+
+		public void CmdSetCoarseSampleOrderNV (CoarseSampleOrderTypeNv sampleOrderType, CoarseSampleOrderCustomNv pCustomSampleOrder)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdSetCoarseSampleOrderNV (this.m, sampleOrderType, (UInt32)(pCustomSampleOrder != null ? 1 : 0), pCustomSampleOrder != null ? pCustomSampleOrder.m : (Interop.CoarseSampleOrderCustomNv*)default(IntPtr));
+			}
+		}
+
+		public void CmdDrawMeshTasksNV (UInt32 taskCount, UInt32 firstTask)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdDrawMeshTasksNV (this.m, taskCount, firstTask);
+			}
+		}
+
+		public void CmdDrawMeshTasksIndirectNV (Buffer buffer, DeviceSize offset, UInt32 drawCount, UInt32 stride)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdDrawMeshTasksIndirectNV (this.m, buffer != null ? buffer.m : default(UInt64), offset, drawCount, stride);
+			}
+		}
+
+		public void CmdDrawMeshTasksIndirectCountNV (Buffer buffer, DeviceSize offset, Buffer countBuffer, DeviceSize countBufferOffset, UInt32 maxDrawCount, UInt32 stride)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdDrawMeshTasksIndirectCountNV (this.m, buffer != null ? buffer.m : default(UInt64), offset, countBuffer != null ? countBuffer.m : default(UInt64), countBufferOffset, maxDrawCount, stride);
+			}
+		}
+
+		public void CmdCopyAccelerationStructureNV (AccelerationStructureNv dst, AccelerationStructureNv src, CopyAccelerationStructureModeNv mode)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdCopyAccelerationStructureNV (this.m, dst != null ? dst.m : default(UInt64), src != null ? src.m : default(UInt64), mode);
+			}
+		}
+
+		public void CmdWriteAccelerationStructuresPropertiesNV (AccelerationStructureNv[] pAccelerationStructures, QueryType queryType, QueryPool queryPool, UInt32 firstQuery)
+		{
+			unsafe {
+				var arraypAccelerationStructures = pAccelerationStructures == null ? IntPtr.Zero : Marshal.AllocHGlobal (pAccelerationStructures.Length*sizeof (UInt64));
+				var lenpAccelerationStructures = pAccelerationStructures == null ? 0 : pAccelerationStructures.Length;
+				if (pAccelerationStructures != null)
+					for (int i = 0; i < pAccelerationStructures.Length; i++)
+						((UInt64*)arraypAccelerationStructures) [i] = (pAccelerationStructures [i].m);
+				Interop.NativeMethods.vkCmdWriteAccelerationStructuresPropertiesNV (this.m, (uint)lenpAccelerationStructures, (UInt64*)arraypAccelerationStructures, queryType, queryPool != null ? queryPool.m : default(UInt64), firstQuery);
+				Marshal.FreeHGlobal (arraypAccelerationStructures);
+			}
+		}
+
+		public void CmdWriteAccelerationStructuresPropertiesNV (AccelerationStructureNv pAccelerationStructure, QueryType queryType, QueryPool queryPool, UInt32 firstQuery)
+		{
+			unsafe {
+				fixed (UInt64* ptrpAccelerationStructure = &pAccelerationStructure.m) {
+					Interop.NativeMethods.vkCmdWriteAccelerationStructuresPropertiesNV (this.m, (UInt32)(pAccelerationStructure != null ? 1 : 0), ptrpAccelerationStructure, queryType, queryPool != null ? queryPool.m : default(UInt64), firstQuery);
+				}
+			}
+		}
+
+		public void CmdBuildAccelerationStructureNV (AccelerationStructureInfoNv pInfo, Buffer instanceData, DeviceSize instanceOffset, Bool32 update, AccelerationStructureNv dst, AccelerationStructureNv src, Buffer scratch, DeviceSize scratchOffset)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdBuildAccelerationStructureNV (this.m, pInfo != null ? pInfo.m : (Interop.AccelerationStructureInfoNv*)default(IntPtr), instanceData != null ? instanceData.m : default(UInt64), instanceOffset, update, dst != null ? dst.m : default(UInt64), src != null ? src.m : default(UInt64), scratch != null ? scratch.m : default(UInt64), scratchOffset);
+			}
+		}
+
+		public void CmdTraceRaysNV (Buffer raygenShaderBindingTableBuffer, DeviceSize raygenShaderBindingOffset, Buffer missShaderBindingTableBuffer, DeviceSize missShaderBindingOffset, DeviceSize missShaderBindingStride, Buffer hitShaderBindingTableBuffer, DeviceSize hitShaderBindingOffset, DeviceSize hitShaderBindingStride, Buffer callableShaderBindingTableBuffer, DeviceSize callableShaderBindingOffset, DeviceSize callableShaderBindingStride, UInt32 width, UInt32 height, UInt32 depth)
+		{
+			unsafe {
+				Interop.NativeMethods.vkCmdTraceRaysNV (this.m, raygenShaderBindingTableBuffer != null ? raygenShaderBindingTableBuffer.m : default(UInt64), raygenShaderBindingOffset, missShaderBindingTableBuffer != null ? missShaderBindingTableBuffer.m : default(UInt64), missShaderBindingOffset, missShaderBindingStride, hitShaderBindingTableBuffer != null ? hitShaderBindingTableBuffer.m : default(UInt64), hitShaderBindingOffset, hitShaderBindingStride, callableShaderBindingTableBuffer != null ? callableShaderBindingTableBuffer.m : default(UInt64), callableShaderBindingOffset, callableShaderBindingStride, width, height, depth);
+			}
+		}
+
+		public void CmdSetPerformanceMarkerINTEL (PerformanceMarkerInfoIntel pMarkerInfo)
+		{
+			Result result;
+			unsafe {
+				result = Interop.NativeMethods.vkCmdSetPerformanceMarkerINTEL (this.m, pMarkerInfo != null ? pMarkerInfo.m : (Interop.PerformanceMarkerInfoIntel*)default(IntPtr));
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		public void CmdSetPerformanceStreamMarkerINTEL (PerformanceStreamMarkerInfoIntel pMarkerInfo)
+		{
+			Result result;
+			unsafe {
+				result = Interop.NativeMethods.vkCmdSetPerformanceStreamMarkerINTEL (this.m, pMarkerInfo != null ? pMarkerInfo.m : (Interop.PerformanceStreamMarkerInfoIntel*)default(IntPtr));
+				if (result != Result.Success)
+					throw new ResultException (result);
+			}
+		}
+
+		public void CmdSetPerformanceOverrideINTEL (PerformanceOverrideInfoIntel pOverrideInfo)
+		{
+			Result result;
+			unsafe {
+				result = Interop.NativeMethods.vkCmdSetPerformanceOverrideINTEL (this.m, pOverrideInfo != null ? pOverrideInfo.m : (Interop.PerformanceOverrideInfoIntel*)default(IntPtr));
+				if (result != Result.Success)
+					throw new ResultException (result);
 			}
 		}
 	}
@@ -3935,9 +5312,35 @@ namespace Vulkan
 		}
 	}
 
+	public partial class DescriptorUpdateTemplate : INonDispatchableHandleMarshalling
+	{
+		internal DescriptorUpdateTemplate() {}
+
+		internal UInt64 m;
+
+		UInt64 INonDispatchableHandleMarshalling.Handle {
+			get {
+				return m;
+			}
+		}
+	}
+
 	public partial class DescriptorUpdateTemplateKhr : INonDispatchableHandleMarshalling
 	{
 		internal DescriptorUpdateTemplateKhr() {}
+
+		internal UInt64 m;
+
+		UInt64 INonDispatchableHandleMarshalling.Handle {
+			get {
+				return m;
+			}
+		}
+	}
+
+	public partial class SamplerYcbcrConversion : INonDispatchableHandleMarshalling
+	{
+		internal SamplerYcbcrConversion() {}
 
 		internal UInt64 m;
 
@@ -3964,6 +5367,32 @@ namespace Vulkan
 	public partial class ValidationCacheExt : INonDispatchableHandleMarshalling
 	{
 		internal ValidationCacheExt() {}
+
+		internal UInt64 m;
+
+		UInt64 INonDispatchableHandleMarshalling.Handle {
+			get {
+				return m;
+			}
+		}
+	}
+
+	public partial class AccelerationStructureNv : INonDispatchableHandleMarshalling
+	{
+		internal AccelerationStructureNv() {}
+
+		internal UInt64 m;
+
+		UInt64 INonDispatchableHandleMarshalling.Handle {
+			get {
+				return m;
+			}
+		}
+	}
+
+	public partial class PerformanceConfigurationIntel : INonDispatchableHandleMarshalling
+	{
+		internal PerformanceConfigurationIntel() {}
 
 		internal UInt64 m;
 
@@ -4029,6 +5458,19 @@ namespace Vulkan
 	public partial class DebugReportCallbackExt : INonDispatchableHandleMarshalling
 	{
 		internal DebugReportCallbackExt() {}
+
+		internal UInt64 m;
+
+		UInt64 INonDispatchableHandleMarshalling.Handle {
+			get {
+				return m;
+			}
+		}
+	}
+
+	public partial class DebugUtilsMessengerExt : INonDispatchableHandleMarshalling
+	{
+		internal DebugUtilsMessengerExt() {}
 
 		internal UInt64 m;
 

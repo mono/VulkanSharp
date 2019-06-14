@@ -16,6 +16,20 @@ namespace Vulkan
 {
 	public static partial class Commands
 	{
+		public static UInt32 EnumerateInstanceVersion ()
+		{
+			Result result;
+			UInt32 pApiVersion;
+			unsafe {
+				pApiVersion = new UInt32 ();
+				result = Interop.NativeMethods.vkEnumerateInstanceVersion (&pApiVersion);
+				if (result != Result.Success)
+					throw new ResultException (result);
+
+				return pApiVersion;
+			}
+		}
+
 		public static LayerProperties[] EnumerateInstanceLayerProperties ()
 		{
 			Result result;

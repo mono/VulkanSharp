@@ -12,6 +12,18 @@ using System;
 
 namespace Vulkan.Interop
 {
+	internal partial struct BaseOutStructure
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+	}
+
+	internal partial struct BaseInStructure
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+	}
+
 	internal partial struct PhysicalDeviceProperties
 	{
 		internal UInt32 ApiVersion;
@@ -64,7 +76,7 @@ namespace Vulkan.Interop
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal UInt32 Flags;
+		internal DeviceQueueCreateFlags Flags;
 		internal UInt32 QueueFamilyIndex;
 		internal UInt32 QueueCount;
 		internal IntPtr QueuePriorities;
@@ -289,7 +301,7 @@ namespace Vulkan.Interop
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal UInt32 Flags;
+		internal ImageViewCreateFlags Flags;
 		internal UInt64 Image;
 		internal ImageViewType ViewType;
 		internal Format Format;
@@ -592,7 +604,7 @@ namespace Vulkan.Interop
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal UInt32 Flags;
+		internal SamplerCreateFlags Flags;
 		internal Filter MagFilter;
 		internal Filter MinFilter;
 		internal SamplerMipmapMode MipmapMode;
@@ -921,6 +933,22 @@ namespace Vulkan.Interop
 		internal IntPtr Window;
 	}
 
+	internal partial struct ImagePipeSurfaceCreateInfoFUCHSIA
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 Flags;
+		internal UInt32 ImagePipeHandle;
+	}
+
+	internal partial struct StreamDescriptorSurfaceCreateInfoGGP
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 Flags;
+		internal int StreamDescriptor;
+	}
+
 	internal partial struct SwapchainCreateInfoKhr
 	{
 		internal StructureType SType;
@@ -970,6 +998,16 @@ namespace Vulkan.Interop
 		internal IntPtr Next;
 		internal UInt32 DisabledValidationCheckCount;
 		internal IntPtr DisabledValidationChecks;
+	}
+
+	internal partial struct ValidationFeaturesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 EnabledValidationFeatureCount;
+		internal IntPtr EnabledValidationFeatures;
+		internal UInt32 DisabledValidationFeatureCount;
+		internal IntPtr DisabledValidationFeatures;
 	}
 
 	internal partial struct PipelineRasterizationStateRasterizationOrderAmd
@@ -1156,11 +1194,45 @@ namespace Vulkan.Interop
 		internal ShaderStageFlags StageFlags;
 	}
 
+	internal partial struct PhysicalDeviceFeatures2
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal PhysicalDeviceFeatures Features;
+	}
+
 	internal partial struct PhysicalDeviceFeatures2Khr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal PhysicalDeviceFeatures Features;
+
+		public static implicit operator PhysicalDeviceFeatures2Khr (PhysicalDeviceFeatures2 that) {
+			var ret = new PhysicalDeviceFeatures2Khr {
+				SType = that.SType,
+				Next = that.Next,
+				Features = that.Features,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator PhysicalDeviceFeatures2 (PhysicalDeviceFeatures2Khr that) {
+			var ret = new PhysicalDeviceFeatures2 {
+				SType = that.SType,
+				Next = that.Next,
+				Features = that.Features,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct PhysicalDeviceProperties2
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal PhysicalDeviceProperties Properties;
 	}
 
 	internal partial struct PhysicalDeviceProperties2Khr
@@ -1168,6 +1240,33 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal PhysicalDeviceProperties Properties;
+
+		public static implicit operator PhysicalDeviceProperties2Khr (PhysicalDeviceProperties2 that) {
+			var ret = new PhysicalDeviceProperties2Khr {
+				SType = that.SType,
+				Next = that.Next,
+				Properties = that.Properties,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator PhysicalDeviceProperties2 (PhysicalDeviceProperties2Khr that) {
+			var ret = new PhysicalDeviceProperties2 {
+				SType = that.SType,
+				Next = that.Next,
+				Properties = that.Properties,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct FormatProperties2
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal FormatProperties FormatProperties;
 	}
 
 	internal partial struct FormatProperties2Khr
@@ -1175,6 +1274,33 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal FormatProperties FormatProperties;
+
+		public static implicit operator FormatProperties2Khr (FormatProperties2 that) {
+			var ret = new FormatProperties2Khr {
+				SType = that.SType,
+				Next = that.Next,
+				FormatProperties = that.FormatProperties,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator FormatProperties2 (FormatProperties2Khr that) {
+			var ret = new FormatProperties2 {
+				SType = that.SType,
+				Next = that.Next,
+				FormatProperties = that.FormatProperties,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct ImageFormatProperties2
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ImageFormatProperties ImageFormatProperties;
 	}
 
 	internal partial struct ImageFormatProperties2Khr
@@ -1182,6 +1308,37 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal ImageFormatProperties ImageFormatProperties;
+
+		public static implicit operator ImageFormatProperties2Khr (ImageFormatProperties2 that) {
+			var ret = new ImageFormatProperties2Khr {
+				SType = that.SType,
+				Next = that.Next,
+				ImageFormatProperties = that.ImageFormatProperties,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator ImageFormatProperties2 (ImageFormatProperties2Khr that) {
+			var ret = new ImageFormatProperties2 {
+				SType = that.SType,
+				Next = that.Next,
+				ImageFormatProperties = that.ImageFormatProperties,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct PhysicalDeviceImageFormatInfo2
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Format Format;
+		internal ImageType Type;
+		internal ImageTiling Tiling;
+		internal ImageUsageFlags Usage;
+		internal ImageCreateFlags Flags;
 	}
 
 	internal partial struct PhysicalDeviceImageFormatInfo2Khr
@@ -1193,6 +1350,41 @@ namespace Vulkan.Interop
 		internal ImageTiling Tiling;
 		internal ImageUsageFlags Usage;
 		internal ImageCreateFlags Flags;
+
+		public static implicit operator PhysicalDeviceImageFormatInfo2Khr (PhysicalDeviceImageFormatInfo2 that) {
+			var ret = new PhysicalDeviceImageFormatInfo2Khr {
+				SType = that.SType,
+				Next = that.Next,
+				Format = that.Format,
+				Type = that.Type,
+				Tiling = that.Tiling,
+				Usage = that.Usage,
+				Flags = that.Flags,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator PhysicalDeviceImageFormatInfo2 (PhysicalDeviceImageFormatInfo2Khr that) {
+			var ret = new PhysicalDeviceImageFormatInfo2 {
+				SType = that.SType,
+				Next = that.Next,
+				Format = that.Format,
+				Type = that.Type,
+				Tiling = that.Tiling,
+				Usage = that.Usage,
+				Flags = that.Flags,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct QueueFamilyProperties2
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal QueueFamilyProperties QueueFamilyProperties;
 	}
 
 	internal partial struct QueueFamilyProperties2Khr
@@ -1200,6 +1392,33 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal QueueFamilyProperties QueueFamilyProperties;
+
+		public static implicit operator QueueFamilyProperties2Khr (QueueFamilyProperties2 that) {
+			var ret = new QueueFamilyProperties2Khr {
+				SType = that.SType,
+				Next = that.Next,
+				QueueFamilyProperties = that.QueueFamilyProperties,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator QueueFamilyProperties2 (QueueFamilyProperties2Khr that) {
+			var ret = new QueueFamilyProperties2 {
+				SType = that.SType,
+				Next = that.Next,
+				QueueFamilyProperties = that.QueueFamilyProperties,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct PhysicalDeviceMemoryProperties2
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal PhysicalDeviceMemoryProperties MemoryProperties;
 	}
 
 	internal partial struct PhysicalDeviceMemoryProperties2Khr
@@ -1207,6 +1426,33 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal PhysicalDeviceMemoryProperties MemoryProperties;
+
+		public static implicit operator PhysicalDeviceMemoryProperties2Khr (PhysicalDeviceMemoryProperties2 that) {
+			var ret = new PhysicalDeviceMemoryProperties2Khr {
+				SType = that.SType,
+				Next = that.Next,
+				MemoryProperties = that.MemoryProperties,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator PhysicalDeviceMemoryProperties2 (PhysicalDeviceMemoryProperties2Khr that) {
+			var ret = new PhysicalDeviceMemoryProperties2 {
+				SType = that.SType,
+				Next = that.Next,
+				MemoryProperties = that.MemoryProperties,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct SparseImageFormatProperties2
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal SparseImageFormatProperties Properties;
 	}
 
 	internal partial struct SparseImageFormatProperties2Khr
@@ -1214,6 +1460,37 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal SparseImageFormatProperties Properties;
+
+		public static implicit operator SparseImageFormatProperties2Khr (SparseImageFormatProperties2 that) {
+			var ret = new SparseImageFormatProperties2Khr {
+				SType = that.SType,
+				Next = that.Next,
+				Properties = that.Properties,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator SparseImageFormatProperties2 (SparseImageFormatProperties2Khr that) {
+			var ret = new SparseImageFormatProperties2 {
+				SType = that.SType,
+				Next = that.Next,
+				Properties = that.Properties,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct PhysicalDeviceSparseImageFormatInfo2
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Format Format;
+		internal ImageType Type;
+		internal SampleCountFlags Samples;
+		internal ImageUsageFlags Usage;
+		internal ImageTiling Tiling;
 	}
 
 	internal partial struct PhysicalDeviceSparseImageFormatInfo2Khr
@@ -1225,6 +1502,34 @@ namespace Vulkan.Interop
 		internal SampleCountFlags Samples;
 		internal ImageUsageFlags Usage;
 		internal ImageTiling Tiling;
+
+		public static implicit operator PhysicalDeviceSparseImageFormatInfo2Khr (PhysicalDeviceSparseImageFormatInfo2 that) {
+			var ret = new PhysicalDeviceSparseImageFormatInfo2Khr {
+				SType = that.SType,
+				Next = that.Next,
+				Format = that.Format,
+				Type = that.Type,
+				Samples = that.Samples,
+				Usage = that.Usage,
+				Tiling = that.Tiling,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator PhysicalDeviceSparseImageFormatInfo2 (PhysicalDeviceSparseImageFormatInfo2Khr that) {
+			var ret = new PhysicalDeviceSparseImageFormatInfo2 {
+				SType = that.SType,
+				Next = that.Next,
+				Format = that.Format,
+				Type = that.Type,
+				Samples = that.Samples,
+				Usage = that.Usage,
+				Tiling = that.Tiling,
+			};
+
+			return ret;
+		}
 	}
 
 	internal partial struct PhysicalDevicePushDescriptorPropertiesKhr
@@ -1232,6 +1537,16 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 MaxPushDescriptors;
+	}
+
+	internal partial struct PhysicalDeviceDriverPropertiesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal DriverIdKhr DriverId;
+		internal unsafe fixed byte DriverName[256];
+		internal unsafe fixed byte DriverInfo[256];
+		internal ConformanceVersionKhr ConformanceVersion;
 	}
 
 	internal partial struct PresentRegionsKhr
@@ -1248,7 +1563,7 @@ namespace Vulkan.Interop
 		internal IntPtr Rectangles;
 	}
 
-	internal partial struct PhysicalDeviceVariablePointerFeaturesKhr
+	internal partial struct PhysicalDeviceVariablePointersFeatures
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -1256,18 +1571,171 @@ namespace Vulkan.Interop
 		internal Bool32 VariablePointers;
 	}
 
+	internal partial struct PhysicalDeviceVariablePointersFeaturesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 VariablePointersStorageBuffer;
+		internal Bool32 VariablePointers;
+
+		public static implicit operator PhysicalDeviceVariablePointersFeaturesKhr (PhysicalDeviceVariablePointersFeatures that) {
+			var ret = new PhysicalDeviceVariablePointersFeaturesKhr {
+				SType = that.SType,
+				Next = that.Next,
+				VariablePointersStorageBuffer = that.VariablePointersStorageBuffer,
+				VariablePointers = that.VariablePointers,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator PhysicalDeviceVariablePointersFeatures (PhysicalDeviceVariablePointersFeaturesKhr that) {
+			var ret = new PhysicalDeviceVariablePointersFeatures {
+				SType = that.SType,
+				Next = that.Next,
+				VariablePointersStorageBuffer = that.VariablePointersStorageBuffer,
+				VariablePointers = that.VariablePointers,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct PhysicalDeviceVariablePointerFeaturesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 VariablePointersStorageBuffer;
+		internal Bool32 VariablePointers;
+
+		public static implicit operator PhysicalDeviceVariablePointerFeaturesKhr (PhysicalDeviceVariablePointersFeatures that) {
+			var ret = new PhysicalDeviceVariablePointerFeaturesKhr {
+				SType = that.SType,
+				Next = that.Next,
+				VariablePointersStorageBuffer = that.VariablePointersStorageBuffer,
+				VariablePointers = that.VariablePointers,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator PhysicalDeviceVariablePointersFeatures (PhysicalDeviceVariablePointerFeaturesKhr that) {
+			var ret = new PhysicalDeviceVariablePointersFeatures {
+				SType = that.SType,
+				Next = that.Next,
+				VariablePointersStorageBuffer = that.VariablePointersStorageBuffer,
+				VariablePointers = that.VariablePointers,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct PhysicalDeviceVariablePointerFeatures
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 VariablePointersStorageBuffer;
+		internal Bool32 VariablePointers;
+
+		public static implicit operator PhysicalDeviceVariablePointerFeatures (PhysicalDeviceVariablePointersFeatures that) {
+			var ret = new PhysicalDeviceVariablePointerFeatures {
+				SType = that.SType,
+				Next = that.Next,
+				VariablePointersStorageBuffer = that.VariablePointersStorageBuffer,
+				VariablePointers = that.VariablePointers,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator PhysicalDeviceVariablePointersFeatures (PhysicalDeviceVariablePointerFeatures that) {
+			var ret = new PhysicalDeviceVariablePointersFeatures {
+				SType = that.SType,
+				Next = that.Next,
+				VariablePointersStorageBuffer = that.VariablePointersStorageBuffer,
+				VariablePointers = that.VariablePointers,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct PhysicalDeviceExternalImageFormatInfo
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalMemoryHandleTypeFlags HandleType;
+	}
+
 	internal partial struct PhysicalDeviceExternalImageFormatInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal ExternalMemoryHandleTypeFlagsKhr HandleType;
+		internal ExternalMemoryHandleTypeFlags HandleType;
+
+		public static implicit operator PhysicalDeviceExternalImageFormatInfoKhr (PhysicalDeviceExternalImageFormatInfo that) {
+			var ret = new PhysicalDeviceExternalImageFormatInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				HandleType = that.HandleType,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator PhysicalDeviceExternalImageFormatInfo (PhysicalDeviceExternalImageFormatInfoKhr that) {
+			var ret = new PhysicalDeviceExternalImageFormatInfo {
+				SType = that.SType,
+				Next = that.Next,
+				HandleType = that.HandleType,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct ExternalImageFormatProperties
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalMemoryProperties ExternalMemoryProperties;
 	}
 
 	internal partial struct ExternalImageFormatPropertiesKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal ExternalMemoryPropertiesKhr ExternalMemoryProperties;
+		internal ExternalMemoryProperties ExternalMemoryProperties;
+
+		public static implicit operator ExternalImageFormatPropertiesKhr (ExternalImageFormatProperties that) {
+			var ret = new ExternalImageFormatPropertiesKhr {
+				SType = that.SType,
+				Next = that.Next,
+				ExternalMemoryProperties = that.ExternalMemoryProperties,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator ExternalImageFormatProperties (ExternalImageFormatPropertiesKhr that) {
+			var ret = new ExternalImageFormatProperties {
+				SType = that.SType,
+				Next = that.Next,
+				ExternalMemoryProperties = that.ExternalMemoryProperties,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct PhysicalDeviceExternalBufferInfo
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal BufferCreateFlags Flags;
+		internal BufferUsageFlags Usage;
+		internal ExternalMemoryHandleTypeFlags HandleType;
 	}
 
 	internal partial struct PhysicalDeviceExternalBufferInfoKhr
@@ -1276,14 +1744,76 @@ namespace Vulkan.Interop
 		internal IntPtr Next;
 		internal BufferCreateFlags Flags;
 		internal BufferUsageFlags Usage;
-		internal ExternalMemoryHandleTypeFlagsKhr HandleType;
+		internal ExternalMemoryHandleTypeFlags HandleType;
+
+		public static implicit operator PhysicalDeviceExternalBufferInfoKhr (PhysicalDeviceExternalBufferInfo that) {
+			var ret = new PhysicalDeviceExternalBufferInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				Flags = that.Flags,
+				Usage = that.Usage,
+				HandleType = that.HandleType,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator PhysicalDeviceExternalBufferInfo (PhysicalDeviceExternalBufferInfoKhr that) {
+			var ret = new PhysicalDeviceExternalBufferInfo {
+				SType = that.SType,
+				Next = that.Next,
+				Flags = that.Flags,
+				Usage = that.Usage,
+				HandleType = that.HandleType,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct ExternalBufferProperties
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalMemoryProperties ExternalMemoryProperties;
 	}
 
 	internal partial struct ExternalBufferPropertiesKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal ExternalMemoryPropertiesKhr ExternalMemoryProperties;
+		internal ExternalMemoryProperties ExternalMemoryProperties;
+
+		public static implicit operator ExternalBufferPropertiesKhr (ExternalBufferProperties that) {
+			var ret = new ExternalBufferPropertiesKhr {
+				SType = that.SType,
+				Next = that.Next,
+				ExternalMemoryProperties = that.ExternalMemoryProperties,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator ExternalBufferProperties (ExternalBufferPropertiesKhr that) {
+			var ret = new ExternalBufferProperties {
+				SType = that.SType,
+				Next = that.Next,
+				ExternalMemoryProperties = that.ExternalMemoryProperties,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct PhysicalDeviceIDProperties
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal unsafe fixed byte DeviceUuid[16];
+		internal unsafe fixed byte DriverUuid[16];
+		internal unsafe fixed byte DeviceLuid[8];
+		internal UInt32 DeviceNodeMask;
+		internal Bool32 DeviceLuidvalid;
 	}
 
 	internal partial struct PhysicalDeviceIDPropertiesKhr
@@ -1295,27 +1825,216 @@ namespace Vulkan.Interop
 		internal unsafe fixed byte DeviceLuid[8];
 		internal UInt32 DeviceNodeMask;
 		internal Bool32 DeviceLuidvalid;
+
+		unsafe public static implicit operator PhysicalDeviceIDPropertiesKhr (PhysicalDeviceIDProperties that) {
+			var ret = new PhysicalDeviceIDPropertiesKhr {
+				SType = that.SType,
+				Next = that.Next,
+				DeviceNodeMask = that.DeviceNodeMask,
+				DeviceLuidvalid = that.DeviceLuidvalid,
+			};
+
+			ret.DeviceUuid[0] = that.DeviceUuid[0];
+			ret.DeviceUuid[1] = that.DeviceUuid[1];
+			ret.DeviceUuid[2] = that.DeviceUuid[2];
+			ret.DeviceUuid[3] = that.DeviceUuid[3];
+			ret.DeviceUuid[4] = that.DeviceUuid[4];
+			ret.DeviceUuid[5] = that.DeviceUuid[5];
+			ret.DeviceUuid[6] = that.DeviceUuid[6];
+			ret.DeviceUuid[7] = that.DeviceUuid[7];
+			ret.DeviceUuid[8] = that.DeviceUuid[8];
+			ret.DeviceUuid[9] = that.DeviceUuid[9];
+			ret.DeviceUuid[10] = that.DeviceUuid[10];
+			ret.DeviceUuid[11] = that.DeviceUuid[11];
+			ret.DeviceUuid[12] = that.DeviceUuid[12];
+			ret.DeviceUuid[13] = that.DeviceUuid[13];
+			ret.DeviceUuid[14] = that.DeviceUuid[14];
+			ret.DeviceUuid[15] = that.DeviceUuid[15];
+
+			ret.DriverUuid[0] = that.DriverUuid[0];
+			ret.DriverUuid[1] = that.DriverUuid[1];
+			ret.DriverUuid[2] = that.DriverUuid[2];
+			ret.DriverUuid[3] = that.DriverUuid[3];
+			ret.DriverUuid[4] = that.DriverUuid[4];
+			ret.DriverUuid[5] = that.DriverUuid[5];
+			ret.DriverUuid[6] = that.DriverUuid[6];
+			ret.DriverUuid[7] = that.DriverUuid[7];
+			ret.DriverUuid[8] = that.DriverUuid[8];
+			ret.DriverUuid[9] = that.DriverUuid[9];
+			ret.DriverUuid[10] = that.DriverUuid[10];
+			ret.DriverUuid[11] = that.DriverUuid[11];
+			ret.DriverUuid[12] = that.DriverUuid[12];
+			ret.DriverUuid[13] = that.DriverUuid[13];
+			ret.DriverUuid[14] = that.DriverUuid[14];
+			ret.DriverUuid[15] = that.DriverUuid[15];
+
+			ret.DeviceLuid[0] = that.DeviceLuid[0];
+			ret.DeviceLuid[1] = that.DeviceLuid[1];
+			ret.DeviceLuid[2] = that.DeviceLuid[2];
+			ret.DeviceLuid[3] = that.DeviceLuid[3];
+			ret.DeviceLuid[4] = that.DeviceLuid[4];
+			ret.DeviceLuid[5] = that.DeviceLuid[5];
+			ret.DeviceLuid[6] = that.DeviceLuid[6];
+			ret.DeviceLuid[7] = that.DeviceLuid[7];
+
+			return ret;
+		}
+
+		unsafe public static implicit operator PhysicalDeviceIDProperties (PhysicalDeviceIDPropertiesKhr that) {
+			var ret = new PhysicalDeviceIDProperties {
+				SType = that.SType,
+				Next = that.Next,
+				DeviceNodeMask = that.DeviceNodeMask,
+				DeviceLuidvalid = that.DeviceLuidvalid,
+			};
+
+			ret.DeviceUuid[0] = that.DeviceUuid[0];
+			ret.DeviceUuid[1] = that.DeviceUuid[1];
+			ret.DeviceUuid[2] = that.DeviceUuid[2];
+			ret.DeviceUuid[3] = that.DeviceUuid[3];
+			ret.DeviceUuid[4] = that.DeviceUuid[4];
+			ret.DeviceUuid[5] = that.DeviceUuid[5];
+			ret.DeviceUuid[6] = that.DeviceUuid[6];
+			ret.DeviceUuid[7] = that.DeviceUuid[7];
+			ret.DeviceUuid[8] = that.DeviceUuid[8];
+			ret.DeviceUuid[9] = that.DeviceUuid[9];
+			ret.DeviceUuid[10] = that.DeviceUuid[10];
+			ret.DeviceUuid[11] = that.DeviceUuid[11];
+			ret.DeviceUuid[12] = that.DeviceUuid[12];
+			ret.DeviceUuid[13] = that.DeviceUuid[13];
+			ret.DeviceUuid[14] = that.DeviceUuid[14];
+			ret.DeviceUuid[15] = that.DeviceUuid[15];
+
+			ret.DriverUuid[0] = that.DriverUuid[0];
+			ret.DriverUuid[1] = that.DriverUuid[1];
+			ret.DriverUuid[2] = that.DriverUuid[2];
+			ret.DriverUuid[3] = that.DriverUuid[3];
+			ret.DriverUuid[4] = that.DriverUuid[4];
+			ret.DriverUuid[5] = that.DriverUuid[5];
+			ret.DriverUuid[6] = that.DriverUuid[6];
+			ret.DriverUuid[7] = that.DriverUuid[7];
+			ret.DriverUuid[8] = that.DriverUuid[8];
+			ret.DriverUuid[9] = that.DriverUuid[9];
+			ret.DriverUuid[10] = that.DriverUuid[10];
+			ret.DriverUuid[11] = that.DriverUuid[11];
+			ret.DriverUuid[12] = that.DriverUuid[12];
+			ret.DriverUuid[13] = that.DriverUuid[13];
+			ret.DriverUuid[14] = that.DriverUuid[14];
+			ret.DriverUuid[15] = that.DriverUuid[15];
+
+			ret.DeviceLuid[0] = that.DeviceLuid[0];
+			ret.DeviceLuid[1] = that.DeviceLuid[1];
+			ret.DeviceLuid[2] = that.DeviceLuid[2];
+			ret.DeviceLuid[3] = that.DeviceLuid[3];
+			ret.DeviceLuid[4] = that.DeviceLuid[4];
+			ret.DeviceLuid[5] = that.DeviceLuid[5];
+			ret.DeviceLuid[6] = that.DeviceLuid[6];
+			ret.DeviceLuid[7] = that.DeviceLuid[7];
+
+			return ret;
+		}
+	}
+
+	internal partial struct ExternalMemoryImageCreateInfo
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalMemoryHandleTypeFlags HandleTypes;
 	}
 
 	internal partial struct ExternalMemoryImageCreateInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal ExternalMemoryHandleTypeFlagsKhr HandleTypes;
+		internal ExternalMemoryHandleTypeFlags HandleTypes;
+
+		public static implicit operator ExternalMemoryImageCreateInfoKhr (ExternalMemoryImageCreateInfo that) {
+			var ret = new ExternalMemoryImageCreateInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				HandleTypes = that.HandleTypes,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator ExternalMemoryImageCreateInfo (ExternalMemoryImageCreateInfoKhr that) {
+			var ret = new ExternalMemoryImageCreateInfo {
+				SType = that.SType,
+				Next = that.Next,
+				HandleTypes = that.HandleTypes,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct ExternalMemoryBufferCreateInfo
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalMemoryHandleTypeFlags HandleTypes;
 	}
 
 	internal partial struct ExternalMemoryBufferCreateInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal ExternalMemoryHandleTypeFlagsKhr HandleTypes;
+		internal ExternalMemoryHandleTypeFlags HandleTypes;
+
+		public static implicit operator ExternalMemoryBufferCreateInfoKhr (ExternalMemoryBufferCreateInfo that) {
+			var ret = new ExternalMemoryBufferCreateInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				HandleTypes = that.HandleTypes,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator ExternalMemoryBufferCreateInfo (ExternalMemoryBufferCreateInfoKhr that) {
+			var ret = new ExternalMemoryBufferCreateInfo {
+				SType = that.SType,
+				Next = that.Next,
+				HandleTypes = that.HandleTypes,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct ExportMemoryAllocateInfo
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalMemoryHandleTypeFlags HandleTypes;
 	}
 
 	internal partial struct ExportMemoryAllocateInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal ExternalMemoryHandleTypeFlagsKhr HandleTypes;
+		internal ExternalMemoryHandleTypeFlags HandleTypes;
+
+		public static implicit operator ExportMemoryAllocateInfoKhr (ExportMemoryAllocateInfo that) {
+			var ret = new ExportMemoryAllocateInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				HandleTypes = that.HandleTypes,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator ExportMemoryAllocateInfo (ExportMemoryAllocateInfoKhr that) {
+			var ret = new ExportMemoryAllocateInfo {
+				SType = that.SType,
+				Next = that.Next,
+				HandleTypes = that.HandleTypes,
+			};
+
+			return ret;
+		}
 	}
 
 	internal partial struct MemoryWin32HandlePropertiesKhr
@@ -1330,14 +2049,14 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt64 Memory;
-		internal ExternalMemoryHandleTypeFlagsKhr HandleType;
+		internal ExternalMemoryHandleTypeFlags HandleType;
 	}
 
 	internal partial struct ImportMemoryFdInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal ExternalMemoryHandleTypeFlagsKhr HandleType;
+		internal ExternalMemoryHandleTypeFlags HandleType;
 		internal int Fd;
 	}
 
@@ -1353,7 +2072,7 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt64 Memory;
-		internal ExternalMemoryHandleTypeFlagsKhr HandleType;
+		internal ExternalMemoryHandleTypeFlags HandleType;
 	}
 
 	internal partial struct Win32KeyedMutexAcquireReleaseInfoKhr
@@ -1369,27 +2088,114 @@ namespace Vulkan.Interop
 		internal IntPtr ReleaseKeys;
 	}
 
+	internal partial struct PhysicalDeviceExternalSemaphoreInfo
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalSemaphoreHandleTypeFlags HandleType;
+	}
+
 	internal partial struct PhysicalDeviceExternalSemaphoreInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal ExternalSemaphoreHandleTypeFlagsKhr HandleType;
+		internal ExternalSemaphoreHandleTypeFlags HandleType;
+
+		public static implicit operator PhysicalDeviceExternalSemaphoreInfoKhr (PhysicalDeviceExternalSemaphoreInfo that) {
+			var ret = new PhysicalDeviceExternalSemaphoreInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				HandleType = that.HandleType,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator PhysicalDeviceExternalSemaphoreInfo (PhysicalDeviceExternalSemaphoreInfoKhr that) {
+			var ret = new PhysicalDeviceExternalSemaphoreInfo {
+				SType = that.SType,
+				Next = that.Next,
+				HandleType = that.HandleType,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct ExternalSemaphoreProperties
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalSemaphoreHandleTypeFlags ExportFromImportedHandleTypes;
+		internal ExternalSemaphoreHandleTypeFlags CompatibleHandleTypes;
+		internal ExternalSemaphoreFeatureFlags ExternalSemaphoreFeatures;
 	}
 
 	internal partial struct ExternalSemaphorePropertiesKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal ExternalSemaphoreHandleTypeFlagsKhr ExportFromImportedHandleTypes;
-		internal ExternalSemaphoreHandleTypeFlagsKhr CompatibleHandleTypes;
-		internal ExternalSemaphoreFeatureFlagsKhr ExternalSemaphoreFeatures;
+		internal ExternalSemaphoreHandleTypeFlags ExportFromImportedHandleTypes;
+		internal ExternalSemaphoreHandleTypeFlags CompatibleHandleTypes;
+		internal ExternalSemaphoreFeatureFlags ExternalSemaphoreFeatures;
+
+		public static implicit operator ExternalSemaphorePropertiesKhr (ExternalSemaphoreProperties that) {
+			var ret = new ExternalSemaphorePropertiesKhr {
+				SType = that.SType,
+				Next = that.Next,
+				ExportFromImportedHandleTypes = that.ExportFromImportedHandleTypes,
+				CompatibleHandleTypes = that.CompatibleHandleTypes,
+				ExternalSemaphoreFeatures = that.ExternalSemaphoreFeatures,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator ExternalSemaphoreProperties (ExternalSemaphorePropertiesKhr that) {
+			var ret = new ExternalSemaphoreProperties {
+				SType = that.SType,
+				Next = that.Next,
+				ExportFromImportedHandleTypes = that.ExportFromImportedHandleTypes,
+				CompatibleHandleTypes = that.CompatibleHandleTypes,
+				ExternalSemaphoreFeatures = that.ExternalSemaphoreFeatures,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct ExportSemaphoreCreateInfo
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalSemaphoreHandleTypeFlags HandleTypes;
 	}
 
 	internal partial struct ExportSemaphoreCreateInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal ExternalSemaphoreHandleTypeFlagsKhr HandleTypes;
+		internal ExternalSemaphoreHandleTypeFlags HandleTypes;
+
+		public static implicit operator ExportSemaphoreCreateInfoKhr (ExportSemaphoreCreateInfo that) {
+			var ret = new ExportSemaphoreCreateInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				HandleTypes = that.HandleTypes,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator ExportSemaphoreCreateInfo (ExportSemaphoreCreateInfoKhr that) {
+			var ret = new ExportSemaphoreCreateInfo {
+				SType = that.SType,
+				Next = that.Next,
+				HandleTypes = that.HandleTypes,
+			};
+
+			return ret;
+		}
 	}
 
 	internal partial struct D3D12FenceSubmitInfoKhr
@@ -1407,7 +2213,7 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt64 Semaphore;
-		internal ExternalSemaphoreHandleTypeFlagsKhr HandleType;
+		internal ExternalSemaphoreHandleTypeFlags HandleType;
 	}
 
 	internal partial struct ImportSemaphoreFdInfoKhr
@@ -1415,8 +2221,8 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt64 Semaphore;
-		internal SemaphoreImportFlagsKhr Flags;
-		internal ExternalSemaphoreHandleTypeFlagsKhr HandleType;
+		internal SemaphoreImportFlags Flags;
+		internal ExternalSemaphoreHandleTypeFlags HandleType;
 		internal int Fd;
 	}
 
@@ -1425,30 +2231,117 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt64 Semaphore;
-		internal ExternalSemaphoreHandleTypeFlagsKhr HandleType;
+		internal ExternalSemaphoreHandleTypeFlags HandleType;
+	}
+
+	internal partial struct PhysicalDeviceExternalFenceInfo
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalFenceHandleTypeFlags HandleType;
 	}
 
 	internal partial struct PhysicalDeviceExternalFenceInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal ExternalFenceHandleTypeFlagsKhr HandleType;
+		internal ExternalFenceHandleTypeFlags HandleType;
+
+		public static implicit operator PhysicalDeviceExternalFenceInfoKhr (PhysicalDeviceExternalFenceInfo that) {
+			var ret = new PhysicalDeviceExternalFenceInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				HandleType = that.HandleType,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator PhysicalDeviceExternalFenceInfo (PhysicalDeviceExternalFenceInfoKhr that) {
+			var ret = new PhysicalDeviceExternalFenceInfo {
+				SType = that.SType,
+				Next = that.Next,
+				HandleType = that.HandleType,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct ExternalFenceProperties
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalFenceHandleTypeFlags ExportFromImportedHandleTypes;
+		internal ExternalFenceHandleTypeFlags CompatibleHandleTypes;
+		internal ExternalFenceFeatureFlags ExternalFenceFeatures;
 	}
 
 	internal partial struct ExternalFencePropertiesKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal ExternalFenceHandleTypeFlagsKhr ExportFromImportedHandleTypes;
-		internal ExternalFenceHandleTypeFlagsKhr CompatibleHandleTypes;
-		internal ExternalFenceFeatureFlagsKhr ExternalFenceFeatures;
+		internal ExternalFenceHandleTypeFlags ExportFromImportedHandleTypes;
+		internal ExternalFenceHandleTypeFlags CompatibleHandleTypes;
+		internal ExternalFenceFeatureFlags ExternalFenceFeatures;
+
+		public static implicit operator ExternalFencePropertiesKhr (ExternalFenceProperties that) {
+			var ret = new ExternalFencePropertiesKhr {
+				SType = that.SType,
+				Next = that.Next,
+				ExportFromImportedHandleTypes = that.ExportFromImportedHandleTypes,
+				CompatibleHandleTypes = that.CompatibleHandleTypes,
+				ExternalFenceFeatures = that.ExternalFenceFeatures,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator ExternalFenceProperties (ExternalFencePropertiesKhr that) {
+			var ret = new ExternalFenceProperties {
+				SType = that.SType,
+				Next = that.Next,
+				ExportFromImportedHandleTypes = that.ExportFromImportedHandleTypes,
+				CompatibleHandleTypes = that.CompatibleHandleTypes,
+				ExternalFenceFeatures = that.ExternalFenceFeatures,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct ExportFenceCreateInfo
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ExternalFenceHandleTypeFlags HandleTypes;
 	}
 
 	internal partial struct ExportFenceCreateInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal ExternalFenceHandleTypeFlagsKhr HandleTypes;
+		internal ExternalFenceHandleTypeFlags HandleTypes;
+
+		public static implicit operator ExportFenceCreateInfoKhr (ExportFenceCreateInfo that) {
+			var ret = new ExportFenceCreateInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				HandleTypes = that.HandleTypes,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator ExportFenceCreateInfo (ExportFenceCreateInfoKhr that) {
+			var ret = new ExportFenceCreateInfo {
+				SType = that.SType,
+				Next = that.Next,
+				HandleTypes = that.HandleTypes,
+			};
+
+			return ret;
+		}
 	}
 
 	internal partial struct FenceGetWin32HandleInfoKhr
@@ -1456,7 +2349,7 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt64 Fence;
-		internal ExternalFenceHandleTypeFlagsKhr HandleType;
+		internal ExternalFenceHandleTypeFlags HandleType;
 	}
 
 	internal partial struct ImportFenceFdInfoKhr
@@ -1464,8 +2357,8 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt64 Fence;
-		internal FenceImportFlagsKhr Flags;
-		internal ExternalFenceHandleTypeFlagsKhr HandleType;
+		internal FenceImportFlags Flags;
+		internal ExternalFenceHandleTypeFlags HandleType;
 		internal int Fd;
 	}
 
@@ -1474,10 +2367,10 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt64 Fence;
-		internal ExternalFenceHandleTypeFlagsKhr HandleType;
+		internal ExternalFenceHandleTypeFlags HandleType;
 	}
 
-	internal partial struct PhysicalDeviceMultiviewFeaturesKhx
+	internal partial struct PhysicalDeviceMultiviewFeatures
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -1486,7 +2379,40 @@ namespace Vulkan.Interop
 		internal Bool32 MultiviewTessellationShader;
 	}
 
-	internal partial struct PhysicalDeviceMultiviewPropertiesKhx
+	internal partial struct PhysicalDeviceMultiviewFeaturesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 Multiview;
+		internal Bool32 MultiviewGeometryShader;
+		internal Bool32 MultiviewTessellationShader;
+
+		public static implicit operator PhysicalDeviceMultiviewFeaturesKhr (PhysicalDeviceMultiviewFeatures that) {
+			var ret = new PhysicalDeviceMultiviewFeaturesKhr {
+				SType = that.SType,
+				Next = that.Next,
+				Multiview = that.Multiview,
+				MultiviewGeometryShader = that.MultiviewGeometryShader,
+				MultiviewTessellationShader = that.MultiviewTessellationShader,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator PhysicalDeviceMultiviewFeatures (PhysicalDeviceMultiviewFeaturesKhr that) {
+			var ret = new PhysicalDeviceMultiviewFeatures {
+				SType = that.SType,
+				Next = that.Next,
+				Multiview = that.Multiview,
+				MultiviewGeometryShader = that.MultiviewGeometryShader,
+				MultiviewTessellationShader = that.MultiviewTessellationShader,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct PhysicalDeviceMultiviewProperties
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -1494,7 +2420,37 @@ namespace Vulkan.Interop
 		internal UInt32 MaxMultiviewInstanceIndex;
 	}
 
-	internal partial struct RenderPassMultiviewCreateInfoKhx
+	internal partial struct PhysicalDeviceMultiviewPropertiesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 MaxMultiviewViewCount;
+		internal UInt32 MaxMultiviewInstanceIndex;
+
+		public static implicit operator PhysicalDeviceMultiviewPropertiesKhr (PhysicalDeviceMultiviewProperties that) {
+			var ret = new PhysicalDeviceMultiviewPropertiesKhr {
+				SType = that.SType,
+				Next = that.Next,
+				MaxMultiviewViewCount = that.MaxMultiviewViewCount,
+				MaxMultiviewInstanceIndex = that.MaxMultiviewInstanceIndex,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator PhysicalDeviceMultiviewProperties (PhysicalDeviceMultiviewPropertiesKhr that) {
+			var ret = new PhysicalDeviceMultiviewProperties {
+				SType = that.SType,
+				Next = that.Next,
+				MaxMultiviewViewCount = that.MaxMultiviewViewCount,
+				MaxMultiviewInstanceIndex = that.MaxMultiviewInstanceIndex,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct RenderPassMultiviewCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -1504,6 +2460,48 @@ namespace Vulkan.Interop
 		internal IntPtr ViewOffsets;
 		internal UInt32 CorrelationMaskCount;
 		internal IntPtr CorrelationMasks;
+	}
+
+	internal partial struct RenderPassMultiviewCreateInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 SubpassCount;
+		internal IntPtr ViewMasks;
+		internal UInt32 DependencyCount;
+		internal IntPtr ViewOffsets;
+		internal UInt32 CorrelationMaskCount;
+		internal IntPtr CorrelationMasks;
+
+		public static implicit operator RenderPassMultiviewCreateInfoKhr (RenderPassMultiviewCreateInfo that) {
+			var ret = new RenderPassMultiviewCreateInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				SubpassCount = that.SubpassCount,
+				ViewMasks = that.ViewMasks,
+				DependencyCount = that.DependencyCount,
+				ViewOffsets = that.ViewOffsets,
+				CorrelationMaskCount = that.CorrelationMaskCount,
+				CorrelationMasks = that.CorrelationMasks,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator RenderPassMultiviewCreateInfo (RenderPassMultiviewCreateInfoKhr that) {
+			var ret = new RenderPassMultiviewCreateInfo {
+				SType = that.SType,
+				Next = that.Next,
+				SubpassCount = that.SubpassCount,
+				ViewMasks = that.ViewMasks,
+				DependencyCount = that.DependencyCount,
+				ViewOffsets = that.ViewOffsets,
+				CorrelationMaskCount = that.CorrelationMaskCount,
+				CorrelationMasks = that.CorrelationMasks,
+			};
+
+			return ret;
+		}
 	}
 
 	internal partial struct SurfaceCapabilities2Ext
@@ -1551,12 +2549,51 @@ namespace Vulkan.Interop
 		internal SurfaceCounterFlagsExt SurfaceCounters;
 	}
 
-	internal partial struct MemoryAllocateFlagsInfoKhx
+	internal partial struct MemoryAllocateFlagsInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal MemoryAllocateFlagsKhx Flags;
+		internal MemoryAllocateFlags Flags;
 		internal UInt32 DeviceMask;
+	}
+
+	internal partial struct MemoryAllocateFlagsInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal MemoryAllocateFlags Flags;
+		internal UInt32 DeviceMask;
+
+		public static implicit operator MemoryAllocateFlagsInfoKhr (MemoryAllocateFlagsInfo that) {
+			var ret = new MemoryAllocateFlagsInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				Flags = that.Flags,
+				DeviceMask = that.DeviceMask,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator MemoryAllocateFlagsInfo (MemoryAllocateFlagsInfoKhr that) {
+			var ret = new MemoryAllocateFlagsInfo {
+				SType = that.SType,
+				Next = that.Next,
+				Flags = that.Flags,
+				DeviceMask = that.DeviceMask,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct BindBufferMemoryInfo
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Buffer;
+		internal UInt64 Memory;
+		internal DeviceSize MemoryOffset;
 	}
 
 	internal partial struct BindBufferMemoryInfoKhr
@@ -1566,14 +2603,77 @@ namespace Vulkan.Interop
 		internal UInt64 Buffer;
 		internal UInt64 Memory;
 		internal DeviceSize MemoryOffset;
+
+		public static implicit operator BindBufferMemoryInfoKhr (BindBufferMemoryInfo that) {
+			var ret = new BindBufferMemoryInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				Buffer = that.Buffer,
+				Memory = that.Memory,
+				MemoryOffset = that.MemoryOffset,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator BindBufferMemoryInfo (BindBufferMemoryInfoKhr that) {
+			var ret = new BindBufferMemoryInfo {
+				SType = that.SType,
+				Next = that.Next,
+				Buffer = that.Buffer,
+				Memory = that.Memory,
+				MemoryOffset = that.MemoryOffset,
+			};
+
+			return ret;
+		}
 	}
 
-	internal partial struct BindBufferMemoryDeviceGroupInfoKhx
+	internal partial struct BindBufferMemoryDeviceGroupInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 DeviceIndexCount;
 		internal IntPtr DeviceIndices;
+	}
+
+	internal partial struct BindBufferMemoryDeviceGroupInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 DeviceIndexCount;
+		internal IntPtr DeviceIndices;
+
+		public static implicit operator BindBufferMemoryDeviceGroupInfoKhr (BindBufferMemoryDeviceGroupInfo that) {
+			var ret = new BindBufferMemoryDeviceGroupInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				DeviceIndexCount = that.DeviceIndexCount,
+				DeviceIndices = that.DeviceIndices,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator BindBufferMemoryDeviceGroupInfo (BindBufferMemoryDeviceGroupInfoKhr that) {
+			var ret = new BindBufferMemoryDeviceGroupInfo {
+				SType = that.SType,
+				Next = that.Next,
+				DeviceIndexCount = that.DeviceIndexCount,
+				DeviceIndices = that.DeviceIndices,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct BindImageMemoryInfo
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Image;
+		internal UInt64 Memory;
+		internal DeviceSize MemoryOffset;
 	}
 
 	internal partial struct BindImageMemoryInfoKhr
@@ -1583,19 +2683,79 @@ namespace Vulkan.Interop
 		internal UInt64 Image;
 		internal UInt64 Memory;
 		internal DeviceSize MemoryOffset;
+
+		public static implicit operator BindImageMemoryInfoKhr (BindImageMemoryInfo that) {
+			var ret = new BindImageMemoryInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				Image = that.Image,
+				Memory = that.Memory,
+				MemoryOffset = that.MemoryOffset,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator BindImageMemoryInfo (BindImageMemoryInfoKhr that) {
+			var ret = new BindImageMemoryInfo {
+				SType = that.SType,
+				Next = that.Next,
+				Image = that.Image,
+				Memory = that.Memory,
+				MemoryOffset = that.MemoryOffset,
+			};
+
+			return ret;
+		}
 	}
 
-	internal partial struct BindImageMemoryDeviceGroupInfoKhx
+	internal partial struct BindImageMemoryDeviceGroupInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 DeviceIndexCount;
 		internal IntPtr DeviceIndices;
-		internal UInt32 SfrrectCount;
-		internal IntPtr Sfrrects;
+		internal UInt32 SplitInstanceBindRegionCount;
+		internal IntPtr SplitInstanceBindRegions;
 	}
 
-	internal partial struct DeviceGroupRenderPassBeginInfoKhx
+	internal partial struct BindImageMemoryDeviceGroupInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 DeviceIndexCount;
+		internal IntPtr DeviceIndices;
+		internal UInt32 SplitInstanceBindRegionCount;
+		internal IntPtr SplitInstanceBindRegions;
+
+		public static implicit operator BindImageMemoryDeviceGroupInfoKhr (BindImageMemoryDeviceGroupInfo that) {
+			var ret = new BindImageMemoryDeviceGroupInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				DeviceIndexCount = that.DeviceIndexCount,
+				DeviceIndices = that.DeviceIndices,
+				SplitInstanceBindRegionCount = that.SplitInstanceBindRegionCount,
+				SplitInstanceBindRegions = that.SplitInstanceBindRegions,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator BindImageMemoryDeviceGroupInfo (BindImageMemoryDeviceGroupInfoKhr that) {
+			var ret = new BindImageMemoryDeviceGroupInfo {
+				SType = that.SType,
+				Next = that.Next,
+				DeviceIndexCount = that.DeviceIndexCount,
+				DeviceIndices = that.DeviceIndices,
+				SplitInstanceBindRegionCount = that.SplitInstanceBindRegionCount,
+				SplitInstanceBindRegions = that.SplitInstanceBindRegions,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct DeviceGroupRenderPassBeginInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -1604,14 +2764,74 @@ namespace Vulkan.Interop
 		internal IntPtr DeviceRenderAreas;
 	}
 
-	internal partial struct DeviceGroupCommandBufferBeginInfoKhx
+	internal partial struct DeviceGroupRenderPassBeginInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 DeviceMask;
+		internal UInt32 DeviceRenderAreaCount;
+		internal IntPtr DeviceRenderAreas;
+
+		public static implicit operator DeviceGroupRenderPassBeginInfoKhr (DeviceGroupRenderPassBeginInfo that) {
+			var ret = new DeviceGroupRenderPassBeginInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				DeviceMask = that.DeviceMask,
+				DeviceRenderAreaCount = that.DeviceRenderAreaCount,
+				DeviceRenderAreas = that.DeviceRenderAreas,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator DeviceGroupRenderPassBeginInfo (DeviceGroupRenderPassBeginInfoKhr that) {
+			var ret = new DeviceGroupRenderPassBeginInfo {
+				SType = that.SType,
+				Next = that.Next,
+				DeviceMask = that.DeviceMask,
+				DeviceRenderAreaCount = that.DeviceRenderAreaCount,
+				DeviceRenderAreas = that.DeviceRenderAreas,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct DeviceGroupCommandBufferBeginInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 DeviceMask;
 	}
 
-	internal partial struct DeviceGroupSubmitInfoKhx
+	internal partial struct DeviceGroupCommandBufferBeginInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 DeviceMask;
+
+		public static implicit operator DeviceGroupCommandBufferBeginInfoKhr (DeviceGroupCommandBufferBeginInfo that) {
+			var ret = new DeviceGroupCommandBufferBeginInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				DeviceMask = that.DeviceMask,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator DeviceGroupCommandBufferBeginInfo (DeviceGroupCommandBufferBeginInfoKhr that) {
+			var ret = new DeviceGroupCommandBufferBeginInfo {
+				SType = that.SType,
+				Next = that.Next,
+				DeviceMask = that.DeviceMask,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct DeviceGroupSubmitInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -1623,7 +2843,49 @@ namespace Vulkan.Interop
 		internal IntPtr SignalSemaphoreDeviceIndices;
 	}
 
-	internal partial struct DeviceGroupBindSparseInfoKhx
+	internal partial struct DeviceGroupSubmitInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 WaitSemaphoreCount;
+		internal IntPtr WaitSemaphoreDeviceIndices;
+		internal UInt32 CommandBufferCount;
+		internal IntPtr CommandBufferDeviceMasks;
+		internal UInt32 SignalSemaphoreCount;
+		internal IntPtr SignalSemaphoreDeviceIndices;
+
+		public static implicit operator DeviceGroupSubmitInfoKhr (DeviceGroupSubmitInfo that) {
+			var ret = new DeviceGroupSubmitInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				WaitSemaphoreCount = that.WaitSemaphoreCount,
+				WaitSemaphoreDeviceIndices = that.WaitSemaphoreDeviceIndices,
+				CommandBufferCount = that.CommandBufferCount,
+				CommandBufferDeviceMasks = that.CommandBufferDeviceMasks,
+				SignalSemaphoreCount = that.SignalSemaphoreCount,
+				SignalSemaphoreDeviceIndices = that.SignalSemaphoreDeviceIndices,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator DeviceGroupSubmitInfo (DeviceGroupSubmitInfoKhr that) {
+			var ret = new DeviceGroupSubmitInfo {
+				SType = that.SType,
+				Next = that.Next,
+				WaitSemaphoreCount = that.WaitSemaphoreCount,
+				WaitSemaphoreDeviceIndices = that.WaitSemaphoreDeviceIndices,
+				CommandBufferCount = that.CommandBufferCount,
+				CommandBufferDeviceMasks = that.CommandBufferDeviceMasks,
+				SignalSemaphoreCount = that.SignalSemaphoreCount,
+				SignalSemaphoreDeviceIndices = that.SignalSemaphoreDeviceIndices,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct DeviceGroupBindSparseInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -1631,22 +2893,52 @@ namespace Vulkan.Interop
 		internal UInt32 MemoryDeviceIndex;
 	}
 
-	internal partial struct DeviceGroupPresentCapabilitiesKhx
+	internal partial struct DeviceGroupBindSparseInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 ResourceDeviceIndex;
+		internal UInt32 MemoryDeviceIndex;
+
+		public static implicit operator DeviceGroupBindSparseInfoKhr (DeviceGroupBindSparseInfo that) {
+			var ret = new DeviceGroupBindSparseInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				ResourceDeviceIndex = that.ResourceDeviceIndex,
+				MemoryDeviceIndex = that.MemoryDeviceIndex,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator DeviceGroupBindSparseInfo (DeviceGroupBindSparseInfoKhr that) {
+			var ret = new DeviceGroupBindSparseInfo {
+				SType = that.SType,
+				Next = that.Next,
+				ResourceDeviceIndex = that.ResourceDeviceIndex,
+				MemoryDeviceIndex = that.MemoryDeviceIndex,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct DeviceGroupPresentCapabilitiesKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal unsafe fixed UInt32 PresentMask[32];
-		internal DeviceGroupPresentModeFlagsKhx Modes;
+		internal DeviceGroupPresentModeFlagsKhr Modes;
 	}
 
-	internal partial struct ImageSwapchainCreateInfoKhx
+	internal partial struct ImageSwapchainCreateInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt64 Swapchain;
 	}
 
-	internal partial struct BindImageMemorySwapchainInfoKhx
+	internal partial struct BindImageMemorySwapchainInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -1654,7 +2946,7 @@ namespace Vulkan.Interop
 		internal UInt32 ImageIndex;
 	}
 
-	internal partial struct AcquireNextImageInfoKhx
+	internal partial struct AcquireNextImageInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -1665,16 +2957,16 @@ namespace Vulkan.Interop
 		internal UInt32 DeviceMask;
 	}
 
-	internal partial struct DeviceGroupPresentInfoKhx
+	internal partial struct DeviceGroupPresentInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 SwapchainCount;
 		internal IntPtr DeviceMasks;
-		internal DeviceGroupPresentModeFlagsKhx Mode;
+		internal DeviceGroupPresentModeFlagsKhr Mode;
 	}
 
-	internal partial struct DeviceGroupDeviceCreateInfoKhx
+	internal partial struct DeviceGroupDeviceCreateInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -1682,11 +2974,55 @@ namespace Vulkan.Interop
 		internal IntPtr PhysicalDevices;
 	}
 
-	internal partial struct DeviceGroupSwapchainCreateInfoKhx
+	internal partial struct DeviceGroupDeviceCreateInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal DeviceGroupPresentModeFlagsKhx Modes;
+		internal UInt32 PhysicalDeviceCount;
+		internal IntPtr PhysicalDevices;
+
+		public static implicit operator DeviceGroupDeviceCreateInfoKhr (DeviceGroupDeviceCreateInfo that) {
+			var ret = new DeviceGroupDeviceCreateInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				PhysicalDeviceCount = that.PhysicalDeviceCount,
+				PhysicalDevices = that.PhysicalDevices,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator DeviceGroupDeviceCreateInfo (DeviceGroupDeviceCreateInfoKhr that) {
+			var ret = new DeviceGroupDeviceCreateInfo {
+				SType = that.SType,
+				Next = that.Next,
+				PhysicalDeviceCount = that.PhysicalDeviceCount,
+				PhysicalDevices = that.PhysicalDevices,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct DeviceGroupSwapchainCreateInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal DeviceGroupPresentModeFlagsKhr Modes;
+	}
+
+	internal partial struct DescriptorUpdateTemplateCreateInfo
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 Flags;
+		internal UInt32 DescriptorUpdateEntryCount;
+		internal IntPtr DescriptorUpdateEntries;
+		internal DescriptorUpdateTemplateType TemplateType;
+		internal UInt64 DescriptorSetLayout;
+		internal PipelineBindPoint PipelineBindPoint;
+		internal UInt64 PipelineLayout;
+		internal UInt32 Set;
 	}
 
 	internal partial struct DescriptorUpdateTemplateCreateInfoKhr
@@ -1696,11 +3032,45 @@ namespace Vulkan.Interop
 		internal UInt32 Flags;
 		internal UInt32 DescriptorUpdateEntryCount;
 		internal IntPtr DescriptorUpdateEntries;
-		internal DescriptorUpdateTemplateTypeKhr TemplateType;
+		internal DescriptorUpdateTemplateType TemplateType;
 		internal UInt64 DescriptorSetLayout;
 		internal PipelineBindPoint PipelineBindPoint;
 		internal UInt64 PipelineLayout;
 		internal UInt32 Set;
+
+		public static implicit operator DescriptorUpdateTemplateCreateInfoKhr (DescriptorUpdateTemplateCreateInfo that) {
+			var ret = new DescriptorUpdateTemplateCreateInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				Flags = that.Flags,
+				DescriptorUpdateEntryCount = that.DescriptorUpdateEntryCount,
+				DescriptorUpdateEntries = that.DescriptorUpdateEntries,
+				TemplateType = that.TemplateType,
+				DescriptorSetLayout = that.DescriptorSetLayout,
+				PipelineBindPoint = that.PipelineBindPoint,
+				PipelineLayout = that.PipelineLayout,
+				Set = that.Set,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator DescriptorUpdateTemplateCreateInfo (DescriptorUpdateTemplateCreateInfoKhr that) {
+			var ret = new DescriptorUpdateTemplateCreateInfo {
+				SType = that.SType,
+				Next = that.Next,
+				Flags = that.Flags,
+				DescriptorUpdateEntryCount = that.DescriptorUpdateEntryCount,
+				DescriptorUpdateEntries = that.DescriptorUpdateEntries,
+				TemplateType = that.TemplateType,
+				DescriptorSetLayout = that.DescriptorSetLayout,
+				PipelineBindPoint = that.PipelineBindPoint,
+				PipelineLayout = that.PipelineLayout,
+				Set = that.Set,
+			};
+
+			return ret;
+		}
 	}
 
 	internal partial struct HdrMetadataExt
@@ -1715,6 +3085,20 @@ namespace Vulkan.Interop
 		internal float MinLuminance;
 		internal float MaxContentLightLevel;
 		internal float MaxFrameAverageLightLevel;
+	}
+
+	internal partial struct DisplayNativeHdrSurfaceCapabilitiesAmd
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 LocalDimmingSupport;
+	}
+
+	internal partial struct SwapchainDisplayNativeHdrCreateInfoAmd
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 LocalDimmingEnable;
 	}
 
 	internal partial struct PresentTimesInfoGoogle
@@ -1783,12 +3167,42 @@ namespace Vulkan.Interop
 		internal Bool32 PerViewPositionAllComponents;
 	}
 
+	internal partial struct RenderPassInputAttachmentAspectCreateInfo
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 AspectReferenceCount;
+		internal IntPtr AspectReferences;
+	}
+
 	internal partial struct RenderPassInputAttachmentAspectCreateInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 AspectReferenceCount;
 		internal IntPtr AspectReferences;
+
+		public static implicit operator RenderPassInputAttachmentAspectCreateInfoKhr (RenderPassInputAttachmentAspectCreateInfo that) {
+			var ret = new RenderPassInputAttachmentAspectCreateInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				AspectReferenceCount = that.AspectReferenceCount,
+				AspectReferences = that.AspectReferences,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator RenderPassInputAttachmentAspectCreateInfo (RenderPassInputAttachmentAspectCreateInfoKhr that) {
+			var ret = new RenderPassInputAttachmentAspectCreateInfo {
+				SType = that.SType,
+				Next = that.Next,
+				AspectReferenceCount = that.AspectReferenceCount,
+				AspectReferences = that.AspectReferences,
+			};
+
+			return ret;
+		}
 	}
 
 	internal partial struct PhysicalDeviceSurfaceInfo2Khr
@@ -1812,11 +3226,57 @@ namespace Vulkan.Interop
 		internal SurfaceFormatKhr SurfaceFormat;
 	}
 
+	internal partial struct DisplayProperties2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal DisplayPropertiesKhr DisplayProperties;
+	}
+
+	internal partial struct DisplayPlaneProperties2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal DisplayPlanePropertiesKhr DisplayPlaneProperties;
+	}
+
+	internal partial struct DisplayModeProperties2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal DisplayModePropertiesKhr DisplayModeProperties;
+	}
+
+	internal partial struct DisplayPlaneInfo2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Mode;
+		internal UInt32 PlaneIndex;
+	}
+
+	internal partial struct DisplayPlaneCapabilities2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal DisplayPlaneCapabilitiesKhr Capabilities;
+	}
+
 	internal partial struct SharedPresentSurfaceCapabilitiesKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal ImageUsageFlags SharedPresentSupportedUsageFlags;
+	}
+
+	internal partial struct PhysicalDevice16BitStorageFeatures
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 StorageBuffer16BitAccess;
+		internal Bool32 UniformAndStorageBuffer16BitAccess;
+		internal Bool32 StoragePushConstant16;
+		internal Bool32 StorageInputOutput16;
 	}
 
 	internal partial struct PhysicalDevice16BitStorageFeaturesKhr
@@ -1827,6 +3287,49 @@ namespace Vulkan.Interop
 		internal Bool32 UniformAndStorageBuffer16BitAccess;
 		internal Bool32 StoragePushConstant16;
 		internal Bool32 StorageInputOutput16;
+
+		public static implicit operator PhysicalDevice16BitStorageFeaturesKhr (PhysicalDevice16BitStorageFeatures that) {
+			var ret = new PhysicalDevice16BitStorageFeaturesKhr {
+				SType = that.SType,
+				Next = that.Next,
+				StorageBuffer16BitAccess = that.StorageBuffer16BitAccess,
+				UniformAndStorageBuffer16BitAccess = that.UniformAndStorageBuffer16BitAccess,
+				StoragePushConstant16 = that.StoragePushConstant16,
+				StorageInputOutput16 = that.StorageInputOutput16,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator PhysicalDevice16BitStorageFeatures (PhysicalDevice16BitStorageFeaturesKhr that) {
+			var ret = new PhysicalDevice16BitStorageFeatures {
+				SType = that.SType,
+				Next = that.Next,
+				StorageBuffer16BitAccess = that.StorageBuffer16BitAccess,
+				UniformAndStorageBuffer16BitAccess = that.UniformAndStorageBuffer16BitAccess,
+				StoragePushConstant16 = that.StoragePushConstant16,
+				StorageInputOutput16 = that.StorageInputOutput16,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct PhysicalDeviceSubgroupProperties
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 SubgroupSize;
+		internal ShaderStageFlags SupportedStages;
+		internal SubgroupFeatureFlags SupportedOperations;
+		internal Bool32 QuadOperationsInAllStages;
+	}
+
+	internal partial struct BufferMemoryRequirementsInfo2
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Buffer;
 	}
 
 	internal partial struct BufferMemoryRequirementsInfo2Khr
@@ -1834,9 +3337,63 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt64 Buffer;
+
+		public static implicit operator BufferMemoryRequirementsInfo2Khr (BufferMemoryRequirementsInfo2 that) {
+			var ret = new BufferMemoryRequirementsInfo2Khr {
+				SType = that.SType,
+				Next = that.Next,
+				Buffer = that.Buffer,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator BufferMemoryRequirementsInfo2 (BufferMemoryRequirementsInfo2Khr that) {
+			var ret = new BufferMemoryRequirementsInfo2 {
+				SType = that.SType,
+				Next = that.Next,
+				Buffer = that.Buffer,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct ImageMemoryRequirementsInfo2
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Image;
 	}
 
 	internal partial struct ImageMemoryRequirementsInfo2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Image;
+
+		public static implicit operator ImageMemoryRequirementsInfo2Khr (ImageMemoryRequirementsInfo2 that) {
+			var ret = new ImageMemoryRequirementsInfo2Khr {
+				SType = that.SType,
+				Next = that.Next,
+				Image = that.Image,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator ImageMemoryRequirementsInfo2 (ImageMemoryRequirementsInfo2Khr that) {
+			var ret = new ImageMemoryRequirementsInfo2 {
+				SType = that.SType,
+				Next = that.Next,
+				Image = that.Image,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct ImageSparseMemoryRequirementsInfo2
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -1848,6 +3405,33 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt64 Image;
+
+		public static implicit operator ImageSparseMemoryRequirementsInfo2Khr (ImageSparseMemoryRequirementsInfo2 that) {
+			var ret = new ImageSparseMemoryRequirementsInfo2Khr {
+				SType = that.SType,
+				Next = that.Next,
+				Image = that.Image,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator ImageSparseMemoryRequirementsInfo2 (ImageSparseMemoryRequirementsInfo2Khr that) {
+			var ret = new ImageSparseMemoryRequirementsInfo2 {
+				SType = that.SType,
+				Next = that.Next,
+				Image = that.Image,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct MemoryRequirements2
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal MemoryRequirements MemoryRequirements;
 	}
 
 	internal partial struct MemoryRequirements2Khr
@@ -1855,6 +3439,33 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal MemoryRequirements MemoryRequirements;
+
+		public static implicit operator MemoryRequirements2Khr (MemoryRequirements2 that) {
+			var ret = new MemoryRequirements2Khr {
+				SType = that.SType,
+				Next = that.Next,
+				MemoryRequirements = that.MemoryRequirements,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator MemoryRequirements2 (MemoryRequirements2Khr that) {
+			var ret = new MemoryRequirements2 {
+				SType = that.SType,
+				Next = that.Next,
+				MemoryRequirements = that.MemoryRequirements,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct SparseImageMemoryRequirements2
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal SparseImageMemoryRequirements MemoryRequirements;
 	}
 
 	internal partial struct SparseImageMemoryRequirements2Khr
@@ -1862,13 +3473,68 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal SparseImageMemoryRequirements MemoryRequirements;
+
+		public static implicit operator SparseImageMemoryRequirements2Khr (SparseImageMemoryRequirements2 that) {
+			var ret = new SparseImageMemoryRequirements2Khr {
+				SType = that.SType,
+				Next = that.Next,
+				MemoryRequirements = that.MemoryRequirements,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator SparseImageMemoryRequirements2 (SparseImageMemoryRequirements2Khr that) {
+			var ret = new SparseImageMemoryRequirements2 {
+				SType = that.SType,
+				Next = that.Next,
+				MemoryRequirements = that.MemoryRequirements,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct PhysicalDevicePointClippingProperties
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal PointClippingBehavior PointClippingBehavior;
 	}
 
 	internal partial struct PhysicalDevicePointClippingPropertiesKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal PointClippingBehaviorKhr PointClippingBehavior;
+		internal PointClippingBehavior PointClippingBehavior;
+
+		public static implicit operator PhysicalDevicePointClippingPropertiesKhr (PhysicalDevicePointClippingProperties that) {
+			var ret = new PhysicalDevicePointClippingPropertiesKhr {
+				SType = that.SType,
+				Next = that.Next,
+				PointClippingBehavior = that.PointClippingBehavior,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator PhysicalDevicePointClippingProperties (PhysicalDevicePointClippingPropertiesKhr that) {
+			var ret = new PhysicalDevicePointClippingProperties {
+				SType = that.SType,
+				Next = that.Next,
+				PointClippingBehavior = that.PointClippingBehavior,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct MemoryDedicatedRequirements
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 PrefersDedicatedAllocation;
+		internal Bool32 RequiresDedicatedAllocation;
 	}
 
 	internal partial struct MemoryDedicatedRequirementsKhr
@@ -1877,6 +3543,36 @@ namespace Vulkan.Interop
 		internal IntPtr Next;
 		internal Bool32 PrefersDedicatedAllocation;
 		internal Bool32 RequiresDedicatedAllocation;
+
+		public static implicit operator MemoryDedicatedRequirementsKhr (MemoryDedicatedRequirements that) {
+			var ret = new MemoryDedicatedRequirementsKhr {
+				SType = that.SType,
+				Next = that.Next,
+				PrefersDedicatedAllocation = that.PrefersDedicatedAllocation,
+				RequiresDedicatedAllocation = that.RequiresDedicatedAllocation,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator MemoryDedicatedRequirements (MemoryDedicatedRequirementsKhr that) {
+			var ret = new MemoryDedicatedRequirements {
+				SType = that.SType,
+				Next = that.Next,
+				PrefersDedicatedAllocation = that.PrefersDedicatedAllocation,
+				RequiresDedicatedAllocation = that.RequiresDedicatedAllocation,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct MemoryDedicatedAllocateInfo
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Image;
+		internal UInt64 Buffer;
 	}
 
 	internal partial struct MemoryDedicatedAllocateInfoKhr
@@ -1885,6 +3581,35 @@ namespace Vulkan.Interop
 		internal IntPtr Next;
 		internal UInt64 Image;
 		internal UInt64 Buffer;
+
+		public static implicit operator MemoryDedicatedAllocateInfoKhr (MemoryDedicatedAllocateInfo that) {
+			var ret = new MemoryDedicatedAllocateInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				Image = that.Image,
+				Buffer = that.Buffer,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator MemoryDedicatedAllocateInfo (MemoryDedicatedAllocateInfoKhr that) {
+			var ret = new MemoryDedicatedAllocateInfo {
+				SType = that.SType,
+				Next = that.Next,
+				Image = that.Image,
+				Buffer = that.Buffer,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct ImageViewUsageCreateInfo
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ImageUsageFlags Usage;
 	}
 
 	internal partial struct ImageViewUsageCreateInfoKhr
@@ -1892,13 +3617,67 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal ImageUsageFlags Usage;
+
+		public static implicit operator ImageViewUsageCreateInfoKhr (ImageViewUsageCreateInfo that) {
+			var ret = new ImageViewUsageCreateInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				Usage = that.Usage,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator ImageViewUsageCreateInfo (ImageViewUsageCreateInfoKhr that) {
+			var ret = new ImageViewUsageCreateInfo {
+				SType = that.SType,
+				Next = that.Next,
+				Usage = that.Usage,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct PipelineTessellationDomainOriginStateCreateInfo
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal TessellationDomainOrigin DomainOrigin;
 	}
 
 	internal partial struct PipelineTessellationDomainOriginStateCreateInfoKhr
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal TessellationDomainOriginKhr DomainOrigin;
+		internal TessellationDomainOrigin DomainOrigin;
+
+		public static implicit operator PipelineTessellationDomainOriginStateCreateInfoKhr (PipelineTessellationDomainOriginStateCreateInfo that) {
+			var ret = new PipelineTessellationDomainOriginStateCreateInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				DomainOrigin = that.DomainOrigin,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator PipelineTessellationDomainOriginStateCreateInfo (PipelineTessellationDomainOriginStateCreateInfoKhr that) {
+			var ret = new PipelineTessellationDomainOriginStateCreateInfo {
+				SType = that.SType,
+				Next = that.Next,
+				DomainOrigin = that.DomainOrigin,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct SamplerYcbcrConversionInfo
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Conversion;
 	}
 
 	internal partial struct SamplerYcbcrConversionInfoKhr
@@ -1906,6 +3685,40 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt64 Conversion;
+
+		public static implicit operator SamplerYcbcrConversionInfoKhr (SamplerYcbcrConversionInfo that) {
+			var ret = new SamplerYcbcrConversionInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				Conversion = that.Conversion,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator SamplerYcbcrConversionInfo (SamplerYcbcrConversionInfoKhr that) {
+			var ret = new SamplerYcbcrConversionInfo {
+				SType = that.SType,
+				Next = that.Next,
+				Conversion = that.Conversion,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct SamplerYcbcrConversionCreateInfo
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Format Format;
+		internal SamplerYcbcrModelConversion YcbcrModel;
+		internal SamplerYcbcrRange YcbcrRange;
+		internal ComponentMapping Components;
+		internal ChromaLocation XChromaOffset;
+		internal ChromaLocation YChromaOffset;
+		internal Filter ChromaFilter;
+		internal Bool32 ForceExplicitReconstruction;
 	}
 
 	internal partial struct SamplerYcbcrConversionCreateInfoKhr
@@ -1913,16 +3726,84 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal Format Format;
-		internal SamplerYcbcrModelConversionKhr YcbcrModel;
-		internal SamplerYcbcrRangeKhr YcbcrRange;
+		internal SamplerYcbcrModelConversion YcbcrModel;
+		internal SamplerYcbcrRange YcbcrRange;
 		internal ComponentMapping Components;
-		internal ChromaLocationKhr XChromaOffset;
-		internal ChromaLocationKhr YChromaOffset;
+		internal ChromaLocation XChromaOffset;
+		internal ChromaLocation YChromaOffset;
 		internal Filter ChromaFilter;
 		internal Bool32 ForceExplicitReconstruction;
+
+		public static implicit operator SamplerYcbcrConversionCreateInfoKhr (SamplerYcbcrConversionCreateInfo that) {
+			var ret = new SamplerYcbcrConversionCreateInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				Format = that.Format,
+				YcbcrModel = that.YcbcrModel,
+				YcbcrRange = that.YcbcrRange,
+				Components = that.Components,
+				XChromaOffset = that.XChromaOffset,
+				YChromaOffset = that.YChromaOffset,
+				ChromaFilter = that.ChromaFilter,
+				ForceExplicitReconstruction = that.ForceExplicitReconstruction,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator SamplerYcbcrConversionCreateInfo (SamplerYcbcrConversionCreateInfoKhr that) {
+			var ret = new SamplerYcbcrConversionCreateInfo {
+				SType = that.SType,
+				Next = that.Next,
+				Format = that.Format,
+				YcbcrModel = that.YcbcrModel,
+				YcbcrRange = that.YcbcrRange,
+				Components = that.Components,
+				XChromaOffset = that.XChromaOffset,
+				YChromaOffset = that.YChromaOffset,
+				ChromaFilter = that.ChromaFilter,
+				ForceExplicitReconstruction = that.ForceExplicitReconstruction,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct BindImagePlaneMemoryInfo
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ImageAspectFlags PlaneAspect;
 	}
 
 	internal partial struct BindImagePlaneMemoryInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ImageAspectFlags PlaneAspect;
+
+		public static implicit operator BindImagePlaneMemoryInfoKhr (BindImagePlaneMemoryInfo that) {
+			var ret = new BindImagePlaneMemoryInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				PlaneAspect = that.PlaneAspect,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator BindImagePlaneMemoryInfo (BindImagePlaneMemoryInfoKhr that) {
+			var ret = new BindImagePlaneMemoryInfo {
+				SType = that.SType,
+				Next = that.Next,
+				PlaneAspect = that.PlaneAspect,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct ImagePlaneMemoryRequirementsInfo
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
@@ -1934,6 +3815,33 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal ImageAspectFlags PlaneAspect;
+
+		public static implicit operator ImagePlaneMemoryRequirementsInfoKhr (ImagePlaneMemoryRequirementsInfo that) {
+			var ret = new ImagePlaneMemoryRequirementsInfoKhr {
+				SType = that.SType,
+				Next = that.Next,
+				PlaneAspect = that.PlaneAspect,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator ImagePlaneMemoryRequirementsInfo (ImagePlaneMemoryRequirementsInfoKhr that) {
+			var ret = new ImagePlaneMemoryRequirementsInfo {
+				SType = that.SType,
+				Next = that.Next,
+				PlaneAspect = that.PlaneAspect,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct PhysicalDeviceSamplerYcbcrConversionFeatures
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 SamplerYcbcrConversion;
 	}
 
 	internal partial struct PhysicalDeviceSamplerYcbcrConversionFeaturesKhr
@@ -1941,6 +3849,33 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal Bool32 SamplerYcbcrConversion;
+
+		public static implicit operator PhysicalDeviceSamplerYcbcrConversionFeaturesKhr (PhysicalDeviceSamplerYcbcrConversionFeatures that) {
+			var ret = new PhysicalDeviceSamplerYcbcrConversionFeaturesKhr {
+				SType = that.SType,
+				Next = that.Next,
+				SamplerYcbcrConversion = that.SamplerYcbcrConversion,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator PhysicalDeviceSamplerYcbcrConversionFeatures (PhysicalDeviceSamplerYcbcrConversionFeaturesKhr that) {
+			var ret = new PhysicalDeviceSamplerYcbcrConversionFeatures {
+				SType = that.SType,
+				Next = that.Next,
+				SamplerYcbcrConversion = that.SamplerYcbcrConversion,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct SamplerYcbcrConversionImageFormatProperties
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 CombinedImageSamplerDescriptorCount;
 	}
 
 	internal partial struct SamplerYcbcrConversionImageFormatPropertiesKhr
@@ -1948,6 +3883,26 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal UInt32 CombinedImageSamplerDescriptorCount;
+
+		public static implicit operator SamplerYcbcrConversionImageFormatPropertiesKhr (SamplerYcbcrConversionImageFormatProperties that) {
+			var ret = new SamplerYcbcrConversionImageFormatPropertiesKhr {
+				SType = that.SType,
+				Next = that.Next,
+				CombinedImageSamplerDescriptorCount = that.CombinedImageSamplerDescriptorCount,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator SamplerYcbcrConversionImageFormatProperties (SamplerYcbcrConversionImageFormatPropertiesKhr that) {
+			var ret = new SamplerYcbcrConversionImageFormatProperties {
+				SType = that.SType,
+				Next = that.Next,
+				CombinedImageSamplerDescriptorCount = that.CombinedImageSamplerDescriptorCount,
+			};
+
+			return ret;
+		}
 	}
 
 	internal partial struct TextureLODGatherFormatPropertiesAmd
@@ -1955,6 +3910,45 @@ namespace Vulkan.Interop
 		internal StructureType SType;
 		internal IntPtr Next;
 		internal Bool32 SupportsTextureGatherLodbiasAmd;
+	}
+
+	internal partial struct ConditionalRenderingBeginInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Buffer;
+		internal DeviceSize Offset;
+		internal ConditionalRenderingFlagsExt Flags;
+	}
+
+	internal partial struct ProtectedSubmitInfo
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 ProtectedSubmit;
+	}
+
+	internal partial struct PhysicalDeviceProtectedMemoryFeatures
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 ProtectedMemory;
+	}
+
+	internal partial struct PhysicalDeviceProtectedMemoryProperties
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 ProtectedNoFault;
+	}
+
+	internal partial struct DeviceQueueInfo2
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal DeviceQueueCreateFlags Flags;
+		internal UInt32 QueueFamilyIndex;
+		internal UInt32 QueueIndex;
 	}
 
 	internal partial struct PipelineCoverageToColorStateCreateInfoNv
@@ -2067,6 +4061,40 @@ namespace Vulkan.Interop
 		internal BlendOverlapExt BlendOverlap;
 	}
 
+	internal partial struct PhysicalDeviceInlineUniformBlockFeaturesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 InlineUniformBlock;
+		internal Bool32 DescriptorBindingInlineUniformBlockUpdateAfterBind;
+	}
+
+	internal partial struct PhysicalDeviceInlineUniformBlockPropertiesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 MaxInlineUniformBlockSize;
+		internal UInt32 MaxPerStageDescriptorInlineUniformBlocks;
+		internal UInt32 MaxPerStageDescriptorUpdateAfterBindInlineUniformBlocks;
+		internal UInt32 MaxDescriptorSetInlineUniformBlocks;
+		internal UInt32 MaxDescriptorSetUpdateAfterBindInlineUniformBlocks;
+	}
+
+	internal partial struct WriteDescriptorSetInlineUniformBlockExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 DataSize;
+		internal IntPtr Data;
+	}
+
+	internal partial struct DescriptorPoolInlineUniformBlockCreateInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 MaxInlineUniformBlockBindings;
+	}
+
 	internal partial struct PipelineCoverageModulationStateCreateInfoNv
 	{
 		internal StructureType SType;
@@ -2102,6 +4130,150 @@ namespace Vulkan.Interop
 		internal UInt64 ValidationCache;
 	}
 
+	internal partial struct PhysicalDeviceMaintenance3Properties
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 MaxPerSetDescriptors;
+		internal DeviceSize MaxMemoryAllocationSize;
+	}
+
+	internal partial struct PhysicalDeviceMaintenance3PropertiesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 MaxPerSetDescriptors;
+		internal DeviceSize MaxMemoryAllocationSize;
+
+		public static implicit operator PhysicalDeviceMaintenance3PropertiesKhr (PhysicalDeviceMaintenance3Properties that) {
+			var ret = new PhysicalDeviceMaintenance3PropertiesKhr {
+				SType = that.SType,
+				Next = that.Next,
+				MaxPerSetDescriptors = that.MaxPerSetDescriptors,
+				MaxMemoryAllocationSize = that.MaxMemoryAllocationSize,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator PhysicalDeviceMaintenance3Properties (PhysicalDeviceMaintenance3PropertiesKhr that) {
+			var ret = new PhysicalDeviceMaintenance3Properties {
+				SType = that.SType,
+				Next = that.Next,
+				MaxPerSetDescriptors = that.MaxPerSetDescriptors,
+				MaxMemoryAllocationSize = that.MaxMemoryAllocationSize,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct DescriptorSetLayoutSupport
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 Supported;
+	}
+
+	internal partial struct DescriptorSetLayoutSupportKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 Supported;
+
+		public static implicit operator DescriptorSetLayoutSupportKhr (DescriptorSetLayoutSupport that) {
+			var ret = new DescriptorSetLayoutSupportKhr {
+				SType = that.SType,
+				Next = that.Next,
+				Supported = that.Supported,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator DescriptorSetLayoutSupport (DescriptorSetLayoutSupportKhr that) {
+			var ret = new DescriptorSetLayoutSupport {
+				SType = that.SType,
+				Next = that.Next,
+				Supported = that.Supported,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct PhysicalDeviceShaderDrawParametersFeatures
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 ShaderDrawParameters;
+	}
+
+	internal partial struct PhysicalDeviceShaderDrawParameterFeatures
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 ShaderDrawParameters;
+
+		public static implicit operator PhysicalDeviceShaderDrawParameterFeatures (PhysicalDeviceShaderDrawParametersFeatures that) {
+			var ret = new PhysicalDeviceShaderDrawParameterFeatures {
+				SType = that.SType,
+				Next = that.Next,
+				ShaderDrawParameters = that.ShaderDrawParameters,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator PhysicalDeviceShaderDrawParametersFeatures (PhysicalDeviceShaderDrawParameterFeatures that) {
+			var ret = new PhysicalDeviceShaderDrawParametersFeatures {
+				SType = that.SType,
+				Next = that.Next,
+				ShaderDrawParameters = that.ShaderDrawParameters,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct PhysicalDeviceFloat16Int8FeaturesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 ShaderFloat16;
+		internal Bool32 ShaderInt8;
+	}
+
+	internal partial struct PhysicalDeviceFloatControlsPropertiesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 SeparateDenormSettings;
+		internal Bool32 SeparateRoundingModeSettings;
+		internal Bool32 ShaderSignedZeroInfNanPreserveFloat16;
+		internal Bool32 ShaderSignedZeroInfNanPreserveFloat32;
+		internal Bool32 ShaderSignedZeroInfNanPreserveFloat64;
+		internal Bool32 ShaderDenormPreserveFloat16;
+		internal Bool32 ShaderDenormPreserveFloat32;
+		internal Bool32 ShaderDenormPreserveFloat64;
+		internal Bool32 ShaderDenormFlushToZeroFloat16;
+		internal Bool32 ShaderDenormFlushToZeroFloat32;
+		internal Bool32 ShaderDenormFlushToZeroFloat64;
+		internal Bool32 ShaderRoundingModeRtefloat16;
+		internal Bool32 ShaderRoundingModeRtefloat32;
+		internal Bool32 ShaderRoundingModeRtefloat64;
+		internal Bool32 ShaderRoundingModeRtzfloat16;
+		internal Bool32 ShaderRoundingModeRtzfloat32;
+		internal Bool32 ShaderRoundingModeRtzfloat64;
+	}
+
+	internal partial struct PhysicalDeviceHostQueryResetFeaturesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 HostQueryReset;
+	}
+
 	internal partial struct ShaderStatisticsInfoAmd
 	{
 		internal ShaderStageFlags ShaderStageMask;
@@ -2120,11 +4292,66 @@ namespace Vulkan.Interop
 		internal QueueGlobalPriorityExt GlobalPriority;
 	}
 
+	internal partial struct DebugUtilsObjectNameInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ObjectType ObjectType;
+		internal UInt64 ObjectHandle;
+		internal IntPtr ObjectName;
+	}
+
+	internal partial struct DebugUtilsObjectTagInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ObjectType ObjectType;
+		internal UInt64 ObjectHandle;
+		internal UInt64 TagName;
+		internal UIntPtr TagSize;
+		internal IntPtr Tag;
+	}
+
+	internal partial struct DebugUtilsLabelExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal IntPtr LabelName;
+		internal unsafe fixed float Color[4];
+	}
+
+	internal partial struct DebugUtilsMessengerCreateInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 Flags;
+		internal DebugUtilsMessageSeverityFlagsExt MessageSeverity;
+		internal DebugUtilsMessageTypeFlagsExt MessageType;
+		internal IntPtr PfnUserCallback;
+		internal IntPtr UserData;
+	}
+
+	internal partial struct DebugUtilsMessengerCallbackDataExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 Flags;
+		internal IntPtr MessageIdName;
+		internal Int32 MessageIdNumber;
+		internal IntPtr Message;
+		internal UInt32 QueueLabelCount;
+		internal IntPtr QueueLabels;
+		internal UInt32 CmdBufLabelCount;
+		internal IntPtr CmdBufLabels;
+		internal UInt32 ObjectCount;
+		internal IntPtr Objects;
+	}
+
 	internal partial struct ImportMemoryHostPointerInfoExt
 	{
 		internal StructureType SType;
 		internal IntPtr Next;
-		internal ExternalMemoryHandleTypeFlagsKhr HandleType;
+		internal ExternalMemoryHandleTypeFlags HandleType;
 		internal IntPtr HostPointer;
 	}
 
@@ -2157,6 +4384,33 @@ namespace Vulkan.Interop
 		internal Bool32 ConservativeRasterizationPostDepthCoverage;
 	}
 
+	internal partial struct CalibratedTimestampInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal TimeDomainExt TimeDomain;
+	}
+
+	internal partial struct PhysicalDeviceShaderCorePropertiesAmd
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 ShaderEngineCount;
+		internal UInt32 ShaderArraysPerEngineCount;
+		internal UInt32 ComputeUnitsPerShaderArray;
+		internal UInt32 SimdPerComputeUnit;
+		internal UInt32 WavefrontsPerSimd;
+		internal UInt32 WavefrontSize;
+		internal UInt32 SgprsPerSimd;
+		internal UInt32 MinSgprAllocation;
+		internal UInt32 MaxSgprAllocation;
+		internal UInt32 SgprAllocationGranularity;
+		internal UInt32 VgprsPerSimd;
+		internal UInt32 MinVgprAllocation;
+		internal UInt32 MaxVgprAllocation;
+		internal UInt32 VgprAllocationGranularity;
+	}
+
 	internal partial struct PipelineRasterizationConservativeStateCreateInfoExt
 	{
 		internal StructureType SType;
@@ -2164,5 +4418,1029 @@ namespace Vulkan.Interop
 		internal UInt32 Flags;
 		internal ConservativeRasterizationModeExt ConservativeRasterizationMode;
 		internal float ExtraPrimitiveOverestimationSize;
+	}
+
+	internal partial struct PhysicalDeviceDescriptorIndexingFeaturesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 ShaderInputAttachmentArrayDynamicIndexing;
+		internal Bool32 ShaderUniformTexelBufferArrayDynamicIndexing;
+		internal Bool32 ShaderStorageTexelBufferArrayDynamicIndexing;
+		internal Bool32 ShaderUniformBufferArrayNonUniformIndexing;
+		internal Bool32 ShaderSampledImageArrayNonUniformIndexing;
+		internal Bool32 ShaderStorageBufferArrayNonUniformIndexing;
+		internal Bool32 ShaderStorageImageArrayNonUniformIndexing;
+		internal Bool32 ShaderInputAttachmentArrayNonUniformIndexing;
+		internal Bool32 ShaderUniformTexelBufferArrayNonUniformIndexing;
+		internal Bool32 ShaderStorageTexelBufferArrayNonUniformIndexing;
+		internal Bool32 DescriptorBindingUniformBufferUpdateAfterBind;
+		internal Bool32 DescriptorBindingSampledImageUpdateAfterBind;
+		internal Bool32 DescriptorBindingStorageImageUpdateAfterBind;
+		internal Bool32 DescriptorBindingStorageBufferUpdateAfterBind;
+		internal Bool32 DescriptorBindingUniformTexelBufferUpdateAfterBind;
+		internal Bool32 DescriptorBindingStorageTexelBufferUpdateAfterBind;
+		internal Bool32 DescriptorBindingUpdateUnusedWhilePending;
+		internal Bool32 DescriptorBindingPartiallyBound;
+		internal Bool32 DescriptorBindingVariableDescriptorCount;
+		internal Bool32 RuntimeDescriptorArray;
+	}
+
+	internal partial struct PhysicalDeviceDescriptorIndexingPropertiesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 MaxUpdateAfterBindDescriptorsInAllPools;
+		internal Bool32 ShaderUniformBufferArrayNonUniformIndexingNative;
+		internal Bool32 ShaderSampledImageArrayNonUniformIndexingNative;
+		internal Bool32 ShaderStorageBufferArrayNonUniformIndexingNative;
+		internal Bool32 ShaderStorageImageArrayNonUniformIndexingNative;
+		internal Bool32 ShaderInputAttachmentArrayNonUniformIndexingNative;
+		internal Bool32 RobustBufferAccessUpdateAfterBind;
+		internal Bool32 QuadDivergentImplicitLod;
+		internal UInt32 MaxPerStageDescriptorUpdateAfterBindSamplers;
+		internal UInt32 MaxPerStageDescriptorUpdateAfterBindUniformBuffers;
+		internal UInt32 MaxPerStageDescriptorUpdateAfterBindStorageBuffers;
+		internal UInt32 MaxPerStageDescriptorUpdateAfterBindSampledImages;
+		internal UInt32 MaxPerStageDescriptorUpdateAfterBindStorageImages;
+		internal UInt32 MaxPerStageDescriptorUpdateAfterBindInputAttachments;
+		internal UInt32 MaxPerStageUpdateAfterBindResources;
+		internal UInt32 MaxDescriptorSetUpdateAfterBindSamplers;
+		internal UInt32 MaxDescriptorSetUpdateAfterBindUniformBuffers;
+		internal UInt32 MaxDescriptorSetUpdateAfterBindUniformBuffersDynamic;
+		internal UInt32 MaxDescriptorSetUpdateAfterBindStorageBuffers;
+		internal UInt32 MaxDescriptorSetUpdateAfterBindStorageBuffersDynamic;
+		internal UInt32 MaxDescriptorSetUpdateAfterBindSampledImages;
+		internal UInt32 MaxDescriptorSetUpdateAfterBindStorageImages;
+		internal UInt32 MaxDescriptorSetUpdateAfterBindInputAttachments;
+	}
+
+	internal partial struct DescriptorSetLayoutBindingFlagsCreateInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 BindingCount;
+		internal IntPtr BindingFlags;
+	}
+
+	internal partial struct DescriptorSetVariableDescriptorCountAllocateInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 DescriptorSetCount;
+		internal IntPtr DescriptorCounts;
+	}
+
+	internal partial struct DescriptorSetVariableDescriptorCountLayoutSupportExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 MaxVariableDescriptorCount;
+	}
+
+	internal partial struct AttachmentDescription2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal AttachmentDescriptionFlags Flags;
+		internal Format Format;
+		internal SampleCountFlags Samples;
+		internal AttachmentLoadOp LoadOp;
+		internal AttachmentStoreOp StoreOp;
+		internal AttachmentLoadOp StencilLoadOp;
+		internal AttachmentStoreOp StencilStoreOp;
+		internal ImageLayout InitialLayout;
+		internal ImageLayout FinalLayout;
+	}
+
+	internal partial struct AttachmentReference2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 Attachment;
+		internal ImageLayout Layout;
+		internal ImageAspectFlags AspectMask;
+	}
+
+	internal partial struct SubpassDescription2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal SubpassDescriptionFlags Flags;
+		internal PipelineBindPoint PipelineBindPoint;
+		internal UInt32 ViewMask;
+		internal UInt32 InputAttachmentCount;
+		internal IntPtr InputAttachments;
+		internal UInt32 ColorAttachmentCount;
+		internal IntPtr ColorAttachments;
+		internal IntPtr ResolveAttachments;
+		internal IntPtr DepthStencilAttachment;
+		internal UInt32 PreserveAttachmentCount;
+		internal IntPtr PreserveAttachments;
+	}
+
+	internal partial struct SubpassDependency2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 SrcSubpass;
+		internal UInt32 DstSubpass;
+		internal PipelineStageFlags SrcStageMask;
+		internal PipelineStageFlags DstStageMask;
+		internal AccessFlags SrcAccessMask;
+		internal AccessFlags DstAccessMask;
+		internal DependencyFlags DependencyFlags;
+		internal Int32 ViewOffset;
+	}
+
+	internal partial struct RenderPassCreateInfo2Khr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 Flags;
+		internal UInt32 AttachmentCount;
+		internal IntPtr Attachments;
+		internal UInt32 SubpassCount;
+		internal IntPtr Subpasses;
+		internal UInt32 DependencyCount;
+		internal IntPtr Dependencies;
+		internal UInt32 CorrelatedViewMaskCount;
+		internal IntPtr CorrelatedViewMasks;
+	}
+
+	internal partial struct SubpassBeginInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal SubpassContents Contents;
+	}
+
+	internal partial struct SubpassEndInfoKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+	}
+
+	internal partial struct PipelineVertexInputDivisorStateCreateInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 VertexBindingDivisorCount;
+		internal IntPtr VertexBindingDivisors;
+	}
+
+	internal partial struct PhysicalDeviceVertexAttributeDivisorPropertiesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 MaxVertexAttribDivisor;
+	}
+
+	internal partial struct PhysicalDevicePCIBusInfoPropertiesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 PciDomain;
+		internal UInt32 PciBus;
+		internal UInt32 PciDevice;
+		internal UInt32 PciFunction;
+	}
+
+	internal partial struct AndroidHardwareBufferUsageAndroid
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 AndroidHardwareBufferUsage;
+	}
+
+	internal partial struct AndroidHardwareBufferPropertiesAndroid
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal DeviceSize AllocationSize;
+		internal UInt32 MemoryTypeBits;
+	}
+
+	internal partial struct MemoryGetAndroidHardwareBufferInfoAndroid
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Memory;
+	}
+
+	internal partial struct AndroidHardwareBufferFormatPropertiesAndroid
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Format Format;
+		internal UInt64 ExternalFormat;
+		internal FormatFeatureFlags FormatFeatures;
+		internal ComponentMapping SamplerYcbcrConversionComponents;
+		internal SamplerYcbcrModelConversion SuggestedYcbcrModel;
+		internal SamplerYcbcrRange SuggestedYcbcrRange;
+		internal ChromaLocation SuggestedXchromaOffset;
+		internal ChromaLocation SuggestedYchromaOffset;
+	}
+
+	internal partial struct CommandBufferInheritanceConditionalRenderingInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 ConditionalRenderingEnable;
+	}
+
+	internal partial struct ExternalFormatAndroid
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 ExternalFormat;
+	}
+
+	internal partial struct PhysicalDevice8BitStorageFeaturesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 StorageBuffer8BitAccess;
+		internal Bool32 UniformAndStorageBuffer8BitAccess;
+		internal Bool32 StoragePushConstant8;
+	}
+
+	internal partial struct PhysicalDeviceConditionalRenderingFeaturesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 ConditionalRendering;
+		internal Bool32 InheritedConditionalRendering;
+	}
+
+	internal partial struct PhysicalDeviceVulkanMemoryModelFeaturesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 VulkanMemoryModel;
+		internal Bool32 VulkanMemoryModelDeviceScope;
+		internal Bool32 VulkanMemoryModelAvailabilityVisibilityChains;
+	}
+
+	internal partial struct PhysicalDeviceShaderAtomicInt64FeaturesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 ShaderBufferInt64Atomics;
+		internal Bool32 ShaderSharedInt64Atomics;
+	}
+
+	internal partial struct PhysicalDeviceVertexAttributeDivisorFeaturesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 VertexAttributeInstanceRateDivisor;
+		internal Bool32 VertexAttributeInstanceRateZeroDivisor;
+	}
+
+	internal partial struct QueueFamilyCheckpointPropertiesNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal PipelineStageFlags CheckpointExecutionStageMask;
+	}
+
+	internal partial struct CheckpointDataNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal PipelineStageFlags Stage;
+		internal IntPtr CheckpointMarker;
+	}
+
+	internal partial struct PhysicalDeviceDepthStencilResolvePropertiesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ResolveModeFlagsKhr SupportedDepthResolveModes;
+		internal ResolveModeFlagsKhr SupportedStencilResolveModes;
+		internal Bool32 IndependentResolveNone;
+		internal Bool32 IndependentResolve;
+	}
+
+	internal partial struct SubpassDescriptionDepthStencilResolveKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ResolveModeFlagsKhr DepthResolveMode;
+		internal ResolveModeFlagsKhr StencilResolveMode;
+		internal IntPtr DepthStencilResolveAttachment;
+	}
+
+	internal partial struct ImageViewASTCDecodeModeExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Format DecodeMode;
+	}
+
+	internal partial struct PhysicalDeviceASTCDecodeFeaturesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 DecodeModeSharedExponent;
+	}
+
+	internal partial struct PhysicalDeviceTransformFeedbackFeaturesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 TransformFeedback;
+		internal Bool32 GeometryStreams;
+	}
+
+	internal partial struct PhysicalDeviceTransformFeedbackPropertiesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 MaxTransformFeedbackStreams;
+		internal UInt32 MaxTransformFeedbackBuffers;
+		internal DeviceSize MaxTransformFeedbackBufferSize;
+		internal UInt32 MaxTransformFeedbackStreamDataSize;
+		internal UInt32 MaxTransformFeedbackBufferDataSize;
+		internal UInt32 MaxTransformFeedbackBufferDataStride;
+		internal Bool32 TransformFeedbackQueries;
+		internal Bool32 TransformFeedbackStreamsLinesTriangles;
+		internal Bool32 TransformFeedbackRasterizationStreamSelect;
+		internal Bool32 TransformFeedbackDraw;
+	}
+
+	internal partial struct PipelineRasterizationStateStreamCreateInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 Flags;
+		internal UInt32 RasterizationStream;
+	}
+
+	internal partial struct PhysicalDeviceRepresentativeFragmentTestFeaturesNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 RepresentativeFragmentTest;
+	}
+
+	internal partial struct PipelineRepresentativeFragmentTestStateCreateInfoNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 RepresentativeFragmentTestEnable;
+	}
+
+	internal partial struct PhysicalDeviceExclusiveScissorFeaturesNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 ExclusiveScissor;
+	}
+
+	internal partial struct PipelineViewportExclusiveScissorStateCreateInfoNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 ExclusiveScissorCount;
+		internal IntPtr ExclusiveScissors;
+	}
+
+	internal partial struct PhysicalDeviceCornerSampledImageFeaturesNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 CornerSampledImage;
+	}
+
+	internal partial struct PhysicalDeviceComputeShaderDerivativesFeaturesNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 ComputeDerivativeGroupQuads;
+		internal Bool32 ComputeDerivativeGroupLinear;
+	}
+
+	internal partial struct PhysicalDeviceFragmentShaderBarycentricFeaturesNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 FragmentShaderBarycentric;
+	}
+
+	internal partial struct PhysicalDeviceShaderImageFootprintFeaturesNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 ImageFootprint;
+	}
+
+	internal partial struct PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 DedicatedAllocationImageAliasing;
+	}
+
+	internal partial struct ShadingRatePaletteNv
+	{
+		internal UInt32 ShadingRatePaletteEntryCount;
+		internal IntPtr ShadingRatePaletteEntries;
+	}
+
+	internal partial struct PipelineViewportShadingRateImageStateCreateInfoNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 ShadingRateImageEnable;
+		internal UInt32 ViewportCount;
+		internal IntPtr ShadingRatePalettes;
+	}
+
+	internal partial struct PhysicalDeviceShadingRateImageFeaturesNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 ShadingRateImage;
+		internal Bool32 ShadingRateCoarseSampleOrder;
+	}
+
+	internal partial struct PhysicalDeviceShadingRateImagePropertiesNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Extent2D ShadingRateTexelSize;
+		internal UInt32 ShadingRatePaletteSize;
+		internal UInt32 ShadingRateMaxCoarseSamples;
+	}
+
+	internal partial struct CoarseSampleOrderCustomNv
+	{
+		internal ShadingRatePaletteEntryNv ShadingRate;
+		internal UInt32 SampleCount;
+		internal UInt32 SampleLocationCount;
+		internal IntPtr SampleLocations;
+	}
+
+	internal partial struct PipelineViewportCoarseSampleOrderStateCreateInfoNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal CoarseSampleOrderTypeNv SampleOrderType;
+		internal UInt32 CustomSampleOrderCount;
+		internal IntPtr CustomSampleOrders;
+	}
+
+	internal partial struct PhysicalDeviceMeshShaderFeaturesNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 TaskShader;
+		internal Bool32 MeshShader;
+	}
+
+	internal partial struct PhysicalDeviceMeshShaderPropertiesNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 MaxDrawMeshTasksCount;
+		internal UInt32 MaxTaskWorkGroupInvocations;
+		internal unsafe fixed UInt32 MaxTaskWorkGroupSize[3];
+		internal UInt32 MaxTaskTotalMemorySize;
+		internal UInt32 MaxTaskOutputCount;
+		internal UInt32 MaxMeshWorkGroupInvocations;
+		internal unsafe fixed UInt32 MaxMeshWorkGroupSize[3];
+		internal UInt32 MaxMeshTotalMemorySize;
+		internal UInt32 MaxMeshOutputVertices;
+		internal UInt32 MaxMeshOutputPrimitives;
+		internal UInt32 MaxMeshMultiviewViewCount;
+		internal UInt32 MeshOutputPerVertexGranularity;
+		internal UInt32 MeshOutputPerPrimitiveGranularity;
+	}
+
+	internal partial struct RayTracingShaderGroupCreateInfoNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal RayTracingShaderGroupTypeNv Type;
+		internal UInt32 GeneralShader;
+		internal UInt32 ClosestHitShader;
+		internal UInt32 AnyHitShader;
+		internal UInt32 IntersectionShader;
+	}
+
+	internal partial struct RayTracingPipelineCreateInfoNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal PipelineCreateFlags Flags;
+		internal UInt32 StageCount;
+		internal IntPtr Stages;
+		internal UInt32 GroupCount;
+		internal IntPtr Groups;
+		internal UInt32 MaxRecursionDepth;
+		internal UInt64 Layout;
+		internal UInt64 BasePipelineHandle;
+		internal Int32 BasePipelineIndex;
+	}
+
+	internal partial struct GeometryTrianglesNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 VertexData;
+		internal DeviceSize VertexOffset;
+		internal UInt32 VertexCount;
+		internal DeviceSize VertexStride;
+		internal Format VertexFormat;
+		internal UInt64 IndexData;
+		internal DeviceSize IndexOffset;
+		internal UInt32 IndexCount;
+		internal IndexType IndexType;
+		internal UInt64 TransformData;
+		internal DeviceSize TransformOffset;
+	}
+
+	internal partial struct GeometryAABBNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 AabbData;
+		internal UInt32 NumAabbs;
+		internal UInt32 Stride;
+		internal DeviceSize Offset;
+	}
+
+	internal partial struct GeometryDataNv
+	{
+		internal GeometryTrianglesNv Triangles;
+		internal GeometryAABBNv Aabbs;
+	}
+
+	internal partial struct GeometryNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal GeometryTypeNv GeometryType;
+		internal GeometryDataNv Geometry;
+		internal GeometryFlagsNv Flags;
+	}
+
+	internal partial struct AccelerationStructureInfoNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal AccelerationStructureTypeNv Type;
+		internal BuildAccelerationStructureFlagsNv Flags;
+		internal UInt32 InstanceCount;
+		internal UInt32 GeometryCount;
+		internal IntPtr Geometries;
+	}
+
+	internal partial struct AccelerationStructureCreateInfoNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal DeviceSize CompactedSize;
+		internal AccelerationStructureInfoNv Info;
+	}
+
+	internal partial struct BindAccelerationStructureMemoryInfoNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 AccelerationStructure;
+		internal UInt64 Memory;
+		internal DeviceSize MemoryOffset;
+		internal UInt32 DeviceIndexCount;
+		internal IntPtr DeviceIndices;
+	}
+
+	internal partial struct WriteDescriptorSetAccelerationStructureNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 AccelerationStructureCount;
+		internal IntPtr AccelerationStructures;
+	}
+
+	internal partial struct AccelerationStructureMemoryRequirementsInfoNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal AccelerationStructureMemoryRequirementsTypeNv Type;
+		internal UInt64 AccelerationStructure;
+	}
+
+	internal partial struct PhysicalDeviceRayTracingPropertiesNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 ShaderGroupHandleSize;
+		internal UInt32 MaxRecursionDepth;
+		internal UInt32 MaxShaderGroupStride;
+		internal UInt32 ShaderGroupBaseAlignment;
+		internal UInt64 MaxGeometryCount;
+		internal UInt64 MaxInstanceCount;
+		internal UInt64 MaxTriangleCount;
+		internal UInt32 MaxDescriptorSetAccelerationStructures;
+	}
+
+	internal partial struct DrmFormatModifierPropertiesListExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 DrmFormatModifierCount;
+		internal IntPtr DrmFormatModifierProperties;
+	}
+
+	internal partial struct PhysicalDeviceImageDrmFormatModifierInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 DrmFormatModifier;
+		internal SharingMode SharingMode;
+		internal UInt32 QueueFamilyIndexCount;
+		internal IntPtr QueueFamilyIndices;
+	}
+
+	internal partial struct ImageDrmFormatModifierListCreateInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 DrmFormatModifierCount;
+		internal IntPtr DrmFormatModifiers;
+	}
+
+	internal partial struct ImageDrmFormatModifierExplicitCreateInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 DrmFormatModifier;
+		internal UInt32 DrmFormatModifierPlaneCount;
+		internal IntPtr PlaneLayouts;
+	}
+
+	internal partial struct ImageDrmFormatModifierPropertiesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 DrmFormatModifier;
+	}
+
+	internal partial struct ImageStencilUsageCreateInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ImageUsageFlags StencilUsage;
+	}
+
+	internal partial struct DeviceMemoryOverallocationCreateInfoAmd
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal MemoryOverallocationBehaviorAmd OverallocationBehavior;
+	}
+
+	internal partial struct PhysicalDeviceFragmentDensityMapFeaturesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 FragmentDensityMap;
+		internal Bool32 FragmentDensityMapDynamic;
+		internal Bool32 FragmentDensityMapNonSubsampledImages;
+	}
+
+	internal partial struct PhysicalDeviceFragmentDensityMapPropertiesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Extent2D MinFragmentDensityTexelSize;
+		internal Extent2D MaxFragmentDensityTexelSize;
+		internal Bool32 FragmentDensityInvocations;
+	}
+
+	internal partial struct RenderPassFragmentDensityMapCreateInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal AttachmentReference FragmentDensityMapAttachment;
+	}
+
+	internal partial struct PhysicalDeviceScalarBlockLayoutFeaturesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 ScalarBlockLayout;
+	}
+
+	internal partial struct SurfaceProtectedCapabilitiesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 SupportsProtected;
+	}
+
+	internal partial struct PhysicalDeviceUniformBufferStandardLayoutFeaturesKhr
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 UniformBufferStandardLayout;
+	}
+
+	internal partial struct PhysicalDeviceDepthClipEnableFeaturesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 DepthClipEnable;
+	}
+
+	internal partial struct PipelineRasterizationDepthClipStateCreateInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 Flags;
+		internal Bool32 DepthClipEnable;
+	}
+
+	internal partial struct PhysicalDeviceMemoryPriorityFeaturesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 MemoryPriority;
+	}
+
+	internal partial struct MemoryPriorityAllocateInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal float Priority;
+	}
+
+	internal partial struct PhysicalDeviceBufferDeviceAddressFeaturesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 BufferDeviceAddress;
+		internal Bool32 BufferDeviceAddressCaptureReplay;
+		internal Bool32 BufferDeviceAddressMultiDevice;
+	}
+
+	internal partial struct PhysicalDeviceBufferAddressFeaturesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 BufferDeviceAddress;
+		internal Bool32 BufferDeviceAddressCaptureReplay;
+		internal Bool32 BufferDeviceAddressMultiDevice;
+
+		public static implicit operator PhysicalDeviceBufferAddressFeaturesExt (PhysicalDeviceBufferDeviceAddressFeaturesExt that) {
+			var ret = new PhysicalDeviceBufferAddressFeaturesExt {
+				SType = that.SType,
+				Next = that.Next,
+				BufferDeviceAddress = that.BufferDeviceAddress,
+				BufferDeviceAddressCaptureReplay = that.BufferDeviceAddressCaptureReplay,
+				BufferDeviceAddressMultiDevice = that.BufferDeviceAddressMultiDevice,
+			};
+
+			return ret;
+		}
+
+		public static implicit operator PhysicalDeviceBufferDeviceAddressFeaturesExt (PhysicalDeviceBufferAddressFeaturesExt that) {
+			var ret = new PhysicalDeviceBufferDeviceAddressFeaturesExt {
+				SType = that.SType,
+				Next = that.Next,
+				BufferDeviceAddress = that.BufferDeviceAddress,
+				BufferDeviceAddressCaptureReplay = that.BufferDeviceAddressCaptureReplay,
+				BufferDeviceAddressMultiDevice = that.BufferDeviceAddressMultiDevice,
+			};
+
+			return ret;
+		}
+	}
+
+	internal partial struct BufferDeviceAddressInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Buffer;
+	}
+
+	internal partial struct BufferDeviceAddressCreateInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal DeviceAddress DeviceAddress;
+	}
+
+	internal partial struct PhysicalDeviceImageViewImageFormatInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ImageViewType ImageViewType;
+	}
+
+	internal partial struct FilterCubicImageViewImageFormatPropertiesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 FilterCubic;
+		internal Bool32 FilterCubicMinmax;
+	}
+
+	internal partial struct PhysicalDeviceCooperativeMatrixFeaturesNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 CooperativeMatrix;
+		internal Bool32 CooperativeMatrixRobustBufferAccess;
+	}
+
+	internal partial struct PhysicalDeviceCooperativeMatrixPropertiesNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal ShaderStageFlags CooperativeMatrixSupportedStages;
+	}
+
+	internal partial struct CooperativeMatrixPropertiesNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 Msize;
+		internal UInt32 Nsize;
+		internal UInt32 Ksize;
+		internal ComponentTypeNv Atype;
+		internal ComponentTypeNv Btype;
+		internal ComponentTypeNv Ctype;
+		internal ComponentTypeNv Dtype;
+		internal ScopeNv Scope;
+	}
+
+	internal partial struct PhysicalDeviceYcbcrImageArraysFeaturesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 YcbcrImageArrays;
+	}
+
+	internal partial struct ImageViewHandleInfoNvx
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 ImageView;
+		internal DescriptorType DescriptorType;
+		internal UInt64 Sampler;
+	}
+
+	internal partial struct PresentFrameTokenGGP
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal int FrameToken;
+	}
+
+	internal partial struct PipelineCreationFeedbackCreateInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal IntPtr PipelineCreationFeedback;
+		internal UInt32 PipelineStageCreationFeedbackCount;
+		internal IntPtr PipelineStageCreationFeedbacks;
+	}
+
+	internal partial struct SurfaceFullScreenExclusiveInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal FullScreenExclusiveExt FullScreenExclusive;
+	}
+
+	internal partial struct SurfaceFullScreenExclusiveWin32InfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal IntPtr Hmonitor;
+	}
+
+	internal partial struct SurfaceCapabilitiesFullScreenExclusiveExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 FullScreenExclusiveSupported;
+	}
+
+	internal partial struct HeadlessSurfaceCreateInfoExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 Flags;
+	}
+
+	internal partial struct PhysicalDeviceCoverageReductionModeFeaturesNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 CoverageReductionMode;
+	}
+
+	internal partial struct PipelineCoverageReductionStateCreateInfoNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 Flags;
+		internal CoverageReductionModeNv CoverageReductionMode;
+	}
+
+	internal partial struct FramebufferMixedSamplesCombinationNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal CoverageReductionModeNv CoverageReductionMode;
+		internal SampleCountFlags RasterizationSamples;
+		internal SampleCountFlags DepthStencilSamples;
+		internal SampleCountFlags ColorSamples;
+	}
+
+	internal partial struct PhysicalDeviceShaderIntegerFunctions2Intel
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 ShaderIntegerFunctions2;
+	}
+
+	internal partial struct PerformanceValueIntel
+	{
+		internal PerformanceValueTypeIntel Type;
+		internal PerformanceValueDataIntel Data;
+	}
+
+	internal partial struct InitializePerformanceApiInfoIntel
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal IntPtr UserData;
+	}
+
+	internal partial struct QueryPoolCreateInfoIntel
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal QueryPoolSamplingModeIntel PerformanceCountersSampling;
+	}
+
+	internal partial struct PerformanceMarkerInfoIntel
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt64 Marker;
+	}
+
+	internal partial struct PerformanceStreamMarkerInfoIntel
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 Marker;
+	}
+
+	internal partial struct PerformanceOverrideInfoIntel
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal PerformanceOverrideTypeIntel Type;
+		internal Bool32 Enable;
+		internal UInt64 Parameter;
+	}
+
+	internal partial struct PerformanceConfigurationAcquireInfoIntel
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal PerformanceConfigurationTypeIntel Type;
+	}
+
+	internal partial struct PhysicalDeviceShaderSMBuiltinsPropertiesNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal UInt32 ShaderSmcount;
+		internal UInt32 ShaderWarpsPerSm;
+	}
+
+	internal partial struct PhysicalDeviceShaderSMBuiltinsFeaturesNv
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 ShaderSmbuiltins;
+	}
+
+	internal partial struct PhysicalDeviceFragmentShaderInterlockFeaturesExt
+	{
+		internal StructureType SType;
+		internal IntPtr Next;
+		internal Bool32 FragmentShaderSampleInterlock;
+		internal Bool32 FragmentShaderPixelInterlock;
+		internal Bool32 FragmentShaderShadingRateInterlock;
 	}
 }
