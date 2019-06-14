@@ -803,9 +803,6 @@ namespace VulkanSharp.Generator
 			if (csMemberType.StartsWith ("PFN_"))
 				csMemberType = "IntPtr";
 
-            if (csMemberType == "CAMetalLayer" || csMemberType == "AHardwareBuffer")
-                csMemberType = "IntPtr";
-
             if (csMemberType == "SampleMask")
 				csMemberType = "UInt32";
 
@@ -1778,7 +1775,7 @@ namespace VulkanSharp.Generator
 			if (hasResult)
 				csType = "void";
 
-			ParamInfo firstOutParam = null;
+            ParamInfo firstOutParam = null;
 			ParamInfo intParam = null;
 			string outLen = null;
 			ParamInfo dataParam = null;
@@ -2161,6 +2158,9 @@ namespace VulkanSharp.Generator
 			"vkEnumeratePhysicalDeviceGroupsKHX",
             "vkEnumeratePhysicalDeviceGroups",
             "vkEnumeratePhysicalDeviceGroupsKHR",
+            // TODO: resolve issues converting to/from `MemoryRequirements2Khr`
+            "vkGetAccelerationStructureMemoryRequirementsNV",
+            // TODO: pointer to pointer (`
         };
 
 		HashSet<string> delegateUnmanagedCommands = new HashSet<string> {
