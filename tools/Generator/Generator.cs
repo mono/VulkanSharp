@@ -803,11 +803,17 @@ namespace VulkanSharp.Generator
 			if (csMemberType.StartsWith ("PFN_"))
 				csMemberType = "IntPtr";
 
-			if (csMemberType == "SampleMask")
+            if (csMemberType == "CAMetalLayer" || csMemberType == "AHardwareBuffer")
+                csMemberType = "IntPtr";
+
+            if (csMemberType == "SampleMask")
 				csMemberType = "UInt32";
 
 			if (csMemberType == "Bool32" && !isInterop && needsMarshalling)
 				csMemberType = "bool";
+
+            if (csMemberType == "DeviceSize" || csMemberType == "DeviceAddress")
+				csMemberType = "UInt64";
 
             bool needsCharCast = false;
 			if (csMemberType == "char") {
