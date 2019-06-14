@@ -1950,22 +1950,21 @@ namespace VulkanSharp.Generator
 			IndentWrite ("{0}{1}{2}{3} (", hasResult ? "result = " : "", (ignoredParameters.Count == 0 && csType != "void") ? "return " : "", delegateUnmanagedCommands.Contains (function) ? "" : string.Format ("{0}.NativeMethods.", InteropNamespace), function);
 			WriteCommandParameters (commandElement, useArrayParameters, null, null, dataParam, isForHandle && !isExtension, true, paramsDict, isExtension);
 			WriteLine (");");
-
-			if (fixedCount > 0) {
-				foreach (var param in paramsDict) {
-					if (param.Value.isFixed) {
-						IndentLevel--;
-						IndentWriteLine ("}");
-					}
-				}
-			}
-
 			if (arrayParamCount > 0)
 				foreach (var param in paramsDict) {
 					var info = param.Value;
 					if (info.len != null && firstOutParam != info && !info.isOut)
 						IndentWriteLine ("Marshal.FreeHGlobal (array{0});", info.csName);
 				}
+
+			if (fixedCount > 0)
+				foreach (var param in paramsDict) {
+					if (param.Value.isFixed) {
+						IndentLevel--;
+						IndentWriteLine ("}");
+					}
+				}
+
 			CommandHandleResult (hasResult);
 			if (firstOutParam != null && !createArray) {
 				WriteLine ();
