@@ -2190,7 +2190,7 @@ namespace VulkanSharp.Generator
                         continue;
 
                     if (ReadName (command.Element ("proto")) == alias.Value) {
-                        commandElement = command;
+                        commandElement = new XElement(command);
                         break;
                     }
 			    }
@@ -2200,6 +2200,9 @@ namespace VulkanSharp.Generator
 
                     return false;
                 }
+            
+                // clone the node in all but name
+                commandElement.Element ("proto").Element ("name").Value = function;
 
                 IndentWriteLine ("[Obsolete (\"{0} is deprecated, please use {1} instead.\")]", function, alias.Value);
             }
