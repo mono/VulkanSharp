@@ -22,7 +22,7 @@ namespace VulkanSharp.Generator
 		Dictionary<string, HandleInfo> handles = new Dictionary<string,HandleInfo> ();
 		Dictionary<string, EnumInfo> enums = new Dictionary<string, EnumInfo> ();
 		Dictionary<string, List<EnumExtensionInfo>> enumExtensions = new Dictionary<string, List<EnumExtensionInfo>> ();
-		//HashSet<string> enums = new HashSet<string> ();
+		Dictionary<string, string> enumAliases = new Dictionary<string, string> ();
 
 		string platform;
 		HashSet<string> requiredTypes = null;
@@ -84,6 +84,7 @@ namespace VulkanSharp.Generator
 			LoadSpecification ();
 			Directory.CreateDirectory ("Interop");
 
+			LearnEnumAliases ();
 			LearnExtensions ();
 			GenerateEnums ();
 			GenerateBitmasks ();
@@ -257,6 +258,7 @@ namespace VulkanSharp.Generator
 					where (string)el.Attribute ("name") == name
 				select el;
 
+            // TODO: enums with only extension values (none yet)
 			if (values.Count () < 1) {
 				Console.WriteLine ("warning: not adding empty enum {0}", name);
 				return false;
@@ -264,26 +266,40 @@ namespace VulkanSharp.Generator
 
 			var enumsElement = values.First ();
 			var bitmask = enumsElement.Attribute ("type") != null && enumsElement.Attribute ("type").Value == "bitmask";
-			if (bitmask)
-				IndentWriteLine ("[Flags]");
 
 			string csName = GetEnumCsName (name, bitmask);
-
 			typesTranslation [name] = csName;
 			currentEnumInfo.csName = csName;
 			enums [csName] = currentEnumInfo;
-			IndentWriteLine ("public enum {0} : int", csName);
-			IndentWriteLine ("{");
-			IndentLevel++;
+			string acsName = csName;
 
-			foreach (var e in values.Elements ("enum"))
-				WriteEnumField (e, csName);
-			WriteEnumExtensions (csName);
+            for ( ; ; ) {
+			    if (bitmask)
+				    IndentWriteLine ("[Flags]");
 
-			IndentLevel--;
-			IndentWriteLine ("}");
+			    IndentWriteLine ("public enum {0} : int", acsName);
+			    IndentWriteLine ("{");
+			    IndentLevel++;
 
-			return true;
+			    foreach (var e in values.Elements ("enum"))
+				    WriteEnumField (e, csName);
+			    WriteEnumExtensions (csName);
+
+			    IndentLevel--;
+			    IndentWriteLine ("}");
+
+                if (acsName != csName)
+                    break;
+
+                if (!enumAliases.ContainsKey (name))
+                    break;
+
+                acsName = GetEnumCsName (enumAliases [name], bitmask);
+                WriteLine ();
+                IndentWriteLine("[Obsolete (\"{0} is deprecated, please use {1} instead.\")]", acsName, csName);
+            }
+
+            return true;
 		}
 
 		void GenerateCodeForElements (IEnumerable<XElement> elements, Func<XElement, bool> generator)
@@ -2414,7 +2430,15 @@ namespace VulkanSharp.Generator
 				LearnExtension (feature);
 		}
 
-		void PrepareExtensionSets (string[] extensionNames)
+        void LearnEnumAliases ()
+        {
+            var aliases = from e in specTree.Elements ("types").Elements ("type") where e.Attribute ("category")?.Value == "enum" && e.Attribute ("alias") != null select e;
+
+            foreach (var enumElement in aliases)
+    			enumAliases [enumElement.Attribute ("alias").Value] = enumElement.Attribute ("name").Value;
+        }
+
+        void PrepareExtensionSets (string[] extensionNames)
 		{
 			requiredTypes = new HashSet<string> ();
 			requiredCommands = new HashSet<string> ();

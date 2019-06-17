@@ -1629,6 +1629,14 @@ namespace Vulkan
 		DescriptorSetKhr = DescriptorSet,
 	}
 
+	[Obsolete ("DescriptorUpdateTemplateTypeKhr is deprecated, please use DescriptorUpdateTemplateType instead.")]
+	public enum DescriptorUpdateTemplateTypeKhr : int
+	{
+		DescriptorSet = 0,
+		PushDescriptorsKhr = 1,
+		DescriptorSetKhr = DescriptorSet,
+	}
+
 	public enum ViewportCoordinateSwizzleNv : int
 	{
 		PositiveX = 0,
@@ -1655,6 +1663,15 @@ namespace Vulkan
 	}
 
 	public enum PointClippingBehavior : int
+	{
+		AllClipPlanes = 0,
+		UserClipPlanesOnly = 1,
+		AllClipPlanesKhr = AllClipPlanes,
+		UserClipPlanesOnlyKhr = UserClipPlanesOnly,
+	}
+
+	[Obsolete ("PointClippingBehaviorKhr is deprecated, please use PointClippingBehavior instead.")]
+	public enum PointClippingBehaviorKhr : int
 	{
 		AllClipPlanes = 0,
 		UserClipPlanesOnly = 1,
@@ -2038,8 +2055,47 @@ namespace Vulkan
 		HostMappedForeignMemoryBitExt = HostMappedForeignMemoryExt,
 	}
 
+	[Obsolete ("ExternalMemoryHandleTypeFlagsKhr is deprecated, please use ExternalMemoryHandleTypeFlags instead.")]
+	[Flags]
+	public enum ExternalMemoryHandleTypeFlagsKhr : int
+	{
+		OpaqueFd = 0x1,
+		OpaqueWin32 = 0x2,
+		OpaqueWin32Kmt = 0x4,
+		D3D11Texture = 0x8,
+		D3D11TextureKmt = 0x10,
+		D3D12Heap = 0x20,
+		D3D12Resource = 0x40,
+		OpaqueFdKhr = OpaqueFd,
+		OpaqueWin32Khr = OpaqueWin32,
+		OpaqueWin32KmtKhr = OpaqueWin32Kmt,
+		D3D11TextureKhr = D3D11Texture,
+		D3D11TextureKmtKhr = D3D11TextureKmt,
+		D3D12HeapKhr = D3D12Heap,
+		D3D12ResourceKhr = D3D12Resource,
+		DmaBufExt = 0x200,
+		AndroidHardwareBufferAndroid = 0x400,
+		HostAllocationExt = 0x80,
+		HostMappedForeignMemoryExt = 0x100,
+		DmaBufBitExt = DmaBufExt,
+		HostAllocationBitExt = HostAllocationExt,
+		HostMappedForeignMemoryBitExt = HostMappedForeignMemoryExt,
+	}
+
 	[Flags]
 	public enum ExternalMemoryFeatureFlags : int
+	{
+		DedicatedOnly = 0x1,
+		Exportable = 0x2,
+		Importable = 0x4,
+		DedicatedOnlyKhr = DedicatedOnly,
+		ExportableKhr = Exportable,
+		ImportableKhr = Importable,
+	}
+
+	[Obsolete ("ExternalMemoryFeatureFlagsKhr is deprecated, please use ExternalMemoryFeatureFlags instead.")]
+	[Flags]
+	public enum ExternalMemoryFeatureFlagsKhr : int
 	{
 		DedicatedOnly = 0x1,
 		Exportable = 0x2,
@@ -2064,8 +2120,34 @@ namespace Vulkan
 		SyncFdKhr = SyncFd,
 	}
 
+	[Obsolete ("ExternalSemaphoreHandleTypeFlagsKhr is deprecated, please use ExternalSemaphoreHandleTypeFlags instead.")]
+	[Flags]
+	public enum ExternalSemaphoreHandleTypeFlagsKhr : int
+	{
+		OpaqueFd = 0x1,
+		OpaqueWin32 = 0x2,
+		OpaqueWin32Kmt = 0x4,
+		D3D12Fence = 0x8,
+		SyncFd = 0x10,
+		OpaqueFdKhr = OpaqueFd,
+		OpaqueWin32Khr = OpaqueWin32,
+		OpaqueWin32KmtKhr = OpaqueWin32Kmt,
+		D3D12FenceKhr = D3D12Fence,
+		SyncFdKhr = SyncFd,
+	}
+
 	[Flags]
 	public enum ExternalSemaphoreFeatureFlags : int
+	{
+		Exportable = 0x1,
+		Importable = 0x2,
+		ExportableKhr = Exportable,
+		ImportableKhr = Importable,
+	}
+
+	[Obsolete ("ExternalSemaphoreFeatureFlagsKhr is deprecated, please use ExternalSemaphoreFeatureFlags instead.")]
+	[Flags]
+	public enum ExternalSemaphoreFeatureFlagsKhr : int
 	{
 		Exportable = 0x1,
 		Importable = 0x2,
@@ -2080,8 +2162,30 @@ namespace Vulkan
 		TemporaryKhr = Temporary,
 	}
 
+	[Obsolete ("SemaphoreImportFlagsKhr is deprecated, please use SemaphoreImportFlags instead.")]
+	[Flags]
+	public enum SemaphoreImportFlagsKhr : int
+	{
+		Temporary = 0x1,
+		TemporaryKhr = Temporary,
+	}
+
 	[Flags]
 	public enum ExternalFenceHandleTypeFlags : int
+	{
+		OpaqueFd = 0x1,
+		OpaqueWin32 = 0x2,
+		OpaqueWin32Kmt = 0x4,
+		SyncFd = 0x8,
+		OpaqueFdKhr = OpaqueFd,
+		OpaqueWin32Khr = OpaqueWin32,
+		OpaqueWin32KmtKhr = OpaqueWin32Kmt,
+		SyncFdKhr = SyncFd,
+	}
+
+	[Obsolete ("ExternalFenceHandleTypeFlagsKhr is deprecated, please use ExternalFenceHandleTypeFlags instead.")]
+	[Flags]
+	public enum ExternalFenceHandleTypeFlagsKhr : int
 	{
 		OpaqueFd = 0x1,
 		OpaqueWin32 = 0x2,
@@ -2102,8 +2206,26 @@ namespace Vulkan
 		ImportableKhr = Importable,
 	}
 
+	[Obsolete ("ExternalFenceFeatureFlagsKhr is deprecated, please use ExternalFenceFeatureFlags instead.")]
+	[Flags]
+	public enum ExternalFenceFeatureFlagsKhr : int
+	{
+		Exportable = 0x1,
+		Importable = 0x2,
+		ExportableKhr = Exportable,
+		ImportableKhr = Importable,
+	}
+
 	[Flags]
 	public enum FenceImportFlags : int
+	{
+		Temporary = 0x1,
+		TemporaryKhr = Temporary,
+	}
+
+	[Obsolete ("FenceImportFlagsKhr is deprecated, please use FenceImportFlags instead.")]
+	[Flags]
+	public enum FenceImportFlagsKhr : int
 	{
 		Temporary = 0x1,
 		TemporaryKhr = Temporary,
@@ -2145,8 +2267,30 @@ namespace Vulkan
 		GenericDstKhr = GenericDst,
 	}
 
+	[Obsolete ("PeerMemoryFeatureFlagsKhr is deprecated, please use PeerMemoryFeatureFlags instead.")]
+	[Flags]
+	public enum PeerMemoryFeatureFlagsKhr : int
+	{
+		CopySrc = 0x1,
+		CopyDst = 0x2,
+		GenericSrc = 0x4,
+		GenericDst = 0x8,
+		CopySrcKhr = CopySrc,
+		CopyDstKhr = CopyDst,
+		GenericSrcKhr = GenericSrc,
+		GenericDstKhr = GenericDst,
+	}
+
 	[Flags]
 	public enum MemoryAllocateFlags : int
+	{
+		DeviceMask = 0x1,
+		DeviceMaskKhr = DeviceMask,
+	}
+
+	[Obsolete ("MemoryAllocateFlagsKhr is deprecated, please use MemoryAllocateFlags instead.")]
+	[Flags]
+	public enum MemoryAllocateFlagsKhr : int
 	{
 		DeviceMask = 0x1,
 		DeviceMaskKhr = DeviceMask,
@@ -2191,7 +2335,31 @@ namespace Vulkan
 		LowerLeftKhr = LowerLeft,
 	}
 
+	[Obsolete ("TessellationDomainOriginKhr is deprecated, please use TessellationDomainOrigin instead.")]
+	public enum TessellationDomainOriginKhr : int
+	{
+		UpperLeft = 0,
+		LowerLeft = 1,
+		UpperLeftKhr = UpperLeft,
+		LowerLeftKhr = LowerLeft,
+	}
+
 	public enum SamplerYcbcrModelConversion : int
+	{
+		RgbIdentity = 0,
+		YcbcrIdentity = 1,
+		Ycbcr709 = 2,
+		Ycbcr601 = 3,
+		Ycbcr2020 = 4,
+		RgbIdentityKhr = RgbIdentity,
+		YcbcrIdentityKhr = YcbcrIdentity,
+		Ycbcr709Khr = Ycbcr709,
+		Ycbcr601Khr = Ycbcr601,
+		Ycbcr2020Khr = Ycbcr2020,
+	}
+
+	[Obsolete ("SamplerYcbcrModelConversionKhr is deprecated, please use SamplerYcbcrModelConversion instead.")]
+	public enum SamplerYcbcrModelConversionKhr : int
 	{
 		RgbIdentity = 0,
 		YcbcrIdentity = 1,
@@ -2213,7 +2381,25 @@ namespace Vulkan
 		ItuNarrowKhr = ItuNarrow,
 	}
 
+	[Obsolete ("SamplerYcbcrRangeKhr is deprecated, please use SamplerYcbcrRange instead.")]
+	public enum SamplerYcbcrRangeKhr : int
+	{
+		ItuFull = 0,
+		ItuNarrow = 1,
+		ItuFullKhr = ItuFull,
+		ItuNarrowKhr = ItuNarrow,
+	}
+
 	public enum ChromaLocation : int
+	{
+		CositedEven = 0,
+		Midpoint = 1,
+		CositedEvenKhr = CositedEven,
+		MidpointKhr = Midpoint,
+	}
+
+	[Obsolete ("ChromaLocationKhr is deprecated, please use ChromaLocation instead.")]
+	public enum ChromaLocationKhr : int
 	{
 		CositedEven = 0,
 		Midpoint = 1,
