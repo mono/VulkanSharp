@@ -2357,6 +2357,10 @@ namespace VulkanSharp.Generator
 				string enumName = GetTypeCsName (element.Attribute ("extends").Value, "enum");
 				string entryName = element.Attribute ("name").Value;
 
+                // extensions don't always have the `bitmask` attribute provided
+                if (enumName.EndsWith ("FlagBits"))
+                    enumName = enumName.Substring (0, enumName.Length - 4) + "s";
+
                 var alias = element.Attribute ("alias");
                 var info = (alias == null)
                     ? new EnumExtensionInfo { name = entryName, value = EnumExtensionValue (element, number, ref enumName) }

@@ -579,7 +579,17 @@ namespace Vulkan
 		BlitDst = 0x800,
 		SampledImageFilterLinear = 0x1000,
 		SampledImageFilterCubicImg = 0x2000,
+		TransferSrcKhr = TransferSrc,
+		TransferDstKhr = TransferDst,
 		SampledImageFilterMinmaxExt = 0x10000,
+		MidpointChromaSamplesKhr = MidpointChromaSamples,
+		SampledImageYcbcrConversionLinearFilterKhr = SampledImageYcbcrConversionLinearFilter,
+		SampledImageYcbcrConversionSeparateReconstructionFilterKhr = SampledImageYcbcrConversionSeparateReconstructionFilter,
+		SampledImageYcbcrConversionChromaReconstructionExplicitKhr = SampledImageYcbcrConversionChromaReconstructionExplicit,
+		SampledImageYcbcrConversionChromaReconstructionExplicitForceableKhr = SampledImageYcbcrConversionChromaReconstructionExplicitForceable,
+		DisjointKhr = Disjoint,
+		CositedChromaSamplesKhr = CositedChromaSamples,
+		SampledImageFilterCubicExt = SampledImageFilterCubicBitImg,
 		FragmentDensityMapExt = 0x1000000,
 		TransferSrc = 0x4000,
 		TransferDst = 0x8000,
@@ -605,6 +615,9 @@ namespace Vulkan
 		Depth = 0x2,
 		Stencil = 0x4,
 		Metadata = 0x8,
+		Plane0Khr = Plane0,
+		Plane1Khr = Plane1,
+		Plane2Khr = Plane2,
 		MemoryPlane0Ext = 0x80,
 		MemoryPlane1Ext = 0x100,
 		MemoryPlane2Ext = 0x200,
@@ -623,7 +636,13 @@ namespace Vulkan
 		MutableFormat = 0x8,
 		CubeCompatible = 0x10,
 		CornerSampledNv = 0x2000,
+		SplitInstanceBindRegionsKhr = SplitInstanceBindRegions,
+		Create_2DArrayCompatibleKhr = 2DArrayCompatible,
+		BlockTexelViewCompatibleKhr = BlockTexelViewCompatible,
+		ExtendedUsageKhr = ExtendedUsage,
 		SampleLocationsCompatibleDepthExt = 0x1000,
+		DisjointKhr = Disjoint,
+		AliasKhr = Alias,
 		SubsampledExt = 0x4000,
 		Alias = 0x400,
 		SplitInstanceBindRegions = 0x40,
@@ -738,6 +757,7 @@ namespace Vulkan
 	public enum MemoryHeapFlags : int
 	{
 		DeviceLocal = 0x1,
+		MultiInstanceKhr = MultiInstance,
 		MultiInstance = 0x2,
 	}
 
@@ -807,6 +827,8 @@ namespace Vulkan
 		DisableOptimization = 0x1,
 		AllowDerivatives = 0x2,
 		Derivative = 0x4,
+		ViewIndexFromDeviceIndexKhr = ViewIndexFromDeviceIndex,
+		DispatchBaseKhr = DispatchBase,
 		DeferCompileNv = 0x20,
 		ViewIndexFromDeviceIndex = 0x8,
 		DispatchBase = 0x10,
@@ -1497,6 +1519,8 @@ namespace Vulkan
 	public enum DependencyFlags : int
 	{
 		ByRegion = 0x1,
+		ViewLocalKhr = ViewLocal,
+		DeviceGroupKhr = DeviceGroup,
 		DeviceGroup = 0x4,
 		ViewLocal = 0x2,
 	}
@@ -1998,6 +2022,13 @@ namespace Vulkan
 		D3D11TextureKmt = 0x10,
 		D3D12Heap = 0x20,
 		D3D12Resource = 0x40,
+		OpaqueFdKhr = OpaqueFd,
+		OpaqueWin32Khr = OpaqueWin32,
+		OpaqueWin32KmtKhr = OpaqueWin32Kmt,
+		D3D11TextureKhr = D3D11Texture,
+		D3D11TextureKmtKhr = D3D11TextureKmt,
+		D3D12HeapKhr = D3D12Heap,
+		D3D12ResourceKhr = D3D12Resource,
 		DmaBufExt = 0x200,
 		AndroidHardwareBufferAndroid = 0x400,
 		HostAllocationExt = 0x80,
@@ -2010,6 +2041,9 @@ namespace Vulkan
 		DedicatedOnly = 0x1,
 		Exportable = 0x2,
 		Importable = 0x4,
+		DedicatedOnlyKhr = DedicatedOnly,
+		ExportableKhr = Exportable,
+		ImportableKhr = Importable,
 	}
 
 	[Flags]
@@ -2020,6 +2054,11 @@ namespace Vulkan
 		OpaqueWin32Kmt = 0x4,
 		D3D12Fence = 0x8,
 		SyncFd = 0x10,
+		OpaqueFdKhr = OpaqueFd,
+		OpaqueWin32Khr = OpaqueWin32,
+		OpaqueWin32KmtKhr = OpaqueWin32Kmt,
+		D3D12FenceKhr = D3D12Fence,
+		SyncFdKhr = SyncFd,
 	}
 
 	[Flags]
@@ -2027,12 +2066,15 @@ namespace Vulkan
 	{
 		Exportable = 0x1,
 		Importable = 0x2,
+		ExportableKhr = Exportable,
+		ImportableKhr = Importable,
 	}
 
 	[Flags]
 	public enum SemaphoreImportFlags : int
 	{
 		Temporary = 0x1,
+		TemporaryKhr = Temporary,
 	}
 
 	[Flags]
@@ -2042,6 +2084,10 @@ namespace Vulkan
 		OpaqueWin32 = 0x2,
 		OpaqueWin32Kmt = 0x4,
 		SyncFd = 0x8,
+		OpaqueFdKhr = OpaqueFd,
+		OpaqueWin32Khr = OpaqueWin32,
+		OpaqueWin32KmtKhr = OpaqueWin32Kmt,
+		SyncFdKhr = SyncFd,
 	}
 
 	[Flags]
@@ -2049,12 +2095,15 @@ namespace Vulkan
 	{
 		Exportable = 0x1,
 		Importable = 0x2,
+		ExportableKhr = Exportable,
+		ImportableKhr = Importable,
 	}
 
 	[Flags]
 	public enum FenceImportFlags : int
 	{
 		Temporary = 0x1,
+		TemporaryKhr = Temporary,
 	}
 
 	[Flags]
@@ -2087,12 +2136,17 @@ namespace Vulkan
 		CopyDst = 0x2,
 		GenericSrc = 0x4,
 		GenericDst = 0x8,
+		CopySrcKhr = CopySrc,
+		CopyDstKhr = CopyDst,
+		GenericSrcKhr = GenericSrc,
+		GenericDstKhr = GenericDst,
 	}
 
 	[Flags]
 	public enum MemoryAllocateFlags : int
 	{
 		DeviceMask = 0x1,
+		DeviceMaskKhr = DeviceMask,
 	}
 
 	[Flags]
