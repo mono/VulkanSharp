@@ -2033,6 +2033,9 @@ namespace Vulkan
 		AndroidHardwareBufferAndroid = 0x400,
 		HostAllocationExt = 0x80,
 		HostMappedForeignMemoryExt = 0x100,
+		DmaBufBitExt = DmaBufExt,
+		HostAllocationBitExt = HostAllocationExt,
+		HostMappedForeignMemoryBitExt = HostMappedForeignMemoryExt,
 	}
 
 	[Flags]

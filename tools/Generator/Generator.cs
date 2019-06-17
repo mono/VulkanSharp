@@ -218,7 +218,22 @@ namespace VulkanSharp.Generator
                 else
                     WriteEnumField (info.name, TranslateCName (info.alias), csEnumName);
             }
-		}
+
+            // backwards-compatible fix
+            // `Bit` is meant to be stripped from flag names, but 3 weren't in the old code, likely
+            // due to being loaded from an extension:
+            //
+            //   DmaBufBitExt = 0x200,
+		    //   HostAllocationBitExt = 0x80,
+		    //   HostMappedForeignMemoryBitExt = 0x100,
+            //
+            // the current code correctly renames these, but that will break existing code
+            if (csEnumName == "ExternalMemoryHandleTypeFlags") {
+                WriteEnumField ("DmaBufBitExt", "DmaBufExt", "");
+                WriteEnumField ("HostAllocationBitExt", "HostAllocationExt", "");
+                WriteEnumField ("HostMappedForeignMemoryBitExt", "HostMappedForeignMemoryExt", "");
+            }
+        }
 
 		bool WriteEnum (XElement enumElement)
 		{
