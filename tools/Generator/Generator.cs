@@ -259,6 +259,7 @@ namespace VulkanSharp.Generator
 			var bitmask = enumsElement.Attribute ("type") != null && enumsElement.Attribute ("type").Value == "bitmask";
 
 			string csName = GetEnumCsName (name, bitmask);
+
 			typesTranslation [name] = csName;
 			currentEnumInfo.csName = csName;
 			enums [csName] = currentEnumInfo;
@@ -810,9 +811,9 @@ namespace VulkanSharp.Generator
 					break;
 				}
 			} else if (IsArray (memberElement)
-					   && GetArrayLength (memberElement) != null
-					   && !(structures.ContainsKey (csMemberType)
-							&& structures [csMemberType].needsMarshalling))
+			           && GetArrayLength (memberElement) != null
+			           && !(structures.ContainsKey (csMemberType)
+			                && structures [csMemberType].needsMarshalling))
 				isFixedArray = true;
 			var csMemberName = TranslateCName (name);
 
@@ -862,8 +863,8 @@ namespace VulkanSharp.Generator
 				string fixedPart = "";
 				int count = 1;
 				if (IsArray (memberElement)
-					&& !(memberIsStructure
-						 && structures [csMemberType].needsMarshalling)) {
+				    && !(memberIsStructure
+				         && structures [csMemberType].needsMarshalling)) {
 					string len = GetArrayLength (memberElement);
 					if (memberIsStructure)
 						count = Convert.ToInt32 (len);
@@ -935,8 +936,7 @@ namespace VulkanSharp.Generator
 				if (name.StartsWith ("p"))
 					name = name.Substring (1);
 
-				switch (csMemberType)
-				{
+				switch (csMemberType) {
 				case "void":
 					if (!isInterop && name == "Next")
 						return false;
@@ -957,8 +957,8 @@ namespace VulkanSharp.Generator
 			int count = 1;
 			bool memberIsStructure = structures.ContainsKey (csMemberType);
 			if (IsArray (memberElement)
-				&& !(memberIsStructure
-						&& structures [csMemberType].needsMarshalling)) {
+			    && !(memberIsStructure
+			         && structures [csMemberType].needsMarshalling)) {
 				string len = GetArrayLength (memberElement);
 				if (memberIsStructure)
 					count = Convert.ToInt32 (len);
@@ -1002,8 +1002,7 @@ namespace VulkanSharp.Generator
 				if (name.StartsWith ("p"))
 					name = name.Substring (1);
 
-				switch (csMemberType)
-				{
+				switch (csMemberType) {
 				case "void":
 					if (!isInterop && name == "Next")
 						return false;
@@ -1024,8 +1023,8 @@ namespace VulkanSharp.Generator
 			int count = 1;
 			bool memberIsStructure = structures.ContainsKey (csMemberType);
 			if (IsArray (memberElement)
-				&& !(memberIsStructure
-						&& structures [csMemberType].needsMarshalling)) {
+			    && !(memberIsStructure
+			         && structures [csMemberType].needsMarshalling)) {
 				string len = GetArrayLength (memberElement);
 				if (len == null) {
 					// is `fixed`
@@ -1300,9 +1299,9 @@ namespace VulkanSharp.Generator
 				var csMemberType = GetTypeCsName (typeElement.Value, "member");
 
 				if (member.Contains ("*")
-					|| IsArray (memberElement)
-					|| (structures.ContainsKey (csMemberType) && structures [csMemberType].needsMarshalling)
-					|| handles.ContainsKey (csMemberType))
+				    || IsArray (memberElement)
+				    || (structures.ContainsKey (csMemberType) && structures [csMemberType].needsMarshalling)
+				    || handles.ContainsKey (csMemberType))
 					return true;
 			}
 
@@ -1439,8 +1438,8 @@ namespace VulkanSharp.Generator
 					return "4"; // int enum
 
 				return string.Format ("Marshal.SizeOf (typeof ({0}{1}))",
-									  isInInterop ? "Interop." : "",
-									  isHandle ? generator.GetHandleType (generator.handles [csType]) : csType);
+				                      isInInterop ? "Interop." : "",
+				                      isHandle ? generator.GetHandleType (generator.handles [csType]) : csType);
 			}
 		}
 
@@ -2010,13 +2009,14 @@ namespace VulkanSharp.Generator
 						IndentWriteLine ("Marshal.FreeHGlobal (array{0});", info.csName);
 				}
 
-			if (fixedCount > 0)
+			if (fixedCount > 0) {
 				foreach (var param in paramsDict) {
 					if (param.Value.isFixed) {
 						IndentLevel--;
 						IndentWriteLine ("}");
 					}
 				}
+			}
 
 			CommandHandleResult (hasResult);
 			if (firstOutParam != null && !createArray) {
@@ -2396,8 +2396,8 @@ namespace VulkanSharp.Generator
 
 				var alias = element.Attribute ("alias");
 				var info = (alias == null)
-					? new EnumExtensionInfo { name = entryName, value = EnumExtensionValue (element, number, ref enumName) }
-					: new EnumExtensionInfo { name = entryName, alias = alias.Value };
+				    ? new EnumExtensionInfo { name = entryName, value = EnumExtensionValue (element, number, ref enumName) }
+				    : new EnumExtensionInfo { name = entryName, alias = alias.Value };
 
 				// add this enum only if it is unique
 				if (!enumExtensions.ContainsKey (enumName))

@@ -159,15 +159,15 @@ namespace VulkanSharp.Generator
 			string ret = name;
 			string extStr = null;
 			foreach (var ext in extensions) {
-				if (name.EndsWith(ext.Value))	{
+				if (name.EndsWith (ext.Value))	{
 					extStr = ext.Value;
-					ret = name.Substring(0, name.Length - ext.Value.Length);
+					ret = name.Substring (0, name.Length - ext.Value.Length);
 					break;
 				}
 			}
 
-			if (ret.EndsWith("FlagBits"))
-				ret = ret.Substring(0, ret.Length - 4) + "s";
+			if (ret.EndsWith ("FlagBits"))
+				ret = ret.Substring (0, ret.Length - 4) + "s";
 
 			if (extStr != null)
 				ret += extStr;
