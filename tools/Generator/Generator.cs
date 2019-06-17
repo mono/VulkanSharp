@@ -111,34 +111,37 @@ namespace VulkanSharp.Generator
 
         string CleanEnumField(string name, string csEnumName)
         {
+            if (name.StartsWith ("0x") || Int32.TryParse (name, out int isValueTmp))
+                return name;
+
             string prefix = csEnumName, suffix = null;
             bool isExtensionField = false;
             string extension = null;
 
             foreach (var ext in extensions)
             {
-                if (prefix.EndsWith(ext.Value))
+                if (prefix.EndsWith (ext.Value))
                 {
-                    prefix = prefix.Substring(0, prefix.Length - ext.Value.Length);
+                    prefix = prefix.Substring (0, prefix.Length - ext.Value.Length);
                     suffix = ext.Value;
                 }
-                else if (name.EndsWith(ext.Value))
+                else if (name.EndsWith (ext.Value))
                 {
                     isExtensionField = true;
                     extension = ext.Value;
                 }
             }
 
-            if (prefix.EndsWith("Flags"))
+            if (prefix.EndsWith ("Flags"))
             {
-                prefix = prefix.Substring(0, prefix.Length - 5);
+                prefix = prefix.Substring (0, prefix.Length - 5);
                 suffix = "Bit" + suffix;
             }
 
             if (name.StartsWith (prefix, StringComparison.OrdinalIgnoreCase))
                 name = name.Substring (prefix.Length);
 
-            if (!char.IsLetter (name[0]) && !name.StartsWith ("0x") && !Int32.TryParse (name, out int isValueTmp))
+            if (!char.IsLetter (name [0]))
             {
                 switch (csEnumName)
                 {
@@ -165,13 +168,10 @@ namespace VulkanSharp.Generator
 
             if (suffix != null)
             {
-                if (name.EndsWith(suffix))
-                    name = name.Substring(0, name.Length - suffix.Length);
-                else if (isExtensionField)
-                {
-                    if (name.EndsWith(suffix + extension))
-                        name = name.Substring(0, name.Length - suffix.Length - extension.Length) + extension;
-                }
+                if (name.EndsWith (suffix))
+                    name = name.Substring (0, name.Length - suffix.Length);
+                else if (isExtensionField && name.EndsWith (suffix + extension))
+                    name = name.Substring (0, name.Length - suffix.Length - extension.Length) + extension;
             }
 
             return name;
