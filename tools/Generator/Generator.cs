@@ -109,8 +109,32 @@ namespace VulkanSharp.Generator
 			Console.WriteLine ("Specification file {0} loaded", specXMLFile);
 		}
 
-        string CleanEnumField(string name, string prefix, string csEnumName)
+        string CleanEnumField(string name, string csEnumName)
         {
+            string prefix = csEnumName, suffix = null;
+            bool isExtensionField = false;
+            string extension = null;
+
+            foreach (var ext in extensions)
+            {
+                if (prefix.EndsWith(ext.Value))
+                {
+                    prefix = prefix.Substring(0, prefix.Length - ext.Value.Length);
+                    suffix = ext.Value;
+                }
+                else if (name.EndsWith(ext.Value))
+                {
+                    isExtensionField = true;
+                    extension = ext.Value;
+                }
+            }
+
+            if (prefix.EndsWith("Flags"))
+            {
+                prefix = prefix.Substring(0, prefix.Length - 5);
+                suffix = "Bit" + suffix;
+            }
+
             if (name.StartsWith (prefix, StringComparison.OrdinalIgnoreCase))
                 name = name.Substring (prefix.Length);
 
@@ -139,46 +163,26 @@ namespace VulkanSharp.Generator
                 }
             }
 
+            if (suffix != null)
+            {
+                if (name.EndsWith(suffix))
+                    name = name.Substring(0, name.Length - suffix.Length);
+                else if (isExtensionField)
+                {
+                    if (name.EndsWith(suffix + extension))
+                        name = name.Substring(0, name.Length - suffix.Length - extension.Length) + extension;
+                }
+            }
+
             return name;
         }
 
         void WriteEnumField (string name, string value, string csEnumName)
 		{
 			string fName = TranslateCName (name);
-			string prefix = csEnumName, suffix = null;
-			bool isExtensionField = false;
-			string extension = null;
-
-			foreach (var ext in extensions) {
-				if (prefix.EndsWith (ext.Value)) {
-					prefix = prefix.Substring (0, prefix.Length - ext.Value.Length);
-					suffix = ext.Value;
-				} else if (fName.EndsWith (ext.Value)) {
-					isExtensionField = true;
-					extension = ext.Value;
-				}
-			}
-
-			if (prefix.EndsWith ("Flags")) {
-				prefix = prefix.Substring (0, prefix.Length - 5);
-				suffix = "Bit" + suffix;
-			}
             
-            fName = CleanEnumField (fName, prefix, csEnumName);
-            value = CleanEnumField (value, prefix, csEnumName);
-
-            if (suffix != null) {
-				if (fName.EndsWith (suffix))
-					fName = fName.Substring (0, fName.Length - suffix.Length);
-				else if (isExtensionField) {
-                    if (fName.EndsWith (suffix + extension))
-					    fName = fName.Substring (0, fName.Length - suffix.Length - extension.Length) + extension;
-                    if (value.EndsWith (suffix + extension))
-                        value = value.Substring (0, value.Length - suffix.Length - extension.Length) + extension;
-                }
-                if (value.EndsWith (suffix))
-                    value = value.Substring (0, value.Length - suffix.Length);
-            }
+            fName = CleanEnumField (fName, csEnumName);
+            value = CleanEnumField (value, csEnumName);
 
             // likely a typo not relevant to C#, e.g. CAPABILITIES_2 <> CAPABILITIES2
             if (fName == value)

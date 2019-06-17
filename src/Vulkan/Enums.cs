@@ -589,7 +589,7 @@ namespace Vulkan
 		SampledImageYcbcrConversionChromaReconstructionExplicitForceableKhr = SampledImageYcbcrConversionChromaReconstructionExplicitForceable,
 		DisjointKhr = Disjoint,
 		CositedChromaSamplesKhr = CositedChromaSamples,
-		SampledImageFilterCubicExt = SampledImageFilterCubicBitImg,
+		SampledImageFilterCubicExt = SampledImageFilterCubicImg,
 		FragmentDensityMapExt = 0x1000000,
 		TransferSrc = 0x4000,
 		TransferDst = 0x8000,
