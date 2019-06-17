@@ -134,10 +134,6 @@ namespace VulkanSharp.Generator
 			if (fName.StartsWith (prefix, StringComparison.OrdinalIgnoreCase))
                 fName = fName.Substring (prefix.Length);
 
-            // some enum entires now start with numbers, don't let them
-			if (fName[0] >= '0' && fName[0] <= '9')
-                fName = "_" + fName;
-
 			if (value.StartsWith (prefix, StringComparison.OrdinalIgnoreCase))
                 value = value.Substring (prefix.Length);
 
@@ -176,7 +172,12 @@ namespace VulkanSharp.Generator
                 if (value.EndsWith (suffix))
                     value = value.Substring (0, value.Length - suffix.Length);
             }
-            IndentWriteLine ("{0} = {1},", fName, value);
+
+            // some enum entires now start with numbers, don't let them
+            if (fName[0] >= '0' && fName[0] <= '9')
+                fName = "_" + fName;
+
+            IndentWriteLine("{0} = {1},", fName, value);
 
 			currentEnumInfo.members [fName] = name;
 		}

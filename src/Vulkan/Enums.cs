@@ -637,7 +637,7 @@ namespace Vulkan
 		CubeCompatible = 0x10,
 		CornerSampledNv = 0x2000,
 		SplitInstanceBindRegionsKhr = SplitInstanceBindRegions,
-		Create_2DArrayCompatibleKhr = 2DArrayCompatible,
+		Create2DArrayCompatibleKhr = 2DArrayCompatible,
 		BlockTexelViewCompatibleKhr = BlockTexelViewCompatible,
 		ExtendedUsageKhr = ExtendedUsage,
 		SampleLocationsCompatibleDepthExt = 0x1000,
@@ -646,7 +646,7 @@ namespace Vulkan
 		SubsampledExt = 0x4000,
 		Alias = 0x400,
 		SplitInstanceBindRegions = 0x40,
-		Create_2DArrayCompatible = 0x20,
+		Create2DArrayCompatible = 0x20,
 		BlockTexelViewCompatible = 0x80,
 		ExtendedUsage = 0x100,
 		Protected = 0x800,
@@ -683,9 +683,9 @@ namespace Vulkan
 
 	public enum ImageType : int
 	{
-		Image_1D = 0,
-		Image_2D = 1,
-		Image_3D = 2,
+		Image1D = 0,
+		Image2D = 1,
+		Image3D = 2,
 	}
 
 	[Flags]
@@ -711,12 +711,12 @@ namespace Vulkan
 
 	public enum ImageViewType : int
 	{
-		View_1D = 0,
-		View_2D = 1,
-		View_3D = 2,
+		View1D = 0,
+		View2D = 1,
+		View3D = 2,
 		Cube = 3,
-		View_1DArray = 4,
-		View_2DArray = 5,
+		View1DArray = 4,
+		View2DArray = 5,
 		CubeArray = 6,
 	}
 
@@ -874,7 +874,7 @@ namespace Vulkan
 	[Flags]
 	public enum QueryResultFlags : int
 	{
-		Result_64 = 0x1,
+		Result64 = 0x1,
 		Wait = 0x2,
 		WithAvailability = 0x4,
 		Partial = 0x8,
@@ -1493,13 +1493,13 @@ namespace Vulkan
 	[Flags]
 	public enum SampleCountFlags : int
 	{
-		Count_1 = 0x1,
-		Count_2 = 0x2,
-		Count_4 = 0x4,
-		Count_8 = 0x8,
-		Count_16 = 0x10,
-		Count_32 = 0x20,
-		Count_64 = 0x40,
+		Count1 = 0x1,
+		Count2 = 0x2,
+		Count4 = 0x4,
+		Count8 = 0x8,
+		Count16 = 0x10,
+		Count32 = 0x20,
+		Count64 = 0x40,
 	}
 
 	[Flags]
