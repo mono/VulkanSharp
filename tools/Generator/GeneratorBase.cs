@@ -23,7 +23,6 @@ namespace VulkanSharp.Generator
             { "NV", "Nv" },
             { "NVX", "Nvx" },
             { "NN", "Nn" },
-            { "ASTC", "ASTC" },
             { "PCI", "PCI" },
             { "AABB", "AABB" },
             { "GGP", "GGP" },

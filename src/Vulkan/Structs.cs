@@ -18681,7 +18681,7 @@ namespace Vulkan
 
 		internal void Initialize ()
 		{
-			m->SType = StructureType.ImageViewASTCDecodeModeExt;
+			m->SType = StructureType.ImageViewAstcDecodeModeExt;
 		}
 
 	}
@@ -18714,7 +18714,7 @@ namespace Vulkan
 
 		internal void Initialize ()
 		{
-			m->SType = StructureType.PhysicalDeviceASTCDecodeFeaturesExt;
+			m->SType = StructureType.PhysicalDeviceAstcDecodeFeaturesExt;
 		}
 
 	}
