@@ -24,8 +24,8 @@ namespace Vulkan.iOS
 			get { return m->View; }
 			set { m->View = value; }
 		}
-		internal iOS.Interop.IOSSurfaceCreateInfoMvk* m {
 
+		internal iOS.Interop.IOSSurfaceCreateInfoMvk* m {
 			get {
 				return (iOS.Interop.IOSSurfaceCreateInfoMvk*)native.Handle;
 			}

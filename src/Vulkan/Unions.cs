@@ -68,8 +68,8 @@ namespace Vulkan
 					m->Uint32 [i] = 0;
 			}
 		}
-		internal Interop.ClearColorValue* m {
 
+		internal Interop.ClearColorValue* m {
 			get {
 				return (Interop.ClearColorValue*)native.Handle;
 			}
@@ -99,8 +99,8 @@ namespace Vulkan
 			get { return m->DepthStencil; }
 			set { m->DepthStencil = value; }
 		}
-		internal Interop.ClearValue* m {
 
+		internal Interop.ClearValue* m {
 			get {
 				return (Interop.ClearValue*)native.Handle;
 			}
@@ -122,6 +122,51 @@ namespace Vulkan
 		internal void Initialize ()
 		{
 			lColor = new ClearColorValue (new NativePointer (native.Reference, (IntPtr)(&m->Color)));
+		}
+
+	}
+
+	unsafe public partial class PerformanceValueDataIntel : MarshalledObject
+	{
+		public UInt32 Value32 {
+			get { return m->Value32; }
+			set { m->Value32 = value; }
+		}
+
+		public UInt64 Value64 {
+			get { return m->Value64; }
+			set { m->Value64 = value; }
+		}
+
+		public float ValueFloat {
+			get { return m->ValueFloat; }
+			set { m->ValueFloat = value; }
+		}
+
+		public bool ValueBool {
+			get { return m->ValueBool; }
+			set { m->ValueBool = value; }
+		}
+
+		public string ValueString {
+			get { return Marshal.PtrToStringAnsi (m->ValueString); }
+			set { m->ValueString = Marshal.StringToHGlobalAnsi (value); }
+		}
+
+		internal Interop.PerformanceValueDataIntel* m {
+			get {
+				return (Interop.PerformanceValueDataIntel*)native.Handle;
+			}
+		}
+
+		public PerformanceValueDataIntel ()
+		{
+			native = Interop.Structure.Allocate (typeof (Interop.PerformanceValueDataIntel));
+		}
+
+		internal PerformanceValueDataIntel (NativePointer pointer)
+		{
+			native = pointer;
 		}
 
 	}

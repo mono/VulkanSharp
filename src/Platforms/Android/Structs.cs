@@ -24,8 +24,8 @@ namespace Vulkan.Android
 			get { return m->Window; }
 			set { m->Window = value; }
 		}
-		internal Android.Interop.AndroidSurfaceCreateInfoKhr* m {
 
+		internal Android.Interop.AndroidSurfaceCreateInfoKhr* m {
 			get {
 				return (Android.Interop.AndroidSurfaceCreateInfoKhr*)native.Handle;
 			}

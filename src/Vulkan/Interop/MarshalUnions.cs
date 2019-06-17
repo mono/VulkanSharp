@@ -27,4 +27,14 @@ namespace Vulkan.Interop
 		[FieldOffset (0)] internal ClearColorValue Color;
 		[FieldOffset (0)] internal ClearDepthStencilValue DepthStencil;
 	}
+
+	[StructLayout (LayoutKind.Explicit)]
+	internal partial struct PerformanceValueDataIntel
+	{
+		[FieldOffset (0)] internal UInt32 Value32;
+		[FieldOffset (0)] internal UInt64 Value64;
+		[FieldOffset (0)] internal float ValueFloat;
+		[FieldOffset (0)] internal Bool32 ValueBool;
+		[FieldOffset (0)] internal IntPtr ValueString;
+	}
 }

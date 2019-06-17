@@ -29,8 +29,8 @@ namespace Vulkan.Windows
 			get { return m->Hwnd; }
 			set { m->Hwnd = value; }
 		}
-		internal Windows.Interop.Win32SurfaceCreateInfoKhr* m {
 
+		internal Windows.Interop.Win32SurfaceCreateInfoKhr* m {
 			get {
 				return (Windows.Interop.Win32SurfaceCreateInfoKhr*)native.Handle;
 			}
@@ -67,8 +67,8 @@ namespace Vulkan.Windows
 			get { return m->Handle; }
 			set { m->Handle = value; }
 		}
-		internal Windows.Interop.ImportMemoryWin32HandleInfoNv* m {
 
+		internal Windows.Interop.ImportMemoryWin32HandleInfoNv* m {
 			get {
 				return (Windows.Interop.ImportMemoryWin32HandleInfoNv*)native.Handle;
 			}
@@ -105,8 +105,8 @@ namespace Vulkan.Windows
 			get { return m->DwAccess; }
 			set { m->DwAccess = value; }
 		}
-		internal Windows.Interop.ExportMemoryWin32HandleInfoNv* m {
 
+		internal Windows.Interop.ExportMemoryWin32HandleInfoNv* m {
 			get {
 				return (Windows.Interop.ExportMemoryWin32HandleInfoNv*)native.Handle;
 			}
@@ -312,8 +312,8 @@ namespace Vulkan.Windows
 				}
 			}
 		}
-		internal Windows.Interop.Win32KeyedMutexAcquireReleaseInfoNv* m {
 
+		internal Windows.Interop.Win32KeyedMutexAcquireReleaseInfoNv* m {
 			get {
 				return (Windows.Interop.Win32KeyedMutexAcquireReleaseInfoNv*)native.Handle;
 			}
