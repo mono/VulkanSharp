@@ -110,94 +110,85 @@ namespace VulkanSharp.Generator
 			Console.WriteLine ("Specification file {0} loaded", specXMLFile);
 		}
 
-        string CleanEnumField(string name, string csEnumName)
-        {
-            if (name.StartsWith ("0x") || Int32.TryParse (name, out int isValueTmp))
-                return name;
+		string CleanEnumField (string fName, string csEnumName)
+		{
+			if (fName.StartsWith ("0x") || Int32.TryParse (fName, out int isValueTmp))
+				return fName;
 
-            string prefix = csEnumName, suffix = null;
-            bool isExtensionField = false;
-            string extension = null;
+			string prefix = csEnumName, suffix = null;
+			bool isExtensionField = false;
+			string extension = null;
 
-            foreach (var ext in extensions)
-            {
-                if (prefix.EndsWith (ext.Value))
-                {
-                    prefix = prefix.Substring (0, prefix.Length - ext.Value.Length);
-                    suffix = ext.Value;
-                }
-                else if (name.EndsWith (ext.Value))
-                {
-                    isExtensionField = true;
-                    extension = ext.Value;
-                }
-            }
+			foreach (var ext in extensions) {
+				if (prefix.EndsWith (ext.Value)) {
+					prefix = prefix.Substring (0, prefix.Length - ext.Value.Length);
+					suffix = ext.Value;
+				} else if (fName.EndsWith (ext.Value)) {
+					isExtensionField = true;
+					extension = ext.Value;
+				}
+			}
 
-            if (prefix.EndsWith ("Flags"))
-            {
-                prefix = prefix.Substring (0, prefix.Length - 5);
-                suffix = "Bit" + suffix;
-            }
+			if (prefix.EndsWith ("Flags")) {
+				prefix = prefix.Substring (0, prefix.Length - 5);
+				suffix = "Bit" + suffix;
+			}
 
-            if (name.StartsWith (prefix, StringComparison.OrdinalIgnoreCase))
-                name = name.Substring (prefix.Length);
+			if (fName.StartsWith (prefix, StringComparison.OrdinalIgnoreCase))
+				fName = fName.Substring (prefix.Length);
 
-            if (!char.IsLetter (name [0]))
-            {
-                switch (csEnumName)
-                {
-                case "ImageType":
-                    name = "Image" + name;
-                    break;
-                case "ImageViewType":
-                    name = "View" + name;
-                    break;
-                case "QueryResultFlags":
-                    name = "Result" + name;
-                    break;
-                case "SampleCountFlags":
-                    name = "Count" + name;
-                    break;
-                case "ImageCreateFlags":
-                    name = "Create" + name;
-                    break;
-                case "ShadingRatePaletteEntryNv":
-                    name = "Rate" + name;
-                    break;
-                }
-            }
+			if (!char.IsLetter (fName [0])) {
+				switch (csEnumName) {
+				case "ImageType":
+					fName = "Image" + fName;
+					break;
+				case "ImageViewType":
+					fName = "View" + fName;
+					break;
+				case "QueryResultFlags":
+					fName = "Result" + fName;
+					break;
+				case "SampleCountFlags":
+					fName = "Count" + fName;
+					break;
+				case "ImageCreateFlags":
+					fName = "Create" + fName;
+					break;
+				case "ShadingRatePaletteEntryNv":
+					fName = "Rate" + fName;
+					break;
+				}
+			}
+			if (suffix != null) {
+				if (fName.EndsWith (suffix))
+					fName = fName.Substring (0, fName.Length - suffix.Length);
+				else if (isExtensionField && fName.EndsWith (suffix + extension))
+					fName = fName.Substring (0, fName.Length - suffix.Length - extension.Length) + extension;
+			}
 
-            if (suffix != null)
-            {
-                if (name.EndsWith (suffix))
-                    name = name.Substring (0, name.Length - suffix.Length);
-                else if (isExtensionField && name.EndsWith (suffix + extension))
-                    name = name.Substring (0, name.Length - suffix.Length - extension.Length) + extension;
-            }
+			return fName;
+		}
 
-            return name;
-        }
-
-        void WriteEnumField (string name, string value, string csEnumName)
+		void WriteEnumField (string name, string value, string csEnumName)
 		{
 			string fName = TranslateCName (name);
-            
-            fName = CleanEnumField (fName, csEnumName);
-            value = CleanEnumField (value, csEnumName);
 
-            // likely a typo not relevant to C#, e.g. CAPABILITIES_2 <> CAPABILITIES2
-            if (fName == value)
-                return;
+			fName = CleanEnumField (fName, csEnumName);
+			value = CleanEnumField (value, csEnumName);
 
-            IndentWriteLine("{0} = {1},", fName, value);
+			// likely a typo not relevant to C#, e.g. CAPABILITIES_2 <> CAPABILITIES2
+			if (fName == value)
+				return;
+
+			IndentWriteLine ("{0} = {1},", fName, value);
 
 			currentEnumInfo.members [fName] = name;
 		}
 
-        string ReadName (XElement element)
-        {
-            return element.Element ("name")?.Value ?? element.Attribute ("name")?.Value;
-        }
+		string ReadName (XElement element)
+		{
+			return element.Element ("name")?.Value ?? element.Attribute ("name")?.Value;
+		}
 
 		string FormatFlagValue (int pos)
 		{
@@ -206,15 +197,15 @@ namespace VulkanSharp.Generator
 
 		void WriteEnumField (XElement e, string csEnumName)
 		{
-            var valueAttr = e.Attribute ("value");
-            var aliasAttr = e.Attribute ("alias");
+			var valueAttr = e.Attribute ("value");
+			var aliasAttr = e.Attribute ("alias");
 
-            string value;
-            if (valueAttr != null)
-                value = valueAttr.Value;
-            else if (aliasAttr != null)
+			string value;
+			if (valueAttr != null)
+				value = valueAttr.Value;
+			else if (aliasAttr != null)
 				value = TranslateCName (aliasAttr.Value);
-            else
+			else
 				value = FormatFlagValue (Convert.ToInt32 (e.Attribute ("bitpos").Value));
 
 			WriteEnumField (e.Attribute ("name").Value, value, csEnumName);
@@ -225,27 +216,27 @@ namespace VulkanSharp.Generator
 			if (!enumExtensions.ContainsKey (csEnumName))
 				return;
 			foreach (var info in enumExtensions [csEnumName]) {
-                if (info.alias == null)
-				    WriteEnumField (info.name, info.value.ToString (), csEnumName);
-                else
-                    WriteEnumField (info.name, TranslateCName (info.alias), csEnumName);
-            }
+				if (info.alias == null)
+					WriteEnumField (info.name, info.value.ToString (), csEnumName);
+				else
+					WriteEnumField (info.name, TranslateCName (info.alias), csEnumName);
+			}
 
-            // backwards-compatible fix
-            // `Bit` is meant to be stripped from flag names, but 3 weren't in the old code, likely
-            // due to being loaded from an extension:
-            //
-            //   DmaBufBitExt = 0x200,
-		    //   HostAllocationBitExt = 0x80,
-		    //   HostMappedForeignMemoryBitExt = 0x100,
-            //
-            // the current code correctly renames these, but that will break existing code
-            if (csEnumName == "ExternalMemoryHandleTypeFlags") {
-                WriteEnumField ("DmaBufBitExt", "DmaBufExt", "");
-                WriteEnumField ("HostAllocationBitExt", "HostAllocationExt", "");
-                WriteEnumField ("HostMappedForeignMemoryBitExt", "HostMappedForeignMemoryExt", "");
-            }
-        }
+			// backwards-compatible fix
+			// `Bit` is meant to be stripped from flag names, but 3 weren't in the old code, likely
+			// due to being loaded from an extension:
+			//
+			//   DmaBufBitExt = 0x200,
+			//   HostAllocationBitExt = 0x80,
+			//   HostMappedForeignMemoryBitExt = 0x100,
+			//
+			// the current code correctly renames these, but that will break existing code
+			if (csEnumName == "ExternalMemoryHandleTypeFlags") {
+				WriteEnumField ("DmaBufBitExt", "DmaBufExt", "");
+				WriteEnumField ("HostAllocationBitExt", "HostAllocationExt", "");
+				WriteEnumField ("HostMappedForeignMemoryBitExt", "HostMappedForeignMemoryExt", "");
+			}
+		}
 
 		bool WriteEnum (XElement enumElement)
 		{
@@ -258,7 +249,7 @@ namespace VulkanSharp.Generator
 					where (string)el.Attribute ("name") == name
 				select el;
 
-            // TODO: enums with only extension values (none yet)
+			// TODO: enums with only extension values (none yet)
 			if (values.Count () < 1) {
 				Console.WriteLine ("warning: not adding empty enum {0}", name);
 				return false;
@@ -273,33 +264,33 @@ namespace VulkanSharp.Generator
 			enums [csName] = currentEnumInfo;
 			string acsName = csName;
 
-            for ( ; ; ) {
-			    if (bitmask)
-				    IndentWriteLine ("[Flags]");
+			for ( ; ; ) {
+				if (bitmask)
+					IndentWriteLine ("[Flags]");
 
-			    IndentWriteLine ("public enum {0} : int", acsName);
-			    IndentWriteLine ("{");
-			    IndentLevel++;
+				IndentWriteLine ("public enum {0} : int", acsName);
+				IndentWriteLine ("{");
+				IndentLevel++;
 
-			    foreach (var e in values.Elements ("enum"))
-				    WriteEnumField (e, csName);
-			    WriteEnumExtensions (csName);
+				foreach (var e in values.Elements ("enum"))
+					WriteEnumField (e, csName);
+				WriteEnumExtensions (csName);
 
-			    IndentLevel--;
-			    IndentWriteLine ("}");
+				IndentLevel--;
+				IndentWriteLine ("}");
 
-                if (acsName != csName)
-                    break;
+				if (acsName != csName)
+					break;
 
-                if (!enumAliases.ContainsKey (name))
-                    break;
+				if (!enumAliases.ContainsKey (name))
+					break;
 
-                acsName = GetEnumCsName (enumAliases [name], bitmask);
-                WriteLine ();
-                IndentWriteLine("[Obsolete (\"{0} is deprecated, please use {1} instead.\")]", acsName, csName);
-            }
+				acsName = GetEnumCsName (enumAliases [name], bitmask);
+				WriteLine ();
+				IndentWriteLine ("[Obsolete (\"{0} is deprecated, please use {1} instead.\")]", acsName, csName);
+			}
 
-            return true;
+			return true;
 		}
 
 		void GenerateCodeForElements (IEnumerable<XElement> elements, Func<XElement, bool> generator)
@@ -819,9 +810,9 @@ namespace VulkanSharp.Generator
 					break;
 				}
 			} else if (IsArray (memberElement)
-			           && GetArrayLength (memberElement) != null
-			           && !(structures.ContainsKey (csMemberType)
-			                && structures [csMemberType].needsMarshalling))
+					   && GetArrayLength (memberElement) != null
+					   && !(structures.ContainsKey (csMemberType)
+							&& structures [csMemberType].needsMarshalling))
 				isFixedArray = true;
 			var csMemberName = TranslateCName (name);
 
@@ -846,13 +837,13 @@ namespace VulkanSharp.Generator
 			if (csMemberType.StartsWith ("PFN_"))
 				csMemberType = "IntPtr";
 
-            if (csMemberType == "SampleMask")
+			if (csMemberType == "SampleMask")
 				csMemberType = "UInt32";
 
 			if (csMemberType == "Bool32" && !isInterop && needsMarshalling)
 				csMemberType = "bool";
 
-            bool needsCharCast = false;
+			bool needsCharCast = false;
 			if (csMemberType == "char") {
 				if (isInterop || !needsMarshalling)
 					csMemberType = "byte";
@@ -871,8 +862,8 @@ namespace VulkanSharp.Generator
 				string fixedPart = "";
 				int count = 1;
 				if (IsArray (memberElement)
-				    && !(memberIsStructure
-				         && structures [csMemberType].needsMarshalling)) {
+					&& !(memberIsStructure
+						 && structures [csMemberType].needsMarshalling)) {
 					string len = GetArrayLength (memberElement);
 					if (memberIsStructure)
 						count = Convert.ToInt32 (len);
@@ -936,24 +927,24 @@ namespace VulkanSharp.Generator
 
 			string name = nameElement;
 
-            bool isPointer = memberElement.Value.Contains(typeElement.Value + "*");
-            if (isPointer)
-            {
-                if (name.StartsWith("p"))
-                    name = name.Substring(1);
-                if (name.StartsWith("p"))
-                    name = name.Substring(1);
+			bool isPointer = memberElement.Value.Contains (typeElement.Value + "*");
+			if (isPointer)
+			{
+				if (name.StartsWith ("p"))
+					name = name.Substring (1);
+				if (name.StartsWith ("p"))
+					name = name.Substring (1);
 
-                switch (csMemberType)
-                {
-                case "void":
-                    if (!isInterop && name == "Next")
-                        return false;
-                    break;
-                }
-            }
+				switch (csMemberType)
+				{
+				case "void":
+					if (!isInterop && name == "Next")
+						return false;
+					break;
+				}
+			}
 
-            var csMemberName = TranslateCName (name);
+			var csMemberName = TranslateCName (name);
 
 			// TODO: fixed arrays of structs
 			if (csMemberName.EndsWith ("]")) {
@@ -964,24 +955,24 @@ namespace VulkanSharp.Generator
 
 			string member = memberElement.Value;
 			int count = 1;
-            bool memberIsStructure = structures.ContainsKey (csMemberType);
-            if (IsArray (memberElement)
-                && !(memberIsStructure
-                        && structures [csMemberType].needsMarshalling)) {
-                string len = GetArrayLength (memberElement);
-                if (memberIsStructure)
-                    count = Convert.ToInt32 (len);
-                else if (len != null) {
-                    // is `fixed`
-                    return false;
-                }
-            }
+			bool memberIsStructure = structures.ContainsKey (csMemberType);
+			if (IsArray (memberElement)
+				&& !(memberIsStructure
+						&& structures [csMemberType].needsMarshalling)) {
+				string len = GetArrayLength (memberElement);
+				if (memberIsStructure)
+					count = Convert.ToInt32 (len);
+				else if (len != null) {
+					// is `fixed`
+					return false;
+				}
+			}
 			for (int i = 0; i < count; i++)
-				IndentWrite ("{0}{1} = that.{0}{1},", csMemberName, count > 1 ? i.ToString() : "");
+				IndentWrite ("{0}{1} = that.{0}{1},", csMemberName, count > 1 ? i.ToString () : "");
 
 			return true;
 		}
-        
+
 		bool WriteMemberCopy (XElement memberElement)
 		{
 			var parentName = memberElement.Parent.Attribute ("name").Value;
@@ -1003,24 +994,24 @@ namespace VulkanSharp.Generator
 
 			string name = nameElement;
 
-            bool isPointer = memberElement.Value.Contains(typeElement.Value + "*");
-            if (isPointer)
-            {
-                if (name.StartsWith("p"))
-                    name = name.Substring(1);
-                if (name.StartsWith("p"))
-                    name = name.Substring(1);
+			bool isPointer = memberElement.Value.Contains (typeElement.Value + "*");
+			if (isPointer)
+			{
+				if (name.StartsWith ("p"))
+					name = name.Substring (1);
+				if (name.StartsWith ("p"))
+					name = name.Substring (1);
 
-                switch (csMemberType)
-                {
-                case "void":
-                    if (!isInterop && name == "Next")
-                        return false;
-                    break;
-                }
-            }
+				switch (csMemberType)
+				{
+				case "void":
+					if (!isInterop && name == "Next")
+						return false;
+					break;
+				}
+			}
 
-            var csMemberName = TranslateCName (name);
+			var csMemberName = TranslateCName (name);
 
 			// TODO: fixed arrays of structs
 			if (csMemberName.EndsWith ("]")) {
@@ -1031,22 +1022,22 @@ namespace VulkanSharp.Generator
 
 			string member = memberElement.Value;
 			int count = 1;
-            bool memberIsStructure = structures.ContainsKey (csMemberType);
-            if (IsArray (memberElement)
-                && !(memberIsStructure
-                        && structures [csMemberType].needsMarshalling)) {
-                string len = GetArrayLength (memberElement);
-                if (len == null) {
-                    // is `fixed`
-                    return false;
-                }
-                count = Convert.ToInt32 (len);
-			    for (int i = 0; i < count; i++)
-				    IndentWriteLine ("ret.{0}[{1}] = that.{0}[{1}];", csMemberName, i);
-			    return true;
-            }
+			bool memberIsStructure = structures.ContainsKey (csMemberType);
+			if (IsArray (memberElement)
+				&& !(memberIsStructure
+						&& structures [csMemberType].needsMarshalling)) {
+				string len = GetArrayLength (memberElement);
+				if (len == null) {
+					// is `fixed`
+					return false;
+				}
+				count = Convert.ToInt32 (len);
+				for (int i = 0; i < count; i++)
+					IndentWriteLine ("ret.{0}[{1}] = that.{0}[{1}];", csMemberName, i);
+				return true;
+			}
 
-            return false;
+			return false;
 		}
 
 		HashSet<string> disabledStructs = new HashSet<string> {
@@ -1067,14 +1058,14 @@ namespace VulkanSharp.Generator
 			"ExportFenceWin32HandleInfoKhr",
 			// TODO: support fixed array of Handles
 			"PhysicalDeviceGroupPropertiesKhx",
-            "PhysicalDeviceGroupPropertiesKhr",
-            "PhysicalDeviceGroupProperties",
-            "PhysicalDeviceMemoryBudgetPropertiesExt",
+			"PhysicalDeviceGroupPropertiesKhr",
+			"PhysicalDeviceGroupProperties",
+			"PhysicalDeviceMemoryBudgetPropertiesExt",
 			// NativeBufferAndroid uses disabled extension
 			"NativeBufferAndroid",
-            "ImportAndroidHardwareBufferInfoAndroid",
-            "MetalSurfaceCreateInfoExt",
-        };
+			"ImportAndroidHardwareBufferInfoAndroid",
+			"MetalSurfaceCreateInfoExt",
+		};
 
 		void WriteStructureInitializeMethod (List<StructMemberInfo> members, string csName, string hasSType)
 		{
@@ -1103,94 +1094,94 @@ namespace VulkanSharp.Generator
 
 			string csName = typesTranslation [name];
 
-            string mod = "";
+			string mod = "";
 
-            if (structElement.Attribute ("alias") != null) {
-                var aliasName = structElement.Attribute ("alias").Value;
+			if (structElement.Attribute ("alias") != null) {
+				var aliasName = structElement.Attribute ("alias").Value;
 
-                if (!typesTranslation.ContainsKey (aliasName) || (requiredTypes != null && !requiredTypes.Contains (aliasName)))
-                    return false;
+				if (!typesTranslation.ContainsKey (aliasName) || (requiredTypes != null && !requiredTypes.Contains (aliasName)))
+					return false;
 
-                string acsName = typesTranslation [aliasName];
-                var alias = structures [acsName];
+				string acsName = typesTranslation [aliasName];
+				var alias = structures [acsName];
 
-                needsMarshalling = alias.needsMarshalling;
+				needsMarshalling = alias.needsMarshalling;
 
-                if (isInterop && !needsMarshalling)
-                    return false;
+				if (isInterop && !needsMarshalling)
+					return false;
 
-                if (isUnion && (isInterop || !needsMarshalling))
-                    IndentWriteLine ("[StructLayout (LayoutKind.Explicit)]");
-                if (!isInterop)
-                    mod = "unsafe ";
+				if (isUnion && (isInterop || !needsMarshalling))
+					IndentWriteLine ("[StructLayout (LayoutKind.Explicit)]");
+				if (!isInterop)
+					mod = "unsafe ";
 
-                if (isInterop || !needsMarshalling) {
-                    // make a complete copy of the struct, with implicit conversions
-                    IndentWriteLine ("{0}{1} partial struct {2}", mod, isInterop ? "internal" : "public", csName);
-                    IndentWriteLine ("{");
-                    IndentLevel++;
+				if (isInterop || !needsMarshalling) {
+					// make a complete copy of the struct, with implicit conversions
+					IndentWriteLine ("{0}{1} partial struct {2}", mod, isInterop ? "internal" : "public", csName);
+					IndentWriteLine ("{");
+					IndentLevel++;
 
-                    initializeMembers = new List<StructMemberInfo>();
-                    arrayMembers = new List<string>();
-                    currentStructInfo = alias;
-                    currentStructInfo.members = new Dictionary<string, string>();
+					initializeMembers = new List<StructMemberInfo>();
+					arrayMembers = new List<string>();
+					currentStructInfo = alias;
+					currentStructInfo.members = new Dictionary<string, string>();
 
 
-                    // find the original struct members
-                    var originalElement = specTree.Elements ("types").Elements ("type").FirstOrDefault ((elem) => ReadName (elem) == aliasName);
+					// find the original struct members
+					var originalElement = specTree.Elements ("types").Elements ("type").FirstOrDefault ((elem) => ReadName (elem) == aliasName);
 
-                    bool unsafeCopy = originalElement.Elements ("member").FirstOrDefault (IsArray) != null;
+					bool unsafeCopy = originalElement.Elements ("member").FirstOrDefault (IsArray) != null;
 
-                    GenerateMembers (originalElement, WriteMember);
-                    WriteLine ();
-                    // generate the implicit conversions
-                    IndentWriteLine ("{0}public static implicit operator {1} ({2} that) {{", unsafeCopy ? "unsafe " : "", csName, acsName);
-                    IndentLevel++;
-                    IndentWriteLine ("var ret = new {0} {{", csName);
-                    IndentLevel++;
-                    GenerateMembers (originalElement, WriteMemberAssign);
-                    WriteLine ();
-                    IndentLevel--;
-                    IndentWriteLine ("};");
-                    WriteLine ();
-                    GenerateMembers(originalElement, WriteMemberCopy);
-                    IndentWriteLine("return ret;");
-                    IndentLevel--;
-                    IndentWriteLine ("}");
-                    WriteLine ();
-                    IndentWriteLine("{0}public static implicit operator {1} ({2} that) {{", unsafeCopy ? "unsafe " : "", acsName, csName);
-                    IndentLevel++;
-                    IndentWriteLine ("var ret = new {0} {{", acsName);
-                    IndentLevel++;
-                    GenerateMembers (originalElement, WriteMemberAssign);
-                    WriteLine ();
-                    IndentLevel--;
-                    IndentWriteLine ("};");
-                    WriteLine ();
-                    GenerateMembers (originalElement, WriteMemberCopy);
-                    IndentWriteLine ("return ret;");
-                    IndentLevel--;
-                    IndentWriteLine ("}");
+					GenerateMembers (originalElement, WriteMember);
+					WriteLine ();
+					// generate the implicit conversions
+					IndentWriteLine ("{0}public static implicit operator {1} ({2} that) {{", unsafeCopy ? "unsafe " : "", csName, acsName);
+					IndentLevel++;
+					IndentWriteLine ("var ret = new {0} {{", csName);
+					IndentLevel++;
+					GenerateMembers (originalElement, WriteMemberAssign);
+					WriteLine ();
+					IndentLevel--;
+					IndentWriteLine ("};");
+					WriteLine ();
+					GenerateMembers (originalElement, WriteMemberCopy);
+					IndentWriteLine ("return ret;");
+					IndentLevel--;
+					IndentWriteLine ("}");
+					WriteLine ();
+					IndentWriteLine ("{0}public static implicit operator {1} ({2} that) {{", unsafeCopy ? "unsafe " : "", acsName, csName);
+					IndentLevel++;
+					IndentWriteLine ("var ret = new {0} {{", acsName);
+					IndentLevel++;
+					GenerateMembers (originalElement, WriteMemberAssign);
+					WriteLine ();
+					IndentLevel--;
+					IndentWriteLine ("};");
+					WriteLine ();
+					GenerateMembers (originalElement, WriteMemberCopy);
+					IndentWriteLine ("return ret;");
+					IndentLevel--;
+					IndentWriteLine ("}");
 
-                    IndentLevel--;
-                    IndentWriteLine ("}");
-                } else {
-                    // inherit the class
-                    IndentWriteLine ("{0}{1} partial class {2} : {3}", mod, isInterop ? "internal" : "public", csName, acsName);
-                    IndentWriteLine ("{");
-                    IndentLevel++;
-                    IndentWriteLine ("public {0} () : base () {{", csName);
-                    IndentWriteLine ("}");
-                    WriteLine ();
-                    IndentWriteLine ("internal {0} (NativePointer pointer) : base (pointer) {{", csName);
-                    IndentWriteLine ("}");
-                    WriteLine ();
-                    IndentLevel--;
-                    IndentWriteLine ("}");
-                }
+					IndentLevel--;
+					IndentWriteLine ("}");
+				} else {
+					// inherit the class
+					IndentWriteLine ("{0}{1} partial class {2} : {3}", mod, isInterop ? "internal" : "public", csName, acsName);
+					IndentWriteLine ("{");
+					IndentLevel++;
+					IndentWriteLine ("public {0} () : base () {{", csName);
+					IndentWriteLine ("}");
+					WriteLine ();
+					IndentWriteLine ("internal {0} (NativePointer pointer) : base (pointer) {{", csName);
+					IndentWriteLine ("}");
+					WriteLine ();
+					IndentLevel--;
+					IndentWriteLine ("}");
+				}
 
-                return true;
-            }
+				return true;
+			}
 
 			var info = structures [csName];
 			needsMarshalling = info.needsMarshalling;
@@ -1220,7 +1211,7 @@ namespace VulkanSharp.Generator
 				foreach (var el in values) {
 					var elType = el.Element ("type");
 					if (elType != null && elType.Value == "VkStructureType" && el.Attribute ("values") != null)
-                        hasSType = el.Attribute("values").Value;
+						hasSType = el.Attribute ("values").Value;
 				}
 
 				if (info.needsMarshalling) {
@@ -1309,9 +1300,9 @@ namespace VulkanSharp.Generator
 				var csMemberType = GetTypeCsName (typeElement.Value, "member");
 
 				if (member.Contains ("*")
-				    || IsArray (memberElement)
-				    || (structures.ContainsKey (csMemberType) && structures [csMemberType].needsMarshalling)
-				    || handles.ContainsKey (csMemberType))
+					|| IsArray (memberElement)
+					|| (structures.ContainsKey (csMemberType) && structures [csMemberType].needsMarshalling)
+					|| handles.ContainsKey (csMemberType))
 					return true;
 			}
 
@@ -1397,15 +1388,15 @@ namespace VulkanSharp.Generator
 
 			var alias = handleElement.Attribute ("alias");
 
-            if (alias == null) {
-			    string type = handleElement.Element ("type").Value;
+			if (alias == null) {
+				string type = handleElement.Element ("type").Value;
 
-			    handles.Add (csName, new HandleInfo { name = csName, type = type });
-            } else {
-                string aliasName = GetTypeCsName(alias.Value, "struct");
+				handles.Add (csName, new HandleInfo { name = csName, type = type });
+			} else {
+				string aliasName = GetTypeCsName (alias.Value, "struct");
 
-			    handles.Add (csName, new HandleInfo { name = csName, alias = aliasName });
-            }
+				handles.Add (csName, new HandleInfo { name = csName, alias = aliasName });
+			}
 
 			return false;
 		}
@@ -1448,8 +1439,8 @@ namespace VulkanSharp.Generator
 					return "4"; // int enum
 
 				return string.Format ("Marshal.SizeOf (typeof ({0}{1}))",
-				                      isInInterop ? "Interop." : "",
-				                      isHandle ? generator.GetHandleType (generator.handles [csType]) : csType);
+									  isInInterop ? "Interop." : "",
+									  isHandle ? generator.GetHandleType (generator.handles [csType]) : csType);
 			}
 		}
 
@@ -1677,17 +1668,17 @@ namespace VulkanSharp.Generator
 			return hasArrayParameter;
 		}
 
-		string GetSafeParameterName(string paramName)
+		string GetSafeParameterName (string paramName)
 		{
 			// if paramName is a reserved name
 			return keywords.Contains (paramName) ? "@" + paramName : paramName;
 		}
 
 		string GetManagedHandleType (HandleInfo info)
-        {
-            string type = GetType (info);
+		{
+			string type = GetType (info);
 
-            return type == "VK_DEFINE_HANDLE" ? "IntPtr" : "UInt64";
+			return type == "VK_DEFINE_HANDLE" ? "IntPtr" : "UInt64";
 		}
 
 		string GetManagedType (string csType)
@@ -1713,11 +1704,11 @@ namespace VulkanSharp.Generator
 			"CreateGraphicsPipelines",
 			"CreateComputePipelines",
 			"CreateSharedSwapchainsKHR",
-            "CreateRayTracingPipelinesNV",
-            "CmdEndTransformFeedbackEXT",
-            "CmdBeginTransformFeedbackEXT",
-            "CmdBindTransformFeedbackBuffersEXT",
-        };
+			"CreateRayTracingPipelinesNV",
+			"CmdEndTransformFeedbackEXT",
+			"CmdBeginTransformFeedbackEXT",
+			"CmdBindTransformFeedbackBuffersEXT",
+		};
 		HashSet<string> notLengthTypes = new HashSet<string> {
 			"RROutput",
 		};
@@ -1782,7 +1773,7 @@ namespace VulkanSharp.Generator
 		bool WriteCommand (XElement commandElement, bool prependNewLine, bool useArrayParameters, bool isForHandle = false, string handleName = null, bool isExtension = false)
 		{
 			string function = ReadName (commandElement.Element ("proto"));
-            string alias = commandElement.Element ("proto").Attribute ("alias")?.Value ?? "";
+			string alias = commandElement.Element ("proto").Attribute ("alias")?.Value ?? "";
 			string type = commandElement.Element ("proto").Element ("type").Value;
 			string csType = GetTypeCsName (type);
 			bool hasArrayParameter = false;
@@ -1800,7 +1791,7 @@ namespace VulkanSharp.Generator
 			// todo: function pointers
 			if (csType.StartsWith ("PFN_"))
 				csType = "IntPtr";
-            
+
 			string csFunction = function;
 			if (function.StartsWith ("vk"))
 				csFunction = csFunction.Substring (2);
@@ -1837,7 +1828,7 @@ namespace VulkanSharp.Generator
 			if (hasResult)
 				csType = "void";
 
-            ParamInfo firstOutParam = null;
+			ParamInfo firstOutParam = null;
 			ParamInfo intParam = null;
 			string outLen = null;
 			ParamInfo dataParam = null;
@@ -1925,10 +1916,10 @@ namespace VulkanSharp.Generator
 			if (dataParam != null)
 				dataParam.isOut = false;
 
-            if (csAlias != "")
-               IndentWriteLine("[Obsolete (\"{0} is deprecated, please use {1} instead.\")]", csFunction, csAlias);
+			if (csAlias != "")
+			   IndentWriteLine ("[Obsolete (\"{0} is deprecated, please use {1} instead.\")]", csFunction, csAlias);
 
-            IndentWrite("public {0}{1} {2} (", (!isExtension && isForHandle) ? "" : "static ", csType, csFunction);
+			IndentWrite ("public {0}{1} {2} (", (!isExtension && isForHandle) ? "" : "static ", csType, csFunction);
 			hasArrayParameter = WriteCommandParameters (commandElement, useArrayParameters, ignoredParameters, null, null, isForHandle && !isExtension, false, paramsDict, isExtension, true);
 			WriteLine (")");
 			IndentWriteLine ("{");
@@ -2068,9 +2059,9 @@ namespace VulkanSharp.Generator
 
 		string GetHandleType (HandleInfo info)
 		{
-            string type = GetType (info);
+			string type = GetType (info);
 
-            switch (type) {
+			switch (type) {
 			case "VK_DEFINE_NON_DISPATCHABLE_HANDLE":
 				return "UInt64";
 			case "VK_DEFINE_HANDLE":
@@ -2079,10 +2070,10 @@ namespace VulkanSharp.Generator
 				throw new Exception ("unknown handle type: " + type);
 			}
 		}
-        
+
 		string GetType (HandleInfo info)
 		{
-            return info.alias == null ? info.type : handles [info.alias].type;
+			return info.alias == null ? info.type : handles [info.alias].type;
 		}
 
 		HashSet<string> handlesWithDefaultConstructors = new HashSet<string> {
@@ -2221,17 +2212,17 @@ namespace VulkanSharp.Generator
 			"vkCreateIOSSurfaceMVK",
 			// TODO: support fixed array of Handles
 			"vkEnumeratePhysicalDeviceGroupsKHX",
-            "vkEnumeratePhysicalDeviceGroups",
-            "vkEnumeratePhysicalDeviceGroupsKHR",
-            // TODO: resolve issues converting to/from `MemoryRequirements2Khr`
-            "vkGetAccelerationStructureMemoryRequirementsNV",
-            // TODO: pointer to pointer
-            // also, just disable android extensions
-            "vkGetMemoryAndroidHardwareBufferANDROID",
-            "vkGetAndroidHardwareBufferPropertiesANDROID",
-            // disable metal surface creation
-            "vkCreateMetalSurfaceEXT",
-        };
+			"vkEnumeratePhysicalDeviceGroups",
+			"vkEnumeratePhysicalDeviceGroupsKHR",
+			// TODO: resolve issues converting to/from `MemoryRequirements2Khr`
+			"vkGetAccelerationStructureMemoryRequirementsNV",
+			// TODO: pointer to pointer
+			// also, just disable android extensions
+			"vkGetMemoryAndroidHardwareBufferANDROID",
+			"vkGetAndroidHardwareBufferPropertiesANDROID",
+			// disable metal surface creation
+			"vkCreateMetalSurfaceEXT",
+		};
 
 		HashSet<string> delegateUnmanagedCommands = new HashSet<string> {
 			"vkCreateDebugReportCallbackEXT",
@@ -2241,7 +2232,7 @@ namespace VulkanSharp.Generator
 
 		bool WriteUnmanagedCommand (XElement commandElement)
 		{
-            var alias = commandElement.Attribute ("alias");
+			var alias = commandElement.Attribute ("alias");
 			string function = alias == null ? ReadName (commandElement.Element ("proto")) : ReadName (commandElement);
 
 			// todo: extensions support
@@ -2251,48 +2242,47 @@ namespace VulkanSharp.Generator
 			} else if (disabledUnmanagedCommands.Contains (function))
 				return false;
 
-            if (alias != null) {
-                commandElement = null;
-                // find the alias
-			    foreach (var command in specTree.Elements ("commands").Elements ("command")) {
-                    if (command.Element ("proto") == null)
-                        continue;
+			if (alias != null) {
+				commandElement = null;
+				// find the alias
+				foreach (var command in specTree.Elements ("commands").Elements ("command")) {
+					if (command.Element ("proto") == null)
+						continue;
 
-                    if (ReadName (command.Element ("proto")) == alias.Value) {
-                        commandElement = new XElement(command);
-                        break;
-                    }
-			    }
+					if (ReadName (command.Element ("proto")) == alias.Value) {
+						commandElement = new XElement (command);
+						break;
+					}
+				}
 
-                if (commandElement == null) {
-                    Console.WriteLine ("warning: could not find prototype for alias {0}", function);
+				if (commandElement == null) {
+					Console.WriteLine ("warning: could not find prototype for alias {0}", function);
 
-                    return false;
-                }
-            
-                // clone the node in all but name
-                commandElement.Element ("proto").SetElementValue ("name", function);
-                commandElement.Element ("proto").SetAttributeValue ("alias", alias.Value);
-            }
+					return false;
+				}
 
-            string type = commandElement.Element ("proto").Element ("type").Value;
-            string csType = GetTypeCsName (type);
+				// clone the node in all but name
+				commandElement.Element ("proto").SetElementValue ("name", function);
+				commandElement.Element ("proto").SetAttributeValue ("alias", alias.Value);
+			}
 
-            // todo: function pointers
-            if (csType.StartsWith ("PFN_"))
-                csType = "IntPtr";
+			string type = commandElement.Element ("proto").Element ("type").Value;
+			string csType = GetTypeCsName (type);
 
-            if (delegateUnmanagedCommands.Contains (function))
-                IndentWrite ("internal unsafe delegate {0} {1} (", csType, function);
-            else
-            {
-                IndentWriteLine ("[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]");
-                IndentWrite ("internal static unsafe extern {0} {1} (", csType, function);
-            }
-            WriteUnmanagedCommandParameters (commandElement);
-            WriteLine(");");
+			// todo: function pointers
+			if (csType.StartsWith ("PFN_"))
+				csType = "IntPtr";
 
-            return true;
+			if (delegateUnmanagedCommands.Contains (function))
+				IndentWrite ("internal unsafe delegate {0} {1} (", csType, function);
+			else {
+				IndentWriteLine ("[DllImport (VulkanLibrary, CallingConvention = CallingConvention.Winapi)]");
+				IndentWrite ("internal static unsafe extern {0} {1} (", csType, function);
+			}
+			WriteUnmanagedCommandParameters (commandElement);
+			WriteLine (");");
+
+			return true;
 		}
 
 		string InteropNamespace {
@@ -2344,8 +2334,8 @@ namespace VulkanSharp.Generator
 
 			bool written = false;
 			foreach (var command in specTree.Elements ("commands").Elements ("command")) {
-                if (command.Attribute ("alias") != null)
-                    continue;
+				if (command.Attribute ("alias") != null)
+					continue;
 
 				if (handlesCommands.Contains (ReadName (command.Element ("proto"))))
 					continue;
@@ -2362,8 +2352,8 @@ namespace VulkanSharp.Generator
 		string EnumExtensionValue (XElement element, int number, ref string csEnumName)
 		{
 			var extnumberAttribute = element.Attribute ("extnumber");
-            if (extnumberAttribute != null)
-                number = Int32.Parse (extnumberAttribute.Value);
+			if (extnumberAttribute != null)
+				number = Int32.Parse (extnumberAttribute.Value);
 
 			var offsetAttribute = element.Attribute ("offset");
 			if (offsetAttribute != null) {
@@ -2393,28 +2383,28 @@ namespace VulkanSharp.Generator
 		{
 			var extensions = from e in extensionElement.Elements ("require").Elements ("enum") where e.Attribute ("extends") != null select e;
 
-            int number = 0;
-            Int32.TryParse (extensionElement.Attribute ("number").Value, out number);
+			int number = 0;
+			Int32.TryParse (extensionElement.Attribute ("number").Value, out number);
 
 			foreach (var element in extensions) {
 				string enumName = GetTypeCsName (element.Attribute ("extends").Value, "enum");
 				string entryName = element.Attribute ("name").Value;
 
-                // extensions don't always have the `bitmask` attribute provided
-                if (enumName.EndsWith ("FlagBits"))
-                    enumName = enumName.Substring (0, enumName.Length - 4) + "s";
+				// extensions don't always have the `bitmask` attribute provided
+				if (enumName.EndsWith ("FlagBits"))
+					enumName = enumName.Substring (0, enumName.Length - 4) + "s";
 
-                var alias = element.Attribute ("alias");
-                var info = (alias == null)
-                    ? new EnumExtensionInfo { name = entryName, value = EnumExtensionValue (element, number, ref enumName) }
-                    : new EnumExtensionInfo { name = entryName, alias = alias.Value };
+				var alias = element.Attribute ("alias");
+				var info = (alias == null)
+					? new EnumExtensionInfo { name = entryName, value = EnumExtensionValue (element, number, ref enumName) }
+					: new EnumExtensionInfo { name = entryName, alias = alias.Value };
 
-                // add this enum only if it is unique
+				// add this enum only if it is unique
 				if (!enumExtensions.ContainsKey (enumName))
 					enumExtensions [enumName] = new List<EnumExtensionInfo> ();
-                if (enumExtensions [enumName].Find ((e) => e.name == entryName) == null)
-                    enumExtensions [enumName].Add (info);
-            }
+				if (enumExtensions [enumName].Find ((e) => e.name == entryName) == null)
+					enumExtensions [enumName].Add (info);
+			}
 		}
 
 		void LearnExtensions ()
@@ -2430,15 +2420,15 @@ namespace VulkanSharp.Generator
 				LearnExtension (feature);
 		}
 
-        void LearnEnumAliases ()
-        {
-            var aliases = from e in specTree.Elements ("types").Elements ("type") where e.Attribute ("category")?.Value == "enum" && e.Attribute ("alias") != null select e;
+		void LearnEnumAliases ()
+		{
+			var aliases = from e in specTree.Elements ("types").Elements ("type") where e.Attribute ("category")?.Value == "enum" && e.Attribute ("alias") != null select e;
 
-            foreach (var enumElement in aliases)
-    			enumAliases [enumElement.Attribute ("alias").Value] = enumElement.Attribute ("name").Value;
-        }
+			foreach (var enumElement in aliases)
+				enumAliases [enumElement.Attribute ("alias").Value] = enumElement.Attribute ("name").Value;
+		}
 
-        void PrepareExtensionSets (string[] extensionNames)
+		void PrepareExtensionSets (string[] extensionNames)
 		{
 			requiredTypes = new HashSet<string> ();
 			requiredCommands = new HashSet<string> ();

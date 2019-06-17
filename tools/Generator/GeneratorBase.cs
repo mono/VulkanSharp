@@ -8,33 +8,33 @@ namespace VulkanSharp.Generator
 	public class GeneratorBase
 	{
 		static Dictionary<string, string> specialParts = new Dictionary<string, string> {
-            { "AMD", "Amd" },
-            { "API", "Api" },
-            { "EXT", "Ext" },
-            { "ID", "ID" },
-            { "IOS", "IOS" },
-            { "KHR", "Khr" },
-            { "KHX", "Khx" },
-            { "LOD", "LOD" },
-            { "1D", "1D" },
-            { "2D", "2D" },
-            { "3D", "3D" },
-            { "MACOS", "MacOS" },
-            { "NV", "Nv" },
-            { "NVX", "Nvx" },
-            { "NN", "Nn" },
-            { "PCI", "PCI" },
-            { "AABB", "AABB" },
-            { "GGP", "GGP" },
-            { "SM", "SM" },
-        };
+			{ "AMD", "Amd" },
+			{ "API", "Api" },
+			{ "EXT", "Ext" },
+			{ "ID", "ID" },
+			{ "IOS", "IOS" },
+			{ "KHR", "Khr" },
+			{ "KHX", "Khx" },
+			{ "LOD", "LOD" },
+			{ "1D", "1D" },
+			{ "2D", "2D" },
+			{ "3D", "3D" },
+			{ "MACOS", "MacOS" },
+			{ "NV", "Nv" },
+			{ "NVX", "Nvx" },
+			{ "NN", "Nn" },
+			{ "PCI", "PCI" },
+			{ "AABB", "AABB" },
+			{ "GGP", "GGP" },
+			{ "SM", "SM" },
+		};
 
 		protected string TranslateCName (string name)
 		{
 			StringWriter sw = new StringWriter ();
 			bool first = true;
 
-            foreach (var part in name.Split ('_')) {
+			foreach (var part in name.Split ('_')) {
 				if (first) {
 					first = false;
 					if (name.StartsWith ("VK", StringComparison.OrdinalIgnoreCase))
@@ -76,9 +76,9 @@ namespace VulkanSharp.Generator
 			{ "size_t", "UIntPtr" },
 			{ "xcb_connection_t", "IntPtr" },
 			{ "xcb_window_t", "IntPtr" },
-            { "xcb_visualid_t", "Int32" },
-            { "zx_handle_t", "UInt32" },
-        };
+			{ "xcb_visualid_t", "Int32" },
+			{ "zx_handle_t", "UInt32" },
+		};
 
 		HashSet<string> knownTypes = new HashSet<string> {
 			"void",
@@ -96,9 +96,9 @@ namespace VulkanSharp.Generator
 			{ "Display", "IntPtr" },  // this is now broken, as Handles use DisplayKHR instead of it
 			{ "RROutput", "UInt32" },
 			{ "HMONITOR", "IntPtr" },
-            // according to: https://github.com/KhronosGroup/Vulkan-Docs/blob/ad46c7dc688fe973ac7299b651403be5f562db8e/tests/ggp_c/vulkan_types.h
-            { "GgpStreamDescriptor", "int" },
-            { "GgpFrameToken", "int" },
+			// according to: https://github.com/KhronosGroup/Vulkan-Docs/blob/ad46c7dc688fe973ac7299b651403be5f562db8e/tests/ggp_c/vulkan_types.h
+			{ "GgpStreamDescriptor", "int" },
+			{ "GgpFrameToken", "int" },
 		};
 
 		protected static Dictionary<string, string> extensions = new Dictionary<string, string> {
@@ -116,7 +116,7 @@ namespace VulkanSharp.Generator
 			{ "INTEL", "Intel" },
 		};
 
-        protected string GetTypeCsName (string name, string typeName = "type")
+		protected string GetTypeCsName (string name, string typeName = "type")
 		{
 			if (typesTranslation.ContainsKey (name))
 				return typesTranslation [name];
@@ -140,7 +140,7 @@ namespace VulkanSharp.Generator
 				if (csName.EndsWith (ext.Key))
 					csName = csName.Substring (0, csName.Length - ext.Value.Length) + ext.Value;
 
-            return csName;
+			return csName;
 		}
 
 		protected string GetEnumCsName (string name, bool bitmask)
