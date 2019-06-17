@@ -637,7 +637,7 @@ namespace Vulkan
 		CubeCompatible = 0x10,
 		CornerSampledNv = 0x2000,
 		SplitInstanceBindRegionsKhr = SplitInstanceBindRegions,
-		Create2DArrayCompatibleKhr = 2DArrayCompatible,
+		Create2DArrayCompatibleKhr = Create2DArrayCompatible,
 		BlockTexelViewCompatibleKhr = BlockTexelViewCompatible,
 		ExtendedUsageKhr = ExtendedUsage,
 		SampleLocationsCompatibleDepthExt = 0x1000,
@@ -2285,17 +2285,17 @@ namespace Vulkan
 	public enum ShadingRatePaletteEntryNv : int
 	{
 		NoInvocations = 0,
-		_16InvocationsPerPixel = 1,
-		_8InvocationsPerPixel = 2,
-		_4InvocationsPerPixel = 3,
-		_2InvocationsPerPixel = 4,
-		_1InvocationPerPixel = 5,
-		_1InvocationPer2X1Pixels = 6,
-		_1InvocationPer1X2Pixels = 7,
-		_1InvocationPer2X2Pixels = 8,
-		_1InvocationPer4X2Pixels = 9,
-		_1InvocationPer2X4Pixels = 10,
-		_1InvocationPer4X4Pixels = 11,
+		Rate16InvocationsPerPixel = 1,
+		Rate8InvocationsPerPixel = 2,
+		Rate4InvocationsPerPixel = 3,
+		Rate2InvocationsPerPixel = 4,
+		Rate1InvocationPerPixel = 5,
+		Rate1InvocationPer2X1Pixels = 6,
+		Rate1InvocationPer1X2Pixels = 7,
+		Rate1InvocationPer2X2Pixels = 8,
+		Rate1InvocationPer4X2Pixels = 9,
+		Rate1InvocationPer2X4Pixels = 10,
+		Rate1InvocationPer4X4Pixels = 11,
 	}
 
 	public enum CoarseSampleOrderTypeNv : int

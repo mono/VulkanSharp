@@ -109,7 +109,40 @@ namespace VulkanSharp.Generator
 			Console.WriteLine ("Specification file {0} loaded", specXMLFile);
 		}
 
-		void WriteEnumField (string name, string value, string csEnumName)
+        string CleanEnumField(string name, string prefix, string csEnumName)
+        {
+            if (name.StartsWith (prefix, StringComparison.OrdinalIgnoreCase))
+                name = name.Substring (prefix.Length);
+
+            if (!char.IsLetter (name[0]) && !name.StartsWith ("0x") && !Int32.TryParse (name, out int isValueTmp))
+            {
+                switch (csEnumName)
+                {
+                case "ImageType":
+                    name = "Image" + name;
+                    break;
+                case "ImageViewType":
+                    name = "View" + name;
+                    break;
+                case "QueryResultFlags":
+                    name = "Result" + name;
+                    break;
+                case "SampleCountFlags":
+                    name = "Count" + name;
+                    break;
+                case "ImageCreateFlags":
+                    name = "Create" + name;
+                    break;
+                case "ShadingRatePaletteEntryNv":
+                    name = "Rate" + name;
+                    break;
+                }
+            }
+
+            return name;
+        }
+
+        void WriteEnumField (string name, string value, string csEnumName)
 		{
 			string fName = TranslateCName (name);
 			string prefix = csEnumName, suffix = null;
@@ -131,36 +164,10 @@ namespace VulkanSharp.Generator
 				suffix = "Bit" + suffix;
 			}
             
-			if (fName.StartsWith (prefix, StringComparison.OrdinalIgnoreCase))
-                fName = fName.Substring (prefix.Length);
+            fName = CleanEnumField (fName, prefix, csEnumName);
+            value = CleanEnumField (value, prefix, csEnumName);
 
-			if (value.StartsWith (prefix, StringComparison.OrdinalIgnoreCase))
-                value = value.Substring (prefix.Length);
-
-            // likely a typo not relevant to C#, e.g. CAPABILITIES_2 <> CAPABILITIES2
-            if (fName == value)
-                return;
-
-			if (!char.IsLetter (fName [0])) {
-				switch (csEnumName) {
-				case "ImageType":
-					fName = "Image" + fName;
-					break;
-				case "ImageViewType":
-					fName = "View" + fName;
-					break;
-				case "QueryResultFlags":
-					fName = "Result" + fName;
-					break;
-				case "SampleCountFlags":
-					fName = "Count" + fName;
-					break;
-				case "ImageCreateFlags":
-					fName = "Create" + fName;
-					break;
-				}
-			}
-			if (suffix != null) {
+            if (suffix != null) {
 				if (fName.EndsWith (suffix))
 					fName = fName.Substring (0, fName.Length - suffix.Length);
 				else if (isExtensionField) {
@@ -173,9 +180,9 @@ namespace VulkanSharp.Generator
                     value = value.Substring (0, value.Length - suffix.Length);
             }
 
-            // some enum entires now start with numbers, don't let them
-            if (fName[0] >= '0' && fName[0] <= '9')
-                fName = "_" + fName;
+            // likely a typo not relevant to C#, e.g. CAPABILITIES_2 <> CAPABILITIES2
+            if (fName == value)
+                return;
 
             IndentWriteLine("{0} = {1},", fName, value);
 
