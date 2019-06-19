@@ -8,9 +8,8 @@ BIN_PATH_RELEASE = bin/Release
 all: $(BIN_PATH)/vk.xml $(BIN_PATH)/Vulkan.dll
 
 $(BIN_PATH)/vk.xml:
-	mkdir -p $(BIN_PATH)
+	msbuild /t:DownloadSpecification src/Vulkan/Vulkan.csproj
 	mkdir -p $(BIN_PATH_RELEASE)
-	curl -o "$@" $(VK_XML_URL)
 	cp "$@" $(BIN_PATH_RELEASE)
 
 $(BIN_PATH)/Vulkan.dll: $(wildcard src/Vulkan/*.cs src/Vulkan/*/*.cs tools/Generator/*cs)
