@@ -57,3 +57,16 @@ netstandard-vulkansharp: netstandard/Vulkan.csproj netstandard/obj/obj/project.a
 
 netstandard/obj/obj/project.assets.json: netstandard/Vulkan.csproj
 	nuget restore $<
+
+API_ASSEMBLIES=\
+	bin/$(CONFIGURATION)/Vulkan.dll \
+	src/Platforms/Android/bin/$(CONFIGURATION)/Vulkan.Android.dll \
+	src/Platforms/Windows/bin/$(CONFIGURATION)/Vulkan.Windows.dll
+
+api-update:
+	mkdir -p api-info
+	mono-api-info --ignore-resolution-errors $(API_ASSEMBLIES) > api-info/reference.xml
+
+api-check:
+	mono-api-info --ignore-resolution-errors $(API_ASSEMBLIES) > current-api.xml
+	mono-api-html api-info/reference.xml current-api.xml > api-changes.html
