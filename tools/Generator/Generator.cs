@@ -959,7 +959,7 @@ namespace VulkanSharp.Generator
 						IndentWriteLine ("return;");
 						IndentLevel--;
 						foreach (var refName in arrayMembers) {
-							IndentWriteLine ("ref{0}.Dispose ();", refName);
+							IndentWriteLine ("ref{0}?.Dispose ();", refName);
 							IndentWriteLine ("ref{0} = null;", refName);
 						}
 						IndentLevel--;
