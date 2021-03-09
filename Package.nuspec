@@ -5,7 +5,7 @@
     <version>0.1.10</version>
     <authors>Xamarin Inc</authors>
     <owners>rodo</owners>
-    <licenseUrl>https://github.com/mono/VulkanSharp/blob/master/LICENSE</licenseUrl>
+    <licenseUrl>https://github.com/mono/VulkanSharp/blob/main/LICENSE</licenseUrl>
     <projectUrl>https://github.com/mono/VulkanSharp</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Open source .NET binding for the Vulkan API</description>

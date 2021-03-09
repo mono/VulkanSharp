@@ -1,21 +1,15 @@
 # VulkanSharp
-[![Build Status][build-icon]][build-status]
-
-[build-icon]:https://jenkins.mono-project.com/view/Urho/job/VulkanSharp/badge/icon
-[build-status]:https://jenkins.mono-project.com/view/Urho/job/VulkanSharp/
 
 This project provides a .NET binding for the
 [Vulkan](https://www.khronos.org/vulkan/) API.
 
 Nuget [package](https://www.nuget.org/packages/VulkanSharp/)
 
-Check our [samples](https://github.com/mono/VulkanSharp/tree/master/samples) to see examples of using VulkanSharp
-
-Regular Jenkins [builds](https://jenkins.mono-project.com/view/All/job/VulkanSharp/) with every push/PR
+Check our [samples](https://github.com/mono/VulkanSharp/tree/main/samples) to see examples of using VulkanSharp
 
 ## Tutorials
 
-How to use [Validation layers](https://github.com/mono/VulkanSharp/blob/master/docs/development/ValidationLayers.md) and [Debug report](https://github.com/mono/VulkanSharp/blob/master/docs/development/ValidationLayers.md#debug-report-extension) extension
+How to use [Validation layers](https://github.com/mono/VulkanSharp/blob/main/docs/development/ValidationLayers.md) and [Debug report](https://github.com/mono/VulkanSharp/blob/main/docs/development/ValidationLayers.md#debug-report-extension) extension
 
 ## Building
 
